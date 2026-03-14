@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMT-T226 유선단말기 | 누리네트웍스</title>
+    <meta name="description" content="SMT-T226 유선단말기 - 스마트로의 신뢰도 높은 유선 카드결제 단말기. bizzle 서비스 연동으로 매출 조회, 날씨 정보 등 다양한 부가기능을 제공합니다.. 누리네트웍스에서 공급/설치/유지보수.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+        body{font-family:'Noto Sans KR','Inter',sans-serif;color:#1d1d1f;background:#000;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+        .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.82);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,0.06);}
+        .nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:52px;}
+        .nav-logo{display:flex;align-items:center;gap:6px;text-decoration:none;font-family:'Inter',sans-serif;}
+        .nav-logo .nl{font-size:1.5rem;font-weight:700;color:#1d1d1f;text-shadow:none;}.nav-logo .nt{font-size:0.72rem;color:rgba(0,0,0,0.5);font-weight:300;}.nav-logo .nt b{font-weight:600;}
+        .nav-product{font-size:0.85rem;font-weight:600;color:#1d1d1f;}
+        .nav-links{display:flex;gap:20px;align-items:center;}.nav-links a{font-size:0.75rem;color:rgba(0,0,0,0.55);text-decoration:none;transition:color .2s;}.nav-links a:hover{color:#1d1d1f;}
+        .nav-cta{background:#1565C0;color:#fff!important;padding:6px 16px;border-radius:20px;font-weight:500;}
+        .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:#f5f5f7;padding:100px 24px 40px;position:relative;overflow:hidden;}
+        .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:160px;background:linear-gradient(to top,#f5f5f7,transparent);z-index:2;}
+        .hero-tag{font-size:0.85rem;font-weight:600;color:var(--primary);letter-spacing:0.08em;margin-bottom:12px;text-transform:uppercase;}
+        .hero h1{font-size:clamp(2.8rem,7vw,5rem);font-weight:900;color:#1d1d1f;line-height:1.08;letter-spacing:-0.04em;margin-bottom:16px;}
+        .hero h1 .accent{background:linear-gradient(135deg,#42A5F5,#1565C0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+        .hero-sub{font-size:clamp(1rem,2vw,1.3rem);color:#86868b;font-weight:300;max-width:580px;margin:0 auto 40px;line-height:1.65;}
+        .hero-img{max-width:650px;width:85%;position:relative;z-index:1;animation:hf 3s ease-in-out infinite alternate;}.hero-img img{width:100%;height:auto;filter:drop-shadow(0 30px 60px rgba(0,0,0,0.5));}
+        @keyframes hf{0%{transform:translateY(0)}100%{transform:translateY(-10px)}}
+        .bc{display:flex;align-items:center;gap:8px;margin-bottom:32px;}.bc a{font-size:0.8rem;color:#86868b;text-decoration:none;}.bc a:hover{color:#fff;}.bc span{font-size:0.8rem;color:#d2d2d7;}.bc .cur{color:#1d1d1f;font-weight:600;}
+        .fs{min-height:90vh;display:flex;align-items:center;padding:100px 24px;position:relative;overflow:hidden;}.fs-inner{max-width:1200px;margin:0 auto;width:100%;}
+        .fs-dark{background:#fff;color:#1d1d1f;}.fs-light{background:#f5f5f7;color:#1d1d1f;}.fs-deep{background:#f5f5f7;color:#1d1d1f;}.fs-mid{background:#f5f5f7;color:#1d1d1f;}
+        .fs-tag{font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:10px;color:var(--primary);}
+        .fs-title{font-size:clamp(1.8rem,4.5vw,3rem);font-weight:800;line-height:1.15;letter-spacing:-0.03em;margin-bottom:18px;}
+        .fs-desc{font-size:clamp(0.95rem,1.6vw,1.15rem);line-height:1.8;max-width:520px;opacity:0.6;font-weight:300;}
+        .fs-split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+        .fs-img{width:100%;border-radius:16px;overflow:hidden;}.fs-img img{width:100%;height:auto;display:block;}
+        .fs-center{text-align:center;}.fs-center .fs-desc{margin:0 auto 40px;}.fs-center .fs-img{max-width:600px;margin:0 auto;}
+        .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px;}
+        .feat-card{background:#f5f5f7;border:1px solid rgba(0,0,0,0.04);border-radius:20px;padding:32px 24px;transition:all .4s;}
+        .feat-card:hover{background:rgba(255,255,255,0.08);transform:translateY(-4px);}.feat-icon{font-size:1.8rem;margin-bottom:12px;}
+        .feat-card h3{font-size:1rem;font-weight:700;margin-bottom:6px;}.feat-card p{font-size:0.85rem;opacity:0.55;line-height:1.65;font-weight:300;}
+        .specs{background:#fff;color:#1d1d1f;padding:100px 24px;}.specs-inner{max-width:1000px;margin:0 auto;}
+        .specs-title{font-size:2.2rem;font-weight:800;text-align:center;margin-bottom:50px;letter-spacing:-0.03em;}
+        .specs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(0,0,0,0.04);border-radius:20px;overflow:hidden;}
+        .spec-item{background:#f5f5f7;padding:28px 32px;}.spec-label{font-size:0.72rem;color:#86868b;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;}
+        .spec-value{font-size:1.2rem;font-weight:700;color:#1d1d1f;}.spec-note{font-size:0.78rem;color:#86868b;margin-top:3px;font-weight:300;}
+        .cta{background:#f5f5f7;padding:100px 24px;text-align:center;}
+        .cta h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:#1d1d1f;margin-bottom:14px;letter-spacing:-0.03em;}
+        .cta p{color:#86868b;font-size:1.05rem;margin-bottom:36px;font-weight:300;}
+        .cta-btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+        .btn{display:inline-flex;align-items:center;gap:8px;padding:15px 32px;border-radius:50px;font-size:0.95rem;font-weight:600;text-decoration:none;transition:all .3s;border:none;font-family:inherit;cursor:pointer;}
+        .btn-blue{background:#1565C0;color:#fff;}.btn-blue:hover{background:#1976D2;transform:translateY(-2px);}
+        .btn-gold{background:var(--primary);color:#fff;}.btn-gold:hover{background:#D4B35A;transform:translateY(-2px);}
+        .btn-outline{color:#1d1d1f;border:1px solid rgba(0,0,0,0.15);background:transparent;}.btn-outline:hover{background:rgba(0,0,0,0.04);}
+        .rv{opacity:0;transform:translateY(36px);transition:all .8s cubic-bezier(0.16,1,0.3,1);}.rv.v{opacity:1;transform:translateY(0);}.rv1{transition-delay:.12s;}.rv2{transition-delay:.24s;}.rv3{transition-delay:.36s;}
+        .footer{background:#f5f5f7;border-top:1px solid rgba(0,0,0,0.06);padding:24px;text-align:center;}.footer a{color:#86868b;font-size:0.78rem;text-decoration:none;}
+        @media(max-width:768px){.fs-split{grid-template-columns:1fr;gap:36px;}.feat-grid{grid-template-columns:1fr;}.specs-grid{grid-template-columns:1fr;}.nav-links{display:none;}.hero{min-height:auto;padding:110px 24px 60px;}.fs{min-height:auto;padding:72px 24px;}}
+    </style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+    <a href="index.html" class="nav-logo"><span class="nl">N</span><span class="nt">nuri<b>networkspay</b></span></a>
+    <span class="nav-product">SMT-T226 유선단말기</span>
+    <div class="nav-links"><a href="#features">특징</a><a href="#specs">사양</a><a href="index.html#products">전체 제품</a><a href="benefits.html">계약혜택</a><a href="support.html">고객지원</a><a href="tel:1544-7754" class="nav-cta">상담 문의</a></div>
+</div></nav>
+
+<section class="hero">
+    <div class="bc"><a href="index.html">홈</a><span>›</span><a href="index.html#products">제품</a><span>›</span><span class="cur">SMT-T226 유선단말기</span></div>
+    <div class="hero-tag">Card Terminal · 스마트로</div>
+    <h1>신뢰도 높은,<br><span class="accent">글로벌 단말기.</span></h1>
+    <p class="hero-sub">스마트로의 신뢰도 높은 유선 카드결제 단말기. bizzle 서비스 연동으로 매출 조회, 날씨 정보 등 다양한 부가기능을 제공합니다.</p>
+    <div class="hero-img"><img src="https://www.smartro.co.kr/wp-content/uploads/2023/07/SMT-T226_main.png" alt="SMT-T226 유선단말기"></div>
+</section>
+
+
+<section class="fs fs-dark" id="features">
+    <div class="fs-inner"><div class="fs-split">
+        <div class="rv"><div class="fs-tag" >bizzle Service</div>
+        <h2 class="fs-title" >효율적인 매장 관리,<br>bizzle 서비스.</h2>
+        <p class="fs-desc" >SMT-T226는 bizzle 서비스와 연동되어 날씨정보 및 매출내역, 부가세 자료 조회 등 다양한 기능을 제공합니다. 단말기 하나로 매장 관리가 가능합니다.</p></div>
+        <div class="fs-img rv rv1"><img src="https://www.smartro.co.kr/wp-content/uploads/2023/07/SMT-T226_main.png" alt="bizzle Service" loading="lazy"></div>
+    </div></div>
+</section>
+<section class="fs fs-light" >
+    <div class="fs-inner"><div class="fs-split" style="direction:rtl;">
+        <div class="rv" style="direction:ltr;"><div class="fs-tag" style="color:#1565C0;">Display</div>
+        <h2 class="fs-title" style="color:#1d1d1f;">4.3인치 컬러<br>LCD 탑재.</h2>
+        <p class="fs-desc" style="color:#6e6e73;">4.3인치 TFT 컬러 LCD(482×272)를 탑재하여 거래 내역을 선명하게 확인할 수 있습니다. 직관적인 화면으로 빠른 거래 처리가 가능합니다.</p></div>
+        <div class="fs-img rv rv1" style="direction:ltr;"><img src="https://www.smartro.co.kr/wp-content/uploads/2023/07/SMT-T226_main.png" alt="Display" loading="lazy"></div>
+    </div></div>
+</section>
+<section class="fs fs-deep" >
+    <div class="fs-inner"><div class="fs-split">
+        <div class="rv"><div class="fs-tag" >Performance</div>
+        <h2 class="fs-title" >빠른 거래 처리<br>속도.</h2>
+        <p class="fs-desc" >CORTEX A9 프로세서와 Linux OS 기반으로 안정적이며, 3인치 고속 영수증 프린터(100mm/sec)가 내장되어 빠른 거래와 영수증 출력이 가능합니다.</p></div>
+        <div class="fs-img rv rv1"><img src="https://www.smartro.co.kr/wp-content/uploads/2023/07/SMT-T226_main.png" alt="Performance" loading="lazy"></div>
+    </div></div>
+</section>
+
+<section class="fs fs-dark" id="features">
+    <div class="fs-inner fs-center">
+        <div class="rv"><div class="fs-tag">Key Features</div>
+        <h2 class="fs-title">주요 특징.</h2></div>
+        <div class="feat-grid"><div class="feat-card rv"><div class="feat-icon">📊</div><h3>bizzle 서비스</h3><p>매출 조회, 날씨정보, 부가세 자료</p></div>
+<div class="feat-card rv rv2"><div class="feat-icon">🖥️</div><h3>컬러 LCD</h3><p>4.3인치 TFT 컬러 디스플레이</p></div>
+<div class="feat-card rv rv3"><div class="feat-icon">🖨️</div><h3>내장 프린터</h3><p>3인치 오토컷 100mm/sec</p></div>
+<div class="feat-card rv rv1"><div class="feat-icon">🔒</div><h3>보안 인증</h3><p>EMV Lv1 보안인증 단말기</p></div>
+<div class="feat-card rv rv2"><div class="feat-icon">📡</div><h3>TMS 원격</h3><p>TMS 원격 관리 지원</p></div>
+<div class="feat-card rv rv3"><div class="feat-icon">🔌</div><h3>다양한 포트</h3><p>Serial, USB, LAN 포트</p></div>
+</div>
+    </div>
+</section>
+
+<section class="specs" id="specs">
+    <div class="specs-inner">
+        <h2 class="specs-title rv">제품 사양</h2>
+        <div class="specs-grid rv"><div class="spec-item"><div class="spec-label">CPU</div><div class="spec-value">CORTEX A9</div></div>
+<div class="spec-item"><div class="spec-label">LCD</div><div class="spec-value">4.3인치 TFT 컬러</div><div class="spec-note">482×272 해상도</div></div>
+<div class="spec-item"><div class="spec-label">프린터</div><div class="spec-value">3인치 감열식 오토컷</div><div class="spec-note">100mm/sec</div></div>
+<div class="spec-item"><div class="spec-label">통신</div><div class="spec-value">56Kbps 모뎀, 100Mbps LAN</div></div>
+<div class="spec-item"><div class="spec-label">OS</div><div class="spec-value">Linux</div></div>
+<div class="spec-item"><div class="spec-label">카드</div><div class="spec-value">IC카드(EMV Lv1), MS 2/3트랙</div></div>
+<div class="spec-item"><div class="spec-label">부가기능</div><div class="spec-value">bizzle 서비스, TMS 원격</div></div>
+<div class="spec-item"><div class="spec-label">제조사</div><div class="spec-value">스마트로 (SMARTRO)</div><div class="spec-note">대한민국</div></div>
+</div>
+    </div>
+</section>
+
+<section class="cta">
+    <h2 class="rv">SMT-T226 유선단말기,<br>지금 상담 받아보세요.</h2>
+    <p class="rv rv1">전문 상담사가 매장 상황에 맞는 최적의 구성을 추천해 드립니다.</p>
+    <div class="cta-btns rv rv2">
+        <a href="tel:1544-7754" class="btn btn-gold">📞 전화 상담 1544-7754</a>
+        <a href="/cdn-cgi/l/email-protection#8ee0fbfce7cefee1fde1e0eba0ede1a0e5fc" class="btn btn-blue">✉️ 이메일 문의</a>
+        <a href="index.html#products" class="btn btn-outline">← 전체 제품 보기</a>
+    </div>
+</section>
+<footer class="footer"><a href="index.html">© 2026 Nurinetworks. All rights reserved.</a></footer>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const ro=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.class

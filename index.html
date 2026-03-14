@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>누리네트웍스 | POS·결제솔루션 전문기업</title>
+    <meta name="description" content="누리네트웍스 - POS, 키오스크, 카드단말기, 사인패드 등 매장 운영에 필요한 모든 결제 솔루션을 제공합니다.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Inter:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root{--primary:#1B3A8C;--primary-light:#2E5BDB;--primary-pale:#EAF0FF;--accent:#C9A84C;--dark:#1d1d1f;--gray-900:#1d1d1f;--gray-700:#424245;--gray-500:#86868b;--gray-300:#d2d2d7;--gray-100:#f5f5f7;--white:#FFF;--radius:20px;--radius-sm:12px;}
+        *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+        body{font-family:'Noto Sans KR',sans-serif;color:var(--gray-900);background:var(--white);line-height:1.75;overflow-x:hidden;}
+        
+        /* LOGO from Figma - Inter font, exact design match */
+        .lg{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:'Inter','Noto Sans KR',sans-serif;}
+        .lg-n{font-weight:700;color:#1d1d1f;line-height:0.85;text-shadow:3px 2px 0 rgba(0,0,0,0.6);letter-spacing:-0.04em;}
+        .lg-right{display:flex;flex-direction:column;justify-content:center;position:relative;}
+        .lg-top{display:flex;align-items:baseline;position:relative;}
+        .lg-nuri{font-weight:300;color:#1d1d1f;letter-spacing:-0.01em;}
+        .lg-nwp{font-weight:600;color:#1d1d1f;letter-spacing:-0.01em;}
+        .lg-cc{font-weight:300;color:#86868b;letter-spacing:0.02em;}
+        .lg-star{color:var(--primary-light);line-height:1;position:relative;}
+        .lg-star-sm{font-size:0.4em;top:-1.2em;margin-left:0.1em;}
+        .lg-star-lg{font-size:0.55em;top:-0.8em;margin-left:0.15em;}
+        /* Header logo */
+        .header .lg{gap:8px;}
+        .header .lg-n{font-size:2.4rem;}
+        .header .lg-nuri,.header .lg-nwp{font-size:1.1rem;}
+        .header .lg-cc{font-size:0.55rem;margin-top:1px;}
+        /* Hero logo - adapts to video bg */
+        .hero-lg{justify-content:center;gap:18px;animation:fadeUp .8s ease-out;margin-bottom:20px;}
+        .hero-lg .lg-n{font-size:6.5rem;text-shadow:5px 3px 0 rgba(0,0,0,0.7);}
+        .hero-lg .lg-nuri,.hero-lg .lg-nwp{font-size:2.8rem;}
+        .hero-lg .lg-cc{font-size:1.1rem;margin-top:2px;}
+        /* Footer logo */
+        .footer .lg{gap:6px;opacity:0.7;}
+        .footer .lg-n{font-size:1.8rem;}
+        .footer .lg-nuri,.footer .lg-nwp{font-size:0.85rem;}
+        .footer .lg-cc{font-size:0.48rem;}
+        .js-loaded .reveal{opacity:0;transform:translateY(24px);transition:all .7s ease;}.js-loaded .reveal.visible{opacity:1;transform:translateY(0);}
+        .header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,0.82);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,0.06);}
+        .header-inner{max-width:1320px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:76px;}
+        .logo{display:flex;flex-direction:column;text-decoration:none;line-height:1;}.logo-en{font-family:'Dancing Script',cursive;font-size:1.6rem;font-weight:700;color:var(--accent);}.logo-kr{font-size:0.7rem;color:rgba(255,255,255,0.45);letter-spacing:0.15em;margin-top:2px;}
+        .nav{display:flex;align-items:center;gap:32px;}.nav a{text-decoration:none;color:rgba(0,0,0,0.55);font-size:0.9rem;font-weight:400;transition:color .2s;}.nav a:hover{color:#1d1d1f;}
+        .nav-cta{background:var(--primary)!important;color:#fff!important;padding:10px 26px;border-radius:50px;font-weight:600!important;}.nav-cta:hover{background:var(--primary-light)!important;}
+        .mobile-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;}.mobile-toggle span{width:22px;height:2px;background:#1d1d1f;border-radius:2px;}
+        .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:#fff;padding-top:76px;}
+        .hero-fallback{position:absolute;inset:0;background:#fff;}
+        .hero-video-bg{position:absolute;inset:0;z-index:1;}.hero-video-bg video{width:100%;height:100%;object-fit:cover;opacity:0.75;}
+        .hero-video-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,0.6) 0%,rgba(255,255,255,0.2) 40%,rgba(255,255,255,0.7) 100%);z-index:2;}
+        .hero-grid{position:absolute;inset:0;z-index:3;}
+        .hero-inner{max-width:1320px;margin:0 auto;padding:80px 40px 100px;position:relative;z-index:10;text-align:center;}
+        .hero-brand-en{font-family:'Dancing Script',cursive;font-size:4.5rem;font-weight:700;color:var(--accent);display:block;line-height:1.1;animation:fadeUp .8s ease-out;}
+        .hero-brand-kr{font-size:1.1rem;color:rgba(255,255,255,0.4);letter-spacing:0.3em;margin-top:8px;display:block;animation:fadeUp .8s ease-out .15s both;}
+        @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+        .hero h1{font-size:2.8rem;font-weight:800;color:#1d1d1f;line-height:1.35;margin:28px 0 24px;letter-spacing:-0.03em;animation:fadeUp .8s ease-out .3s both;}.hero h1 .gold{color:var(--primary);}
+        .hero p{font-size:1.1rem;color:#86868b;max-width:540px;margin:0 auto 44px;animation:fadeUp .8s ease-out .45s both;}
+        .hero-buttons{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;animation:fadeUp .8s ease-out .6s both;}
+        .btn{display:inline-flex;align-items:center;gap:8px;padding:16px 36px;border-radius:50px;font-size:1rem;font-weight:600;text-decoration:none;transition:all .3s;cursor:pointer;border:none;font-family:inherit;}
+        .btn-gold{background:var(--primary);color:#fff;box-shadow:0 4px 20px rgba(27,58,140,0.25);}.btn-gold:hover{background:var(--primary-light);transform:translateY(-2px);}
+        .btn-outline-w{background:transparent;color:#1d1d1f;border:1px solid rgba(0,0,0,0.15);}.btn-outline-w:hover{background:rgba(0,0,0,0.04);}
+        .btn-primary{background:var(--primary-light);color:#fff;}.btn-primary:hover{background:var(--primary);transform:translateY(-2px);}
+        .section{padding:100px 0;}.section-inner{max-width:1320px;margin:0 auto;padding:0 40px;}
+        .section-header{text-align:center;margin-bottom:48px;}.section-tag{display:inline-block;background:var(--primary-pale);color:var(--primary);padding:6px 18px;border-radius:50px;font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:18px;}
+        .section-title{font-size:2.4rem;font-weight:800;color:var(--dark);letter-spacing:-0.03em;margin-bottom:14px;}.section-desc{font-size:1.05rem;color:var(--gray-500);max-width:560px;margin:0 auto;}
+        .cat-tabs{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:40px;}
+        .cat-tab{padding:10px 24px;border-radius:50px;font-size:0.88rem;font-weight:600;cursor:pointer;border:1px solid #d2d2d7;background:#fff;color:#424245;transition:all .3s;}.cat-tab:hover{border-color:var(--primary);color:var(--primary);}.cat-tab.active{background:#1d1d1f;color:#fff;border-color:#1d1d1f;}
+        .products{background:#fff;}
+        .products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+        .product-card{background:#fff;border-radius:var(--radius);overflow:hidden;transition:all .4s;cursor:pointer;border:none;display:none;position:relative;min-height:360px;}
+        .product-card.show{display:flex;flex-direction:column;}
+        .product-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,0.15);}
+        .product-card.dark-card{background:#1d1d1f;color:#fff;} .product-card:not(.dark-card){background:#f5f5f7;}
+        .product-card-top{padding:28px 28px 0;flex:0 0 auto;}
+        .product-card-top .pm{display:inline-block;font-size:0.65rem;font-weight:600;color:#1565C0;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px;}
+        .dark-card .product-card-top .pm{color:#42A5F5;}
+        .product-card-top h3{font-size:1.35rem;font-weight:800;margin-bottom:4px;color:#1d1d1f;letter-spacing:-0.02em;}
+        .dark-card .product-card-top h3{color:#fff;}
+        .product-card-top .pc-desc{font-size:0.82rem;color:#6e6e73;line-height:1.5;font-weight:300;}
+        .dark-card .product-card-top .pc-desc{color:rgba(255,255,255,0.5);}
+        .product-card-bottom{flex:1;display:flex;align-items:flex-end;justify-content:center;padding:16px 20px 0;overflow:hidden;}
+        .product-card-bottom .pimg{max-height:200px;max-width:90%;object-fit:contain;filter:drop-shadow(0 8px 20px rgba(0,0,0,0.15));transition:transform .5s;}.product-card:hover .pimg{transform:scale(1.06);}
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        .mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:2000;justify-content:center;align-items:flex-start;padding:40px 20px;overflow-y:auto;}.mo.open{display:flex;}
+        .mc{background:#fff;border-radius:var(--radius);max-width:800px;width:100%;position:relative;animation:mi .3s ease-out;}
+        @keyframes mi{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        .mx{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;border:none;background:var(--gray-100);cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;z-index:10;}.mx:hover{background:var(--gray-300);}
+        .mh{height:200px;display:flex;align-items:center;justify-content:center;border-radius:var(--radius) var(--radius) 0 0;position:relative;}
+        .mh{height:220px;display:flex;align-items:center;justify-content:center;border-radius:var(--radius) var(--radius) 0 0;position:relative;background-size:cover;background-position:center;overflow:hidden;}
+        .mh::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.15) 50%,rgba(0,0,0,0.2) 100%);z-index:1;}
+        .mh .pe{font-size:5rem;filter:drop-shadow(0 6px 20px rgba(0,0,0,0.3));position:relative;z-index:2;}.mh .pimg{max-height:170px;max-width:80%;object-fit:contain;filter:drop-shadow(0 8px 24px rgba(0,0,0,0.4));position:relative;z-index:2;}.mh .mm{position:absolute;bottom:16px;left:24px;background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);color:#fff;padding:6px 16px;border-radius:50px;font-size:0.8rem;font-weight:600;z-index:3;}
+        .mb{padding:36px;}.mb h2{font-size:1.6rem;font-weight:800;margin-bottom:4px;}.mb .mcat{color:var(--primary-light);font-weight:600;font-size:0.85rem;margin-bottom:20px;display:block;}
+        .mb .md{font-size:1rem;color:var(--gray-700);line-height:1.8;margin-bottom:24px;}
+        .ms{margin-bottom:24px;}.ms h3{font-size:1rem;font-weight:700;margin-bottom:12px;}.sg{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+        .si{display:flex;gap:8px;padding:10px 14px;background:var(--gray-100);border-radius:var(--radius-sm);font-size:0.88rem;}.si .sl{color:var(--gray-500);min-width:80px;}.si .sv{color:var(--dark);font-weight:600;}
+        .mf{margin-bottom:24px;}.mf h3{font-size:1rem;font-weight:700;margin-bottom:12px;}.fl{display:flex;flex-direction:column;gap:6px;}
+        .fi{padding:8px 14px;background:var(--primary-pale);border-radius:var(--radius-sm);font-size:0.88rem;color:var(--primary);}
+        .mcta{display:flex;gap:12px;margin-top:28px;padding-top:24px;border-top:1px solid var(--gray-100);}
+        .solutions-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}.solution-card{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:3/4;cursor:pointer;}
+        .solution-card-bg{position:absolute;inset:0;transition:transform .5s;background-size:cover;background-position:center;}.solution-card:hover .solution-card-bg{transform:scale(1.06);}
+        .scr{background:url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80') center/cover;}.scc{background:url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&q=80') center/cover;}.scm{background:url('https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=600&q=80') center/cover;}.scb{background:url('https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80') center/cover;}
+        .solution-card-content{position:absolute;inset:0;padding:28px;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(to top,rgba(0,0,0,0.75) 0%,rgba(0,0,0,0.15) 50%,rgba(0,0,0,0.1) 100%);z-index:2;}
+        .solution-card-content .sce{font-size:2.5rem;margin-bottom:auto;}.solution-card h3{color:#fff;font-size:1.15rem;font-weight:700;margin-bottom:4px;}.solution-card p{color:rgba(255,255,255,0.7);font-size:0.82rem;}
+        .why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}.why-card{background:#f5f5f7;border:1px solid rgba(0,0,0,0.04);border-radius:var(--radius);padding:40px;transition:all .3s;}.why-card:hover{border-color:rgba(201,168,76,0.25);box-shadow:0 12px 40px rgba(0,0,0,0.06);}
+        .why-number{font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;font-style:italic;color:var(--accent);line-height:1;margin-bottom:16px;}.why-card h3{font-size:1.2rem;font-weight:700;margin-bottom:10px;}.why-card p{color:var(--gray-500);font-size:0.93rem;}
+        .partners{background:#fff;}.p-group{margin-bottom:28px;padding:24px 28px;background:#f5f5f7;border-radius:var(--radius);border:none;}.p-group:last-child{margin-bottom:0;}.p-label{font-size:0.75rem;color:var(--primary);margin-bottom:14px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding-bottom:10px;border-bottom:1px solid var(--gray-100);}.p-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}.p-item{font-size:0.88rem;font-weight:600;color:var(--gray-700);padding:8px 18px;background:var(--gray-100);border-radius:8px;transition:all .3s;white-space:nowrap;}.p-item:hover{color:var(--primary);background:var(--primary-pale);}
+        .cta-section{background:#f5f5f7;padding:100px 0;overflow:hidden;}
+        .cta-inner{max-width:680px;margin:0 auto;text-align:center;position:relative;z-index:2;padding:0 40px;}.cta-inner h2{font-size:2.3rem;font-weight:800;color:#1d1d1f;margin-bottom:18px;}.cta-inner p{color:#86868b;font-size:1.05rem;margin-bottom:40px;}
+        .cta-buttons{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;}.cta-phone{display:flex;align-items:center;gap:10px;margin-top:28px;justify-content:center;color:rgba(255,255,255,0.4);font-size:0.92rem;}.cta-phone strong{font-size:1.3rem;color:#fff;}
+        .footer{background:#f5f5f7;color:#86868b;padding:60px 0 36px;border-top:1px solid rgba(0,0,0,0.06);}.footer-inner{max-width:1320px;margin:0 auto;padding:0 40px;}
+        .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;padding-bottom:48px;border-bottom:1px solid rgba(0,0,0,0.06);}
+        .footer-brand .logo{margin-bottom:16px;}.footer-brand p{font-size:0.85rem;line-height:1.8;}.fe{color:var(--primary)!important;font-weight:600;}
+        .footer-col h4{color:#1d1d1f;font-size:0.85rem;font-weight:700;margin-bottom:18px;}.footer-col a{display:block;color:#86868b;text-decoration:none;font-size:0.85rem;padding:4px 0;}.footer-col a:hover{color:var(--primary);}
+        .footer-bottom{display:flex;justify-content:space-between;align-items:center;font-size:0.8rem;}.footer-bottom a{color:#86868b;text-decoration:none;}.footer-bottom a:hover{color:var(--primary);}
+        .fc{position:fixed;bottom:32px;right:32px;z-index:999;display:flex;flex-direction:column;gap:10px;align-items:flex-end;}
+        .fb{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 8px 24px rgba(0,0,0,0.15);transition:all .3s;cursor:pointer;border:none;text-decoration:none;}.fb:hover{transform:scale(1.1);}
+        .fb.ph{background:var(--primary);color:#fff;}.fb.tp{background:#fff;color:var(--dark);font-size:1.1rem;width:44px;height:44px;}
+        @media(max-width:1024px){.hero h1{font-size:2.2rem;}.hero-brand-en{font-size:3.5rem;}.products-grid{grid-template-columns:repeat(2,1fr);}.solutions-grid{grid-template-columns:repeat(2,1fr);}.footer-top{grid-template-columns:1fr 1fr;}.sg{grid-template-columns:1fr;}}
+        @media(max-width:768px){.nav{display:none;}.mobile-toggle{display:flex;}.nav.open{display:flex;flex-direction:column;position:absolute;top:76px;left:0;right:0;background:rgba(255,255,255,0.97);padding:24px 40px;border-bottom:1px solid rgba(0,0,0,0.06);}.hero-inner{padding:60px 24px;}.hero h1{font-size:1.8rem;}.hero-brand-en{font-size:2.8rem;}.section{padding:64px 0;}.section-inner{padding:0 24px;}.section-title{font-size:1.9rem;}.products-grid,.solutions-grid,.why-grid{grid-template-columns:1fr;}.cat-tabs{gap:6px;}.cat-tab{padding:8px 16px;font-size:0.8rem;}.footer-top{grid-template-columns:1fr;gap:28px;}.footer-bottom{flex-direction:column;gap:10px;text-align:center;}.cta-inner h2{font-size:1.8rem;}.mb{padding:24px;}.mcta{flex-direction:column;}.mcta .btn{text-align:center;justify-content:center;}}
+    </style>
+</head>
+<body>
+<header class="header"><div class="header-inner"><a href="#" style="text-decoration:none;"><div class="lg"><span class="lg-n">N</span><div class="lg-right"><div class="lg-top"><span class="lg-nuri">nuri</span><span class="lg-nwp">networkspay</span><span class="lg-star lg-star-lg">✦</span></div><div class="lg-cc">credit&amp;cash</div></div></div></a><nav class="nav" id="nav"><a href="#products">제품소개</a><a href="benefits.html">계약혜택</a><a href="#solutions">업종별 솔루션</a><a href="about.html">회사소개</a><a href="support.html">고객지원</a><a href="#contact" class="nav-cta">상담 신청</a></nav><div class="mobile-toggle" onclick="document.getElementById('nav').classList.toggle('open')"><span></span><span></span><span></span></div></div></header>
+
+<section class="hero"><div class="hero-fallback"></div><div class="hero-video-bg"><video autoplay loop muted playsinline><source src="hero-video.mp4" type="video/mp4"></video></div><div class="hero-video-overlay"></div><div class="hero-grid"></div>
+<div class="hero-inner"><div class="hero-brand"><span class="hero-brand-en">Nurinetworks</span><span class="hero-brand-kr">누리네트웍스</span></div><h1>매장 운영의 시작,<br><span class="gold">최적의 결제 솔루션</span>과 함께</h1><p>POS부터 키오스크, 테이블오더, 사인패드까지<br>업종별 맞춤 결제 솔루션으로 사장님의 하루를 더 쉽게 만들어 드립니다.</p><div class="hero-buttons"><a href="#contact" class="btn btn-gold">무료 상담 신청 →</a><a href="#products" class="btn btn-outline-w">제품 둘러보기</a></div></div></section>
+
+<section class="section products" id="products"><div class="section-inner"><div class="section-header reveal"><div class="section-tag">Products</div><h2 class="section-title">누리네트웍스 제품 라인업</h2><p class="section-desc">카테고리를 선택하고, 제품을 클릭하면 상세 정보를 확인할 수 있습니다.</p></div>
+<div class="cat-tabs" id="catTabs"><span class="cat-tab active" data-cat="all">전체</span><span class="cat-tab" data-cat="pos">포스</span><span class="cat-tab" data-cat="kiosk">키오스크</span><span class="cat-tab" data-cat="tableorder">테이블오더</span><span class="cat-tab" data-cat="terminal">유무선단말기</span><span class="cat-tab" data-cat="signpad">사인패드</span><span class="cat-tab" data-cat="printer">프린터</span><span class="cat-tab" data-cat="solution">솔루션</span></div>
+<div class="products-grid" id="pg">
+<div class="product-card dark-card show" data-cat="pos" onclick="location.href='product-n250.html'">
+<div class="product-card-top"><span class="pm">아임유</span><h3>N250 포스</h3><p class="pc-desc">15인치 터치스크린 POS. 다양한 업종에 최적화.</p></div>
+<div class="product-card-bottom"><img class="pimg" src="https://imupos.com/img/sub/250series_title.png" alt="N250 포스"></div>
+</div>
+<div class="product-card show" data-cat="pos" onclick="location.href='product-nova.html'">
+<div class="product-card-top"><span class="pm">아임유</span><h3>NOVA 포스</h3><p class="pc-desc">울트라 슬림 프리미엄 POS. 세련된 디자인.</p></div>
+<div class="product-card-bottom"><img class="pimg" src="https://imupos.com/img/sub/nova_title.png" alt="NOVA 포스"></div>
+</div>
+<div class="product-card dark-card show" data-cat="kiosk" onclick="location.href='product-kiosk.html'">
+<div class="product-card-top"><span class="pm">아임유</span><h3>배리어프리 키오스크</h3><p class="pc-desc">정부 인증 접근성 무인 주문 키오스크.</p></div>
+<div class="product-card-bottom"><img class="pimg" src="https://imupos.com/img/sub/barrierfreekiosk_title.png" alt="배리어프리 키오스크"></div>
+</div>
+<div class="product-card show" data-cat="tableorder" onclick="location.href='product-uporder.html'">
+<div class="product-card-top"><span class="pm">아임유</span><h3>업오더 테이블오더</h3><p class="pc-desc">QR/태블릿 스마트 주문. 인건비 절감.</p></div>
+<div class="product-card-bottom"><img class="pimg" src="https://imupos.com/img/sub/uporder_title.png" alt="업오더 테이블오더"></div>
+</div>
+<div class="product-card dark-card show" data-cat="terminal" onclick="location.href='product-t226.html'">
+<div class="product-card-top"><span class="pm">스마트로</span><h3>SMT-T226</h3><p class="pc-desc">bizzle 서비스 탑재 유선 카드 단말기.</p></div>
+<div class="product-card-bottom"><img class="pimg" src="https://www.smartro.co.kr/wp-content/uploads/2023/07/SMT-T226_main.png" alt="SMT-T226"></div>
+</div>
+<div class="product-card show" data-cat="signpad" onclick="location.href='product-tossfront.html'">
+<div class="product-card-top"><span class="pm">토스플레이스</span><h3>토스프론트</h3><p class="pc-desc">모든 결제를 하나로. 통합 사인패드.</p></div>
+<div class="product-card-bottom"><img class="pimg" src="https://static.toss.im/photos/place-front-device-white-black.png" alt="토스프론트"></div>
+</div>
+<div class="product-card dark-card show" data-cat="signpad" onclick="location.href='product-npay.html'">
+<div class="product-card-top"><span class="pm">네이버페이</span><h3>Npay 커넥트</h3><p class="pc-desc">결제+리뷰+쿠폰+적립. 네이버 연동.</p></div>
+<div class="product-card-bottom"><img class="pimg" src="https://campaign2.naver.com/npay/npayconnect/images/visual_device.png" alt="Npay 커넥트"></div>
+</div>
+<div class="product-card show" data-cat="printer" onclick="location.href='product-ts100.html'">
+<div class="product-card-top"><span class="pm">세우테크</span><h3>SLK-TS100</h3><p class="pc-desc">220mm/초 고속 인쇄. 주방 최적화.</p></div>
+<div class="product-card-bottom"><img class="pimg" src="https://www.miniprinter.com/data/item/1637289104/thumb-slk-ts100_main_380x380.png" alt="SLK-TS100"></div>
+</div>
+<div class="product-card dark-card show" data-cat="solution" onclick="location.href='product-uppos.html'">
+<div class="product-card-top"><span class="pm">아임유</span><h3>UP포스 솔루션</h3><p class="pc-desc">주문·결제·고객관리 올인원 소프트웨어.</p></div>
+<div class="product-card-bottom"><img class="pimg" src="https://imupos.com/img/sub/uppos_title.png" alt="UP포스 솔루션"></div>
+</div>
+</div>
+</div>
+</section>
+
+<div class="mo" id="mo" onclick="if(event.target===this)closeM()"><div class="mc" id="mc"></div></div>
+
+<section class="section" id="solutions"><div class="section-inner"><div class="section-header reveal"><div class="section-tag">Solutions</div><h2 class="section-title">업종별 맞춤 솔루션</h2><p class="section-desc">매장 특성에 맞는 최적의 제품 조합을 추천해 드립니다.</p></div>
+<div class="solutions-grid">
+<div class="solution-card reveal"><div class="solution-card-bg scr"></div><div class="solution-card-content"><div class="sce">🍽️</div><h3>음식점</h3><p>POS + 테이블오더 + 주방프린터</p></div></div>
+<div class="solution-card reveal"><div class="solution-card-bg scc"></div><div class="solution-card-content"><div class="sce">☕</div><h3>카페·베이커리</h3><p>POS + 키오스크 + 사인패드</p></div></div>
+<div class="solution-card reveal"><div class="solution-card-bg scm"></div><div class="solution-card-content"><div class="sce">🏪</div><h3>편의점·마트</h3><p>POS + 카드단말기 + 프린터</p></div></div>
+<div class="solution-card reveal"><div class="solution-card-bg scb"></div><div class="solution-card-content"><div class="sce">💇</div><h3>헤어·뷰티</h3><p>POS + 사인패드 + 예약관리</p></div></div>
+</div></div></section>
+
+<section class="section" id="about" style="background:var(--gray-100);"><div class="section-inner"><div class="section-header reveal"><div class="section-tag">Why Us</div><h2 class="section-title">왜 누리네트웍스인가요?</h2></div>
+<div class="why-grid">
+<div class="why-card reveal"><div class="why-number">01</div><h3>스마트로 공식 수도권지사</h3><p>KT그룹-BC카드 계열사인 스마트로의 공식 수도권지사로서 안정적이고 신뢰할 수 있는 결제 서비스를 제공합니다.</p></div>
+<div class="why-card reveal"><div class="why-number">02</div><h3>빠른 설치 및 A/S</h3><p>수도권 전 지역 당일 방문 설치 및 A/S가 가능합니다. 신속한 현장 대응으로 운영 공백을 최소화합니다.</p></div>
+<div class="why-card reveal"><div class="why-number">03</div><h3>9종 제품 원스톱 제공</h3><p>POS, 키오스크, 테이블오더, 단말기, 사인패드, 프린터까지 한 곳에서 해결합니다.</p></div>
+<div class="why-card reveal"><div class="why-number">04</div><h3>업종별 맞춤 컨설팅</h3><p>풍부한 경험을 바탕으로 업종에 최적화된 제품 조합을 제안합니다.</p></div>
+</div></div></section>
+
+<section class="section partners"><div class="section-inner"><div class="section-header reveal"><div class="section-tag">Partners</div><h2 class="section-title">신뢰할 수 있는 파트너</h2></div>
+<div class="p-group reveal"><div class="p-label">VAN / PG사</div><div class="p-row"><span class="p-item">SMARTRO</span><span class="p-item">NICE정보통신</span><span class="p-item">NHNKCP</span><span class="p-item">KIS정보통신</span><span class="p-item">KPN</span></div></div>
+<div class="p-group reveal"><div class="p-label">제조사</div><div class="p-row"><span class="p-item">IMU 아임유</span><span class="p-item">OKPOS</span><span class="p-item">토스프론트</span><span class="p-item">네이버커넥트</span><span class="p-item">SEWOO 세우테크</span></div></div>
+<div class="p-group reveal"><div class="p-label">간편결제</div><div class="p-row"><span class="p-item">삼성페이</span><span class="p-item">애플페이</span><span class="p-item">카카오페이</span><span class="p-item">네이버페이</span><span class="p-item">토스페이</span><span class="p-item">제로페이</span><span class="p-item">서울페이</span></div></div>
+</div></section>
+
+<section class="cta-section" id="contact"><div class="cta-inner"><h2>매장에 맞는 솔루션,<br>지금 상담 받아보세요</h2><p>전문 상담사가 최적의 제품 조합을 추천해 드립니다.</p><div class="cta-buttons"><a href="tel:1544-7754" class="btn btn-gold">📞 전화 상담</a><a href="/cdn-cgi/l/email-protection#bbd5cec9d2fbcbd4c8d4d5de95d8d495d0c9" class="btn btn-primary">✉️ 이메일 문의</a></div><div class="cta-phone">대표번호 <strong>1544-7754</strong> | 평일 09:00~20:00 · 토/일/공휴일 11:00~17:00</div></div></section>
+
+<footer class="footer"><div class="footer-inner"><div class="footer-top">
+<div class="footer-brand"><a href="#" style="text-decoration:none;"><div class="lg"><span class="lg-n">N</span><div class="lg-right"><div class="lg-top"><span class="lg-nuri">nuri</span><span class="lg-nwp">networkspay</span><span class="lg-star lg-star-lg">✦</span></div><div class="lg-cc">credit&amp;cash</div></div></div></a><p>주식회사 누리네트웍스 | 대표: 김정식<br>사업자등록번호: 107-87-71087<br>서울시 영등포구 선유로70 우리벤처타운 4층 408호<br>대표번호: 1544-7754<br>이메일: <span class="fe"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="432d36312a03332c302c2d266d202c6d2831">[email&#160;protected]</a></span><br><span style="color:rgba(255,255,255,0.3);font-size:0.78rem;">평일 09:00~20:00 · 토/일/공휴일 11:00~17:00</span></p></div>
+<div class="footer-col"><h4>제품소개</h4><a href="#" onclick="fCat('pos')">POS (N250, NOVA)</a><a href="#" onclick="fCat('kiosk')">키오스크</a><a href="#" onclick="fCat('tableorder')">테이블오더</a><a href="#" onclick="fCat('terminal')">카드단말기</a><a href="#" onclick="fCat('signpad')">사인패드</a><a href="#" onclick="fCat('printer')">프린터</a></div>
+<div class="footer-col"><h4>회사소개</h4><a href="about.html#ceo">인사말</a><a href="about.html#history">연혁</a><a href="about.html#location">오시는 길</a></div>
+<div class="footer-col"><h4>고객지원</h4><a href="#">자료실</a><a href="#">A/S 안내</a><a href="#">공지사항</a><a href="#contact">상담 신청</a></div>
+</div><div class="footer-bottom"><span>© 2026 Nurinetworks. All rights reserved.</span><a href="#">개인정보처리방침</a></div></div></footer>
+
+<div class="fc"><a href="#" class="fb tp" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑</a><a href="tel:1544-7754" class="fb ph">📞</a></div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+document.body.classList.add('js-loaded');
+const ro=new IntersectionObserver(e=>{e.forEach((el,i)=>{if(el.isIntersecting){setTimeout(()=>el.target.classList.add('visible'),i*80);ro.unobserve(el.target);}});},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){const h=this.getAttribute('href');if(h==='#')return;e.preventDefault();const t=document.querySelector(h);if(t){t.scrollIntoView({behavior:'smooth'});document.getElementById('nav').classList.remove('open');}});});
+
+function fCat(c){document.querySelectorAll('.cat-tab').forEach(t=>t.classList.toggle('active',t.dataset.cat===c));document.querySelectorAll('.product-card').forEach(cd=>cd.classList.toggle('show',c==='all'||cd.dataset.cat===c));document.getElementById('products').scrollIntoView({behavior:'smooth'});return false;}
+document.querySelectorAll('.cat-tab').forEach(t=>t.addEventListener('click',()=>fCat(t.dataset.cat)));
+
+const P={
+n250:{img:'https://imupos.com/img/sub/250series_title.png',n:'N250 포스',c:'포스',m:'아임유 (IMU)',e:'🖥️',bg:'ip1',u:'https://imupos.com/kr/sub/kioskpos/250series/',
+d:'15인치 터치스크린 기반의 안정적인 POS 단말기입니다. 음식점, 카페, 베이커리, 편의점 등 다양한 업종에 최적화된 주문·결제 솔루션으로, 직관적인 UI와 빠른 처리 속도로 매장 운영을 효율적으로 지원합니다. UP포스 소프트웨어와 완벽하게 연동되며, 고객모니터, 영수증프린터, 금전함 등 다양한 주변기기와 함께 사용할 수 있습니다.',
+s:[['디스플레이','15인치 터치스크린'],['OS','Windows / Android'],['연결','유선LAN, WiFi, USB'],['주변기기','고객모니터, 프린터, 금전함'],['제조사','아임유 (IMU)'],['적합업종','음식점, 카페, 편의점, 마트']],
+f:['직관적인 터치스크린 주문/결제 UI','UP포스 솔루션 완벽 연동','다양한 주변기기 확장 가능','안정적인 장시간 운영 설계','업종별 맞춤 메뉴 설정']},
+nova:{img:'https://imupos.com/img/sub/nova_title.png',n:'NOVA 포스',c:'포스',m:'아임유 (IMU)',e:'💎',bg:'ip2',u:'https://imupos.com/kr/sub/kioskpos/nova/',
+d:'프리미엄 브랜드 매장들이 선택하는 하이엔드 POS입니다. 세련된 슬림 디자인과 강력한 고사양 프로세서를 동시에 제공하며, 프랜차이즈 매장에서 널리 사용됩니다. 대규모 메뉴와 복잡한 주문도 빠르게 처리하며, 매장 인테리어와 자연스럽게 어울립니다.',
+s:[['디자인','슬림 프리미엄'],['디스플레이','고해상도 터치스크린'],['성능','고사양 프로세서'],['연결','LAN, WiFi, Bluetooth'],['제조사','아임유 (IMU)'],['적합업종','프리미엄 카페, 프랜차이즈, 뷰티']],
+f:['세련된 프리미엄 디자인','고사양 프로세서 빠른 처리','프랜차이즈 통합 관리','다양한 결제수단 지원','클라우드 매출 관리']},
+kiosk:{img:'https://imupos.com/img/sub/barrierfreekiosk_title.png',n:'배리어프리 키오스크',c:'키오스크',m:'아임유 (IMU)',e:'📱',bg:'ip3',u:'https://imupos.com/kr/sub/kioskpos/barrierfreekiosk/',
+d:'정부 인증 접근성 키오스크입니다. 휠체어 사용자, 시각장애인도 편리하게 주문할 수 있도록 높이 조절, 음성 안내, 점자 표시 등 배리어프리 기능을 갖추었습니다. 2024년 의무화된 접근성 기준을 완벽 충족하며, 가격 부담 없이 설치 가능합니다.',
+s:[['화면','21~27인치 터치스크린'],['접근성','높이 조절, 음성안내, 점자'],['결제','IC카드, NFC, QR, 삼성페이'],['인증','정부 접근성 인증'],['제조사','아임유 (IMU)'],['적합업종','음식점, 카페, 공공기관, 프랜차이즈']],
+f:['정부 접근성 기준 완벽 충족','휠체어·시각장애인 대응','다국어 지원 (한/영/중/일)','해상도별 맞춤형 UI','무인 매장 운영 가능']},
+uporder:{img:'https://imupos.com/img/sub/uporder_title.png',n:'업오더 테이블오더',c:'테이블오더',m:'아임유 (IMU)',e:'🍽️',bg:'ip4',u:'https://imupos.com/kr/sub/manage/uporder/',
+d:'테이블 태블릿/QR을 통해 고객이 직접 주문하는 시스템입니다. 주문 내역이 POS와 주방에 자동 전송되며, 다국어(한/영/중/일) 지원으로 외국인 관광객 대응도 원활합니다. 인건비 절감과 주문 정확도 향상 효과가 있습니다.',
+s:[['방식','태블릿 / QR코드'],['언어','한/영/중/일'],['연동','POS, 주방KDS 자동 연동'],['결제','선불/후불 모두 지원'],['제조사','아임유 (IMU)'],['적합업종','음식점, 술집, 고깃집, 프랜차이즈']],
+f:['인건비 절감 (주문 인력 최소화)','다국어 지원 외국인 대응','POS·주방 자동 주문 전송','메뉴 사진으로 주문 편의성 향상','실시간 메뉴 수정 가능']},
+t226:{img:'https://www.smartro.co.kr/wp-content/uploads/2023/12/SMT-T226.png',n:'SMT-T226 유선단말기',c:'유무선단말기',m:'스마트로 (SMARTRO)',e:'💳',bg:'ip5',u:'https://www.smartro.co.kr/blog/product/smt-t226/',
+d:'스마트로의 신뢰도 높은 유선 카드결제 단말기입니다. 4.3인치 TFT 컬러 LCD, Linux OS 기반 안정성, bizzle 서비스 연동(날씨, 매출 조회), 3인치 고속 영수증 프린터 내장. CORTEX A9 프로세서로 빠른 거래 처리가 가능합니다.',
+s:[['CPU','CORTEX A9'],['LCD','4.3인치 TFT (482×272)'],['프린터','3인치 오토컷 (100mm/sec)'],['통신','56K 모뎀, 100M LAN'],['OS','Linux'],['카드','IC(EMV Lv1), MS 2/3트랙']],
+f:['bizzle 서비스 (매출 조회·날씨)','TMS 원격 관리','빠른 거래·영수증 출력','보안인증 단말기','다양한 포트 (Serial, USB, LAN)']},
+tossfront:{img:'https://static.toss.im/assets/homepage/tossplace/og_tossplace.png',n:'토스프론트 사인패드',c:'사인패드',m:'토스플레이스',e:'✍️',bg:'ip6',u:'https://tossplace.com/',
+d:'IC카드, 삼성페이, 애플페이, NFC, QR, 바코드까지 모든 결제 수단을 지원하는 통합 사인패드입니다. 기존 POS에 연결하여 간편 설치 가능하며, 토스 POS와 연동하면 주문·결제·배달·예약까지 한 번에 해결합니다.',
+s:[['크기','14.7×12.8×19.3cm'],['결제','IC, 삼성페이, 애플페이, NFC, QR'],['연결','WiFi, 유선 (RJ9 Serial)'],['기능','서명, 결제, 미니 키오스크'],['제조사','토스플레이스'],['적합업종','전 업종']],
+f:['모든 결제 수단 통합 지원','기존 POS와 간편 연동','배달·예약까지 지원','미니 키오스크 기능','합리적인 도입 비용']},
+npay:{img:'https://campaign2.naver.com/npay/npayconnect/images/visual_device.png',n:'Npay 커넥트 사인패드',c:'사인패드',m:'네이버페이',e:'🟢',bg:'ip7',u:'https://campaign2.naver.com/npay/npayconnect/',
+d:'결제부터 리뷰, 쿠폰, 적립까지 네이버 생태계 연동 차세대 통합 단말기입니다. 카드, QR, NFC, 안면인식(페이스사인)까지 지원하며 8인치 터치 디스플레이에 가로·세로 설치 가능합니다.',
+s:[['디스플레이','8인치 터치'],['결제','카드, QR, NFC, 페이스사인'],['기능','결제, 리뷰, 쿠폰, 적립, 키오스크'],['연동','기존 POS 직접 연동'],['제조사','네이버페이'],['적합업종','전 업종']],
+f:['네이버 리뷰·쿠폰·적립 즉시 연동','안면인식 페이스사인 지원','POS 교체 없이 설치','맞춤형 CRM 기능','네이버 지도 노출 강화']},
+ts100:{img:'https://www.miniprinter.com/data/item/1637289104/thumb-slk-ts100_main_380x380.png',n:'SLK-TS100 프린터',c:'프린터',m:'세우테크 (SEWOO)',e:'🖨️',bg:'ip8',u:'https://www.miniprinter.com/page/?pid=product_view&pr_id=7&ca_id=1',
+d:'보급형 3인치 80mm 감열식 영수증 프린터입니다. 220mm/초 고속 인쇄, 203dpi 해상도, 후면 Full 스피커(주방 최적화), 컴팩트 큐브 디자인. 배달앱(배달의민족, 요기요, 쿠팡이츠)과 호환됩니다.',
+s:[['인쇄','감열식 220mm/초'],['해상도','203 DPI'],['용지','80mm (인쇄폭 72mm)'],['인터페이스','USB + Serial + Ethernet'],['크기','185×142×136mm (1.025kg)'],['제조사','세우테크 (SEWOO)']],
+f:['220mm/초 고속 인쇄','후면 스피커 (주방 최적화)','2개 폰트 동시 지원','오토커팅 기능','배달앱 호환']},
+uppos:{img:'https://imupos.com/img/sub/uppos_title.png',n:'UP포스 솔루션',c:'솔루션',m:'아임유 (IMU)',e:'⚡',bg:'ip9',u:'https://imupos.com/kr/sub/manage/uppos/',
+d:'주문·결제·고객관리 통합 매장관리 소프트웨어입니다. 선불제, 테이크아웃, 배달 연동, 재고, 매출 분석까지 올인원. N250/NOVA POS와 완벽 연동되며 클라우드 기반으로 어디서든 매출 확인 가능합니다.',
+s:[['유형','POS 소프트웨어'],['기능','주문, 결제, 고객관리, 매출분석'],['주문','선불, 테이크아웃, 배달'],['연동','N250/NOVA, 키오스크, 테이블오더'],['클라우드','IMU 클라우드 연동'],['제조사','아임유 (IMU)']],
+f:['쉽고 빠른 주문/결제 UI','선불·테이크아웃·배달 지원','클라우드 실시간 매출 분석','키오스크·테이블오더 통합 연동','업종별 맞춤 메뉴 설정']}
+};
+function openM(id){const p=P[id];if(!p)return;
+const ss=p.s.map(([l,v])=>'<div class="si"><span class="sl">'+l+'</span><span class="sv">'+v+'</span></div>').join('');
+const ff=p.f.map(t=>'<div class="fi">✓ '+t+'</div>').join('');
+document.getElementById('mc').innerHTML='<button class="mx" onclick="closeM()">✕</button><div class="mh '+p.bg+'">'+(p.img?'<img class="pimg" src="'+p.img+'" alt="'+p.n+'">':'<span class="pe">'+p.e+'</span>')+'<span class="mm">'+p.m+'</span></div><div class="mb"><h2>'+p.n+'</h2><span class="mcat">'+p.c+'</span><p class="md">'+p.d+'</p><div class="ms"><h3>주요 사양</h3><div class="sg">'+ss+'</div></div><div class="mf"><h3>핵심 기능</h3><div class="fl">'+ff+'</div></div><div class="mcta"><a href="tel:1544

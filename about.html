@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회사소개 | 누리네트웍스</title>
+    <meta name="description" content="누리네트웍스 회사소개 - No.1 Payment Service Company. 대표인사말, 연혁, 오시는길 안내.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Inter:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root{--primary:#1B3A8C;--primary-light:#2E5BDB;--primary-pale:#EAF0FF;--accent:#C9A84C;--dark:#0B0E18;--gray-900:#1C2030;--gray-700:#404760;--gray-500:#7A809A;--gray-300:#B8BCD0;--gray-100:#F3F4F8;--white:#FFF;--radius:20px;--radius-sm:12px;}
+        *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+        body{font-family:'Noto Sans KR',sans-serif;color:var(--gray-900);background:var(--white);line-height:1.75;overflow-x:hidden;}
+        .header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,0.82);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,0.06);}
+        .header-inner{max-width:1320px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:76px;}
+        .lg{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:'Inter','Noto Sans KR',sans-serif;}
+        .lg-n{font-weight:700;color:#1d1d1f;line-height:0.85;text-shadow:3px 2px 0 rgba(0,0,0,0.6);letter-spacing:-0.04em;}
+        .lg-right{display:flex;flex-direction:column;justify-content:center;}
+        .lg-top{display:flex;align-items:baseline;position:relative;}
+        .lg-nuri{font-weight:300;color:#1d1d1f;letter-spacing:-0.01em;}
+        .lg-nwp{font-weight:600;color:#1d1d1f;letter-spacing:-0.01em;}
+        .lg-cc{font-weight:300;color:#86868b;letter-spacing:0.02em;}
+        .lg-star{color:var(--primary-light);line-height:1;}.lg-star-lg{font-size:0.55em;position:relative;top:-0.8em;}
+        .header .lg{gap:8px;}.header .lg-n{font-size:2.4rem;}.header .lg-nuri,.header .lg-nwp{font-size:1.1rem;}.header .lg-cc{font-size:0.55rem;margin-top:1px;}
+        .footer .lg{gap:6px;opacity:0.55;}.footer .lg-n{font-size:1.8rem;opacity:0.6;}.footer .lg-nuri,.footer .lg-nwp{font-size:0.85rem;opacity:0.6;}.footer .lg-cc{font-size:0.48rem;opacity:0.5;}
+        .nav{display:flex;align-items:center;gap:32px;}.nav a{text-decoration:none;color:rgba(0,0,0,0.55);font-size:0.9rem;font-weight:400;transition:color .2s;}.nav a:hover,.nav a.active{color:#1d1d1f;}
+        .nav-cta{background:var(--primary)!important;color:#fff!important;padding:10px 26px;border-radius:50px;font-weight:600!important;}
+        .mobile-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;}.mobile-toggle span{width:22px;height:2px;background:#1d1d1f;border-radius:2px;}
+
+        /* PAGE HERO */
+        .page-hero{background:#f5f5f7;padding:160px 0 80px;text-align:center;}
+        .page-hero h1{font-size:2.8rem;font-weight:800;color:#1d1d1f;margin-bottom:12px;letter-spacing:-0.03em;}
+        .page-hero p{color:#86868b;font-size:1.05rem;}
+
+        /* SECTIONS */
+        .section{padding:80px 0;}.section-inner{max-width:1080px;margin:0 auto;padding:0 40px;}
+        .section-tag{display:inline-block;background:var(--primary-pale);color:var(--primary);padding:6px 18px;border-radius:50px;font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:18px;}
+        .section-title{font-size:2rem;font-weight:800;color:var(--dark);letter-spacing:-0.03em;margin-bottom:28px;}
+
+        /* CEO */
+        .ceo-section{background:var(--white);}
+        .ceo-box{display:grid;grid-template-columns:1fr;gap:40px;}
+        .ceo-badge{display:inline-block;background:var(--accent);color:var(--dark);padding:6px 18px;border-radius:50px;font-size:0.82rem;font-weight:700;margin-bottom:20px;}
+        .ceo-slogan{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;font-style:italic;color:var(--primary);margin-bottom:8px;}
+        .ceo-sub{font-size:1rem;color:var(--gray-500);margin-bottom:28px;font-weight:600;}
+        .ceo-text{font-size:1rem;color:var(--gray-700);line-height:2;margin-bottom:16px;}
+        .ceo-sign{margin-top:32px;padding-top:24px;border-top:1px solid var(--gray-100);}
+        .ceo-sign-title{font-size:0.9rem;color:var(--gray-500);margin-bottom:4px;}
+        .ceo-sign-name{font-size:1.3rem;font-weight:800;color:var(--dark);}
+
+        /* HISTORY */
+        .history-section{background:#f5f5f7;}
+        .timeline{position:relative;padding-left:40px;}
+        .timeline::before{content:'';position:absolute;left:14px;top:0;bottom:0;width:2px;background:var(--primary-light);opacity:0.2;}
+        .tl-item{position:relative;margin-bottom:48px;}
+        .tl-item:last-child{margin-bottom:0;}
+        .tl-dot{position:absolute;left:-40px;top:4px;width:28px;height:28px;border-radius:50%;background:var(--white);border:3px solid var(--primary-light);display:flex;align-items:center;justify-content:center;z-index:2;}
+        .tl-dot-inner{width:10px;height:10px;border-radius:50%;background:var(--primary-light);}
+        .tl-item.current .tl-dot{border-.fe{color:var(--primary)!important;}.tl-item.current .tl-dot-inner{background:var(--accent);}
+        .tl-year{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--primary);margin-bottom:8px;}
+        .tl-item.current .tl-year{.fe{color:var(--primary)!important;}
+        .tl-title{font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:4px;}
+        .tl-desc{font-size:0.95rem;color:var(--gray-500);}
+
+        /* PARTNERS */
+        .partner-section{background:var(--white);}
+        .partner-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+        .partner-chip{background:var(--gray-100);border-radius:var(--radius-sm);padding:16px 20px;text-align:center;font-size:0.95rem;font-weight:600;color:var(--gray-700);transition:all .3s;}
+        .partner-chip:hover{background:var(--primary-pale);color:var(--primary);}
+        .award-list{margin-top:32px;display:flex;flex-direction:column;gap:12px;}
+        .award-item{display:flex;align-items:center;gap:12px;padding:16px 20px;background:var(--gray-100);border-radius:var(--radius-sm);}
+        .award-icon{font-size:1.5rem;}
+        .award-text{font-size:0.95rem;color:var(--gray-700);}
+        .award-text strong{color:var(--dark);}
+
+        /* MAP */
+        .map-section{background:#f5f5f7;}
+        .map-info{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:32px;}
+        .map-info-item{display:flex;gap:12px;align-items:flex-start;}
+        .map-info-icon{font-size:1.3rem;margin-top:2px;}
+        .map-info-label{font-size:0.82rem;color:var(--gray-500);margin-bottom:2px;}
+        .map-info-value{font-size:1rem;font-weight:600;color:var(--dark);}
+        .map-embed{width:100%;height:400px;border:none;border-radius:var(--radius);box-shadow:0 8px 30px rgba(0,0,0,0.08);}
+
+        /* FOOTER */
+        .footer{background:#f5f5f7;color:#86868b;padding:40px 0;border-top:1px solid rgba(0,0,0,0.06);}
+        .footer-inner{max-width:1320px;margin:0 auto;padding:0 40px;display:flex;justify-content:space-between;align-items:center;font-size:0.82rem;}
+        .footer a{color:#86868b;text-decoration:none;}.footer a:hover{.fe{color:var(--primary)!important;}
+        
+        .fe{color:var(--accent)!important;}
+
+        /* RESPONSIVE */
+        @media(max-width:768px){
+            .nav{display:none;}.mobile-toggle{display:flex;}
+            .nav.open{display:flex;flex-direction:column;position:absolute;top:76px;left:0;right:0;background:rgba(255,255,255,0.97);padding:24px 40px;}
+            .page-hero{padding:130px 24px 60px;}.page-hero h1{font-size:2rem;}
+            .section{padding:56px 0;}.section-inner{padding:0 24px;}.section-title{font-size:1.6rem;}
+            .map-info{grid-template-columns:1fr;gap:20px;}
+            .partner-grid{grid-template-columns:repeat(2,1fr);}
+            .footer-inner{flex-direction:column;gap:12px;text-align:center;}
+        }
+    </style>
+</head>
+<body>
+
+<header class="header"><div class="header-inner">
+    <a href="index.html" style="text-decoration:none;"><div class="lg"><span class="lg-n">N</span><div class="lg-right"><div class="lg-top"><span class="lg-nuri">nuri</span><span class="lg-nwp">networkspay</span><span class="lg-star lg-star-lg">✦</span></div><div class="lg-cc">credit&amp;cash</div></div></div></a>
+    <nav class="nav" id="nav">
+        <a href="index.html#products">제품소개</a>
+        <a href="benefits.html">계약혜택</a>
+        <a href="index.html#solutions">업종별 솔루션</a>
+        <a href="about.html" class="active">회사소개</a>
+        <a href="index.html#contact" class="nav-cta">상담 신청</a>
+    </nav>
+    <div class="mobile-toggle" onclick="document.getElementById('nav').classList.toggle('open')"><span></span><span></span><span></span></div>
+</div></header>
+
+<section class="page-hero">
+    <h1>회사소개</h1>
+    <p>No.1 Payment Service Company — 고객과 동반 성장하는 1등 지불결제 서비스 유통기업</p>
+</section>
+
+<!-- 대표인사말 -->
+<section class="section ceo-section" id="ceo">
+    <div class="section-inner">
+        <div class="section-tag">CEO Message</div>
+        <h2 class="section-title">대표이사 인사말</h2>
+        <div class="ceo-box">
+            <div>
+                <div class="ceo-slogan">No.1 Payment Service Company</div>
+                <div class="ceo-sub">고객과 동반 성장하는 1등 지불결제 서비스 유통기업 (주)누리네트웍스</div>
+                <p class="ceo-text">안녕하십니까 (주)누리네트웍스 대표이사 김정식입니다.</p>
+                <p class="ceo-text">언제나 변함없이 관심과 애정을 보내주시는 고객 여러분께 진심으로 감사드립니다.</p>
+                <p class="ceo-text">(주)누리네트웍스는 KT그룹-BC카드의 계열사인 국내 최대 지불중계 처리 시스템 사업자인 (주)스마트로의 수도권 지사로서 국내 최대 신용카드 조회기 및 POS 전문 유통기업입니다.</p>
+                <p class="ceo-text">저희 (주)누리네트웍스는 지속적으로 발전해 나가는 지불결제 서비스 시장에서 끊임없는 변화와 도전을 통해 고객 편의성 증대 및 안정적이고 편리한 결제 서비스를 제공하기 위해 노력하고 있습니다.</p>
+                <p class="ceo-text">앞으로 지금까지의 경험과 기술을 바탕으로 국내 지불결제 시장을 주도하는 기업으로 성장함은 물론, 고객에게 더욱더 새로운 가치와 최고의 서비스를 제공하기 위해 노력하겠습니다.</p>
+                <p class="ceo-text">감사합니다.</p>
+                <div class="ceo-sign">
+                    <div class="ceo-sign-title">주식회사 누리네트웍스 대표이사</div>
+                    <div class="ceo-sign-name">김 정 식</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 연혁 -->
+<section class="section history-section" id="history">
+    <div class="section-inner">
+        <div class="section-tag">History</div>
+        <h2 class="section-title">연혁</h2>
+        <div class="timeline">
+            <div class="tl-item current">
+                <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+                <div class="tl-year">2025</div>
+                <div class="tl-title">간편결제 본격 전개</div>
+                <div class="tl-desc">애플페이 · 카카오페이 · 네이버페이 · 토스 간편결제 서비스 확대</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+                <div class="tl-year">2021</div>
+                <div class="tl-title">간편결제 사업 시작</div>
+                <div class="tl-desc">삼성페이 서비스 전개, 모바일 결제 시장 진출</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+                <div class="tl-year">2017</div>
+                <div class="tl-title">VAN 사업 성장</div>
+                <div class="tl-desc">스마트로 우수 대리점 수상, 사업 영역 확대</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+                <div class="tl-year">2014</div>
+                <div class="tl-title">VAN 사업 전개</div>
+                <div class="tl-desc">스마트로 Super Star 대리점 선정, 수도권 영업망 확대</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+                <div class="tl-year">2012</div>
+                <div class="tl-title">회사 설립 · VAN 사업 시작</div>
+                <div class="tl-desc">승인/매입 인프라 구축, 결제 서비스 사업 기반 마련</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 파트너 & 수상 -->
+<section class="section partner-section" id="partners">
+    <div class="section-inner">
+        <div class="section-tag">Partners & Awards</div>
+        <h2 class="section-title">주요 파트너 / 수상</h2>
+        <div class="partner-grid">
+            <div class="partner-chip">GS칼텍스</div>
+            <div class="partner-chip">GS리테일</div>
+            <div class="partner-chip">농협하나로마트</div>
+            <div class="partner-chip">공차</div>
+            <div class="partner-chip">라라F&B</div>
+            <div class="partner-chip">컴포즈커피</div>
+            <div class="partner-chip">파인리즈CC</div>
+            <div class="partner-chip">화산CC</div>
+        </div>
+        <div class="award-list">
+            <div class="award-item"><span class="award-icon">🏆</span><div class="award-text"><strong>스마트로 우수 대리점</strong> 수상</div></div>
+            <div class="award-item"><span class="award-icon">👑</span><div class="award-text"><strong>스마트로 최우수 대리점</strong> 수상</div></div>
+            <div class="award-item"><span class="award-icon">📍</span><div class="award-text">현재: <strong>스마트로 수도권2지사</strong> 운영</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- 오시는 길 -->
+<section class="section map-section" id="location">
+    <div class="section-inner">
+        <div class="section-tag">Location</div>
+        <h2 class="section-title">오시는 길</h2>
+        <div class="map-info">
+            <div class="map-info-item">
+                <span class="map-info-icon">📍</span>
+                <div><div class="map-info-label">주소</div><div class="map-info-value">서울시 영등포구 선유로70 우리벤처타운 4층 408호</div></div>
+            </div>
+            <div class="map-info-item">
+                <span class="map-info-icon">📞</span>
+                <div><div class="map-info-label">대표번호</div><div class="map-info-value">1544-7754</div></div>
+            </div>
+            <div class="map-info-item">
+                <span class="map-info-icon">✉️</span>
+                <div><div class="map-info-label">이메일</div><div class="map-info-value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="365843445f76465945595853185559185d44">[email&#160;protected]</a></div></div>
+            </div>
+            <div class="map-info-item">
+                <span class="map-info-icon">🕐</span>
+                <div><div class="map-info-label">영업시간</div><div class="map-info-value">평일 09:00~20:00 · 토/일/공휴일 11:00~17:00</div></div>
+            </div>
+        </div>
+        <iframe class="map-embed" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.5!2d126.8935!3d37.5265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9ede4a9f0f3d%3A0x0!2z7ISc7Jq47Iuc7JiB65Ox7Y-s6rWsIOyEoOycoOuhnDcwIOyasOumrOuypOyymO2DgOyatA!5e0!3m2!1sko!2skr!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</section>
+
+<footer class="footer"><div class="footer-inner">
+    <div><div class="lg"><span class="lg-n">N</span><div class="lg-right"><div class="lg-top"><span class="lg-nuri">nuri</span><span class="lg-nwp">networkspay</span><span class="lg-star lg-star-lg">✦</span></div><div class="lg-cc">credit&amp;cash</div></div></div> <span style="margin-left:12px;">© 2026 Nurinetworks. All rights reserved.</span></div>
+    <di

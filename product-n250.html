@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N250 포스 | 누리네트웍스</title>
+    <meta name="description" content="N250 포스 - 15인치 터치스크린 POS. 브랜드 가치를 높여주는 스마트한 디자인. 누리네트웍스에서 공급/설치/유지보수.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        html{scroll-behavior:smooth;}
+        body{font-family:'Noto Sans KR','Inter',sans-serif;color:#1d1d1f;background:#000;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+        .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.82);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,0.06);}
+        .nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:52px;}
+        .nav-logo{display:flex;align-items:center;gap:6px;text-decoration:none;font-family:'Inter',sans-serif;}
+        .nav-logo .nl{font-size:1.5rem;font-weight:700;color:#1d1d1f;text-shadow:none;}
+        .nav-logo .nt{font-size:0.72rem;color:rgba(0,0,0,0.5);font-weight:300;}.nav-logo .nt b{font-weight:600;}
+        .nav-product{font-size:0.85rem;font-weight:600;color:#1d1d1f;}
+        .nav-links{display:flex;gap:20px;align-items:center;}
+        .nav-links a{font-size:0.75rem;color:rgba(0,0,0,0.55);text-decoration:none;transition:color .2s;}.nav-links a:hover{color:#1d1d1f;}
+        .nav-cta{background:#1565C0;color:#fff!important;padding:6px 16px;border-radius:20px;font-weight:500;}
+
+        /* HERO */
+        .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:#f5f5f7;padding:100px 24px 40px;position:relative;overflow:hidden;}
+        .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:160px;background:linear-gradient(to top,#f5f5f7,transparent);z-index:2;}
+        .hero-tag{font-size:0.85rem;font-weight:600;color:var(--primary);letter-spacing:0.08em;margin-bottom:12px;text-transform:uppercase;}
+        .hero h1{font-size:clamp(2.8rem,7vw,5rem);font-weight:900;color:#1d1d1f;line-height:1.08;letter-spacing:-0.04em;margin-bottom:16px;}
+        .hero h1 .accent{background:linear-gradient(135deg,#42A5F5,#1565C0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+        .hero-sub{font-size:clamp(1rem,2vw,1.3rem);color:#86868b;font-weight:300;max-width:580px;margin:0 auto 40px;line-height:1.65;}
+        .hero-img{max-width:650px;width:85%;position:relative;z-index:1;animation:hf 3s ease-in-out infinite alternate;}
+        .hero-img img{width:100%;height:auto;filter:drop-shadow(0 30px 60px rgba(0,0,0,0.5));}
+        @keyframes hf{0%{transform:translateY(0)}100%{transform:translateY(-10px)}}
+        .bc{display:flex;align-items:center;gap:8px;margin-bottom:32px;}
+        .bc a{font-size:0.8rem;color:#86868b;text-decoration:none;}.bc a:hover{color:#fff;}.bc span{font-size:0.8rem;color:#d2d2d7;}.bc .cur{color:#1d1d1f;font-weight:600;}
+
+        /* SECTIONS */
+        .fs{min-height:90vh;display:flex;align-items:center;padding:100px 24px;position:relative;overflow:hidden;}
+        .fs-inner{max-width:1200px;margin:0 auto;width:100%;}
+        .fs-dark{background:#fff;color:#1d1d1f;}.fs-light{background:#f5f5f7;color:#1d1d1f;}.fs-deep{background:#f5f5f7;color:#1d1d1f;}.fs-mid{background:#f5f5f7;color:#1d1d1f;}
+        .fs-tag{font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:10px;}
+        .fs-dark .fs-tag,.fs-deep .fs-tag,.fs-mid .fs-tag{color:var(--primary);}.fs-light .fs-tag{color:#1565C0;}
+        .fs-title{font-size:clamp(1.8rem,4.5vw,3rem);font-weight:800;line-height:1.15;letter-spacing:-0.03em;margin-bottom:18px;}
+        .fs-desc{font-size:clamp(0.95rem,1.6vw,1.15rem);line-height:1.8;max-width:520px;opacity:0.6;font-weight:300;}
+        .fs-split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+        .fs-img{width:100%;border-radius:16px;overflow:hidden;}.fs-img img{width:100%;height:auto;display:block;}
+
+        /* CENTERED SECTION */
+        .fs-center{text-align:center;}.fs-center .fs-desc{margin:0 auto 40px;}.fs-center .fs-img{max-width:600px;margin:0 auto;}
+
+        /* FEATURE CARDS */
+        .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px;}
+        .feat-card{background:#f5f5f7;border:1px solid rgba(0,0,0,0.04);border-radius:20px;padding:32px 24px;transition:all .4s;}
+        .feat-card:hover{background:#eee;border-color:rgba(0,0,0,0.08);transform:translateY(-4px);}
+        .feat-icon{font-size:1.8rem;margin-bottom:12px;}
+        .feat-card h3{font-size:1rem;font-weight:700;margin-bottom:6px;}
+        .feat-card p{font-size:0.85rem;opacity:0.55;line-height:1.65;font-weight:300;}
+        .fs-light .feat-card{background:rgba(0,0,0,0.03);border-color:rgba(0,0,0,0.06);}
+        .fs-light .feat-card:hover{background:rgba(0,0,0,0.06);border-color:rgba(0,0,0,0.12);}
+        .fs-light .feat-card p{color:#6e6e73;}
+
+        /* SPECS TABLE */
+        .specs{background:#fff;color:#1d1d1f;padding:100px 24px;}
+        .specs-inner{max-width:1000px;margin:0 auto;}
+        .specs-title{font-size:2.2rem;font-weight:800;text-align:center;margin-bottom:50px;letter-spacing:-0.03em;}
+        .specs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(0,0,0,0.04);border-radius:20px;overflow:hidden;}
+        .spec-item{background:#f5f5f7;padding:28px 32px;}
+        .spec-label{font-size:0.72rem;color:#86868b;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;}
+        .spec-value{font-size:1.2rem;font-weight:700;color:#1d1d1f;}
+        .spec-note{font-size:0.78rem;color:#86868b;margin-top:3px;font-weight:300;}
+
+        /* DISPLAY OPTIONS */
+        .option-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;}
+        .option-card{background:#f5f5f7;border:1px solid rgba(0,0,0,0.04);border-radius:16px;padding:24px;text-align:center;transition:all .3s;}
+        .option-card:hover{border-color:rgba(255,255,255,0.15);}
+        .option-card img{width:100%;height:auto;margin-bottom:12px;border-radius:8px;}
+        .option-card h4{font-size:0.9rem;font-weight:600;margin-bottom:4px;}
+        .option-card p{font-size:0.78rem;opacity:0.5;}
+
+        /* CTA */
+        .cta{background:#f5f5f7;padding:100px 24px;text-align:center;}
+        .cta h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:#1d1d1f;margin-bottom:14px;letter-spacing:-0.03em;}
+        .cta p{color:#86868b;font-size:1.05rem;margin-bottom:36px;font-weight:300;}
+        .cta-btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+        .btn{display:inline-flex;align-items:center;gap:8px;padding:15px 32px;border-radius:50px;font-size:0.95rem;font-weight:600;text-decoration:none;transition:all .3s;border:none;font-family:inherit;cursor:pointer;}
+        .btn-blue{background:#1565C0;color:#fff;}.btn-blue:hover{background:#1976D2;transform:translateY(-2px);}
+        .btn-gold{background:var(--primary);color:#fff;}.btn-gold:hover{background:#D4B35A;transform:translateY(-2px);}
+        .btn-outline{color:#1d1d1f;border:1px solid rgba(0,0,0,0.15);background:transparent;}.btn-outline:hover{background:rgba(0,0,0,0.04);}
+
+        /* SCROLL ANIMATIONS */
+        .rv{opacity:0;transform:translateY(36px);transition:all .8s cubic-bezier(0.16,1,0.3,1);}.rv.v{opacity:1;transform:translateY(0);}
+        .rv1{transition-delay:.12s;}.rv2{transition-delay:.24s;}.rv3{transition-delay:.36s;}
+
+        .footer{background:#f5f5f7;border-top:1px solid rgba(0,0,0,0.06);padding:24px;text-align:center;}
+        .footer a{color:#86868b;font-size:0.78rem;text-decoration:none;}
+
+        @media(max-width:768px){
+            .fs-split{grid-template-columns:1fr;gap:36px;}
+            .feat-grid,.option-grid{grid-template-columns:1fr;}
+            .specs-grid{grid-template-columns:1fr;}
+            .nav-links{display:none;}
+            .hero{min-height:auto;padding:110px 24px 60px;}
+            .fs{min-height:auto;padding:72px 24px;}
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav"><div class="nav-inner">
+    <a href="index.html" class="nav-logo"><span class="nl">N</span><span class="nt">nuri<b>networkspay</b></span></a>
+    <span class="nav-product">N250 포스</span>
+    <div class="nav-links">
+        <a href="#features">특징</a>
+        <a href="#performance">성능</a>
+        <a href="#interface">인터페이스</a>
+        <a href="#options">옵션</a>
+        <a href="#specs">사양</a>
+        <a href="index.html#products">전체 제품</a><a href="benefits.html">계약혜택</a>
+        <a href="tel:1544-7754" class="nav-cta">상담 문의</a>
+    </div>
+</div></nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="bc"><a href="index.html">홈</a><span>›</span><a href="index.html#products">제품</a><span>›</span><span class="cur">N250 포스</span></div>
+    <div class="hero-tag">15" POS System · 250 Series</div>
+    <h1>브랜드 가치를 높여주는<br><span class="accent">스마트한 디자인.</span></h1>
+    <p class="hero-sub">해외에서 먼저 출시되어 검증된 포스기로 여전히 인기를 얻고 있으며, 새로운 솔루션을 원하는 고객을 위한 맞춤형 포스기입니다.</p>
+    <div class="hero-img">
+        <img src="https://imupos.com/img/sub/250series_title.png" alt="N250 포스">
+    </div>
+</section>
+
+<!-- 1. 안정감 + 공간활용 -->
+<section class="fs fs-dark" id="features">
+    <div class="fs-inner"><div class="fs-split">
+        <div class="rv">
+            <div class="fs-tag">Key Feature</div>
+            <h2 class="fs-title">부드러운 안정감과<br>여유 공간.</h2>
+            <p class="fs-desc">공간 활용도를 높인 250 모델은 스탠드 전면부 여유 공간에 프린터나 결제기, 스캐너 등 주변기기를 배치해 깔끔한 프론트 관리가 가능합니다. 곡선 라인이 어우러진 스탠드는 부드러운 안정감을 줍니다.</p>
+        </div>
+        <div class="fs-img rv rv1"><img src="https://imupos.com/img/sub/250_img01.png" alt="N250 공간 활용"></div>
+    </div></div>
+</section>
+
+<!-- 2. 투톤 디자인 -->
+<section class="fs fs-light">
+    <div class="fs-inner"><div class="fs-split" style="direction:rtl;">
+        <div class="rv" style="direction:ltr;">
+            <div class="fs-tag">Design</div>
+            <h2 class="fs-title" style="color:#1d1d1f;">감각적인 컬러 배색,<br>투톤.</h2>
+            <p class="fs-desc" style="color:#6e6e73;">전면부의 세련된 블랙과 후면부의 깔끔한 화이트로 프론트의 공간 분위기를 높여 줍니다. 매장 인테리어와 자연스럽게 어울리는 디자인입니다.</p>
+        </div>
+        <div class="fs-img rv rv1" style="direction:ltr;"><img src="https://imupos.com/img/sub/250_img10.png" alt="투톤 디자인"></div>
+    </div></div>
+</section>
+
+<!-- 3. 스피커 -->
+<section class="fs fs-deep">
+    <div class="fs-inner"><div class="fs-split">
+        <div class="rv">
+            <div class="fs-tag">Sound</div>
+            <h2 class="fs-title">고성능 스피커<br>지원.</h2>
+            <p class="fs-desc">포스기에 최적화된 고성능 스피커를 지원합니다. 주문 알림, 결제 완료 사운드를 정확하게 전달하여 바쁜 매장 환경에서도 놓치지 않습니다.</p>
+        </div>
+        <div class="fs-img rv rv1"><img src="https://imupos.com/img/sub/250_img07.png" alt="고성능 스피커"></div>
+    </div></div>
+</section>
+
+<!-- 4. 심플한 구조 -->
+<section class="fs fs-light">
+    <div class="fs-inner fs-center">
+        <div class="rv">
+            <div class="fs-tag" style="color:#1565C0;">Maintenance</div>
+            <h2 class="fs-title" style="color:#1d1d1f;">심플한 구조.<br>쉬운 유지보수.</h2>
+            <p class="fs-desc" style="color:#6e6e73;">3단 구조로 쉽게 분해/조립이 가능하며, 유지보수(A/S)가 편리합니다.</p>
+        </div>
+        <div class="fs-img rv rv1"><img src="https://imupos.com/img/sub/200_img11-1.png" alt="3단 분리 구조"></div>
+    </div>
+</section>
+
+<!-- 5. 안전 설계 (특허) -->
+<section class="fs fs-mid">
+    <div class="fs-inner">
+        <div class="rv" style="text-align:center;margin-bottom:48px;">
+            <div class="fs-tag">Safety & Patent</div>
+            <h2 class="fs-title">안전하고 쉬운<br>설계 구조.</h2>
+        </div>
+        <div class="feat-grid">
+            <div class="feat-card rv">
+                <div class="feat-icon">🔌</div>
+                <h3>전원 플러그 안전 체결</h3>
+                <p>전원 플러그 타입의 안전한 체결 구조로 역전류를 방지합니다.</p>
+                <div class="fs-img" style="margin-top:16px;"><img src="https://imupos.com/img/sub/kiposImg7-1-2.png" alt="안전 체결"></div>
+            </div>
+            <div class="feat-card rv rv1">
+                <div class="feat-icon">🔗</div>
+                <h3>원 케이블 구조</h3>
+                <p>전원/터치/DATA를 하나의 케이블로 연결. 편리한 유지보수.<br><small style="color:var(--primary);">특허 등록 제10-2268477호</small></p>
+                <div class="fs-img" style="margin-top:16px;"><img src="https://imupos.com/img/sub/250_img02-2.png" alt="원 케이블"></div>
+            </div>
+            <div class="feat-card rv rv2">
+                <div class="feat-icon">💾</div>
+                <h3>SSD 슬라이딩 교체</h3>
+                <p>SSD 슬라이딩 구조 설계로 손쉽게 교체 가능.<br><small style="color:var(--primary);">특허 등록 제10-2282740호</small></p>
+                <div class="fs-img" style="margin-top:16px;"><img src="https://imupos.com/img/sub/250_img03-2.png" alt="SSD 슬라이딩"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 6. 성능 -->
+<section class="fs fs-dark" id="performance">
+    <div class="fs-inner fs-center">
+        <div class="rv">
+            <div class="fs-tag">Performance</div>
+            <h2 class="fs-title">강력한 고성능<br>프로세서 탑재.</h2>
+            <p class="fs-desc">Intel® 고성능 프로세서(CORE™ i3/i5/i7, Celeron®)를 탑재. E-250은 J1900보다 약 3배, i3보다 약 15% 이상의 CPU 성능을 제공합니다.</p>
+        </div>
+        <div class="fs-img rv rv1" style="max-width:700px;margin:0 auto;"><img src="https://imupos.com/img/sub/200_img12_01.png" alt="프로세서 성능"></div>
+        <div class="feat-grid" style="grid-template-columns:repeat(3,1fr);margin-top:40px;">
+            <div class="feat-card rv">
+                <div style="margin-bottom:12px;"><img src="https://imupos.com/img/sub/gb_img01.png" alt="메모리" style="height:48px;"></div>
+                <h3>4GB 메모리</h3>
+                <p>최대 16GB까지 확장 가능</p>
+            </div>
+            <div class="feat-card rv rv1">
+                <div style="margin-bottom:12px;"><img src="https://imupos.com/img/sub/kiposImg4-3.png" alt="SSD" style="height:48px;"></div>
+                <h3>128GB SSD</h3>
+                <p>최대 512GB까지 확장 가능</p>
+            </div>
+            <div class="feat-card rv rv2">
+                <div style="margin-bottom:12px;"><img src="https://imupos.com/img/sub/gb_img03.png" alt="OS" style="height:48px;"></div>
+                <h3>Windows 10/11 IoT</h3>
+                <p>안정적인 운영체제</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 7. 유리 터치 + 방열 -->
+<section class="fs fs-light">
+    <div class="fs-inner"><div class="fs-split">
+        <div class="rv">
+            <div class="fs-tag" style="color:#1565C0;">Durability</div>
+            <h2 class="fs-title" style="color:#1d1d1f;">유리(Glass)<br>터치 패널.</h2>
+            <p class="fs-desc" style="color:#6e6e73;">스크래치로부터 안전하고 깨끗한 화면을 오랫동안 유지. 눈의 피로감을 줄여 줍니다. 200 시리즈의 안정성과 특장점을 100% 적용하였습니다.</p>
+        </div>
+        <div class="rv rv1">
+            <div class="feat-grid" style="grid-template-columns:1fr;">
+                <div class="feat-card" style="background:rgba(0,0,0,0.03);border-color:rgba(0,0,0,0.06);">
+                    <div class="feat-icon">🧊</div>
+                    <h3 style="color:#1d1d1f;">슈퍼 방열 프레임</h3>
+                    <p style="color:#6e6e73;">CPU 방열 최적화를 위한 알루미늄 프레임 구조. 내부 부품 수명을 보장합니다.</p>
+                </div>
+                <div class="feat-card" style="background:rgba(0,0,0,0.03);border-color:rgba(0,0,0,0.06);">
+                    <div class="feat-icon">🖥️</div>
+                    <h3 style="color:#1d1d1f;">멀티 모니터 지원</h3>
+                    <p style="color:#6e6e73;">업계 최초 HDMI, DVI, DisplayPort, VGA 모두 지원</p>
+                </div>
+            </div>
+        </div>
+    </div></div>
+</section>
+
+<!-- 8. 인터페이스 -->
+<section class="fs fs-dark" id="interface">
+    <div class="fs-inner fs-center">
+        <div class="rv">
+            <div class="fs-tag">Interface</div>
+            <h2 class="fs-title">풍부한 입출력<br>인터페이스.</h2>
+            <p class="fs-desc">6 Serial, 6 USB 포트를 지원하며, 모든 시리얼 포트에 전원 공급(Powered Serial)이 가능합니다. 다양한 형태의 Serial 포트(DB9, RJ45/50)를 지원합니다.</p>
+        </div>
+        <div class="fs-split" style="margin-top:40px;">
+            <div class="rv">
+                <h3 style="font-size:0.85rem;color:rgba(255,255,255,0.5);margin-bottom:12px;text-align:center;">▲ 상단 인터페이스</h3>
+                <div class="fs-img"><img src="https://imupos.com/img/sub/kiposImg8-1.png" alt="상단 인터페이스"></div>
+            </div>
+            <div class="rv rv1">
+                <h3 style="font-size:0.85rem;color:rgba(255,255,255,0.5);margin-bottom:12px;text-align:center;">▼ 하단 인터페이스</h3>
+                <div class="fs-img"><img src="https://imupos.com/img/sub/kiposImg8-2.png" alt="하단 인터페이스"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 9. 디스플레이 옵션 -->
+<section class="fs fs-deep" id="options">
+    <div class="fs-inner fs-center">
+        <div class="rv">
+            <div class="fs-tag">Display Options</div>
+            <h2 class="fs-title">매장 환경에 따라<br>원하는 조합으로.</h2>
+            <p class="fs-desc">메인 디스플레이와 고객용 모니터를 매장 환경에 맞게 선택하여 사용할 수 있습니다.</p>
+        </div>
+        <div class="option-grid">
+            <div class="option-card rv"><img src="https://imupos.com/img/sub/250_option_s1.png" alt="15+15"><h4>15" + 15"</h4><p>메인 + 고객모니터(대형)</p></div>
+            <div class="option-card rv rv1"><img src="https://imupos.com/img/sub/250_option_s2.png" alt="15+9.7"><h4>15" + 9.7"</h4><p>메인 + 고객모니터(소형)</p></div>
+            <div class="option-card rv rv2"><img src="https://imupos.com/img/sub/250_option_s3.png" alt="15 only"><h4>15" 단독</h4><p>메인 디스플레이만</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- 10. 15.6" FHD -->
+<section class="fs fs-dark">
+    <div class="fs-inner"><div class="fs-split">
+        <div class="fs-img rv"><img src="https://imupos.com/img/sub/250_img04.png" alt="15.6 FHD"></div>
+        <div class="rv rv1">
+            <div class="fs-tag">Display</div>
+            <h2 class="fs-title">15.6" FHD<br>메인 화면.</h2>
+            <p class="fs-desc">1920×1080 고해상도 FHD 메인 화면은 더 크고, 더 선명한 화면을 제공합니다. 거래 정보를 한눈에 확인할 수 있으며, 좌우 LED 램프가 전원 상태를 표시합니다.</p>
+        </div>
+    </div></div>
+</section>
+
+<!-- 11. 올 다크그레이 -->
+<section class="fs fs-mid">
+    <div class="fs-inner"><div class="fs-split" style="direction:rtl;">
+        <div class="rv" style="direction:ltr;">
+            <div class="fs-tag">Color</div>
+            <h2 class="fs-title">All 다크그레이도<br>만나볼 수 있습니다.</h2>
+            <p class="fs-desc">올 다크그레이 컬러로 세련미 넘치는 공간 이미지를 만들어 드립니다. 고급 매장에 어울리는 프리미엄 컬러 옵션입니다.</p>
+        </div>
+        <div class="fs-img rv rv1" style="direction:ltr;"><img src="https://imupos.com/img/sub/250_img05.png" alt="다크그레이"></div>
+    </div></div>
+</section>
+
+<!-- 12. UP포스 연동 -->
+<section class="fs fs-light">
+    <div class="fs-inner fs-center">
+        <div class="rv">
+            <div class="fs-tag" style="color:#1565C0;">Ecosystem</div>
+            <h2 class="fs-title" style="color:#1d1d1f;">UP포스 솔루션과<br>완벽한 연동.</h2>
+            <p class="fs-desc" style="color:#6e6e73;">주문·결제·고객관리를 한 번에 해결하는 UP포스 소프트웨어와 완벽하게 연동됩니다. 매장의 모든 기기가 하나로 연결됩니다.</p>
+        </div>
+        <div class="feat-grid" style="grid-template-columns:repeat(4,1fr);">
+            <div class="feat-card rv" style="background:rgba(0,0,0,0.03);border-color:rgba(0,0,0,0.06);"><div class="feat-icon">📱</div><h3 style="color:#1d1d1f;">키오스크</h3><p style="color:#6e6e73;">주문 데이터 자동 동기화</p></div>
+            <div class="feat-card rv rv1" style="background:rgba(0,0,0,0.03);border-color:rgba(0,0,0,0.06);"><div class="feat-icon">🍽️</div><h3 style="color:#1d1d1f;">테이블오더</h3><p style="color:#6e6e73;">QR/태블릿 실시간 연동</p></div>
+            <div class="feat-card rv rv2" style="background:rgba(0,0,0,0.03);border-color:rgba(0,0,0,0.06);"><div class="feat-icon">👨‍🍳</div><h3 style="color:#1d1d1f;">주방 KDS</h3><p style="color:#6e6e73;">주문 내역 자동 전송</p></div>
+            <div class="feat-card rv rv3" style="background:rgba(0,0,0,0.03);border-color:rgba(0,0,0,0.06);"><div class="feat-icon">☁️</div><h3 style="color:#1d1d1f;">클라우드</h3><p style="color:#6e6e73;">어디서든 매출 확인</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- SPECS -->
+<section class="specs" id="specs">
+    <div class="specs-inner">
+        <h2 class="specs-title rv">제품 사양</h2>
+        <div class="specs-grid rv">
+            <div class="spec-item"><div class="spec-label">디스플레이</div><div class="spec-value">15인치 / 15.6인치 FHD</div><div class="spec-note">유리(Glass) 터치 패널</div></div>
+            <div class="spec-item"><div class="spec-label">프로세서</div><div class="spec-value">Intel® Core™ i3 / i5 / i7</div><div class="spec-note">Celeron® 선택 가능</div></div>
+            <div class="spec-item"><div class="spec-label">메모리</div><div class="spec-value">4GB (최대 16GB)</div></div>
+            <div class="spec-item"><div class="spec-label">저장장치</div><div class="spec-value">128GB SSD (최대 512GB)</div><div class="spec-note">슬라이딩 교체 구조</div></div>
+            <div class="spec-item"><div class="spec-label">운영체제</div><div class="spec-value">Windows 10 / 11 IoT</div></div>
+            <div class="spec-item"><div class="spec-label">디자인</div><div class="spec-value">투톤 / All 다크그레이</div><div class="spec-note">3단 분리 구조</div></div>
+            <div class="spec-item"><div class="spec-label">인터페이스</div><div class="spec-value">6 Serial, 6 USB</div><div class="spec-note">Powered Serial (전원공급)</div></div>
+            <div class="spec-item"><div class="spec-label">영상출력</div><div class="spec-value">HDMI, DVI, DP, VGA</div><div class="spec-note">멀티 모니터 지원</div></div>
+            <div class="spec-item"><div class="spec-label">고객모니터</div><div class="spec-value">15" / 9.7" 선택</div><div class="spec-note">또는 단독 사용</div></div>
+            <div class="spec-item"><div class="spec-label">주변기기</div><div class="spec-value">프린터, 금전함, 스캐너, 카드리더기</div></div>
+            <div class="spec-item"><div class="spec-label">스피커</div><div class="spec-value">고성능 내장 스피커</div></div>
+            <div class="spec-item"><div class="spec-label">제조사</div><div class="spec-value">아임유 (IMU)</div><div class="spec-note">대한민국</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+    <h2 class="rv">N250 포스,<br>지금 상담 받아보세요.</h2>
+    <p class="rv rv1">전문 상담사가 매장 상황에 맞는 최적의 구성을 추천해 드립니다.</p>
+    <div class="cta-btns rv rv2">
+        <a href="tel:1544-7754" class="btn btn-gold">📞 전화 상담 1544-7754</a>
+        <a href="/cdn-cgi/l/email-protection#abc5ded9c2ebdbc4d8c4c5ce85c8c485c0d9" class="btn btn-blue">✉️ 이메일 문의</a>
+        <a href="index.html#products" class="btn btn-outline">← 전체 제품 보기</a>
+    </div>
+</section>
+
+<footer class="footer"><a href="index.html">© 2026 Nurinetworks. All rights reserved.</a></footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const ro=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classLi
