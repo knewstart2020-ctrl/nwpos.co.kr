@@ -35,10 +35,10 @@
         .hero-lg .lg-nuri,.hero-lg .lg-nwp{font-size:2.8rem;}
         .hero-lg .lg-cc{font-size:1.1rem;margin-top:2px;}
         /* Footer logo */
-        .footer-new .lg{gap:6px;opacity:0.7;}
-        .footer-new .lg-n{font-size:1.8rem;}
-        .footer-new .lg-nuri,.footer-new .lg-nwp{font-size:0.85rem;}
-        .footer-new .lg-cc{font-size:0.48rem;}
+        .footer-new .lg{gap:6px;}
+        .footer-new .lg-n{font-size:1.8rem;color:#1d1d1f;text-shadow:2px 1px 0 rgba(0,0,0,0.15);}
+        .footer-new .lg-nuri,.footer-new .lg-nwp{font-size:0.85rem;color:#1d1d1f;}
+        .footer-new .lg-cc{font-size:0.48rem;color:#86868b;}
         .js-loaded .reveal{opacity:0;transform:translateY(24px);transition:all .7s ease;}.js-loaded .reveal.visible{opacity:1;transform:translateY(0);}
         .header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(0,0,0,0.0);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid transparent;transition:all .4s;}.header.scrolled{background:rgba(255,255,255,0.82);border-bottom-color:rgba(0,0,0,0.06);}.header.scrolled .lg-n,.header.scrolled .lg-nuri,.header.scrolled .lg-nwp{color:#1d1d1f;}.header.scrolled .lg-cc{color:#86868b;}.header.scrolled .nav a{color:rgba(0,0,0,0.55);}.header.scrolled .nav a:hover{color:#fff;}.header.scrolled .mobile-toggle span{background:#1d1d1f;}
         .header-inner{max-width:1320px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:76px;}
@@ -195,12 +195,23 @@
         .ticker-item .t-news{color:#60a5fa;font-weight:500;}.ticker-item .t-dot{color:rgba(255,255,255,0.15);}
         @keyframes tickerScroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
         .footer-new{background:#f5f5f7;color:#86868b;padding:40px 0 24px;}
+        .brand-film{position:relative;height:70vh;min-height:400px;overflow:hidden;background:#000;}
+        .brand-film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.7;}
+        .brand-film-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.1) 0%,rgba(0,0,0,0.5) 60%,rgba(0,0,0,0.8) 100%);z-index:1;}
+        .brand-film-content{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 40px;}
+        .brand-film-tag{font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;font-weight:600;}
+        .brand-film h2{font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#fff;line-height:1.3;letter-spacing:-0.03em;margin-bottom:16px;}
+        .brand-film p{font-size:clamp(0.9rem,1.5vw,1.1rem);color:rgba(255,255,255,0.6);line-height:1.8;max-width:520px;}
+        .brand-film-logo{margin-top:40px;opacity:0;animation:bfLogoIn 1.5s ease-out 2s forwards;}
+        .brand-film-logo .lg-n{font-size:3.5rem;color:#fff;text-shadow:3px 2px 0 rgba(0,0,0,0.5);}
+        .brand-film-logo .lg-nuri,.brand-film-logo .lg-nwp{font-size:1.5rem;color:#fff;}
+        .brand-film-logo .lg-cc{font-size:0.7rem;color:rgba(255,255,255,0.5);}
+        @keyframes bfLogoIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
         .footer-new-inner{max-width:1320px;margin:0 auto;padding:0 40px;}
-        .footer-top-new{display:grid;grid-template-columns:1.5fr 2fr;gap:48px;margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid rgba(0,0,0,0.06);}
-        .fn-links{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
-        .fn-col h4{color:#1d1d1f;font-size:0.82rem;font-weight:700;margin-bottom:14px;}
-        .fn-col a{display:block;color:#86868b;text-decoration:none;font-size:0.8rem;padding:3px 0;transition:color .2s;}.fn-col a:hover{color:var(--primary);}
-        .footer-bottom-new{display:flex;justify-content:space-between;align-items:center;font-size:0.78rem;color:#86868b;}
+        .footer-top-new{margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid rgba(0,0,0,0.06);}
+        .footer-info{font-size:0.78rem;color:#86868b;line-height:1.8;margin-top:14px;}
+        .footer-social{display:flex;gap:12px;margin-top:16px;}.footer-social a{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,0.06);transition:all .3s;}.footer-social a:hover{background:rgba(0,0,0,0.12);transform:scale(1.1);}
+        .footer-bottom-new{text-align:center;font-size:0.78rem;color:#86868b;}
         
         
         
@@ -208,8 +219,8 @@
         .fc{position:fixed;bottom:32px;right:32px;z-index:999;display:flex;flex-direction:column;gap:10px;align-items:flex-end;}
         .fb{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 8px 24px rgba(0,0,0,0.15);transition:all .3s;cursor:pointer;border:none;text-decoration:none;}.fb:hover{transform:scale(1.1);}
         .fb.ph{background:var(--primary);color:#fff;}.fb.tp{background:#fff;color:var(--dark);font-size:1.1rem;width:44px;height:44px;}
-        @media(max-width:1024px){.hero h1{font-size:2.2rem;}.hero-brand-en{font-size:3.5rem;}.products-grid{grid-template-columns:repeat(2,1fr);}.solutions-grid{grid-template-columns:repeat(2,1fr);}.footer-top-new{grid-template-columns:1fr;}.fn-links{grid-template-columns:repeat(3,1fr);}.sg{grid-template-columns:1fr;}.why-grid{grid-template-columns:repeat(2,1fr);}}
-        @media(max-width:768px){.nav{display:none;}.mobile-toggle{display:flex;}.nav.open{display:flex;flex-direction:column;position:absolute;top:76px;left:0;right:0;background:rgba(0,0,0,0.95);padding:24px 40px;border-bottom:1px solid rgba(255,255,255,0.1);}.hero-inner{padding:60px 24px;}.hero h1{font-size:1.8rem;}.hero-slide-product{right:5%;bottom:5%;}.hero-slide-product img{height:150px!important;}.hero-slide-label{left:20px;bottom:70px;font-size:0.75rem;padding:8px 16px;}.hero-brand-en{font-size:2.8rem;}.section{padding:64px 0;}.section-inner{padding:0 24px;}.section-title{font-size:1.9rem;}.products-grid,.solutions-grid,.why-grid{grid-template-columns:1fr;}.why-card{padding:22px;}.why-section{padding:64px 0;}.why-inner{padding:0 24px;}.why-header h2{font-size:1.9rem;}.cat-tabs{gap:6px;}.cat-tab{padding:8px 16px;font-size:0.8rem;}.footer-top-new{grid-template-columns:1fr;gap:24px;}.fn-links{grid-template-columns:1fr;gap:20px;}.footer-bottom-new{flex-direction:column;gap:10px;text-align:center;}.cta-inner h2{font-size:1.8rem;}.mb{padding:24px;}.mcta{flex-direction:column;}.mcta .btn{text-align:center;justify-content:center;}}
+        @media(max-width:1024px){.hero h1{font-size:2.2rem;}.hero-brand-en{font-size:3.5rem;}.products-grid{grid-template-columns:repeat(2,1fr);}.solutions-grid{grid-template-columns:repeat(2,1fr);}.footer-top-new{grid-template-columns:1fr;}.sg{grid-template-columns:1fr;}.why-grid{grid-template-columns:repeat(2,1fr);}}
+        @media(max-width:768px){.nav{display:none;}.mobile-toggle{display:flex;}.nav.open{display:flex;flex-direction:column;position:absolute;top:76px;left:0;right:0;background:rgba(0,0,0,0.95);padding:24px 40px;border-bottom:1px solid rgba(255,255,255,0.1);}.hero-inner{padding:60px 24px;}.hero h1{font-size:1.8rem;}.hero-slide-product{right:5%;bottom:5%;}.hero-slide-product img{height:150px!important;}.hero-slide-label{left:20px;bottom:70px;font-size:0.75rem;padding:8px 16px;}.hero-brand-en{font-size:2.8rem;}.section{padding:64px 0;}.section-inner{padding:0 24px;}.section-title{font-size:1.9rem;}.products-grid,.solutions-grid,.why-grid{grid-template-columns:1fr;}.why-card{padding:22px;}.why-section{padding:64px 0;}.why-inner{padding:0 24px;}.why-header h2{font-size:1.9rem;}.cat-tabs{gap:6px;}.cat-tab{padding:8px 16px;font-size:0.8rem;}.footer-top-new{grid-template-columns:1fr;gap:24px;}.footer-bottom-new{text-align:center;}.cta-inner h2{font-size:1.8rem;}.mb{padding:24px;}.mcta{flex-direction:column;}.mcta .btn{text-align:center;justify-content:center;}}
     </style>
 </head>
 <body>
@@ -479,27 +490,44 @@
 </div></div>
 </div></section>
 
-<section class="cta-section" id="contact"><div class="cta-inner"><h2>매장에 맞는 솔루션,<br>지금 상담 받아보세요</h2><p>전문 상담사가 매장 상황에 맞는 최적의 제품 조합을 추천해 드립니다.</p><div class="cta-buttons"><a href="tel:1544-7754" class="btn btn-gold" style="font-size:0.95rem;padding:14px 32px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;min-width:22px;"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg> 전화문의 1544-7754</a><a href="http://pf.kakao.com/_xnxaxlxj" target="_blank" class="btn btn-primary" style="font-size:0.95rem;padding:14px 32px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;min-width:22px;"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> 메시징/카톡문의</a></div><div class="cta-phone" style="color:#86868b;font-size:0.92rem;margin-top:28px;">대표번호 1544-7754 | 운영시간 평일 09:00~20:00 / 토·일·공휴일 11:00~17:00</div></div></section>
+<section class="cta-section" id="contact"><div class="cta-inner"><h2>매장에 맞는 솔루션,<br>지금 상담 받아보세요</h2><p>전문 상담사가 매장 상황에 맞는 최적의 제품 조합을 추천해 드립니다.</p><div class="cta-buttons"><a href="tel:1544-7754" class="btn btn-gold" style="font-size:0.95rem;padding:14px 32px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;min-width:18px;"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg> 전화문의 1544-7754</a><a href="http://pf.kakao.com/_xnxaxlxj" target="_blank" class="btn btn-primary" style="font-size:0.95rem;padding:14px 32px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;min-width:20px;"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> 메시징/카톡문의</a></div><div class="cta-phone" style="color:#86868b;font-size:0.92rem;margin-top:28px;">운영시간 평일 09:00~20:00 / 토·일·공휴일 11:00~17:00</div></div></section>
 
-<!-- TICKER -->
-<div class="ticker-section">
-<div class="ticker-wrap"><div class="ticker-track" id="tickerTrack"></div></div>
+<!-- BRAND FILM -->
+<section class="brand-film">
+<video autoplay muted loop playsinline><source src="brand-film.mp4" type="video/mp4"></video>
+<div class="brand-film-overlay"></div>
+<div class="brand-film-content">
+<div class="brand-film-tag">Brand Film</div>
+<h2>우리는 계속<br>성장하는 이유</h2>
+<p>시장의 활기, 거리의 에너지, 매장의 미소 —<br>그 모든 순간에 누리네트웍스가 함께합니다.</p>
+<div class="brand-film-logo">
+<div class="lg" style="justify-content:center;gap:14px;">
+<span class="lg-n">N</span>
+<div class="lg-right">
+<div class="lg-top"><span class="lg-nuri">nuri</span><span class="lg-nwp">networkspay</span><span class="lg-star lg-star-lg">✦</span></div>
+<div class="lg-cc">credit&amp;cash</div>
 </div>
+</div>
+</div>
+</div>
+</section>
+
 <!-- FOOTER -->
 <footer class="footer-new">
 <div class="footer-new-inner">
 <div class="footer-top-new">
-<div class="fn-brand">
 <a href="#" style="text-decoration:none;"><div class="lg"><span class="lg-n">N</span><div class="lg-right"><div class="lg-top"><span class="lg-nuri">nuri</span><span class="lg-nwp">networkspay</span><span class="lg-star lg-star-lg">✦</span></div><div class="lg-cc">credit&amp;cash</div></div></div></a>
-<p style="margin-top:12px;font-size:0.82rem;color:#86868b;line-height:1.7;">주식회사 누리네트웍스 | 대표: 김정식<br>사업자등록번호: 107-87-71087<br>서울시 영등포구 선유로70 우리벤처타운 4층 408호</p>
+<div class="footer-info">사업자등록번호: 107-87-71087<br>주식회사 누리네트웍스 ㅣ 대표: 김정식<br>07294 서울특별시 영등포구 선유로 70 우리벤처타운 4층 408호<br><br>수원지사: 경기도 용인시 기흥구 중부대로 1315 힉스유스타워 A동 801-3호<br>부산지사: 부산시 해운대구 센텀중앙로 97 A동 36층 3608호</div>
+<div class="footer-social">
+<a href="#" title="네이버 블로그" aria-label="네이버 블로그"><svg width="18" height="18" viewBox="0 0 24 24" fill="#86868b"><path d="M16.27 3H7.73A4.73 4.73 0 003 7.73v8.54A4.73 4.73 0 007.73 21h8.54A4.73 4.73 0 0021 16.27V7.73A4.73 4.73 0 0016.27 3zm-2.6 12.62h-2.42l-2.6-3.6v3.6H6.61V8.38h2.42l2.6 3.62V8.38h2.04v7.24z"/></svg></a>
+<a href="#" title="카카오톡" aria-label="카카오톡"><svg width="18" height="18" viewBox="0 0 24 24" fill="#86868b"><path d="M12 3C6.48 3 2 6.58 2 10.9c0 2.78 1.86 5.22 4.65 6.6l-.95 3.53c-.08.3.26.53.52.35l4.2-2.77c.51.06 1.04.09 1.58.09 5.52 0 10-3.58 10-7.9S17.52 3 12 3z"/></svg></a>
+<a href="#" title="인스타그램" aria-label="인스타그램"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#86868b" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="#86868b" stroke="none"/></svg></a>
 </div>
-<div class="fn-links">
-<div class="fn-col"><h4>제품소개</h4><a href="product-n250.html">N250 포스</a><a href="product-nova.html">NOVA 포스</a><a href="product-kiosk.html">키오스크</a><a href="product-uporder.html">테이블오더</a><a href="product-t226.html">카드단말기</a><a href="product-tossfront.html">사인패드</a></div>
-<div class="fn-col"><h4>회사소개</h4><a href="about.html">회사소개</a><a href="about.html#ceo">인사말</a><a href="about.html#history">연혁</a><a href="about.html#location">오시는 길</a></div>
-<div class="fn-col"><h4>고객지원</h4><a href="support.html">상담 신청</a><a href="support.html#store">구매 스토어</a><a href="tel:1544-7754">📞 1544-7754</a><a href="/cdn-cgi/l/email-protection#d1bfa4a3b891a1bea2bebfb4ffb2beffbaa3">✉️ <span class="__cf_email__" data-cfemail="d1bfa4a3b891a1bea2bebfb4ffb2beffbaa3">[email&#160;protected]</span></a></div>
 </div>
+<div class="ticker-section" style="margin:20px -40px 0;border-radius:0;">
+<div class="ticker-wrap"><div class="ticker-track" id="tickerTrack"></div></div>
 </div>
-<div class="footer-bottom-new"><span>© 2026 Nurinetworks. All rights reserved.</span><span>대표번호: <a href="tel:1544-7754" style="color:#86868b;">1544-7754</a> | 이메일: <a href="/cdn-cgi/l/email-protection#e8869d9a81a898879b87868dc68b87c6839a" style="color:var(--primary);"><span class="__cf_email__" data-cfemail="137d66617a53637c607c7d763d707c3d7861">[email&#160;protected]</span></a></span></div>
+<div class="footer-bottom-new">© 2026 Nurinetworks. All rights reserved.</div>
 </div>
 </footer>
 
@@ -605,15 +633,29 @@ try{
 const r=await fetch('https://open.er-api.com/v6/latest/USD');
 const d=await r.json();
 if(d&&d.rates){
-const krw=d.rates.KRW;
-const eur=d.rates.EUR;
-const jpy=d.rates.JPY;
-ecoItems.push({n:'USD/KRW',v:Math.round(krw).toLocaleString()});
-ecoItems.push({n:'EUR/KRW',v:Math.round(krw/eur).toLocaleString()});
-ecoItems.push({n:'JPY 100/KRW',v:(krw/jpy*100).toFixed(1)});
+ecoItems.push({n:'USD/KRW',v:Math.round(d.rates.KRW).toLocaleString()});
 }
 }catch(e){}
-// 2. 비트코인
+// 2. 주요 지수 (Yahoo Finance)
+const indices=[
+{s:'^KS11',n:'코스피'},{s:'^KQ11',n:'코스닥'},
+{s:'^GSPC',n:'S&P 500'},{s:'^IXIC',n:'나스닥'},{s:'^DJI',n:'다우존스'}
+];
+for(const idx of indices){
+try{
+const r=await fetch('https://api.allorigins.win/raw?url='+encodeURIComponent('https://query1.finance.yahoo.com/v8/finance/chart/'+idx.s+'?range=1d&interval=1d'));
+const d=await r.json();
+if(d&&d.chart&&d.chart.result){
+const meta=d.chart.result[0].meta;
+const price=meta.regularMarketPrice;
+const prev=meta.chartPreviousClose;
+const chg=((price-prev)/prev*100).toFixed(2);
+const up=price>=prev;
+ecoItems.push({n:idx.n,v:price.toLocaleString(undefined,{maximumFractionDigits:1}),c:(up?'+':'')+chg+'%',up:up});
+}
+}catch(e){}
+}
+// 3. 비트코인/이더리움
 try{
 const r=await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd,krw&include_24hr_change=true');
 const d=await r.json();
@@ -626,13 +668,13 @@ const ep=d.ethereum.krw;const ec=d.ethereum.krw_24h_change;
 ecoItems.push({n:'이더리움',v:Math.round(ep).toLocaleString()+'원',c:ec?ec.toFixed(1)+'%':null,up:ec>0});
 }
 }catch(e){}
-// 3. 금 시세
+// 4. 금 시세
 try{
 const r=await fetch('https://api.coingecko.com/api/v3/simple/price?ids=tether-gold&vs_currencies=usd');
 const d=await r.json();
 if(d['tether-gold']){ecoItems.push({n:'금(Gold)',v:'$'+Math.round(d['tether-gold'].usd).toLocaleString()});}
 }catch(e){}
-// 4. 뉴스 헤드라인
+// 5. 뉴스 헤드라인
 try{
 const r=await fetch('https://api.allorigins.win/raw?url='+encodeURIComponent('https://news.google.com/rss/topics/CAAqIQgKIhtDQkFTRGdvSUwyMHZNRFZxYUdjU0FtdHZLQUFQAQ?hl=ko&gl=KR&ceid=KR:ko'));
 const txt=await r.text();
@@ -647,8 +689,8 @@ if(title)newsItems.push(title.textContent.split(' - ')[0].trim());
 // Fallback
 if(ecoItems.length===0){
 ecoItems=[
-{n:'USD/KRW',v:'—'},{n:'EUR/KRW',v:'—'},{n:'JPY 100/KRW',v:'—'},
-{n:'비트코인',v:'로딩중...'},{n:'이더리움',v:'로딩중...'}
+{n:'USD/KRW',v:'—'},{n:'코스피',v:'—'},{n:'코스닥',v:'—'},
+{n:'S&P 500',v:'—'},{n:'나스닥',v:'—'},{n:'다우존스',v:'—'}
 ];
 }
 if(newsItems.length===0){
