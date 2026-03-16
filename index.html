@@ -202,11 +202,6 @@
         .brand-film-tag{font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;font-weight:600;}
         .brand-film h2{font-size:clamp(2rem,4vw,3rem);font-weight:800;color:#fff;line-height:1.3;letter-spacing:-0.03em;margin-bottom:16px;}
         .brand-film p{font-size:clamp(0.9rem,1.5vw,1.1rem);color:rgba(255,255,255,0.6);line-height:1.8;max-width:520px;}
-        .brand-film-logo{margin-top:40px;opacity:0;animation:bfLogoIn 1.5s ease-out 2s forwards;}
-        .brand-film-logo .lg-n{font-size:3.5rem;color:#fff;text-shadow:3px 2px 0 rgba(0,0,0,0.5);}
-        .brand-film-logo .lg-nuri,.brand-film-logo .lg-nwp{font-size:1.5rem;color:#fff;}
-        .brand-film-logo .lg-cc{font-size:0.7rem;color:rgba(255,255,255,0.5);}
-        @keyframes bfLogoIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
         .footer-new-inner{max-width:1320px;margin:0 auto;padding:0 40px;}
         .footer-top-new{margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid rgba(0,0,0,0.06);}
         .footer-info{font-size:0.78rem;color:#86868b;line-height:1.8;margin-top:14px;}
@@ -494,22 +489,14 @@
 
 <!-- BRAND FILM -->
 <section class="brand-film">
-<video autoplay muted loop playsinline><source src="brand-film.mp4" type="video/mp4"></video>
+<video id="bfVideo" autoplay muted loop playsinline><source src="brand-film.mp4" type="video/mp4"></video>
 <div class="brand-film-overlay"></div>
 <div class="brand-film-content">
 <div class="brand-film-tag">Brand Film</div>
 <h2>우리는 계속<br>성장하는 이유</h2>
 <p>시장의 활기, 거리의 에너지, 매장의 미소 —<br>그 모든 순간에 누리네트웍스가 함께합니다.</p>
-<div class="brand-film-logo">
-<div class="lg" style="justify-content:center;gap:14px;">
-<span class="lg-n">N</span>
-<div class="lg-right">
-<div class="lg-top"><span class="lg-nuri">nuri</span><span class="lg-nwp">networkspay</span><span class="lg-star lg-star-lg">✦</span></div>
-<div class="lg-cc">credit&amp;cash</div>
 </div>
-</div>
-</div>
-</div>
+<button id="bfSound" onclick="toggleBfSound()" style="position:absolute;bottom:24px;right:24px;z-index:10;width:44px;height:44px;border-radius:50%;border:none;background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;" title="소리 켜기"><svg id="bfSoundIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button>
 </section>
 
 <!-- FOOTER -->
@@ -620,6 +607,15 @@ if(hsProg>=hsDur){hsProg=0;hsI=(hsI+1)%hsTotal;hsGo(hsI);}
 },50);
 }
 hsStart();
+</script>
+<script>
+// Brand Film Sound Toggle
+function toggleBfSound(){
+var v=document.getElementById('bfVideo');
+var btn=document.getElementById('bfSoundIcon');
+if(v.muted){v.muted=false;btn.innerHTML='<path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 010 14.14"/><path d="M15.54 8.46a5 5 0 010 7.07"/>';}
+else{v.muted=true;btn.innerHTML='<path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>';}
+}
 </script>
 <script>
 // Ticker - 실시간 경제데이터 + 주요뉴스
