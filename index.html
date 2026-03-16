@@ -188,10 +188,11 @@
         .cta-buttons{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;}.cta-phone{display:flex;align-items:center;gap:10px;margin-top:28px;justify-content:center;color:rgba(255,255,255,0.4);font-size:0.92rem;}.cta-phone strong{font-size:1.3rem;color:#fff;}
         .ticker-section{background:#1d1d1f;padding:0;overflow:hidden;border-top:1px solid rgba(0,0,0,0.06);}
         .ticker-wrap{overflow:hidden;white-space:nowrap;position:relative;height:42px;display:flex;align-items:center;}
-        .ticker-track{display:inline-flex;animation:tickerScroll 40s linear infinite;gap:0;}
+        .ticker-track{display:inline-flex;animation:tickerScroll 60s linear infinite;gap:0;}
         .ticker-item{display:inline-flex;align-items:center;gap:6px;padding:0 28px;font-size:0.78rem;color:rgba(255,255,255,0.6);font-weight:400;white-space:nowrap;}
         .ticker-item .t-name{color:rgba(255,255,255,0.4);font-weight:500;}.ticker-item .t-val{color:#fff;font-weight:600;}
         .ticker-item .t-up{color:#22c55e;}.ticker-item .t-down{color:#ef4444;}
+        .ticker-item .t-news{color:#60a5fa;font-weight:500;}.ticker-item .t-dot{color:rgba(255,255,255,0.15);}
         @keyframes tickerScroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
         .footer-new{background:#f5f5f7;color:#86868b;padding:40px 0 24px;}
         .footer-new-inner{max-width:1320px;margin:0 auto;padding:0 40px;}
@@ -478,7 +479,7 @@
 </div></div>
 </div></section>
 
-<section class="cta-section" id="contact"><div class="cta-inner"><h2>매장에 맞는 솔루션,<br>지금 상담 받아보세요</h2><p>전문 상담사가 매장 상황에 맞는 최적의 제품 조합을 추천해 드립니다.</p><div class="cta-buttons"><a href="tel:1544-7754" class="btn btn-gold">📞 전화 상담 1544-7754</a><a href="/cdn-cgi/l/email-protection#49273c3b200939263a26272c672a2667223b" class="btn btn-primary">✉️ 이메일 문의</a><a href="support.html" class="btn btn-outline-w">📋 상담 신청 폼</a></div><div class="cta-phone" style="color:#86868b;">대표번호 <strong style="color:#1d1d1f;">1544-7754</strong> | 평일 09:00~20:00 · 토/일/공휴일 11:00~17:00</div></div></section>
+<section class="cta-section" id="contact"><div class="cta-inner"><h2>매장에 맞는 솔루션,<br>지금 상담 받아보세요</h2><p>전문 상담사가 매장 상황에 맞는 최적의 제품 조합을 추천해 드립니다.</p><div class="cta-buttons"><a href="tel:1544-7754" class="btn btn-gold" style="font-size:0.95rem;padding:14px 32px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;min-width:22px;"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg> 전화문의 1544-7754</a><a href="http://pf.kakao.com/_xnxaxlxj" target="_blank" class="btn btn-primary" style="font-size:0.95rem;padding:14px 32px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;min-width:22px;"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> 메시징/카톡문의</a></div><div class="cta-phone" style="color:#86868b;font-size:0.92rem;margin-top:28px;">대표번호 1544-7754 | 운영시간 평일 09:00~20:00 / 토·일·공휴일 11:00~17:00</div></div></section>
 
 <!-- TICKER -->
 <div class="ticker-section">
@@ -593,28 +594,80 @@ if(hsProg>=hsDur){hsProg=0;hsI=(hsI+1)%hsTotal;hsGo(hsI);}
 hsStart();
 </script>
 <script>
-// Ticker
+// Ticker - 실시간 경제데이터 + 주요뉴스
 async function loadTicker(){
-const items=[
-{n:'USD/KRW',v:'1,385.20',c:'+2.30',up:true},
-{n:'코스피',v:'2,615.31',c:'+12.45',up:true},
-{n:'코스닥',v:'785.62',c:'-3.21',up:false},
-{n:'S&P 500',v:'5,842.15',c:'+18.73',up:true},
-{n:'나스닥',v:'18,432.50',c:'+95.22',up:true},
-{n:'닛케이225',v:'38,215.70',c:'-128.30',up:false},
-{n:'상해종합',v:'3,125.40',c:'+8.62',up:true},
-{n:'EUR/KRW',v:'1,498.50',c:'-1.80',up:false},
-{n:'JPY/KRW',v:'9.15',c:'+0.03',up:true},
-{n:'금(Gold)',v:'2,985.40',c:'+12.50',up:true},
-{n:'원유(WTI)',v:'68.25',c:'-0.85',up:false},
-{n:'비트코인',v:'82,450.30',c:'+1,230.50',up:true},
-];
 const track=document.getElementById('tickerTrack');
 if(!track)return;
+let ecoItems=[];
+let newsItems=[];
+// 1. 환율 데이터
+try{
+const r=await fetch('https://open.er-api.com/v6/latest/USD');
+const d=await r.json();
+if(d&&d.rates){
+const krw=d.rates.KRW;
+const eur=d.rates.EUR;
+const jpy=d.rates.JPY;
+ecoItems.push({n:'USD/KRW',v:Math.round(krw).toLocaleString()});
+ecoItems.push({n:'EUR/KRW',v:Math.round(krw/eur).toLocaleString()});
+ecoItems.push({n:'JPY 100/KRW',v:(krw/jpy*100).toFixed(1)});
+}
+}catch(e){}
+// 2. 비트코인
+try{
+const r=await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd,krw&include_24hr_change=true');
+const d=await r.json();
+if(d.bitcoin){
+const bp=d.bitcoin.krw;const bc=d.bitcoin.krw_24h_change;
+ecoItems.push({n:'비트코인',v:Math.round(bp).toLocaleString()+'원',c:bc?bc.toFixed(1)+'%':null,up:bc>0});
+}
+if(d.ethereum){
+const ep=d.ethereum.krw;const ec=d.ethereum.krw_24h_change;
+ecoItems.push({n:'이더리움',v:Math.round(ep).toLocaleString()+'원',c:ec?ec.toFixed(1)+'%':null,up:ec>0});
+}
+}catch(e){}
+// 3. 금 시세
+try{
+const r=await fetch('https://api.coingecko.com/api/v3/simple/price?ids=tether-gold&vs_currencies=usd');
+const d=await r.json();
+if(d['tether-gold']){ecoItems.push({n:'금(Gold)',v:'$'+Math.round(d['tether-gold'].usd).toLocaleString()});}
+}catch(e){}
+// 4. 뉴스 헤드라인
+try{
+const r=await fetch('https://api.allorigins.win/raw?url='+encodeURIComponent('https://news.google.com/rss/topics/CAAqIQgKIhtDQkFTRGdvSUwyMHZNRFZxYUdjU0FtdHZLQUFQAQ?hl=ko&gl=KR&ceid=KR:ko'));
+const txt=await r.text();
+const parser=new DOMParser();
+const xml=parser.parseFromString(txt,'text/xml');
+const items=xml.querySelectorAll('item');
+for(let i=0;i<Math.min(items.length,6);i++){
+const title=items[i].querySelector('title');
+if(title)newsItems.push(title.textContent.split(' - ')[0].trim());
+}
+}catch(e){}
+// Fallback
+if(ecoItems.length===0){
+ecoItems=[
+{n:'USD/KRW',v:'—'},{n:'EUR/KRW',v:'—'},{n:'JPY 100/KRW',v:'—'},
+{n:'비트코인',v:'로딩중...'},{n:'이더리움',v:'로딩중...'}
+];
+}
+if(newsItems.length===0){
+newsItems=['경제뉴스를 불러오는 중입니다...','최신 뉴스를 확인하세요'];
+}
+// 렌더링
 let h='';
-for(let i=0;i<2;i++){items.forEach(it=>{
-h+='<span class="ticker-item"><span class="t-name">'+it.n+'</span><span class="t-val">'+it.v+'</span>'+(it.c?'<span class="'+(it.up?'t-up':'t-down')+'">'+it.c+'</span>':'')+'</span>';
-});}
+function buildOnce(){
+ecoItems.forEach(it=>{
+h+='<span class="ticker-item"><span class="t-name">'+it.n+'</span><span class="t-val">'+it.v+'</span>';
+if(it.c)h+='<span class="'+(it.up?'t-up':'t-down')+'">'+it.c+'</span>';
+h+='</span>';
+});
+h+='<span class="ticker-item"><span class="t-dot">│</span><span class="t-news">📰 주요뉴스</span></span>';
+newsItems.forEach(n=>{
+h+='<span class="ticker-item"><span class="t-news">'+n+'</span></span>';
+});
+}
+buildOnce();buildOnce();
 track.innerHTML=h;
 }
 loadTicker();
