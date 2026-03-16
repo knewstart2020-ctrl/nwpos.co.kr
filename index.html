@@ -611,89 +611,44 @@ else{v.muted=true;btn.innerHTML='<path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23"
 async function loadTicker(){
 const track=document.getElementById('tickerTrack');
 if(!track)return;
+// 즉시 로딩 표시
+track.innerHTML='<span class="ticker-item"><span class="t-val">경제시황 · 뉴스 로딩중...</span></span><span class="ticker-item"><span class="t-val">경제시황 · 뉴스 로딩중...</span></span>';
 let ecoItems=[];
 let newsItems=[];
-// 1. 환율 데이터
-try{
-const r=await fetch('https://open.er-api.com/v6/latest/USD');
-const d=await r.json();
-if(d&&d.rates){
-ecoItems.push({n:'USD/KRW',v:Math.round(d.rates.KRW).toLocaleString()});
-}
-}catch(e){}
-// 2. 주요 지수 (Yahoo Finance)
-const indices=[
-{s:'^KS11',n:'코스피'},{s:'^KQ11',n:'코스닥'},
-{s:'^GSPC',n:'S&P 500'},{s:'^IXIC',n:'나스닥'},{s:'^DJI',n:'다우존스'}
-];
-for(const idx of indices){
-try{
-const r=await fetch('https://api.allorigins.win/raw?url='+encodeURIComponent('https://query1.finance.yahoo.com/v8/finance/chart/'+idx.s+'?range=1d&interval=1d'));
-const d=await r.json();
-if(d&&d.chart&&d.chart.result){
-const meta=d.chart.result[0].meta;
-const price=meta.regularMarketPrice;
-const prev=meta.chartPreviousClose;
-const chg=((price-prev)/prev*100).toFixed(2);
-const up=price>=prev;
-ecoItems.push({n:idx.n,v:price.toLocaleString(undefined,{maximumFractionDigits:1}),c:(up?'+':'')+chg+'%',up:up});
-}
-}catch(e){}
-}
-// 3. 비트코인/이더리움
-try{
-const r=await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd,krw&include_24hr_change=true');
-const d=await r.json();
-if(d.bitcoin){
-const bp=d.bitcoin.krw;const bc=d.bitcoin.krw_24h_change;
-ecoItems.push({n:'비트코인',v:Math.round(bp).toLocaleString()+'원',c:bc?bc.toFixed(1)+'%':null,up:bc>0});
-}
-if(d.ethereum){
-const ep=d.ethereum.krw;const ec=d.ethereum.krw_24h_change;
-ecoItems.push({n:'이더리움',v:Math.round(ep).toLocaleString()+'원',c:ec?ec.toFixed(1)+'%':null,up:ec>0});
-}
-}catch(e){}
-// 4. 금 시세
-try{
-const r=await fetch('https://api.coingecko.com/api/v3/simple/price?ids=tether-gold&vs_currencies=usd');
-const d=await r.json();
-if(d['tether-gold']){ecoItems.push({n:'금(Gold)',v:'$'+Math.round(d['tether-gold'].usd).toLocaleString()});}
-}catch(e){}
-// 5. 뉴스 헤드라인
-try{
-const r=await fetch('https://api.allorigins.win/raw?url='+encodeURIComponent('https://news.google.com/rss/topics/CAAqIQgKIhtDQkFTRGdvSUwyMHZNRFZxYUdjU0FtdHZLQUFQAQ?hl=ko&gl=KR&ceid=KR:ko'));
-const txt=await r.text();
-const parser=new DOMParser();
-const xml=parser.parseFromString(txt,'text/xml');
-const items=xml.querySelectorAll('item');
-for(let i=0;i<Math.min(items.length,6);i++){
-const title=items[i].querySelector('title');
-if(title)newsItems.push(title.textContent.split(' - ')[0].trim());
-}
-}catch(e){}
-// Fallback
-if(ecoItems.length===0){
-ecoItems=[
-{n:'USD/KRW',v:'—'},{n:'코스피',v:'—'},{n:'코스닥',v:'—'},
-{n:'S&P 500',v:'—'},{n:'나스닥',v:'—'},{n:'다우존스',v:'—'}
-];
-}
-if(newsItems.length===0){
-newsItems=['경제뉴스를 불러오는 중입니다...','최신 뉴스를 확인하세요'];
-}
-// 렌더링
+// 모든 API 동시 호출
+const [fxRes,idxRes,cryptoRes,goldRes,newsRes]=await Promise.allSettled([
+fetch('https://open.er-api.com/v6/latest/USD').then(r=>r.json()),
+Promise.all(['^KS11','^KQ11','^GSPC','^IXIC','^DJI'].map(s=>
+fetch('https://api.allorigins.win/raw?url='+encodeURIComponent('https://query1.finance.yahoo.com/v8/finance/chart/'+s+'?range=1d&interval=1d')).then(r=>r.json()).catch(()=>null)
+)),
+fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd,krw&include_24hr_change=true').then(r=>r.json()),
+fetch('https://api.coingecko.com/api/v3/simple/price?ids=tether-gold&vs_currencies=usd').then(r=>r.json()),
+fetch('https://api.allorigins.win/raw?url='+encodeURIComponent('https://news.google.com/rss/topics/CAAqIQgKIhtDQkFTRGdvSUwyMHZNRFZxYUdjU0FtdHZLQUFQAQ?hl=ko&gl=KR&ceid=KR:ko')).then(r=>r.text())
+]);
+// 1. 환율
+try{if(fxRes.status==='fulfilled'&&fxRes.value.rates){ecoItems.push({n:'USD/KRW',v:Math.round(fxRes.value.rates.KRW).toLocaleString()});}}catch(e){}
+// 2. 주요 지수
+const idxNames=['코스피','코스닥','S&P 500','나스닥','다우존스'];
+try{if(idxRes.status==='fulfilled'){idxRes.value.forEach((d,i)=>{
+if(d&&d.chart&&d.chart.result){const m=d.chart.result[0].meta;const p=m.regularMarketPrice;const pv=m.chartPreviousClose;const ch=((p-pv)/pv*100).toFixed(2);const up=p>=pv;
+ecoItems.push({n:idxNames[i],v:p.toLocaleString(undefined,{maximumFractionDigits:1}),c:(up?'+':'')+ch+'%',up:up});}
+});}}catch(e){}
+// 3. 암호화폐
+try{if(cryptoRes.status==='fulfilled'){const d=cryptoRes.value;
+if(d.bitcoin){const bp=d.bitcoin.krw;const bc=d.bitcoin.krw_24h_change;ecoItems.push({n:'비트코인',v:Math.round(bp).toLocaleString()+'원',c:bc?bc.toFixed(1)+'%':null,up:bc>0});}
+if(d.ethereum){const ep=d.ethereum.krw;const ec=d.ethereum.krw_24h_change;ecoItems.push({n:'이더리움',v:Math.round(ep).toLocaleString()+'원',c:ec?ec.toFixed(1)+'%':null,up:ec>0});}
+}}catch(e){}
+// 4. 금
+try{if(goldRes.status==='fulfilled'&&goldRes.value['tether-gold']){ecoItems.push({n:'금(Gold)',v:'$'+Math.round(goldRes.value['tether-gold'].usd).toLocaleString()});}}catch(e){}
+// 5. 뉴스
+try{if(newsRes.status==='fulfilled'){const xml=new DOMParser().parseFromString(newsRes.value,'text/xml');const items=xml.querySelectorAll('item');
+for(let i=0;i<Math.min(items.length,6);i++){const t=items[i].querySelector('title');if(t)newsItems.push(t.textContent.split(' - ')[0].trim());}
+}}catch(e){}
+if(ecoItems.length===0){ecoItems=[{n:'USD/KRW',v:'—'},{n:'코스피',v:'—'},{n:'코스닥',v:'—'},{n:'S&P 500',v:'—'},{n:'나스닥',v:'—'},{n:'다우존스',v:'—'}];}
+if(newsItems.length===0){newsItems=['경제뉴스를 불러오는 중입니다...'];}
 let h='';
-function buildOnce(){
-ecoItems.forEach(it=>{
-h+='<span class="ticker-item"><span class="t-name">'+it.n+'</span><span class="t-val">'+it.v+'</span>';
-if(it.c)h+='<span class="'+(it.up?'t-up':'t-down')+'">'+it.c+'</span>';
-h+='</span>';
-});
-h+='<span class="ticker-item"><span class="t-dot">│</span><span class="t-news">📰 주요뉴스</span></span>';
-newsItems.forEach(n=>{
-h+='<span class="ticker-item"><span class="t-news">'+n+'</span></span>';
-});
-}
+function buildOnce(){ecoItems.forEach(it=>{h+='<span class="ticker-item"><span class="t-name">'+it.n+'</span><span class="t-val">'+it.v+'</span>';if(it.c)h+='<span class="'+(it.up?'t-up':'t-down')+'">'+it.c+'</span>';h+='</span>';});
+h+='<span class="ticker-item"><span class="t-dot">│</span><span class="t-news">📰 주요뉴스</span></span>';newsItems.forEach(n=>{h+='<span class="ticker-item"><span class="t-news">'+n+'</span></span>';});}
 buildOnce();buildOnce();
 track.innerHTML=h;
 }
