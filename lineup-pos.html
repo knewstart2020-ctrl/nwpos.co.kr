@@ -61,25 +61,38 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 .sec{padding:100px 0;}.sec-inner{max-width:1200px;margin:0 auto;padding:0 40px;}
 .sec-tag{font-size:0.72rem;font-weight:600;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;}
 
-/* VS SECTION */
+/* VS SECTION - Apple Style Cards */
 .vs-sec{background:transparent;padding:120px 0 80px;position:relative;}
 .vs-inner{max-width:1200px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
+.vs-header{text-align:center;margin-bottom:60px;}
+.vs-header h2{font-size:clamp(2rem,4vw,2.8rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:12px;}
+.vs-header p{font-size:1rem;color:var(--gray);line-height:1.7;}
+.vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.ap-card{border-radius:24px;overflow:hidden;position:relative;min-height:580px;display:flex;flex-direction:column;padding:48px 40px 0;transition:transform .4s;}
+.ap-card:hover{transform:translateY(-4px);}
+.ap-card-light{background:#f5f5f7;}
+.ap-card-dark{background:#1d1d1f;}
+.ap-tag{font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;}
+.ap-card-light .ap-tag{color:var(--primary);}
+.ap-card-dark .ap-tag{color:#bf8a2e;}
+.ap-card h3{font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:10px;}
+.ap-card-light h3{color:#1d1d1f;}
+.ap-card-dark h3{color:#fff;}
+.ap-card .ap-sub{font-size:1rem;font-weight:400;line-height:1.5;margin-bottom:6px;}
+.ap-card-light .ap-sub{color:#424245;}
+.ap-card-dark .ap-sub{color:rgba(255,255,255,0.7);}
+.ap-card .ap-price{font-size:0.85rem;font-weight:500;margin-bottom:24px;}
+.ap-card-light .ap-price{color:var(--gray);}
+.ap-card-dark .ap-price{color:rgba(255,255,255,0.45);}
+.ap-img-wrap{flex:1;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;}
+.ap-img-wrap img{max-width:85%;max-height:340px;object-fit:contain;filter:drop-shadow(0 12px 40px rgba(0,0,0,0.12));transition:transform .6s;}
+.ap-card:hover .ap-img-wrap img{transform:scale(1.04) translateY(-6px);}
 /* FLOWING BACKGROUND WRAPPER */
 .flow-bg{background:linear-gradient(180deg,#f5f5f7 0%,#eaeff8 15%,#ffffff 30%,#f8f6f0 50%,#ffffff 70%,#eaeff8 85%,#f5f5f7 100%);position:relative;overflow:hidden;}
 .flow-bg::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 20% 30%,rgba(27,58,140,0.03) 0%,transparent 50%),radial-gradient(ellipse at 80% 70%,rgba(201,168,76,0.03) 0%,transparent 50%);pointer-events:none;z-index:0;}
 .vs-header{text-align:center;margin-bottom:60px;}
 .vs-header h2{font-size:clamp(2rem,4vw,2.8rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:12px;}
 .vs-header p{font-size:1rem;color:var(--gray);line-height:1.7;}
-.vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
-.vs-product{text-align:center;padding:40px 32px;position:relative;}
-.vs-product img{max-height:320px;max-width:100%;object-fit:contain;filter:drop-shadow(0 20px 50px rgba(0,0,0,0.1));transition:transform .6s;margin-bottom:24px;}
-.vs-product:hover img{transform:scale(1.06) translateY(-8px);}
-.vs-badge{display:inline-block;font-size:0.68rem;font-weight:700;padding:4px 14px;border-radius:50px;letter-spacing:0.05em;margin-bottom:12px;}
-.vs-badge-best{background:rgba(27,58,140,0.08);color:var(--primary);}
-.vs-badge-premium{background:rgba(201,168,76,0.12);color:#8B7326;}
-.vs-product h3{font-size:1.6rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:8px;}
-.vs-product .vs-copy{font-family:'Playfair Display',serif;font-size:1.1rem;font-style:italic;color:var(--gray);font-weight:400;margin-bottom:12px;}
-.vs-product .vs-desc{font-size:0.88rem;color:#424245;line-height:1.7;max-width:360px;margin:0 auto;}
 
 /* FEATURE CARDS */
 .feat-sec{background:transparent;padding:100px 0;}
@@ -135,15 +148,15 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 .install-card:hover img{transform:scale(1.06);}
 .install-card-overlay{position:absolute;inset:0;background:rgba(0,0,0,0);z-index:1;transition:background .5s;}
 .install-card:hover .install-card-overlay{background:rgba(0,0,0,0.55);}
-.install-card-info{position:absolute;bottom:0;left:0;right:0;padding:20px;z-index:2;opacity:0;transform:translateY(12px);transition:all .4s;}
+.install-card-info{position:absolute;bottom:0;left:0;right:0;padding:24px;z-index:2;opacity:0;transform:translateY(12px);transition:all .4s;}
 .install-card:hover .install-card-info{opacity:1;transform:translateY(0);}
-.install-card-info h4{font-size:1rem;font-weight:700;color:#fff;margin-bottom:6px;}
-.install-card-tags{display:flex;gap:6px;flex-wrap:wrap;}
-.install-card-tags span{font-size:0.68rem;font-weight:600;padding:3px 10px;border-radius:50px;background:rgba(255,255,255,0.15);backdrop-filter:blur(4px);color:rgba(255,255,255,0.9);}
+.install-card-info h4{font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:10px;}
+.install-card-tags{display:flex;gap:8px;flex-wrap:wrap;}
+.install-card-tags span{font-size:1rem;font-weight:700;padding:6px 16px;border-radius:50px;background:rgba(255,255,255,0.2);backdrop-filter:blur(4px);color:#fff;}
 .install-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:4/3;background:#e8e8ed;border-radius:16px;color:#999;font-size:0.82rem;text-align:center;line-height:1.6;padding:20px;gap:8px;}
 .install-placeholder svg{opacity:0.3;}
 /* EMOJI ANIMATION */
-.fs-emoji{display:inline-block;font-size:36px;animation:swim 2s ease-in-out infinite;}
+.fs-emoji{display:inline-block;font-size:32px;animation:swim 2s ease-in-out infinite;vertical-align:middle;}
 .fs-emoji-bounce{display:inline-block;font-size:48px;animation:bounce 1s ease-in-out infinite;position:absolute;top:20px;right:20px;z-index:3;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.3));}
 @keyframes swim{0%,100%{transform:translateX(0) scaleX(1)}50%{transform:translateX(8px) scaleX(-1)}}
 @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
@@ -164,8 +177,8 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 .footer-mini a{color:var(--primary);text-decoration:none;font-weight:600;}
 
 /* RESPONSIVE */
-@media(max-width:1024px){.vs-grid{grid-template-columns:1fr;gap:40px;}.feat-cols,.nova-hl-grid{grid-template-columns:1fr;gap:32px;}.install-grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:768px){.nav-links{display:none;}.sec{padding:80px 0;}.sec-inner,.vs-inner,.feat-inner,.spec-inner,.install-inner{padding:0 24px;}.hero h1{font-size:2.6rem;}.vs-product img{max-height:220px;}.vs-sec{padding:80px 0 60px;}.install-grid{grid-template-columns:1fr;}.spec-table{font-size:0.82rem;}}
+@media(max-width:1024px){.vs-grid{grid-template-columns:1fr;gap:24px;}.ap-card{min-height:480px;}.feat-cols,.nova-hl-grid{grid-template-columns:1fr;gap:32px;}.install-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:768px){.nav-links{display:none;}.sec{padding:80px 0;}.sec-inner,.vs-inner,.feat-inner,.spec-inner,.install-inner{padding:0 24px;}.hero h1{font-size:2.6rem;}.ap-card{min-height:420px;padding:36px 28px 0;}.ap-img-wrap img{max-height:260px;}.vs-sec{padding:80px 0 60px;}.install-grid{grid-template-columns:1fr;}.spec-table{font-size:0.82rem;}}
 </style>
 </head>
 <body>
@@ -202,23 +215,23 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <div class="vs-inner">
 <div class="vs-header reveal">
 <div class="sec-tag">Product Lineup</div>
-<h2>두 가지 포스, 하나의 완벽</h2>
+<h2>포스. 다양한 스토리</h2>
 <p>매장 규모와 스타일에 맞는 최적의 포스를 선택하세요.</p>
 </div>
 <div class="vs-grid reveal">
-<div class="vs-product" style="background:#fff;border-radius:20px;padding:40px 32px;box-shadow:0 4px 24px rgba(0,0,0,0.06);">
-<img src="https://imupos.com/img/sub/250series_title.png" alt="N250 포스">
-<div class="vs-badge vs-badge-best">BEST SELLER</div>
+<div class="ap-card ap-card-dark">
+<div class="ap-tag">BEST SELLER</div>
 <h3>N250 포스</h3>
-<div class="vs-copy">"모든 업종의 기본기"</div>
-<p class="vs-desc">브랜드 가치를 높여주는 스마트한 디자인. 강력한 고성능 프로세서 탑재. 메모리 8G 탑재로 매장+배달 끊김 없는 운영.</p>
+<p class="ap-sub">모든 업종의 기본기</p>
+<p class="ap-price">브랜드 가치를 높여주는 스마트한 디자인</p>
+<div class="ap-img-wrap"><img src="https://imupos.com/img/sub/250series_title.png" alt="N250 포스"></div>
 </div>
-<div class="vs-product" style="background:#1d1d1f;border-radius:20px;padding:40px 32px;">
-<img src="nova-pos-dark.png" alt="NOVA 포스">
-<div class="vs-badge vs-badge-premium">PREMIUM</div>
-<h3 style="color:#fff;">NOVA 포스</h3>
-<div class="vs-copy" style="color:rgba(255,255,255,0.4);">"모든 포스의 트렌드 리더"</div>
-<p class="vs-desc" style="color:rgba(255,255,255,0.55);">혁신적 슬림 디자인. 선명하고 편안한 화면. 알루미늄 다이캐스팅 설계.</p>
+<div class="ap-card ap-card-light">
+<div class="ap-tag">PREMIUM</div>
+<h3>NOVA 포스</h3>
+<p class="ap-sub">모든 포스의 트렌드 리더</p>
+<p class="ap-price">혁신적 슬림 디자인. 선명하고 편안한 화면.</p>
+<div class="ap-img-wrap"><img src="nova-pos-dark.png" alt="NOVA 포스"></div>
 </div>
 </div>
 </div>
@@ -242,6 +255,7 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <div class="feat-card"><div class="fc-icon" style="background:#FBEAF0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#993556" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><div class="fc-text"><h4>클라우드 매출 관리</h4><p>IMU 클라우드로 어디서든 실시간 확인</p></div></div>
 <div class="feat-card"><div class="fc-icon" style="background:#EEEDFE;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#534AB7" stroke-width="2"><rect x="1" y="6" width="22" height="12" rx="2"/><path d="M6 10h0M10 10h0M14 10h0M18 10h0M6 14h0M10 14h0M14 14h0M18 14h0"/></svg></div><div class="fc-text"><h4>풍부한 입출력 인터페이스</h4><p>6시리얼, 6USB로 다양한 주변기기 확장</p></div></div>
 </div>
+</div>
 <!-- NOVA -->
 <div>
 <div class="feat-col-title"><span class="fcb" style="background:rgba(201,168,76,0.12);color:#8B7326;">PREMIUM</span> NOVA 포스</div>
@@ -263,15 +277,15 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <div class="reveal" style="overflow-x:auto;"><table class="spec-table">
 <thead><tr><th>항목</th><th>N250 포스</th><th>NOVA 포스</th></tr></thead>
 <tbody>
-<tr><td>디자인</td><td>부드러운 곡선 스탠드<br><span style="font-size:0.78rem;color:var(--gray);font-weight:400;">조립/분해 쉬운 3단 구조, 블랙&화이트 투톤</span></td><td>울트라 슬림 모던 디자인<br><span style="font-size:0.78rem;color:var(--gray);font-weight:400;">알루미늄 다이캐스팅, 모던 투톤</span></td></tr>
-<tr><td>디스플레이</td><td>15" Glass 터치 / 15.6" FHD 옵션<br><span style="font-size:0.78rem;color:var(--gray);font-weight:400;">PCAP 10포인트 멀티터치, 스크래치 방지</span></td><td>15" / 15.6" 옵티컬 본딩<br><span style="font-size:0.78rem;color:var(--gray);font-weight:400;">PCAP 10포인트, 눈부심 방지</span></td></tr>
-<tr><td>프로세서</td><td>Intel® N95<br><span style="font-size:0.78rem;color:var(--gray);font-weight:400;">Max <span class="roll-wrap" data-roll="3.40">0.00</span>GHz</span></td><td>Intel® N97 (Fanless)<br><span style="font-size:0.78rem;color:var(--gray);font-weight:400;">up to <span class="roll-wrap" data-roll="3.60">0.00</span>GHz</span></td></tr>
-<tr><td>메모리</td><td>8GB DDR4 (최대 16GB)<br><span style="font-size:0.78rem;color:var(--gray);font-weight:400;">128GB 2.5" SSD (최대 512GB)</span></td><td>8GB DDR4 (최대 16GB)<br><span style="font-size:0.78rem;color:var(--gray);font-weight:400;">128GB NVMe M.2 SSD (최대 512GB)</span></td></tr>
-<tr><td>방열</td><td>슈퍼 방열 프레임<br><span style="font-size:0.78rem;color:var(--gray);font-weight:400;">CPU 방열 최적화 알루미늄 프레임</span></td><td>울트라 슬림 냉각<br><span style="font-size:0.78rem;color:var(--gray);font-weight:400;">주요 부품 알루미늄 설계, 열효율 극대화</span></td></tr>
-<tr><td>인터페이스</td><td>7 USB, 6 Serial<br><span style="font-size:0.78rem;color:var(--gray);font-weight:400;">멀티 모니터 (HDMI, DVI, DP, VGA)</span></td><td>USB, Type-C (DP alt), 4 Serial<br><span style="font-size:0.78rem;color:var(--gray);font-weight:400;">2 MiniDP 출력</span></td></tr>
-<tr><td>특별 기능</td><td>전원 플러그 역전류 방지<br><span style="font-size:0.78rem;color:var(--gray);font-weight:400;">원 케이블 구조, 고성능 스피커</span></td><td>AI 음성 POS 제어 (예정)<br><span style="font-size:0.78rem;color:var(--gray);font-weight:400;">케이블리스 IC 카드리더기, 3m 분리 모니터</span></td></tr>
+<tr><td>디자인</td><td>부드러운 곡선 스탠드</td><td>울트라 슬림 모던 디자인</td></tr>
+<tr><td>디스플레이</td><td>15" Glass 터치 / 15.6" FHD</td><td>15" / 15.6" 옵티컬 본딩</td></tr>
+<tr><td>프로세서</td><td>Intel® N95 (<span class="roll-wrap" data-roll="3.40">0.00</span>GHz)</td><td>Intel® N97 Fanless (<span class="roll-wrap" data-roll="3.60">0.00</span>GHz)</td></tr>
+<tr><td>메모리</td><td>8GB DDR4 / 128GB SSD</td><td>8GB DDR4 / 128GB NVMe</td></tr>
+<tr><td>방열</td><td>슈퍼 방열 프레임</td><td>울트라 슬림 냉각</td></tr>
+<tr><td>인터페이스</td><td>7 USB, 6 Serial</td><td>USB, Type-C, 4 Serial</td></tr>
+<tr><td>특별 기능</td><td>역전류 방지, 원 케이블</td><td>AI 음성 POS (예정)</td></tr>
 <tr><td>OS</td><td colspan="2">Windows 10 / 11 IoT Enterprise (64bit)</td></tr>
-<tr><td>크기</td><td>362 × 237 × 357 mm<br><span style="font-size:0.78rem;color:var(--gray);font-weight:400;">4.5 kg</span></td><td>328 × 215 × 338 mm<br><span style="font-size:0.78rem;color:var(--gray);font-weight:400;">4.2 kg</span></td></tr>
+<tr><td>크기</td><td>362 × 237 × 357 mm / 4.5kg</td><td>328 × 215 × 338 mm / 4.2kg</td></tr>
 </tbody>
 </table></div>
 </div>
