@@ -50,14 +50,12 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 .sec-tag{font-size:0.72rem;font-weight:600;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;}
 
 /* VS SECTION */
-.vs-sec{position:relative;padding:120px 0 80px;overflow:hidden;}
-.vs-video{position:absolute;inset:0;z-index:0;}.vs-video video{width:100%;height:100%;object-fit:cover;opacity:0.25;}
-.vs-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(245,245,247,0.85) 0%,rgba(245,245,247,0.7) 50%,rgba(245,245,247,0.9) 100%);z-index:1;}
-.vs-inner{max-width:1200px;margin:0 auto;padding:0 40px;position:relative;z-index:2;}
+.vs-sec{background:#f5f5f7;padding:120px 0 80px;overflow:hidden;}
+.vs-inner{max-width:1200px;margin:0 auto;padding:0 40px;}
 .vs-header{text-align:center;margin-bottom:60px;}
 .vs-header h2{font-size:clamp(2rem,4vw,2.8rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:12px;}
 .vs-header p{font-size:1rem;color:var(--gray);line-height:1.7;}
-.vs-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:center;}
+.vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
 .vs-product{text-align:center;padding:40px 32px;position:relative;}
 .vs-product img{max-height:320px;max-width:100%;object-fit:contain;filter:drop-shadow(0 20px 50px rgba(0,0,0,0.1));transition:transform .6s;margin-bottom:24px;}
 .vs-product:hover img{transform:scale(1.06) translateY(-8px);}
@@ -67,9 +65,6 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 .vs-product h3{font-size:1.6rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:8px;}
 .vs-product .vs-copy{font-family:'Playfair Display',serif;font-size:1.1rem;font-style:italic;color:var(--gray);font-weight:400;margin-bottom:12px;}
 .vs-product .vs-desc{font-size:0.88rem;color:#424245;line-height:1.7;max-width:360px;margin:0 auto;}
-.vs-divider{display:flex;flex-direction:column;align-items:center;padding:0 20px;}
-.vs-line{width:1px;height:120px;background:linear-gradient(to bottom,transparent,#d2d2d7,transparent);}
-.vs-badge-vs{width:52px;height:52px;border-radius:50%;background:#1d1d1f;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-size:0.85rem;font-weight:800;letter-spacing:0.02em;margin:16px 0;box-shadow:0 4px 20px rgba(0,0,0,0.15);}
 
 /* FEATURE CARDS */
 .feat-sec{background:#fff;padding:100px 0;}
@@ -138,7 +133,7 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 .footer-mini a{color:var(--primary);text-decoration:none;font-weight:600;}
 
 /* RESPONSIVE */
-@media(max-width:1024px){.vs-grid{grid-template-columns:1fr;gap:0;}.vs-divider{flex-direction:row;padding:20px 0;}.vs-line{width:120px;height:1px;}.feat-cols,.nova-hl-grid{grid-template-columns:1fr;gap:32px;}.install-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:1024px){.vs-grid{grid-template-columns:1fr;gap:40px;}.feat-cols,.nova-hl-grid{grid-template-columns:1fr;gap:32px;}.install-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:768px){.nav-links{display:none;}.sec{padding:80px 0;}.sec-inner,.vs-inner,.feat-inner,.spec-inner,.install-inner{padding:0 24px;}.hero h1{font-size:2.6rem;}.vs-product img{max-height:220px;}.vs-sec{padding:80px 0 60px;}.install-grid{grid-template-columns:1fr;}.spec-table{font-size:0.82rem;}}
 </style>
 </head>
@@ -153,7 +148,7 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 
 <!-- HERO -->
 <section class="hero">
-<div class="hero-video"><video autoplay muted loop playsinline><source src="lineup-pos-zoom.mp4" type="video/mp4"></video></div>
+<div class="hero-video"><video autoplay muted loop playsinline><source src="pos-showcase.mp4" type="video/mp4"></video></div>
 <div class="hero-content">
 <div class="hero-tag">Smart POS System</div>
 <h1>결제를 넘어,<br><span class="accent-line">매장을 경영하다</span></h1>
@@ -164,8 +159,6 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 
 <!-- VS SECTION -->
 <section class="vs-sec">
-<div class="vs-video"><video autoplay muted loop playsinline><source src="pos-showcase.mp4" type="video/mp4"></video></div>
-<div class="vs-overlay"></div>
 <div class="vs-inner">
 <div class="vs-header reveal">
 <div class="sec-tag">Product Lineup</div>
@@ -179,11 +172,6 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <h3>N250 포스</h3>
 <div class="vs-copy">"모든 업종의 기본기"</div>
 <p class="vs-desc">15인치 터치스크린 올인원 POS. 음식점·카페·편의점·마트까지 업종을 가리지 않는 안정적인 주문·결제 솔루션.</p>
-</div>
-<div class="vs-divider">
-<div class="vs-line"></div>
-<div class="vs-badge-vs">VS</div>
-<div class="vs-line"></div>
 </div>
 <div class="vs-product">
 <img src="https://imupos.com/img/sub/nova_title.png" alt="NOVA 포스">
