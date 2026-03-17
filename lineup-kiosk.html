@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>배리어프리 키오스크 | 누리네트웍스</title>
+<meta name="description" content="정부 공식 인증 배리어프리 키오스크. 장애인·고령자 누구나 쉽게 사용할 수 있는 무인 주문 솔루션.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#1B3A8C;--primary-light:#2E5BDB;--accent:#C9A84C;--dark:#1d1d1f;--gray:#86868b;--light:#f5f5f7;--radius:20px;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(0,0,0,0);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid transparent;transition:all .4s;}
+.nav.scrolled{background:rgba(255,255,255,0.85);border-bottom-color:rgba(0,0,0,0.06);}
+.nav.scrolled .nl,.nav.scrolled .nav-product{color:#1d1d1f;}
+.nav.scrolled .nav-links a{color:rgba(0,0,0,0.5);}.nav.scrolled .nav-links a:hover{color:#1d1d1f;}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.nav-logo{display:flex;align-items:center;gap:6px;text-decoration:none;font-family:'Inter',sans-serif;}
+.nl{font-size:1.6rem;font-weight:700;color:#fff;transition:color .4s;}
+.nav-product{font-size:0.95rem;font-weight:700;color:#fff;letter-spacing:-0.02em;transition:color .4s;}
+.nav-links{display:flex;gap:16px;align-items:center;}
+.nav-links a{font-size:0.78rem;color:rgba(255,255,255,0.6);text-decoration:none;font-weight:500;transition:color .2s;}.nav-links a:hover{color:#fff;}
+.nav-cta{background:var(--primary);color:#fff!important;padding:7px 18px;border-radius:50px;font-weight:600!important;}
+.sec-tag{font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--primary);margin-bottom:12px;}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#000;overflow:hidden;}
+.hero-video{position:absolute;inset:0;}.hero-video video{width:100%;height:100%;object-fit:cover;opacity:0.5;}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.1) 40%,rgba(0,0,0,0.6) 100%);z-index:1;}
+.hero-content{position:relative;z-index:2;text-align:center;padding:0 40px;}
+.hero-tag{font-size:0.82rem;font-weight:600;color:var(--accent);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:16px;opacity:0;animation:fadeUp .8s ease .3s forwards;}
+.hero h1{font-size:clamp(2.8rem,7vw,5rem);font-weight:900;color:#fff;line-height:1.08;letter-spacing:-0.05em;margin-bottom:20px;opacity:0;animation:fadeUp .8s ease .5s forwards;}
+.hero h1 .accent-line{display:block;background:linear-gradient(90deg,#42A5F5,#90CAF9,#42A5F5);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 3s linear infinite;}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.hero-copy{font-size:clamp(0.92rem,1.8vw,1.12rem);color:rgba(255,255,255,0.6);line-height:2;font-weight:300;max-width:580px;margin:0 auto;opacity:0;animation:fadeUp .8s ease .7s forwards;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,0.7);font-size:0.75rem;font-weight:500;letter-spacing:0.15em;animation:scrollBounce 2s ease-in-out infinite;}
+.hero-scroll-line{width:1.5px;height:48px;background:linear-gradient(to bottom,rgba(255,255,255,0.7),transparent);border-radius:1px;}
+@keyframes scrollBounce{0%,100%{opacity:0.5;transform:translateX(-50%) translateY(0);}50%{opacity:1;transform:translateX(-50%) translateY(8px);}}
+
+/* 3D FLOATING TEXT */
+.hero-float-text{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;}
+.hft{position:absolute;font-family:'Inter',sans-serif;font-weight:900;white-space:nowrap;color:rgba(0,0,0,0.03);letter-spacing:0.05em;text-transform:uppercase;}
+.hft-1{font-size:clamp(3rem,10vw,7rem);top:5%;animation:hftScroll 30s linear infinite;}
+.hft-2{font-size:clamp(2.5rem,8vw,5.5rem);top:30%;animation:hftScroll 35s linear infinite reverse;}
+.hft-3{font-size:clamp(2.5rem,8vw,6rem);top:55%;animation:hftScroll 38s linear infinite;}
+.hft-4{font-size:clamp(3rem,10vw,7rem);top:80%;animation:hftScroll 32s linear infinite reverse;}
+@keyframes hftScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* VS SECTION - Apple Style Single Card */
+.vs-sec{background:transparent;padding:120px 0 80px;position:relative;}
+.vs-inner{max-width:1200px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
+/* FLOWING BACKGROUND WRAPPER */
+.flow-bg{background:linear-gradient(180deg,#f5f5f7 0%,#eaeff8 15%,#ffffff 30%,#f8f6f0 50%,#ffffff 70%,#eaeff8 85%,#f5f5f7 100%);position:relative;overflow:hidden;}
+.flow-bg::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 20% 30%,rgba(27,58,140,0.03) 0%,transparent 50%),radial-gradient(ellipse at 80% 70%,rgba(201,168,76,0.03) 0%,transparent 50%);pointer-events:none;z-index:0;}
+.vs-header{text-align:center;margin-bottom:60px;}
+.vs-header h2{font-size:clamp(2rem,4vw,2.8rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:12px;}
+.vs-header p{font-size:1rem;color:var(--gray);line-height:1.7;}
+.ap-card{border-radius:24px;overflow:hidden;position:relative;min-height:580px;display:flex;flex-direction:column;padding:48px 40px 0;transition:transform .4s;max-width:640px;margin:0 auto;}
+.ap-card:hover{transform:translateY(-4px);}
+.ap-card-dark{background:#1d1d1f;}
+.ap-tag{font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;color:#42A5F5;}
+.ap-card-dark h3{color:#fff;}
+.ap-card h3{font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:10px;}
+.ap-sub{font-size:1rem;font-weight:400;line-height:1.5;margin-bottom:6px;color:rgba(255,255,255,0.7);}
+.ap-price{font-size:0.85rem;font-weight:500;margin-bottom:24px;color:rgba(255,255,255,0.45);}
+.ap-img-wrap{flex:1;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;}
+.ap-img-wrap img{max-width:85%;max-height:380px;object-fit:contain;filter:drop-shadow(0 12px 40px rgba(0,0,0,0.12));transition:transform .6s;}
+.ap-card:hover .ap-img-wrap img{transform:scale(1.04) translateY(-6px);}
+
+/* FEATURE CARDS */
+.feat-sec{background:transparent;padding:100px 0;}
+.feat-inner{max-width:1200px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
+.feat-header{text-align:center;margin-bottom:48px;}.feat-header h2{font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:8px;}
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:800px;margin:0 auto;}
+.feat-card{display:flex;gap:14px;padding:18px;border-radius:14px;background:#f5f5f7;border:1px solid rgba(0,0,0,0.03);transition:all .3s;}
+.feat-card:hover{background:#fff;box-shadow:0 4px 20px rgba(0,0,0,0.06);transform:translateY(-2px);}
+.fc-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.fc-text h4{font-size:0.88rem;font-weight:700;margin-bottom:4px;}
+.fc-text p{font-size:0.78rem;color:var(--gray);line-height:1.5;}
+
+/* SPEC TABLE */
+.spec-sec{background:transparent;padding:100px 0;}
+.spec-inner{max-width:800px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
+.spec-header{text-align:center;margin-bottom:48px;}.spec-header h2{font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:8px;}
+.spec-table{width:100%;border-collapse:collapse;}
+.spec-table thead th{text-align:left;font-size:0.75rem;color:var(--gray);font-weight:600;text-transform:uppercase;letter-spacing:0.08em;padding:14px 0;border-bottom:2px solid #1d1d1f;}
+.spec-table tbody td{padding:16px 0;font-size:0.9rem;border-bottom:1px solid rgba(0,0,0,0.05);}
+.spec-table tbody td:first-child{color:var(--gray);font-weight:500;width:35%;}
+.spec-table tbody td:last-child{font-weight:600;}
+
+/* FIELD SKETCH */
+.install-sec{background:transparent;padding:100px 0;}
+.install-inner{max-width:1200px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
+.install-header{text-align:center;margin-bottom:48px;}.install-header h2{font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:8px;}.install-header p{font-size:0.95rem;color:var(--gray);line-height:1.7;}
+.install-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.install-card{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:4/3;cursor:pointer;}
+.install-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+.install-card:hover img{transform:scale(1.05);}
+.install-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 50%);z-index:1;opacity:0;transition:opacity .4s;}
+.install-card:hover .install-card-overlay{opacity:1;}
+.install-card-info{position:absolute;bottom:0;left:0;right:0;padding:24px;z-index:2;opacity:0;transform:translateY(12px);transition:all .4s;}
+.install-card:hover .install-card-info{opacity:1;transform:translateY(0);}
+.install-card-info h4{font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:10px;}
+.install-card-tags{display:flex;gap:8px;flex-wrap:wrap;}
+.install-card-tags span{font-size:1rem;font-weight:700;padding:6px 16px;border-radius:50px;background:rgba(255,255,255,0.2);backdrop-filter:blur(4px);color:#fff;}
+/* EMOJI ANIMATION */
+.fs-emoji{display:inline-block;font-size:32px;animation:swim 2s ease-in-out infinite;vertical-align:middle;}
+.fs-emoji-bounce{display:inline-block;font-size:48px;animation:bounce 1s ease-in-out infinite;position:absolute;top:20px;right:20px;z-index:3;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.3));}
+@keyframes swim{0%,100%{transform:translateX(0) scaleX(1)}50%{transform:translateX(8px) scaleX(-1)}}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+/* FIELD SKETCH MODAL */
+.fs-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:200;justify-content:center;align-items:center;padding:20px;backdrop-filter:blur(4px);}
+.fs-modal.open{display:flex;}
+.fs-modal-card{background:#fff;border-radius:20px;max-width:600px;width:100%;overflow:hidden;animation:fadeUp .4s ease;position:relative;}
+.fs-modal-img{width:100%;height:280px;object-fit:cover;}
+.fs-modal-body{padding:28px;}
+.fs-modal-body h3{font-size:1.3rem;font-weight:800;margin-bottom:6px;}
+.fs-modal-body .fsm-tags{display:flex;gap:6px;margin-bottom:16px;}
+.fs-modal-body .fsm-tags span{font-size:0.72rem;font-weight:600;padding:4px 12px;border-radius:50px;background:rgba(27,58,140,0.08);color:var(--primary);}
+.fs-modal-body p{font-size:0.92rem;color:#424245;line-height:1.8;}
+.fs-modal-close{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.9);border:none;cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;z-index:10;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:all .7s cubic-bezier(0.16,1,0.3,1);}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.footer-mini{background:#f5f5f7;text-align:center;padding:32px 40px;font-size:0.78rem;color:var(--gray);border-top:1px solid rgba(0,0,0,0.06);}
+.footer-mini a{color:var(--primary);text-decoration:none;font-weight:600;}
+
+@media(max-width:1024px){.feat-grid{grid-template-columns:1fr;}.install-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:768px){.nav-links{display:none;}.hero h1{font-size:2.6rem;}.ap-card{min-height:420px;padding:36px 28px 0;}.ap-img-wrap img{max-height:260px;}.vs-sec{padding:80px 0 60px;}.install-grid{grid-template-columns:1fr;}.spec-table{font-size:0.82rem;}.sec-inner,.vs-inner,.feat-inner,.spec-inner,.install-inner{padding:0 24px;}}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="mainNav"><div class="nav-inner">
+<a href="index.html" class="nav-logo"><span class="nl">N</span></a>
+<span class="nav-product">배리어프리 키오스크</span>
+<div class="nav-links"><a href="index.html">홈</a><a href="index.html#products">제품 라인업</a><a href="about.html">회사소개</a><a href="tel:1544-7754" class="nav-cta">1544-7754</a></div>
+</div></nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-video"><video autoplay muted loop playsinline><source src="kiosk-showcase.mp4" type="video/mp4"></video></div>
+<div class="hero-content">
+<div class="hero-tag">Barrier-Free Kiosk</div>
+<h1>누구나 쉽게,<br><span class="accent-line">차별 없는 주문의 시작</span></h1>
+<p class="hero-copy">장애인·고령자도 불편 없이 사용할 수 있는<br>정부 공식 인증 배리어프리 키오스크.<br>2026년 의무화, 지금 준비하세요.</p>
+</div>
+<div class="hero-scroll"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg><span>SCROLL</span><div class="hero-scroll-line"></div></div>
+</section>
+
+<!-- FLOWING BACKGROUND -->
+<div class="flow-bg">
+<div class="hero-float-text">
+<div class="hft hft-1">BARRIER-FREE · KIOSK · NURINETWORKS · BARRIER-FREE · KIOSK · NURINETWORKS · BARRIER-FREE · KIOSK · NURINETWORKS · </div>
+<div class="hft hft-2">접근성 · 포용 · ACCESSIBILITY · 접근성 · 포용 · ACCESSIBILITY · 접근성 · 포용 · ACCESSIBILITY · </div>
+<div class="hft hft-3">T6B · UNIVERSAL DESIGN · SMART ORDER · T6B · UNIVERSAL DESIGN · SMART ORDER · T6B · UNIVERSAL DESIGN · </div>
+<div class="hft hft-4">정부인증 · CERTIFIED · INCLUSIVE · 정부인증 · CERTIFIED · INCLUSIVE · 정부인증 · CERTIFIED · INCLUSIVE · </div>
+</div>
+
+<!-- PRODUCT CARD -->
+<section class="vs-sec">
+<div class="vs-inner">
+<div class="vs-header reveal">
+<div class="sec-tag">Product</div>
+<h2>키오스크. 모두의 주문</h2>
+<p>장애인차별금지법 대응, 정부 공식 인증 배리어프리 키오스크</p>
+</div>
+<div class="reveal">
+<div class="ap-card ap-card-dark">
+<div class="ap-tag">정부 공식 인증</div>
+<h3>배리어프리 키오스크</h3>
+<p class="ap-sub">차별 없는 무인 주문의 새로운 기준</p>
+<p class="ap-price">21.5" FHD · 점자 · 음성 안내 · 저자세 모드</p>
+<div class="ap-img-wrap"><img src="https://imupos.com/img/sub/barrierfreekiosk_title.png" alt="배리어프리 키오스크"></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FEATURES -->
+<section class="feat-sec">
+<div class="feat-inner">
+<div class="feat-header reveal">
+<div class="sec-tag">Features</div>
+<h2>제품 특징</h2>
+</div>
+<div class="feat-grid reveal">
+<div class="feat-card"><div class="fc-icon" style="background:#E6F1FB;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#185FA5" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></div><div class="fc-text"><h4>점자 라벨 & 촉각 키패드</h4><p>시각장애인이 직접 터치하고 주문할 수 있는 설계</p></div></div>
+<div class="feat-card"><div class="fc-icon" style="background:#FAEEDA;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#854F0B" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div><div class="fc-text"><h4>음성 안내 (이어잭)</h4><p>시각장애인을 위한 표준 이어폰 단자 및 음량 조절</p></div></div>
+<div class="feat-card"><div class="fc-icon" style="background:#E1F5EE;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="fc-text"><h4>저자세 모드 (휠체어)</h4><p>휠체어 사용자가 접근 가능한 높이 조절형 UI</p></div></div>
+<div class="feat-card"><div class="fc-icon" style="background:#FBEAF0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#993556" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div><div class="fc-text"><h4>고대비 모드 & 화면 확대</h4><p>저시력자·노인을 위한 명암 대비 강화 기능</p></div></div>
+<div class="feat-card"><div class="fc-icon" style="background:#EEEDFE;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#534AB7" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><div class="fc-text"><h4>21.5" FHD 디스플레이</h4><p>넓고 선명한 화면으로 직관적인 주문 경험</p></div></div>
+<div class="feat-card"><div class="fc-icon" style="background:#EAF0FF;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B3A8C" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="fc-text"><h4>멀티패드 본체 매립형</h4><p>어린이 충돌사고 방지를 위한 안전 설계</p></div></div>
+</div>
+</div>
+</section>
+
+<!-- SPEC TABLE -->
+<section class="spec-sec">
+<div class="spec-inner">
+<div class="spec-header reveal"><div class="sec-tag">Specifications</div><h2>제품 사양</h2></div>
+<div class="reveal" style="overflow-x:auto;"><table class="spec-table">
+<thead><tr><th>항목</th><th>배리어프리 키오스크 T6B</th></tr></thead>
+<tbody>
+<tr><td>디스플레이</td><td>21.5" FHD (1920×1080)</td></tr>
+<tr><td>디자인</td><td>슬림형 (측면 44mm)</td></tr>
+<tr><td>접근성</td><td>점자 라벨, 촉각 키패드, 이어잭</td></tr>
+<tr><td>저자세 모드</td><td>휠체어 사용자 대응 UI</td></tr>
+<tr><td>결제</td><td>IC/MSR, 전 VAN 지원</td></tr>
+<tr><td>멀티패드</td><td>본체 매립형 (안전 설계)</td></tr>
+<tr><td>연동</td><td>UP키오스크, UP스마트오더 (QR)</td></tr>
+<tr><td>인증</td><td>우선구매대상 지능정보제품 (정부 인증)</td></tr>
+<tr><td>설치형태</td><td>데스크형 / 스탠드형 선택</td></tr>
+</tbody>
+</table></div>
+</div>
+</section>
+
+<!-- FIELD SKETCH -->
+<section class="install-sec">
+<div class="install-inner">
+<div class="install-header reveal"><div class="sec-tag">Field Sketch</div><h2>현장 스케치</h2><p>전국 다양한 매장에서 배리어프리 키오스크를 만나보세요.</p></div>
+<div class="install-grid">
+<div class="install-card reveal" onclick="openFS('fs1')">
+<img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&q=80" alt="카페">
+<div class="install-card-overlay"></div>
+<div class="install-card-info"><h4>카페</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">☕</span> 키오스크</span></div></div>
+</div>
+<div class="install-card reveal" onclick="openFS('fs2')">
+<img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80" alt="음식점">
+<div class="install-card-overlay"></div>
+<div class="install-card-info"><h4>음식점</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">🍽️</span> 키오스크</span></div></div>
+</div>
+<div class="install-card reveal" onclick="openFS('fs3')">
+<img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=600&q=80" alt="편의점">
+<div class="install-card-overlay"></div>
+<div class="install-card-info"><h4>편의점</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">🏪</span> 키오스크</span></div></div>
+</div>
+</div>
+</div>
+</section>
+
+</div><!-- /flow-bg -->
+
+<!-- FIELD SKETCH MODAL -->
+<div class="fs-modal" id="fsModal" onclick="if(event.target===this)closeFS()">
+<button class="fs-modal-close" onclick="closeFS()">✕</button>
+<div class="fs-modal-card">
+<img class="fs-modal-img" id="fsImg" src="" alt="">
+<div class="fs-modal-body">
+<h3 id="fsTitle"></h3>
+<div class="fsm-tags" id="fsTags"></div>
+<p id="fsDesc"></p>
+</div>
+</div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer-mini"><a href="index.html">← 누리네트웍스 홈으로 돌아가기</a><br><br>© 2026 Nurinetworks. All rights reserved.</div>
+
+<script>
+// Field Sketch Data
+const fsData={
+fs1:{img:'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&q=80',title:'카페',tags:['배리어프리 키오스크'],emoji:'☕',
+desc:'프리미엄 카페에 배리어프리 키오스크를 설치했습니다. 시각장애인과 휠체어 사용자도 편리하게 음료를 주문할 수 있으며, 매장 인테리어와 조화를 이루는 슬림한 디자인이 특징입니다.'},
+fs2:{img:'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80',title:'음식점',tags:['배리어프리 키오스크'],emoji:'🍽️',
+desc:'음식점에 배리어프리 키오스크를 도입하여 모든 고객이 차별 없이 주문할 수 있는 환경을 구축했습니다. 점자 키패드와 음성 안내로 시각장애인도 독립적으로 주문합니다.'},
+fs3:{img:'https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=600&q=80',title:'편의점',tags:['배리어프리 키오스크'],emoji:'🏪',
+desc:'편의점에 배리어프리 키오스크를 설치하여 장애인차별금지법에 대응했습니다. 고대비 모드와 화면 확대 기능으로 노인 고객도 쉽게 이용합니다.'}
+};
+function openFS(id){const d=fsData[id];if(!d)return;
+document.getElementById('fsImg').src=d.img;
+document.getElementById('fsTitle').textContent=d.title;
+document.getElementById('fsTags').innerHTML=d.tags.map(t=>'<span>'+t+'</span>').join('');
+document.getElementById('fsDesc').textContent=d.desc;
+var eb=document.getElementById('fsEmoji');if(eb)eb.remove();
+var em=document.createElement('div');em.className='fs-emoji-bounce';em.id='fsEmoji';em.textContent=d.emoji;
+document.querySelector('.fs-modal-card').appendChild(em);
+document.getElementById('fsModal').classList.add('open');document.body.style.overflow='hidden';}
+function closeFS(){document.getElementById('fsModal').classList.remove('open');document.body.style.overflow='';var eb=document.getElementById('fsEmoji');if(eb)eb.remove();}
+
+window.addEventListener('scroll',function(){document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>80);});
+const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}});},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
