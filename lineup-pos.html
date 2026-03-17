@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>포스 POS | 누리네트웍스</title>
+<meta name="description" content="매장 운영의 중심, 스마트 포스 시스템. N250·NOVA 포스로 결제 그 이상의 경험을 제공합니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#1B3A8C;--primary-light:#2E5BDB;--accent:#C9A84C;--dark:#1d1d1f;--gray:#86868b;--light:#f5f5f7;--radius:20px;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(0,0,0,0);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid transparent;transition:all .4s;}
+.nav.scrolled{background:rgba(255,255,255,0.85);border-bottom-color:rgba(0,0,0,0.06);}
+.nav.scrolled .nl,.nav.scrolled .nav-product{color:#1d1d1f;}
+.nav.scrolled .nt{color:rgba(0,0,0,0.4);}.nav.scrolled .nt b{color:rgba(0,0,0,0.6);}
+.nav.scrolled .nav-links a{color:rgba(0,0,0,0.5);}.nav.scrolled .nav-links a:hover{color:#1d1d1f;}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.nav-logo{display:flex;align-items:center;gap:6px;text-decoration:none;font-family:'Inter',sans-serif;}
+.nl{font-size:1.6rem;font-weight:700;color:#fff;text-shadow:1px 1px 0 rgba(0,0,0,0.3);transition:color .4s;}
+.nt{font-size:0.7rem;color:rgba(255,255,255,0.5);font-weight:300;transition:color .4s;}.nt b{font-weight:600;color:rgba(255,255,255,0.7);transition:color .4s;}
+.nav-product{font-size:0.95rem;font-weight:700;color:#fff;letter-spacing:-0.02em;transition:color .4s;}
+.nav-links{display:flex;gap:16px;align-items:center;}
+.nav-links a{font-size:0.78rem;color:rgba(255,255,255,0.6);text-decoration:none;font-weight:500;transition:color .2s;}.nav-links a:hover{color:#fff;}
+.nav-cta{background:var(--primary);color:#fff!important;padding:7px 18px;border-radius:50px;font-weight:600!important;}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#000;overflow:hidden;}
+.hero-video{position:absolute;inset:0;}.hero-video video{width:100%;height:100%;object-fit:cover;opacity:0.5;}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.1) 40%,rgba(0,0,0,0.6) 100%);z-index:1;}
+.hero-content{position:relative;z-index:2;text-align:center;padding:0 40px;}
+.hero-tag{font-size:0.82rem;font-weight:600;color:var(--accent);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:16px;opacity:0;animation:fadeUp .8s ease .3s forwards;}
+.hero h1{font-size:clamp(2.8rem,7vw,5rem);font-weight:900;color:#fff;line-height:1.08;letter-spacing:-0.05em;margin-bottom:20px;opacity:0;animation:fadeUp .8s ease .5s forwards;}
+.hero h1 .accent-line{display:block;background:linear-gradient(90deg,#42A5F5,#90CAF9,#42A5F5);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 3s linear infinite;}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.hero-copy{font-size:clamp(1rem,2vw,1.25rem);color:rgba(255,255,255,0.6);line-height:1.8;font-weight:300;max-width:500px;margin:0 auto;opacity:0;animation:fadeUp .8s ease .7s forwards;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,0.3);font-size:0.7rem;letter-spacing:0.12em;animation:pulse 2s infinite;}
+.hero-scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,0.5),transparent);}
+@keyframes pulse{0%,100%{opacity:0.3}50%{opacity:0.8}}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(50px);transition:all .9s cubic-bezier(0.16,1,0.3,1);}.reveal.visible{opacity:1;transform:translateY(0);}
+.sec{padding:100px 0;}.sec-inner{max-width:1200px;margin:0 auto;padding:0 40px;}
+.sec-tag{font-size:0.72rem;font-weight:600;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;}
+
+/* VS SECTION */
+.vs-sec{position:relative;padding:120px 0 80px;overflow:hidden;}
+.vs-video{position:absolute;inset:0;z-index:0;}.vs-video video{width:100%;height:100%;object-fit:cover;opacity:0.25;}
+.vs-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(245,245,247,0.85) 0%,rgba(245,245,247,0.7) 50%,rgba(245,245,247,0.9) 100%);z-index:1;}
+.vs-inner{max-width:1200px;margin:0 auto;padding:0 40px;position:relative;z-index:2;}
+.vs-header{text-align:center;margin-bottom:60px;}
+.vs-header h2{font-size:clamp(2rem,4vw,2.8rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:12px;}
+.vs-header p{font-size:1rem;color:var(--gray);line-height:1.7;}
+.vs-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:center;}
+.vs-product{text-align:center;padding:40px 32px;position:relative;}
+.vs-product img{max-height:320px;max-width:100%;object-fit:contain;filter:drop-shadow(0 20px 50px rgba(0,0,0,0.1));transition:transform .6s;margin-bottom:24px;}
+.vs-product:hover img{transform:scale(1.06) translateY(-8px);}
+.vs-badge{display:inline-block;font-size:0.68rem;font-weight:700;padding:4px 14px;border-radius:50px;letter-spacing:0.05em;margin-bottom:12px;}
+.vs-badge-best{background:rgba(27,58,140,0.08);color:var(--primary);}
+.vs-badge-premium{background:rgba(201,168,76,0.12);color:#8B7326;}
+.vs-product h3{font-size:1.6rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:8px;}
+.vs-product .vs-copy{font-family:'Playfair Display',serif;font-size:1.1rem;font-style:italic;color:var(--gray);font-weight:400;margin-bottom:12px;}
+.vs-product .vs-desc{font-size:0.88rem;color:#424245;line-height:1.7;max-width:360px;margin:0 auto;}
+.vs-divider{display:flex;flex-direction:column;align-items:center;padding:0 20px;}
+.vs-line{width:1px;height:120px;background:linear-gradient(to bottom,transparent,#d2d2d7,transparent);}
+.vs-badge-vs{width:52px;height:52px;border-radius:50%;background:#1d1d1f;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-size:0.85rem;font-weight:800;letter-spacing:0.02em;margin:16px 0;box-shadow:0 4px 20px rgba(0,0,0,0.15);}
+
+/* FEATURE CARDS */
+.feat-sec{background:#fff;padding:100px 0;}
+.feat-inner{max-width:1200px;margin:0 auto;padding:0 40px;}
+.feat-header{text-align:center;margin-bottom:48px;}
+.feat-header h2{font-size:2.2rem;font-weight:800;letter-spacing:-0.03em;}
+.feat-cols{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+.feat-col-title{font-size:1.1rem;font-weight:700;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid #1d1d1f;display:flex;align-items:center;gap:8px;}
+.feat-col-title .fcb{font-size:0.65rem;font-weight:700;padding:3px 10px;border-radius:50px;}
+.feat-cards{display:flex;flex-direction:column;gap:12px;}
+.feat-card{display:flex;gap:14px;padding:18px;border-radius:14px;background:#f5f5f7;border:1px solid rgba(0,0,0,0.03);transition:all .3s;}
+.feat-card:hover{background:#fff;box-shadow:0 8px 30px rgba(0,0,0,0.06);transform:translateX(4px);}
+.fc-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.fc-text h4{font-size:0.92rem;font-weight:700;margin-bottom:3px;}
+.fc-text p{font-size:0.78rem;color:var(--gray);line-height:1.5;}
+
+/* NOVA HIGHLIGHT */
+.nova-dark{background:#0a0f1a;color:#fff;padding:100px 0;}
+.nova-dark .feat-col-title{color:#fff;border-bottom-color:rgba(255,255,255,0.2);}
+.nova-dark .feat-card{background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.06);}
+.nova-dark .feat-card:hover{background:rgba(255,255,255,0.1);box-shadow:0 8px 30px rgba(0,0,0,0.3);}
+.nova-dark .fc-text p{color:rgba(255,255,255,0.45);}
+.nova-hl-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-bottom:60px;}
+.nova-hl-img{text-align:center;}
+.nova-hl-img img{max-width:100%;max-height:300px;object-fit:contain;filter:drop-shadow(0 16px 40px rgba(0,0,0,0.4));transition:transform .5s;}
+.nova-hl-img:hover img{transform:scale(1.04);}
+.nova-hl-text h3{font-size:1.8rem;font-weight:800;margin-bottom:12px;letter-spacing:-0.02em;}
+.nova-hl-text p{font-size:0.95rem;color:rgba(255,255,255,0.5);line-height:1.8;}
+.nova-hl-text .nhl-tag{font-size:0.7rem;font-weight:600;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;}
+
+/* SPEC TABLE */
+.spec-sec{background:#fff;padding:100px 0;}
+.spec-inner{max-width:1000px;margin:0 auto;padding:0 40px;}
+.spec-header{text-align:center;margin-bottom:40px;}
+.spec-header h2{font-size:2.2rem;font-weight:800;letter-spacing:-0.03em;}
+.spec-table{width:100%;border-collapse:collapse;}
+.spec-table thead th{text-align:left;font-size:0.75rem;color:var(--gray);font-weight:600;text-transform:uppercase;letter-spacing:0.08em;padding:14px 0;border-bottom:2px solid #1d1d1f;}
+.spec-table thead th:not(:first-child){text-align:center;}
+.spec-table tbody td{padding:16px 0;font-size:0.9rem;border-bottom:1px solid rgba(0,0,0,0.05);}
+.spec-table tbody td:first-child{color:var(--gray);font-weight:500;width:30%;}
+.spec-table tbody td:not(:first-child){text-align:center;font-weight:600;}
+
+/* INSTALL */
+.install-sec{background:#f5f5f7;padding:100px 0;}
+.install-inner{max-width:1200px;margin:0 auto;padding:0 40px;}
+.install-header{text-align:center;margin-bottom:40px;}
+.install-header h2{font-size:2.2rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:12px;}
+.install-header p{font-size:0.95rem;color:var(--gray);}
+.install-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.install-card{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:4/3;background:#e8e8ed;cursor:pointer;transition:all .4s;}
+.install-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,0.12);}
+.install-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+.install-card:hover img{transform:scale(1.06);}
+.install-card-overlay{position:absolute;inset:0;background:rgba(0,0,0,0);z-index:1;transition:background .5s;}
+.install-card:hover .install-card-overlay{background:rgba(0,0,0,0.55);}
+.install-card-info{position:absolute;bottom:0;left:0;right:0;padding:20px;z-index:2;opacity:0;transform:translateY(12px);transition:all .4s;}
+.install-card:hover .install-card-info{opacity:1;transform:translateY(0);}
+.install-card-info h4{font-size:1rem;font-weight:700;color:#fff;margin-bottom:6px;}
+.install-card-tags{display:flex;gap:6px;flex-wrap:wrap;}
+.install-card-tags span{font-size:0.68rem;font-weight:600;padding:3px 10px;border-radius:50px;background:rgba(255,255,255,0.15);backdrop-filter:blur(4px);color:rgba(255,255,255,0.9);}
+.install-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:4/3;background:#e8e8ed;border-radius:16px;color:#999;font-size:0.82rem;text-align:center;line-height:1.6;padding:20px;gap:8px;}
+.install-placeholder svg{opacity:0.3;}
+
+/* FOOTER */
+.footer-mini{background:#f5f5f7;text-align:center;padding:32px 40px;font-size:0.78rem;color:var(--gray);border-top:1px solid rgba(0,0,0,0.06);}
+.footer-mini a{color:var(--primary);text-decoration:none;font-weight:600;}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.vs-grid{grid-template-columns:1fr;gap:0;}.vs-divider{flex-direction:row;padding:20px 0;}.vs-line{width:120px;height:1px;}.feat-cols,.nova-hl-grid{grid-template-columns:1fr;gap:32px;}.install-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:768px){.nav-links{display:none;}.sec{padding:80px 0;}.sec-inner,.vs-inner,.feat-inner,.spec-inner,.install-inner{padding:0 24px;}.hero h1{font-size:2.6rem;}.vs-product img{max-height:220px;}.vs-sec{padding:80px 0 60px;}.install-grid{grid-template-columns:1fr;}.spec-table{font-size:0.82rem;}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav"><div class="nav-inner">
+<a href="index.html" class="nav-logo"><span class="nl">N</span><span class="nt"><b>nuri</b>networkspay</span></a>
+<span class="nav-product">포스 POS</span>
+<div class="nav-links"><a href="index.html">홈</a><a href="index.html#products">제품 라인업</a><a href="about.html">회사소개</a><a href="tel:1544-7754" class="nav-cta">1544-7754</a></div>
+</div></nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-video"><video autoplay muted loop playsinline><source src="lineup-pos-zoom.mp4" type="video/mp4"></video></div>
+<div class="hero-content">
+<div class="hero-tag">Smart POS System</div>
+<h1>결제를 넘어,<br><span class="accent-line">매장을 경영하다</span></h1>
+<p class="hero-copy">하루 수백 건의 주문, 수천만 원의 매출.<br>그 모든 흐름의 중심에 포스가 있습니다.</p>
+</div>
+<div class="hero-scroll"><span>SCROLL</span><div class="hero-scroll-line"></div></div>
+</section>
+
+<!-- VS SECTION -->
+<section class="vs-sec">
+<div class="vs-video"><video autoplay muted loop playsinline><source src="pos-showcase.mp4" type="video/mp4"></video></div>
+<div class="vs-overlay"></div>
+<div class="vs-inner">
+<div class="vs-header reveal">
+<div class="sec-tag">Product Lineup</div>
+<h2>두 가지 포스, 하나의 완벽</h2>
+<p>매장 규모와 스타일에 맞는 최적의 포스를 선택하세요.</p>
+</div>
+<div class="vs-grid reveal">
+<div class="vs-product">
+<img src="https://imupos.com/img/sub/250series_title.png" alt="N250 포스">
+<div class="vs-badge vs-badge-best">BEST SELLER</div>
+<h3>N250 포스</h3>
+<div class="vs-copy">"모든 업종의 기본기"</div>
+<p class="vs-desc">15인치 터치스크린 올인원 POS. 음식점·카페·편의점·마트까지 업종을 가리지 않는 안정적인 주문·결제 솔루션.</p>
+</div>
+<div class="vs-divider">
+<div class="vs-line"></div>
+<div class="vs-badge-vs">VS</div>
+<div class="vs-line"></div>
+</div>
+<div class="vs-product">
+<img src="https://imupos.com/img/sub/nova_title.png" alt="NOVA 포스">
+<div class="vs-badge vs-badge-premium">PREMIUM</div>
+<h3>NOVA 포스</h3>
+<div class="vs-copy">"혁신을 입다"</div>
+<p class="vs-desc">울트라 슬림 디자인 + 옵티컬 본딩. 알루미늄 다이캐스팅 설계의 하이엔드 포스. 프리미엄 매장에 최적화.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FEATURE CARDS - 좌우 비교 -->
+<section class="feat-sec">
+<div class="feat-inner">
+<div class="feat-header reveal">
+<div class="sec-tag">Features</div>
+<h2>제품 특징</h2>
+</div>
+<div class="feat-cols reveal">
+<!-- N250 -->
+<div>
+<div class="feat-col-title"><span class="fcb" style="background:rgba(27,58,140,0.08);color:var(--primary);">N250</span> N250 포스</div>
+<div class="feat-cards">
+<div class="feat-card"><div class="fc-icon" style="background:#EAF0FF;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B3A8C" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><div class="fc-text"><h4>15인치 터치스크린</h4><p>넓은 화면, 직관적 UI로 빠른 주문·결제</p></div></div>
+<div class="feat-card"><div class="fc-icon" style="background:#E1F5EE;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div><div class="fc-text"><h4>UP포스 솔루션 연동</h4><p>키오스크·테이블오더·KDS 올인원 통합</p></div></div>
+<div class="feat-card"><div class="fc-icon" style="background:#FAEEDA;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#854F0B" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="fc-text"><h4>안정적 장시간 운영</h4><p>16시간+ 연속 사용, 끄떡없는 내구성</p></div></div>
+<div class="feat-card"><div class="fc-icon" style="background:#FBEAF0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#993556" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><div class="fc-text"><h4>클라우드 매출 관리</h4><p>IMU 클라우드로 어디서든 실시간 확인</p></div></div>
+<div class="feat-card"><div class="fc-icon" style="background:#EEEDFE;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#534AB7" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div class="fc-text"><h4>Windows / Android</h4><p>업종·환경에 맞는 OS 선택 가능</p></div></div>
+</div>
+</div>
+<!-- NOVA -->
+<div>
+<div class="feat-col-title"><span class="fcb" style="background:rgba(201,168,76,0.12);color:#8B7326;">PREMIUM</span> NOVA 포스</div>
+<div class="feat-cards">
+<div class="feat-card"><div class="fc-icon" style="background:#E6F1FB;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#185FA5" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><div class="fc-text"><h4>옵티컬 본딩 디스플레이</h4><p>눈부심 감소, 장시간 사용에도 눈 피로 최소</p></div></div>
+<div class="feat-card"><div class="fc-icon" style="background:#FAEEDA;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#854F0B" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div class="fc-text"><h4>울트라 슬림 투톤 디자인</h4><p>두 배 얇아진 베젤, 매장 인테리어와 조화</p></div></div>
+<div class="feat-card"><div class="fc-icon" style="background:#E1F5EE;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg></div><div class="fc-text"><h4>알루미늄 다이캐스팅</h4><p>독자적 냉각 기술로 발열 관리 극대화</p></div></div>
+<div class="feat-card"><div class="fc-icon" style="background:#FBEAF0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#993556" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><div class="fc-text"><h4>Intel® 고성능 프로세서</h4><p>대규모 메뉴·복잡한 주문도 빠르게 처리</p></div></div>
+<div class="feat-card"><div class="fc-icon" style="background:#EEEDFE;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#534AB7" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><div class="fc-text"><h4>프랜차이즈 통합 관리</h4><p>다점포 클라우드 매출·재고 일괄 관리</p></div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SPEC COMPARISON -->
+<section class="spec-sec">
+<div class="spec-inner">
+<div class="spec-header reveal"><div class="sec-tag">Specifications</div><h2>제품 사양 비교</h2></div>
+<div class="reveal" style="overflow-x:auto;"><table class="spec-table">
+<thead><tr><th>항목</th><th>N250 포스</th><th>NOVA 포스</th></tr></thead>
+<tbody>
+<tr><td>디스플레이</td><td>15인치 터치스크린</td><td>15인치 옵티컬 본딩</td></tr>
+<tr><td>디자인</td><td>올인원 스탠다드</td><td>울트라 슬림 투톤</td></tr>
+<tr><td>본체 설계</td><td>내구성 중심</td><td>알루미늄 다이캐스팅</td></tr>
+<tr><td>냉각</td><td>기본 냉각</td><td>독자적 냉각 기술</td></tr>
+<tr><td>프로세서</td><td>안정형 프로세서</td><td>Intel® 고성능 프로세서</td></tr>
+<tr><td>OS</td><td>Windows / Android</td><td>Windows / Android</td></tr>
+<tr><td>연결</td><td>유선LAN, WiFi, USB</td><td>LAN, WiFi, Bluetooth</td></tr>
+<tr><td>주변기기</td><td>고객모니터, 프린터, 금전함</td><td>고객모니터, 프린터, 금전함</td></tr>
+<tr><td>소프트웨어</td><td>UP포스 솔루션</td><td>UP포스 솔루션</td></tr>
+<tr><td>적합 업종</td><td>음식점, 카페, 편의점, 마트</td><td>프리미엄 카페, 프랜차이즈, 뷰티</td></tr>
+<tr><td>제조사</td><td colspan="2">아임유 (IMU)</td></tr>
+</tbody>
+</table></div>
+</div>
+</section>
+
+<!-- FIELD SKETCH -->
+<section class="install-sec">
+<div class="install-inner">
+<div class="install-header reveal"><div class="sec-tag">Field Sketch</div><h2>현장 스케치</h2><p>전국 다양한 매장에서 누리네트웍스 포스를 만나보세요.</p></div>
+<div class="install-grid">
+<div class="install-placeholder reveal"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>블로그 현장사진<br>업로드 예정</div>
+<div class="install-placeholder reveal"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>블로그 현장사진<br>업로드 예정</div>
+<div class="install-placeholder reveal"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>블로그 현장사진<br>업로드 예정</div>
+<div class="install-placeholder reveal"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>블로그 현장사진<br>업로드 예정</div>
+<div class="install-placeholder reveal"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>블로그 현장사진<br>업로드 예정</div>
+<div class="install-placeholder reveal"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>블로그 현장사진<br>업로드 예정</div>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer-mini"><a href="index.html">← 누리네트웍스 홈으로 돌아가기</a><br><br>© 2026 Nurinetworks. All rights reserved.</div>
+
+<script>
+window.addEventListener('scroll',function(){document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>80);});
+const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}});},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
