@@ -38,11 +38,23 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 .hero h1{font-size:clamp(2.8rem,7vw,5rem);font-weight:900;color:#fff;line-height:1.08;letter-spacing:-0.05em;margin-bottom:20px;opacity:0;animation:fadeUp .8s ease .5s forwards;}
 .hero h1 .accent-line{display:block;background:linear-gradient(90deg,#42A5F5,#90CAF9,#42A5F5);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 3s linear infinite;}
 @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
-.hero-copy{font-size:clamp(1rem,2vw,1.25rem);color:rgba(255,255,255,0.6);line-height:1.8;font-weight:300;max-width:500px;margin:0 auto;opacity:0;animation:fadeUp .8s ease .7s forwards;}
+.hero-copy{font-size:clamp(0.92rem,1.8vw,1.12rem);color:rgba(255,255,255,0.6);line-height:2;font-weight:300;max-width:580px;margin:0 auto;opacity:0;animation:fadeUp .8s ease .7s forwards;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,0.3);font-size:0.7rem;letter-spacing:0.12em;animation:pulse 2s infinite;}
-.hero-scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,0.5),transparent);}
-@keyframes pulse{0%,100%{opacity:0.3}50%{opacity:0.8}}
+.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,0.7);font-size:0.75rem;font-weight:500;letter-spacing:0.15em;animation:scrollBounce 2s ease-in-out infinite;}
+.hero-scroll-line{width:1.5px;height:48px;background:linear-gradient(to bottom,rgba(255,255,255,0.7),transparent);border-radius:1px;}
+@keyframes scrollBounce{0%,100%{opacity:0.5;transform:translateX(-50%) translateY(0);}50%{opacity:1;transform:translateX(-50%) translateY(8px);}}
+/* 3D FLOATING TEXT */
+.hero-float-text{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;}
+.hft{position:absolute;font-family:'Inter',sans-serif;font-weight:900;white-space:nowrap;color:rgba(0,0,0,0.03);letter-spacing:0.05em;text-transform:uppercase;}
+.hft-1{font-size:clamp(3rem,10vw,7rem);top:5%;animation:hftScroll 30s linear infinite;}
+.hft-2{font-size:clamp(2.5rem,8vw,5.5rem);top:30%;animation:hftScroll 35s linear infinite reverse;}
+.hft-3{font-size:clamp(2.5rem,8vw,6rem);top:55%;animation:hftScroll 38s linear infinite;}
+.hft-4{font-size:clamp(3rem,10vw,7rem);top:80%;animation:hftScroll 32s linear infinite reverse;}
+@keyframes hftScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+/* NUMBER ROLLING */
+.roll-wrap{display:inline-block;overflow:hidden;height:1.3em;vertical-align:bottom;}
+.roll-inner{display:flex;flex-direction:column;transition:transform 1.5s cubic-bezier(0.16,1,0.3,1);}
+.roll-inner span{height:1.3em;line-height:1.3em;}
 
 /* REVEAL */
 .reveal{opacity:0;transform:translateY(50px);transition:all .9s cubic-bezier(0.16,1,0.3,1);}.reveal.visible{opacity:1;transform:translateY(0);}
@@ -50,8 +62,11 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 .sec-tag{font-size:0.72rem;font-weight:600;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;}
 
 /* VS SECTION */
-.vs-sec{background:#f5f5f7;padding:120px 0 80px;overflow:hidden;}
-.vs-inner{max-width:1200px;margin:0 auto;padding:0 40px;}
+.vs-sec{background:transparent;padding:120px 0 80px;position:relative;}
+.vs-inner{max-width:1200px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
+/* FLOWING BACKGROUND WRAPPER */
+.flow-bg{background:linear-gradient(180deg,#f5f5f7 0%,#eaeff8 15%,#ffffff 30%,#f8f6f0 50%,#ffffff 70%,#eaeff8 85%,#f5f5f7 100%);position:relative;overflow:hidden;}
+.flow-bg::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 20% 30%,rgba(27,58,140,0.03) 0%,transparent 50%),radial-gradient(ellipse at 80% 70%,rgba(201,168,76,0.03) 0%,transparent 50%);pointer-events:none;z-index:0;}
 .vs-header{text-align:center;margin-bottom:60px;}
 .vs-header h2{font-size:clamp(2rem,4vw,2.8rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:12px;}
 .vs-header p{font-size:1rem;color:var(--gray);line-height:1.7;}
@@ -67,8 +82,8 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 .vs-product .vs-desc{font-size:0.88rem;color:#424245;line-height:1.7;max-width:360px;margin:0 auto;}
 
 /* FEATURE CARDS */
-.feat-sec{background:#fff;padding:100px 0;}
-.feat-inner{max-width:1200px;margin:0 auto;padding:0 40px;}
+.feat-sec{background:transparent;padding:100px 0;}
+.feat-inner{max-width:1200px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
 .feat-header{text-align:center;margin-bottom:48px;}
 .feat-header h2{font-size:2.2rem;font-weight:800;letter-spacing:-0.03em;}
 .feat-cols{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
@@ -96,8 +111,8 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 .nova-hl-text .nhl-tag{font-size:0.7rem;font-weight:600;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;}
 
 /* SPEC TABLE */
-.spec-sec{background:#fff;padding:100px 0;}
-.spec-inner{max-width:1000px;margin:0 auto;padding:0 40px;}
+.spec-sec{background:transparent;padding:100px 0;}
+.spec-inner{max-width:1000px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
 .spec-header{text-align:center;margin-bottom:40px;}
 .spec-header h2{font-size:2.2rem;font-weight:800;letter-spacing:-0.03em;}
 .spec-table{width:100%;border-collapse:collapse;}
@@ -108,8 +123,8 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 .spec-table tbody td:not(:first-child){text-align:center;font-weight:600;}
 
 /* INSTALL */
-.install-sec{background:#f5f5f7;padding:100px 0;}
-.install-inner{max-width:1200px;margin:0 auto;padding:0 40px;}
+.install-sec{background:transparent;padding:100px 0;}
+.install-inner{max-width:1200px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
 .install-header{text-align:center;margin-bottom:40px;}
 .install-header h2{font-size:2.2rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:12px;}
 .install-header p{font-size:0.95rem;color:var(--gray);}
@@ -127,6 +142,22 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 .install-card-tags span{font-size:0.68rem;font-weight:600;padding:3px 10px;border-radius:50px;background:rgba(255,255,255,0.15);backdrop-filter:blur(4px);color:rgba(255,255,255,0.9);}
 .install-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:4/3;background:#e8e8ed;border-radius:16px;color:#999;font-size:0.82rem;text-align:center;line-height:1.6;padding:20px;gap:8px;}
 .install-placeholder svg{opacity:0.3;}
+/* EMOJI ANIMATION */
+.fs-emoji{display:inline-block;font-size:36px;animation:swim 2s ease-in-out infinite;}
+.fs-emoji-bounce{display:inline-block;font-size:48px;animation:bounce 1s ease-in-out infinite;position:absolute;top:20px;right:20px;z-index:3;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.3));}
+@keyframes swim{0%,100%{transform:translateX(0) scaleX(1)}50%{transform:translateX(8px) scaleX(-1)}}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+/* FIELD SKETCH MODAL */
+.fs-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:200;justify-content:center;align-items:center;padding:20px;backdrop-filter:blur(4px);}
+.fs-modal.open{display:flex;}
+.fs-modal-card{background:#fff;border-radius:20px;max-width:600px;width:100%;overflow:hidden;animation:fadeUp .4s ease;position:relative;}
+.fs-modal-img{width:100%;height:280px;object-fit:cover;}
+.fs-modal-body{padding:28px;}
+.fs-modal-body h3{font-size:1.3rem;font-weight:800;margin-bottom:6px;}
+.fs-modal-body .fsm-tags{display:flex;gap:6px;margin-bottom:16px;}
+.fs-modal-body .fsm-tags span{font-size:0.72rem;font-weight:600;padding:4px 12px;border-radius:50px;background:rgba(27,58,140,0.08);color:var(--primary);}
+.fs-modal-body p{font-size:0.92rem;color:#424245;line-height:1.8;}
+.fs-modal-close{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.9);border:none;cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;z-index:10;}
 
 /* FOOTER */
 .footer-mini{background:#f5f5f7;text-align:center;padding:32px 40px;font-size:0.78rem;color:var(--gray);border-top:1px solid rgba(0,0,0,0.06);}
@@ -151,11 +182,20 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <div class="hero-video"><video autoplay muted loop playsinline><source src="pos-showcase.mp4" type="video/mp4"></video></div>
 <div class="hero-content">
 <div class="hero-tag">Smart POS System</div>
-<h1>결제를 넘어,<br><span class="accent-line">매장을 경영하다</span></h1>
-<p class="hero-copy">하루 수백 건의 주문, 수천만 원의 매출.<br>그 모든 흐름의 중심에 포스가 있습니다.</p>
+<h1>결제를 넘어,<br><span class="accent-line">매장의 데이터를 경영하다</span></h1>
+<p class="hero-copy">하루 수백 건의 주문과 결제 내역은 단순한 숫자가 아닙니다.<br>실시간 매출 분석부터 체계적인 매장 관리까지.<br>흩어진 데이터를 모아 비즈니스를 성장시키는<br>확실한 인사이트로 바꿉니다.</p>
 </div>
-<div class="hero-scroll"><span>SCROLL</span><div class="hero-scroll-line"></div></div>
+<div class="hero-scroll"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg><span>SCROLL</span><div class="hero-scroll-line"></div></div>
 </section>
+
+<!-- FLOWING BACKGROUND -->
+<div class="flow-bg">
+<div class="hero-float-text">
+<div class="hft hft-1">SMART POS · NURINETWORKS · POINT OF SALE · SMART POS · NURINETWORKS · POINT OF SALE · SMART POS · NURINETWORKS · </div>
+<div class="hft hft-2">N250 · NOVA · DATA DRIVEN · N250 · NOVA · DATA DRIVEN · N250 · NOVA · DATA DRIVEN · N250 · NOVA · DATA DRIVEN · </div>
+<div class="hft hft-3">결제의 중심 · 매장의 파트너 · SMART PAYMENT · 결제의 중심 · 매장의 파트너 · SMART PAYMENT · 결제의 중심 · 매장의 파트너 · </div>
+<div class="hft hft-4">PREMIUM · BEST SELLER · INNOVATION · PREMIUM · BEST SELLER · INNOVATION · PREMIUM · BEST SELLER · INNOVATION · </div>
+</div>
 
 <!-- VS SECTION -->
 <section class="vs-sec">
@@ -166,19 +206,19 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <p>매장 규모와 스타일에 맞는 최적의 포스를 선택하세요.</p>
 </div>
 <div class="vs-grid reveal">
-<div class="vs-product">
+<div class="vs-product" style="background:#fff;border-radius:20px;padding:40px 32px;box-shadow:0 4px 24px rgba(0,0,0,0.06);">
 <img src="https://imupos.com/img/sub/250series_title.png" alt="N250 포스">
 <div class="vs-badge vs-badge-best">BEST SELLER</div>
 <h3>N250 포스</h3>
 <div class="vs-copy">"모든 업종의 기본기"</div>
-<p class="vs-desc">15인치 터치스크린 올인원 POS. 음식점·카페·편의점·마트까지 업종을 가리지 않는 안정적인 주문·결제 솔루션.</p>
+<p class="vs-desc">브랜드 가치를 높여주는 스마트한 디자인. 강력한 고성능 프로세서 탑재. 메모리 8G 탑재로 매장+배달 끊김 없는 운영.</p>
 </div>
-<div class="vs-product">
-<img src="https://imupos.com/img/sub/nova_title.png" alt="NOVA 포스">
+<div class="vs-product" style="background:#1d1d1f;border-radius:20px;padding:40px 32px;">
+<img src="nova-pos-dark.png" alt="NOVA 포스">
 <div class="vs-badge vs-badge-premium">PREMIUM</div>
-<h3>NOVA 포스</h3>
-<div class="vs-copy">"혁신을 입다"</div>
-<p class="vs-desc">울트라 슬림 디자인 + 옵티컬 본딩. 알루미늄 다이캐스팅 설계의 하이엔드 포스. 프리미엄 매장에 최적화.</p>
+<h3 style="color:#fff;">NOVA 포스</h3>
+<div class="vs-copy" style="color:rgba(255,255,255,0.4);">"모든 포스의 트렌드 리더"</div>
+<p class="vs-desc" style="color:rgba(255,255,255,0.55);">혁신적 슬림 디자인. 선명하고 편안한 화면. 알루미늄 다이캐스팅 설계.</p>
 </div>
 </div>
 </div>
@@ -196,12 +236,11 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <div>
 <div class="feat-col-title"><span class="fcb" style="background:rgba(27,58,140,0.08);color:var(--primary);">N250</span> N250 포스</div>
 <div class="feat-cards">
-<div class="feat-card"><div class="fc-icon" style="background:#EAF0FF;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B3A8C" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><div class="fc-text"><h4>15인치 터치스크린</h4><p>넓은 화면, 직관적 UI로 빠른 주문·결제</p></div></div>
+<div class="feat-card"><div class="fc-icon" style="background:#EAF0FF;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B3A8C" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><div class="fc-text"><h4>15.6인치 터치스크린</h4><p>넓은 화면, 직관적 UI로 빠른 주문·결제</p></div></div>
 <div class="feat-card"><div class="fc-icon" style="background:#E1F5EE;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div><div class="fc-text"><h4>UP포스 솔루션 연동</h4><p>키오스크·테이블오더·KDS 올인원 통합</p></div></div>
 <div class="feat-card"><div class="fc-icon" style="background:#FAEEDA;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#854F0B" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="fc-text"><h4>안정적 장시간 운영</h4><p>16시간+ 연속 사용, 끄떡없는 내구성</p></div></div>
 <div class="feat-card"><div class="fc-icon" style="background:#FBEAF0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#993556" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><div class="fc-text"><h4>클라우드 매출 관리</h4><p>IMU 클라우드로 어디서든 실시간 확인</p></div></div>
-<div class="feat-card"><div class="fc-icon" style="background:#EEEDFE;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#534AB7" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div class="fc-text"><h4>Windows / Android</h4><p>업종·환경에 맞는 OS 선택 가능</p></div></div>
-</div>
+<div class="feat-card"><div class="fc-icon" style="background:#EEEDFE;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#534AB7" stroke-width="2"><rect x="1" y="6" width="22" height="12" rx="2"/><path d="M6 10h0M10 10h0M14 10h0M18 10h0M6 14h0M10 14h0M14 14h0M18 14h0"/></svg></div><div class="fc-text"><h4>풍부한 입출력 인터페이스</h4><p>6시리얼, 6USB로 다양한 주변기기 확장</p></div></div>
 </div>
 <!-- NOVA -->
 <div>
@@ -215,7 +254,6 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 </div>
 </div>
 </div>
-</div>
 </section>
 
 <!-- SPEC COMPARISON -->
@@ -225,17 +263,15 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <div class="reveal" style="overflow-x:auto;"><table class="spec-table">
 <thead><tr><th>항목</th><th>N250 포스</th><th>NOVA 포스</th></tr></thead>
 <tbody>
-<tr><td>디스플레이</td><td>15인치 터치스크린</td><td>15인치 옵티컬 본딩</td></tr>
-<tr><td>디자인</td><td>올인원 스탠다드</td><td>울트라 슬림 투톤</td></tr>
-<tr><td>본체 설계</td><td>내구성 중심</td><td>알루미늄 다이캐스팅</td></tr>
-<tr><td>냉각</td><td>기본 냉각</td><td>독자적 냉각 기술</td></tr>
-<tr><td>프로세서</td><td>안정형 프로세서</td><td>Intel® 고성능 프로세서</td></tr>
-<tr><td>OS</td><td>Windows / Android</td><td>Windows / Android</td></tr>
-<tr><td>연결</td><td>유선LAN, WiFi, USB</td><td>LAN, WiFi, Bluetooth</td></tr>
-<tr><td>주변기기</td><td>고객모니터, 프린터, 금전함</td><td>고객모니터, 프린터, 금전함</td></tr>
-<tr><td>소프트웨어</td><td>UP포스 솔루션</td><td>UP포스 솔루션</td></tr>
-<tr><td>적합 업종</td><td>음식점, 카페, 편의점, 마트</td><td>프리미엄 카페, 프랜차이즈, 뷰티</td></tr>
-<tr><td>제조사</td><td colspan="2">아임유 (IMU)</td></tr>
+<tr><td>디자인</td><td>부드러운 곡선 스탠드<br><span style="font-size:0.78rem;color:var(--gray);font-weight:400;">조립/분해 쉬운 3단 구조, 블랙&화이트 투톤</span></td><td>울트라 슬림 모던 디자인<br><span style="font-size:0.78rem;color:var(--gray);font-weight:400;">알루미늄 다이캐스팅, 모던 투톤</span></td></tr>
+<tr><td>디스플레이</td><td>15" Glass 터치 / 15.6" FHD 옵션<br><span style="font-size:0.78rem;color:var(--gray);font-weight:400;">PCAP 10포인트 멀티터치, 스크래치 방지</span></td><td>15" / 15.6" 옵티컬 본딩<br><span style="font-size:0.78rem;color:var(--gray);font-weight:400;">PCAP 10포인트, 눈부심 방지</span></td></tr>
+<tr><td>프로세서</td><td>Intel® N95<br><span style="font-size:0.78rem;color:var(--gray);font-weight:400;">Max <span class="roll-wrap" data-roll="3.40">0.00</span>GHz</span></td><td>Intel® N97 (Fanless)<br><span style="font-size:0.78rem;color:var(--gray);font-weight:400;">up to <span class="roll-wrap" data-roll="3.60">0.00</span>GHz</span></td></tr>
+<tr><td>메모리</td><td>8GB DDR4 (최대 16GB)<br><span style="font-size:0.78rem;color:var(--gray);font-weight:400;">128GB 2.5" SSD (최대 512GB)</span></td><td>8GB DDR4 (최대 16GB)<br><span style="font-size:0.78rem;color:var(--gray);font-weight:400;">128GB NVMe M.2 SSD (최대 512GB)</span></td></tr>
+<tr><td>방열</td><td>슈퍼 방열 프레임<br><span style="font-size:0.78rem;color:var(--gray);font-weight:400;">CPU 방열 최적화 알루미늄 프레임</span></td><td>울트라 슬림 냉각<br><span style="font-size:0.78rem;color:var(--gray);font-weight:400;">주요 부품 알루미늄 설계, 열효율 극대화</span></td></tr>
+<tr><td>인터페이스</td><td>7 USB, 6 Serial<br><span style="font-size:0.78rem;color:var(--gray);font-weight:400;">멀티 모니터 (HDMI, DVI, DP, VGA)</span></td><td>USB, Type-C (DP alt), 4 Serial<br><span style="font-size:0.78rem;color:var(--gray);font-weight:400;">2 MiniDP 출력</span></td></tr>
+<tr><td>특별 기능</td><td>전원 플러그 역전류 방지<br><span style="font-size:0.78rem;color:var(--gray);font-weight:400;">원 케이블 구조, 고성능 스피커</span></td><td>AI 음성 POS 제어 (예정)<br><span style="font-size:0.78rem;color:var(--gray);font-weight:400;">케이블리스 IC 카드리더기, 3m 분리 모니터</span></td></tr>
+<tr><td>OS</td><td colspan="2">Windows 10 / 11 IoT Enterprise (64bit)</td></tr>
+<tr><td>크기</td><td>362 × 237 × 357 mm<br><span style="font-size:0.78rem;color:var(--gray);font-weight:400;">4.5 kg</span></td><td>328 × 215 × 338 mm<br><span style="font-size:0.78rem;color:var(--gray);font-weight:400;">4.2 kg</span></td></tr>
 </tbody>
 </table></div>
 </div>
@@ -246,23 +282,105 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <div class="install-inner">
 <div class="install-header reveal"><div class="sec-tag">Field Sketch</div><h2>현장 스케치</h2><p>전국 다양한 매장에서 누리네트웍스 포스를 만나보세요.</p></div>
 <div class="install-grid">
-<div class="install-placeholder reveal"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>블로그 현장사진<br>업로드 예정</div>
-<div class="install-placeholder reveal"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>블로그 현장사진<br>업로드 예정</div>
-<div class="install-placeholder reveal"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>블로그 현장사진<br>업로드 예정</div>
-<div class="install-placeholder reveal"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>블로그 현장사진<br>업로드 예정</div>
-<div class="install-placeholder reveal"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>블로그 현장사진<br>업로드 예정</div>
-<div class="install-placeholder reveal"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>블로그 현장사진<br>업로드 예정</div>
+<div class="install-card reveal" onclick="openFS('fs1')">
+<img src="field-restaurant-1.jpg" alt="생선구이점">
+<div class="install-card-overlay"></div>
+<div class="install-card-info"><h4>생선구이점</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">🐟</span> N250</span></div></div>
+</div>
+<div class="install-card reveal" onclick="openFS('fs2')">
+<img src="field-cafe-1.jpg" alt="카페">
+<div class="install-card-overlay"></div>
+<div class="install-card-info"><h4>카페</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">☕</span> N250</span></div></div>
+</div>
+<div class="install-card reveal" onclick="openFS('fs3')">
+<img src="field-mart-1.jpg" alt="전통시장/마트">
+<div class="install-card-overlay"></div>
+<div class="install-card-info"><h4>전통시장/마트</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">🛒</span> N250</span></div></div>
+</div>
+<div class="install-card reveal" onclick="openFS('fs4')">
+<img src="field-bakery-1.jpg" alt="베이커리">
+<div class="install-card-overlay"></div>
+<div class="install-card-info"><h4>베이커리</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">🥐</span> NOVA</span></div></div>
+</div>
+<div class="install-card reveal" onclick="openFS('fs5')">
+<img src="field-hospital-1.jpg" alt="병원">
+<div class="install-card-overlay"></div>
+<div class="install-card-info"><h4>병원</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">🏥</span> NOVA</span></div></div>
+</div>
+<div class="install-card reveal" onclick="openFS('fs6')">
+<img src="field-resto-1.jpg" alt="레스토랑">
+<div class="install-card-overlay"></div>
+<div class="install-card-info"><h4>레스토랑</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">🍽️</span> N250</span></div></div>
+</div>
 </div>
 </div>
 </section>
+
+</div><!-- /flow-bg -->
+
+<!-- FIELD SKETCH MODAL -->
+<div class="fs-modal" id="fsModal" onclick="if(event.target===this)closeFS()">
+<button class="fs-modal-close" onclick="closeFS()">✕</button>
+<div class="fs-modal-card">
+<img class="fs-modal-img" id="fsImg" src="" alt="">
+<div class="fs-modal-body">
+<h3 id="fsTitle"></h3>
+<div class="fsm-tags" id="fsTags"></div>
+<p id="fsDesc"></p>
+</div>
+</div>
+</div>
 
 <!-- FOOTER -->
 <div class="footer-mini"><a href="index.html">← 누리네트웍스 홈으로 돌아가기</a><br><br>© 2026 Nurinetworks. All rights reserved.</div>
 
 <script>
+// Field Sketch Data
+const fsData={
+fs1:{img:'field-restaurant-install.jpg',title:'생선구이점',tags:['N250'],emoji:'🐟',
+desc:'프리미엄 화덕 생선구이 전문점에 N250 포스 2대를 설치했습니다. 넓은 홀 운영에 맞춰 듀얼 포스 구성으로 주문 대기시간을 최소화하고, 나무 패널 카운터와 조화를 이루는 화이트 톤 포스가 매장의 프리미엄 분위기를 한층 높여줍니다.'},
+fs2:{img:'field-cafe-install.jpg',title:'카페',tags:['N250'],emoji:'☕',
+desc:'감성적인 인테리어의 카페에 포스와 스마트로 카드단말기를 설치했습니다. 컴팩트한 구성으로 좁은 카운터 공간을 효율적으로 활용하고, 음료·디저트 메뉴를 직관적으로 관리합니다.'},
+fs3:{img:'field-mart-install.jpg',title:'전통시장/마트',tags:['N250'],emoji:'🛒',
+desc:'활기 넘치는 전통시장에 IMU 포스를 설치했습니다. 요기요·쿠팡이츠 등 배달앱 연동으로 오프라인 매출과 배달 주문을 하나의 포스에서 통합 관리합니다. 끊김 없는 8G 메모리로 매장+배달 동시 운영이 가능합니다.'},
+fs4:{img:'field-bakery-install.jpg',title:'베이커리',tags:['NOVA'],emoji:'🥐',
+desc:'빵과 디저트가 가득한 프리미엄 베이커리에 포스 시스템을 설치했습니다. 메뉴별 카테고리 분류로 수십 가지 빵을 빠르게 주문·결제하고, 카드단말기와 연동하여 원스톱 결제 환경을 구축했습니다.'},
+fs5:{img:'field-hospital-install.jpg',title:'병원',tags:['N250'],emoji:'🏥',
+desc:'고급스러운 인테리어의 병원 접수 카운터에 IMU 포스를 설치했습니다. 키오스크 모드 연동으로 환자 접수·수납·처방전 관리까지 원스톱으로 처리하며, 깔끔한 화이트 톤 매장과 자연스럽게 어울립니다.'},
+fs6:{img:'field-resto-install.jpg',title:'레스토랑',tags:['N250'],emoji:'🍽️',
+desc:'파스타·스테이크·와인까지 다양한 메뉴를 카테고리별로 관리하는 레스토랑에 IMU 포스와 스마트로 카드단말기를 설치했습니다. 세련된 인테리어에 어울리는 깔끔한 포스 구성으로 고급스러운 매장 분위기를 유지합니다.'}
+};
+function openFS(id){const d=fsData[id];if(!d)return;
+document.getElementById('fsImg').src=d.img;
+document.getElementById('fsTitle').textContent=d.title;
+document.getElementById('fsTags').innerHTML=d.tags.map(t=>'<span>'+t+'</span>').join('');
+document.getElementById('fsDesc').textContent=d.desc;
+var eb=document.getElementById('fsEmoji');if(eb)eb.remove();
+var em=document.createElement('div');em.className='fs-emoji-bounce';em.id='fsEmoji';em.textContent=d.emoji;
+document.querySelector('.fs-modal-card').appendChild(em);
+document.getElementById('fsModal').classList.add('open');document.body.style.overflow='hidden';}
+function closeFS(){document.getElementById('fsModal').classList.remove('open');document.body.style.overflow='';var eb=document.getElementById('fsEmoji');if(eb)eb.remove();}
 window.addEventListener('scroll',function(){document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>80);});
 const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}});},{threshold:0.12});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Number Rolling Effect
+const rollObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){
+const target=e.target.dataset.roll;
+const digits=target.split('');
+let html='';
+digits.forEach((d,i)=>{
+if(d==='.'||d===','){ html+='<span style="display:inline;">'+d+'</span>'; return; }
+const num=parseInt(d);
+let slots='';
+for(let j=0;j<=9;j++) slots+='<span>'+j+'</span>';
+slots+='<span>'+num+'</span>';
+html+='<span class="roll-wrap" style="width:0.65em;"><span class="roll-inner" style="transform:translateY(-'+(num*1.3)+'em);transition-delay:'+(i*0.15)+'s">'+slots+'</span></span>';
+});
+e.target.innerHTML=html;
+rollObs.unobserve(e.target);
+}});},{threshold:0.5});
+document.querySelectorAll('[data-roll]').forEach(el=>rollObs.observe(el));
 </script>
 </body>
 </html>
