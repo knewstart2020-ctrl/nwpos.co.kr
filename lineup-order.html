@@ -81,6 +81,15 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 .img-card-features{display:flex;flex-wrap:wrap;gap:8px;}
 .img-card-feat{font-size:0.72rem;font-weight:600;padding:6px 14px;border-radius:50px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.08);}
 
+/* MASCOT CHARACTER */
+.mascot{position:fixed;pointer-events:none;z-index:10;transition:left .7s cubic-bezier(0.34,1.56,0.64,1),top .7s cubic-bezier(0.34,1.56,0.64,1);opacity:0;}
+.mascot.active{opacity:1;}
+.mascot img{width:56px;height:auto;display:block;filter:drop-shadow(0 3px 8px rgba(0,0,0,0.4));}
+.mascot.jump img{animation:mascotJump .6s cubic-bezier(0.34,1.56,0.64,1);}
+@keyframes mascotJump{0%{transform:translateY(0) scale(1)}25%{transform:translateY(-30px) scale(1.15) rotate(-8deg)}50%{transform:translateY(-12px) scale(1.05) rotate(4deg)}75%{transform:translateY(-4px) scale(0.98)}100%{transform:translateY(0) scale(1) rotate(0deg)}}
+.mascot-pop img{animation:mascotPop .5s cubic-bezier(0.34,1.56,0.64,1) forwards;}
+@keyframes mascotPop{0%{transform:scale(0);opacity:0}60%{transform:scale(1.15);opacity:1}100%{transform:scale(1);opacity:1}}
+
 /* FEATURE CARDS */
 .feat-sec{background:transparent;padding:100px 0;}
 .feat-inner{max-width:1200px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
@@ -330,6 +339,64 @@ function closeFS(){document.getElementById('fsModal').classList.remove('open');d
 window.addEventListener('scroll',function(){document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>80);});
 const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}});},{threshold:0.12});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// MASCOT - bulldog characters jumping across both cards
+(function(){
+const mascotImages=['mascot-heart.png','mascot-thumbsup.png','mascot-clap.png','mascot-peace.png'];
+const grid=document.querySelector('.vs-grid');
+if(!grid)return;
+const allFeats=Array.from(grid.querySelectorAll('.img-card-feat'));
+if(allFeats.length===0)return;
+
+mascotImages.forEach(src=>{const i=new Image();i.src=src;});
+
+const m=document.createElement('div');
+m.className='mascot';
+const mImg=document.createElement('img');
+mImg.src=mascotImages[0];
+mImg.alt='mascot';
+m.appendChild(mImg);
+document.body.appendChild(m);
+
+let idx=0;
+function positionMascot(animate){
+const feat=allFeats[idx];
+const r=feat.getBoundingClientRect();
+const x=r.left+r.width/2-28;
+const y=r.top-52;
+if(animate){
+m.classList.remove('jump');
+void m.offsetWidth;
+m.classList.add('jump');
+}
+m.style.left=x+'px';
+m.style.top=y+'px';
+mImg.src=mascotImages[idx%mascotImages.length];
+allFeats.forEach((f,i)=>{
+f.style.background=i===idx?'rgba(255,255,255,0.25)':'rgba(255,255,255,0.1)';
+f.style.transform=i===idx?'scale(1.06)':'scale(1)';
+f.style.transition='all .3s ease';
+});
+}
+
+let interval=null;
+const cardObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{
+if(e.isIntersecting){
+m.classList.add('active','mascot-pop');
+positionMascot(false);
+interval=setInterval(()=>{
+idx=(idx+1)%allFeats.length;
+positionMascot(true);
+},2000);
+cardObs.unobserve(e.target);
+}});},{threshold:0.3});
+cardObs.observe(grid);
+
+let ticking=false;
+function reposition(){if(!ticking){ticking=true;requestAnimationFrame(()=>{positionMascot(false);ticking=false;});}}
+window.addEventListener('scroll',reposition,{passive:true});
+window.addEventListener('resize',reposition);
+})();
 </script>
 </body>
 </html>
