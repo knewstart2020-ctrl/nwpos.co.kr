@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>토스/네이버 단말기 | 누리네트웍스</title>
+<meta name="description" content="결제를 넘어, 고객을 연결하다. 토스단말기와 네이버단말기로 결제부터 리뷰, 쿠폰, 적립까지 올인원. 누리네트웍스에서 공급·설치·유지보수.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#1B3A8C;--primary-light:#2E5BDB;--accent:#C9A84C;--toss:#3182F6;--naver:#03C75A;--dark:#1d1d1f;--gray:#86868b;--light:#f5f5f7;--radius:20px;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(0,0,0,0);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid transparent;transition:all .4s;}
+.nav.scrolled{background:rgba(255,255,255,0.85);border-bottom-color:rgba(0,0,0,0.06);}
+.nav.scrolled .nl,.nav.scrolled .nav-product{color:#1d1d1f;}
+.nav.scrolled .nt{color:rgba(0,0,0,0.4);}.nav.scrolled .nt b{color:rgba(0,0,0,0.6);}
+.nav.scrolled .nav-links a{color:rgba(0,0,0,0.5);}.nav.scrolled .nav-links a:hover{color:#1d1d1f;}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.nav-logo{display:flex;align-items:center;gap:6px;text-decoration:none;font-family:'Inter',sans-serif;}
+.nl{font-size:1.6rem;font-weight:700;color:#fff;text-shadow:1px 1px 0 rgba(0,0,0,0.3);transition:color .4s;}
+.nt{font-size:0.7rem;color:rgba(255,255,255,0.5);font-weight:300;transition:color .4s;}.nt b{font-weight:600;color:rgba(255,255,255,0.7);transition:color .4s;}
+.nav-product{font-size:0.95rem;font-weight:700;color:#fff;letter-spacing:-0.02em;transition:color .4s;}
+.nav-links{display:flex;gap:16px;align-items:center;}
+.nav-links a{font-size:0.78rem;color:rgba(255,255,255,0.6);text-decoration:none;font-weight:500;transition:color .2s;}.nav-links a:hover{color:#fff;}
+.nav-cta{background:var(--primary);color:#fff!important;padding:7px 18px;border-radius:50px;font-weight:600!important;}
+.sec-tag{font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--primary);margin-bottom:12px;}
+
+/* HERO - VIDEO BACKGROUND + TIMED TITLE */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#0a0a1a;overflow:hidden;}
+.hero-video{position:absolute;inset:0;}.hero-video video{width:100%;height:100%;object-fit:cover;opacity:0.5;}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,26,0.3) 0%,rgba(10,10,26,0.1) 40%,rgba(10,10,26,0.65) 100%);z-index:1;}
+/* Title appears at 7s (46%), disappears at 12s (80%) of 15s video loop */
+.hero-content{position:relative;z-index:2;text-align:center;padding:0 40px;opacity:0;animation:titleTiming 15.1s ease infinite;}
+@keyframes titleTiming{0%,44%{opacity:0;transform:translateY(30px)}50%{opacity:1;transform:translateY(0)}78%{opacity:1;transform:translateY(0)}86%{opacity:0;transform:translateY(-20px)}100%{opacity:0;}}
+
+.hero-tag{font-size:0.82rem;font-weight:600;color:var(--toss);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:16px;}
+.hero h1{font-size:clamp(2.8rem,7vw,5rem);font-weight:900;color:#fff;line-height:1.08;letter-spacing:-0.05em;margin-bottom:20px;}
+.hero h1 .accent-line{display:block;background:linear-gradient(90deg,#3182F6,#03C75A,#3182F6);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 3s linear infinite;}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.hero-copy{font-size:clamp(0.92rem,1.8vw,1.12rem);color:rgba(255,255,255,0.6);line-height:2;font-weight:300;max-width:580px;margin:0 auto;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,0.7);font-size:0.75rem;font-weight:500;letter-spacing:0.15em;animation:scrollBounce 2s ease-in-out infinite;}
+.hero-scroll-line{width:1.5px;height:48px;background:linear-gradient(to bottom,rgba(255,255,255,0.7),transparent);border-radius:1px;}
+@keyframes scrollBounce{0%,100%{opacity:0.5;transform:translateX(-50%) translateY(0);}50%{opacity:1;transform:translateX(-50%) translateY(8px);}}
+
+/* 3D FLOATING TEXT */
+.hero-float-text{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;}
+.hft{position:absolute;font-family:'Inter',sans-serif;font-weight:900;white-space:nowrap;color:rgba(255,255,255,0.02);letter-spacing:0.05em;text-transform:uppercase;}
+.hft-1{font-size:clamp(3rem,10vw,7rem);top:5%;animation:hftScroll 30s linear infinite;}
+.hft-2{font-size:clamp(2.5rem,8vw,5.5rem);top:30%;animation:hftScroll 35s linear infinite reverse;}
+.hft-3{font-size:clamp(2.5rem,8vw,6rem);top:55%;animation:hftScroll 38s linear infinite;}
+.hft-4{font-size:clamp(3rem,10vw,7rem);top:80%;animation:hftScroll 32s linear infinite reverse;}
+@keyframes hftScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* FLOWING BG */
+.flow-bg{background:linear-gradient(180deg,#f5f5f7 0%,#eaf0fa 15%,#ffffff 30%,#f5faf7 50%,#ffffff 70%,#eaf0fa 85%,#f5f5f7 100%);position:relative;overflow:hidden;}
+.flow-bg::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 20% 30%,rgba(49,130,246,0.03) 0%,transparent 50%),radial-gradient(ellipse at 80% 70%,rgba(3,199,90,0.03) 0%,transparent 50%);pointer-events:none;z-index:0;}
+
+/* VS SECTION - Image Background Cards */
+.vs-sec{background:transparent;padding:120px 0 80px;position:relative;}
+.vs-inner{max-width:1200px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
+.vs-header{text-align:center;margin-bottom:60px;}
+.vs-header h2{font-size:clamp(2rem,4vw,2.8rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:12px;}
+.vs-header p{font-size:1rem;color:var(--gray);line-height:1.7;}
+.vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1100px;margin:0 auto;}
+
+/* Image BG Cards */
+.img-card{position:relative;border-radius:24px;overflow:hidden;height:560px;display:flex;flex-direction:column;justify-content:flex-end;cursor:default;transition:transform .5s cubic-bezier(0.16,1,0.3,1);}
+.img-card:hover{transform:translateY(-6px);}
+.img-card-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .8s cubic-bezier(0.16,1,0.3,1);}
+.img-card:hover .img-card-bg{transform:scale(1.05);}
+.img-card::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.88) 0%,rgba(0,0,0,0.5) 35%,rgba(0,0,0,0.15) 60%,rgba(0,0,0,0.08) 100%);z-index:1;}
+.img-card-content{position:relative;z-index:2;padding:40px 36px;display:flex;flex-direction:column;align-items:flex-start;}
+.img-card-tag{display:inline-block;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:14px;flex-shrink:0;}
+.tag-toss{background:rgba(49,130,246,0.2);color:#7AB5FF;backdrop-filter:blur(4px);}
+.tag-naver{background:rgba(3,199,90,0.2);color:#5FE89A;backdrop-filter:blur(4px);}
+.img-card h3{font-size:clamp(1.7rem,3vw,2.2rem);font-weight:900;color:#fff;letter-spacing:-0.03em;line-height:1.1;margin-bottom:10px;min-height:2.4em;}
+.img-card-desc{font-size:0.92rem;color:rgba(255,255,255,0.7);line-height:1.7;margin-bottom:20px;min-height:3.4em;}
+.img-card-features{display:flex;flex-wrap:wrap;gap:8px;}
+.img-card-feat{font-size:0.72rem;font-weight:600;padding:6px 14px;border-radius:50px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.08);}
+
+/* MASCOT CHARACTER */
+.mascot{position:fixed;pointer-events:none;z-index:10;transition:left .7s cubic-bezier(0.34,1.56,0.64,1),top .7s cubic-bezier(0.34,1.56,0.64,1);opacity:0;}
+.mascot.active{opacity:1;}
+.mascot img{width:56px;height:auto;display:block;filter:drop-shadow(0 3px 8px rgba(0,0,0,0.4));}
+.mascot.jump img{animation:mascotJump .6s cubic-bezier(0.34,1.56,0.64,1);}
+@keyframes mascotJump{0%{transform:translateY(0) scale(1)}25%{transform:translateY(-30px) scale(1.15) rotate(-8deg)}50%{transform:translateY(-12px) scale(1.05) rotate(4deg)}75%{transform:translateY(-4px) scale(0.98)}100%{transform:translateY(0) scale(1) rotate(0deg)}}
+.mascot-pop img{animation:mascotPop .5s cubic-bezier(0.34,1.56,0.64,1) forwards;}
+@keyframes mascotPop{0%{transform:scale(0);opacity:0}60%{transform:scale(1.15);opacity:1}100%{transform:scale(1);opacity:1}}
+
+/* S/W FEATURES - Side by Side */
+.sw-sec{background:transparent;padding:100px 0;}
+.sw-inner{max-width:1100px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
+.sw-header{text-align:center;margin-bottom:48px;}
+.sw-header h2{font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:8px;}
+.sw-header p{font-size:0.95rem;color:var(--gray);line-height:1.7;}
+.sw-compare{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+.sw-col-title{display:flex;align-items:center;gap:10px;margin-bottom:24px;padding-bottom:16px;border-bottom:2px solid;}
+.sw-col-title.col-toss{border-color:var(--toss);}.sw-col-title.col-naver{border-color:var(--naver);}
+.sw-col-badge{font-size:0.65rem;font-weight:700;letter-spacing:0.08em;padding:4px 12px;border-radius:50px;}
+.col-toss .sw-col-badge{background:rgba(49,130,246,0.12);color:var(--toss);}
+.col-naver .sw-col-badge{background:rgba(3,199,90,0.12);color:var(--naver);}
+.sw-col-name{font-size:1.1rem;font-weight:800;letter-spacing:-0.02em;}
+.sw-features{display:flex;flex-direction:column;gap:14px;}
+.sw-card{text-align:center;padding:32px 20px;border-radius:20px;background:#fff;border:1px solid rgba(0,0,0,0.04);box-shadow:0 2px 12px rgba(0,0,0,0.03);transition:all .4s;}
+.sw-card:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(0,0,0,0.08);}
+.sw-icon{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:1.5rem;}
+.sw-card h4{font-size:0.92rem;font-weight:700;margin-bottom:8px;letter-spacing:-0.02em;}
+.sw-card p{font-size:0.78rem;color:var(--gray);line-height:1.6;}
+
+/* H/W FEATURES */
+.hw-sec{background:transparent;padding:100px 0;}
+.hw-inner{max-width:1100px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
+.hw-header{text-align:center;margin-bottom:60px;}
+.hw-header h2{font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:8px;}
+.hw-layout{display:grid;grid-template-columns:1fr 340px 1fr;gap:20px;align-items:center;}
+.hw-side{display:flex;flex-direction:column;gap:24px;}
+.hw-item{display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:14px;transition:all .3s;}
+.hw-item:hover{background:rgba(0,0,0,0.02);}
+.hw-side-right .hw-item{flex-direction:row-reverse;text-align:right;}
+.hw-item-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.3rem;}
+.hw-item h4{font-size:0.88rem;font-weight:700;margin-bottom:4px;letter-spacing:-0.01em;}
+.hw-item p{font-size:0.75rem;color:var(--gray);line-height:1.5;}
+.hw-center{display:flex;align-items:center;justify-content:center;position:relative;}
+.hw-center img{max-width:100%;max-height:480px;object-fit:contain;filter:drop-shadow(0 20px 60px rgba(0,0,0,0.1));animation:hwFloat 4s ease-in-out infinite;}
+@keyframes hwFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* SPEC TABLE */
+.spec-sec{background:transparent;padding:100px 0;}
+.spec-inner{max-width:960px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
+.spec-header{text-align:center;margin-bottom:48px;}.spec-header h2{font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:8px;}
+.spec-table{width:100%;border-collapse:collapse;}
+.spec-table thead th{text-align:left;font-size:0.72rem;color:var(--gray);font-weight:600;text-transform:uppercase;letter-spacing:0.08em;padding:14px 12px;border-bottom:2px solid #1d1d1f;}
+.spec-table thead th:first-child{width:20%;padding-left:0;}
+.spec-table tbody td{padding:14px 12px;font-size:0.85rem;border-bottom:1px solid rgba(0,0,0,0.05);vertical-align:top;}
+.spec-table tbody td:first-child{color:var(--gray);font-weight:500;padding-left:0;}
+.spec-table tbody td:not(:first-child){font-weight:600;}
+.spec-badge{display:inline-block;font-size:0.6rem;font-weight:700;padding:2px 8px;border-radius:50px;margin-left:6px;vertical-align:middle;}
+.badge-toss{background:rgba(49,130,246,0.1);color:var(--toss);}
+.badge-naver{background:rgba(3,199,90,0.1);color:var(--naver);}
+.spec-check{color:#0F6E56;font-weight:700;}.spec-dash{color:#ccc;}
+
+/* FIELD SKETCH */
+.install-sec{background:transparent;padding:100px 0;}
+.install-inner{max-width:1200px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
+.install-header{text-align:center;margin-bottom:48px;}.install-header h2{font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:8px;}.install-header p{font-size:0.95rem;color:var(--gray);line-height:1.7;}
+.install-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.install-card{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:4/3;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,0.08);transition:all .5s;}
+.install-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,0.12);}
+.install-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+.install-card-overlay{position:absolute;inset:0;background:rgba(0,0,0,0);z-index:1;transition:background .5s;}
+.install-card:hover .install-card-overlay{background:rgba(0,0,0,0.55);}
+.install-card-info{position:absolute;bottom:0;left:0;right:0;padding:24px;z-index:2;opacity:0;transform:translateY(12px);transition:all .4s;}
+.install-card:hover .install-card-info{opacity:1;transform:translateY(0);}
+.install-card-info h4{font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:10px;}
+.install-card-tags{display:flex;gap:8px;flex-wrap:wrap;}
+.install-card-tags span{font-size:1rem;font-weight:700;padding:6px 16px;border-radius:50px;background:rgba(255,255,255,0.2);backdrop-filter:blur(4px);color:#fff;}
+.install-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:4/3;background:#e8e8ed;border-radius:16px;color:#999;font-size:0.82rem;text-align:center;line-height:1.6;padding:20px;gap:8px;}
+.fs-emoji{display:inline-block;font-size:32px;animation:swim 2s ease-in-out infinite;vertical-align:middle;}
+.fs-emoji-bounce{display:inline-block;font-size:48px;animation:bounce 1s ease-in-out infinite;position:absolute;top:20px;right:20px;z-index:3;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.3));}
+@keyframes swim{0%,100%{transform:translateX(0) scaleX(1)}50%{transform:translateX(8px) scaleX(-1)}}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.fs-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:200;justify-content:center;align-items:center;padding:20px;backdrop-filter:blur(4px);}
+.fs-modal.open{display:flex;}
+.fs-modal-card{background:#fff;border-radius:20px;max-width:600px;width:100%;overflow:hidden;animation:fadeUp .4s ease;position:relative;}
+.fs-modal-img{width:100%;height:280px;object-fit:cover;}
+.fs-modal-body{padding:28px;}
+.fs-modal-body h3{font-size:1.3rem;font-weight:800;margin-bottom:6px;}
+.fs-modal-body .fsm-tags{display:flex;gap:6px;margin-bottom:16px;}
+.fs-modal-body .fsm-tags span{font-size:0.72rem;font-weight:600;padding:4px 12px;border-radius:50px;background:rgba(27,58,140,0.08);color:var(--primary);}
+.fs-modal-body p{font-size:0.92rem;color:#424245;line-height:1.8;}
+.fs-modal-close{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.9);border:none;cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;z-index:10;}
+
+/* FOOTER */
+.footer-mini{background:#f5f5f7;text-align:center;padding:32px 40px;font-size:0.78rem;color:var(--gray);border-top:1px solid rgba(0,0,0,0.06);}
+.footer-mini a{color:var(--primary);text-decoration:none;font-weight:600;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(40px);transition:all .7s cubic-bezier(0.16,1,0.3,1);}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.vs-grid{grid-template-columns:1fr;gap:24px;max-width:540px;}.img-card{min-height:480px;}.install-grid{grid-template-columns:repeat(2,1fr);}.hw-layout{grid-template-columns:1fr;gap:40px;}.hw-center{order:-1;}.hw-center img{max-height:320px;}.hw-side-right .hw-item{flex-direction:row;text-align:left;}.sw-compare{grid-template-columns:1fr 1fr;}}
+@media(max-width:768px){.nav-links{display:none;}.hero h1{font-size:2.6rem;}.vs-sec{padding:80px 0 60px;}.img-card{min-height:420px;}.img-card-content{padding:28px 24px;}.sw-compare{grid-template-columns:1fr;}.hw-layout{grid-template-columns:1fr;}.spec-inner{padding:0 20px;}.spec-table{font-size:0.78rem;}.install-grid{grid-template-columns:1fr;}.sw-sec,.hw-sec,.spec-sec,.install-sec{padding:80px 0;}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav"><div class="nav-inner">
+<a href="index.html" class="nav-logo"><span class="nl">N</span><span class="nt"><b>nuri</b>networkspay</span></a>
+<span class="nav-product">토스/네이버 단말기</span>
+<div class="nav-links"><a href="index.html">홈</a><a href="index.html#products">제품 라인업</a><a href="about.html">회사소개</a><a href="tel:1544-7754" class="nav-cta">1544-7754</a></div>
+</div></nav>
+
+<!-- HERO - IMAGE BACKGROUND -->
+<section class="hero">
+<div class="hero-video"><video autoplay muted loop playsinline><source src="signpad-showcase.mp4" type="video/mp4"></video></div>
+<div class="hero-content">
+<div class="hero-tag">Toss · Naver Pay</div>
+<h1>결제를 넘어,<br><span class="accent-line">고객을 연결하다.</span></h1>
+<p class="hero-copy">토스의 간편함과 네이버의 리뷰 파워.<br>결제 한 번에 단골이 되는 스마트 사인패드.</p>
+</div>
+<div class="hero-scroll"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg><span>SCROLL</span><div class="hero-scroll-line"></div></div>
+</section>
+
+<!-- FLOWING BACKGROUND -->
+<div class="flow-bg">
+<div class="hero-float-text">
+<div class="hft hft-1">TOSS FRONT · NPAY CONNECT · SMART SIGNPAD · TOSS FRONT · NPAY CONNECT · SMART SIGNPAD · TOSS FRONT · </div>
+<div class="hft hft-2">토스단말기 · 네이버커넥트 · 간편결제 · 토스단말기 · 네이버커넥트 · 간편결제 · 토스단말기 · 네이버커넥트 · </div>
+<div class="hft hft-3">APPLE PAY · FACE SIGN · NFC · QR · REVIEW · APPLE PAY · FACE SIGN · NFC · QR · REVIEW · APPLE PAY · </div>
+<div class="hft hft-4">ALL IN ONE · PAYMENT · CONNECT · ALL IN ONE · PAYMENT · CONNECT · ALL IN ONE · PAYMENT · CONNECT · </div>
+</div>
+
+<!-- VS SECTION - 2 Products -->
+<section class="vs-sec">
+<div class="vs-inner">
+<div class="vs-header reveal">
+<div class="sec-tag">Product Lineup</div>
+<h2>사인패드. 결제의 새 기준</h2>
+<p>디자인의 토스냐, 리뷰의 네이버냐. 매장에 맞는 사인패드를 선택하세요.</p>
+</div>
+<div class="vs-grid reveal">
+<!-- 토스단말기 -->
+<div class="img-card">
+<div class="img-card-bg" style="background-image:url('signpad-card-toss.jpg');"></div>
+<div class="img-card-content">
+<span class="img-card-tag tag-toss">Toss Place</span>
+<h3>토스단말기</h3>
+<p class="img-card-desc">카드부터 애플페이·간편결제까지.<br>키오스크 모드로 무인 결제도 가능.</p>
+<div class="img-card-features">
+<span class="img-card-feat">애플페이 지원</span>
+<span class="img-card-feat">키오스크 모드</span>
+<span class="img-card-feat">세련된 디자인</span>
+<span class="img-card-feat">월 사용료 0원</span>
+</div>
+</div>
+</div>
+<!-- 네이버단말기 -->
+<div class="img-card">
+<div class="img-card-bg" style="background-image:url('signpad-card-naver.jpg');"></div>
+<div class="img-card-content">
+<span class="img-card-tag tag-naver">Npay Connect</span>
+<h3>네이버단말기</h3>
+<p class="img-card-desc">결제 직후 네이버 리뷰·쿠폰·적립.<br>페이스사인 안면인식 결제까지.</p>
+<div class="img-card-features">
+<span class="img-card-feat">네이버 리뷰 즉시</span>
+<span class="img-card-feat">페이스사인</span>
+<span class="img-card-feat">쿠폰 자동 적용</span>
+<span class="img-card-feat">기존 POS 연동</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- S/W 주요특징 -->
+<section class="sw-sec">
+<div class="sw-inner">
+<div class="sw-header reveal">
+<div class="sec-tag">Software Features</div>
+<h2>S/W 주요특징</h2>
+<p>결제 그 이상의 가치를 제공합니다</p>
+</div>
+<div class="sw-compare reveal">
+<!-- 토스단말기 -->
+<div class="sw-col">
+<div class="sw-col-title col-toss"><span class="sw-col-badge">TOSS PLACE</span><span class="sw-col-name">토스단말기</span></div>
+<div class="sw-features">
+<div class="sw-card"><div class="sw-icon" style="background:#E8F3FF;">💳</div><h4>올인원 결제</h4><p>카드·현금·애플페이·삼성페이<br>QR·NFC 모든 결제 수단 지원</p></div>
+<div class="sw-card"><div class="sw-icon" style="background:#F0F0FF;">🖥️</div><h4>키오스크 모드</h4><p>고객이 직접 결제하는 미니 키오스크<br>무인 매장 운영 가능</p></div>
+<div class="sw-card"><div class="sw-icon" style="background:#EAF7F0;">🎨</div><h4>화이트 / 블랙 컬러</h4><p>매장 인테리어에 맞는<br>세련된 2가지 컬러 선택</p></div>
+<div class="sw-card"><div class="sw-icon" style="background:#FFF8E6;">📊</div><h4>토스포스 연동</h4><p>토스포스 앱과 100% 연동<br>매출·재고 실시간 관리</p></div>
+</div>
+</div>
+<!-- 네이버단말기 -->
+<div class="sw-col">
+<div class="sw-col-title col-naver"><span class="sw-col-badge">NPAY CONNECT</span><span class="sw-col-name">네이버단말기</span></div>
+<div class="sw-features">
+<div class="sw-card"><div class="sw-icon" style="background:#E6F9EE;">⭐</div><h4>결제 직후 리뷰</h4><p>영수증 인증 없이 결제 즉시<br>네이버 키워드 리뷰 작성</p></div>
+<div class="sw-card"><div class="sw-icon" style="background:#FFF0E6;">😊</div><h4>페이스사인 결제</h4><p>안면인식 기반 결제<br>핀테크 업계 최초 상용화</p></div>
+<div class="sw-card"><div class="sw-icon" style="background:#F5F0FF;">🎫</div><h4>쿠폰 자동 적용</h4><p>네이버 검색·지도에서 받은<br>쿠폰이 결제 시 자동 노출</p></div>
+<div class="sw-card"><div class="sw-icon" style="background:#EAF0FF;">📍</div><h4>네이버 지도 연동</h4><p>CRM 고객관리 + 타깃 마케팅<br>단골 고객 확보 시스템</p></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- H/W 주요특징 -->
+<section class="hw-sec">
+<div class="hw-inner">
+<div class="hw-header reveal">
+<div class="sec-tag">Hardware Features</div>
+<h2>공통 H/W 특징</h2>
+</div>
+<div class="hw-layout reveal">
+<!-- 왼쪽 3개 -->
+<div class="hw-side hw-side-left">
+<div class="hw-item"><div class="hw-item-icon" style="background:#E8F3FF;">💳</div><div><h4>IC / MSR / NFC</h4><p>카드 삽입·긁기·태그<br>모든 카드 결제 방식 지원</p></div></div>
+<div class="hw-item"><div class="hw-item-icon" style="background:#EAF7F0;">📱</div><div><h4>QR · 바코드 결제</h4><p>카메라 스캐너 내장<br>카카오페이·제로페이 등 지원</p></div></div>
+<div class="hw-item"><div class="hw-item-icon" style="background:#FFF0E6;">📶</div><div><h4>WiFi · 유선 연결</h4><p>WiFi와 유선 모두 지원<br>안정적인 네트워크 환경</p></div></div>
+</div>
+<!-- 중앙 제품 이미지 -->
+<div class="hw-center">
+<img src="signpad-card-toss.jpg" alt="토스단말기">
+</div>
+<!-- 오른쪽 3개 -->
+<div class="hw-side hw-side-right">
+<div class="hw-item"><div class="hw-item-icon" style="background:#F0F0FF;">🍎</div><div><h4>애플페이 · 삼성페이</h4><p>NFC 기반 간편결제<br>MST 마그네틱 결제 지원</p></div></div>
+<div class="hw-item"><div class="hw-item-icon" style="background:#FBEAF0;">🖊️</div><div><h4>전자 서명 패드</h4><p>터치 디스플레이 서명<br>서명 데이터 자동 저장</p></div></div>
+<div class="hw-item"><div class="hw-item-icon" style="background:#FAEEDA;">🔌</div><div><h4>컴팩트 사이즈</h4><p>14.7×12.8×19.3cm<br>어떤 카운터에도 깔끔하게</p></div></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SPEC TABLE -->
+<section class="spec-sec">
+<div class="spec-inner">
+<div class="spec-header reveal"><div class="sec-tag">Specifications</div><h2>제품 사양 비교</h2></div>
+<div class="reveal" style="overflow-x:auto;"><table class="spec-table">
+<thead><tr><th>항목</th><th>토스단말기 <span class="spec-badge badge-toss">TOSS</span></th><th>네이버단말기 <span class="spec-badge badge-naver">NAVER</span></th></tr></thead>
+<tbody>
+<tr><td>결제 수단</td><td>IC·MSR·NFC·QR·애플페이·삼성페이</td><td>IC·MSR·NFC·QR·삼성페이·페이스사인</td></tr>
+<tr><td>디스플레이</td><td>터치 LCD</td><td>터치 LCD</td></tr>
+<tr><td>키오스크 모드</td><td><span class="spec-check">✓</span> 미니 키오스크</td><td><span class="spec-check">✓</span> 미니 키오스크</td></tr>
+<tr><td>리뷰 연동</td><td><span class="spec-dash">—</span></td><td><span class="spec-check">✓</span> 네이버 키워드 리뷰</td></tr>
+<tr><td>쿠폰/포인트</td><td>토스 포인트</td><td>네이버 쿠폰·포인트 자동 적용</td></tr>
+<tr><td>안면인식 결제</td><td><span class="spec-dash">—</span></td><td><span class="spec-check">✓</span> 페이스사인</td></tr>
+<tr><td>POS 연동</td><td>토스포스 (무료 앱)</td><td>기존 POS 시스템 연동</td></tr>
+<tr><td>연결 방식</td><td>WiFi / 유선</td><td>WiFi / 유선</td></tr>
+<tr><td>컬러</td><td>화이트 / 블랙</td><td>블랙</td></tr>
+<tr><td>특별 기능</td><td>신분증 검사 (프론트2)</td><td>CRM 고객관리 · 타깃 마케팅</td></tr>
+</tbody>
+</table></div>
+</div>
+</section>
+
+<!-- FIELD SKETCH -->
+<section class="install-sec">
+<div class="install-inner">
+<div class="install-header reveal"><div class="sec-tag">Field Sketch</div><h2>현장 스케치</h2><p>전국 다양한 매장에서 토스/네이버 단말기를 만나보세요.</p></div>
+<div class="install-grid">
+<div class="install-placeholder reveal"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>카페<br>설치 사진 준비 중</div>
+<div class="install-placeholder reveal"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>음식점<br>설치 사진 준비 중</div>
+<div class="install-placeholder reveal"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>병원<br>설치 사진 준비 중</div>
+</div>
+</div>
+</section>
+
+</div><!-- /flow-bg -->
+
+<!-- FIELD SKETCH MODAL -->
+<div class="fs-modal" id="fsModal" onclick="if(event.target===this)closeFS()">
+<button class="fs-modal-close" onclick="closeFS()">✕</button>
+<div class="fs-modal-card">
+<img class="fs-modal-img" id="fsImg" src="" alt="">
+<div class="fs-modal-body">
+<h3 id="fsTitle"></h3>
+<div class="fsm-tags" id="fsTags"></div>
+<p id="fsDesc"></p>
+</div>
+</div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer-mini"><a href="index.html">← 누리네트웍스 홈으로 돌아가기</a><br><br>© 2026 Nurinetworks. All rights reserved.</div>
+
+<script>
+const fsData={};
+function openFS(id){const d=fsData[id];if(!d)return;
+document.getElementById('fsImg').src=d.img;
+document.getElementById('fsTitle').textContent=d.title;
+document.getElementById('fsTags').innerHTML=d.tags.map(t=>'<span>'+t+'</span>').join('');
+document.getElementById('fsDesc').textContent=d.desc;
+var eb=document.getElementById('fsEmoji');if(eb)eb.remove();
+var em=document.createElement('div');em.className='fs-emoji-bounce';em.id='fsEmoji';em.textContent=d.emoji;
+document.querySelector('.fs-modal-card').appendChild(em);
+document.getElementById('fsModal').classList.add('open');document.body.style.overflow='hidden';}
+function closeFS(){document.getElementById('fsModal').classList.remove('open');document.body.style.overflow='';var eb=document.getElementById('fsEmoji');if(eb)eb.remove();}
+
+window.addEventListener('scroll',function(){document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>80);});
+const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}});},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// MASCOT - bulldog characters jumping across both cards
+(function(){
+const mascotImages=['mascot-heart.png','mascot-thumbsup.png','mascot-clap.png','mascot-peace.png'];
+const grid=document.querySelector('.vs-grid');
+if(!grid)return;
+const allFeats=Array.from(grid.querySelectorAll('.img-card-feat'));
+if(allFeats.length===0)return;
+
+mascotImages.forEach(src=>{const i=new Image();i.src=src;});
+
+const m=document.createElement('div');
+m.className='mascot';
+const mImg=document.createElement('img');
+mImg.src=mascotImages[0];
+mImg.alt='mascot';
+m.appendChild(mImg);
+document.body.appendChild(m);
+
+let idx=0;
+function positionMascot(animate){
+const feat=allFeats[idx];
+const r=feat.getBoundingClientRect();
+const x=r.left+r.width/2-28;
+const y=r.top-52;
+if(animate){
+m.classList.remove('jump');
+void m.offsetWidth;
+m.classList.add('jump');
+}
+m.style.left=x+'px';
+m.style.top=y+'px';
+mImg.src=mascotImages[idx%mascotImages.length];
+allFeats.forEach((f,i)=>{
+f.style.background=i===idx?'rgba(255,255,255,0.25)':'rgba(255,255,255,0.1)';
+f.style.transform=i===idx?'scale(1.06)':'scale(1)';
+f.style.transition='all .3s ease';
+});
+}
+
+let interval=null;
+const cardObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{
+if(e.isIntersecting){
+m.classList.add('active','mascot-pop');
+positionMascot(false);
+interval=setInterval(()=>{
+idx=(idx+1)%allFeats.length;
+positionMascot(true);
+},2000);
+cardObs.unobserve(e.target);
+}});},{threshold:0.3});
+cardObs.observe(grid);
+
+let ticking=false;
+function reposition(){if(!ticking){ticking=true;requestAnimationFrame(()=>{positionMascot(false);ticking=false;});}}
+window.addEventListener('scroll',reposition,{passive:true});
+window.addEventListener('resize',reposition);
+})();
+</script>
+</body>
+</html>
