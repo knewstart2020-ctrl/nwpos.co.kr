@@ -143,9 +143,12 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 .install-header p{font-size:0.95rem;color:var(--gray);}
 .install-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
 .install-card{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:4/3;background:#e8e8ed;cursor:pointer;transition:all .4s;}
+.install-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+.split-img{display:flex;width:100%;height:100%;position:absolute;inset:0;}
+.split-img img{width:50%;height:100%;object-fit:cover;transition:transform .6s;}
+.install-card:hover img,.install-card:hover .split-img img{transform:scale(1.05);}
 .install-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,0.12);}
 .install-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
-.install-card:hover img{transform:scale(1.06);}
 .install-card-overlay{position:absolute;inset:0;background:rgba(0,0,0,0);z-index:1;transition:background .5s;}
 .install-card:hover .install-card-overlay{background:rgba(0,0,0,0.55);}
 .install-card-info{position:absolute;bottom:0;left:0;right:0;padding:24px;z-index:2;opacity:0;transform:translateY(12px);transition:all .4s;}
@@ -302,22 +305,22 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <div class="install-card-info"><h4>생선구이점</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">🐟</span> N250</span></div></div>
 </div>
 <div class="install-card reveal" onclick="openFS('fs2')">
-<img src="field-cafe-1.jpg" alt="카페">
+<div class="split-img"><img src="https://lh3.googleusercontent.com/d/16n0Fs8iuPSHLkzbOMjlOuPZmoK66-JTw" alt="카페 간판"><img src="field-cafe-install.jpg" alt="카페 설치"></div>
 <div class="install-card-overlay"></div>
 <div class="install-card-info"><h4>카페</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">☕</span> N250</span></div></div>
 </div>
 <div class="install-card reveal" onclick="openFS('fs3')">
-<img src="field-mart-1.jpg" alt="전통시장/마트">
+<div class="split-img"><img src="https://lh3.googleusercontent.com/d/1z9phmHdmY8ZX0GTVvLu4yxEzFbxytDJx" alt="마트 간판"><img src="field-mart-install.jpg" alt="마트 설치"></div>
 <div class="install-card-overlay"></div>
 <div class="install-card-info"><h4>전통시장/마트</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">🛒</span> N250</span></div></div>
 </div>
 <div class="install-card reveal" onclick="openFS('fs4')">
-<img src="field-bakery-1.jpg" alt="베이커리">
+<div class="split-img"><img src="https://lh3.googleusercontent.com/d/1qnQQ5uoEC2X25WZeYWJt9VrCBWK8LB23" alt="베이커리 간판"><img src="field-bakery-install.jpg" alt="베이커리 설치"></div>
 <div class="install-card-overlay"></div>
 <div class="install-card-info"><h4>베이커리</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">🥐</span> NOVA</span></div></div>
 </div>
 <div class="install-card reveal" onclick="openFS('fs5')">
-<img src="field-hospital-1.jpg" alt="병원">
+<div class="split-img"><img src="https://lh3.googleusercontent.com/d/1LuO6_lxTKJnaafodCsXf0S_euMaIv85n" alt="병원 간판"><img src="https://lh3.googleusercontent.com/d/17mt4SZHIBZQScNvitDi6wj4kutWXzSx_" alt="병원 설치"></div>
 <div class="install-card-overlay"></div>
 <div class="install-card-info"><h4>병원</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">🏥</span> NOVA</span></div></div>
 </div>
@@ -359,7 +362,7 @@ fs3:{img:'field-mart-install.jpg',title:'전통시장/마트',tags:['N250'],emoj
 desc:'활기 넘치는 전통시장에 IMU 포스를 설치했습니다. 요기요·쿠팡이츠 등 배달앱 연동으로 오프라인 매출과 배달 주문을 하나의 포스에서 통합 관리합니다. 끊김 없는 8G 메모리로 매장+배달 동시 운영이 가능합니다.'},
 fs4:{img:'field-bakery-install.jpg',title:'베이커리',tags:['NOVA'],emoji:'🥐',
 desc:'빵과 디저트가 가득한 프리미엄 베이커리에 포스 시스템을 설치했습니다. 메뉴별 카테고리 분류로 수십 가지 빵을 빠르게 주문·결제하고, 카드단말기와 연동하여 원스톱 결제 환경을 구축했습니다.'},
-fs5:{img:'field-hospital-install.jpg',title:'병원',tags:['N250'],emoji:'🏥',
+fs5:{img:'https://lh3.googleusercontent.com/d/17mt4SZHIBZQScNvitDi6wj4kutWXzSx_',title:'병원',tags:['N250'],emoji:'🏥',
 desc:'고급스러운 인테리어의 병원 접수 카운터에 IMU 포스를 설치했습니다. 키오스크 모드 연동으로 환자 접수·수납·처방전 관리까지 원스톱으로 처리하며, 깔끔한 화이트 톤 매장과 자연스럽게 어울립니다.'},
 fs6:{img:'field-resto-install.jpg',title:'레스토랑',tags:['N250'],emoji:'🍽️',
 desc:'파스타·스테이크·와인까지 다양한 메뉴를 카테고리별로 관리하는 레스토랑에 IMU 포스와 스마트로 카드단말기를 설치했습니다. 세련된 인테리어에 어울리는 깔끔한 포스 구성으로 고급스러운 매장 분위기를 유지합니다.'}
