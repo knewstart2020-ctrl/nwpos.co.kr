@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>테이블오더/QR오더 | 누리네트웍스</title>
+<meta name="description" content="인건비 다이어트, 테이블오더/QR오더가 정답입니다. 주문부터 결제까지 앉아서 끝! 업오더 테이블오더, 업오더 QR, 토스 QR로 스마트 매장을 완성하세요.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#1B3A8C;--primary-light:#2E5BDB;--accent:#C9A84C;--warm:#D4956A;--dark:#1d1d1f;--gray:#86868b;--light:#f5f5f7;--radius:20px;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(0,0,0,0);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid transparent;transition:all .4s;}
+.nav.scrolled{background:rgba(255,255,255,0.85);border-bottom-color:rgba(0,0,0,0.06);}
+.nav.scrolled .nl,.nav.scrolled .nav-product{color:#1d1d1f;}
+.nav.scrolled .nt{color:rgba(0,0,0,0.4);}.nav.scrolled .nt b{color:rgba(0,0,0,0.6);}
+.nav.scrolled .nav-links a{color:rgba(0,0,0,0.5);}.nav.scrolled .nav-links a:hover{color:#1d1d1f;}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.nav-logo{display:flex;align-items:center;gap:6px;text-decoration:none;font-family:'Inter',sans-serif;}
+.nl{font-size:1.6rem;font-weight:700;color:#fff;text-shadow:1px 1px 0 rgba(0,0,0,0.3);transition:color .4s;}
+.nt{font-size:0.7rem;color:rgba(255,255,255,0.5);font-weight:300;transition:color .4s;}.nt b{font-weight:600;color:rgba(255,255,255,0.7);transition:color .4s;}
+.nav-product{font-size:0.95rem;font-weight:700;color:#fff;letter-spacing:-0.02em;transition:color .4s;}
+.nav-links{display:flex;gap:16px;align-items:center;}
+.nav-links a{font-size:0.78rem;color:rgba(255,255,255,0.6);text-decoration:none;font-weight:500;transition:color .2s;}.nav-links a:hover{color:#fff;}
+.nav-cta{background:var(--primary);color:#fff!important;padding:7px 18px;border-radius:50px;font-weight:600!important;}
+.sec-tag{font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--primary);margin-bottom:12px;}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#000;overflow:hidden;}
+.hero-video{position:absolute;inset:0;}.hero-video video{width:100%;height:100%;object-fit:cover;opacity:0.45;}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.1) 40%,rgba(0,0,0,0.65) 100%);z-index:1;}
+.hero-content{position:relative;z-index:2;text-align:center;padding:0 40px;}
+.hero-tag{font-size:0.82rem;font-weight:600;color:var(--warm);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:16px;opacity:0;animation:fadeUp .8s ease .3s forwards;}
+.hero h1{font-size:clamp(2.8rem,7vw,5rem);font-weight:900;color:#fff;line-height:1.08;letter-spacing:-0.05em;margin-bottom:20px;opacity:0;animation:fadeUp .8s ease .5s forwards;}
+.hero h1 .accent-line{display:block;background:linear-gradient(90deg,#FF9A56,#FFCF8B,#FF9A56);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 3s linear infinite;}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.hero-copy{font-size:clamp(0.92rem,1.8vw,1.12rem);color:rgba(255,255,255,0.6);line-height:2;font-weight:300;max-width:580px;margin:0 auto;opacity:0;animation:fadeUp .8s ease .7s forwards;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,0.7);font-size:0.75rem;font-weight:500;letter-spacing:0.15em;animation:scrollBounce 2s ease-in-out infinite;}
+.hero-scroll-line{width:1.5px;height:48px;background:linear-gradient(to bottom,rgba(255,255,255,0.7),transparent);border-radius:1px;}
+@keyframes scrollBounce{0%,100%{opacity:0.5;transform:translateX(-50%) translateY(0);}50%{opacity:1;transform:translateX(-50%) translateY(8px);}}
+
+/* 3D FLOATING TEXT */
+.hero-float-text{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;}
+.hft{position:absolute;font-family:'Inter',sans-serif;font-weight:900;white-space:nowrap;color:rgba(0,0,0,0.03);letter-spacing:0.05em;text-transform:uppercase;}
+.hft-1{font-size:clamp(3rem,10vw,7rem);top:5%;animation:hftScroll 30s linear infinite;}
+.hft-2{font-size:clamp(2.5rem,8vw,5.5rem);top:30%;animation:hftScroll 35s linear infinite reverse;}
+.hft-3{font-size:clamp(2.5rem,8vw,6rem);top:55%;animation:hftScroll 38s linear infinite;}
+.hft-4{font-size:clamp(3rem,10vw,7rem);top:80%;animation:hftScroll 32s linear infinite reverse;}
+@keyframes hftScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* FLOWING BG */
+.flow-bg{background:linear-gradient(180deg,#f5f5f7 0%,#f0ece4 15%,#ffffff 30%,#faf6f0 50%,#ffffff 70%,#f0ece4 85%,#f5f5f7 100%);position:relative;overflow:hidden;}
+.flow-bg::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 20% 30%,rgba(212,149,106,0.04) 0%,transparent 50%),radial-gradient(ellipse at 80% 70%,rgba(201,168,76,0.03) 0%,transparent 50%);pointer-events:none;z-index:0;}
+
+/* VS SECTION - 3 Product Cards */
+.vs-sec{background:transparent;padding:120px 0 80px;position:relative;}
+.vs-inner{max-width:1200px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
+.vs-header{text-align:center;margin-bottom:60px;}
+.vs-header h2{font-size:clamp(2rem,4vw,2.8rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:12px;}
+.vs-header p{font-size:1rem;color:var(--gray);line-height:1.7;}
+.vs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1100px;margin:0 auto;}
+
+/* Apple-style Product Cards */
+.ap-card{border-radius:24px;overflow:hidden;position:relative;min-height:520px;display:flex;flex-direction:column;padding:40px 32px 0;transition:transform .4s;}
+.ap-card:hover{transform:translateY(-4px);}
+.ap-card-dark{background:#1d1d1f;}
+.ap-card-warm{background:linear-gradient(145deg,#2a2018 0%,#1d1d1f 100%);}
+.ap-card-toss{background:linear-gradient(145deg,#1a1a2e 0%,#1d1d1f 100%);}
+.ap-tag{font-size:0.68rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;}
+.tag-tablet{color:#FF9A56;}
+.tag-qr{color:#56D8A0;}
+.tag-toss{color:#3182F6;}
+.ap-card h3{color:#fff;font-size:clamp(1.5rem,2.8vw,1.9rem);font-weight:800;letter-spacing:-0.03em;line-height:1.12;margin-bottom:10px;}
+.ap-sub{font-size:0.88rem;font-weight:400;line-height:1.5;margin-bottom:6px;color:rgba(255,255,255,0.65);}
+.ap-price{font-size:0.78rem;font-weight:500;margin-bottom:20px;color:rgba(255,255,255,0.4);}
+.ap-img-wrap{flex:1;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;}
+.ap-img-wrap img{max-width:85%;max-height:320px;object-fit:contain;filter:drop-shadow(0 12px 40px rgba(0,0,0,0.15));transition:transform .6s;}
+.ap-card:hover .ap-img-wrap img{transform:scale(1.04) translateY(-6px);}
+/* Coming Soon Badge */
+.ap-soon{display:inline-block;font-size:0.62rem;font-weight:700;letter-spacing:0.06em;padding:4px 10px;border-radius:50px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.45);margin-left:8px;vertical-align:middle;}
+
+/* FEATURE CARDS */
+.feat-sec{background:transparent;padding:100px 0;}
+.feat-inner{max-width:1200px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
+.feat-header{text-align:center;margin-bottom:48px;}.feat-header h2{font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:8px;}
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:800px;margin:0 auto;}
+.feat-card{display:flex;gap:14px;padding:18px;border-radius:14px;background:#f5f5f7;border:1px solid rgba(0,0,0,0.03);transition:all .3s;}
+.feat-card:hover{background:#fff;box-shadow:0 4px 20px rgba(0,0,0,0.06);transform:translateY(-2px);}
+.fc-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.fc-text h4{font-size:0.88rem;font-weight:700;margin-bottom:4px;}
+.fc-text p{font-size:0.78rem;color:var(--gray);line-height:1.5;}
+
+/* SPEC TABLE */
+.spec-sec{background:transparent;padding:100px 0;}
+.spec-inner{max-width:900px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
+.spec-header{text-align:center;margin-bottom:48px;}.spec-header h2{font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:8px;}
+.spec-table{width:100%;border-collapse:collapse;}
+.spec-table thead th{text-align:left;font-size:0.72rem;color:var(--gray);font-weight:600;text-transform:uppercase;letter-spacing:0.08em;padding:14px 0;border-bottom:2px solid #1d1d1f;}
+.spec-table thead th:first-child{width:22%;}
+.spec-table tbody td{padding:14px 0;font-size:0.85rem;border-bottom:1px solid rgba(0,0,0,0.05);vertical-align:top;}
+.spec-table tbody td:first-child{color:var(--gray);font-weight:500;}
+.spec-table tbody td:not(:first-child){font-weight:600;}
+.spec-badge{display:inline-block;font-size:0.6rem;font-weight:700;padding:2px 8px;border-radius:50px;margin-left:6px;vertical-align:middle;}
+.badge-hot{background:rgba(255,107,53,0.1);color:#FF6B35;}
+.badge-new{background:rgba(49,130,246,0.1);color:#3182F6;}
+
+/* FIELD SKETCH */
+.install-sec{background:transparent;padding:100px 0;}
+.install-inner{max-width:1200px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
+.install-header{text-align:center;margin-bottom:48px;}.install-header h2{font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:8px;}.install-header p{font-size:0.95rem;color:var(--gray);line-height:1.7;}
+.install-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.install-card{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:4/3;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,0.08);transition:all .5s;}
+.install-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,0.12);}
+.install-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+.install-card-overlay{position:absolute;inset:0;background:rgba(0,0,0,0);z-index:1;transition:background .5s;}
+.install-card:hover .install-card-overlay{background:rgba(0,0,0,0.55);}
+.install-card-info{position:absolute;bottom:0;left:0;right:0;padding:24px;z-index:2;opacity:0;transform:translateY(12px);transition:all .4s;}
+.install-card:hover .install-card-info{opacity:1;transform:translateY(0);}
+.install-card-info h4{font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:10px;}
+.install-card-tags{display:flex;gap:8px;flex-wrap:wrap;}
+.install-card-tags span{font-size:1rem;font-weight:700;padding:6px 16px;border-radius:50px;background:rgba(255,255,255,0.2);backdrop-filter:blur(4px);color:#fff;}
+.install-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:4/3;background:#e8e8ed;border-radius:16px;color:#999;font-size:0.82rem;text-align:center;line-height:1.6;padding:20px;gap:8px;}
+.install-placeholder svg{opacity:0.3;}
+/* EMOJI ANIMATION */
+.fs-emoji{display:inline-block;font-size:32px;animation:swim 2s ease-in-out infinite;vertical-align:middle;}
+.fs-emoji-bounce{display:inline-block;font-size:48px;animation:bounce 1s ease-in-out infinite;position:absolute;top:20px;right:20px;z-index:3;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.3));}
+@keyframes swim{0%,100%{transform:translateX(0) scaleX(1)}50%{transform:translateX(8px) scaleX(-1)}}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+/* FIELD SKETCH MODAL */
+.fs-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:200;justify-content:center;align-items:center;padding:20px;backdrop-filter:blur(4px);}
+.fs-modal.open{display:flex;}
+.fs-modal-card{background:#fff;border-radius:20px;max-width:600px;width:100%;overflow:hidden;animation:fadeUp .4s ease;position:relative;}
+.fs-modal-img{width:100%;height:280px;object-fit:cover;}
+.fs-modal-body{padding:28px;}
+.fs-modal-body h3{font-size:1.3rem;font-weight:800;margin-bottom:6px;}
+.fs-modal-body .fsm-tags{display:flex;gap:6px;margin-bottom:16px;}
+.fs-modal-body .fsm-tags span{font-size:0.72rem;font-weight:600;padding:4px 12px;border-radius:50px;background:rgba(27,58,140,0.08);color:var(--primary);}
+.fs-modal-body p{font-size:0.92rem;color:#424245;line-height:1.8;}
+.fs-modal-close{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.9);border:none;cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;z-index:10;}
+
+/* FOOTER */
+.footer-mini{background:#f5f5f7;text-align:center;padding:32px 40px;font-size:0.78rem;color:var(--gray);border-top:1px solid rgba(0,0,0,0.06);}
+.footer-mini a{color:var(--primary);text-decoration:none;font-weight:600;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(40px);transition:all .7s cubic-bezier(0.16,1,0.3,1);}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.vs-grid{grid-template-columns:1fr;gap:24px;max-width:440px;}.ap-card{min-height:460px;}.install-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:768px){.nav-links{display:none;}.hero h1{font-size:2.6rem;}.vs-sec{padding:80px 0 60px;}.ap-card{min-height:400px;padding:32px 24px 0;}.ap-img-wrap img{max-height:240px;}.feat-grid{grid-template-columns:1fr;}.spec-inner{padding:0 20px;}.spec-table{font-size:0.78rem;}.install-grid{grid-template-columns:1fr;}.feat-sec,.spec-sec,.install-sec{padding:80px 0;}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav"><div class="nav-inner">
+<a href="index.html" class="nav-logo"><span class="nl">N</span><span class="nt"><b>nuri</b>networkspay</span></a>
+<span class="nav-product">테이블오더/QR오더</span>
+<div class="nav-links"><a href="index.html">홈</a><a href="index.html#products">제품 라인업</a><a href="about.html">회사소개</a><a href="tel:1544-7754" class="nav-cta">1544-7754</a></div>
+</div></nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-video"><video autoplay muted loop playsinline><source src="order-showcase.mp4" type="video/mp4"></video></div>
+<div class="hero-content">
+<div class="hero-tag">Table Order · QR Order</div>
+<h1>지각도, 퇴사도 없는<br><span class="accent-line">우리 매장 에이스.</span></h1>
+<p class="hero-copy">인건비는 반으로, 테이블 회전율은 두 배로.<br>주문이 쉬워지면, 매출의 단위가 바뀝니다.</p>
+</div>
+<div class="hero-scroll"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg><span>SCROLL</span><div class="hero-scroll-line"></div></div>
+</section>
+
+<!-- FLOWING BACKGROUND -->
+<div class="flow-bg">
+<div class="hero-float-text">
+<div class="hft hft-1">TABLE ORDER · QR ORDER · SMART RESTAURANT · TABLE ORDER · QR ORDER · SMART RESTAURANT · TABLE ORDER · QR ORDER · </div>
+<div class="hft hft-2">업오더 · UPORDER · TOSS QR · 인건비절감 · 업오더 · UPORDER · TOSS QR · 인건비절감 · 업오더 · UPORDER · TOSS QR · </div>
+<div class="hft hft-3">주문부터 결제까지 · CONTACTLESS · SMART DINING · 주문부터 결제까지 · CONTACTLESS · SMART DINING · 주문부터 결제까지 · </div>
+<div class="hft hft-4">NO WAIT · ORDER NOW · DIGITAL MENU · NO WAIT · ORDER NOW · DIGITAL MENU · NO WAIT · ORDER NOW · DIGITAL MENU · </div>
+</div>
+
+<!-- VS SECTION - 3 Products -->
+<section class="vs-sec">
+<div class="vs-inner">
+<div class="vs-header reveal">
+<div class="sec-tag">Product Lineup</div>
+<h2>테이블오더. 주문의 혁신</h2>
+<p>매장 규모와 운영 방식에 맞는 최적의 테이블오더를 선택하세요.</p>
+</div>
+<div class="vs-grid reveal">
+<!-- 업오더 테이블오더 -->
+<div class="ap-card ap-card-dark">
+<div class="ap-tag tag-tablet">BEST SELLER</div>
+<h3>업오더<br>테이블오더</h3>
+<p class="ap-sub">태블릿으로 직접 주문</p>
+<p class="ap-price">테이블마다 태블릿 설치, 직관적 메뉴 UI</p>
+<div class="ap-img-wrap"><img src="https://imupos.com/img/sub/uporder_title.png" alt="업오더 테이블오더"></div>
+</div>
+<!-- 업오더 QR -->
+<div class="ap-card ap-card-warm">
+<div class="ap-tag tag-qr">QR SCAN</div>
+<h3>업오더 QR<span class="ap-soon">COMING SOON</span></h3>
+<p class="ap-sub">내 스마트폰이 메뉴판</p>
+<p class="ap-price">QR 스캔 한 번, 내 폰으로 간편 주문</p>
+<div class="ap-img-wrap"><img src="https://imupos.com/img/sub/uporder_title.png" alt="업오더 QR" style="opacity:0.7;filter:drop-shadow(0 12px 40px rgba(0,0,0,0.15)) grayscale(0.3);"></div>
+</div>
+<!-- 토스 QR -->
+<div class="ap-card ap-card-toss">
+<div class="ap-tag tag-toss">TOSS PLACE</div>
+<h3>토스 QR<span class="ap-soon">COMING SOON</span></h3>
+<p class="ap-sub">토스로 주문·결제 한 번에</p>
+<p class="ap-price">토스 앱 연동, 간편 결제 + 포인트 적립</p>
+<div class="ap-img-wrap"><img src="https://imupos.com/img/sub/uporder_title.png" alt="토스 QR" style="opacity:0.7;filter:drop-shadow(0 12px 40px rgba(0,0,0,0.15)) grayscale(0.3);"></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FEATURE CARDS -->
+<section class="feat-sec">
+<div class="feat-inner">
+<div class="feat-header reveal">
+<div class="sec-tag">Features</div>
+<h2>제품 특징</h2>
+</div>
+<div class="feat-grid reveal">
+<div class="feat-card"><div class="fc-icon" style="background:#FFF0E6;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4956A" stroke-width="2"><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div><div class="fc-text"><h4>인건비 절감 효과</h4><p>주문 전담 직원 없이도 매장 운영. 월 최대 인건비 30% 절감</p></div></div>
+<div class="feat-card"><div class="fc-icon" style="background:#E6F7EF;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div><div class="fc-text"><h4>QR / 태블릿 주문</h4><p>테이블 QR코드 또는 태블릿으로 고객이 직접 주문</p></div></div>
+<div class="feat-card"><div class="fc-icon" style="background:#EAF0FF;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B3A8C" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div><div class="fc-text"><h4>다국어 지원</h4><p>한/영/중/일 4개 국어 메뉴 제공. 외국인 관광객 대응</p></div></div>
+<div class="feat-card"><div class="fc-icon" style="background:#FAEEDA;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#854F0B" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div><div class="fc-text"><h4>POS·주방 자동 연동</h4><p>주문 즉시 POS와 주방 디스플레이(KDS)에 실시간 전송</p></div></div>
+<div class="feat-card"><div class="fc-icon" style="background:#FBEAF0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#993556" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg></div><div class="fc-text"><h4>추가 주문 유도</h4><p>메뉴 사진·추천 메뉴로 자연스러운 업셀링 효과</p></div></div>
+<div class="feat-card"><div class="fc-icon" style="background:#EEEDFE;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#534AB7" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><div class="fc-text"><h4>실시간 매출 관리</h4><p>클라우드 기반 매출·메뉴별 판매 통계 실시간 확인</p></div></div>
+</div>
+</div>
+</section>
+
+<!-- SPEC TABLE -->
+<section class="spec-sec">
+<div class="spec-inner">
+<div class="spec-header reveal"><div class="sec-tag">Specifications</div><h2>제품 사양 비교</h2></div>
+<div class="reveal" style="overflow-x:auto;"><table class="spec-table">
+<thead><tr><th>항목</th><th>업오더 테이블오더 <span class="spec-badge badge-hot">HOT</span></th><th>업오더 QR</th><th>토스 QR</th></tr></thead>
+<tbody>
+<tr><td>주문 방식</td><td>태블릿 터치 주문</td><td>QR → 고객 스마트폰</td><td>QR → 토스앱 주문</td></tr>
+<tr><td>디스플레이</td><td>10.1" HD 태블릿</td><td>고객 스마트폰</td><td>고객 스마트폰</td></tr>
+<tr><td>결제</td><td>POS 연동 통합 결제</td><td>POS 연동 / 모바일결제</td><td>토스페이 간편결제</td></tr>
+<tr><td>다국어</td><td>한/영/중/일</td><td>한/영/중/일</td><td>한국어</td></tr>
+<tr><td>POS 연동</td><td>UP포스 / 오케이포스</td><td>UP포스 / 오케이포스</td><td>토스플레이스 POS</td></tr>
+<tr><td>주방 연동</td><td>KDS (주방 디스플레이)</td><td>KDS (주방 디스플레이)</td><td>토스 주방 프린터</td></tr>
+<tr><td>추가 기능</td><td>메뉴 사진·추천·알레르기 표시</td><td>추천 메뉴·리뷰</td><td>포인트 적립·쿠폰</td></tr>
+<tr><td>도입 비용</td><td>태블릿 + 거치대 별도</td><td>QR 스티커만 부착</td><td>QR 스티커만 부착</td></tr>
+<tr><td>적합 매장</td><td>음식점·카페·고기집·횟집</td><td>소규모 매장·푸드코트</td><td>토스플레이스 가맹점</td></tr>
+</tbody>
+</table></div>
+</div>
+</section>
+
+<!-- FIELD SKETCH -->
+<section class="install-sec">
+<div class="install-inner">
+<div class="install-header reveal"><div class="sec-tag">Field Sketch</div><h2>현장 스케치</h2><p>전국 다양한 매장에서 테이블오더/QR오더를 만나보세요.</p></div>
+<div class="install-grid">
+<div class="install-card reveal" onclick="openFS('fs1')">
+<img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80" alt="레스토랑">
+<div class="install-card-overlay"></div>
+<div class="install-card-info"><h4>레스토랑</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">🍽️</span> 테이블오더</span></div></div>
+</div>
+<div class="install-card reveal" onclick="openFS('fs2')">
+<img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&q=80" alt="카페">
+<div class="install-card-overlay"></div>
+<div class="install-card-info"><h4>카페</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">☕</span> QR오더</span></div></div>
+</div>
+<div class="install-card reveal" onclick="openFS('fs3')">
+<img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80" alt="고기집">
+<div class="install-card-overlay"></div>
+<div class="install-card-info"><h4>고기집</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">🥩</span> 테이블오더</span></div></div>
+</div>
+</div>
+</div>
+</section>
+
+</div><!-- /flow-bg -->
+
+<!-- FIELD SKETCH MODAL -->
+<div class="fs-modal" id="fsModal" onclick="if(event.target===this)closeFS()">
+<button class="fs-modal-close" onclick="closeFS()">✕</button>
+<div class="fs-modal-card">
+<img class="fs-modal-img" id="fsImg" src="" alt="">
+<div class="fs-modal-body">
+<h3 id="fsTitle"></h3>
+<div class="fsm-tags" id="fsTags"></div>
+<p id="fsDesc"></p>
+</div>
+</div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer-mini"><a href="index.html">← 누리네트웍스 홈으로 돌아가기</a><br><br>© 2026 Nurinetworks. All rights reserved.</div>
+
+<script>
+// Field Sketch Data
+const fsData={
+fs1:{img:'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80',title:'레스토랑',tags:['업오더 테이블오더'],emoji:'🍽️',
+desc:'프리미엄 레스토랑에 업오더 테이블오더를 설치했습니다. 각 테이블에 태블릿을 배치하여 고객이 메뉴 사진을 보며 직접 주문하고, 주문 내역이 주방으로 자동 전송됩니다. 직원 호출 없이 추가 주문도 편리합니다.'},
+fs2:{img:'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&q=80',title:'카페',tags:['업오더 QR'],emoji:'☕',
+desc:'감성 카페에 QR오더를 도입했습니다. 테이블 위 QR코드를 스캔하면 고객의 스마트폰에서 바로 메뉴를 확인하고 주문할 수 있습니다. 별도 태블릿 설치 없이 깔끔한 테이블 유지가 가능합니다.'},
+fs3:{img:'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80',title:'고기집',tags:['업오더 테이블오더'],emoji:'🥩',
+desc:'고기 전문점에 테이블오더를 도입했습니다. 고기 굽기와 사이드 메뉴를 태블릿에서 바로 선택하고, 추가 주문도 직원 호출 없이 편리하게 진행됩니다. 외국인 관광객도 영어/중국어/일본어 메뉴로 손쉽게 주문합니다.'}
+};
+function openFS(id){const d=fsData[id];if(!d)return;
+document.getElementById('fsImg').src=d.img;
+document.getElementById('fsTitle').textContent=d.title;
+document.getElementById('fsTags').innerHTML=d.tags.map(t=>'<span>'+t+'</span>').join('');
+document.getElementById('fsDesc').textContent=d.desc;
+var eb=document.getElementById('fsEmoji');if(eb)eb.remove();
+var em=document.createElement('div');em.className='fs-emoji-bounce';em.id='fsEmoji';em.textContent=d.emoji;
+document.querySelector('.fs-modal-card').appendChild(em);
+document.getElementById('fsModal').classList.add('open');document.body.style.overflow='hidden';}
+function closeFS(){document.getElementById('fsModal').classList.remove('open');document.body.style.overflow='';var eb=document.getElementById('fsEmoji');if(eb)eb.remove();}
+
+window.addEventListener('scroll',function(){document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>80);});
+const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}});},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
