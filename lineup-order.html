@@ -58,32 +58,28 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 .flow-bg{background:linear-gradient(180deg,#f5f5f7 0%,#f0ece4 15%,#ffffff 30%,#faf6f0 50%,#ffffff 70%,#f0ece4 85%,#f5f5f7 100%);position:relative;overflow:hidden;}
 .flow-bg::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 20% 30%,rgba(212,149,106,0.04) 0%,transparent 50%),radial-gradient(ellipse at 80% 70%,rgba(201,168,76,0.03) 0%,transparent 50%);pointer-events:none;z-index:0;}
 
-/* VS SECTION - 3 Product Cards */
+/* VS SECTION - Image Background Cards */
 .vs-sec{background:transparent;padding:120px 0 80px;position:relative;}
 .vs-inner{max-width:1200px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
 .vs-header{text-align:center;margin-bottom:60px;}
 .vs-header h2{font-size:clamp(2rem,4vw,2.8rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:12px;}
 .vs-header p{font-size:1rem;color:var(--gray);line-height:1.7;}
-.vs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1100px;margin:0 auto;}
+.vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1100px;margin:0 auto;}
 
-/* Apple-style Product Cards */
-.ap-card{border-radius:24px;overflow:hidden;position:relative;min-height:520px;display:flex;flex-direction:column;padding:40px 32px 0;transition:transform .4s;}
-.ap-card:hover{transform:translateY(-4px);}
-.ap-card-dark{background:#1d1d1f;}
-.ap-card-warm{background:linear-gradient(145deg,#2a2018 0%,#1d1d1f 100%);}
-.ap-card-toss{background:linear-gradient(145deg,#1a1a2e 0%,#1d1d1f 100%);}
-.ap-tag{font-size:0.68rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;}
-.tag-tablet{color:#FF9A56;}
-.tag-qr{color:#56D8A0;}
-.tag-toss{color:#3182F6;}
-.ap-card h3{color:#fff;font-size:clamp(1.5rem,2.8vw,1.9rem);font-weight:800;letter-spacing:-0.03em;line-height:1.12;margin-bottom:10px;}
-.ap-sub{font-size:0.88rem;font-weight:400;line-height:1.5;margin-bottom:6px;color:rgba(255,255,255,0.65);}
-.ap-price{font-size:0.78rem;font-weight:500;margin-bottom:20px;color:rgba(255,255,255,0.4);}
-.ap-img-wrap{flex:1;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;}
-.ap-img-wrap img{max-width:85%;max-height:320px;object-fit:contain;filter:drop-shadow(0 12px 40px rgba(0,0,0,0.15));transition:transform .6s;}
-.ap-card:hover .ap-img-wrap img{transform:scale(1.04) translateY(-6px);}
-/* Coming Soon Badge */
-.ap-soon{display:inline-block;font-size:0.62rem;font-weight:700;letter-spacing:0.06em;padding:4px 10px;border-radius:50px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.45);margin-left:8px;vertical-align:middle;}
+/* Image BG Cards */
+.img-card{position:relative;border-radius:24px;overflow:hidden;height:560px;display:flex;flex-direction:column;justify-content:flex-end;cursor:default;transition:transform .5s cubic-bezier(0.16,1,0.3,1);}
+.img-card:hover{transform:translateY(-6px);}
+.img-card-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .8s cubic-bezier(0.16,1,0.3,1);}
+.img-card:hover .img-card-bg{transform:scale(1.05);}
+.img-card::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.88) 0%,rgba(0,0,0,0.5) 35%,rgba(0,0,0,0.15) 60%,rgba(0,0,0,0.08) 100%);z-index:1;}
+.img-card-content{position:relative;z-index:2;padding:40px 36px;display:flex;flex-direction:column;align-items:flex-start;}
+.img-card-tag{display:inline-block;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:14px;flex-shrink:0;}
+.tag-up{background:rgba(255,154,86,0.2);color:#FFBA85;backdrop-filter:blur(4px);}
+.tag-toss{background:rgba(49,130,246,0.2);color:#7AB5FF;backdrop-filter:blur(4px);}
+.img-card h3{font-size:clamp(1.7rem,3vw,2.2rem);font-weight:900;color:#fff;letter-spacing:-0.03em;line-height:1.1;margin-bottom:10px;min-height:2.4em;}
+.img-card-desc{font-size:0.92rem;color:rgba(255,255,255,0.7);line-height:1.7;margin-bottom:20px;min-height:3.4em;}
+.img-card-features{display:flex;flex-wrap:wrap;gap:8px;}
+.img-card-feat{font-size:0.72rem;font-weight:600;padding:6px 14px;border-radius:50px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.08);}
 
 /* FEATURE CARDS */
 .feat-sec{background:transparent;padding:100px 0;}
@@ -153,8 +149,8 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 .reveal.visible{opacity:1;transform:translateY(0);}
 
 /* RESPONSIVE */
-@media(max-width:1024px){.vs-grid{grid-template-columns:1fr;gap:24px;max-width:440px;}.ap-card{min-height:460px;}.install-grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:768px){.nav-links{display:none;}.hero h1{font-size:2.6rem;}.vs-sec{padding:80px 0 60px;}.ap-card{min-height:400px;padding:32px 24px 0;}.ap-img-wrap img{max-height:240px;}.feat-grid{grid-template-columns:1fr;}.spec-inner{padding:0 20px;}.spec-table{font-size:0.78rem;}.install-grid{grid-template-columns:1fr;}.feat-sec,.spec-sec,.install-sec{padding:80px 0;}}
+@media(max-width:1024px){.vs-grid{grid-template-columns:1fr;gap:24px;max-width:540px;}.img-card{min-height:480px;}.install-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:768px){.nav-links{display:none;}.hero h1{font-size:2.6rem;}.vs-sec{padding:80px 0 60px;}.img-card{min-height:420px;}.img-card-content{padding:28px 24px;}.feat-grid{grid-template-columns:1fr;}.spec-inner{padding:0 20px;}.spec-table{font-size:0.78rem;}.install-grid{grid-template-columns:1fr;}.feat-sec,.spec-sec,.install-sec{padding:80px 0;}}
 </style>
 </head>
 <body>
@@ -196,28 +192,34 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 </div>
 <div class="vs-grid reveal">
 <!-- 업오더 테이블오더 -->
-<div class="ap-card ap-card-dark">
-<div class="ap-tag tag-tablet">BEST SELLER</div>
-<h3>업오더<br>테이블오더</h3>
-<p class="ap-sub">태블릿으로 직접 주문</p>
-<p class="ap-price">테이블마다 태블릿 설치, 직관적 메뉴 UI</p>
-<div class="ap-img-wrap"><img src="https://imupos.com/img/sub/uporder_title.png" alt="업오더 테이블오더"></div>
+<div class="img-card">
+<div class="img-card-bg" style="background-image:url('order-card-uporder.png');"></div>
+<div class="img-card-content">
+<span class="img-card-tag tag-up">Best Seller</span>
+<h3>업오더 테이블오더</h3>
+<p class="img-card-desc">테이블 태블릿으로 고객이 직접 주문.<br>직원 호출 없이 추가 주문까지 한 번에.</p>
+<div class="img-card-features">
+<span class="img-card-feat">태블릿 터치 주문</span>
+<span class="img-card-feat">다국어 4개국</span>
+<span class="img-card-feat">POS·KDS 연동</span>
+<span class="img-card-feat">추천 메뉴 업셀링</span>
 </div>
-<!-- 업오더 QR -->
-<div class="ap-card ap-card-warm">
-<div class="ap-tag tag-qr">QR SCAN</div>
-<h3>업오더 QR<span class="ap-soon">COMING SOON</span></h3>
-<p class="ap-sub">내 스마트폰이 메뉴판</p>
-<p class="ap-price">QR 스캔 한 번, 내 폰으로 간편 주문</p>
-<div class="ap-img-wrap"><img src="https://imupos.com/img/sub/uporder_title.png" alt="업오더 QR" style="opacity:0.7;filter:drop-shadow(0 12px 40px rgba(0,0,0,0.15)) grayscale(0.3);"></div>
 </div>
-<!-- 토스 QR -->
-<div class="ap-card ap-card-toss">
-<div class="ap-tag tag-toss">TOSS PLACE</div>
-<h3>토스 QR<span class="ap-soon">COMING SOON</span></h3>
-<p class="ap-sub">토스로 주문·결제 한 번에</p>
-<p class="ap-price">토스 앱 연동, 간편 결제 + 포인트 적립</p>
-<div class="ap-img-wrap"><img src="https://imupos.com/img/sub/uporder_title.png" alt="토스 QR" style="opacity:0.7;filter:drop-shadow(0 12px 40px rgba(0,0,0,0.15)) grayscale(0.3);"></div>
+</div>
+<!-- 토스 QR오더 -->
+<div class="img-card">
+<div class="img-card-bg" style="background-image:url('order-card-tossqr.jpg');"></div>
+<div class="img-card-content">
+<span class="img-card-tag tag-toss">Toss Place</span>
+<h3>토스 QR오더</h3>
+<p class="img-card-desc">QR 스캔 한 번으로 토스앱에서 주문·결제.<br>포인트 적립과 쿠폰까지 한 번에.</p>
+<div class="img-card-features">
+<span class="img-card-feat">QR → 토스앱 주문</span>
+<span class="img-card-feat">토스페이 간편결제</span>
+<span class="img-card-feat">포인트·쿠폰 연동</span>
+<span class="img-card-feat">별도 설치비 無</span>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -246,17 +248,17 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <div class="spec-inner">
 <div class="spec-header reveal"><div class="sec-tag">Specifications</div><h2>제품 사양 비교</h2></div>
 <div class="reveal" style="overflow-x:auto;"><table class="spec-table">
-<thead><tr><th>항목</th><th>업오더 테이블오더 <span class="spec-badge badge-hot">HOT</span></th><th>업오더 QR</th><th>토스 QR</th></tr></thead>
+<thead><tr><th>항목</th><th>업오더 테이블오더 <span class="spec-badge badge-hot">HOT</span></th><th>토스 QR오더</th></tr></thead>
 <tbody>
-<tr><td>주문 방식</td><td>태블릿 터치 주문</td><td>QR → 고객 스마트폰</td><td>QR → 토스앱 주문</td></tr>
-<tr><td>디스플레이</td><td>10.1" HD 태블릿</td><td>고객 스마트폰</td><td>고객 스마트폰</td></tr>
-<tr><td>결제</td><td>POS 연동 통합 결제</td><td>POS 연동 / 모바일결제</td><td>토스페이 간편결제</td></tr>
-<tr><td>다국어</td><td>한/영/중/일</td><td>한/영/중/일</td><td>한국어</td></tr>
-<tr><td>POS 연동</td><td>UP포스 / 오케이포스</td><td>UP포스 / 오케이포스</td><td>토스플레이스 POS</td></tr>
-<tr><td>주방 연동</td><td>KDS (주방 디스플레이)</td><td>KDS (주방 디스플레이)</td><td>토스 주방 프린터</td></tr>
-<tr><td>추가 기능</td><td>메뉴 사진·추천·알레르기 표시</td><td>추천 메뉴·리뷰</td><td>포인트 적립·쿠폰</td></tr>
-<tr><td>도입 비용</td><td>태블릿 + 거치대 별도</td><td>QR 스티커만 부착</td><td>QR 스티커만 부착</td></tr>
-<tr><td>적합 매장</td><td>음식점·카페·고기집·횟집</td><td>소규모 매장·푸드코트</td><td>토스플레이스 가맹점</td></tr>
+<tr><td>주문 방식</td><td>태블릿 터치 주문</td><td>QR → 토스앱 주문</td></tr>
+<tr><td>디스플레이</td><td>10.1" HD 태블릿</td><td>고객 스마트폰</td></tr>
+<tr><td>결제</td><td>POS 연동 통합 결제</td><td>토스페이 간편결제</td></tr>
+<tr><td>다국어</td><td>한/영/중/일</td><td>한국어</td></tr>
+<tr><td>POS 연동</td><td>UP포스 / 오케이포스</td><td>토스플레이스 POS</td></tr>
+<tr><td>주방 연동</td><td>KDS (주방 디스플레이)</td><td>토스 주방 프린터</td></tr>
+<tr><td>추가 기능</td><td>메뉴 사진·추천·알레르기 표시</td><td>포인트 적립·쿠폰</td></tr>
+<tr><td>도입 비용</td><td>태블릿 + 거치대 별도</td><td>QR 스티커만 부착</td></tr>
+<tr><td>적합 매장</td><td>음식점·카페·고기집·횟집</td><td>토스플레이스 가맹점</td></tr>
 </tbody>
 </table></div>
 </div>
