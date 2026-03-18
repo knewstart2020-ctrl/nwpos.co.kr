@@ -356,19 +356,19 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <div class="install-header reveal"><div class="sec-tag">Field Sketch</div><h2>현장 스케치</h2><p>전국 다양한 매장에서 테이블오더/QR오더를 만나보세요.</p></div>
 <div class="install-grid">
 <div class="install-card reveal" onclick="openFS('fs1')">
-<img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80" alt="레스토랑">
+<img src="field-order-sushi.jpg" alt="스시집">
 <div class="install-card-overlay"></div>
-<div class="install-card-info"><h4>레스토랑</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">🍽️</span> 테이블오더</span></div></div>
+<div class="install-card-info"><h4>스시집</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">🍣</span> 테이블오더</span></div></div>
 </div>
 <div class="install-card reveal" onclick="openFS('fs2')">
-<img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&q=80" alt="카페">
+<img src="field-order-chicken.jpg" alt="치킨집">
 <div class="install-card-overlay"></div>
-<div class="install-card-info"><h4>카페</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">☕</span> QR오더</span></div></div>
+<div class="install-card-info"><h4>치킨집</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">🍗</span> 테이블오더</span></div></div>
 </div>
 <div class="install-card reveal" onclick="openFS('fs3')">
-<img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80" alt="고기집">
+<img src="field-order-bbq.jpg" alt="삼겹살집">
 <div class="install-card-overlay"></div>
-<div class="install-card-info"><h4>고기집</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">🥩</span> 테이블오더</span></div></div>
+<div class="install-card-info"><h4>삼겹살집</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">🥩</span> 테이블오더</span></div></div>
 </div>
 </div>
 </div>
@@ -395,12 +395,12 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <script>
 // Field Sketch Data
 const fsData={
-fs1:{img:'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80',title:'레스토랑',tags:['업오더 테이블오더'],emoji:'🍽️',
-desc:'프리미엄 레스토랑에 업오더 테이블오더를 설치했습니다. 각 테이블에 태블릿을 배치하여 고객이 메뉴 사진을 보며 직접 주문하고, 주문 내역이 주방으로 자동 전송됩니다. 직원 호출 없이 추가 주문도 편리합니다.'},
-fs2:{img:'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&q=80',title:'카페',tags:['업오더 QR'],emoji:'☕',
-desc:'감성 카페에 QR오더를 도입했습니다. 테이블 위 QR코드를 스캔하면 고객의 스마트폰에서 바로 메뉴를 확인하고 주문할 수 있습니다. 별도 태블릿 설치 없이 깔끔한 테이블 유지가 가능합니다.'},
-fs3:{img:'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80',title:'고기집',tags:['업오더 테이블오더'],emoji:'🥩',
-desc:'고기 전문점에 테이블오더를 도입했습니다. 고기 굽기와 사이드 메뉴를 태블릿에서 바로 선택하고, 추가 주문도 직원 호출 없이 편리하게 진행됩니다. 외국인 관광객도 영어/중국어/일본어 메뉴로 손쉽게 주문합니다.'}
+fs1:{img:'field-order-sushi.jpg',title:'스시집',tags:['업오더 테이블오더'],emoji:'🍣',
+desc:'프리미엄 스시 전문점에 업오더 테이블오더를 설치했습니다. 높은 천장과 우드톤 인테리어에 어울리는 깔끔한 배치로, 각 테이블에서 스시·사시미 메뉴를 직접 선택하고 주문합니다. 다국어 지원으로 일본인 관광객도 편리하게 이용합니다.'},
+fs2:{img:'field-order-chicken.jpg',title:'치킨집',tags:['업오더 테이블오더'],emoji:'🍗',
+desc:'시티뷰가 멋진 치킨&맥주 전문점에 테이블오더를 도입했습니다. 블루 패턴 타일 바닥과 인더스트리얼 조명이 어우러진 공간에서, 고객이 태블릿으로 치킨·맥주를 직접 주문하고 추가 주문도 자유롭게 합니다.'},
+fs3:{img:'field-order-bbq.jpg',title:'삼겹살집',tags:['업오더 테이블오더'],emoji:'🥩',
+desc:'삼겹살 전문점에 테이블오더를 설치했습니다. 로스터 테이블마다 태블릿을 배치하여 고기 종류·사이드 메뉴를 터치 한 번에 주문하고, 숯불 교체·직원 호출도 태블릿으로 바로 요청할 수 있습니다.'}
 };
 function openFS(id){const d=fsData[id];if(!d)return;
 document.getElementById('fsImg').src=d.img;
