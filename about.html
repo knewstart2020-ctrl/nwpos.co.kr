@@ -45,7 +45,19 @@
         .bf-sound{position:absolute;bottom:20px;right:20px;z-index:3;width:40px;height:40px;border-radius:50%;border:none;background:rgba(255,255,255,0.12);backdrop-filter:blur(8px);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;}.bf-sound:hover{background:rgba(255,255,255,0.25);}
 
         /* SECTIONS */
-        .section{padding:80px 0;}.section-inner{max-width:1080px;margin:0 auto;padding:0 40px;}
+        .section{padding:80px 0;position:relative;z-index:1;}.section-inner{max-width:1080px;margin:0 auto;padding:0 40px;}
+
+        /* FLOWING BG + TEXT */
+        .flow-bg{background:linear-gradient(180deg,#f5f5f7 0%,#eef2fa 15%,#fff 30%,#f0f4ff 50%,#fff 70%,#eef2fa 85%,#f5f5f7 100%);position:relative;overflow:hidden;}
+        .flow-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 30%,rgba(27,58,140,0.03) 0%,transparent 50%),radial-gradient(ellipse at 80% 70%,rgba(201,168,76,0.03) 0%,transparent 50%);pointer-events:none;z-index:0;}
+        .hft-wrap{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;}
+        .hft{position:absolute;font-family:'Inter',sans-serif;font-weight:900;white-space:nowrap;color:rgba(0,0,0,0.018);letter-spacing:0.05em;text-transform:uppercase;}
+        .hft-1{font-size:clamp(3rem,10vw,7rem);top:4%;animation:hftS 30s linear infinite;}
+        .hft-2{font-size:clamp(2.5rem,8vw,5.5rem);top:25%;animation:hftS 36s linear infinite reverse;}
+        .hft-3{font-size:clamp(2.5rem,8vw,6rem);top:48%;animation:hftS 33s linear infinite;}
+        .hft-4{font-size:clamp(3rem,10vw,7rem);top:70%;animation:hftS 38s linear infinite reverse;}
+        .hft-5{font-size:clamp(2.5rem,8vw,5rem);top:90%;animation:hftS 31s linear infinite;}
+        @keyframes hftS{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
         .section-tag{display:inline-block;background:var(--primary-pale);color:var(--primary);padding:6px 18px;border-radius:50px;font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:18px;}
         .section-title{font-size:2rem;font-weight:800;color:var(--dark);letter-spacing:-0.03em;margin-bottom:28px;}
 
@@ -130,6 +142,16 @@
     <video id="bfVideo" autoplay muted loop playsinline><source src="brand-film.mp4" type="video/mp4"></video>
     <button class="bf-sound" onclick="var v=document.getElementById('bfVideo');v.muted=!v.muted;this.innerHTML=v.muted?'🔇':'🔊';" title="소리 켜기/끄기">🔇</button>
 </section>
+
+<!-- FLOWING BG -->
+<div class="flow-bg">
+<div class="hft-wrap">
+<div class="hft hft-1">NURINETWORKS · NO.1 PAYMENT SERVICE · SINCE 2012 · NURINETWORKS · NO.1 PAYMENT SERVICE · SINCE 2012 · </div>
+<div class="hft hft-2">누리네트웍스 · 결제솔루션 · 스마트로 · 지불결제 · 누리네트웍스 · 결제솔루션 · 스마트로 · 지불결제 · </div>
+<div class="hft hft-3">POS · KIOSK · TABLE ORDER · SIGNPAD · TERMINAL · POS · KIOSK · TABLE ORDER · SIGNPAD · TERMINAL · </div>
+<div class="hft hft-4">TRUST · INNOVATION · GROWTH · PARTNERSHIP · TRUST · INNOVATION · GROWTH · PARTNERSHIP · </div>
+<div class="hft hft-5">포스 · 키오스크 · 테이블오더 · 사인패드 · 단말기 · 포스 · 키오스크 · 테이블오더 · 사인패드 · 단말기 · </div>
+</div>
 
 <!-- 대표인사말 -->
 <section class="section ceo-section" id="ceo">
@@ -244,6 +266,8 @@
         <iframe class="map-embed" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.5!2d126.8935!3d37.5265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9ede4a9f0f3d%3A0x0!2z7ISc7Jq47Iuc7JiB65Ox7Y-s6rWsIOyEoOycoOuhnDcwIOyasOumrOuypOyymO2DgOyatA!5e0!3m2!1sko!2skr!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 </section>
+
+</div><!-- /flow-bg -->
 
 <footer class="footer"><div class="footer-inner">
     <div><div class="lg"><span class="lg-n">N</span><div class="lg-right"><div class="lg-top"><span class="lg-nuri">nuri</span><span class="lg-nwp">networkspay</span><span class="lg-star lg-star-lg">✦</span></div><div class="lg-cc">credit&amp;cash</div></div></div> <span style="margin-left:12px;">© 2026 Nurinetworks. All rights reserved.</span></div>
