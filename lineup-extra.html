@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>부가장비 | 누리네트웍스</title>
+<meta name="description" content="매장 운영을 완성하는 부가장비. 금전함, 고객모니터, 핸드스캐너, IC리더기, 영수증용지까지 누리네트웍스에서 한 번에.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#1B3A8C;--accent:#C9A84C;--warm:#D4956A;--dark:#1d1d1f;--gray:#86868b;--light:#f5f5f7;--radius:20px;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(0,0,0,0);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid transparent;transition:all .4s;}
+.nav.scrolled{background:rgba(255,255,255,0.85);border-bottom-color:rgba(0,0,0,0.06);}
+.nav.scrolled .nl,.nav.scrolled .nav-product{color:#1d1d1f;}
+.nav.scrolled .nt{color:rgba(0,0,0,0.4);}.nav.scrolled .nt b{color:rgba(0,0,0,0.6);}
+.nav.scrolled .nav-links a{color:rgba(0,0,0,0.5);}.nav.scrolled .nav-links a:hover{color:#1d1d1f;}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.nav-logo{display:flex;align-items:center;gap:6px;text-decoration:none;font-family:'Inter',sans-serif;}
+.nl{font-size:1.6rem;font-weight:700;color:#fff;text-shadow:1px 1px 0 rgba(0,0,0,0.3);transition:color .4s;}
+.nt{font-size:0.7rem;color:rgba(255,255,255,0.5);font-weight:300;transition:color .4s;}.nt b{font-weight:600;color:rgba(255,255,255,0.7);transition:color .4s;}
+.nav-product{font-size:0.95rem;font-weight:700;color:#fff;letter-spacing:-0.02em;transition:color .4s;}
+.nav-links{display:flex;gap:16px;align-items:center;}
+.nav-links a{font-size:0.78rem;color:rgba(255,255,255,0.6);text-decoration:none;font-weight:500;transition:color .2s;}.nav-links a:hover{color:#fff;}
+.nav-cta{background:var(--primary);color:#fff!important;padding:7px 18px;border-radius:50px;font-weight:600!important;}
+.sec-tag{font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--primary);margin-bottom:12px;}
+
+/* HERO - FLOWING PRODUCT IMAGES */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#1a1a2e;overflow:hidden;}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(26,26,46,0.5) 0%,rgba(26,26,46,0.2) 30%,rgba(26,26,46,0.2) 70%,rgba(26,26,46,0.7) 100%);z-index:2;}
+
+/* Flowing product strip */
+.hero-flow{position:absolute;top:50%;left:0;transform:translateY(-50%);display:flex;gap:80px;animation:heroFlow 25s linear infinite;z-index:1;}
+.hero-flow-item{flex-shrink:0;width:280px;height:280px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.06);border-radius:28px;padding:40px;backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.06);transition:all .5s;}
+.hero-flow-item img{max-width:100%;max-height:100%;object-fit:contain;filter:brightness(1.1) drop-shadow(0 10px 30px rgba(0,0,0,0.3));}
+.hero-flow-item .flow-label{position:absolute;bottom:16px;left:0;right:0;text-align:center;font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.5);letter-spacing:0.05em;}
+@keyframes heroFlow{0%{transform:translateY(-50%) translateX(0)}100%{transform:translateY(-50%) translateX(-50%)}}
+
+.hero-content{position:relative;z-index:3;text-align:center;padding:0 40px;}
+.hero-tag{font-size:0.82rem;font-weight:600;color:var(--warm);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:16px;opacity:0;animation:fadeUp 1s ease .3s forwards;}
+.hero h1{font-size:clamp(2.8rem,7vw,5rem);font-weight:900;color:#fff;line-height:1.08;letter-spacing:-0.05em;margin-bottom:20px;overflow:hidden;}
+.hero h1 .from-left{display:block;opacity:0;transform:translateX(-120px);animation:slideFromLeft 1.2s cubic-bezier(0.16,1,0.3,1) 1s forwards;}
+.hero h1 .from-right{display:block;opacity:0;transform:translateX(120px);background:linear-gradient(90deg,#C9A84C,#F0D68A,#C9A84C);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:slideFromRight 1.2s cubic-bezier(0.16,1,0.3,1) 2.5s forwards,shimmer 3s linear 4s infinite;}
+@keyframes slideFromLeft{from{opacity:0;transform:translateX(-120px)}to{opacity:1;transform:translateX(0)}}
+@keyframes slideFromRight{from{opacity:0;transform:translateX(120px)}to{opacity:1;transform:translateX(0)}}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.hero-copy{font-size:clamp(0.92rem,1.8vw,1.12rem);color:rgba(255,255,255,0.6);line-height:2;font-weight:300;max-width:580px;margin:0 auto;opacity:0;animation:fadeUp 1s ease 4s forwards;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,0.7);font-size:0.75rem;font-weight:500;letter-spacing:0.15em;animation:scrollBounce 2s ease-in-out infinite;}
+.hero-scroll-line{width:1.5px;height:48px;background:linear-gradient(to bottom,rgba(255,255,255,0.7),transparent);border-radius:1px;}
+@keyframes scrollBounce{0%,100%{opacity:0.5;transform:translateX(-50%) translateY(0);}50%{opacity:1;transform:translateX(-50%) translateY(8px);}}
+
+/* FLOWING BG */
+.flow-bg{background:linear-gradient(180deg,#f5f5f7 0%,#f0ece4 15%,#ffffff 30%,#faf6f0 50%,#ffffff 70%,#f0ece4 85%,#f5f5f7 100%);position:relative;overflow:hidden;}
+.flow-bg::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 20% 30%,rgba(201,168,76,0.03) 0%,transparent 50%),radial-gradient(ellipse at 80% 70%,rgba(212,149,106,0.03) 0%,transparent 50%);pointer-events:none;z-index:0;}
+
+/* FLOATING TEXT */
+.hero-float-text{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;}
+.hft{position:absolute;font-family:'Inter',sans-serif;font-weight:900;white-space:nowrap;color:rgba(0,0,0,0.03);letter-spacing:0.05em;text-transform:uppercase;}
+.hft-1{font-size:clamp(3rem,10vw,7rem);top:5%;animation:hftScroll 30s linear infinite;}
+.hft-2{font-size:clamp(2.5rem,8vw,5.5rem);top:30%;animation:hftScroll 35s linear infinite reverse;}
+.hft-3{font-size:clamp(2.5rem,8vw,6rem);top:55%;animation:hftScroll 38s linear infinite;}
+.hft-4{font-size:clamp(3rem,10vw,7rem);top:80%;animation:hftScroll 32s linear infinite reverse;}
+@keyframes hftScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* PRODUCT GRID */
+.prod-sec{background:transparent;padding:120px 0 80px;position:relative;}
+.prod-inner{max-width:1200px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
+.prod-header{text-align:center;margin-bottom:60px;}
+.prod-header h2{font-size:clamp(2rem,4vw,2.8rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:12px;}
+.prod-header p{font-size:1rem;color:var(--gray);line-height:1.7;}
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.prod-card{background:#fff;border-radius:24px;overflow:hidden;border:1px solid rgba(0,0,0,0.04);box-shadow:0 2px 16px rgba(0,0,0,0.04);transition:all .5s cubic-bezier(0.16,1,0.3,1);cursor:default;}
+.prod-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,0.1);}
+.prod-card-img{height:220px;display:flex;align-items:center;justify-content:center;background:#fafafa;padding:32px;position:relative;overflow:hidden;}
+.prod-card-img img{max-width:80%;max-height:160px;object-fit:contain;transition:transform .6s cubic-bezier(0.16,1,0.3,1);}
+.prod-card:hover .prod-card-img img{transform:scale(1.08);}
+.prod-card-body{padding:28px;}
+.prod-card-tag{display:inline-block;font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 12px;border-radius:50px;margin-bottom:12px;background:rgba(201,168,76,0.1);color:var(--accent);}
+.prod-card-body h3{font-size:1.2rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:8px;}
+.prod-card-body p{font-size:0.85rem;color:var(--gray);line-height:1.7;}
+.prod-card-features{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;}
+.prod-feat{font-size:0.68rem;font-weight:600;padding:5px 12px;border-radius:50px;background:rgba(0,0,0,0.03);color:#666;}
+
+/* Bottom row 2 cards centered */
+.prod-grid-bottom{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:800px;margin:24px auto 0;}
+
+/* MASCOT */
+.mascot{position:fixed;pointer-events:none;z-index:10;transition:left .7s cubic-bezier(0.34,1.56,0.64,1),top .7s cubic-bezier(0.34,1.56,0.64,1);opacity:0;}
+.mascot.active{opacity:1;}
+.mascot img{width:56px;height:auto;display:block;filter:drop-shadow(0 3px 8px rgba(0,0,0,0.4));}
+.mascot.jump img{animation:mascotJump .6s cubic-bezier(0.34,1.56,0.64,1);}
+@keyframes mascotJump{0%{transform:translateY(0) scale(1)}25%{transform:translateY(-30px) scale(1.15) rotate(-8deg)}50%{transform:translateY(-12px) scale(1.05) rotate(4deg)}75%{transform:translateY(-4px) scale(0.98)}100%{transform:translateY(0) scale(1) rotate(0deg)}}
+.mascot-pop img{animation:mascotPop .5s cubic-bezier(0.34,1.56,0.64,1) forwards;}
+@keyframes mascotPop{0%{transform:scale(0);opacity:0}60%{transform:scale(1.15);opacity:1}100%{transform:scale(1);opacity:1}}
+
+/* FOOTER */
+.footer-mini{background:#f5f5f7;text-align:center;padding:32px 40px;font-size:0.78rem;color:var(--gray);border-top:1px solid rgba(0,0,0,0.06);}
+.footer-mini a{color:var(--primary);text-decoration:none;font-weight:600;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(40px);transition:all .7s cubic-bezier(0.16,1,0.3,1);}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.prod-grid{grid-template-columns:repeat(2,1fr);}.prod-grid-bottom{grid-template-columns:repeat(2,1fr);max-width:100%;}}
+@media(max-width:768px){.nav-links{display:none;}.hero h1{font-size:2.6rem;}.prod-grid{grid-template-columns:1fr;}.prod-grid-bottom{grid-template-columns:1fr;}.prod-sec{padding:80px 0 60px;}.hero-flow-item{width:200px;height:200px;padding:28px;}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav"><div class="nav-inner">
+<a href="index.html" class="nav-logo"><span class="nl">N</span><span class="nt"><b>nuri</b>networkspay</span></a>
+<span class="nav-product">부가장비</span>
+<div class="nav-links"><a href="index.html">홈</a><a href="index.html#products">제품 라인업</a><a href="about.html">회사소개</a><a href="tel:1544-7754" class="nav-cta">1544-7754</a></div>
+</div></nav>
+
+<!-- HERO - FLOWING PRODUCT IMAGES -->
+<section class="hero">
+<!-- 제품 이미지 무한 스크롤 (2배 복제로 seamless loop) -->
+<div class="hero-flow">
+<div class="hero-flow-item"><img src="extra-cashdrawer.png" alt="금전함"></div>
+<div class="hero-flow-item"><img src="extra-monitor.png" alt="고객모니터"></div>
+<div class="hero-flow-item"><img src="extra-scanner.png" alt="핸드스캐너"></div>
+<div class="hero-flow-item"><img src="extra-icreader.png" alt="IC리더기"></div>
+<div class="hero-flow-item"><img src="extra-paper.png" alt="영수증용지"></div>
+<!-- 복제 (seamless loop) -->
+<div class="hero-flow-item"><img src="extra-cashdrawer.png" alt="금전함"></div>
+<div class="hero-flow-item"><img src="extra-monitor.png" alt="고객모니터"></div>
+<div class="hero-flow-item"><img src="extra-scanner.png" alt="핸드스캐너"></div>
+<div class="hero-flow-item"><img src="extra-icreader.png" alt="IC리더기"></div>
+<div class="hero-flow-item"><img src="extra-paper.png" alt="영수증용지"></div>
+</div>
+
+<div class="hero-content">
+<div class="hero-tag">Accessories</div>
+<h1><span class="from-left">비즈니스의 완성은</span><span class="from-right">디테일에 있습니다.</span></h1>
+<p class="hero-copy">매장 운영을 완성하는 필수 주변기기.<br>금전함부터 영수증용지까지, 한 번에.</p>
+</div>
+<div class="hero-scroll"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg><span>SCROLL</span><div class="hero-scroll-line"></div></div>
+</section>
+
+<!-- FLOWING BACKGROUND -->
+<div class="flow-bg">
+<div class="hero-float-text">
+<div class="hft hft-1">CASH DRAWER · MONITOR · SCANNER · IC READER · RECEIPT · CASH DRAWER · MONITOR · SCANNER · IC READER · </div>
+<div class="hft hft-2">금전함 · 고객모니터 · 핸드스캐너 · IC리더기 · 영수증용지 · 금전함 · 고객모니터 · 핸드스캐너 · </div>
+<div class="hft hft-3">ACCESSORIES · PERIPHERAL · POS SYSTEM · COMPLETE · ACCESSORIES · PERIPHERAL · POS SYSTEM · COMPLETE · </div>
+<div class="hft hft-4">부가장비 · 주변기기 · 매장완성 · 디테일 · 부가장비 · 주변기기 · 매장완성 · 디테일 · </div>
+</div>
+
+<!-- PRODUCT GRID -->
+<section class="prod-sec">
+<div class="prod-inner">
+<div class="prod-header reveal">
+<div class="sec-tag">Product Lineup</div>
+<h2>부가장비. 매장을 완성하다</h2>
+<p>결제시스템과 함께 사용하면 매장 운영 효율이 극대화됩니다.</p>
+</div>
+
+<!-- 상단 3개 -->
+<div class="prod-grid">
+<!-- 금전함 -->
+<div class="prod-card reveal">
+<div class="prod-card-img"><img src="extra-cashdrawer.png" alt="금전함"></div>
+<div class="prod-card-body">
+<span class="prod-card-tag">CASH DRAWER</span>
+<h3>금전함</h3>
+<p>현금 보관 및 관리를 위한 필수 장비. POS 연동으로 결제 시 자동 오픈.</p>
+<div class="prod-card-features">
+<span class="prod-feat">POS 자동 연동</span>
+<span class="prod-feat">잠금 장치</span>
+<span class="prod-feat">견고한 내구성</span>
+</div>
+</div>
+</div>
+<!-- 포스고객모니터 -->
+<div class="prod-card reveal">
+<div class="prod-card-img"><img src="extra-monitor.png" alt="포스고객모니터"></div>
+<div class="prod-card-body">
+<span class="prod-card-tag">CUSTOMER DISPLAY</span>
+<h3>포스 고객모니터</h3>
+<p>고객이 결제 금액과 내역을 직접 확인할 수 있는 보조 디스플레이.</p>
+<div class="prod-card-features">
+<span class="prod-feat">IMU</span>
+<span class="prod-feat">고객 확인용</span>
+<span class="prod-feat">POS 연동</span>
+</div>
+</div>
+</div>
+<!-- PS핸드스캐너 -->
+<div class="prod-card reveal">
+<div class="prod-card-img"><img src="extra-scanner.png" alt="핸드스캐너"></div>
+<div class="prod-card-body">
+<span class="prod-card-tag">BARCODE SCANNER</span>
+<h3>PS 핸드스캐너</h3>
+<p>바코드를 빠르고 정확하게 스캔. 편의점·마트·물류 현장 필수 장비.</p>
+<div class="prod-card-features">
+<span class="prod-feat">1D/2D 바코드</span>
+<span class="prod-feat">인체공학 그립</span>
+<span class="prod-feat">USB 연결</span>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 하단 2개 (가운데 정렬) -->
+<div class="prod-grid-bottom">
+<!-- IC리더기 -->
+<div class="prod-card reveal">
+<div class="prod-card-img"><img src="extra-icreader.png" alt="IC리더기"></div>
+<div class="prod-card-body">
+<span class="prod-card-tag">IC CARD READER</span>
+<h3>IC 리더기</h3>
+<p>IC칩 카드 결제를 위한 외장 리더기. USB-C 연결로 간편 설치.</p>
+<div class="prod-card-features">
+<span class="prod-feat">IC칩 인식</span>
+<span class="prod-feat">USB-C</span>
+<span class="prod-feat">컴팩트</span>
+</div>
+</div>
+</div>
+<!-- 영수증용지 -->
+<div class="prod-card reveal">
+<div class="prod-card-img"><img src="extra-paper.png" alt="영수증용지"></div>
+<div class="prod-card-body">
+<span class="prod-card-tag">RECEIPT PAPER</span>
+<h3>영수증용지 (79×75)</h3>
+<p>고품질 감열지. 선명한 인쇄와 긴 보존 기간. 대량 구매 할인.</p>
+<div class="prod-card-features">
+<span class="prod-feat">79×75mm</span>
+<span class="prod-feat">감열지</span>
+<span class="prod-feat">대량 할인</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+</div><!-- /flow-bg -->
+
+<!-- FOOTER -->
+<div class="footer-mini"><a href="index.html">← 누리네트웍스 홈으로 돌아가기</a><br><br>© 2026 Nurinetworks. All rights reserved.</div>
+
+<script>
+window.addEventListener('scroll',function(){document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>80);});
+const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}});},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// MASCOT
+(function(){
+const mascotImages=['mascot-heart.png','mascot-thumbsup.png','mascot-clap.png','mascot-peace.png'];
+const grid=document.querySelector('.prod-grid');
+if(!grid)return;
+const allCards=Array.from(document.querySelectorAll('.prod-card'));
+if(allCards.length===0)return;
+mascotImages.forEach(src=>{const i=new Image();i.src=src;});
+const m=document.createElement('div');
+m.className='mascot';
+const mImg=document.createElement('img');
+mImg.src=mascotImages[0];
+mImg.alt='mascot';
+m.appendChild(mImg);
+document.body.appendChild(m);
+let idx=0;
+function positionMascot(animate){
+const card=allCards[idx];
+const r=card.getBoundingClientRect();
+const x=r.left+r.width/2-28;
+const y=r.top-40;
+if(animate){m.classList.remove('jump');void m.offsetWidth;m.classList.add('jump');}
+m.style.left=x+'px';m.style.top=y+'px';
+mImg.src=mascotImages[idx%mascotImages.length];
+}
+let interval=null;
+const cardObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{
+if(e.isIntersecting){m.classList.add('active','mascot-pop');positionMascot(false);
+interval=setInterval(()=>{idx=(idx+1)%allCards.length;positionMascot(true);},2000);
+cardObs.unobserve(e.target);}});},{threshold:0.3});
+cardObs.observe(grid);
+let ticking=false;
+function reposition(){if(!ticking){ticking=true;requestAnimationFrame(()=>{positionMascot(false);ticking=false;});}}
+window.addEventListener('scroll',reposition,{passive:true});
+window.addEventListener('resize',reposition);
+})();
+</script>
+</body>
+</html>
