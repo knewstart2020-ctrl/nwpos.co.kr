@@ -4,15 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>프로그램/소프트웨어 | 누리네트웍스</title>
-<meta name="description" content="업포스·오케이포스 소프트웨어가 모든 결제를 작동합니다. 포스, 키오스크, 테이블오더, 사인패드까지 하나의 소프트웨어로.">
+<meta name="description" content="최고의 하드웨어도 소프트웨어 없이는 작동하지 않습니다. 업포스·오케이포스 솔루션으로 포스, 키오스크, 테이블오더, 사인패드를 하나로.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root{--primary:#1B3A8C;--accent:#C9A84C;--dark:#1d1d1f;--gray:#86868b;--light:#f5f5f7;--radius:20px;}
+:root{--primary:#1B3A8C;--accent:#C9A84C;--dark:#1d1d1f;--gray:#86868b;--light:#f5f5f7;}
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+/* NAV */
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(0,0,0,0);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid transparent;transition:all .4s;}
 .nav.scrolled{background:rgba(255,255,255,0.85);border-bottom-color:rgba(0,0,0,0.06);}
 .nav.scrolled .nl,.nav.scrolled .nav-product{color:#1d1d1f;}
@@ -30,161 +32,321 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 
 /* HERO */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#000;overflow:hidden;}
-.hero-video{position:absolute;inset:0;}.hero-video video{width:100%;height:100%;object-fit:cover;opacity:0.55;}
-.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.1) 40%,rgba(0,0,0,0.6) 100%);z-index:1;}
-.scene-labels{position:absolute;inset:0;z-index:2;pointer-events:none;}
-.scene-msg{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;opacity:0;padding:0 40px;}
-.sm-tag{display:block;font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:12px;}
-.sm-main{display:block;font-size:clamp(1.6rem,4vw,2.6rem);font-weight:900;color:#fff;letter-spacing:-0.03em;line-height:1.2;text-shadow:0 3px 16px rgba(0,0,0,0.5);margin-bottom:8px;}
-.sm-sub{display:block;font-size:clamp(0.85rem,1.8vw,1.1rem);font-weight:400;color:rgba(255,255,255,0.7);line-height:1.6;text-shadow:0 2px 10px rgba(0,0,0,0.4);}
-/* 6 messages in 20.2s loop: 0(intro) 1 2 3 4 5(outro) */
-.sm0{animation:smFade 20.2s ease infinite;}
-.sm1{animation:smFade 20.2s ease 3.2s infinite;}
-.sm2{animation:smFade 20.2s ease 6.7s infinite;}
-.sm3{animation:smFade 20.2s ease 10.2s infinite;}
-.sm4{animation:smFade 20.2s ease 13.7s infinite;}
-.sm5{animation:smFade 20.2s ease 17.2s infinite;}
-@keyframes smFade{0%{opacity:0;transform:translateY(-40%) scale(0.97)}2%{opacity:1;transform:translateY(-50%) scale(1)}13%{opacity:1;transform:translateY(-50%) scale(1)}16%{opacity:0;transform:translateY(-60%) scale(0.97)}100%{opacity:0}}
+.hero-video{position:absolute;inset:0;}
+.hero-video video{width:100%;height:100%;object-fit:cover;opacity:0.5;}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.35) 0%,rgba(0,0,0,0.1) 40%,rgba(0,0,0,0.6) 100%);z-index:1;}
 
-.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,0.7);font-size:0.75rem;font-weight:500;letter-spacing:0.15em;animation:scrollBounce 2s ease-in-out infinite;}
-.hero-scroll-line{width:1.5px;height:48px;background:linear-gradient(to bottom,rgba(255,255,255,0.7),transparent);}
-@keyframes scrollBounce{0%,100%{opacity:0.5;transform:translateX(-50%) translateY(0);}50%{opacity:1;transform:translateX(-50%) translateY(8px);}}
+/* SCENE MESSAGES */
+.scene-msgs{position:absolute;inset:0;z-index:3;pointer-events:none;display:flex;align-items:center;justify-content:center;}
+.sm{position:absolute;text-align:center;padding:0 40px;opacity:0;}
+.sm-tag{display:block;font-size:0.72rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:14px;}
+.sm-main{display:block;font-size:clamp(1.8rem,4.5vw,3rem);font-weight:900;color:#fff;letter-spacing:-0.04em;line-height:1.15;text-shadow:0 4px 20px rgba(0,0,0,0.5);margin-bottom:10px;}
+.sm-sub{display:block;font-size:clamp(0.88rem,1.8vw,1.1rem);font-weight:400;color:rgba(255,255,255,0.65);line-height:1.7;text-shadow:0 2px 10px rgba(0,0,0,0.4);}
 
+/* 20.2s loop, 6 messages */
+.sm0{animation:smA 20.2s ease infinite;}
+.sm1{animation:smA 20.2s ease 3.4s infinite;}
+.sm2{animation:smA 20.2s ease 6.8s infinite;}
+.sm3{animation:smA 20.2s ease 10.2s infinite;}
+.sm4{animation:smA 20.2s ease 13.6s infinite;}
+.sm5{animation:smA 20.2s ease 17s infinite;}
+@keyframes smA{
+  0%{opacity:0;transform:translateY(20px)}
+  1.5%{opacity:1;transform:translateY(0)}
+  14%{opacity:1;transform:translateY(0)}
+  16%{opacity:0;transform:translateY(-15px)}
+  100%{opacity:0}
+}
+
+.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,0.6);font-size:0.72rem;font-weight:500;letter-spacing:0.15em;animation:scrollB 2s ease-in-out infinite;}
+.hero-scroll-line{width:1.5px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,0.6),transparent);}
+@keyframes scrollB{0%,100%{opacity:0.4;transform:translateX(-50%) translateY(0)}50%{opacity:1;transform:translateX(-50%) translateY(8px)}}
+
+/* FLOW BG */
 .flow-bg{background:linear-gradient(180deg,#f5f5f7 0%,#eef2fa 15%,#fff 30%,#f8f6ff 50%,#fff 70%,#eef2fa 85%,#f5f5f7 100%);position:relative;overflow:hidden;}
 .flow-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 30%,rgba(27,58,140,0.03) 0%,transparent 50%),radial-gradient(ellipse at 80% 70%,rgba(126,182,255,0.03) 0%,transparent 50%);pointer-events:none;z-index:0;}
-.hero-float-text{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;}
+.hft-wrap{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;}
 .hft{position:absolute;font-family:'Inter',sans-serif;font-weight:900;white-space:nowrap;color:rgba(0,0,0,0.03);letter-spacing:0.05em;text-transform:uppercase;}
-.hft-1{font-size:clamp(3rem,10vw,7rem);top:5%;animation:hftScroll 30s linear infinite;}
-.hft-2{font-size:clamp(2.5rem,8vw,5.5rem);top:30%;animation:hftScroll 35s linear infinite reverse;}
-.hft-3{font-size:clamp(2.5rem,8vw,6rem);top:55%;animation:hftScroll 38s linear infinite;}
-.hft-4{font-size:clamp(3rem,10vw,7rem);top:80%;animation:hftScroll 32s linear infinite reverse;}
-@keyframes hftScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.hft-1{font-size:clamp(3rem,10vw,7rem);top:5%;animation:hftS 30s linear infinite;}
+.hft-2{font-size:clamp(2.5rem,8vw,5.5rem);top:30%;animation:hftS 35s linear infinite reverse;}
+.hft-3{font-size:clamp(2.5rem,8vw,6rem);top:55%;animation:hftS 38s linear infinite;}
+.hft-4{font-size:clamp(3rem,10vw,7rem);top:80%;animation:hftS 32s linear infinite reverse;}
+@keyframes hftS{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-.vs-sec{background:transparent;padding:120px 0 80px;position:relative;}
-.vs-inner{max-width:1200px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
-.vs-header{text-align:center;margin-bottom:60px;}
-.vs-header h2{font-size:clamp(2rem,4vw,2.8rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:12px;}
-.vs-header p{font-size:1rem;color:var(--gray);line-height:1.7;}
-.vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1100px;margin:0 auto;}
-.img-card{position:relative;border-radius:24px;overflow:hidden;height:480px;display:flex;flex-direction:column;justify-content:flex-end;cursor:default;transition:transform .5s cubic-bezier(0.16,1,0.3,1);background:#f0f3fa;}
-.img-card:hover{transform:translateY(-6px);}
-.img-card-content{position:relative;z-index:2;padding:40px 36px;}
-.img-card-tag{display:inline-block;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:14px;}
-.tag-up{background:rgba(27,58,140,0.1);color:var(--primary);}.tag-ok{background:rgba(255,107,53,0.1);color:#FF6B35;}
-.img-card h3{font-size:clamp(1.7rem,3vw,2.2rem);font-weight:900;color:#1d1d1f;letter-spacing:-0.03em;line-height:1.1;margin-bottom:10px;}
-.img-card-desc{font-size:0.92rem;color:var(--gray);line-height:1.7;margin-bottom:20px;}
-.img-card-features{display:flex;flex-wrap:wrap;gap:8px;}
-.img-card-feat{font-size:0.72rem;font-weight:600;padding:6px 14px;border-radius:50px;background:rgba(0,0,0,0.04);color:#555;border:1px solid rgba(0,0,0,0.06);}
-.card-icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-70%);font-size:4rem;opacity:0.15;}
-
-.sw-sec{background:transparent;padding:100px 0;}
-.sw-inner{max-width:1100px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
-.sw-header{text-align:center;margin-bottom:48px;}.sw-header h2{font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:8px;}.sw-header p{font-size:0.95rem;color:var(--gray);line-height:1.7;}
-.sw-compare{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
-.sw-col-title{display:flex;align-items:center;gap:10px;margin-bottom:24px;padding-bottom:16px;border-bottom:2px solid;}
-.sw-col-title.col-up{border-color:var(--primary);}.sw-col-title.col-ok{border-color:#FF6B35;}
-.sw-col-badge{font-size:0.65rem;font-weight:700;letter-spacing:0.08em;padding:4px 12px;border-radius:50px;}
-.col-up .sw-col-badge{background:rgba(27,58,140,0.1);color:var(--primary);}.col-ok .sw-col-badge{background:rgba(255,107,53,0.1);color:#FF6B35;}
-.sw-col-name{font-size:1.1rem;font-weight:800;letter-spacing:-0.02em;}
-.sw-features{display:flex;flex-direction:column;gap:14px;}
-.sw-card{text-align:center;padding:32px 20px;border-radius:20px;background:#fff;border:1px solid rgba(0,0,0,0.04);box-shadow:0 2px 12px rgba(0,0,0,0.03);transition:all .4s;}
-.sw-card:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(0,0,0,0.08);}
-.sw-icon{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:1.5rem;}
-.sw-card h4{font-size:0.92rem;font-weight:700;margin-bottom:8px;}.sw-card p{font-size:0.78rem;color:var(--gray);line-height:1.6;}
+/* FEATURES */
+.feat-sec{background:transparent;padding:120px 0 80px;position:relative;}
+.feat-inner{max-width:1100px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
+.feat-header{text-align:center;margin-bottom:48px;}
+.feat-header h2{font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:8px;}
+.feat-header p{font-size:0.95rem;color:var(--gray);line-height:1.7;}
+.feat-compare{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+.feat-col-title{display:flex;align-items:center;gap:10px;margin-bottom:24px;padding-bottom:16px;border-bottom:2px solid;}
+.feat-col-title.col-up{border-color:var(--primary);}
+.feat-col-title.col-ok{border-color:#FF6B35;}
+.fc-badge{font-size:0.65rem;font-weight:700;letter-spacing:0.08em;padding:4px 12px;border-radius:50px;}
+.col-up .fc-badge{background:rgba(27,58,140,0.1);color:var(--primary);}
+.col-ok .fc-badge{background:rgba(255,107,53,0.1);color:#FF6B35;}
+.fc-name{font-size:1.1rem;font-weight:800;letter-spacing:-0.02em;}
+.feat-list{display:flex;flex-direction:column;gap:14px;}
+.fc{text-align:center;padding:28px 18px;border-radius:20px;background:#fff;border:1px solid rgba(0,0,0,0.04);box-shadow:0 2px 12px rgba(0,0,0,0.03);transition:all .4s;}
+.fc:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(0,0,0,0.08);}
+.fc-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:1.4rem;}
+.fc h4{font-size:0.88rem;font-weight:700;margin-bottom:6px;letter-spacing:-0.01em;}
+.fc p{font-size:0.75rem;color:var(--gray);line-height:1.6;}
 
 
+/* VS COMPARE BOXES */
+.vs-boxes{max-width:1100px;margin:0 auto;padding:0 40px 0;position:relative;z-index:1;}
+.vs-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:start;}
+.vs-box{border-radius:20px;padding:28px;}
+.vs-list{display:flex;flex-direction:column;gap:10px;}
+.vs-item{font-size:0.85rem;font-weight:600;color:#1d1d1f;line-height:1.6;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.04);}
+.vs-item:last-child{border-bottom:none;}
+@media(max-width:768px){.vs-grid{grid-template-columns:1fr;}}
 
-.compat-sec{background:transparent;padding:100px 0;}
+/* COMPAT */
+.compat-sec{background:transparent;padding:80px 0 100px;}
 .compat-inner{max-width:1000px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
-.compat-header{text-align:center;margin-bottom:48px;}.compat-header h2{font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:8px;}
-.compat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
-.compat-item{text-align:center;padding:24px 16px;border-radius:16px;background:#fff;border:1px solid rgba(0,0,0,0.04);box-shadow:0 2px 8px rgba(0,0,0,0.03);transition:all .3s;}
-.compat-item:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,0.08);}
-.compat-item .ci-icon{font-size:2rem;margin-bottom:12px;}.compat-item h4{font-size:0.82rem;font-weight:700;margin-bottom:4px;}.compat-item p{font-size:0.7rem;color:var(--gray);}
+.compat-header{text-align:center;margin-bottom:48px;}
+.compat-header h2{font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:8px;}
+.cg{display:grid;gap:16px;}
+.cg-top{grid-template-columns:repeat(4,1fr);}
+.cg-bot{grid-template-columns:repeat(3,1fr);max-width:750px;margin:16px auto 0;}
+.ci{text-align:center;padding:24px 16px;border-radius:16px;background:#fff;border:1px solid rgba(0,0,0,0.04);box-shadow:0 2px 8px rgba(0,0,0,0.03);transition:all .3s;}
+.ci:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,0.08);}
+.ci-icon{font-size:2rem;margin-bottom:10px;}
+.ci h4{font-size:0.82rem;font-weight:700;margin-bottom:4px;}
+.ci p{font-size:0.7rem;color:var(--gray);}
 
-
-
+/* FOOTER */
 .footer-mini{background:#f5f5f7;text-align:center;padding:32px 40px;font-size:0.78rem;color:var(--gray);border-top:1px solid rgba(0,0,0,0.06);}
 .footer-mini a{color:var(--primary);text-decoration:none;font-weight:600;}
-.reveal{opacity:0;transform:translateY(40px);transition:all .7s cubic-bezier(0.16,1,0.3,1);}.reveal.visible{opacity:1;transform:translateY(0);}
 
-@media(max-width:1024px){.vs-grid{grid-template-columns:1fr;max-width:540px;}.compat-grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:768px){.nav-links{display:none;}.hero h1{font-size:1.6rem;}.hero h1 strong{font-size:2.2rem;}.sw-compare{grid-template-columns:1fr;}.compat-grid{grid-template-columns:repeat(2,1fr);}.scene-label{left:20px;bottom:80px;}.scene-label-name{font-size:1rem;}}
+
+/* MASCOT - fixed, no jump */
+.mascot-fixed{position:fixed;bottom:24px;right:24px;z-index:10;opacity:0;transition:opacity .5s;}
+.mascot-fixed.show{opacity:1;}
+.mascot-fixed img{width:64px;height:auto;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.3));animation:mascotBob 3s ease-in-out infinite;}
+@keyframes mascotBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+.mascot{position:fixed;pointer-events:none;z-index:10;transition:left .7s cubic-bezier(0.34,1.56,0.64,1),top .7s cubic-bezier(0.34,1.56,0.64,1);opacity:0;}
+.mascot.active{opacity:1;}
+.mascot img{width:56px;height:auto;display:block;filter:drop-shadow(0 3px 8px rgba(0,0,0,0.4));}
+.mascot.jump img{animation:mascotJump .6s cubic-bezier(0.34,1.56,0.64,1);}
+@keyframes mascotJump{0%{transform:translateY(0) scale(1)}25%{transform:translateY(-30px) scale(1.15) rotate(-8deg)}50%{transform:translateY(-12px) scale(1.05) rotate(4deg)}75%{transform:translateY(-4px) scale(0.98)}100%{transform:translateY(0) scale(1) rotate(0deg)}}
+
+/* VS COMPARE */
+.vs-sec{background:transparent;padding:0 0 80px;position:relative;}
+.vs-inner{max-width:1100px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
+.vs-header{text-align:center;margin-bottom:32px;}
+.vs-header h2{font-size:clamp(1.6rem,3vw,2rem);font-weight:800;letter-spacing:-0.03em;}
+.vs-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:start;}
+.vs-box{border-radius:20px;padding:28px;}
+.vs-list{display:flex;flex-direction:column;gap:10px;}
+.vs-item{font-size:0.85rem;font-weight:600;color:#1d1d1f;line-height:1.6;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.04);}
+.vs-item:last-child{border-bottom:none;}
+@media(max-width:768px){.vs-grid{grid-template-columns:1fr!important;}}
+
+.reveal{opacity:0;transform:translateY(40px);transition:all .7s cubic-bezier(0.16,1,0.3,1);}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+@media(max-width:1024px){.feat-compare{grid-template-columns:1fr 1fr;}.cg-top{grid-template-columns:repeat(2,1fr);}.cg-bot{grid-template-columns:repeat(2,1fr);max-width:100%;}}
+@media(max-width:768px){.nav-links{display:none;}.sm-main{font-size:1.6rem;}.feat-compare{grid-template-columns:1fr;}.cg-top,.cg-bot{grid-template-columns:1fr;max-width:100%;}.feat-sec{padding:80px 0 60px;}}
 </style>
 </head>
 <body>
+
 <nav class="nav" id="mainNav"><div class="nav-inner">
 <a href="index.html" class="nav-logo"><span class="nl">N</span><span class="nt"><b>nuri</b>networkspay</span></a>
 <span class="nav-product">프로그램/소프트웨어</span>
 <div class="nav-links"><a href="index.html">홈</a><a href="index.html#products">제품 라인업</a><a href="about.html">회사소개</a><a href="tel:1544-7754" class="nav-cta">1544-7754</a></div>
 </div></nav>
 
+<!-- HERO -->
 <section class="hero">
 <div class="hero-video"><video autoplay muted loop playsinline><source src="software-showcase.mp4" type="video/mp4"></video></div>
-<div class="scene-labels">
-<div class="scene-msg sm0"><span class="sm-main">최고의 하드웨어도,</span><span class="sm-sub">소프트웨어 없이는 작동하지 않습니다.</span></div>
-<div class="scene-msg sm1"><span class="sm-tag">N250 포스</span><span class="sm-main">주문부터 결제, 정산까지</span><span class="sm-sub">소프트웨어가 포스의 심장을 뛰게 합니다.</span></div>
-<div class="scene-msg sm2"><span class="sm-tag">배리어프리 키오스크</span><span class="sm-main">누구나 쉽게, 장벽 없이</span><span class="sm-sub">소프트웨어가 접근성의 문을 엽니다.</span></div>
-<div class="scene-msg sm3"><span class="sm-tag">업오더 테이블오더</span><span class="sm-main">직원 없이도, 주문은 멈추지 않습니다</span><span class="sm-sub">소프트웨어가 테이블과 주방을 연결합니다.</span></div>
-<div class="scene-msg sm4"><span class="sm-tag">토스 · 네이버 단말기</span><span class="sm-main">결제하고, 리뷰 남기고, 적립까지</span><span class="sm-sub">소프트웨어가 고객을 단골로 만듭니다.</span></div>
-<div class="scene-msg sm5"><span class="sm-main">최고의 하드웨어도,</span><span class="sm-sub">소프트웨어 없이는 작동하지 않습니다.</span></div>
+
+<div class="scene-msgs">
+<div class="sm sm0">
+<span class="sm-main">최고의 하드웨어도,</span>
+<span class="sm-sub">소프트웨어 없이는 작동하지 않습니다.</span>
+</div>
+<div class="sm sm1">
+<span class="sm-tag">N250 포스</span>
+<span class="sm-main">주문부터 결제, 정산까지</span>
+<span class="sm-sub">소프트웨어가 포스의 심장을 뛰게 합니다.</span>
+</div>
+<div class="sm sm2">
+<span class="sm-tag">배리어프리 키오스크</span>
+<span class="sm-main">누구나 쉽게, 장벽 없이</span>
+<span class="sm-sub">소프트웨어가 접근성의 문을 엽니다.</span>
+</div>
+<div class="sm sm3">
+<span class="sm-tag">업오더 테이블오더</span>
+<span class="sm-main">직원 없이도, 주문은 멈추지 않습니다</span>
+<span class="sm-sub">소프트웨어가 테이블과 주방을 연결합니다.</span>
+</div>
+<div class="sm sm4">
+<span class="sm-tag">토스 · 네이버 단말기</span>
+<span class="sm-main">결제하고, 리뷰 남기고, 적립까지</span>
+<span class="sm-sub">소프트웨어가 고객을 단골로 만듭니다.</span>
+</div>
+<div class="sm sm5">
+<span class="sm-main">최고의 하드웨어도,</span>
+<span class="sm-sub">소프트웨어 없이는 작동하지 않습니다.</span>
+</div>
 </div>
 
 <div class="hero-scroll"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg><span>SCROLL</span><div class="hero-scroll-line"></div></div>
 </section>
 
+<!-- FLOW BG -->
 <div class="flow-bg">
-<div class="hero-float-text">
+<div class="hft-wrap">
 <div class="hft hft-1">UPPOS · OKPOS · SOFTWARE · SOLUTION · UPPOS · OKPOS · SOFTWARE · SOLUTION · </div>
 <div class="hft hft-2">업포스 · 오케이포스 · 소프트웨어 · 솔루션 · 업포스 · 오케이포스 · 소프트웨어 · 솔루션 · </div>
 <div class="hft hft-3">POS · KIOSK · TABLE ORDER · SIGNPAD · POS · KIOSK · TABLE ORDER · SIGNPAD · </div>
 <div class="hft hft-4">포스 · 키오스크 · 테이블오더 · 사인패드 · 포스 · 키오스크 · 테이블오더 · 사인패드 · </div>
 </div>
 
+<!-- FEATURES -->
+<section class="feat-sec">
+<div class="feat-inner">
+<div class="feat-header reveal">
+<div class="sec-tag">Key Features</div>
+<h2>주요 기능</h2>
+<p>매장 운영에 필요한 모든 기능을 제공합니다</p>
+</div>
+<div class="feat-compare">
+<!-- UP POS -->
+<div class="reveal">
+<div class="feat-col-title col-up"><span class="fc-badge">UP POS</span><span class="fc-name">업포스솔루션</span></div>
+<div class="feat-list">
+<div class="fc"><div class="fc-icon" style="background:#EAF0FF;">🔗</div><h4>통합 기기 연동</h4><p>포스·키오스크·테이블오더·사인패드<br>Kitchen Monitor·DID·호출벨까지<br>모든 IMU 기기를 하나로 연결</p></div>
+<div class="fc"><div class="fc-icon" style="background:#E6F7EF;">📊</div><h4>클라우드 매출 대시보드</h4><p>UP Cloud(ASP) 기반 실시간 매출<br>일별·월별·상품별·시간대별 분석<br>PC·태블릿·스마트폰 어디서든 확인</p></div>
+<div class="fc"><div class="fc-icon" style="background:#FFF0E6;">🛵</div><h4>배달 통합 관리</h4><p>배달의민족·요기요 등 35개 플랫폼<br>배달 대행 호출까지 원스톱<br>홀·포장·배달 주문 통합 접수</p></div>
+<div class="fc"><div class="fc-icon" style="background:#FAEEDA;">🍽️</div><h4>선·후불 주문 최적화</h4><p>선불제(카페·베이커리·테이크아웃)<br>후불제(다이닝·레스토랑·고기집)<br>업종별 최적화된 주문 흐름</p></div>
+<div class="fc"><div class="fc-icon" style="background:#F5F0FF;">📦</div><h4>스마트 재고 관리</h4><p>편리한 메뉴 등록·실시간 재고 반영<br>자동 차감·품절 알림<br>유통업·마트·편의점 특화</p></div>
+<div class="fc"><div class="fc-icon" style="background:#FBEAF0;">👥</div><h4>고객·직원·테이블 관리</h4><p>고객 기호 기반 맞춤 서비스 제공<br>직원 근태·매출 추적<br>테이블 이동·합석 실시간 관리</p></div>
+<div class="fc"><div class="fc-icon" style="background:#E8F8FF;">🌏</div><h4>다국어 지원</h4><p>한국어·영어·일본어·중국어<br>전세계 어디서나 사용 가능<br>해외 매장 운영 지원</p></div>
+<div class="fc"><div class="fc-icon" style="background:#EAF7F0;">🔒</div><h4>보안 관리</h4><p>원격지원 솔루션·복구 솔루션<br>백신 탑재·개인정보 보호<br>아마존 AWS 클라우드 서버</p></div>
+</div>
+</div>
+<!-- OK POS -->
+<div class="reveal">
+<div class="feat-col-title col-ok"><span class="fc-badge">OK POS</span><span class="fc-name">오케이포스솔루션</span></div>
+<div class="feat-list">
+<div class="fc"><div class="fc-icon" style="background:#FFF0E6;">🏪</div><h4>업종별 맞춤 설정</h4><p>음식점·카페·편의점·의류점<br>베이커리·헤어/뷰티·배달 전문점<br>업종 특화 메뉴 구성</p></div>
+<div class="fc"><div class="fc-icon" style="background:#EAF0FF;">💳</div><h4>다양한 결제 수단</h4><p>카드·현금·간편결제·포인트<br>복합결제·분할결제 지원<br>최신 트렌드 결제 시스템 반영</p></div>
+<div class="fc"><div class="fc-icon" style="background:#F5F0FF;">📋</div><h4>QR오더 · 배달매니저</h4><p>테이블 QR 스캔으로 주문<br>배달앱 통합 접수·대행 연동<br>홀·포장·배달 원스톱 관리</p></div>
+<div class="fc"><div class="fc-icon" style="background:#E6F7EF;">📈</div><h4>MY OKPOS 클라우드</h4><p>ASP 2.0 서버 기반 매장관리<br>부가세 자료 자동 생성<br>시간대별·요일별 매출 분석</p></div>
+<div class="fc"><div class="fc-icon" style="background:#EAF7F0;">🏧</div><h4>NEW KIOSK 연동</h4><p>포스와 키오스크 완벽 연동<br>배리어프리 모드 지원<br>라이선스 기반 유연한 요금 정책</p></div>
+<div class="fc"><div class="fc-icon" style="background:#FAEEDA;">🗺️</div><h4>네이버 플레이스 연동</h4><p>네이버 지도·플레이스 매장 연결<br>네이버 커넥트 단말기 통합<br>리뷰·예약·쿠폰 자동 연동</p></div>
+<div class="fc"><div class="fc-icon" style="background:#FBEAF0;">🏢</div><h4>프랜차이즈 특화</h4><p>본사-가맹점 통합 관리<br>매장별 실시간 매출 모니터링<br>메뉴·프로모션 일괄 배포</p></div>
+<div class="fc"><div class="fc-icon" style="background:#E8F8FF;">🔒</div><h4>보안 · 원격 지원</h4><p>VAN사별 보안모듈 탑재<br>원격 설치·업데이트 지원<br>안정적인 서버 기반 운영</p></div>
+</div>
+</div>
+</div>
+</div>
+</section>
 
 
-
-<section class="sw-sec"><div class="sw-inner">
-<div class="sw-header reveal"><div class="sec-tag">Key Features</div><h2>주요 기능</h2><p>매장 운영에 필요한 모든 기능을 제공합니다</p></div>
-<div class="sw-compare reveal">
-<div class="sw-col"><div class="sw-col-title col-up"><span class="sw-col-badge">UP POS</span><span class="sw-col-name">업포스솔루션</span></div>
-<div class="sw-features">
-<div class="sw-card"><div class="sw-icon" style="background:#EAF0FF;">🔗</div><h4>통합 기기 연동</h4><p>포스·키오스크·테이블오더·사인패드<br>Kitchen Monitor·DID·호출벨까지<br>모든 IMU 기기를 하나로 연결</p></div>
-<div class="sw-card"><div class="sw-icon" style="background:#E6F7EF;">📊</div><h4>클라우드 매출 대시보드</h4><p>UP Cloud(ASP) 기반 실시간 매출<br>일별·월별·상품별·시간대별 분석<br>PC·태블릿·스마트폰 어디서든 확인</p></div>
-<div class="sw-card"><div class="sw-icon" style="background:#FFF0E6;">🛵</div><h4>배달 통합 관리</h4><p>배달의민족·요기요 등 35개 플랫폼<br>배달 대행 호출까지 원스톱<br>홀·포장·배달 주문 통합 접수</p></div>
-<div class="sw-card"><div class="sw-icon" style="background:#FAEEDA;">🍽️</div><h4>선·후불 주문 최적화</h4><p>선불제(카페·베이커리·테이크아웃)<br>후불제(다이닝·레스토랑·고기집)<br>업종별 최적화된 주문 흐름</p></div>
-<div class="sw-card"><div class="sw-icon" style="background:#F5F0FF;">📦</div><h4>스마트 재고 관리</h4><p>편리한 메뉴 등록·실시간 재고 반영<br>자동 차감·품절 알림<br>유통업·마트·편의점 특화</p></div>
-<div class="sw-card"><div class="sw-icon" style="background:#FBEAF0;">👥</div><h4>고객·직원·테이블 관리</h4><p>고객 기호 기반 맞춤 서비스 제공<br>직원 근태·매출 추적<br>테이블 이동·합석 실시간 관리</p></div>
-<div class="sw-card"><div class="sw-icon" style="background:#E8F8FF;">🌏</div><h4>다국어 지원</h4><p>한국어·영어·일본어·중국어<br>전세계 어디서나 사용 가능<br>해외 매장 운영 지원</p></div>
-<div class="sw-card"><div class="sw-icon" style="background:#EAF7F0;">🔒</div><h4>보안 관리</h4><p>원격지원 솔루션·복구 솔루션<br>백신 탑재·개인정보 보호<br>아마존 AWS 클라우드 서버</p></div>
-</div></div>
-<div class="sw-col"><div class="sw-col-title col-ok"><span class="sw-col-badge">OK POS</span><span class="sw-col-name">오케이포스솔루션</span></div>
-<div class="sw-features">
-<div class="sw-card"><div class="sw-icon" style="background:#FFF0E6;">🏪</div><h4>업종별 맞춤 설정</h4><p>음식점·카페·편의점·의류점<br>베이커리·헤어/뷰티·배달 전문점<br>업종 특화 메뉴 구성</p></div>
-<div class="sw-card"><div class="sw-icon" style="background:#EAF0FF;">💳</div><h4>다양한 결제 수단</h4><p>카드·현금·간편결제·포인트<br>복합결제·분할결제 지원<br>최신 트렌드 결제 시스템 반영</p></div>
-<div class="sw-card"><div class="sw-icon" style="background:#F5F0FF;">📋</div><h4>QR오더 · 배달매니저</h4><p>테이블 QR 스캔으로 주문<br>배달앱 통합 접수·대행 연동<br>홀·포장·배달 원스톱 관리</p></div>
-<div class="sw-card"><div class="sw-icon" style="background:#E6F7EF;">📈</div><h4>MY OKPOS 클라우드</h4><p>ASP 2.0 서버 기반 매장관리<br>부가세 자료 자동 생성<br>시간대별·요일별 매출 분석</p></div>
-<div class="sw-card"><div class="sw-icon" style="background:#EAF7F0;">🏧</div><h4>NEW KIOSK 연동</h4><p>포스와 키오스크 완벽 연동<br>배리어프리 모드 지원<br>라이선스 기반 유연한 요금 정책</p></div>
-<div class="sw-card"><div class="sw-icon" style="background:#FAEEDA;">🗺️</div><h4>네이버 플레이스 연동</h4><p>네이버 지도·플레이스 매장 연결<br>네이버 커넥트 단말기 통합<br>리뷰·예약·쿠폰 자동 연동</p></div>
-<div class="sw-card"><div class="sw-icon" style="background:#FBEAF0;">🏢</div><h4>프랜차이즈 특화</h4><p>본사-가맹점 통합 관리<br>매장별 실시간 매출 모니터링<br>메뉴·프로모션 일괄 배포</p></div>
-<div class="sw-card"><div class="sw-icon" style="background:#E8F8FF;">🔒</div><h4>보안 · 원격 지원</h4><p>VAN사별 보안모듈 탑재<br>원격 설치·업데이트 지원<br>안정적인 서버 기반 운영</p></div>
-</div></div>
+<!-- VS COMPARE -->
+<div class="vs-boxes reveal" style="padding-top:0;padding-bottom:80px;">
+<div class="vs-grid">
+<div class="vs-box" style="background:#EAF0FF;">
+<div style="font-size:0.7rem;font-weight:700;color:var(--primary);letter-spacing:0.08em;margin-bottom:16px;text-transform:uppercase;">UP POS 강점</div>
+<div class="vs-list">
+<div class="vs-item">🔗 포스·키오스크·테이블오더 통합 연동</div>
+<div class="vs-item">🛵 35개 배달 플랫폼 통합</div>
+<div class="vs-item">🌏 다국어 지원 (해외 매장)</div>
+<div class="vs-item">☁️ UP Cloud (AWS 서버)</div>
+</div>
+</div>
+<div class="vs-box" style="background:#f9f9fb;border:2px solid rgba(0,0,0,0.06);min-width:180px;">
+<div style="font-size:0.7rem;font-weight:700;color:var(--gray);letter-spacing:0.08em;margin-bottom:16px;text-align:center;">공통</div>
+<div class="vs-list">
+<div class="vs-item">💳 카드·현금·간편결제</div>
+<div class="vs-item">📊 실시간 매출 분석</div>
+<div class="vs-item">📦 메뉴·재고 관리</div>
+<div class="vs-item">👥 직원·테이블 관리</div>
+<div class="vs-item">🖨️ 영수증 출력</div>
+<div class="vs-item">🔒 보안·원격 지원</div>
+</div>
+</div>
+<div class="vs-box" style="background:#FFF0E6;">
+<div style="font-size:0.7rem;font-weight:700;color:#FF6B35;letter-spacing:0.08em;margin-bottom:16px;text-transform:uppercase;">OK POS 강점</div>
+<div class="vs-list">
+<div class="vs-item">🗺️ 네이버 플레이스·커넥트 연동</div>
+<div class="vs-item">🏧 NEW KIOSK 배리어프리</div>
+<div class="vs-item">🏢 프랜차이즈 본사-가맹점 관리</div>
+<div class="vs-item">📋 QR오더 + 배달매니저</div>
+</div>
+</div>
+</div>
 </div>
 
-</div></section>-sec"><div class="compat-inner">
+<!-- COMPATIBLE DEVICES -->
+
+<!-- VS COMPARE -->
+<section class="vs-sec">
+<div class="vs-inner">
+<div class="vs-header reveal"><div class="sec-tag">Comparison</div><h2>업포스 vs 오케이포스, 뭐가 다를까?</h2></div>
+<div class="vs-grid reveal">
+<div class="vs-box" style="background:#EAF0FF;">
+<div style="font-size:0.7rem;font-weight:700;color:var(--primary);letter-spacing:0.08em;margin-bottom:16px;text-transform:uppercase;">업포스만의 강점</div>
+<div class="vs-list">
+<div class="vs-item">🔗 포스·키오스크·테이블오더 통합 연동</div>
+<div class="vs-item">🛵 35개 배달 플랫폼 통합</div>
+<div class="vs-item">🌏 다국어 지원 (해외 매장)</div>
+<div class="vs-item">☁️ UP Cloud (AWS 서버)</div>
+</div>
+</div>
+<div class="vs-box" style="background:#f9f9fb;border:2px solid rgba(0,0,0,0.06);min-width:200px;">
+<div style="font-size:0.7rem;font-weight:700;color:var(--gray);letter-spacing:0.08em;margin-bottom:16px;text-align:center;">공통 기능</div>
+<div class="vs-list">
+<div class="vs-item">💳 카드·현금·간편결제</div>
+<div class="vs-item">📊 실시간 매출 분석</div>
+<div class="vs-item">📦 메뉴·재고 관리</div>
+<div class="vs-item">👥 직원·테이블 관리</div>
+<div class="vs-item">🖨️ 영수증 출력</div>
+<div class="vs-item">🔒 보안·원격 지원</div>
+</div>
+</div>
+<div class="vs-box" style="background:#FFF0E6;">
+<div style="font-size:0.7rem;font-weight:700;color:#FF6B35;letter-spacing:0.08em;margin-bottom:16px;text-transform:uppercase;">오케이포스만의 강점</div>
+<div class="vs-list">
+<div class="vs-item">🗺️ 네이버 플레이스·커넥트 연동</div>
+<div class="vs-item">🏧 NEW KIOSK 배리어프리</div>
+<div class="vs-item">🏢 프랜차이즈 본사-가맹점 관리</div>
+<div class="vs-item">📋 QR오더 + 배달매니저</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- COMPATIBLE DEVICES -->
+<section class="compat-sec">
+<div class="compat-inner">
 <div class="compat-header reveal"><div class="sec-tag">Compatible Devices</div><h2>호환 기기</h2></div>
-<div class="compat-grid reveal">
-<div class="compat-item"><div class="ci-icon">🖥️</div><h4>N250 포스</h4><p>업포스</p></div>
-<div class="compat-item"><div class="ci-icon">📱</div><h4>NOVA 포스</h4><p>오케이포스</p></div>
-<div class="compat-item"><div class="ci-icon">🏧</div><h4>배리어프리 키오스크</h4><p>업포스</p></div>
-<div class="compat-item"><div class="ci-icon">📋</div><h4>업오더 테이블오더</h4><p>업포스</p></div>
-<div class="compat-item"><div class="ci-icon">💳</div><h4>토스단말기</h4><p>업포스·오케이포스</p></div>
-<div class="compat-item"><div class="ci-icon">📱</div><h4>네이버단말기</h4><p>업포스·오케이포스</p></div>
-<div class="compat-item"><div class="ci-icon">🔌</div><h4>T226 유선</h4><p>업포스·오케이포스</p></div>
-
-</div></div></section>
-
+<div class="cg cg-top reveal">
+<div class="ci"><div class="ci-icon">🖥️</div><h4>N250 포스</h4><p>업포스</p></div>
+<div class="ci"><div class="ci-icon">📱</div><h4>NOVA 포스</h4><p>오케이포스</p></div>
+<div class="ci"><div class="ci-icon">🏧</div><h4>배리어프리 키오스크</h4><p>업포스</p></div>
+<div class="ci"><div class="ci-icon">📋</div><h4>업오더 테이블오더</h4><p>업포스</p></div>
 </div>
+<div class="cg cg-bot reveal">
+<div class="ci"><div class="ci-icon">💳</div><h4>토스단말기</h4><p>업포스·오케이포스</p></div>
+<div class="ci"><div class="ci-icon">📱</div><h4>네이버단말기</h4><p>업포스·오케이포스</p></div>
+<div class="ci"><div class="ci-icon">🔌</div><h4>T226 유선</h4><p>업포스·오케이포스</p></div>
+</div>
+</div>
+</section>
+
+</div><!-- /flow-bg -->
+
+<div class="mascot-fixed" id="mascotFixed"><img src="mascot-heart.png" alt="mascot"></div>
 
 <div class="footer-mini"><a href="index.html">← 누리네트웍스 홈으로 돌아가기</a><br><br>© 2026 Nurinetworks. All rights reserved.</div>
 
@@ -193,5 +355,40 @@ window.addEventListener('scroll',function(){document.getElementById('mainNav').c
 const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}});},{threshold:0.12});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
+// MASCOT
+(function(){
+const imgs=['mascot-heart.png','mascot-thumbsup.png','mascot-clap.png','mascot-peace.png'];
+const grid=document.querySelector('.feat-compare');
+if(!grid)return;
+const cards=Array.from(grid.querySelectorAll('.fc'));
+if(!cards.length)return;
+imgs.forEach(s=>{const i=new Image();i.src=s;});
+const m=document.createElement('div');m.className='mascot';
+const mi=document.createElement('img');mi.src=imgs[0];mi.alt='mascot';
+m.appendChild(mi);document.body.appendChild(m);
+let idx=0;
+function pos(anim){
+const c=cards[idx],r=c.getBoundingClientRect();
+m.style.left=(r.left+r.width/2-28)+'px';
+m.style.top=(r.top-48)+'px';
+mi.src=imgs[idx%imgs.length];
+if(anim){m.classList.remove('jump');void m.offsetWidth;m.classList.add('jump');}
+}
+const co=new IntersectionObserver(es=>{es.forEach(e=>{
+if(e.isIntersecting){m.classList.add('active');pos(false);
+setInterval(()=>{idx=(idx+1)%cards.length;pos(true);},2000);
+co.unobserve(e.target);}});},{threshold:0.3});
+co.observe(grid);
+let t=false;
+window.addEventListener('scroll',()=>{if(!t){t=true;requestAnimationFrame(()=>{pos(false);t=false;});}},{passive:true});
+window.addEventListener('resize',()=>pos(false));
+})();
+
+// Mascot: appear after scroll past hero
+window.addEventListener('scroll',function(){
+  var m=document.getElementById('mascotFixed');
+  if(m)m.classList.toggle('show',window.scrollY>window.innerHeight*0.5);
+},{passive:true});
 </script>
-</body></html>
+</body>
+</html>
