@@ -349,9 +349,21 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <div class="install-inner">
 <div class="install-header reveal"><div class="sec-tag">Field Sketch</div><h2>현장 스케치</h2><p>전국 다양한 매장에서 토스/네이버 단말기를 만나보세요.</p></div>
 <div class="install-grid">
-<div class="install-placeholder reveal"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>카페<br>설치 사진 준비 중</div>
-<div class="install-placeholder reveal"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>음식점<br>설치 사진 준비 중</div>
-<div class="install-placeholder reveal"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>병원<br>설치 사진 준비 중</div>
+<div class="install-card reveal" onclick="openFS('fs1')">
+<img src="field-signpad-optical.jpg" alt="안경전문점">
+<div class="install-card-overlay"></div>
+<div class="install-card-info"><h4>안경전문점</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">👓</span> 토스단말기</span></div></div>
+</div>
+<div class="install-card reveal" onclick="openFS('fs2')">
+<img src="field-signpad-icecream.jpg" alt="아이스크림전문점">
+<div class="install-card-overlay"></div>
+<div class="install-card-info"><h4>아이스크림전문점</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">🍦</span> 토스단말기</span></div></div>
+</div>
+<div class="install-card reveal" onclick="openFS('fs3')">
+<img src="field-signpad-salon.jpg" alt="미용실">
+<div class="install-card-overlay"></div>
+<div class="install-card-info"><h4>미용실</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">✂️</span> 토스단말기</span></div></div>
+</div>
 </div>
 </div>
 </section>
@@ -375,7 +387,14 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <div class="footer-mini"><a href="index.html">← 누리네트웍스 홈으로 돌아가기</a><br><br>© 2026 Nurinetworks. All rights reserved.</div>
 
 <script>
-const fsData={};
+const fsData={
+fs1:{img:'field-signpad-optical.jpg',title:'안경전문점',tags:['토스단말기'],emoji:'👓',
+desc:'프리미엄 안경전문점에 토스프론트를 설치했습니다. 깔끔한 화이트 카운터 위에 토스단말기를 배치하여 안경·렌즈 결제 시 애플페이·카드·QR 등 모든 결제 수단을 지원합니다. 키오스크 모드로 고객이 직접 결제도 가능합니다.'},
+fs2:{img:'field-signpad-icecream.jpg',title:'아이스크림전문점',tags:['토스단말기'],emoji:'🍦',
+desc:'감성 젤라토 전문점에 토스프론트를 설치했습니다. 우드톤 카운터와 젤라토 쇼케이스 옆에 자연스럽게 배치되어, 아이스크림 선택 후 바로 간편결제로 빠르게 계산합니다. 외국인 관광객도 애플페이로 편리하게 결제합니다.'},
+fs3:{img:'field-signpad-salon.jpg',title:'미용실',tags:['토스단말기'],emoji:'✂️',
+desc:'모던한 헤어살롱에 토스프론트를 설치했습니다. 미니멀한 화이트 리셉션 카운터에 어울리는 세련된 디자인으로, 커트·펌·염색 시술 후 간편결제부터 토스 포인트 적립까지 한 번에 처리합니다.'}
+};
 function openFS(id){const d=fsData[id];if(!d)return;
 document.getElementById('fsImg').src=d.img;
 document.getElementById('fsTitle').textContent=d.title;
