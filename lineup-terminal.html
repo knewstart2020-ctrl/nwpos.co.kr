@@ -52,7 +52,7 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 
 /* 3D FLOATING TEXT */
 .hero-float-text{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;}
-.hft{position:absolute;font-family:'Inter',sans-serif;font-weight:900;white-space:nowrap;color:rgba(255,255,255,0.02);letter-spacing:0.05em;text-transform:uppercase;}
+.hft{position:absolute;font-family:'Inter',sans-serif;font-weight:900;white-space:nowrap;color:rgba(0,0,0,0.03);letter-spacing:0.05em;text-transform:uppercase;}
 .hft-1{font-size:clamp(3rem,10vw,7rem);top:5%;animation:hftScroll 30s linear infinite;}
 .hft-2{font-size:clamp(2.5rem,8vw,5.5rem);top:30%;animation:hftScroll 35s linear infinite reverse;}
 .hft-3{font-size:clamp(2.5rem,8vw,6rem);top:55%;animation:hftScroll 38s linear infinite;}
@@ -213,8 +213,8 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <div class="hero-video"><video autoplay muted loop playsinline><source src="terminal-showcase.mp4" type="video/mp4"></video></div>
 <div class="hero-content">
 <div class="hero-tag">Wired · Wireless Terminal</div>
-<h1>어디서든, 어떤 결제든.<br><span class="accent-line">카드 한 장이면 끝.</span></h1>
-<p class="hero-copy">유선의 안정감, 무선의 자유로움.<br>스마트로 공식 파트너, 누리네트웍스.</p>
+<h1>언제, 어디서든,<br><span class="accent-line">어떤 결제든.</span></h1>
+<p class="hero-copy">유선의 안정감, 무선의 자유로움.</p>
 </div>
 <div class="hero-scroll"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg><span>SCROLL</span><div class="hero-scroll-line"></div></div>
 </section>
@@ -309,24 +309,28 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <div class="hw-inner">
 <div class="hw-header reveal">
 <div class="sec-tag">Hardware Features</div>
-<h2>공통 H/W 특징</h2>
+<h2>H/W 특징</h2>
 </div>
-<div class="hw-layout reveal">
-<!-- 왼쪽 3개 -->
-<div class="hw-side hw-side-left">
-<div class="hw-item"><div class="hw-item-icon" style="background:#FFF0E6;">💳</div><div><h4>IC·MS 양방향 카드</h4><p>삽입·긁기 양방향 지원<br>EMV Level 1&2 인증</p></div></div>
-<div class="hw-item"><div class="hw-item-icon" style="background:#EAF0FF;">🖨️</div><div><h4>고속 써멀 프린터</h4><p>T226: 3인치 자동커팅<br>M6202NQ: 2인치 내장</p></div></div>
-<div class="hw-item"><div class="hw-item-icon" style="background:#E6F7EF;">🔑</div><div><h4>LED 백라이트 키패드</h4><p>어두운 환경에서도 선명<br>고무 키 내구성 우수</p></div></div>
+<div class="sw-compare reveal">
+<!-- T226 유선 -->
+<div class="sw-col">
+<div class="sw-col-title col-t226"><span class="sw-col-badge">WIRED</span><span class="sw-col-name">T226 유선단말기</span></div>
+<div class="sw-features">
+<div class="sw-card"><div class="sw-icon" style="background:#FFF0E6;">📺</div><h4>4.3" 컬러 LCD</h4><p>480×272 고해상도<br>결제 정보를 선명하게 표시</p></div>
+<div class="sw-card"><div class="sw-icon" style="background:#EAF0FF;">🖨️</div><h4>3인치 자동커팅 프린터</h4><p>160mm/sec 고속 인쇄<br>영수증 자동 커팅</p></div>
+<div class="sw-card"><div class="sw-icon" style="background:#E6F7EF;">🔌</div><h4>LAN 100Mbps 유선</h4><p>안정적인 유선 네트워크<br>끊김 없는 결제 환경</p></div>
+<div class="sw-card"><div class="sw-icon" style="background:#FAEEDA;">🔑</div><h4>23키 LED 백라이트</h4><p>Rubber 키패드 + LED<br>RS-232 × 3 / USB × 2 포트</p></div>
 </div>
-<!-- 중앙 제품 이미지 -->
-<div class="hw-center">
-<img src="terminal-hero.jpg" alt="카드단말기">
 </div>
-<!-- 오른쪽 3개 -->
-<div class="hw-side hw-side-right">
-<div class="hw-item"><div class="hw-item-icon" style="background:#FAEEDA;">📺</div><div><h4>컬러 TFT LCD</h4><p>T226: 4.3인치 (480×272)<br>M6202NQ: 2.4인치 터치</p></div></div>
-<div class="hw-item"><div class="hw-item-icon" style="background:#FBEAF0;">🔒</div><div><h4>보안 인증</h4><p>PCI PTS 보안 인증<br>안전한 카드 정보 처리</p></div></div>
-<div class="hw-item"><div class="hw-item-icon" style="background:#EAF0FF;">📐</div><div><h4>컴팩트 사이즈</h4><p>T226: 205×145×120mm<br>M6202NQ: 81×164×60mm</p></div></div>
+<!-- M6202NQ 무선 -->
+<div class="sw-col">
+<div class="sw-col-title col-m6202"><span class="sw-col-badge">WIRELESS</span><span class="sw-col-name">M6202NQ 무선단말기</span></div>
+<div class="sw-features">
+<div class="sw-card"><div class="sw-icon" style="background:#EAF0FF;">📱</div><h4>2.4" 터치 컬러 LCD</h4><p>320×240 터치패널<br>직관적인 터치 조작</p></div>
+<div class="sw-card"><div class="sw-icon" style="background:#FFF0E6;">🖨️</div><h4>2인치 내장 프린터</h4><p>48mm 써멀 프린터<br>현장 영수증 즉시 출력</p></div>
+<div class="sw-card"><div class="sw-icon" style="background:#FBEAF0;">📡</div><h4>LTE 4G 무선 통신</h4><p>KT USIM 내장<br>어디서든 실시간 결제</p></div>
+<div class="sw-card"><div class="sw-icon" style="background:#E6F7EF;">🔋</div><h4>3,000mAh 대용량 배터리</h4><p>DC 3.7V 충전식<br>하루 종일 야외 결제 가능</p></div>
+</div>
 </div>
 </div>
 </div>
