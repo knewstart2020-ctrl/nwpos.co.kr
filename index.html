@@ -40,11 +40,19 @@
         .footer-new .lg-nuri,.footer-new .lg-nwp{font-size:0.85rem;color:#1d1d1f;}
         .footer-new .lg-cc{font-size:0.48rem;color:#86868b;}
         .js-loaded .reveal{opacity:0;transform:translateY(24px);transition:all .7s ease;}.js-loaded .reveal.visible{opacity:1;transform:translateY(0);}
-        .header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(0,0,0,0.0);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid transparent;transition:all .4s;}.header.scrolled{background:rgba(255,255,255,0.82);border-bottom-color:rgba(0,0,0,0.06);}.header.scrolled .lg-n,.header.scrolled .lg-nuri,.header.scrolled .lg-nwp{color:#1d1d1f;}.header.scrolled .lg-cc{color:#86868b;}.header.scrolled .nav a{color:rgba(0,0,0,0.55);}.header.scrolled .nav a:hover{color:#fff;}.header.scrolled .mobile-toggle span{background:#1d1d1f;}
+        .header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(0,0,0,0.0);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid transparent;transition:all .4s;}.header.scrolled{background:rgba(255,255,255,0.82);border-bottom-color:rgba(0,0,0,0.06);}.header.scrolled .lg-n,.header.scrolled .lg-nuri,.header.scrolled .lg-nwp{color:#1d1d1f;}.header.scrolled .lg-cc{color:#86868b;}.header.scrolled .mobile-toggle span{background:#1d1d1f;}
         .header-inner{max-width:1320px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:76px;}
         .logo{display:flex;flex-direction:column;text-decoration:none;line-height:1;}.logo-en{font-family:'Dancing Script',cursive;font-size:1.6rem;font-weight:700;color:var(--accent);}.logo-kr{font-size:0.7rem;color:rgba(255,255,255,0.45);letter-spacing:0.15em;margin-top:2px;}
-        .nav{display:flex;align-items:center;gap:32px;}.nav a{text-decoration:none;color:rgba(255,255,255,0.7);font-size:0.9rem;font-weight:400;transition:color .2s;}.nav a:hover{color:#fff;}
+        .nav{display:flex;align-items:center;gap:8px;}.nav a{text-decoration:none;transition:all .2s;}
         .nav-cta{background:var(--primary)!important;color:#fff!important;padding:10px 26px;border-radius:50px;font-weight:600!important;}.nav-cta:hover{background:var(--primary-light)!important;}
+        .nav-store{border:none!important;background:none!important;color:rgba(255,255,255,0.7)!important;padding:10px 20px;border-radius:8px;font-weight:700!important;font-size:1rem!important;letter-spacing:0.02em;transition:all .25s!important;position:relative;cursor:pointer;}
+        .nav-store::after{content:'';position:absolute;bottom:4px;left:50%;width:0;height:2.5px;background:#FFD54F;border-radius:2px;transition:all .3s cubic-bezier(0.34,1.56,0.64,1);transform:translateX(-50%);}
+        .nav-store:hover{color:#fff!important;}.nav-store:hover::after{width:60%;}
+        .nav-store:active,.nav-store.on{color:#FFD54F!important;}.nav-store:active::after,.nav-store.on::after{width:80%;background:#FFD54F;}
+        .header.scrolled .nav-store{color:rgba(0,0,0,0.5)!important;}
+        .header.scrolled .nav-store::after{background:var(--primary);}
+        .header.scrolled .nav-store:hover{color:#1d1d1f!important;}
+        .header.scrolled .nav-store:active,.header.scrolled .nav-store.on{color:var(--primary)!important;}
         .mobile-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;}.mobile-toggle span{width:22px;height:2px;background:#fff;border-radius:2px;}
         .hero{position:relative;min-height:100vh;overflow:hidden;background:#000;}
         .hs-slides{position:absolute;inset:0;}
@@ -214,7 +222,7 @@
     </style>
 </head>
 <body>
-<header class="header"><div class="header-inner"><a href="#" style="text-decoration:none;"><div class="lg"><span class="lg-n">N</span><div class="lg-right"><div class="lg-top"><span class="lg-nuri">nuri</span><span class="lg-nwp">networkspay</span><span class="lg-star lg-star-lg">✦</span></div><div class="lg-cc">credit&amp;cash</div></div></div></a><nav class="nav" id="nav"><a href="about.html">회사소개</a><a href="lineup.html">제품소개</a><a href="support.html">고객지원</a><a href="support.html#consult">상담신청</a><a href="support.html#store" class="nav-cta">구매스토어</a></nav><div class="mobile-toggle" onclick="document.getElementById('nav').classList.toggle('open')"><span></span><span></span><span></span></div></div></header>
+<header class="header"><div class="header-inner"><a href="#" style="text-decoration:none;"><div class="lg"><span class="lg-n">N</span><div class="lg-right"><div class="lg-top"><span class="lg-nuri">nuri</span><span class="lg-nwp">networkspay</span><span class="lg-star lg-star-lg">✦</span></div><div class="lg-cc">credit&amp;cash</div></div></div></a><nav class="nav" id="nav"><a href="about.html" class="nav-store">회사소개</a><a href="lineup.html" class="nav-store">제품라인업</a><a href="support.html" class="nav-store">고객지원</a><a href="support.html#store" class="nav-store">구매스토어</a></nav><div class="mobile-toggle" onclick="document.getElementById('nav').classList.toggle('open')"><span></span><span></span><span></span></div></div></header>
 
 <section class="hero" id="hero">
 <div class="hs-slides" id="hsSlides">
