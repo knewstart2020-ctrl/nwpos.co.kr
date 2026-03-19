@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>프로그램/소프트웨어 | 누리네트웍스</title>
+<meta name="description" content="업포스·오케이포스 소프트웨어가 모든 결제를 작동합니다. 포스, 키오스크, 테이블오더, 사인패드까지 하나의 소프트웨어로.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#1B3A8C;--accent:#C9A84C;--dark:#1d1d1f;--gray:#86868b;--light:#f5f5f7;--radius:20px;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(0,0,0,0);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid transparent;transition:all .4s;}
+.nav.scrolled{background:rgba(255,255,255,0.85);border-bottom-color:rgba(0,0,0,0.06);}
+.nav.scrolled .nl,.nav.scrolled .nav-product{color:#1d1d1f;}
+.nav.scrolled .nt{color:rgba(0,0,0,0.4);}.nav.scrolled .nt b{color:rgba(0,0,0,0.6);}
+.nav.scrolled .nav-links a{color:rgba(0,0,0,0.5);}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.nav-logo{display:flex;align-items:center;gap:6px;text-decoration:none;font-family:'Inter',sans-serif;}
+.nl{font-size:1.6rem;font-weight:700;color:#fff;text-shadow:1px 1px 0 rgba(0,0,0,0.3);transition:color .4s;}
+.nt{font-size:0.7rem;color:rgba(255,255,255,0.5);font-weight:300;transition:color .4s;}.nt b{font-weight:600;color:rgba(255,255,255,0.7);transition:color .4s;}
+.nav-product{font-size:0.95rem;font-weight:700;color:#fff;letter-spacing:-0.02em;transition:color .4s;}
+.nav-links{display:flex;gap:16px;align-items:center;}
+.nav-links a{font-size:0.78rem;color:rgba(255,255,255,0.6);text-decoration:none;font-weight:500;transition:color .2s;}
+.nav-cta{background:var(--primary);color:#fff!important;padding:7px 18px;border-radius:50px;font-weight:600!important;}
+.sec-tag{font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--primary);margin-bottom:12px;}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#000;overflow:hidden;}
+.hero-video{position:absolute;inset:0;}.hero-video video{width:100%;height:100%;object-fit:cover;opacity:0.55;}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.1) 40%,rgba(0,0,0,0.6) 100%);z-index:1;}
+.scene-labels{position:absolute;inset:0;z-index:2;pointer-events:none;}
+.scene-label{position:absolute;left:40px;bottom:120px;opacity:0;display:flex;align-items:center;gap:12px;}
+.scene-label-tag{font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:6px 16px;border-radius:50px;background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);color:#fff;border:1px solid rgba(255,255,255,0.2);}
+.scene-label-name{font-size:1.4rem;font-weight:800;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.5);}
+.sl1{animation:slShow 20.2s ease infinite;}
+.sl2{animation:slShow 20.2s ease 5.05s infinite;}
+.sl3{animation:slShow 20.2s ease 10.1s infinite;}
+.sl4{animation:slShow 20.2s ease 15.15s infinite;}
+@keyframes slShow{0%{opacity:0;transform:translateY(10px)}3%{opacity:1;transform:translateY(0)}20%{opacity:1;transform:translateY(0)}23%{opacity:0;transform:translateY(-10px)}100%{opacity:0}}
+.hero-content{position:relative;z-index:3;text-align:center;padding:0 40px;}
+.hero-title-wrap{opacity:0;animation:finalTitle 20.2s ease infinite;}
+@keyframes finalTitle{0%,72%{opacity:0;transform:translateY(20px)}78%{opacity:1;transform:translateY(0)}96%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(-10px)}}
+.hero h1{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:400;color:rgba(255,255,255,0.7);line-height:1.6;letter-spacing:-0.02em;margin-bottom:12px;}
+.hero h1 strong{display:block;font-size:clamp(2.4rem,6vw,3.8rem);font-weight:900;color:#fff;letter-spacing:-0.04em;line-height:1.1;margin-top:8px;background:linear-gradient(90deg,#7EB6FF,#B8D4FF,#7EB6FF);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 3s linear infinite;}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,0.7);font-size:0.75rem;font-weight:500;letter-spacing:0.15em;animation:scrollBounce 2s ease-in-out infinite;}
+.hero-scroll-line{width:1.5px;height:48px;background:linear-gradient(to bottom,rgba(255,255,255,0.7),transparent);}
+@keyframes scrollBounce{0%,100%{opacity:0.5;transform:translateX(-50%) translateY(0);}50%{opacity:1;transform:translateX(-50%) translateY(8px);}}
+
+.flow-bg{background:linear-gradient(180deg,#f5f5f7 0%,#eef2fa 15%,#fff 30%,#f8f6ff 50%,#fff 70%,#eef2fa 85%,#f5f5f7 100%);position:relative;overflow:hidden;}
+.flow-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 30%,rgba(27,58,140,0.03) 0%,transparent 50%),radial-gradient(ellipse at 80% 70%,rgba(126,182,255,0.03) 0%,transparent 50%);pointer-events:none;z-index:0;}
+.hero-float-text{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;}
+.hft{position:absolute;font-family:'Inter',sans-serif;font-weight:900;white-space:nowrap;color:rgba(0,0,0,0.03);letter-spacing:0.05em;text-transform:uppercase;}
+.hft-1{font-size:clamp(3rem,10vw,7rem);top:5%;animation:hftScroll 30s linear infinite;}
+.hft-2{font-size:clamp(2.5rem,8vw,5.5rem);top:30%;animation:hftScroll 35s linear infinite reverse;}
+.hft-3{font-size:clamp(2.5rem,8vw,6rem);top:55%;animation:hftScroll 38s linear infinite;}
+.hft-4{font-size:clamp(3rem,10vw,7rem);top:80%;animation:hftScroll 32s linear infinite reverse;}
+@keyframes hftScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+.vs-sec{background:transparent;padding:120px 0 80px;position:relative;}
+.vs-inner{max-width:1200px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
+.vs-header{text-align:center;margin-bottom:60px;}
+.vs-header h2{font-size:clamp(2rem,4vw,2.8rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:12px;}
+.vs-header p{font-size:1rem;color:var(--gray);line-height:1.7;}
+.vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1100px;margin:0 auto;}
+.img-card{position:relative;border-radius:24px;overflow:hidden;height:480px;display:flex;flex-direction:column;justify-content:flex-end;cursor:default;transition:transform .5s cubic-bezier(0.16,1,0.3,1);background:#f0f3fa;}
+.img-card:hover{transform:translateY(-6px);}
+.img-card-content{position:relative;z-index:2;padding:40px 36px;}
+.img-card-tag{display:inline-block;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:14px;}
+.tag-up{background:rgba(27,58,140,0.1);color:var(--primary);}.tag-ok{background:rgba(255,107,53,0.1);color:#FF6B35;}
+.img-card h3{font-size:clamp(1.7rem,3vw,2.2rem);font-weight:900;color:#1d1d1f;letter-spacing:-0.03em;line-height:1.1;margin-bottom:10px;}
+.img-card-desc{font-size:0.92rem;color:var(--gray);line-height:1.7;margin-bottom:20px;}
+.img-card-features{display:flex;flex-wrap:wrap;gap:8px;}
+.img-card-feat{font-size:0.72rem;font-weight:600;padding:6px 14px;border-radius:50px;background:rgba(0,0,0,0.04);color:#555;border:1px solid rgba(0,0,0,0.06);}
+.card-icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-70%);font-size:4rem;opacity:0.15;}
+
+.sw-sec{background:transparent;padding:100px 0;}
+.sw-inner{max-width:1100px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
+.sw-header{text-align:center;margin-bottom:48px;}.sw-header h2{font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:8px;}.sw-header p{font-size:0.95rem;color:var(--gray);line-height:1.7;}
+.sw-compare{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+.sw-col-title{display:flex;align-items:center;gap:10px;margin-bottom:24px;padding-bottom:16px;border-bottom:2px solid;}
+.sw-col-title.col-up{border-color:var(--primary);}.sw-col-title.col-ok{border-color:#FF6B35;}
+.sw-col-badge{font-size:0.65rem;font-weight:700;letter-spacing:0.08em;padding:4px 12px;border-radius:50px;}
+.col-up .sw-col-badge{background:rgba(27,58,140,0.1);color:var(--primary);}.col-ok .sw-col-badge{background:rgba(255,107,53,0.1);color:#FF6B35;}
+.sw-col-name{font-size:1.1rem;font-weight:800;letter-spacing:-0.02em;}
+.sw-features{display:flex;flex-direction:column;gap:14px;}
+.sw-card{text-align:center;padding:32px 20px;border-radius:20px;background:#fff;border:1px solid rgba(0,0,0,0.04);box-shadow:0 2px 12px rgba(0,0,0,0.03);transition:all .4s;}
+.sw-card:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(0,0,0,0.08);}
+.sw-icon{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:1.5rem;}
+.sw-card h4{font-size:0.92rem;font-weight:700;margin-bottom:8px;}.sw-card p{font-size:0.78rem;color:var(--gray);line-height:1.6;}
+
+.compat-sec{background:transparent;padding:100px 0;}
+.compat-inner{max-width:1000px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
+.compat-header{text-align:center;margin-bottom:48px;}.compat-header h2{font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:8px;}
+.compat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.compat-item{text-align:center;padding:24px 16px;border-radius:16px;background:#fff;border:1px solid rgba(0,0,0,0.04);box-shadow:0 2px 8px rgba(0,0,0,0.03);transition:all .3s;}
+.compat-item:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,0.08);}
+.compat-item .ci-icon{font-size:2rem;margin-bottom:12px;}.compat-item h4{font-size:0.82rem;font-weight:700;margin-bottom:4px;}.compat-item p{font-size:0.7rem;color:var(--gray);}
+
+.mascot{position:fixed;pointer-events:none;z-index:10;transition:left .7s cubic-bezier(0.34,1.56,0.64,1),top .7s cubic-bezier(0.34,1.56,0.64,1);opacity:0;}
+.mascot.active{opacity:1;}.mascot img{width:56px;height:auto;display:block;filter:drop-shadow(0 3px 8px rgba(0,0,0,0.4));}
+.mascot.jump img{animation:mascotJump .6s cubic-bezier(0.34,1.56,0.64,1);}
+@keyframes mascotJump{0%{transform:translateY(0) scale(1)}25%{transform:translateY(-30px) scale(1.15) rotate(-8deg)}50%{transform:translateY(-12px) scale(1.05) rotate(4deg)}75%{transform:translateY(-4px) scale(0.98)}100%{transform:translateY(0) scale(1) rotate(0deg)}}
+
+.footer-mini{background:#f5f5f7;text-align:center;padding:32px 40px;font-size:0.78rem;color:var(--gray);border-top:1px solid rgba(0,0,0,0.06);}
+.footer-mini a{color:var(--primary);text-decoration:none;font-weight:600;}
+.reveal{opacity:0;transform:translateY(40px);transition:all .7s cubic-bezier(0.16,1,0.3,1);}.reveal.visible{opacity:1;transform:translateY(0);}
+
+@media(max-width:1024px){.vs-grid{grid-template-columns:1fr;max-width:540px;}.compat-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:768px){.nav-links{display:none;}.hero h1{font-size:1.6rem;}.hero h1 strong{font-size:2.2rem;}.sw-compare{grid-template-columns:1fr;}.compat-grid{grid-template-columns:repeat(2,1fr);}.scene-label{left:20px;bottom:80px;}.scene-label-name{font-size:1rem;}}
+</style>
+</head>
+<body>
+<nav class="nav" id="mainNav"><div class="nav-inner">
+<a href="index.html" class="nav-logo"><span class="nl">N</span><span class="nt"><b>nuri</b>networkspay</span></a>
+<span class="nav-product">프로그램/소프트웨어</span>
+<div class="nav-links"><a href="index.html">홈</a><a href="index.html#products">제품 라인업</a><a href="about.html">회사소개</a><a href="tel:1544-7754" class="nav-cta">1544-7754</a></div>
+</div></nav>
+
+<section class="hero">
+<div class="hero-video"><video autoplay muted loop playsinline><source src="software-showcase.mp4" type="video/mp4"></video></div>
+<div class="scene-labels">
+<div class="scene-label sl1"><span class="scene-label-tag">POS</span><span class="scene-label-name">N250 포스</span></div>
+<div class="scene-label sl2"><span class="scene-label-tag">KIOSK</span><span class="scene-label-name">배리어프리 키오스크</span></div>
+<div class="scene-label sl3"><span class="scene-label-tag">TABLE ORDER</span><span class="scene-label-name">업오더 테이블오더</span></div>
+<div class="scene-label sl4"><span class="scene-label-tag">SIGNPAD</span><span class="scene-label-name">토스 · 네이버 단말기</span></div>
+</div>
+<div class="hero-content"><div class="hero-title-wrap">
+<h1>이 모든 것을,<strong>업포스 · 오케이포스가 작동합니다.</strong></h1>
+</div></div>
+<div class="hero-scroll"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg><span>SCROLL</span><div class="hero-scroll-line"></div></div>
+</section>
+
+<div class="flow-bg">
+<div class="hero-float-text">
+<div class="hft hft-1">UPPOS · OKPOS · SOFTWARE · SOLUTION · UPPOS · OKPOS · SOFTWARE · SOLUTION · </div>
+<div class="hft hft-2">업포스 · 오케이포스 · 소프트웨어 · 솔루션 · 업포스 · 오케이포스 · 소프트웨어 · 솔루션 · </div>
+<div class="hft hft-3">POS · KIOSK · TABLE ORDER · SIGNPAD · POS · KIOSK · TABLE ORDER · SIGNPAD · </div>
+<div class="hft hft-4">포스 · 키오스크 · 테이블오더 · 사인패드 · 포스 · 키오스크 · 테이블오더 · 사인패드 · </div>
+</div>
+
+<section class="vs-sec"><div class="vs-inner">
+<div class="vs-header reveal"><div class="sec-tag">Software Solution</div><h2>소프트웨어. 결제의 두뇌</h2><p>하드웨어가 몸이라면, 소프트웨어는 두뇌입니다.</p></div>
+<div class="vs-grid reveal">
+<div class="img-card"><div class="card-icon">🖥️</div><div class="img-card-content">
+<span class="img-card-tag tag-up">UP POS</span><h3>업포스솔루션</h3>
+<p class="img-card-desc">아임유(IMU) 포스·키오스크·테이블오더를<br>하나로 연결하는 통합 솔루션.</p>
+<div class="img-card-features"><span class="img-card-feat">N250 포스</span><span class="img-card-feat">배리어프리 키오스크</span><span class="img-card-feat">업오더 테이블오더</span><span class="img-card-feat">실시간 매출관리</span></div>
+</div></div>
+<div class="img-card"><div class="card-icon">⚡</div><div class="img-card-content">
+<span class="img-card-tag tag-ok">OK POS</span><h3>오케이포스솔루션</h3>
+<p class="img-card-desc">OKPOS 기반 포스 시스템으로<br>안정적이고 검증된 매장 운영 솔루션.</p>
+<div class="img-card-features"><span class="img-card-feat">NOVA 포스</span><span class="img-card-feat">메뉴 관리</span><span class="img-card-feat">재고 관리</span><span class="img-card-feat">매출 분석</span></div>
+</div></div>
+</div></div></section>
+
+<section class="sw-sec"><div class="sw-inner">
+<div class="sw-header reveal"><div class="sec-tag">Key Features</div><h2>주요 기능</h2><p>매장 운영에 필요한 모든 기능을 제공합니다</p></div>
+<div class="sw-compare reveal">
+<div class="sw-col"><div class="sw-col-title col-up"><span class="sw-col-badge">UP POS</span><span class="sw-col-name">업포스솔루션</span></div>
+<div class="sw-features">
+<div class="sw-card"><div class="sw-icon" style="background:#EAF0FF;">🔗</div><h4>통합 기기 연동</h4><p>포스·키오스크·테이블오더·사인패드<br>모든 IMU 기기를 하나로 연결</p></div>
+<div class="sw-card"><div class="sw-icon" style="background:#E6F7EF;">📊</div><h4>실시간 매출 대시보드</h4><p>일별·월별·상품별 매출 분석<br>스마트폰에서도 실시간 확인</p></div>
+<div class="sw-card"><div class="sw-icon" style="background:#FFF0E6;">🍽️</div><h4>메뉴·재고 관리</h4><p>메뉴 등록·수정·품절 처리<br>재고 자동 차감 및 알림</p></div>
+<div class="sw-card"><div class="sw-icon" style="background:#FAEEDA;">👥</div><h4>직원·테이블 관리</h4><p>직원별 매출 추적<br>테이블 배치·상태 실시간 확인</p></div>
+</div></div>
+<div class="sw-col"><div class="sw-col-title col-ok"><span class="sw-col-badge">OK POS</span><span class="sw-col-name">오케이포스솔루션</span></div>
+<div class="sw-features">
+<div class="sw-card"><div class="sw-icon" style="background:#FFF0E6;">🏪</div><h4>업종별 맞춤 설정</h4><p>음식점·카페·편의점·의류점<br>업종 특화 메뉴 구성</p></div>
+<div class="sw-card"><div class="sw-icon" style="background:#EAF0FF;">💳</div><h4>다양한 결제 수단</h4><p>카드·현금·간편결제·포인트<br>복합결제·분할결제 지원</p></div>
+<div class="sw-card"><div class="sw-icon" style="background:#F5F0FF;">📋</div><h4>주문 접수 시스템</h4><p>홀·포장·배달 주문 통합 관리<br>배달앱 연동 지원</p></div>
+<div class="sw-card"><div class="sw-icon" style="background:#E6F7EF;">📈</div><h4>경영 분석 리포트</h4><p>부가세 자료 자동 생성<br>시간대별·요일별 매출 분석</p></div>
+</div></div>
+</div></div></section>
+
+<section class="compat-sec"><div class="compat-inner">
+<div class="compat-header reveal"><div class="sec-tag">Compatible Devices</div><h2>호환 기기</h2></div>
+<div class="compat-grid reveal">
+<div class="compat-item"><div class="ci-icon">🖥️</div><h4>N250 포스</h4><p>업포스</p></div>
+<div class="compat-item"><div class="ci-icon">📱</div><h4>NOVA 포스</h4><p>오케이포스</p></div>
+<div class="compat-item"><div class="ci-icon">🏧</div><h4>배리어프리 키오스크</h4><p>업포스</p></div>
+<div class="compat-item"><div class="ci-icon">📋</div><h4>업오더 테이블오더</h4><p>업포스</p></div>
+<div class="compat-item"><div class="ci-icon">💳</div><h4>토스단말기</h4><p>업포스·오케이포스</p></div>
+<div class="compat-item"><div class="ci-icon">📱</div><h4>네이버단말기</h4><p>업포스·오케이포스</p></div>
+<div class="compat-item"><div class="ci-icon">🔌</div><h4>T226 유선</h4><p>업포스·오케이포스</p></div>
+<div class="compat-item"><div class="ci-icon">📡</div><h4>M6202NQ 무선</h4><p>업포스·오케이포스</p></div>
+</div></div></section>
+
+</div>
+
+<div class="footer-mini"><a href="index.html">← 누리네트웍스 홈으로 돌아가기</a><br><br>© 2026 Nurinetworks. All rights reserved.</div>
+
+<script>
+window.addEventListener('scroll',function(){document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>80);});
+const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}});},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+(function(){
+const mascotImages=['mascot-heart.png','mascot-thumbsup.png','mascot-clap.png','mascot-peace.png'];
+const grid=document.querySelector('.vs-grid');if(!grid)return;
+const allFeats=Array.from(grid.querySelectorAll('.img-card-feat'));if(allFeats.length===0)return;
+mascotImages.forEach(src=>{const i=new Image();i.src=src;});
+const m=document.createElement('div');m.className='mascot';
+const mImg=document.createElement('img');mImg.src=mascotImages[0];mImg.alt='mascot';
+m.appendChild(mImg);document.body.appendChild(m);let idx=0;
+function positionMascot(animate){const feat=allFeats[idx];const r=feat.getBoundingClientRect();
+const x=r.left+r.width/2-28;const y=r.top-52;
+if(animate){m.classList.remove('jump');void m.offsetWidth;m.classList.add('jump');}
+m.style.left=x+'px';m.style.top=y+'px';mImg.src=mascotImages[idx%mascotImages.length];}
+const cardObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{
+if(e.isIntersecting){m.classList.add('active');positionMascot(false);
+setInterval(()=>{idx=(idx+1)%allFeats.length;positionMascot(true);},2000);
+cardObs.unobserve(e.target);}});},{threshold:0.3});
+cardObs.observe(grid);
+let ticking=false;
+window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(()=>{positionMascot(false);ticking=false;});}},{passive:true});
+window.addEventListener('resize',function(){positionMascot(false);});
+})();
+</script>
+</body></html>
