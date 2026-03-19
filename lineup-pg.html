@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PG 온오프라인결제 | 누리네트웍스</title>
+<meta name="description" content="정산 주기를 바꾸면 비즈니스의 급이 달라집니다. 오프PG 즉시입금과 온라인PG를 하나로. 누리네트웍스에서 상담·가입·관리.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#1B3A8C;--off:#FF6B35;--on:#0052FF;--gold:#F0B429;--dark:#1d1d1f;--gray:#86868b;--light:#f5f5f7;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid transparent;transition:all .4s;}
+.nav.scrolled{background:rgba(255,255,255,0.85);border-bottom-color:rgba(0,0,0,0.06);}
+.nav.scrolled .nl,.nav.scrolled .nav-product{color:#1d1d1f;}
+.nav.scrolled .nt{color:rgba(0,0,0,0.4);}.nav.scrolled .nt b{color:rgba(0,0,0,0.6);}
+.nav.scrolled .nav-links a{color:rgba(0,0,0,0.5);}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.nav-logo{display:flex;align-items:center;gap:6px;text-decoration:none;font-family:'Inter',sans-serif;}
+.nl{font-size:1.6rem;font-weight:700;color:#1d1d1f;transition:color .4s;}
+.nt{font-size:0.7rem;color:rgba(0,0,0,0.4);font-weight:300;transition:color .4s;}.nt b{font-weight:600;color:rgba(0,0,0,0.6);transition:color .4s;}
+.nav-product{font-size:0.95rem;font-weight:700;color:#1d1d1f;letter-spacing:-0.02em;transition:color .4s;}
+.nav-links{display:flex;gap:16px;align-items:center;}
+.nav-links a{font-size:0.78rem;color:rgba(0,0,0,0.5);text-decoration:none;font-weight:500;transition:color .2s;}
+.nav-cta{background:var(--primary);color:#fff!important;padding:7px 18px;border-radius:50px;font-weight:600!important;}
+.sec-tag{font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--primary);margin-bottom:12px;}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(160deg,#e8ecf2 0%,#dde3ed 40%,#d0d8e8 100%);overflow:hidden;}
+
+/* === 2D ISOMETRIC BOX (no preserve-3d) === */
+.iso-wrap{position:relative;width:400px;height:340px;margin-bottom:36px;}
+
+/* top face — diamond shape via skew */
+.iso-top{position:absolute;width:280px;height:180px;background:linear-gradient(135deg,#3B8BF6 0%,#5BA0FF 100%);border-radius:16px;top:20px;left:50%;transform:translateX(-50%) rotateX(0) skewX(0);z-index:3;box-shadow:0 -2px 20px rgba(59,139,246,0.15);overflow:visible;}
+
+/* front face */
+.iso-front{position:absolute;width:280px;height:70px;background:linear-gradient(180deg,#2E7CF6 0%,#1B6AE8 100%);bottom:40px;left:50%;transform:translateX(-50%);z-index:2;border-radius:0 0 14px 14px;}
+
+/* shadow under box */
+.iso-shadow{position:absolute;width:260px;height:24px;background:radial-gradient(ellipse,rgba(0,0,0,0.12) 0%,transparent 70%);bottom:28px;left:50%;transform:translateX(-50%);z-index:0;border-radius:50%;}
+
+/* brand on front */
+.iso-brand{position:absolute;bottom:50px;left:50%;transform:translateX(-50%);font-family:'Inter',sans-serif;font-size:0.7rem;font-weight:800;color:rgba(255,255,255,0.3);letter-spacing:0.18em;z-index:4;white-space:nowrap;}
+
+/* card slot on front face */
+.iso-slot{position:absolute;bottom:64px;left:calc(50% - 120px);width:72px;height:6px;background:rgba(0,0,0,0.2);border-radius:3px;z-index:4;}
+
+/* credit card */
+.iso-card{position:absolute;bottom:52px;left:calc(50% - 180px);width:64px;height:42px;background:linear-gradient(135deg,#e8e8e8 0%,#f8f8f8 100%);border-radius:6px;z-index:5;cursor:pointer;transition:transform 0.8s cubic-bezier(0.34,1.56,0.64,1),left 0.8s cubic-bezier(0.34,1.56,0.64,1);box-shadow:0 4px 16px rgba(0,0,0,0.15);animation:cardGlow 2s ease-in-out infinite;}
+.iso-card::before{content:'';position:absolute;top:9px;left:7px;width:14px;height:10px;background:linear-gradient(135deg,#C9A84C,#F0D68A);border-radius:2px;}
+.iso-card::after{content:'N';position:absolute;bottom:5px;right:7px;font-family:'Inter',sans-serif;font-size:0.45rem;font-weight:900;color:rgba(0,0,0,0.12);}
+.iso-card.inserted{left:calc(50% - 128px);animation:none;}
+@keyframes cardGlow{0%,100%{box-shadow:0 4px 16px rgba(0,0,0,0.15)}50%{box-shadow:0 6px 24px rgba(240,180,41,0.4)}}
+
+/* hint text */
+.iso-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-size:0.72rem;color:rgba(0,0,0,0.25);letter-spacing:0.04em;white-space:nowrap;transition:opacity .4s;animation:hintP 2.5s ease infinite;}
+@keyframes hintP{0%,100%{opacity:0.3}50%{opacity:0.7}}
+
+/* 3D objects grid on top of box */
+.obj-area{position:absolute;top:24px;left:50%;transform:translateX(-50%);width:264px;height:172px;z-index:6;display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(3,1fr);gap:2px;padding:4px;}
+.ob{display:flex;align-items:center;justify-content:center;font-size:1.5rem;opacity:0;transform:translateY(20px) scale(0.3);filter:drop-shadow(0 4px 8px rgba(0,0,0,0.2));will-change:transform,opacity;}
+.ob.pop{animation:obPop2 0.7s cubic-bezier(0.34,1.56,0.64,1) forwards;}
+@keyframes obPop2{
+  0%{opacity:0;transform:translateY(20px) scale(0.3)}
+  50%{opacity:1;transform:translateY(-30px) scale(1.15)}
+  75%{transform:translateY(-8px) scale(0.95)}
+  100%{opacity:1;transform:translateY(-14px) scale(1)}
+}
+.ob.idle{animation:obIdle2 3s ease-in-out infinite;}
+@keyframes obIdle2{0%,100%{transform:translateY(-14px) scale(1)}50%{transform:translateY(-24px) scale(1.06)}}
+
+/* HERO TEXT */
+.hero-text{position:relative;z-index:10;text-align:center;padding:0 40px;}
+.hero-tag{font-size:0.82rem;font-weight:600;color:var(--primary);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:12px;}
+.hero h1{font-size:clamp(2.2rem,5vw,3.5rem);font-weight:900;color:var(--dark);line-height:1.12;letter-spacing:-0.05em;margin-bottom:8px;}
+.hero h1 .off{color:var(--off);}
+.hero h1 .on{color:var(--on);}
+.hero h1 .vs-text{font-size:0.5em;color:rgba(0,0,0,0.2);font-weight:400;vertical-align:middle;margin:0 6px;}
+.hero-copy{font-size:clamp(0.85rem,1.5vw,1rem);color:var(--gray);line-height:1.9;font-weight:400;max-width:520px;margin:0 auto;}
+.hero-scroll{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);z-index:6;display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(0,0,0,0.25);font-size:0.72rem;font-weight:500;letter-spacing:0.15em;animation:scrollB 2s ease-in-out infinite;}
+.hero-scroll-line{width:1.5px;height:40px;background:linear-gradient(to bottom,rgba(0,0,0,0.25),transparent);}
+@keyframes scrollB{0%,100%{opacity:0.4;transform:translateX(-50%) translateY(0)}50%{opacity:0.8;transform:translateX(-50%) translateY(8px)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+@media(max-width:500px){.iso-wrap{transform:scale(0.75);margin-bottom:0;}.hero h1{font-size:2rem;}}
+
+/* FLOW BG */
+.flow-bg{background:linear-gradient(180deg,#f5f5f7 0%,#eef2fa 15%,#fff 30%,#f8f6ff 50%,#fff 70%,#eef2fa 85%,#f5f5f7 100%);position:relative;overflow:hidden;}
+.flow-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 30%,rgba(255,107,53,0.02) 0%,transparent 50%),radial-gradient(ellipse at 80% 70%,rgba(0,82,255,0.02) 0%,transparent 50%);pointer-events:none;z-index:0;}
+.hft-wrap{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;}
+.hft{position:absolute;font-family:'Inter',sans-serif;font-weight:900;white-space:nowrap;color:rgba(0,0,0,0.02);letter-spacing:0.05em;text-transform:uppercase;}
+.hft-1{font-size:clamp(3rem,10vw,7rem);top:5%;animation:hftS 30s linear infinite;}
+.hft-2{font-size:clamp(2.5rem,8vw,5.5rem);top:30%;animation:hftS 35s linear infinite reverse;}
+.hft-3{font-size:clamp(2.5rem,8vw,6rem);top:55%;animation:hftS 38s linear infinite;}
+.hft-4{font-size:clamp(3rem,10vw,7rem);top:80%;animation:hftS 32s linear infinite reverse;}
+@keyframes hftS{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* FEATURES */
+.feat-sec{background:transparent;padding:120px 0 80px;position:relative;}
+.feat-inner{max-width:1100px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
+.feat-header{text-align:center;margin-bottom:48px;}
+.feat-header h2{font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:8px;}
+.feat-header p{font-size:0.95rem;color:var(--gray);line-height:1.7;}
+.feat-compare{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.feat-col-title{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:16px;border-bottom:2px solid rgba(0,0,0,0.06);}
+.fc-badge{font-size:0.65rem;font-weight:800;letter-spacing:0.08em;padding:4px 10px;border-radius:6px;text-transform:uppercase;}
+.col-off .fc-badge{background:var(--off);color:#fff;}
+.col-on .fc-badge{background:var(--on);color:#fff;}
+.fc-name{font-size:1rem;font-weight:700;}
+.feat-list{display:flex;flex-direction:column;gap:12px;}
+.fc{background:#fff;border-radius:16px;padding:20px;border:1px solid rgba(0,0,0,0.04);display:flex;gap:14px;align-items:flex-start;transition:all .3s;}
+.fc:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.05);border-color:rgba(0,0,0,0.08);}
+.fc-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+.fc h4{font-size:0.88rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:4px;}
+.fc p{font-size:0.78rem;color:var(--gray);line-height:1.6;}
+
+/* VS COMPARE */
+.vs-sec{background:transparent;padding:0 0 80px;position:relative;}
+.vs-inner{max-width:1100px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
+.vs-header{text-align:center;margin-bottom:32px;}
+.vs-header h2{font-size:clamp(1.6rem,3vw,2rem);font-weight:800;letter-spacing:-0.03em;}
+.vs-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:start;}
+.vs-box{border-radius:20px;padding:28px;}
+.vs-list{display:flex;flex-direction:column;gap:10px;}
+.vs-item{font-size:0.85rem;font-weight:600;color:#1d1d1f;line-height:1.6;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.04);}
+.vs-item:last-child{border-bottom:none;}
+
+/* DIFF TABLE */
+.diff-sec{padding:80px 0;position:relative;z-index:1;}
+.diff-inner{max-width:1000px;margin:0 auto;padding:0 40px;}
+.diff-header{text-align:center;margin-bottom:50px;}
+.diff-header h2{font-size:clamp(1.6rem,3vw,2rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:8px;}
+.diff-header p{font-size:0.95rem;color:var(--gray);}
+.diff-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:20px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.06);}
+.diff-table thead th{padding:16px 18px;font-size:0.82rem;font-weight:700;text-align:center;}
+.diff-table thead th:first-child{text-align:left;width:26%;background:#1d1d1f;color:#fff;}
+.diff-table thead th:nth-child(2){background:var(--off);color:#fff;width:37%;}
+.diff-table thead th:nth-child(3){background:var(--on);color:#fff;width:37%;}
+.diff-table tbody td{padding:14px 18px;font-size:0.83rem;border-bottom:1px solid rgba(0,0,0,0.05);text-align:center;background:#fff;}
+.diff-table tbody td:first-child{font-weight:600;text-align:left;background:#fafbff;}
+.diff-table tbody tr:last-child td{border-bottom:none;}
+
+/* INSTANT */
+.instant-sec{padding:80px 0 100px;position:relative;z-index:1;}
+.instant-inner{max-width:900px;margin:0 auto;padding:0 40px;}
+.instant-box{position:relative;border-radius:32px;overflow:hidden;background:linear-gradient(135deg,#1a0800 0%,var(--off) 50%,#FF8F5E 100%);padding:60px 48px;text-align:center;box-shadow:0 20px 60px rgba(255,107,53,0.2);}
+.instant-box::before{content:'';position:absolute;top:-30%;right:-20%;width:400px;height:400px;background:radial-gradient(circle,rgba(255,255,255,0.1) 0%,transparent 60%);pointer-events:none;}
+.instant-tag{font-size:0.72rem;font-weight:700;color:rgba(255,255,255,0.6);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:16px;position:relative;z-index:1;}
+.instant-box h2{font-size:clamp(2rem,4vw,2.8rem);font-weight:900;color:#fff;letter-spacing:-0.03em;margin-bottom:16px;position:relative;z-index:1;}
+.instant-box h2 .gold{color:var(--gold);}
+.instant-desc{font-size:1rem;color:rgba(255,255,255,0.7);line-height:1.8;margin-bottom:32px;position:relative;z-index:1;max-width:600px;margin-left:auto;margin-right:auto;}
+.instant-features{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:32px;position:relative;z-index:1;}
+.if-item{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.15);border-radius:50px;padding:10px 20px;font-size:0.85rem;color:#fff;font-weight:600;backdrop-filter:blur(4px);}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#1a0800;padding:14px 36px;border-radius:50px;font-size:0.92rem;font-weight:700;text-decoration:none;transition:all .3s;position:relative;z-index:1;}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(240,180,41,0.4);}
+
+.reveal{opacity:0;transform:translateY(40px);transition:all .7s cubic-bezier(0.16,1,0.3,1);}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.mascot{position:fixed;pointer-events:none;z-index:10;transition:left .7s cubic-bezier(0.34,1.56,0.64,1),top .7s cubic-bezier(0.34,1.56,0.64,1);opacity:0;}
+.mascot.active{opacity:1;}
+.mascot img{width:56px;height:auto;display:block;filter:drop-shadow(0 3px 8px rgba(0,0,0,0.4));}
+.mascot.jump img{animation:mascotJump .6s cubic-bezier(0.34,1.56,0.64,1);}
+@keyframes mascotJump{0%{transform:translateY(0) scale(1)}25%{transform:translateY(-30px) scale(1.15) rotate(-8deg)}50%{transform:translateY(-12px) scale(1.05) rotate(4deg)}75%{transform:translateY(-4px) scale(0.98)}100%{transform:translateY(0) scale(1) rotate(0deg)}}
+.footer-mini{text-align:center;padding:40px;font-size:0.8rem;color:#86868b;border-top:1px solid rgba(0,0,0,0.06);background:#fafafa;}
+.footer-mini a{color:var(--primary);text-decoration:none;font-weight:600;}
+@media(max-width:900px){.feat-compare{grid-template-columns:1fr;}.vs-grid{grid-template-columns:1fr!important;}.diff-table{font-size:0.78rem;}.diff-table thead th,.diff-table tbody td{padding:12px 10px;}.instant-box{padding:40px 24px;}.instant-features{flex-direction:column;align-items:center;}}
+@media(max-width:600px){.nav-links{display:none;}}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="mainNav"><div class="nav-inner">
+<a href="index.html" class="nav-logo"><span class="nl">N</span><span class="nt"><b>nuri</b>networkspay</span></a>
+<span class="nav-product">PG 온오프라인결제</span>
+<div class="nav-links"><a href="index.html">홈</a><a href="lineup.html">제품 라인업</a><a href="support.html">고객지원</a><a href="tel:1544-7754" class="nav-cta">1544-7754</a></div>
+</div></nav>
+
+<!-- HERO -->
+<section class="hero" id="hero3d">
+
+<!-- 2D ISOMETRIC BOX -->
+<div class="iso-wrap">
+<div class="iso-shadow"></div>
+<div class="iso-front"></div>
+<div class="iso-top">
+<div class="obj-area" id="objGrid"></div>
+</div>
+<div class="iso-brand">NURINETWORKS</div>
+<div class="iso-slot"></div>
+<div class="iso-card" id="isoCard"></div>
+<div class="iso-hint" id="isoHint">💳 카드를 클릭하세요</div>
+</div>
+
+<div class="hero-text">
+<div class="hero-tag">Payment Gateway</div>
+<h1><span class="off">오프PG</span><span class="vs-text">vs</span><span class="on">온라인PG</span></h1>
+<p class="hero-copy">정산 주기를 바꾸면 비즈니스의 급이 달라집니다<br>주말·공휴일 걱정 없는 익일 입금으로 자금 흐름에 안정성</p>
+</div>
+
+<div class="hero-scroll"><span>SCROLL</span><div class="hero-scroll-line"></div></div>
+</section>
+
+<div class="flow-bg">
+<div class="hft-wrap">
+<div class="hft hft-1">OFF-PG · ONLINE-PG · PAYMENT · SETTLEMENT · OFF-PG · ONLINE-PG · PAYMENT · SETTLEMENT · </div>
+<div class="hft hft-2">오프PG · 온라인PG · 즉시입금 · 정산 · 오프PG · 온라인PG · 즉시입금 · 정산 · </div>
+<div class="hft hft-3">GOOD MORNING · NURINETWORKS · PG SERVICE · GOOD MORNING · NURINETWORKS · PG SERVICE · </div>
+<div class="hft hft-4">굿모닝페이 · 누리네트웍스 · 결제대행 · 굿모닝페이 · 누리네트웍스 · 결제대행 · </div>
+</div>
+
+<!-- FEATURES -->
+<section class="feat-sec">
+<div class="feat-inner">
+<div class="feat-header reveal">
+<div class="sec-tag">Key Features</div>
+<h2>주요 기능</h2>
+<p>오프라인과 온라인, 각각의 결제 세계를 하나로</p>
+</div>
+<div class="feat-compare">
+<div class="reveal">
+<div class="feat-col-title col-off"><span class="fc-badge">OFF-PG</span><span class="fc-name">오프PG (굿모닝페이)</span></div>
+<div class="feat-list">
+<div class="fc"><div class="fc-icon" style="background:#FFF0E6;">🏪</div><h4>오프라인 매장 카드결제</h4><p>포스·키오스크·테이블오더·단말기<br>매장의 모든 결제를 PG로 통합 정산</p></div>
+<div class="fc"><div class="fc-icon" style="background:#FAEEDA;">⚡</div><h4>즉시입금 (D+1)</h4><p>365일 휴일 상관없이 빠른 정산<br>결제 다음 날 사장님 계좌로 입금</p></div>
+<div class="fc"><div class="fc-icon" style="background:#FFF0E6;">💳</div><h4>무이자 할부 서비스</h4><p>고객에게 무이자 할부 혜택 제공<br>객단가 상승으로 매출 증대</p></div>
+<div class="fc"><div class="fc-icon" style="background:#FBEAF0;">✍️</div><h4>비대면 수기결제</h4><p>카드 정보 입력으로 비대면 결제<br>전화·문자 주문 결제에 활용</p></div>
+<div class="fc"><div class="fc-icon" style="background:#EAF0FF;">📊</div><h4>통합 매출·정산 관리</h4><p>카드매출과 정산내역 통합 조회<br>PC·모바일에서 실시간 확인</p></div>
+<div class="fc"><div class="fc-icon" style="background:#E6F7EF;">🏢</div><h4>프랜차이즈 일괄 정산</h4><p>본사-가맹점 통합 정산 관리<br>매장별 매출 모니터링</p></div>
+<div class="fc"><div class="fc-icon" style="background:#F5F0FF;">📱</div><h4>원격결제 (SMS)</h4><p>고객 휴대폰으로 결제 링크 발송<br>비대면 환경에서도 즉시 결제</p></div>
+<div class="fc"><div class="fc-icon" style="background:#E8F8FF;">🔄</div><h4>정기결제</h4><p>구독형 서비스·월 회비 자동 결제<br>학원·피트니스·SaaS 등 활용</p></div>
+</div>
+</div>
+<div class="reveal">
+<div class="feat-col-title col-on"><span class="fc-badge">ONLINE-PG</span><span class="fc-name">온라인PG (NHN KCP)</span></div>
+<div class="feat-list">
+<div class="fc"><div class="fc-icon" style="background:#EAF0FF;">🛒</div><h4>온라인 쇼핑몰 결제</h4><p>홈페이지·쇼핑몰·앱 결제 연동<br>결제창 팝업으로 간편 결제</p></div>
+<div class="fc"><div class="fc-icon" style="background:#E6F7EF;">💳</div><h4>신용카드 결제</h4><p>국내 전 카드사 + VISA·MASTER·JCB<br>해외 발행 카드까지 지원</p></div>
+<div class="fc"><div class="fc-icon" style="background:#F5F0FF;">🏦</div><h4>계좌이체·가상계좌</h4><p>실시간 계좌이체 + 무통장입금<br>국내 모든 은행·증권사 지원</p></div>
+<div class="fc"><div class="fc-icon" style="background:#FAEEDA;">📱</div><h4>간편결제 통합</h4><p>카카오페이·네이버페이·토스페이<br>삼성페이·애플페이·PAYCO 등</p></div>
+<div class="fc"><div class="fc-icon" style="background:#FBEAF0;">📲</div><h4>휴대폰 소액결제</h4><p>SKT·KT·LGU+ 전 통신사<br>통신요금 합산 청구</p></div>
+<div class="fc"><div class="fc-icon" style="background:#FFF0E6;">🔗</div><h4>BUYLINK 링크결제</h4><p>결제 링크 생성하여 고객에게 발송<br>쇼핑몰 없이도 온라인 결제 가능</p></div>
+<div class="fc"><div class="fc-icon" style="background:#E8F8FF;">🔄</div><h4>자동결제 (빌링)</h4><p>배치키 기반 정기 자동결제<br>구독·정기배송 서비스 최적화</p></div>
+<div class="fc"><div class="fc-icon" style="background:#EAF7F0;">🛡️</div><h4>에스크로·본인확인</h4><p>안전거래 에스크로 서비스<br>KCP 휴대폰 본인확인 서비스</p></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- VS COMPARE -->
+<section class="vs-sec">
+<div class="vs-inner">
+<div class="vs-header reveal"><div class="sec-tag">Comparison</div><h2>오프PG vs 온라인PG, 뭐가 다를까?</h2></div>
+<div class="vs-grid reveal">
+<div class="vs-box" style="background:#FFF0E6;">
+<div style="font-size:0.7rem;font-weight:700;color:var(--off);letter-spacing:0.08em;margin-bottom:16px;text-transform:uppercase;">오프PG만의 강점</div>
+<div class="vs-list">
+<div class="vs-item">⚡ 즉시입금 D+1 (365일)</div>
+<div class="vs-item">🏪 오프라인 매장 PG 통합 정산</div>
+<div class="vs-item">💳 무이자 할부 서비스</div>
+<div class="vs-item">✍️ 비대면 수기결제</div>
+<div class="vs-item">🏢 프랜차이즈 일괄 정산</div>
+</div>
+</div>
+<div class="vs-box" style="background:#f9f9fb;border:2px solid rgba(0,0,0,0.06);min-width:180px;">
+<div style="font-size:0.7rem;font-weight:700;color:var(--gray);letter-spacing:0.08em;margin-bottom:16px;text-align:center;">공통 기능</div>
+<div class="vs-list">
+<div class="vs-item">💳 전 카드사 결제 지원</div>
+<div class="vs-item">📊 실시간 매출·정산 관리</div>
+<div class="vs-item">🔄 정기결제 (자동결제)</div>
+<div class="vs-item">📱 원격결제 (링크 발송)</div>
+<div class="vs-item">🔒 PCI-DSS 보안 인증</div>
+<div class="vs-item">📞 누리네트웍스 전담 관리</div>
+</div>
+</div>
+<div class="vs-box" style="background:#EAF0FF;">
+<div style="font-size:0.7rem;font-weight:700;color:var(--on);letter-spacing:0.08em;margin-bottom:16px;text-transform:uppercase;">온라인PG만의 강점</div>
+<div class="vs-list">
+<div class="vs-item">🛒 쇼핑몰·앱 결제창 연동</div>
+<div class="vs-item">📱 간편결제 올인원 (7종+)</div>
+<div class="vs-item">🏦 계좌이체·가상계좌</div>
+<div class="vs-item">📲 휴대폰 소액결제</div>
+<div class="vs-item">🛡️ 에스크로 안전거래</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- DIFF TABLE -->
+<section class="diff-sec">
+<div class="diff-inner">
+<div class="diff-header reveal"><div class="sec-tag">Details</div><h2>서비스 비교 상세</h2><p>같은 PG, 다른 무대. 내 비즈니스에 맞는 서비스를 선택하세요.</p></div>
+<div class="reveal" style="overflow-x:auto;">
+<table class="diff-table">
+<thead><tr><th>항목</th><th>오프PG (굿모닝페이) 🔥</th><th>온라인PG (NHN KCP) 🌐</th></tr></thead>
+<tbody>
+<tr><td>결제 환경</td><td>오프라인 매장 (포스·키오스크·단말기)</td><td>온라인 쇼핑몰·앱·웹사이트</td></tr>
+<tr><td>주요 결제수단</td><td>신용카드·체크카드 (IC/MS)</td><td>카드·계좌이체·가상계좌·간편결제·휴대폰</td></tr>
+<tr><td>정산 주기</td><td style="color:var(--off);font-weight:700;">즉시입금 D+1 (365일)</td><td>D+2~D+5 (PG사 계약 조건)</td></tr>
+<tr><td>무이자 할부</td><td style="color:var(--off);font-weight:700;">지원</td><td>카드사 프로모션 연동</td></tr>
+<tr><td>비대면 결제</td><td>수기결제·SMS결제</td><td>결제창·링크결제·BUYLINK</td></tr>
+<tr><td>간편결제</td><td>포스 연동 (토스페이·네이버페이 등)</td><td>카카오·네이버·토스·삼성·애플·PAYCO·SSG</td></tr>
+<tr><td>에스크로</td><td>—</td><td>지원 (구매확정 후 정산)</td></tr>
+<tr><td>연동 방식</td><td>결제장비 설치 (리더기·단말기·포스)</td><td>API·SDK·결제모듈 연동</td></tr>
+<tr><td>주요 대상</td><td>음식점·카페·유흥업·숙박업·프랜차이즈</td><td>쇼핑몰·배달앱·SaaS·콘텐츠·교육</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<!-- INSTANT -->
+<section class="instant-sec">
+<div class="instant-inner">
+<div class="instant-box reveal">
+<div class="instant-tag">Off-PG · Instant Settlement</div>
+<h2>오프PG <span class="gold">즉시입금</span> 서비스</h2>
+<p class="instant-desc">오프라인 매장의 카드 결제 대금을 365일, 주말·공휴일 상관없이<br>결제 다음 날(D+1) 사장님 계좌로 입금합니다.<br>자금 흐름이 안정되면, 비즈니스의 급이 달라집니다.</p>
+<div class="instant-features">
+<div class="if-item">⚡ 365일 익일 입금</div>
+<div class="if-item">💳 무이자 할부 지원</div>
+<div class="if-item">📊 통합 매출 관리</div>
+<div class="if-item">🏢 프랜차이즈 일괄 정산</div>
+<div class="if-item">✍️ 비대면 수기결제</div>
+<div class="if-item">📱 SMS 원격결제</div>
+</div>
+<a href="tel:1544-7754" class="cta-btn">📞 1544-7754 무료 상담</a>
+</div>
+</div>
+</section>
+
+</div>
+
+<div class="footer-mini"><a href="index.html">← 누리네트웍스 홈으로 돌아가기</a><br><br>© 2026 Nurinetworks. All rights reserved.</div>
+
+<script>
+window.addEventListener('scroll',function(){document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>80);});
+const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}});},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* 3D HERO — card insert + objects pop (2D isometric) */
+(function(){
+var items=['🖥️','🏧','📋','📺','📱','💙','💚','🗃️','📡','🧾','🖥️','💳','💵','🪙','🔷'];
+var grid=document.getElementById('objGrid');
+var card=document.getElementById('isoCard');
+var hint=document.getElementById('isoHint');
+var objs=[];
+items.forEach(function(icon){
+  var el=document.createElement('div');
+  el.className='ob';
+  el.textContent=icon;
+  grid.appendChild(el);
+  objs.push(el);
+});
+var inserted=false;
+function insertCard(){
+  if(inserted)return;
+  inserted=true;
+  card.classList.add('inserted');
+  hint.style.opacity='0';
+  objs.forEach(function(o,i){
+    setTimeout(function(){o.classList.add('pop');},200+i*80);
+  });
+  setTimeout(function(){
+    objs.forEach(function(o){
+      o.classList.remove('pop');
+      o.style.opacity='1';
+      o.style.transform='translateY(-14px) scale(1)';
+      o.style.animation='obIdle2 '+(2.5+Math.random()*1.5)+'s ease-in-out '+(Math.random()*1.5)+'s infinite';
+    });
+  },200+objs.length*80+700);
+}
+function resetCard(){
+  inserted=false;
+  card.classList.remove('inserted');
+  hint.style.opacity='1';
+  objs.forEach(function(o){
+    o.classList.remove('pop');
+    o.style.opacity='0';
+    o.style.transform='translateY(20px) scale(0.3)';
+    o.style.animation='none';
+  });
+}
+card.addEventListener('click',function(){
+  if(inserted){resetCard();setTimeout(insertCard,600);}
+  else{insertCard();}
+});
+setTimeout(insertCard,1800);
+})();
+
+/* MASCOT */
+(function(){
+var imgs=['mascot-heart.png','mascot-thumbsup.png','mascot-clap.png','mascot-peace.png'];
+var grid=document.querySelector('.feat-compare');
+if(!grid)return;
+var cards=Array.from(grid.querySelectorAll('.fc'));
+if(!cards.length)return;
+imgs.forEach(function(s){var i=new Image();i.src=s;});
+var m=document.createElement('div');m.className='mascot';
+var mi=document.createElement('img');mi.src=imgs[0];mi.alt='mascot';
+m.appendChild(mi);document.body.appendChild(m);
+var idx=0;
+function pos(anim){
+var c=cards[idx],r=c.getBoundingClientRect();
+m.style.left=(r.left+r.width/2-28)+'px';
+m.style.top=(r.top-48)+'px';
+mi.src=imgs[idx%imgs.length];
+if(anim){m.classList.remove('jump');void m.offsetWidth;m.classList.add('jump');}
+}
+var co=new IntersectionObserver(function(es){es.forEach(function(e){
+if(e.isIntersecting){m.classList.add('active');pos(false);
+setInterval(function(){idx=(idx+1)%cards.length;pos(true);},2000);
+co.unobserve(e.target);}});},{threshold:0.3});
+co.observe(grid);
+var t=false;
+window.addEventListener('scroll',function(){if(!t){t=true;requestAnimationFrame(function(){pos(false);t=false;});}},{passive:true});
+window.addEventListener('resize',function(){pos(false);});
+})();
+</script>
+</body>
+</html>
