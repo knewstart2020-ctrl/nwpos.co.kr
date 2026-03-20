@@ -302,13 +302,7 @@ window.addEventListener('scroll',function(){document.getElementById('mainNav').c
 const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}});},{threshold:0.12});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-// MASCOT
-(function(){cardObs.observe(grid);
-let ticking=false;
-function reposition(){if(!ticking){ticking=true;requestAnimationFrame(()=>{positionMascot(false);ticking=false;});}}
-window.addEventListener('scroll',reposition,{passive:true});
-window.addEventListener('resize',reposition);
-})();
+/* mascot removed */
 
 
 /* 3D OBJECTS REPEAT every 10s */
