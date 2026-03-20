@@ -23,7 +23,7 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 .nav-inner{max-width:1320px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:56px;}
 .nav-logo{display:flex;align-items:center;gap:6px;text-decoration:none;font-family:'Inter',sans-serif;}
 .nl{font-size:1.6rem;font-weight:700;color:#1d1d1f;text-shadow:none;transition:color .4s;}
-.nt{font-size:0.7rem;color:rgba(0,0,0,0.35);font-weight:300;transition:color .4s;}.nt b{font-weight:600;color:rgba(0,0,0,0.55);transition:color .4s;}
+.nt{font-size:0.7rem;color:rgba(0,0,0,0.55);font-weight:400;transition:color .4s;}.nt b{font-weight:700;color:rgba(0,0,0,0.75);transition:color .4s;}
 .nav-product{font-size:0.95rem;font-weight:700;color:#1d1d1f;letter-spacing:-0.02em;transition:color .4s;}
 .nav-links{display:flex;gap:16px;align-items:center;}
 .nav-links a{font-size:0.78rem;color:rgba(0,0,0,0.5);text-decoration:none;font-weight:600;transition:color .2s;}.nav-links a:hover{color:#1d1d1f;}
@@ -44,6 +44,7 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 .ob{display:flex;flex-direction:column;align-items:center;gap:4px;opacity:0;transform:translateY(20px) scale(0.3);filter:drop-shadow(0 4px 10px rgba(0,0,0,0.2));}
 .ob.pop{animation:obPop .7s cubic-bezier(0.34,1.56,0.64,1) forwards;}
 @keyframes obPop{0%{opacity:0;transform:translateY(20px) scale(0.3)}100%{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes obFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 .ob-icon{font-size:2.2rem;}
 .ob-label{font-size:0.58rem;font-weight:700;color:rgba(0,0,0,0.45);white-space:nowrap;}
 
@@ -156,9 +157,9 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <div class="ob" style="animation:obPop .7s ease .5s forwards"><span class="ob-icon">🗄️</span><span class="ob-label">금전함</span></div>
 <div class="ob" style="animation:obPop .7s ease .7s forwards"><span class="ob-icon">🖥️</span><span class="ob-label">고객모니터</span></div>
 <div class="ob" style="animation:obPop .7s ease .9s forwards"><span class="ob-icon">📡</span><span class="ob-label">핸드스캐너</span></div>
-<div class="ob" style="animation:obPop .7s ease 1.1s forwards"><span class="ob-icon">💳</span><span class="ob-label">IC리더기</span></div>
-<div class="ob" style="animation:obPop .7s ease 1.3s forwards"><span class="ob-icon">🧾</span><span class="ob-label">전표</span></div>
-<div class="ob" style="animation:obPop .7s ease 1.5s forwards"><span class="ob-icon">📶</span><span class="ob-label">공유기</span></div>
+<div class="ob" style="animation:obPop .7s ease 1.1s forwards,obFloat 2s ease 2.6s infinite"><span class="ob-icon">💳</span><span class="ob-label">IC리더기</span></div>
+<div class="ob" style="animation:obPop .7s ease 1.3s forwards,obFloat 2s ease 2.8s infinite"><span class="ob-icon">🧾</span><span class="ob-label">전표</span></div>
+<div class="ob" style="animation:obPop .7s ease 1.5s forwards,obFloat 2s ease 3.0s infinite"><span class="ob-icon">📶</span><span class="ob-label">공유기</span></div>
 </div>
 </div>
 <div class="iso-brand">NURINETWORKS</div>
@@ -173,9 +174,6 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 
 <!-- FLOWING BACKGROUND -->
 <div class="flow-bg">
-<div class="hft hft-2">금전함 · 고객모니터 · 핸드스캐너 · IC리더기 · 영수증용지 · 금전함 · 고객모니터 · 핸드스캐너 · </div>
-<div class="hft hft-3">ACCESSORIES · PERIPHERAL · POS SYSTEM · COMPLETE · ACCESSORIES · PERIPHERAL · POS SYSTEM · COMPLETE · </div>
-<div class="hft hft-4">부가장비 · 주변기기 · 매장완성 · 디테일 · 부가장비 · 주변기기 · 매장완성 · 디테일 · </div>
 </div>
 
 <!-- PRODUCT GRID -->
