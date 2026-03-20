@@ -125,6 +125,16 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 
 /* MASCOT - fixed, no jump */
 
+
+
+
+
+
+
+
+
+
+
 /* VS COMPARE */
 .vs-sec{background:transparent;padding:0 0 80px;position:relative;}
 .vs-inner{max-width:1100px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
@@ -142,12 +152,6 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 
 @media(max-width:1024px){.feat-compare{grid-template-columns:1fr 1fr;}.cg-top{grid-template-columns:repeat(2,1fr);}.cg-bot{grid-template-columns:repeat(2,1fr);max-width:100%;}}
 @media(max-width:768px){.nav-links{display:none;}.sm-main{font-size:1.6rem;}.feat-compare{grid-template-columns:1fr;}.cg-top,.cg-bot{grid-template-columns:1fr;max-width:100%;}.feat-sec{padding:80px 0 60px;}}
-
-.nav-store:active,.nav-store.on{color:#FFD54F!important;}.nav-store:active::after,.nav-store.on::after{width:80%;background:#FFD54F;}
-.header.scrolled 
-.header.scrolled 
-.header.scrolled .nav-store:hover{color:#1d1d1f!important;}
-.header.scrolled .nav-store:active,.header.scrolled .nav-store.on{color:var(--primary)!important;}
 
 .nav-drop{position:relative;display:flex;align-items:center;}
 .nav-drop>a{cursor:pointer;}
@@ -353,16 +357,17 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 
 </div><!-- /flow-bg -->
 
-<div style="background:#1d1d1f;padding:10px 0;overflow:hidden;"><div style="overflow:hidden;"><div style="display:flex;gap:32px;animation:tickS 35s linear infinite;width:max-content;white-space:nowrap;">
-<span style="color:rgba(255,255,255,.4);font-size:.75rem;font-family:Inter,sans-serif;display:inline-flex;gap:6px;"><span>누리네트웍스</span><span style="color:#fff;font-weight:600;">No.1 Payment Service</span></span>
+
+
+<div style="background:#1d1d1f;padding:10px 0;overflow:hidden;"><div style="overflow:hidden;"><div style="display:flex;gap:32px;animation:tickScroll 35s linear infinite;width:max-content;white-space:nowrap;">
+<span style="color:rgba(255,255,255,.4);font-size:.75rem;font-family:Inter,sans-serif;display:inline-flex;gap:6px;">누리네트웍스 <span style="color:#fff;font-weight:600;">No.1 Payment Service</span></span>
 <span style="color:rgba(255,255,255,.6);font-size:.75rem;font-family:Inter,sans-serif;">📞 1544-7754</span>
 <span style="color:rgba(255,255,255,.35);font-size:.75rem;font-family:Inter,sans-serif;">포스 · 배리어프리키오스크 · 테이블오더 · QR오더 · 소프트웨어 · 토스 · 사인패드 · 유선단말기 · 무선단말기 · PG · 부가장비</span>
-<span style="color:rgba(255,255,255,.4);font-size:.75rem;font-family:Inter,sans-serif;display:inline-flex;gap:6px;"><span>누리네트웍스</span><span style="color:#fff;font-weight:600;">No.1 Payment Service</span></span>
+<span style="color:rgba(255,255,255,.4);font-size:.75rem;font-family:Inter,sans-serif;display:inline-flex;gap:6px;">누리네트웍스 <span style="color:#fff;font-weight:600;">No.1 Payment Service</span></span>
 <span style="color:rgba(255,255,255,.6);font-size:.75rem;font-family:Inter,sans-serif;">📞 1544-7754</span>
 <span style="color:rgba(255,255,255,.35);font-size:.75rem;font-family:Inter,sans-serif;">포스 · 배리어프리키오스크 · 테이블오더 · QR오더 · 소프트웨어 · 토스 · 사인패드 · 유선단말기 · 무선단말기 · PG · 부가장비</span>
 </div></div></div>
-<style>@keyframes tickS{from{transform:translateX(0)}to{transform:translateX(-50%)}}</style>
-
+<style>@keyframes tickScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}</style>
 <div style="text-align:center;padding:24px;font-size:.78rem;color:#86868b;background:#f5f5f7;">&copy; 2026 Nurinetworks. All rights reserved.</div>
 
 <script>
@@ -373,12 +378,10 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 // MASCOT
 (function(){
 
-
 // Mascot: appear after scroll past hero
 window.addEventListener('scroll',function(){
-    if(m)m.classList.toggle('show',window.scrollY>window.innerHeight*0.5);
+  if(m)m.classList.toggle('show',window.scrollY>window.innerHeight*0.5);
 },{passive:true});
 </script>
-
 </body>
 </html>
