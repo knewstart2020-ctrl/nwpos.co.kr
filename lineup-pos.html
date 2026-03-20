@@ -397,10 +397,7 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <div class="fs-modal" id="fsModal" onclick="if(event.target===this)closeFS()">
 <button class="fs-modal-close" onclick="closeFS()">✕</button>
 <div class="fs-modal-card">
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
-<img class="fs-modal-img" id="fsSign" src="" alt="간판" style="border-radius:16px 0 0 0;">
-<img class="fs-modal-img" id="fsImg" src="" alt="설치" style="border-radius:0 16px 0 0;">
-</div>
+<img class="fs-modal-img" id="fsImg" src="" alt="설치사진" style="width:100%;height:320px;object-fit:cover;border-radius:16px 16px 0 0;">
 <div class="fs-modal-body">
 <h3 id="fsTitle"></h3>
 <div class="fsm-tags" id="fsTags"></div>
@@ -450,7 +447,7 @@ fs6:{sign:'field-resto-1.jpg',img:'field-resto-install.jpg',title:'레스토랑'
 desc:'다양한 메뉴를 카테고리별로 관리하는 레스토랑에 IMU 포스와 스마트로 카드단말기를 설치했습니다.'}
 };
 function openFS(id){const d=fsData[id];if(!d)return;
-document.getElementById('fsImg').src=d.img;document.getElementById('fsSign').src=d.sign||d.img;
+document.getElementById('fsImg').src=d.img;
 document.getElementById('fsTitle').textContent=d.title;
 document.getElementById('fsTags').innerHTML=d.tags.map(t=>'<span>'+t+'</span>').join('');
 document.getElementById('fsDesc').textContent=d.desc;
