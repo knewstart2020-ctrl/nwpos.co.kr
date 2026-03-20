@@ -227,6 +227,19 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 .fw-card p{font-size:.85rem;color:var(--gray);line-height:1.6;}
 @media(max-width:768px){.img-card{height:480px;}.feat-wide{grid-template-columns:1fr 1fr;}}
 @media(max-width:500px){.feat-wide{grid-template-columns:1fr;}}
+
+/* SW COMPARE (signpad style) */
+.sw-compare{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px;}
+.sw-col-title{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:16px;border-bottom:2px solid rgba(0,0,0,0.06);}
+.sw-col-badge{font-size:.7rem;font-weight:700;padding:4px 12px;border-radius:6px;}
+.sw-col-name{font-size:1.1rem;font-weight:800;}
+.sw-features{display:flex;flex-direction:column;gap:12px;}
+.sw-card{padding:24px 20px;border-radius:18px;background:#fff;border:1.5px solid rgba(0,0,0,0.04);box-shadow:0 2px 12px rgba(0,0,0,0.03);transition:all .4s cubic-bezier(0.34,1.56,0.64,1);}
+.sw-card:hover{border-color:var(--primary);transform:translateY(-4px);box-shadow:0 12px 32px rgba(27,58,140,0.08);}
+.sw-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:12px;}
+.sw-card h4{font-size:.95rem;font-weight:800;margin-bottom:5px;}
+.sw-card p{font-size:.82rem;color:var(--gray);line-height:1.6;}
+@media(max-width:768px){.sw-compare{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -307,26 +320,28 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <div class="feat-inner">
 <div class="feat-header reveal">
 <div class="sec-tag">Features</div>
-<h2>제품 특징</h2>
+<h2>H/W 특징</h2>
 </div>
-<div class="reveal">
-<h3 style="font-size:1.1rem;font-weight:800;margin-bottom:16px;"><span style="display:inline-block;padding:4px 14px;background:rgba(27,58,140,0.08);color:var(--primary);border-radius:8px;font-size:.75rem;margin-right:8px;">N250</span>N250 포스</h3>
-<div class="feat-wide">
-<div class="fw-card"><div class="fw-icon" style="background:#EAF0FF;">🖥️</div><h4>15.6인치 터치스크린</h4><p>넓은 화면, 직관적 UI로 빠른 주문·결제</p></div>
-<div class="fw-card"><div class="fw-icon" style="background:#E1F5EE;">🔗</div><h4>UP포스 솔루션 연동</h4><p>키오스크·테이블오더·KDS 올인원 통합</p></div>
-<div class="fw-card"><div class="fw-icon" style="background:#FAEEDA;">🛡️</div><h4>안정적 장시간 운영</h4><p>16시간+ 연속 사용, 끄떡없는 내구성</p></div>
-<div class="fw-card"><div class="fw-icon" style="background:#FBEAF0;">📊</div><h4>클라우드 매출 관리</h4><p>IMU 클라우드로 어디서든 실시간 확인</p></div>
-<div class="fw-card"><div class="fw-icon" style="background:#EEEDFE;">🔌</div><h4>풍부한 입출력 인터페이스</h4><p>6시리얼, 6USB로 다양한 주변기기 확장</p></div>
+<div class="sw-compare reveal">
+<div class="sw-col">
+<div class="sw-col-title"><span class="sw-col-badge" style="background:rgba(27,58,140,0.08);color:var(--primary);">BEST SELLER</span><span class="sw-col-name">N250 포스</span></div>
+<div class="sw-features">
+<div class="sw-card"><div class="sw-icon" style="background:#EAF0FF;">🖥️</div><h4>15.6인치 터치스크린</h4><p>넓은 화면, 직관적 UI로 빠른 주문·결제</p></div>
+<div class="sw-card"><div class="sw-icon" style="background:#E1F5EE;">🔗</div><h4>UP포스 솔루션 연동</h4><p>키오스크·테이블오더·KDS 올인원 통합</p></div>
+<div class="sw-card"><div class="sw-icon" style="background:#FAEEDA;">🛡️</div><h4>안정적 장시간 운영</h4><p>16시간+ 연속 사용, 끄떡없는 내구성</p></div>
+<div class="sw-card"><div class="sw-icon" style="background:#FBEAF0;">📊</div><h4>클라우드 매출 관리</h4><p>IMU 클라우드로 어디서든 실시간 확인</p></div>
+<div class="sw-card"><div class="sw-icon" style="background:#EEEDFE;">🔌</div><h4>풍부한 입출력 인터페이스</h4><p>6시리얼, 6USB로 다양한 주변기기 확장</p></div>
 </div>
 </div>
-<div class="reveal" style="margin-top:48px;">
-<h3 style="font-size:1.1rem;font-weight:800;margin-bottom:16px;"><span style="display:inline-block;padding:4px 14px;background:rgba(201,168,76,0.12);color:#8B7326;border-radius:8px;font-size:.75rem;margin-right:8px;">PREMIUM</span>NOVA 포스</h3>
-<div class="feat-wide">
-<div class="fw-card"><div class="fw-icon" style="background:#E6F1FB;">✨</div><h4>옵티컬 본딩 디스플레이</h4><p>눈부심 감소, 장시간 사용에도 눈 피로 최소</p></div>
-<div class="fw-card"><div class="fw-icon" style="background:#FAEEDA;">💎</div><h4>울트라 슬림 투톤 디자인</h4><p>두 배 얇아진 베젤, 매장 인테리어와 조화</p></div>
-<div class="fw-card"><div class="fw-icon" style="background:#E1F5EE;">🧊</div><h4>알루미늄 다이캐스팅</h4><p>독자적 냉각 기술로 발열 관리 극대화</p></div>
-<div class="fw-card"><div class="fw-icon" style="background:#FBEAF0;">⚡</div><h4>Intel® 고성능 프로세서</h4><p>대규모 메뉴·복잡한 주문도 빠르게 처리</p></div>
-<div class="fw-card"><div class="fw-icon" style="background:#EEEDFE;">🏢</div><h4>프랜차이즈 통합 관리</h4><p>다점포 클라우드 매출·재고 일괄 관리</p></div>
+<div class="sw-col">
+<div class="sw-col-title"><span class="sw-col-badge" style="background:rgba(201,168,76,0.12);color:#8B7326;">PREMIUM</span><span class="sw-col-name">NOVA 포스</span></div>
+<div class="sw-features">
+<div class="sw-card"><div class="sw-icon" style="background:#E6F1FB;">✨</div><h4>옵티컬 본딩 디스플레이</h4><p>눈부심 감소, 장시간 사용에도 눈 피로 최소</p></div>
+<div class="sw-card"><div class="sw-icon" style="background:#FAEEDA;">💎</div><h4>울트라 슬림 투톤 디자인</h4><p>두 배 얇아진 베젤, 매장 인테리어와 조화</p></div>
+<div class="sw-card"><div class="sw-icon" style="background:#E1F5EE;">🧊</div><h4>알루미늄 다이캐스팅</h4><p>독자적 냉각 기술로 발열 관리 극대화</p></div>
+<div class="sw-card"><div class="sw-icon" style="background:#FBEAF0;">⚡</div><h4>Intel® 고성능 프로세서</h4><p>대규모 메뉴·복잡한 주문도 빠르게 처리</p></div>
+<div class="sw-card"><div class="sw-icon" style="background:#EEEDFE;">🏢</div><h4>프랜차이즈 통합 관리</h4><p>다점포 클라우드 매출·재고 일괄 관리</p></div>
+</div>
 </div>
 </div>
 </section>
