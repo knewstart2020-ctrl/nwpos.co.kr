@@ -128,6 +128,16 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 
 @keyframes hwFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 
+
+/* HW CARD STYLE */
+.hw-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px;}
+.hw-card{background:#fff;border-radius:20px;padding:28px 24px;border:1.5px solid rgba(0,0,0,.04);transition:all .4s cubic-bezier(.34,1.56,.64,1);box-shadow:0 2px 12px rgba(0,0,0,.03);}
+.hw-card:hover{border-color:var(--primary);transform:translateY(-6px);box-shadow:0 12px 32px rgba(27,58,140,.08);}
+.hw-card-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:14px;}
+.hw-card h4{font-size:.92rem;font-weight:800;margin-bottom:6px;letter-spacing:-.01em;}
+.hw-card p{font-size:.78rem;color:var(--gray);line-height:1.6;}
+@media(max-width:768px){.hw-cards{grid-template-columns:1fr 1fr;}}
+@media(max-width:500px){.hw-cards{grid-template-columns:1fr;}}
 /* SPEC TABLE */
 .spec-sec{background:transparent;padding:100px 0;}
 .spec-inner{max-width:960px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
@@ -327,21 +337,13 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <div class="sec-tag">Hardware Features</div>
 <h2>업오더 H/W 주요특징</h2>
 </div>
-<div class="hw-layout reveal">
-<!-- 왼쪽 3개 -->
-<div class="hw-side hw-side-left">
-<div class="hw-item"><div class="hw-item-icon" style="background:#FFF0E6;">🔒</div><div><h4>분실 방지 및 보호</h4><p>태블릿 분실 방지 Lock 기능<br>케이블 보호 가이드로 안정성 강화</p></div></div>
-<div class="hw-item"><div class="hw-item-icon" style="background:#EAF0FF;">🔋</div><div><h4>외장배터리 & IC카드리더기</h4><p>외장배터리 지원으로 전원 걱정 無<br>IC카드 리더기 내장</p></div></div>
-<div class="hw-item"><div class="hw-item-icon" style="background:#E6F7EF;">🔧</div><div><h4>안정적인 설치</h4><p>클램프형 모서리 고정 방식<br>테이블 완전 고정으로 안정적 거치</p></div></div>
-</div>
-<!-- 중앙 제품 이미지 -->
-
-<!-- 오른쪽 3개 -->
-<div class="hw-side hw-side-right">
-<div class="hw-item"><div class="hw-item-icon" style="background:#FAEEDA;">📐</div><div><h4>좌우 각도 조절</h4><p>테이블 위치, 고객 시선에 맞게<br>좌우 각도 자유 조절</p></div></div>
-<div class="hw-item"><div class="hw-item-icon" style="background:#FBEAF0;">🛡️</div><div><h4>태블릿 조작 불가 설정</h4><p>주문·결제 외 조작 차단<br>배터리 소모·속도 저하 방지</p></div></div>
-<div class="hw-item"><div class="hw-item-icon" style="background:#EEEDFE;">⚡</div><div><h4>Octa-Core 8코어</h4><p>UP오더 전 제품 8코어 탑재<br>빠르고 안정적인 주문 처리</p></div></div>
-</div>
+<div class="hw-cards reveal">
+<div class="hw-card"><div class="hw-card-icon" style="background:#FFF0E6;">🔒</div><h4>분실 방지 및 보호</h4><p>태블릿 분실 방지 Lock 기능<br>케이블 보호 가이드로 안정성 강화</p></div>
+<div class="hw-card"><div class="hw-card-icon" style="background:#EAF0FF;">🔋</div><h4>외장배터리 & IC카드리더기</h4><p>외장배터리 지원으로 전원 걱정 無<br>IC카드 리더기 내장</p></div>
+<div class="hw-card"><div class="hw-card-icon" style="background:#E6F7EF;">🔧</div><h4>안정적인 설치</h4><p>클램프형 모서리 고정 방식<br>테이블 완전 고정으로 안정적 거치</p></div>
+<div class="hw-card"><div class="hw-card-icon" style="background:#FAEEDA;">📐</div><h4>좌우 각도 조절</h4><p>테이블 위치, 고객 시선에 맞게<br>좌우 각도 자유 조절</p></div>
+<div class="hw-card"><div class="hw-card-icon" style="background:#FBEAF0;">🛡️</div><h4>태블릿 조작 불가 설정</h4><p>주문·결제 외 조작 차단<br>배터리 소모·속도 저하 방지</p></div>
+<div class="hw-card"><div class="hw-card-icon" style="background:#EEEDFE;">⚡</div><h4>Octa-Core 8코어</h4><p>UP오더 전 제품 8코어 탑재<br>빠르고 안정적인 주문 처리</p></div>
 </div>
 </div>
 </section>
