@@ -1,325 +1,153 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>고객지원 | 누리네트웍스</title>
-    <meta name="description" content="누리네트웍스 고객지원 - 상담 신청, 제품 구매 문의, A/S 안내.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        :root{--primary:#1B3A8C;--primary-light:#2E5BDB;--primary-pale:#EAF0FF;--dark:#1d1d1f;--gray-700:#424245;--gray-500:#86868b;--gray-300:#d2d2d7;--gray-100:#f5f5f7;--white:#fff;--radius:20px;--radius-sm:12px;}
-        *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
-        body{font-family:'Noto Sans KR','Inter',sans-serif;color:#1d1d1f;background:var(--white);line-height:1.75;overflow-x:hidden;}
-
-        .header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,0.82);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,0.06);}
-        .header-inner{max-width:1320px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:76px;}
-        .lg{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:'Inter','Noto Sans KR',sans-serif;}
-        .lg-n{font-weight:700;color:#1d1d1f;line-height:0.85;letter-spacing:-0.04em;font-size:2.4rem;}
-        .lg-right{display:flex;flex-direction:column;justify-content:center;}.lg-top{display:flex;align-items:baseline;}
-        .lg-nuri{font-weight:300;color:#1d1d1f;letter-spacing:-0.01em;font-size:1.1rem;}.lg-nwp{font-weight:600;color:#1d1d1f;letter-spacing:-0.01em;font-size:1.1rem;}
-        .lg-cc{font-weight:300;color:#86868b;letter-spacing:0.02em;font-size:0.55rem;margin-top:1px;}
-        .lg-star{color:var(--primary-light);line-height:1;font-size:0.55em;position:relative;top:-0.8em;}
-        .nav{display:flex;align-items:center;gap:32px;}.nav a{text-decoration:none;color:rgba(0,0,0,0.55);font-size:0.9rem;font-weight:400;transition:color .2s;}.nav a:hover,.nav a.active{color:#1d1d1f;}
-        .nav-cta{background:var(--primary)!important;color:#fff!important;padding:10px 26px;border-radius:50px;font-weight:600!important;}
-        .nav-store{border:none!important;background:none!important;color:rgba(0,0,0,0.5)!important;padding:10px 20px;border-radius:8px;font-weight:700!important;font-size:1rem!important;letter-spacing:0.02em;transition:all .25s!important;position:relative;cursor:pointer;}
-        .nav-store::after{content:'';position:absolute;bottom:4px;left:50%;width:0;height:2.5px;background:var(--primary);border-radius:2px;transition:all .3s cubic-bezier(0.34,1.56,0.64,1);transform:translateX(-50%);}
-        .nav-store:hover{color:#1d1d1f!important;}.nav-store:hover::after{width:60%;}
-        .nav-store:active,.nav-store.on{color:var(--primary)!important;}.nav-store:active::after,.nav-store.on::after{width:80%;background:var(--primary);}
-        .mobile-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;}.mobile-toggle span{width:22px;height:2px;background:#1d1d1f;border-radius:2px;}
-
-        .page-hero{background:var(--gray-100);padding:160px 0 60px;text-align:center;}
-        .page-hero h1{font-size:2.8rem;font-weight:800;color:#1d1d1f;margin-bottom:12px;letter-spacing:-0.03em;}
-        .page-hero p{color:#86868b;font-size:1.05rem;max-width:480px;margin:0 auto;}
-
-        /* TABS */
-        .tabs{position:sticky;top:76px;z-index:50;background:var(--white);border-bottom:1px solid var(--gray-100);}
-        .tabs-inner{max-width:800px;margin:0 auto;display:flex;padding:0 40px;}
-        .tab-btn{flex:1;padding:18px 20px;text-align:center;font-size:0.95rem;font-weight:600;color:var(--gray-500);cursor:pointer;border-bottom:3px solid transparent;transition:all .3s;}
-        .tab-btn:hover{color:var(--primary);}.tab-btn.active{color:var(--primary);border-bottom-color:var(--primary);}
-
-        /* SECTIONS */
-        .tab-content{display:none;padding:60px 0 80px;}.tab-content.active{display:block;}
-        .tc-inner{max-width:800px;margin:0 auto;padding:0 40px;}
-
-        /* STORE CARDS */
-        .store-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:40px;}
-        .store-card{background:var(--gray-100);border-radius:var(--radius);padding:28px 24px;transition:all .3s;cursor:pointer;text-decoration:none;color:inherit;border:2px solid transparent;}
-        .store-card:hover{border-color:var(--primary);background:var(--primary-pale);}
-        .store-emoji{font-size:2rem;margin-bottom:12px;}
-        .store-card h3{font-size:1.1rem;font-weight:700;margin-bottom:4px;}
-        .store-card p{font-size:0.85rem;color:var(--gray-500);line-height:1.5;}
-        .store-card .store-price{font-size:0.82rem;color:var(--primary);font-weight:600;margin-top:8px;}
-        .naver-banner{text-align:center;padding:40px;background:linear-gradient(135deg,#00C73C,#09B44D);border-radius:var(--radius);margin-bottom:32px;color:#fff;}
-        .naver-icon{font-size:2.5rem;margin-bottom:12px;}.naver-banner h3{font-size:1.3rem;font-weight:700;margin-bottom:8px;}.naver-banner p{font-size:0.9rem;opacity:0.85;margin-bottom:20px;line-height:1.6;}
-        .naver-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:#fff;color:#09B44D;border-radius:50px;font-weight:700;text-decoration:none;font-size:0.95rem;transition:all .3s;}.naver-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.15);}
-        .store-img-card{display:block;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/3;background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#f5f5f7;position:relative;text-decoration:none;transition:all .3s;}
-        .store-img-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.1);}
-        .store-overlay{position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:linear-gradient(to top,rgba(0,0,0,0.7),transparent);}.store-overlay h3{color:#fff;font-size:1rem;font-weight:700;margin-bottom:2px;}.store-overlay p{color:rgba(255,255,255,0.7);font-size:0.82rem;}
-
-        /* CONSULTATION FORM */
-        .form-section{background:var(--white);}
-        .form-header{text-align:center;margin-bottom:40px;}
-        .form-header h2{font-size:1.8rem;font-weight:800;margin-bottom:8px;}
-        .form-header p{color:var(--gray-500);font-size:0.95rem;}
-
-        .form-box{background:var(--white);border-radius:var(--radius);border:1px solid var(--gray-300);padding:40px;max-width:560px;margin:0 auto;}
-        .form-group{margin-bottom:24px;}
-        .form-label{display:block;font-size:0.88rem;font-weight:700;color:var(--dark);margin-bottom:8px;}
-        .form-label small{font-weight:400;color:var(--gray-500);}
-        .form-input{width:100%;padding:14px 16px;border:1px solid var(--gray-300);border-radius:var(--radius-sm);font-size:0.95rem;font-family:inherit;transition:border-color .2s;outline:none;color:var(--dark);}
-        .form-input:focus{border-color:var(--primary);}
-        .form-input::placeholder{color:var(--gray-300);}
-        textarea.form-input{resize:vertical;min-height:100px;}
-        select.form-input{appearance:none;background:var(--white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2386868b' fill='none' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 16px center;cursor:pointer;}
-
-        /* TYPE SELECTION */
-        .type-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
-        .type-btn{padding:12px 8px;border:1px solid var(--gray-300);border-radius:var(--radius-sm);font-size:0.82rem;font-weight:500;text-align:center;cursor:pointer;transition:all .2s;color:var(--gray-700);background:var(--white);}
-        .type-btn:hover{border-color:var(--primary);color:var(--primary);}
-        .type-btn.selected{background:var(--primary);color:#fff;border-color:var(--primary);}
-
-        /* CONSENT */
-        .consent{display:flex;align-items:flex-start;gap:10px;padding:16px;background:var(--gray-100);border-radius:var(--radius-sm);margin-bottom:24px;cursor:pointer;}
-        .consent-check{width:22px;height:22px;border:2px solid var(--gray-300);border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s;margin-top:2px;}
-        .consent-check.checked{background:var(--primary);border-color:var(--primary);}
-        .consent-check.checked::after{content:'✓';color:#fff;font-size:0.75rem;font-weight:700;}
-        .consent-text{font-size:0.82rem;color:var(--gray-700);line-height:1.5;}
-        .consent-text strong{color:var(--dark);}
-
-        .form-submit{width:100%;padding:16px;border:none;border-radius:var(--radius-sm);font-size:1rem;font-weight:700;cursor:pointer;font-family:inherit;transition:all .3s;}
-        .form-submit.enabled{background:var(--primary);color:#fff;}.form-submit.enabled:hover{background:var(--primary-light);}
-        .form-submit.disabled{background:var(--gray-300);color:var(--white);cursor:not-allowed;}
-
-        /* SUCCESS */
-        .form-success{display:none;text-align:center;padding:60px 20px;}
-        .form-success.show{display:block;}
-        .form-success .success-icon{font-size:3rem;margin-bottom:16px;}
-        .form-success h3{font-size:1.3rem;font-weight:700;margin-bottom:8px;}
-        .form-success p{color:var(--gray-500);font-size:0.95rem;}
-
-        /* CONTACT INFO */
-        .contact-info{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:48px;padding-top:48px;border-top:1px solid var(--gray-100);}
-        .contact-card{padding:24px;background:var(--gray-100);border-radius:var(--radius-sm);}
-        .contact-card h4{font-size:0.95rem;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:8px;}
-        .contact-card p{font-size:0.88rem;color:var(--gray-500);line-height:1.6;}
-        .contact-card a{color:var(--primary);text-decoration:none;font-weight:600;}
-
-        /* A/S */
-        .as-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:32px;}
-        .as-step{text-align:center;padding:24px 16px;background:var(--gray-100);border-radius:var(--radius);}
-        .as-step-num{width:32px;height:32px;border-radius:50%;background:var(--primary);color:#fff;font-size:0.82rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;}
-        .as-step h4{font-size:0.9rem;font-weight:700;margin-bottom:4px;}
-        .as-step p{font-size:0.78rem;color:var(--gray-500);}
-
-        .footer{background:var(--gray-100);color:#86868b;padding:40px 0;text-align:center;font-size:0.82rem;border-top:1px solid rgba(0,0,0,0.06);}
-        .footer a{color:#86868b;text-decoration:none;}
-
-        @media(max-width:768px){
-            .nav{display:none;}.mobile-toggle{display:flex;}
-            .nav.open{display:flex;flex-direction:column;position:absolute;top:76px;left:0;right:0;background:rgba(255,255,255,0.97);padding:24px 40px;border-bottom:1px solid rgba(0,0,0,0.06);}
-            .page-hero{padding:130px 24px 50px;}.page-hero h1{font-size:2rem;}
-            .tc-inner{padding:0 24px;}.store-grid,.contact-info{grid-template-columns:1fr;}
-            .type-grid{grid-template-columns:repeat(2,1fr);}
-            .as-steps{grid-template-columns:repeat(2,1fr);}
-            .form-box{padding:24px;}
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>구매스토어 | 누리네트웍스</title>
+<meta name="description" content="누리네트웍스 구매스토어 - 상담 신청, 제품 구매 문의">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#1B3A8C;--primary-light:#2E5BDB;--accent:#C9A84C;--dark:#1d1d1f;--gray:#86868b;--light:#f5f5f7;--radius:16px;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;-webkit-font-smoothing:antialiased;}
+.header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.06);}
+.header-inner{max-width:1320px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:68px;}
+.lg{display:flex;align-items:center;gap:8px;text-decoration:none;font-family:'Inter',sans-serif;}
+.lg-n{font-size:2rem;font-weight:700;color:#1d1d1f;line-height:.85;}
+.lg-right{display:flex;flex-direction:column;}.lg-top{display:flex;align-items:baseline;}
+.lg-nuri{font-size:.95rem;font-weight:300;color:#1d1d1f;}.lg-nwp{font-size:.95rem;font-weight:600;color:#1d1d1f;}
+.lg-cc{font-size:.5rem;font-weight:300;color:#86868b;}.lg-star{color:var(--primary-light);font-size:.5em;position:relative;top:-.8em;}
+.nav{display:flex;align-items:center;gap:6px;}
+.nav-store{border:none!important;background:none!important;color:rgba(0,0,0,.5)!important;padding:10px 18px;font-weight:700!important;font-size:.95rem!important;text-decoration:none;position:relative;transition:all .25s!important;}
+.nav-store::after{content:'';position:absolute;bottom:4px;left:50%;width:0;height:2.5px;background:var(--primary);border-radius:2px;transition:all .3s;transform:translateX(-50%);}
+.nav-store:hover{color:#1d1d1f!important;}.nav-store:hover::after{width:60%;}
+.nav-store.on{color:var(--primary)!important;}.nav-store.on::after{width:80%;}
+.mobile-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;}.mobile-toggle span{width:22px;height:2px;background:#1d1d1f;border-radius:2px;}
+.page-hero{background:linear-gradient(135deg,#f0f4ff,#e8ecf8);padding:140px 0 60px;text-align:center;}
+.page-hero h1{font-size:2.4rem;font-weight:800;letter-spacing:-.03em;margin-bottom:12px;}
+.page-hero p{color:var(--gray);font-size:1rem;max-width:480px;margin:0 auto;}
+.main-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:1080px;margin:0 auto;padding:60px 40px;}
+/* LEFT: Form */
+.form-card{background:#fff;border-radius:24px;padding:40px;border:1px solid rgba(0,0,0,.06);box-shadow:0 4px 24px rgba(0,0,0,.04);}
+.form-card h2{font-size:1.4rem;font-weight:800;margin-bottom:6px;}.form-card>p{color:var(--gray);font-size:.88rem;margin-bottom:28px;}
+.fg{margin-bottom:20px;}.fl{display:block;font-size:.85rem;font-weight:700;margin-bottom:6px;}.fl small{font-weight:400;color:var(--gray);}
+.fi{width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:10px;font-size:.92rem;font-family:inherit;outline:none;transition:border .2s;}.fi:focus{border-color:var(--primary);}
+.fi::placeholder{color:#ccc;}textarea.fi{resize:vertical;min-height:80px;}
+select.fi{appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2386868b' fill='none' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 14px center;cursor:pointer;}
+.type-grid{display:flex;flex-wrap:wrap;gap:8px;}.type-btn{padding:8px 16px;border:1.5px solid #ddd;border-radius:50px;font-size:.82rem;font-weight:500;cursor:pointer;transition:all .2s;}.type-btn.selected{background:var(--primary);color:#fff;border-color:var(--primary);}
+.consent{display:flex;align-items:flex-start;gap:10px;margin:20px 0;cursor:pointer;font-size:.82rem;color:#555;line-height:1.5;}
+.cbox{width:20px;height:20px;border-radius:6px;border:2px solid #ddd;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;font-size:.7rem;color:transparent;}.cbox.checked{background:var(--primary);border-color:var(--primary);color:#fff;}
+.submit-btn{width:100%;padding:14px;border:none;border-radius:12px;font-size:1rem;font-weight:700;cursor:pointer;font-family:inherit;transition:all .3s;background:#ddd;color:#fff;}
+.submit-btn.on{background:var(--primary);color:#fff;}.submit-btn.on:hover{background:var(--primary-light);}
+.form-ok{display:none;text-align:center;padding:60px 20px;}.form-ok.show{display:block;}
+/* RIGHT: Store */
+.store-card{background:linear-gradient(135deg,#f8f9fc,#eef2fa);border-radius:24px;padding:48px 40px;text-align:center;border:2px solid rgba(27,58,140,.08);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;}
+.store-card img{width:120px;height:120px;object-fit:contain;filter:drop-shadow(0 6px 16px rgba(0,0,0,.15));}
+.store-card h2{font-size:1.4rem;font-weight:800;}.store-card p{color:var(--gray);font-size:.9rem;line-height:1.7;}
+.store-badge{display:inline-block;padding:6px 18px;background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;border-radius:50px;font-size:.82rem;font-weight:700;}
+.store-naver{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:#03C75A;color:#fff;border-radius:50px;font-weight:700;font-size:.92rem;text-decoration:none;opacity:.4;cursor:not-allowed;}
+/* TICKER */
+.ticker-section{background:#1d1d1f;padding:10px 0;overflow:hidden;}
+.ticker-wrap{overflow:hidden;}.ticker-track{display:flex;gap:32px;animation:tickS 40s linear infinite;width:max-content;white-space:nowrap;}
+@keyframes tickS{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ticker-item{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.5);font-size:.75rem;font-family:'Inter',sans-serif;}
+.t-name{color:rgba(255,255,255,.4);}.t-val{color:#fff;font-weight:600;}.t-news{color:rgba(255,255,255,.6);}
+.footer-copy{text-align:center;padding:24px;font-size:.78rem;color:#86868b;background:#f5f5f7;}
+@media(max-width:768px){.main-grid{grid-template-columns:1fr;}.nav{display:none;}.mobile-toggle{display:flex;}.nav.open{display:flex;flex-direction:column;position:absolute;top:68px;left:0;right:0;background:rgba(255,255,255,.98);padding:20px 40px;gap:4px;border-bottom:1px solid rgba(0,0,0,.06);}}
+</style>
 </head>
 <body>
-
 <header class="header"><div class="header-inner">
-    <a href="index.html" style="text-decoration:none;"><div class="lg"><span class="lg-n">N</span><div class="lg-right"><div class="lg-top"><span class="lg-nuri">nuri</span><span class="lg-nwp">networkspay</span><span class="lg-star lg-star-lg">✦</span></div><div class="lg-cc">credit&amp;cash</div></div></div></a>
-    <nav class="nav" id="nav">
-        <a href="about.html" class="nav-store">회사소개</a>
-        <a href="lineup.html" class="nav-store">제품라인업</a>
-        
-        <a href="support.html#store" class="nav-store">구매스토어</a>
-    </nav>
-    <div class="mobile-toggle" onclick="document.getElementById('nav').classList.toggle('open')"><span></span><span></span><span></span></div>
+<a href="index.html" style="text-decoration:none"><div class="lg"><span class="lg-n">N</span><div class="lg-right"><div class="lg-top"><span class="lg-nuri">nuri</span><span class="lg-nwp">networkspay</span><span class="lg-star">&#10022;</span></div><div class="lg-cc">credit&amp;cash</div></div></div></a>
+<nav class="nav" id="nav"><a href="index.html" class="nav-store">HOME</a><a href="about.html" class="nav-store">회사소개</a><a href="lineup.html" class="nav-store">제품라인업</a><a href="support.html" class="nav-store on">구매스토어</a></nav>
+<div class="mobile-toggle" onclick="document.getElementById('nav').classList.toggle('open')"><span></span><span></span><span></span></div>
 </div></header>
 
 <section class="page-hero">
-    <h1>고객지원</h1>
-    <p>상담 신청부터 A/S까지, 누리네트웍스가 도와드립니다.</p>
+<h1>구매스토어</h1>
+<p>상담 신청부터 제품 구매까지, 누리네트웍스가 도와드립니다.</p>
 </section>
 
-<div class="tabs">
-    <div class="tabs-inner">
-        <div class="tab-btn active" data-tab="consult">📋 상담 신청</div>
-        
-    </div>
+<div class="main-grid">
+<!-- LEFT: 상담 신청 -->
+<div class="form-card" id="formBox">
+<h2>📋 상담 신청</h2>
+<p>전문 상담사가 매장에 맞는 최적의 솔루션을 추천해 드립니다.</p>
+<div class="fg"><label class="fl">업체/고객명</label><input class="fi" type="text" id="bizName" placeholder="업체 또는 고객명"></div>
+<div class="fg"><label class="fl">연락처</label><input class="fi" type="tel" id="phone" placeholder="010-0000-0000"></div>
+<div class="fg"><label class="fl">업종</label><input class="fi" type="text" id="bizType" placeholder="예) 음식점, 카페, 편의점"></div>
+<div class="fg"><label class="fl">상담유형 <small>(중복 선택)</small></label>
+<div class="type-grid">
+<div class="type-btn" onclick="this.classList.toggle('selected')">포스(POS)</div>
+<div class="type-btn" onclick="this.classList.toggle('selected')">키오스크</div>
+<div class="type-btn" onclick="this.classList.toggle('selected')">테이블오더</div>
+<div class="type-btn" onclick="this.classList.toggle('selected')">카드단말기</div>
+<div class="type-btn" onclick="this.classList.toggle('selected')">사인패드</div>
+<div class="type-btn" onclick="this.classList.toggle('selected')">PG결제</div>
+</div></div>
+<div class="fg"><label class="fl">요청사항 <small>(선택)</small></label><textarea class="fi" placeholder="궁금한 점을 자유롭게 적어주세요"></textarea></div>
+<div class="consent" onclick="var c=this.querySelector('.cbox');c.classList.toggle('checked');updBtn();">
+<div class="cbox" id="cbox">&#10003;</div>
+<span>개인정보 수집·이용에 동의합니다. 상담 목적으로만 사용되며 상담 완료 후 파기됩니다.</span>
+</div>
+<button class="submit-btn" id="submitBtn" onclick="doSubmit()">상담 신청하기</button>
+<div class="form-ok" id="formOk">
+<div style="font-size:3rem;margin-bottom:16px;">✅</div>
+<h3 style="font-size:1.3rem;font-weight:800;margin-bottom:8px;">상담 신청 완료!</h3>
+<p style="color:#86868b;">빠른 시일 내에 연락드리겠습니다.</p>
+</div>
 </div>
 
-<!-- 상담 신청 -->
-<section class="tab-content active" id="consult">
-    <div class="tc-inner">
-        <div class="form-header">
-            <h2>지금 상담 신청하고<br>특별 혜택 받기</h2>
-            <p>전문 상담사가 매장에 맞는 최적의 솔루션을 추천해 드립니다.</p>
-        </div>
-
-        <div class="form-box" id="formBox">
-            <div class="form-group">
-                <label class="form-label">업체/고객명</label>
-                <input class="form-input" type="text" id="bizName" placeholder="업체 또는 고객명을 입력해 주세요">
-            </div>
-
-            <div class="form-group">
-                <label class="form-label">연락처</label>
-                <input class="form-input" type="tel" id="phone" placeholder="010-0000-0000">
-            </div>
-            <div class="form-group">
-                <label class="form-label">업종</label>
-                <input class="form-input" type="text" id="bizType" placeholder="예) 음식점, 카페, 편의점, 헤어/뷰티, 프랜차이즈 등">
-            </div>
-            <div class="form-group">
-                <label class="form-label">상담유형 선택 <small>(중복 선택 가능)</small></label>
-                <div class="type-grid">
-                    <div class="type-btn" onclick="this.classList.toggle('selected')">테이블오더</div>
-                    <div class="type-btn" onclick="this.classList.toggle('selected')">포스</div>
-                    <div class="type-btn" onclick="this.classList.toggle('selected')">키오스크</div>
-                    <div class="type-btn" onclick="this.classList.toggle('selected')">유선카드단말기</div>
-                    <div class="type-btn" onclick="this.classList.toggle('selected')">무선카드단말기</div>
-                    <div class="type-btn" onclick="this.classList.toggle('selected')">PG</div>
-                    <div class="type-btn" onclick="this.classList.toggle('selected')">토스프론트</div>
-                    <div class="type-btn" onclick="this.classList.toggle('selected')">네이버커넥트</div>
-                    <div class="type-btn" onclick="this.classList.toggle('selected')">프랜차이즈</div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="form-label">문의 내용 <small>(선택)</small></label>
-                <textarea class="form-input" id="message" placeholder="추가 문의 사항이 있으시면 입력해 주세요"></textarea>
-            </div>
-
-            <div class="consent" onclick="toggleConsent(this)">
-                <div class="consent-check" id="consentCheck"></div>
-                <div class="consent-text"><strong>개인정보 수집·이용 동의</strong><br>상담 신청을 위해 업체명, 담당자명, 연락처를 수집합니다. 수집된 정보는 상담 목적으로만 사용되며, 상담 완료 후 파기됩니다.</div>
-            </div>
-
-            <button class="form-submit disabled" id="submitBtn" onclick="submitForm()">신청하기</button>
-        </div>
-
-        <div class="form-success" id="formSuccess">
-            <div class="success-icon">✅</div>
-            <h3>상담 신청이 완료되었습니다!</h3>
-            <p>빠른 시간 내에 담당자가 연락드리겠습니다.<br>대표번호: <strong>1544-7754</strong></p>
-        </div>
-
-        <div class="contact-info">
-            <div class="contact-card">
-                <h4>📞 전화 상담</h4>
-                <p><a href="tel:1544-7754">1544-7754</a><br>평일 09:00~20:00<br>토/일/공휴일 11:00~17:00</p>
-            </div>
-            <div class="contact-card">
-                <h4>✉️ 이메일 문의</h4>
-                <p><a href="/cdn-cgi/l/email-protection#721c07001b32021d011d1c175c111d5c1900"><span class="__cf_email__" data-cfemail="e08e959289a0908f938f8e85ce838fce8b92">[email&#160;protected]</span></a><br>24시간 접수 가능<br>영업일 기준 1일 이내 답변</p>
-            </div>
-            <div class="contact-card">
-                <h4>📍 방문 상담</h4>
-                <p>서울시 영등포구 선유로70<br>우리벤처타운 4층 408호<br><a href="about.html#location">오시는 길 →</a></p>
-            </div>
-            <div class="contact-card">
-                <h4>🔧 A/S 접수</h4>
-                <p>장비 고장·오류 시<br><a href="tel:1544-7754">1544-7754</a>로 접수<br>수도권 당일 방문 A/S</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- 구매 스토어 -->
-<section class="tab-content" id="store">
-    <div class="tc-inner">
-        <div class="form-header">
-            <h2>제품 구매 / 견적 문의</h2>
-            <p>원하시는 제품을 선택하면 견적 상담을 도와드립니다.</p>
-        </div>
-        <div class="naver-banner">
-            <div class="naver-icon">🛒</div>
-            <h3>네이버 스토어 준비 중</h3>
-            <p>네이버 스토어 개설 후 온라인 구매가 가능합니다.<br>현재는 전화 또는 이메일로 구매 상담을 받으실 수 있습니다.</p>
-            <a href="tel:1544-7754" class="naver-btn">📞 1544-7754 구매 상담</a>
-        </div>
-        <div class="store-grid">
-            <a href="product-n250.html" class="store-img-card" style="background-image:url('https://imupos.com/img/sub/250series_title.png');"><div class="store-overlay"><h3>N250 포스</h3><p>견적 문의 →</p></div></a>
-            <a href="product-nova.html" class="store-img-card" style="background-image:url('https://imupos.com/img/sub/nova_title.png');"><div class="store-overlay"><h3>NOVA 포스</h3><p>견적 문의 →</p></div></a>
-            <a href="product-kiosk.html" class="store-img-card" style="background-image:url('https://imupos.com/img/sub/barrierfreekiosk_title.png');"><div class="store-overlay"><h3>배리어프리 키오스크</h3><p>견적 문의 →</p></div></a>
-            <a href="product-uporder.html" class="store-img-card" style="background-image:url('https://imupos.com/img/sub/uporder_title.png');"><div class="store-overlay"><h3>업오더 테이블오더</h3><p>견적 문의 →</p></div></a>
-            <a href="product-t226.html" class="store-img-card" style="background-image:url('https://www.smartro.co.kr/wp-content/uploads/2023/07/SMT-T226_main.png');"><div class="store-overlay"><h3>SMT-T226 단말기</h3><p>견적 문의 →</p></div></a>
-            <a href="product-tossfront.html" class="store-img-card" style="background-image:url('https://static.toss.im/photos/place-front-device-white-black.png');"><div class="store-overlay"><h3>토스프론트</h3><p>견적 문의 →</p></div></a>
-            <a href="product-npay.html" class="store-img-card" style="background-image:url('https://campaign2.naver.com/npay/npayconnect/images/visual_device.png');"><div class="store-overlay"><h3>Npay 커넥트</h3><p>견적 문의 →</p></div></a>
-            <a href="product-ts100.html" class="store-img-card" style="background-image:url('https://www.miniprinter.com/data/item/1637289104/thumb-slk-ts100_main_380x380.png');"><div class="store-overlay"><h3>SLK-TS100 프린터</h3><p>견적 문의 →</p></div></a>
-        </div>
-        <div style="text-align:center;padding:32px;background:var(--gray-100);border-radius:var(--radius);">
-            <h3 style="font-size:1.2rem;font-weight:700;margin-bottom:8px;">맞춤 패키지가 필요하신가요?</h3>
-            <p style="color:var(--gray-500);font-size:0.95rem;margin-bottom:20px;">매장 환경에 맞는 최적의 제품 조합을 추천해 드립니다.</p>
-            <a href="tel:1544-7754" style="display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:50px;font-size:0.95rem;font-weight:600;text-decoration:none;background:var(--primary);color:#fff;">📞 1544-7754 상담 문의</a>
-        </div>
-    </div>
-</section>
-
-
-
-
-<!-- BOTTOM NAV -->
-<div style="display:flex;justify-content:center;background:linear-gradient(135deg,#162d6b,#1B3A8C);border-top:2px solid rgba(201,168,76,0.3);">
-<a href="about.html" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;padding:24px 16px;text-decoration:none;color:rgba(255,255,255,.65);font-weight:600;font-family:'Noto Sans KR',sans-serif;font-size:.85rem;transition:all .3s;" onmouseover="this.style.color='#C9A84C'" onmouseout="this.style.color='rgba(255,255,255,.65)'"><span style="font-size:1.4rem">&#127970;</span>회사소개</a>
-<a href="lineup.html" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;padding:24px 16px;text-decoration:none;color:rgba(255,255,255,.65);font-weight:600;font-family:'Noto Sans KR',sans-serif;font-size:.85rem;transition:all .3s;" onmouseover="this.style.color='#C9A84C'" onmouseout="this.style.color='rgba(255,255,255,.65)'"><span style="font-size:1.4rem">&#128230;</span>제품라인업</a>
-<a href="support.html#store" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;padding:24px 16px;text-decoration:none;color:rgba(255,255,255,.65);font-weight:600;font-family:'Noto Sans KR',sans-serif;font-size:.85rem;transition:all .3s;" onmouseover="this.style.color='#C9A84C'" onmouseout="this.style.color='rgba(255,255,255,.65)'"><span style="font-size:1.4rem">&#128722;</span>구매스토어</a>
+<!-- RIGHT: 구매스토어 -->
+<div class="store-card">
+<img src="mascot-heart.png" alt="누리네트웍스 마스코트" style="animation:bounce 2s ease infinite;">
+<span class="store-badge">Coming Soon</span>
+<h2>구매스토어 오픈 준비중</h2>
+<p>누리네트웍스 공식 온라인 스토어를<br>준비하고 있습니다.<br><br>조금만 기다려 주세요!<br>네이버 스토어로 곧 찾아뵙겠습니다.</p>
+<a class="store-naver">🛒 네이버 스토어 (준비중)</a>
+<div style="margin-top:16px;">
+<a href="tel:1544-7754" style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:linear-gradient(135deg,#1B3A8C,#2E5BDB);color:#fff;border-radius:50px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 6px 20px rgba(27,58,140,.3);transition:all .3s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''">📞 전화문의 1544-7754</a>
 </div>
-<!-- UNIFIED CTA -->
-<div style="background:#f5f5f7;padding:60px 20px 48px;text-align:center;">
-<h2 style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;color:#1d1d1f;margin-bottom:24px;font-family:'Noto Sans KR',sans-serif;">매장에 맞는 솔루션,<br>지금 상담 받아보세요</h2>
-<div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;">
-<a href="tel:1544-7754" style="display:flex;align-items:center;gap:10px;padding:16px 32px;background:linear-gradient(135deg,#1B3A8C,#2E5BDB);color:#fff;border-radius:16px;text-decoration:none;font-weight:700;font-size:1rem;font-family:'Noto Sans KR',sans-serif;box-shadow:0 8px 28px rgba(27,58,140,.3);transition:all .3s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''"><span style="font-size:1.4rem">&#128222;</span> 전화문의 1544-7754</a>
 </div>
-<div style="display:flex;justify-content:center;gap:32px;margin-top:28px;flex-wrap:wrap;">
-<a href="about.html" style="color:#86868b;text-decoration:none;font-size:.88rem;font-weight:600;font-family:'Noto Sans KR',sans-serif;" onmouseover="this.style.color='#1B3A8C'" onmouseout="this.style.color='#86868b'">&#127970; 회사소개</a>
-<a href="lineup.html" style="color:#86868b;text-decoration:none;font-size:.88rem;font-weight:600;font-family:'Noto Sans KR',sans-serif;" onmouseover="this.style.color='#1B3A8C'" onmouseout="this.style.color='#86868b'">&#128230; 제품라인업</a>
-<a href="support.html#store" style="color:#86868b;text-decoration:none;font-size:.88rem;font-weight:600;font-family:'Noto Sans KR',sans-serif;" onmouseover="this.style.color='#1B3A8C'" onmouseout="this.style.color='#86868b'">&#128722; 구매스토어</a>
-<a href="/cdn-cgi/l/email-protection#701e05021930001f031f1e155e131f5e1b02" style="color:#86868b;text-decoration:none;font-size:.88rem;font-weight:600;font-family:'Noto Sans KR',sans-serif;" onmouseover="this.style.color='#1B3A8C'" onmouseout="this.style.color='#86868b'">&#9993;&#65039; <span class="__cf_email__" data-cfemail="452b30372c05352a362a2b206b262a6b2e37">[email&#160;protected]</span></a>
-</div>
-<div style="color:#b0b0b5;font-size:.8rem;margin-top:16px;font-family:'Noto Sans KR',sans-serif;">운영시간 평일 09:00~20:00 / 토&#183;일&#183;공휴일 11:00~17:00</div>
 </div>
 
-<footer class="footer">
-    <p>© 2026 Nurinetworks. All rights reserved. | 대표번호: 1544-7754 | 이메일: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7d13080f143d0d120e121318531e1253160f">[email&#160;protected]</a></p>
-</footer>
+<!-- TICKER -->
+<div class="ticker-section"><div class="ticker-wrap"><div class="ticker-track" id="tickerTrack">
+<span class="ticker-item"><span class="t-name">누리네트웍스</span><span class="t-val">No.1 Payment Service</span></span>
+<span class="ticker-item"><span class="t-news">📞 1544-7754</span></span>
+<span class="ticker-item"><span class="t-name">누리네트웍스</span><span class="t-val">No.1 Payment Service</span></span>
+<span class="ticker-item"><span class="t-news">📞 1544-7754</span></span>
+<span class="ticker-item"><span class="t-name">누리네트웍스</span><span class="t-val">No.1 Payment Service</span></span>
+<span class="ticker-item"><span class="t-news">📞 1544-7754</span></span>
+</div></div></div>
+<div class="footer-copy">&copy; 2026 Nurinetworks. All rights reserved.</div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// Tabs
-document.querySelectorAll('.tab-btn').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-        document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-        document.querySelectorAll('.tab-content').forEach(s=>s.classList.remove('active'));
-        btn.classList.add('active');
-        document.getElementById(btn.dataset.tab).classList.add('active');
-    });
-});
-
-// Consent toggle
-function toggleConsent(el){
-    const c=el.querySelector('.consent-check');
-    c.classList.toggle('checked');
-    updateSubmit();
+<style>@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}</style>
+<script>
+function updBtn(){
+var n=document.getElementById('bizName').value.trim();
+var p=document.getElementById('phone').value.trim();
+var c=document.getElementById('cbox').classList.contains('checked');
+var b=document.getElementById('submitBtn');
+if(n&&p&&c){b.classList.add('on');}else{b.classList.remove('on');}
 }
-
-// Form validation
-function updateSubmit(){
-    const name=document.getElementById('bizName').value.trim();
-    const phone=document.getElementById('phone').value.trim();
-    const consent=document.getElementById('consentCheck').classList.contains('checked');
-    const btn=document.getElementById('submitBtn');
-    if(name&&phone&&consent){btn.classList.remove('disabled');btn.classList.add('enabled');}
-    else{btn.classList.remove('enabled');btn.classList.add('disabled');}
+document.querySelectorAll('.fi').forEach(function(i){i.addEventListener('input',updBtn);});
+function doSubmit(){
+var b=document.getElementById('submitBtn');
+if(!b.classList.contains('on'))return;
+document.getElementById('formBox').style.display='none';
+document.getElementById('formOk').classList.add('show');
+document.getElementById('formOk').style.display='block';
 }
-document.querySelectorAll('.form-input').forEach(i=>i.addEventListener('input',updateSubmit));
-
-// Submit
-function submitForm(){
-    const btn=document.getElementById('submitBtn');
-    if(btn.classList.contains('disabled'))return;
+/* TICKER LIVE */
+fetch('https://api.coingecko.com/api/v3/simple/price?ids=tether&vs_currencies=krw').then(function(r){return r.json();}).then(function(d){
+if(d.tether){var rate=Math.round(d.tether.krw);var tk=document.getElementById('tickerTrack');
+var h='<span class="ticker-item"><span class="t-name">USD/KRW</span><span class="t-val">'+rate.toLocaleString()+'</span></span>';
+h+='<span class="ticker-item"><span class="t-name">누리네트웍스</span><span class="t-val">No.1 Payment Service</span></span>';
+h+='<span class="ticker-item"><span class="t-news">📞 1544-7754 상담문의</span></span>';
+tk.innerHTML=h+h+h+h;}
+}).catch(function(){});
 </script>
 </body>
 </html>
