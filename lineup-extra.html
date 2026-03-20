@@ -159,9 +159,9 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <div class="iso-front"></div>
 <div class="iso-top">
 <div class="obj-area">
-<div class="ob" style="animation:obPop .7s ease .5s forwards"><span class="ob-icon">🗄️</span><span class="ob-label">금전함</span></div>
-<div class="ob" style="animation:obPop .7s ease .7s forwards"><span class="ob-icon">🖥️</span><span class="ob-label">고객모니터</span></div>
-<div class="ob" style="animation:obPop .7s ease .9s forwards"><span class="ob-icon">📡</span><span class="ob-label">핸드스캐너</span></div>
+<div class="ob" data-delay="0.5"><span class="ob-icon">🗄️</span><span class="ob-label">금전함</span></div>
+<div class="ob" data-delay="0.7"><span class="ob-icon">🖥️</span><span class="ob-label">고객모니터</span></div>
+<div class="ob" data-delay="0.9"><span class="ob-icon">📡</span><span class="ob-label">핸드스캐너</span></div>
 <div class="ob" data-delay="1.1"><span class="ob-icon">💳</span><span class="ob-label">IC리더기</span></div>
 <div class="ob" data-delay="1.3"><span class="ob-icon">🧾</span><span class="ob-label">전표</span></div>
 <div class="ob" data-delay="1.5"><span class="ob-icon">📶</span><span class="ob-label">공유기</span></div>
@@ -311,18 +311,19 @@ window.addEventListener('resize',reposition);
 })();
 
 
-/* 3D OBJECTS REPEAT every 15s */
-function playObjects(){
-document.querySelectorAll('.ob').forEach(function(o,i){
-o.style.opacity='0';o.style.transform='translateY(20px) scale(0.3)';
-o.style.animation='none';
-void o.offsetWidth;
-var d=parseFloat(o.getAttribute('data-delay'))||0.5;
-o.style.animation='obPop .7s ease '+d+'s forwards,obFloat 2s ease '+(d+1.5)+'s infinite';
+/* 3D OBJECTS REPEAT every 10s */
+function playObjs(){
+var obs=document.querySelectorAll('.ob');
+obs.forEach(function(o){o.style.animation='none';o.style.opacity='0';o.style.transform='translateY(20px) scale(0.3)';});
+setTimeout(function(){
+obs.forEach(function(o,i){
+var d=0.3+i*0.2;
+o.style.animation='obPop .7s ease '+d+'s forwards, obFloat 2s ease '+(d+1.2)+'s infinite';
 });
+},50);
 }
-playObjects();
-setInterval(function(){playObjects();},15000);
+playObjs();
+setInterval(playObjs,10000);
 </script>
 
 </body>

@@ -459,20 +459,26 @@ window.addEventListener('scroll',function(){if(!t){t=true;requestAnimationFrame(
 window.addEventListener('resize',function(){pos(false);});
 })();
 
-/* 3D HERO REPEAT every 15s */
+/* 3D HERO REPEAT every 10s */
 function replayHero(){
 var card=document.getElementById('isoCard');
 var hint=document.getElementById('isoHint');
 if(card){card.classList.remove('inserted');if(hint)hint.style.opacity='1';}
-document.querySelectorAll('.ob').forEach(function(o){o.classList.remove('pop');});
+var obs=document.querySelectorAll('.ob');
+obs.forEach(function(o){
+o.classList.remove('pop');
+o.style.animation='none';
+void o.offsetWidth;
+});
 setTimeout(function(){
 if(card){card.classList.add('inserted');if(hint)hint.style.opacity='0';}
-document.querySelectorAll('.ob').forEach(function(o,i){
+obs.forEach(function(o,i){
+o.style.animation='';
 setTimeout(function(){o.classList.add('pop');},200+i*80);
 });
 },1000);
 }
-setInterval(replayHero,15000);
+setInterval(replayHero,10000);
 </script>
 
 </body>
