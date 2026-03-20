@@ -77,9 +77,11 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 .feat-sec{background:transparent;padding:100px 0;}
 .feat-inner{max-width:1200px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
 .feat-header{text-align:center;margin-bottom:48px;}.feat-header h2{font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:8px;}
-.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:800px;margin:0 auto;}
-.feat-card{display:flex;gap:14px;padding:18px;border-radius:14px;background:#f5f5f7;border:1px solid rgba(0,0,0,0.03);transition:all .3s;}
-.feat-card:hover{background:#fff;box-shadow:0 4px 20px rgba(0,0,0,0.06);transform:translateY(-2px);}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1200px;margin:0 auto;}
+.feat-card{padding:36px 30px;border-radius:24px;background:#fff;border:1.5px solid rgba(0,0,0,0.04);box-shadow:0 4px 16px rgba(0,0,0,0.04);transition:all .4s cubic-bezier(0.34,1.56,0.64,1);}
+.feat-card:hover{border-color:var(--primary);transform:translateY(-6px);box-shadow:0 12px 32px rgba(27,58,140,0.08);}
+.feat-card h4{font-size:1.05rem;font-weight:800;margin-bottom:8px;}
+.feat-card p{font-size:.88rem;color:var(--gray);line-height:1.7;}
 .fc-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .fc-text h4{font-size:0.88rem;font-weight:700;margin-bottom:4px;}
 .fc-text p{font-size:0.78rem;color:var(--gray);line-height:1.5;}
@@ -149,7 +151,7 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 .footer-mini{background:#f5f5f7;text-align:center;padding:32px 40px;font-size:0.78rem;color:var(--gray);border-top:1px solid rgba(0,0,0,0.06);}
 .footer-mini a{color:var(--primary);text-decoration:none;font-weight:600;}
 
-@media(max-width:1024px){.feat-grid{grid-template-columns:1fr;}.install-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:1024px){.feat-grid{grid-template-columns:1fr 1fr;}.install-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:768px){.nav-links{display:none;}.hero h1{font-size:2.6rem;}.ap-card{min-height:420px;padding:36px 28px 0;}.ap-img-wrap img{max-height:260px;}.vs-sec{padding:80px 0 60px;}.install-grid{grid-template-columns:1fr;}.spec-table{font-size:0.82rem;}.sec-inner,.vs-inner,.feat-inner,.spec-inner,.install-inner{padding:0 24px;}}
 
 
@@ -215,7 +217,7 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 </div>
 <div class="vs-grid reveal">
 <div class="img-card">
-<div class="img-card-bg" style="background-image:url('kiosk-product-1.png');background-color:#1a1a2e;background-size:contain;background-repeat:no-repeat;"></div>
+<div class="img-card-bg" style="background-image:url('field-kiosk-cafe.jpg');background-size:cover;"></div>
 <div class="img-card-content">
 <span class="img-card-tag">정부 공식 인증</span>
 <h3>배리어프리 키오스크</h3>
@@ -241,12 +243,12 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <h2>제품 특징</h2>
 </div>
 <div class="feat-grid reveal">
-<div class="feat-card"><div class="fc-icon" style="background:#E6F1FB;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#185FA5" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></div><div class="fc-text"><h4>점자 라벨 & 촉각 키패드</h4><p>시각장애인이 직접 터치하고 주문할 수 있는 설계</p></div></div>
-<div class="feat-card"><div class="fc-icon" style="background:#FAEEDA;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#854F0B" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div><div class="fc-text"><h4>음성 안내 (이어잭)</h4><p>시각장애인을 위한 표준 이어폰 단자 및 음량 조절</p></div></div>
-<div class="feat-card"><div class="fc-icon" style="background:#E1F5EE;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="fc-text"><h4>저자세 모드 (휠체어)</h4><p>휠체어 사용자가 접근 가능한 높이 조절형 UI</p></div></div>
-<div class="feat-card"><div class="fc-icon" style="background:#FBEAF0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#993556" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div><div class="fc-text"><h4>고대비 모드 & 화면 확대</h4><p>저시력자·노인을 위한 명암 대비 강화 기능</p></div></div>
-<div class="feat-card"><div class="fc-icon" style="background:#EEEDFE;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#534AB7" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><div class="fc-text"><h4>21.5" FHD 디스플레이</h4><p>넓고 선명한 화면으로 직관적인 주문 경험</p></div></div>
-<div class="feat-card"><div class="fc-icon" style="background:#EAF0FF;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B3A8C" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="fc-text"><h4>멀티패드 본체 매립형</h4><p>어린이 충돌사고 방지를 위한 안전 설계</p></div></div>
+<div class="feat-card"><div class="fc-icon" style="background:#E6F1FB;width:60px;height:60px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:1.8rem;">⠿</div><h4>점자 라벨 & 촉각 키패드</h4><p>시각장애인이 직접 터치하고 주문할 수 있는 설계</p></div>
+<div class="feat-card"><div class="fc-icon" style="background:#FAEEDA;width:60px;height:60px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:1.8rem;">🔊</div><h4>음성 안내 (이어잭)</h4><p>시각장애인을 위한 표준 이어폰 단자 및 음량 조절</p></div>
+<div class="feat-card"><div class="fc-icon" style="background:#E1F5EE;width:60px;height:60px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:1.8rem;">♿</div><h4>저자세 모드 (휠체어)</h4><p>휠체어 사용자가 접근 가능한 높이 조절형 UI</p></div>
+<div class="feat-card"><div class="fc-icon" style="background:#FBEAF0;width:60px;height:60px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:1.8rem;">🔍</div><h4>고대비 모드 & 화면 확대</h4><p>저시력자·노인을 위한 명암 대비 강화 기능</p></div>
+<div class="feat-card"><div class="fc-icon" style="background:#EEEDFE;width:60px;height:60px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:1.8rem;">🖥️</div><h4>21.5" FHD 디스플레이</h4><p>넓고 선명한 화면으로 직관적인 주문 경험</p></div>
+<div class="feat-card"><div class="fc-icon" style="background:#EAF0FF;width:60px;height:60px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:1.8rem;">🛡️</div><h4>멀티패드 본체 매립형</h4><p>어린이 충돌사고 방지를 위한 안전 설계</p></div>
 </div>
 </div>
 </section>
