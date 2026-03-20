@@ -182,7 +182,7 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 /* RESPONSIVE */
 @media(max-width:1024px){.vs-grid{grid-template-columns:1fr;gap:24px;}.ap-card{min-height:480px;}.feat-cols,.nova-hl-grid{grid-template-columns:1fr;gap:32px;}.install-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:768px){.nav-links{display:none;}.sec{padding:80px 0;}.sec-inner,.vs-inner,.feat-inner,.spec-inner,.install-inner{padding:0 24px;}.hero h1{font-size:2.6rem;}.ap-card{min-height:420px;padding:36px 28px 0;}.ap-img-wrap img{max-height:260px;}.vs-sec{padding:80px 0 60px;}.install-grid{grid-template-columns:1fr;}.spec-table{font-size:0.82rem;}}
-.nav-store{border:none!important;background:none!important;color:rgba(255,255,255,0.7)!important;padding:10px 20px;border-radius:8px;font-weight:700!important;font-size:1rem!important;letter-spacing:0.02em;transition:all .25s!important;position:relative;cursor:pointer;}
+
 .nav-store::after{content:'';position:absolute;bottom:4px;left:50%;width:0;height:2.5px;background:#FFD54F;border-radius:2px;transition:all .3s cubic-bezier(0.34,1.56,0.64,1);transform:translateX(-50%);}
 .nav-store:hover{color:#fff!important;}.nav-store:hover::after{width:60%;}
 .nav-store:active,.nav-store.on{color:#FFD54F!important;}.nav-store:active::after,.nav-store.on::after{width:80%;background:#FFD54F;}
@@ -192,16 +192,24 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 .header.scrolled .nav-store:active,.header.scrolled .nav-store.on{color:var(--primary)!important;}
 
 .nav-drop{position:relative;}
-.nav-drop .drop-menu{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:#fff;border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,.12);padding:12px 0;min-width:200px;z-index:999;border:1px solid rgba(0,0,0,.06);}
+.nav-drop .drop-menu{display:none;position:absolute;top:100%;left:0;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,.15);padding:12px 0;min-width:200px;z-index:999;border:1px solid rgba(0,0,0,.06);}
 .nav-drop:hover .drop-menu{display:block;}
-.drop-menu a{display:block;padding:10px 24px;font-size:.85rem;font-weight:600;color:#1d1d1f;text-decoration:none;transition:all .15s;}
+.drop-menu a{display:block;padding:10px 24px;font-size:.82rem;font-weight:600;color:#1d1d1f!important;text-decoration:none;transition:all .15s;}
 .drop-menu a:hover{background:rgba(27,58,140,.06);color:#1B3A8C;}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav class="nav" id="mainNav"><a href="index.html" class="nav-store">HOME</a><a href="about.html" class="nav-store">회사소개</a><div class="nav-drop"><a href="lineup.html" class="nav-store">제품라인업</a><div class="drop-menu"><a href="lineup-pos.html">포스 POS</a><a href="lineup-kiosk.html">배리어프리 키오스크</a><a href="lineup-order.html">테이블오더/QR오더</a><a href="lineup-software.html">소프트웨어</a><a href="lineup-signpad.html">토스/네이버 단말기</a><a href="lineup-terminal.html">유무선 카드단말기</a><a href="lineup-pg.html">PG 온오프라인결제</a><a href="lineup-extra.html">부가장비</a></div></div><a href="support.html" class="nav-store">구매스토어</a></nav>
+<nav class="nav" id="mainNav"><div class="nav-inner">
+<a href="index.html" class="nav-logo"><span class="nl">N</span><span class="nt"><b>nuri</b>networkspay</span></a>
+<div class="nav-links">
+<a href="index.html">HOME</a>
+<a href="about.html">회사소개</a>
+<div class="nav-drop" style="display:inline-block;position:relative;"><a href="lineup.html">제품라인업 ▾</a><div class="drop-menu"><a href="lineup-pos.html">포스 POS</a><a href="lineup-kiosk.html">배리어프리 키오스크</a><a href="lineup-order.html">테이블오더/QR오더</a><a href="lineup-software.html">소프트웨어</a><a href="lineup-signpad.html">토스/네이버 단말기</a><a href="lineup-terminal.html">유무선 카드단말기</a><a href="lineup-pg.html">PG 온오프라인결제</a><a href="lineup-extra.html">부가장비</a></div></div>
+<a href="support.html">구매스토어</a>
+</div>
+</div></nav>
 
 <!-- HERO -->
 <section class="hero">
@@ -369,9 +377,9 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 </div></div></div>
 <style>@keyframes tickS{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .nav-drop{position:relative;}
-.nav-drop .drop-menu{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:#fff;border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,.12);padding:12px 0;min-width:200px;z-index:999;border:1px solid rgba(0,0,0,.06);}
+.nav-drop .drop-menu{display:none;position:absolute;top:100%;left:0;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,.15);padding:12px 0;min-width:200px;z-index:999;border:1px solid rgba(0,0,0,.06);}
 .nav-drop:hover .drop-menu{display:block;}
-.drop-menu a{display:block;padding:10px 24px;font-size:.85rem;font-weight:600;color:#1d1d1f;text-decoration:none;transition:all .15s;}
+.drop-menu a{display:block;padding:10px 24px;font-size:.82rem;font-weight:600;color:#1d1d1f!important;text-decoration:none;transition:all .15s;}
 .drop-menu a:hover{background:rgba(27,58,140,.06);color:#1B3A8C;}
 </style>
 <div style="text-align:center;padding:24px;font-size:.78rem;color:#86868b;background:#f5f5f7;">&copy; 2026 Nurinetworks. All rights reserved.</div>
