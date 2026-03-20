@@ -458,6 +458,21 @@ var t=false;
 window.addEventListener('scroll',function(){if(!t){t=true;requestAnimationFrame(function(){pos(false);t=false;});}},{passive:true});
 window.addEventListener('resize',function(){pos(false);});
 })();
+
+/* 3D HERO REPEAT every 15s */
+function replayHero(){
+var card=document.getElementById('isoCard');
+var hint=document.getElementById('isoHint');
+if(card){card.classList.remove('inserted');if(hint)hint.style.opacity='1';}
+document.querySelectorAll('.ob').forEach(function(o){o.classList.remove('pop');});
+setTimeout(function(){
+if(card){card.classList.add('inserted');if(hint)hint.style.opacity='0';}
+document.querySelectorAll('.ob').forEach(function(o,i){
+setTimeout(function(){o.classList.add('pop');},200+i*80);
+});
+},1000);
+}
+setInterval(replayHero,15000);
 </script>
 
 </body>

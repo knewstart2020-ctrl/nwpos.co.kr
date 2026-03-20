@@ -162,9 +162,9 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <div class="ob" style="animation:obPop .7s ease .5s forwards"><span class="ob-icon">🗄️</span><span class="ob-label">금전함</span></div>
 <div class="ob" style="animation:obPop .7s ease .7s forwards"><span class="ob-icon">🖥️</span><span class="ob-label">고객모니터</span></div>
 <div class="ob" style="animation:obPop .7s ease .9s forwards"><span class="ob-icon">📡</span><span class="ob-label">핸드스캐너</span></div>
-<div class="ob" style="animation:obPop .7s ease 1.1s forwards,obFloat 2s ease 2.6s infinite"><span class="ob-icon">💳</span><span class="ob-label">IC리더기</span></div>
-<div class="ob" style="animation:obPop .7s ease 1.3s forwards,obFloat 2s ease 2.8s infinite"><span class="ob-icon">🧾</span><span class="ob-label">전표</span></div>
-<div class="ob" style="animation:obPop .7s ease 1.5s forwards,obFloat 2s ease 3.0s infinite"><span class="ob-icon">📶</span><span class="ob-label">공유기</span></div>
+<div class="ob" data-delay="1.1"><span class="ob-icon">💳</span><span class="ob-label">IC리더기</span></div>
+<div class="ob" data-delay="1.3"><span class="ob-icon">🧾</span><span class="ob-label">전표</span></div>
+<div class="ob" data-delay="1.5"><span class="ob-icon">📶</span><span class="ob-label">공유기</span></div>
 </div>
 </div>
 <div class="iso-brand">NURINETWORKS</div>
@@ -310,6 +310,19 @@ window.addEventListener('scroll',reposition,{passive:true});
 window.addEventListener('resize',reposition);
 })();
 
+
+/* 3D OBJECTS REPEAT every 15s */
+function playObjects(){
+document.querySelectorAll('.ob').forEach(function(o,i){
+o.style.opacity='0';o.style.transform='translateY(20px) scale(0.3)';
+o.style.animation='none';
+void o.offsetWidth;
+var d=parseFloat(o.getAttribute('data-delay'))||0.5;
+o.style.animation='obPop .7s ease '+d+'s forwards,obFloat 2s ease '+(d+1.5)+'s infinite';
+});
+}
+playObjects();
+setInterval(function(){playObjects();},15000);
 </script>
 
 </body>
