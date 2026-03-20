@@ -152,15 +152,25 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 
 @media(max-width:1024px){.feat-compare{grid-template-columns:1fr 1fr;}.cg-top{grid-template-columns:repeat(2,1fr);}.cg-bot{grid-template-columns:repeat(2,1fr);max-width:100%;}}
 @media(max-width:768px){.nav-links{display:none;}.sm-main{font-size:1.6rem;}.feat-compare{grid-template-columns:1fr;}.cg-top,.cg-bot{grid-template-columns:1fr;max-width:100%;}.feat-sec{padding:80px 0 60px;}}
+.nav-store{border:none!important;background:none!important;color:rgba(255,255,255,0.7)!important;padding:10px 20px;border-radius:8px;font-weight:700!important;font-size:1rem!important;letter-spacing:0.02em;transition:all .25s!important;position:relative;cursor:pointer;}
+.nav-store::after{content:'';position:absolute;bottom:4px;left:50%;width:0;height:2.5px;background:#FFD54F;border-radius:2px;transition:all .3s cubic-bezier(0.34,1.56,0.64,1);transform:translateX(-50%);}
+.nav-store:hover{color:#fff!important;}.nav-store:hover::after{width:60%;}
+.nav-store:active,.nav-store.on{color:#FFD54F!important;}.nav-store:active::after,.nav-store.on::after{width:80%;background:#FFD54F;}
+.header.scrolled .nav-store{color:rgba(0,0,0,0.5)!important;}
+.header.scrolled .nav-store::after{background:var(--primary);}
+.header.scrolled .nav-store:hover{color:#1d1d1f!important;}
+.header.scrolled .nav-store:active,.header.scrolled .nav-store.on{color:var(--primary)!important;}
+
+.nav-drop{position:relative;}
+.nav-drop .drop-menu{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:#fff;border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,.12);padding:12px 0;min-width:200px;z-index:999;border:1px solid rgba(0,0,0,.06);}
+.nav-drop:hover .drop-menu{display:block;}
+.drop-menu a{display:block;padding:10px 24px;font-size:.85rem;font-weight:600;color:#1d1d1f;text-decoration:none;transition:all .15s;}
+.drop-menu a:hover{background:rgba(27,58,140,.06);color:#1B3A8C;}
 </style>
 </head>
 <body>
 
-<nav class="nav" id="mainNav"><div class="nav-inner">
-<a href="index.html" class="nav-logo"><span class="nl">N</span><span class="nt"><b>nuri</b>networkspay</span></a>
-<span class="nav-product">프로그램/소프트웨어</span>
-<div class="nav-links"><a href="index.html">홈</a><a href="index.html#products">제품 라인업</a><a href="about.html">회사소개</a><a href="tel:1544-7754" class="nav-cta">1544-7754</a></div>
-</div></nav>
+<nav class="nav" id="mainNav"><a href="index.html" class="nav-store">HOME</a><a href="about.html" class="nav-store">회사소개</a><div class="nav-drop"><a href="lineup.html" class="nav-store">제품라인업</a><div class="drop-menu"><a href="lineup-pos.html">포스 POS</a><a href="lineup-kiosk.html">배리어프리 키오스크</a><a href="lineup-order.html">테이블오더/QR오더</a><a href="lineup-software.html">소프트웨어</a><a href="lineup-signpad.html">토스/네이버 단말기</a><a href="lineup-terminal.html">유무선 카드단말기</a><a href="lineup-pg.html">PG 온오프라인결제</a><a href="lineup-extra.html">부가장비</a></div></div><a href="support.html" class="nav-store">구매스토어</a></nav>
 
 <!-- HERO -->
 <section class="hero">
@@ -348,7 +358,22 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 
 <div class="mascot-fixed" id="mascotFixed"><img src="mascot-heart.png" alt="mascot"></div>
 
-<div class="footer-mini"><a href="index.html">← 누리네트웍스 홈으로 돌아가기</a><br><br>© 2026 Nurinetworks. All rights reserved.</div>
+<div style="background:#1d1d1f;padding:10px 0;overflow:hidden;"><div style="overflow:hidden;"><div style="display:flex;gap:32px;animation:tickS 35s linear infinite;width:max-content;white-space:nowrap;">
+<span style="color:rgba(255,255,255,.4);font-size:.75rem;font-family:Inter,sans-serif;display:inline-flex;gap:6px;"><span>누리네트웍스</span><span style="color:#fff;font-weight:600;">No.1 Payment Service</span></span>
+<span style="color:rgba(255,255,255,.6);font-size:.75rem;font-family:Inter,sans-serif;">📞 1544-7754</span>
+<span style="color:rgba(255,255,255,.35);font-size:.75rem;font-family:Inter,sans-serif;">포스 · 배리어프리키오스크 · 테이블오더 · QR오더 · 소프트웨어 · 토스 · 사인패드 · 유선단말기 · 무선단말기 · PG · 부가장비</span>
+<span style="color:rgba(255,255,255,.4);font-size:.75rem;font-family:Inter,sans-serif;display:inline-flex;gap:6px;"><span>누리네트웍스</span><span style="color:#fff;font-weight:600;">No.1 Payment Service</span></span>
+<span style="color:rgba(255,255,255,.6);font-size:.75rem;font-family:Inter,sans-serif;">📞 1544-7754</span>
+<span style="color:rgba(255,255,255,.35);font-size:.75rem;font-family:Inter,sans-serif;">포스 · 배리어프리키오스크 · 테이블오더 · QR오더 · 소프트웨어 · 토스 · 사인패드 · 유선단말기 · 무선단말기 · PG · 부가장비</span>
+</div></div></div>
+<style>@keyframes tickS{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.nav-drop{position:relative;}
+.nav-drop .drop-menu{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:#fff;border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,.12);padding:12px 0;min-width:200px;z-index:999;border:1px solid rgba(0,0,0,.06);}
+.nav-drop:hover .drop-menu{display:block;}
+.drop-menu a{display:block;padding:10px 24px;font-size:.85rem;font-weight:600;color:#1d1d1f;text-decoration:none;transition:all .15s;}
+.drop-menu a:hover{background:rgba(27,58,140,.06);color:#1B3A8C;}
+</style>
+<div style="text-align:center;padding:24px;font-size:.78rem;color:#86868b;background:#f5f5f7;">&copy; 2026 Nurinetworks. All rights reserved.</div>
 
 <script>
 window.addEventListener('scroll',function(){document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>80);});
@@ -390,5 +415,6 @@ window.addEventListener('scroll',function(){
   if(m)m.classList.toggle('show',window.scrollY>window.innerHeight*0.5);
 },{passive:true});
 </script>
+
 </body>
 </html>
