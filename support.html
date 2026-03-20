@@ -99,20 +99,21 @@ select.fi{appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns='
 </select>
 <input class="fi" type="text" id="bizEtc" placeholder="업종을 직접 입력해 주세요" style="display:none;margin-top:8px;">
 </div>
-<div class="fg"><label class="fl">상담유형 <small>(중복 선택)</small></label>
-<div class="type-grid">
-<div class="type-btn" onclick="this.classList.toggle('selected')">포스</div>
-<div class="type-btn" onclick="this.classList.toggle('selected')">테이블오더</div>
-<div class="type-btn" onclick="this.classList.toggle('selected')">키오스크</div>
-<div class="type-btn" onclick="this.classList.toggle('selected')">유선단말기</div>
-<div class="type-btn" onclick="this.classList.toggle('selected')">무선단말기</div>
-<div class="type-btn" onclick="this.classList.toggle('selected')">토스단말기</div>
-<div class="type-btn" onclick="this.classList.toggle('selected')">네이버단말기</div>
-<div class="type-btn" onclick="this.classList.toggle('selected')">온라인PG</div>
-<div class="type-btn" onclick="this.classList.toggle('selected')">오프라인PG</div>
-<div class="type-btn" onclick="this.classList.toggle('selected')">프랜차이즈</div>
-<div class="type-btn" onclick="this.classList.toggle('selected')">제휴상담</div>
-</div></div>
+<div class="fg"><label class="fl">상담유형</label>
+<select class="fi" id="consultType">
+<option value="" disabled selected>상담유형을 선택하세요</option>
+<option value="포스">포스</option>
+<option value="테이블오더">테이블오더</option>
+<option value="키오스크">키오스크</option>
+<option value="유선단말기">유선단말기</option>
+<option value="무선단말기">무선단말기</option>
+<option value="토스단말기">토스단말기</option>
+<option value="네이버단말기">네이버단말기</option>
+<option value="온라인PG">온라인PG</option>
+<option value="오프라인PG">오프라인PG</option>
+<option value="프랜차이즈">프랜차이즈</option>
+<option value="제휴상담">제휴상담</option>
+</select></div>
 <div class="fg"><label class="fl">상담가능시간</label>
 <div class="time-grid">
 <div class="time-btn" onclick="this.classList.toggle('selected')">10시~11시</div>
@@ -169,13 +170,32 @@ document.getElementById('formCard').style.pointerEvents='none';
 document.getElementById('formOk').style.display='block';
 /* TODO: 네이버웍스 Webhook + 구글시트 연동 예정 */
 }
-fetch('https://api.coingecko.com/api/v3/simple/price?ids=tether&vs_currencies=krw').then(function(r){return r.json();}).then(function(d){
-if(d.tether){var rate=Math.round(d.tether.krw);var tk=document.getElementById('tickerTrack');
-var h='<span class="ticker-item"><span class="t-name">USD/KRW</span><span class="t-val">'+rate.toLocaleString()+'</span></span>';
-h+='<span class="ticker-item"><span class="t-name">누리네트웍스</span><span class="t-val">No.1 Payment Service</span></span>';
-h+='<span class="ticker-item"><span class="t-news">📞 1544-7754</span></span>';
-tk.innerHTML=h+h+h+h;}
-}).catch(function(){});
+(async function(){
+var tk=document.getElementById('tickerTrack');
+var items=[{n:'누리네트웍스',v:'No.1 Payment Service'},{n:'📞',v:'1544-7754'}];
+try{
+var r=await fetch('https://api.coingecko.com/api/v3/simple/price?ids=tether,bitcoin,ethereum&vs_currencies=krw,usd');
+var d=await r.json();
+if(d.tether)items.push({n:'USD/KRW',v:Math.round(d.tether.krw).toLocaleString()});
+}catch(e){}
+try{
+var r2=await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin&sparkline=false');
+var d2=await r2.json();
+}catch(e){}
+items.push({n:'코스피',v:'—'},{n:'코스닥',v:'—'},{n:'다우존스',v:'—'},{n:'S&P 500',v:'—'},{n:'나스닥100',v:'—'});
+var news=['📰 주요뉴스 로딩중...'];
+try{
+var r3=await fetch('https://news.google.com/rss/search?q=%EA%B2%BD%EC%A0%9C&hl=ko&gl=KR&ceid=KR:ko');
+var txt=await r3.text();
+var p=new DOMParser().parseFromString(txt,'text/xml');
+var it=p.querySelectorAll('item');
+news=[];for(var i=0;i<Math.min(it.length,5);i++){var t=it[i].querySelector('title');if(t)news.push(t.textContent.split(' - ')[0].trim());}
+}catch(e){}
+var h='';
+items.forEach(function(x){h+='<span class="ticker-item"><span class="t-name">'+x.n+'</span><span class="t-val">'+x.v+'</span></span>';});
+news.forEach(function(x){h+='<span class="ticker-item"><span class="t-news">'+x+'</span></span>';});
+tk.innerHTML=h+h;
+})();
 </script>
 </body>
 </html>
