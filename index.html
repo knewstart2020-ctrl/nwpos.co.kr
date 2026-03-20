@@ -494,12 +494,6 @@
 <div class="footer-bottom-new">© 2026 Nurinetworks. All rights reserved.</div>
 </div>
 </footer>
-<!-- BOTTOM NAV -->
-<div style="display:flex;justify-content:center;background:linear-gradient(135deg,#162d6b,#1B3A8C);border-top:2px solid rgba(201,168,76,0.3);">
-<a href="about.html" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;padding:24px 16px;text-decoration:none;color:rgba(255,255,255,.65);font-weight:600;font-family:'Noto Sans KR',sans-serif;font-size:.85rem;transition:all .3s;" onmouseover="this.style.color='#C9A84C'" onmouseout="this.style.color='rgba(255,255,255,.65)'"><span style="font-size:1.4rem">&#127970;</span>회사소개</a>
-<a href="lineup.html" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;padding:24px 16px;text-decoration:none;color:rgba(255,255,255,.65);font-weight:600;font-family:'Noto Sans KR',sans-serif;font-size:.85rem;transition:all .3s;" onmouseover="this.style.color='#C9A84C'" onmouseout="this.style.color='rgba(255,255,255,.65)'"><span style="font-size:1.4rem">&#128230;</span>제품라인업</a>
-<a href="support.html#store" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;padding:24px 16px;text-decoration:none;color:rgba(255,255,255,.65);font-weight:600;font-family:'Noto Sans KR',sans-serif;font-size:.85rem;transition:all .3s;" onmouseover="this.style.color='#C9A84C'" onmouseout="this.style.color='rgba(255,255,255,.65)'"><span style="font-size:1.4rem">&#128722;</span>구매스토어</a>
-</div>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 document.body.classList.add('js-loaded');
 const ro=new IntersectionObserver(e=>{e.forEach((el,i)=>{if(el.isIntersecting){setTimeout(()=>el.target.classList.add('visible'),i*80);ro.unobserve(el.target);}});},{threshold:.12});
@@ -635,8 +629,16 @@ try{if(goldRes.status==='fulfilled'&&goldRes.value['tether-gold']){ecoItems.push
 try{if(newsRes.status==='fulfilled'){const xml=new DOMParser().parseFromString(newsRes.value,'text/xml');const items=xml.querySelectorAll('item');
 for(let i=0;i<Math.min(items.length,6);i++){const t=items[i].querySelector('title');if(t)newsItems.push(t.textContent.split(' - ')[0].trim());}
 }}catch(e){}
-if(ecoItems.length===0){ecoItems=[{n:'USD/KRW',v:'—'},{n:'코스피',v:'—'},{n:'코스닥',v:'—'},{n:'S&P 500',v:'—'},{n:'나스닥',v:'—'},{n:'다우존스',v:'—'}];}
-if(newsItems.length===0){newsItems=['경제뉴스를 불러오는 중입니다...'];}
-let h='';
-function buildOnce(){ecoItems.forEach(it=>{h+='<span class="ticker-item"><span class="t-name">'+it.n+'</span><span class="t-val">'+it.v+'</span>';if(it.c)h+='<span class="'+(it.up?'t-up':'t-down')+'">'+it.c+'</span>';h+='</span>';});
-h+='<span class="ticker-item"><span class="t-dot">│</span><span class="t-news">📰 주요뉴스</
+var tk=document.getElementById('tickerTrack');
+if(tk){
+var txt='';
+ecoItems.forEach(function(it){txt+='<span class="ticker-item"><span class="t-name">'+it.n+'</span><span class="t-val">'+it.v+'</span></span>';});
+newsItems.forEach(function(n){txt+='<span class="ticker-item"><span class="t-news">'+n+'</span></span>';});
+tk.innerHTML=txt+txt;
+}
+}
+loadTicker();
+</script>
+<script src="nuri-extra.js"></script>
+</body>
+</html>
