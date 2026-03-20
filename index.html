@@ -219,10 +219,16 @@
         .fb.ph{background:var(--primary);color:#fff;}.fb.tp{background:#fff;color:var(--dark);font-size:1.1rem;width:44px;height:44px;}
         @media(max-width:1024px){.hero h1{font-size:2.2rem;}.hero-brand-en{font-size:3.5rem;}.products-grid{grid-template-columns:repeat(2,1fr);}.solutions-grid{grid-template-columns:repeat(2,1fr);}.footer-top-new{grid-template-columns:1fr;}.sg{grid-template-columns:1fr;}.why-grid{grid-template-columns:repeat(2,1fr);}}
         @media(max-width:768px){.nav{display:none;}.mobile-toggle{display:flex;}.nav.open{display:flex;flex-direction:column;position:absolute;top:76px;left:0;right:0;background:rgba(0,0,0,0.95);padding:24px 40px;border-bottom:1px solid rgba(255,255,255,0.1);}.hero-inner{padding:60px 24px;}.hero h1{font-size:1.8rem;}.hero-slide-product{right:5%;bottom:5%;}.hero-slide-product img{height:150px!important;}.hero-slide-label{left:20px;bottom:70px;font-size:0.75rem;padding:8px 16px;}.hero-brand-en{font-size:2.8rem;}.section{padding:64px 0;}.section-inner{padding:0 24px;}.section-title{font-size:1.9rem;}.products-grid,.solutions-grid,.why-grid{grid-template-columns:1fr;}.why-card{padding:22px;}.why-section{padding:64px 0;}.why-inner{padding:0 24px;}.why-header h2{font-size:1.9rem;}.cat-tabs{gap:6px;}.cat-tab{padding:8px 16px;font-size:0.8rem;}.footer-top-new{grid-template-columns:1fr;gap:24px;}.footer-bottom-new{text-align:center;}.cta-inner h2{font-size:1.8rem;}.mb{padding:24px;}.mcta{flex-direction:column;}.mcta .btn{text-align:center;justify-content:center;}}
-    </style>
+    
+.nav-drop-wrap{position:relative;display:inline-flex;}
+.nav-drop-wrap .drop-list{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.12);padding:10px 0;min-width:200px;z-index:999;border:1px solid rgba(0,0,0,.06);}
+.nav-drop-wrap:hover .drop-list{display:block;}
+.drop-list a{display:block;padding:9px 22px;font-size:.82rem;font-weight:600;color:#333;text-decoration:none;transition:all .15s;white-space:nowrap;}
+.drop-list a:hover{background:rgba(27,58,140,.06);color:#1B3A8C;}
+</style>
 </head>
 <body>
-<header class="header"><div class="header-inner"><a href="#" style="text-decoration:none;"><div class="lg"><span class="lg-n">N</span><div class="lg-right"><div class="lg-top"><span class="lg-nuri">nuri</span><span class="lg-nwp">networkspay</span><span class="lg-star lg-star-lg">✦</span></div><div class="lg-cc">credit&amp;cash</div></div></div></a><nav class="nav" id="nav"><a href="about.html" class="nav-store">회사소개</a><a href="lineup.html" class="nav-store">제품라인업</a><a href="support.html#store" class="nav-store">구매스토어</a></nav><div class="mobile-toggle" onclick="document.getElementById('nav').classList.toggle('open')"><span></span><span></span><span></span></div></div></header>
+<header class="header"><div class="header-inner"><a href="#" style="text-decoration:none;"><div class="lg"><span class="lg-n">N</span><div class="lg-right"><div class="lg-top"><span class="lg-nuri">nuri</span><span class="lg-nwp">networkspay</span><span class="lg-star lg-star-lg">✦</span></div><div class="lg-cc">credit&amp;cash</div></div></div></a><nav class="nav" id="nav"><a href="index.html" class="nav-store">HOME</a><a href="about.html" class="nav-store">회사소개</a><div class="nav-drop-wrap"><a href="lineup.html" class="nav-store">제품라인업 ▾</a><div class="drop-list"><a href="lineup-pos.html">포스 POS</a><a href="lineup-kiosk.html">배리어프리 키오스크</a><a href="lineup-order.html">테이블오더/QR오더</a><a href="lineup-software.html">소프트웨어</a><a href="lineup-signpad.html">토스/네이버 단말기</a><a href="lineup-terminal.html">유무선 카드단말기</a><a href="lineup-pg.html">PG 온오프라인결제</a><a href="lineup-extra.html">부가장비</a></div></div><a href="support.html#store" class="nav-store">구매스토어</a></nav><div class="mobile-toggle" onclick="document.getElementById('nav').classList.toggle('open')"><span></span><span></span><span></span></div></div></header>
 
 <section class="hero" id="hero">
 <div class="hs-slides" id="hsSlides">
@@ -366,6 +372,12 @@
 .why-mascot{position:absolute;top:-28px;right:12px;width:52px;height:52px;object-fit:contain;opacity:0;pointer-events:none;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.2));z-index:10;transition:opacity .3s;}
 .why-mascot.active{opacity:1;animation:mascotJump .6s cubic-bezier(.34,1.56,.64,1);}
 @keyframes mascotJump{0%{transform:translateY(30px) scale(0.5);opacity:0}40%{transform:translateY(-12px) scale(1.1);opacity:1}60%{transform:translateY(4px) scale(0.95)}100%{transform:translateY(0) scale(1);opacity:1}}
+
+.nav-drop-wrap{position:relative;display:inline-flex;}
+.nav-drop-wrap .drop-list{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.12);padding:10px 0;min-width:200px;z-index:999;border:1px solid rgba(0,0,0,.06);}
+.nav-drop-wrap:hover .drop-list{display:block;}
+.drop-list a{display:block;padding:9px 22px;font-size:.82rem;font-weight:600;color:#333;text-decoration:none;transition:all .15s;white-space:nowrap;}
+.drop-list a:hover{background:rgba(27,58,140,.06);color:#1B3A8C;}
 </style>
 
 <div class="mo"<div class="mo" id="mo" onclick="if(event.target===this)closeM()"><div class="mc" id="mc"></div></div>

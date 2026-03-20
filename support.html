@@ -60,12 +60,18 @@ select.fi{appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns='
 .footer-copy{text-align:center;padding:24px;font-size:.78rem;color:#86868b;background:#f5f5f7;}
 @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
 @media(max-width:768px){.main-grid{grid-template-columns:1fr;padding:40px 20px;}.nav{display:none;}.mobile-toggle{display:flex;}.nav.open{display:flex;flex-direction:column;position:absolute;top:68px;left:0;right:0;background:rgba(255,255,255,.98);padding:20px 40px;gap:4px;border-bottom:1px solid rgba(0,0,0,.06);}}
+
+.nav-drop-wrap{position:relative;display:inline-flex;}
+.nav-drop-wrap .drop-list{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.12);padding:10px 0;min-width:200px;z-index:999;border:1px solid rgba(0,0,0,.06);}
+.nav-drop-wrap:hover .drop-list{display:block;}
+.drop-list a{display:block;padding:9px 22px;font-size:.82rem;font-weight:600;color:#333;text-decoration:none;transition:all .15s;white-space:nowrap;}
+.drop-list a:hover{background:rgba(27,58,140,.06);color:#1B3A8C;}
 </style>
 </head>
 <body>
 <header class="header"><div class="header-inner">
 <a href="index.html" style="text-decoration:none"><div class="lg"><span class="lg-n">N</span><div class="lg-right"><div class="lg-top"><span class="lg-nuri">nuri</span><span class="lg-nwp">networkspay</span><span class="lg-star">&#10022;</span></div><div class="lg-cc">credit&amp;cash</div></div></div></a>
-<nav class="nav" id="nav"><a href="index.html" class="nav-store">HOME</a><a href="about.html" class="nav-store">회사소개</a><a href="lineup.html" class="nav-store">제품라인업</a><a href="support.html" class="nav-store on">구매스토어</a></nav>
+<nav class="nav" id="nav"><a href="index.html" class="nav-store">HOME</a><a href="about.html" class="nav-store">회사소개</a><div class="nav-drop-wrap"><a href="lineup.html" class="nav-store">제품라인업 ▾</a><div class="drop-list"><a href="lineup-pos.html">포스 POS</a><a href="lineup-kiosk.html">배리어프리 키오스크</a><a href="lineup-order.html">테이블오더/QR오더</a><a href="lineup-software.html">소프트웨어</a><a href="lineup-signpad.html">토스/네이버 단말기</a><a href="lineup-terminal.html">유무선 카드단말기</a><a href="lineup-pg.html">PG 온오프라인결제</a><a href="lineup-extra.html">부가장비</a></div></div><a href="support.html" class="nav-store on">구매스토어</a></nav>
 <div class="mobile-toggle" onclick="document.getElementById('nav').classList.toggle('open')"><span></span><span></span><span></span></div>
 </div></header>
 <section class="page-hero"><h1>구매스토어</h1><p>상담 신청부터 제품 구매까지, 누리네트웍스가 도와드립니다.</p></section>
