@@ -650,6 +650,7 @@ track.innerHTML=h;
 }
 loadTicker();
 
+
 /* MASCOT JUMP CYCLE */
 var whyObs=new IntersectionObserver(function(entries){entries.forEach(function(e){
 if(e.isIntersecting){
@@ -657,4 +658,15 @@ var mascots=document.querySelectorAll('.why-mascot');
 var idx=0;
 function jumpNext(){
 mascots.forEach(function(m){m.classList.remove('active');});
-mascots[idx].classList.a
+mascots[idx].classList.add('active');
+idx=(idx+1)%mascots.length;
+}
+jumpNext();
+setInterval(jumpNext,2000);
+whyObs.unobserve(e.target);
+}});},{threshold:0.2});
+var whySec=document.getElementById('about');
+if(whySec)whyObs.observe(whySec);
+</script>
+</body>
+</html>
