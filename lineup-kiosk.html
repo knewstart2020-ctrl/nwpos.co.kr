@@ -84,6 +84,22 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 .fc-text h4{font-size:0.88rem;font-weight:700;margin-bottom:4px;}
 .fc-text p{font-size:0.78rem;color:var(--gray);line-height:1.5;}
 
+
+/* IMG CARD (order style) */
+.vs-grid{display:grid;grid-template-columns:1fr;gap:24px;max-width:600px;margin:0 auto;}
+.img-card{position:relative;border-radius:24px;overflow:hidden;height:560px;display:flex;flex-direction:column;justify-content:flex-end;transition:transform .5s cubic-bezier(0.16,1,0.3,1);}
+.img-card:hover{transform:translateY(-6px);}
+.img-card-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .8s cubic-bezier(0.16,1,0.3,1);}
+.img-card:hover .img-card-bg{transform:scale(1.05);}
+.img-card::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.88) 0%,rgba(0,0,0,0.5) 35%,rgba(0,0,0,0.15) 60%,rgba(0,0,0,0.08) 100%);z-index:1;}
+.img-card-content{position:relative;z-index:2;padding:40px 36px;}
+.img-card-tag{display:inline-block;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:14px;background:rgba(27,58,140,0.9);color:#fff;}
+.img-card h3{font-size:clamp(1.7rem,3vw,2.2rem);font-weight:900;color:#fff;letter-spacing:-0.03em;line-height:1.1;margin-bottom:10px;}
+.img-card-desc{font-size:0.92rem;color:rgba(255,255,255,0.7);line-height:1.7;margin-bottom:20px;}
+.img-card-features{display:flex;flex-wrap:wrap;gap:6px;}
+.img-card-feat{font-size:0.72rem;font-weight:600;padding:5px 12px;border-radius:50px;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);backdrop-filter:blur(4px);}
+@media(max-width:768px){.img-card{height:480px;}}
+
 /* SPEC TABLE */
 .spec-sec{background:transparent;padding:100px 0;}
 .spec-inner{max-width:800px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
@@ -197,13 +213,21 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <h2>키오스크. 모두의 주문</h2>
 <p>장애인차별금지법 대응, 정부 공식 인증 배리어프리 키오스크</p>
 </div>
-<div class="reveal">
-<div class="ap-card ap-card-dark">
-<div class="ap-tag">정부 공식 인증</div>
+<div class="vs-grid reveal">
+<div class="img-card">
+<div class="img-card-bg" style="background-image:url('kiosk-product-1.png');background-color:#1a1a2e;background-size:contain;background-repeat:no-repeat;"></div>
+<div class="img-card-content">
+<span class="img-card-tag">정부 공식 인증</span>
 <h3>배리어프리 키오스크</h3>
-<p class="ap-sub">차별 없는 무인 주문의 새로운 기준</p>
-<p class="ap-price">21.5" FHD · 점자 · 음성 안내 · 저자세 모드</p>
-<div class="ap-img-wrap"><img src="kiosk-product-1.png" alt="배리어프리 키오스크"></div>
+<p class="img-card-desc">차별 없는 무인 주문의 새로운 기준<br>장애인차별금지법 완벽 대응</p>
+<div class="img-card-features">
+<span class="img-card-feat">21.5" FHD</span>
+<span class="img-card-feat">점자 라벨</span>
+<span class="img-card-feat">음성 안내</span>
+<span class="img-card-feat">저자세 모드</span>
+<span class="img-card-feat">다국어 4개국</span>
+</div>
+</div>
 </div>
 </div>
 </div>
