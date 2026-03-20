@@ -15,16 +15,16 @@ html{scroll-behavior:smooth;}
 body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
 
 /* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(0,0,0,0);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid transparent;transition:all .4s;}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.85);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,0.06);transition:all .4s;}
 .nav.scrolled{background:rgba(255,255,255,0.85);border-bottom-color:rgba(0,0,0,0.06);}
 .nav.scrolled .nl,.nav.scrolled .nav-product{color:#1d1d1f;}
 .nav.scrolled .nt{color:rgba(0,0,0,0.4);}.nav.scrolled .nt b{color:rgba(0,0,0,0.6);}
 .nav.scrolled .nav-links a{color:rgba(0,0,0,0.5);}.nav.scrolled .nav-links a:hover{color:#1d1d1f;}
 .nav-inner{max-width:1320px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:56px;}
 .nav-logo{display:flex;align-items:center;gap:6px;text-decoration:none;font-family:'Inter',sans-serif;}
-.nl{font-size:1.6rem;font-weight:700;color:#fff;text-shadow:1px 1px 0 rgba(0,0,0,0.3);transition:color .4s;}
+.nl{font-size:1.6rem;font-weight:700;color:#1d1d1f;text-shadow:none;transition:color .4s;}
 .nt{font-size:0.7rem;color:rgba(255,255,255,0.5);font-weight:300;transition:color .4s;}.nt b{font-weight:600;color:rgba(0,0,0,0.25);transition:color .4s;}
-.nav-product{font-size:0.95rem;font-weight:700;color:#fff;letter-spacing:-0.02em;transition:color .4s;}
+.nav-product{font-size:0.95rem;font-weight:700;color:#1d1d1f;letter-spacing:-0.02em;transition:color .4s;}
 .nav-links{display:flex;gap:16px;align-items:center;}
 .nav-links a{font-size:0.78rem;color:var(--gray);text-decoration:none;font-weight:500;transition:color .2s;}.nav-links a:hover{color:#fff;}
 .nav-cta{background:var(--primary);color:#fff!important;padding:7px 18px;border-radius:50px;font-weight:600!important;}
@@ -58,7 +58,7 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 .hero-copy{font-size:clamp(0.92rem,1.8vw,1.12rem);color:var(--gray);line-height:2;font-weight:300;max-width:580px;margin:0 auto;opacity:0;animation:fadeUp 1s ease 4s forwards;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 .hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(0,0,0,0.25);font-size:0.75rem;font-weight:500;letter-spacing:0.15em;animation:scrollBounce 2s ease-in-out infinite;}
-.hero-scroll-line{width:1.5px;height:48px;background:linear-gradient(to bottom,rgba(255,255,255,0.7),transparent);border-radius:1px;}
+.hero-scroll-line{width:1.5px;height:48px;background:linear-gradient(to bottom,rgba(0,0,0,0.25),transparent);border-radius:1px;}
 @keyframes scrollBounce{0%,100%{opacity:0.5;transform:translateX(-50%) translateY(0);}50%{opacity:1;transform:translateX(-50%) translateY(8px);}}
 
 /* FLOWING BG */
@@ -67,7 +67,7 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 
 /* FLOATING TEXT */
 .hero-float-text{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;}
-.hft{position:absolute;font-family:'Inter',sans-serif;font-weight:900;white-space:nowrap;color:rgba(0,0,0,0.03);letter-spacing:0.05em;text-transform:uppercase;}
+.hft{position:absolute;font-family:'Inter',sans-serif;font-weight:900;white-space:nowrap;color:rgba(0,0,0,0.04);letter-spacing:0.05em;text-transform:uppercase;}
 .hft-1{font-size:clamp(3rem,10vw,7rem);top:5%;animation:hftScroll 30s linear infinite;}
 .hft-2{font-size:clamp(2.5rem,8vw,5.5rem);top:30%;animation:hftScroll 35s linear infinite reverse;}
 .hft-3{font-size:clamp(2.5rem,8vw,6rem);top:55%;animation:hftScroll 38s linear infinite;}
@@ -308,14 +308,11 @@ var d=document.createElement('div');d.className='ob';
 d.innerHTML='<span class="ob-icon">'+o.e+'</span><span class="ob-label">'+o.l+'</span>';
 grid.appendChild(d);
 });
-var obs3d=new IntersectionObserver(function(entries){entries.forEach(function(e){
-if(e.isIntersecting){
+setTimeout(function(){
 document.querySelectorAll('.ob').forEach(function(o,i){
-setTimeout(function(){o.classList.add('pop');},200+i*120);
+setTimeout(function(){o.classList.add('pop');},300+i*150);
 });
-obs3d.unobserve(e.target);
-}});},{threshold:0.3});
-obs3d.observe(document.getElementById('hero3d'));
+},500);
 }
 </script>
 
