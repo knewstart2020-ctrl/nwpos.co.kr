@@ -360,13 +360,25 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <a href="https://map.naver.com/p/search/%EB%B6%80%EC%82%B0%EC%8B%9C%20%ED%95%B4%EC%9A%B4%EB%8C%80%EA%B5%AC%20%EC%84%BC%ED%85%80%EC%A4%91%EC%95%99%EB%A1%9C97" target="_blank" class="loc-map-btn">&#128205; 지도 보기</a>
 </div></div>
 </div>
-<div class="contact-row reveal">
-<a href="tel:1544-7754" class="contact-chip"><span class="contact-icon">&#128222;</span><strong>1544-7754</strong><span class="contact-label">대표번호</span></a>
-<a href="mailto:nuri@posone.co.kr" class="contact-chip"><span class="contact-icon">&#9993;&#65039;</span><strong>nuri@posone.co.kr</strong><span class="contact-label">이메일</span></a>
-</div>
 </div></section>
 
 </div><!-- /flow-bg -->
+<!-- UNIFIED CTA -->
+<div style="background:#f5f5f7;padding:60px 20px 48px;text-align:center;">
+<h2 style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;color:#1d1d1f;margin-bottom:24px;font-family:'Noto Sans KR',sans-serif;">매장에 맞는 솔루션,<br>지금 상담 받아보세요</h2>
+<div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;">
+<a href="tel:1544-7754" style="display:flex;align-items:center;gap:10px;padding:16px 32px;background:linear-gradient(135deg,#1B3A8C,#2E5BDB);color:#fff;border-radius:16px;text-decoration:none;font-weight:700;font-size:1rem;font-family:'Noto Sans KR',sans-serif;box-shadow:0 8px 28px rgba(27,58,140,.3);transition:all .3s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''"><span style="font-size:1.4rem">&#128222;</span> 전화문의 1544-7754</a>
+<a href="http://pf.kakao.com/_xnxaxlxj" target="_blank" style="display:flex;align-items:center;gap:10px;padding:16px 32px;background:linear-gradient(135deg,#FAE100,#F5D800);color:#3C1E1E;border-radius:16px;text-decoration:none;font-weight:700;font-size:1rem;font-family:'Noto Sans KR',sans-serif;box-shadow:0 8px 28px rgba(250,225,0,.3);transition:all .3s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''"><span style="font-size:1.4rem">&#128172;</span> SNS문의</a>
+</div>
+<div style="display:flex;justify-content:center;gap:32px;margin-top:28px;flex-wrap:wrap;">
+<a href="about.html" style="color:#86868b;text-decoration:none;font-size:.88rem;font-weight:600;font-family:'Noto Sans KR',sans-serif;" onmouseover="this.style.color='#1B3A8C'" onmouseout="this.style.color='#86868b'">&#127970; 회사소개</a>
+<a href="lineup.html" style="color:#86868b;text-decoration:none;font-size:.88rem;font-weight:600;font-family:'Noto Sans KR',sans-serif;" onmouseover="this.style.color='#1B3A8C'" onmouseout="this.style.color='#86868b'">&#128230; 제품라인업</a>
+<a href="support.html#store" style="color:#86868b;text-decoration:none;font-size:.88rem;font-weight:600;font-family:'Noto Sans KR',sans-serif;" onmouseover="this.style.color='#1B3A8C'" onmouseout="this.style.color='#86868b'">&#128722; 구매스토어</a>
+<a href="mailto:nuri@posone.co.kr" style="color:#86868b;text-decoration:none;font-size:.88rem;font-weight:600;font-family:'Noto Sans KR',sans-serif;" onmouseover="this.style.color='#1B3A8C'" onmouseout="this.style.color='#86868b'">&#9993;&#65039; nuri@posone.co.kr</a>
+</div>
+<div style="color:#b0b0b5;font-size:.8rem;margin-top:16px;font-family:'Noto Sans KR',sans-serif;">운영시간 평일 09:00~20:00 / 토&#183;일&#183;공휴일 11:00~17:00</div>
+</div>
+
 
 <!-- BOTTOM NAV -->
 <div class="bottom-nav">
@@ -382,7 +394,7 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 &copy; 2026 Nurinetworks. All rights reserved.
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* NAV SCROLL */
 window.addEventListener('scroll',function(){
   document.getElementById('mainHeader').classList.toggle('scrolled',window.scrollY>80);
@@ -447,16 +459,4 @@ var hwObs=new IntersectionObserver(function(entries){
         void(hw1 && hw1.offsetWidth);
         if(hw1) setTimeout(function(){hw1.classList.add('write');},300);
         if(hw2) setTimeout(function(){hw2.classList.add('write');},2400);
-        if(hw3) setTimeout(function(){hw3.classList.add('write');},4000);
-      }
-      runHW();
-      setInterval(runHW,7000);
-      hwObs.unobserve(e.target);
-    }
-  });
-},{threshold:0.3});
-var ceoCard=document.getElementById('ceoCard');
-if(ceoCard) hwObs.observe(ceoCard);
-</script>
-</body>
-</html>
+        if(hw3) setTimeout(function(){hw3.classList.add('write')
