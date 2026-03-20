@@ -356,7 +356,13 @@
 </div>
 </div>
 </section>
-<style>#lineup-track::-webkit-scrollbar{display:none;}</style>
+<style>#lineup-track::-webkit-scrollbar{display:none;}
+/* MASCOT JUMP */
+.why-card{position:relative;overflow:visible;}
+.why-mascot{position:absolute;top:-28px;right:12px;width:52px;height:52px;object-fit:contain;opacity:0;pointer-events:none;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.2));z-index:10;transition:opacity .3s;}
+.why-mascot.active{opacity:1;animation:mascotJump .6s cubic-bezier(.34,1.56,.64,1);}
+@keyframes mascotJump{0%{transform:translateY(30px) scale(0.5);opacity:0}40%{transform:translateY(-12px) scale(1.1);opacity:1}60%{transform:translateY(4px) scale(0.95)}100%{transform:translateY(0) scale(1);opacity:1}}
+</style>
 
 <div class="mo"<div class="mo" id="mo" onclick="if(event.target===this)closeM()"><div class="mc" id="mc"></div></div>
 
@@ -365,12 +371,12 @@
 <div class="why-inner">
 <div class="why-header reveal"><h2>왜 누리네트웍스인가요?</h2><p>2012년부터 함께해온 결제 전문 파트너,<br>누리네트웍스가 일하는 방식입니다.</p></div>
 <div class="why-grid">
-<div class="why-card reveal"><div class="why-head"><div class="why-icon" style="background:#EEEDFE;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#534AB7" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><div class="why-number">01</div></div><h3>피드백 최우선</h3><p>가맹점·협력사·위탁사 등 모든 파트너에게 피드백을 최우선합니다. 타사보다 빠르고 정확한 소통으로 신뢰를 쌓습니다.</p><div class="why-tags"><span class="why-tag" style="background:#EEEDFE;color:#534AB7;">빠른 소통</span><span class="why-tag" style="background:#EEEDFE;color:#534AB7;">파트너 신뢰</span></div></div>
-<div class="why-card reveal"><div class="why-head"><div class="why-icon" style="background:#E1F5EE;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.8"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg></div><div class="why-number">02</div></div><h3>리커버리 시스템</h3><p>실수와 부족함을 인정하고, 문제 발생 시 시스템·매뉴얼을 점검한 후 업무를 재정비합니다. 같은 실수를 반복하지 않는 조직입니다.</p><div class="why-tags"><span class="why-tag" style="background:#E1F5EE;color:#0F6E56;">매뉴얼 점검</span><span class="why-tag" style="background:#E1F5EE;color:#0F6E56;">지속 개선</span></div></div>
-<div class="why-card reveal"><div class="why-head"><div class="why-icon" style="background:#E6F1FB;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#185FA5" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><div class="why-number">03</div></div><h3>전국 네트워크 조직</h3><p>서울·인천·경기 본사 직영 조직 + 협력사·위탁사 구축망으로 전국 영업·유지보수 체계를 운영합니다.</p><div class="why-tags"><span class="why-tag" style="background:#E6F1FB;color:#185FA5;">수도권 직영</span><span class="why-tag" style="background:#E6F1FB;color:#185FA5;">전국 위탁망</span></div></div>
-<div class="why-card reveal"><div class="why-head"><div class="why-icon" style="background:#FBEAF0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#993556" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><div class="why-number">04</div></div><h3>민원 공백 ZERO</h3><p>1544-7754 대표번호 문자수신 + 비즈카카오톡. 평일 당직(~20시), 주말 당직(11~17시), 점심 순환근무로 응대 공백을 최소화합니다.</p><div class="why-tags"><span class="why-tag" style="background:#FBEAF0;color:#993556;">1544-7754</span><span class="why-tag" style="background:#FBEAF0;color:#993556;">평일·주말 당직</span><span class="why-tag" style="background:#FBEAF0;color:#993556;">비즈카톡</span></div></div>
-<div class="why-card reveal"><div class="why-head"><div class="why-icon" style="background:#FAEEDA;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#854F0B" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="why-number">05</div></div><h3>14년 안정 성장</h3><p>2012년부터 20명 이상의 직원과 위탁사로 안정적 조직 운영. 월 1,000만 건 이상 카드 거래를 유지하며 매년 성장하는 탄탄한 매출 기반을 갖추고 있습니다.</p><div class="why-tags"><span class="why-tag" style="background:#FAEEDA;color:#854F0B;">2012~현재</span><span class="why-tag" style="background:#FAEEDA;color:#854F0B;">월 1,000만건+</span><span class="why-tag" style="background:#FAEEDA;color:#854F0B;">매년 성장</span></div></div>
-<div class="why-card reveal"><div class="why-head"><div class="why-icon" style="background:#FAECE7;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#993C1D" stroke-width="1.8"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><div class="why-number">06</div></div><h3>결제 트렌드 최속 채택</h3><p>카드단말기→POS→키오스크→테이블오더→QR오더→간편결제까지, 매년 출현하는 새로운 결제 시스템을 누구보다 빠르게 채택·공급합니다.</p><div class="why-tags"><span class="why-tag" style="background:#FAECE7;color:#993C1D;">HW+SW 풀라인업</span><span class="why-tag" style="background:#FAECE7;color:#993C1D;">빠른 공급</span><span class="why-tag" style="background:#FAECE7;color:#993C1D;">간편결제 베스트</span></div></div>
+<div class="why-card reveal"><div class="why-head"><div class="why-icon" style="background:#EEEDFE;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#534AB7" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><div class="why-number">01</div></div><img src="mascot-heart.png" class="why-mascot" alt=""><h3>피드백 최우선</h3><p>가맹점·협력사·위탁사 등 모든 파트너에게 피드백을 최우선합니다. 타사보다 빠르고 정확한 소통으로 신뢰를 쌓습니다.</p><div class="why-tags"><span class="why-tag" style="background:#EEEDFE;color:#534AB7;">빠른 소통</span><span class="why-tag" style="background:#EEEDFE;color:#534AB7;">파트너 신뢰</span></div></div>
+<div class="why-card reveal"><div class="why-head"><div class="why-icon" style="background:#E1F5EE;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.8"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg></div><div class="why-number">02</div></div><img src="mascot-heart.png" class="why-mascot" alt=""><h3>리커버리 시스템</h3><p>실수와 부족함을 인정하고, 문제 발생 시 시스템·매뉴얼을 점검한 후 업무를 재정비합니다. 같은 실수를 반복하지 않는 조직입니다.</p><div class="why-tags"><span class="why-tag" style="background:#E1F5EE;color:#0F6E56;">매뉴얼 점검</span><span class="why-tag" style="background:#E1F5EE;color:#0F6E56;">지속 개선</span></div></div>
+<div class="why-card reveal"><div class="why-head"><div class="why-icon" style="background:#E6F1FB;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#185FA5" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><div class="why-number">03</div></div><img src="mascot-heart.png" class="why-mascot" alt=""><h3>전국 네트워크 조직</h3><p>서울·인천·경기 본사 직영 조직 + 협력사·위탁사 구축망으로 전국 영업·유지보수 체계를 운영합니다.</p><div class="why-tags"><span class="why-tag" style="background:#E6F1FB;color:#185FA5;">수도권 직영</span><span class="why-tag" style="background:#E6F1FB;color:#185FA5;">전국 위탁망</span></div></div>
+<div class="why-card reveal"><div class="why-head"><div class="why-icon" style="background:#FBEAF0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#993556" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><div class="why-number">04</div></div><img src="mascot-heart.png" class="why-mascot" alt=""><h3>민원 공백 ZERO</h3><p>1544-7754 대표번호 문자수신 + 비즈카카오톡. 평일 당직(~20시), 주말 당직(11~17시), 점심 순환근무로 응대 공백을 최소화합니다.</p><div class="why-tags"><span class="why-tag" style="background:#FBEAF0;color:#993556;">1544-7754</span><span class="why-tag" style="background:#FBEAF0;color:#993556;">평일·주말 당직</span><span class="why-tag" style="background:#FBEAF0;color:#993556;">비즈카톡</span></div></div>
+<div class="why-card reveal"><div class="why-head"><div class="why-icon" style="background:#FAEEDA;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#854F0B" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="why-number">05</div></div><img src="mascot-heart.png" class="why-mascot" alt=""><h3>14년 안정 성장</h3><p>2012년부터 20명 이상의 직원과 위탁사로 안정적 조직 운영. 월 1,000만 건 이상 카드 거래를 유지하며 매년 성장하는 탄탄한 매출 기반을 갖추고 있습니다.</p><div class="why-tags"><span class="why-tag" style="background:#FAEEDA;color:#854F0B;">2012~현재</span><span class="why-tag" style="background:#FAEEDA;color:#854F0B;">월 1,000만건+</span><span class="why-tag" style="background:#FAEEDA;color:#854F0B;">매년 성장</span></div></div>
+<div class="why-card reveal"><div class="why-head"><div class="why-icon" style="background:#FAECE7;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#993C1D" stroke-width="1.8"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><div class="why-number">06</div></div><img src="mascot-heart.png" class="why-mascot" alt=""><h3>결제 트렌드 최속 채택</h3><p>카드단말기→POS→키오스크→테이블오더→QR오더→간편결제까지, 매년 출현하는 새로운 결제 시스템을 누구보다 빠르게 채택·공급합니다.</p><div class="why-tags"><span class="why-tag" style="background:#FAECE7;color:#993C1D;">HW+SW 풀라인업</span><span class="why-tag" style="background:#FAECE7;color:#993C1D;">빠른 공급</span><span class="why-tag" style="background:#FAECE7;color:#993C1D;">간편결제 베스트</span></div></div>
 </div></div></section>
 
 <section class="section partners" id="partners"><div class="partners-bg"></div><div class="partners-overlay"></div><div class="section-inner"><div class="section-header reveal"><div class="section-tag">Partners</div><h2 class="section-title">신뢰할 수 있는 파트너</h2></div>
@@ -623,5 +629,22 @@ buildOnce();buildOnce();
 track.innerHTML=h;
 }
 loadTicker();
+
+/* MASCOT JUMP CYCLE */
+var whyObs=new IntersectionObserver(function(entries){entries.forEach(function(e){
+if(e.isIntersecting){
+var mascots=document.querySelectorAll('.why-mascot');
+var idx=0;
+function jumpNext(){
+mascots.forEach(function(m){m.classList.remove('active');});
+mascots[idx].classList.add('active');
+idx=(idx+1)%mascots.length;
+}
+jumpNext();
+setInterval(jumpNext,2000);
+whyObs.unobserve(e.target);
+}});},{threshold:0.2});
+var whySec=document.getElementById('about');
+if(whySec)whyObs.observe(whySec);
 </script>
 </body></html>
