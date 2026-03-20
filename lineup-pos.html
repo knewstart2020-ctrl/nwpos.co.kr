@@ -447,7 +447,7 @@ fs6:{sign:'field-resto-1.jpg',img:'field-resto-install.jpg',title:'레스토랑'
 desc:'다양한 메뉴를 카테고리별로 관리하는 레스토랑에 IMU 포스와 스마트로 카드단말기를 설치했습니다.'}
 };
 function openFS(id){const d=fsData[id];if(!d)return;
-document.getElementById('fsImg').src=d.img;
+document.getElementById('fsImg').src=d.sign;
 document.getElementById('fsTitle').textContent=d.title;
 document.getElementById('fsTags').innerHTML=d.tags.map(t=>'<span>'+t+'</span>').join('');
 document.getElementById('fsDesc').textContent=d.desc;
