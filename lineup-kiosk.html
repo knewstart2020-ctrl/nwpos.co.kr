@@ -17,11 +17,10 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 /* NAV */
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(0,0,0,0);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid transparent;transition:all .4s;}
 .nav.scrolled{background:rgba(255,255,255,0.85);border-bottom-color:rgba(0,0,0,0.06);}
-.nav.scrolled .nl,.nav.scrolled .nav-product{color:#1d1d1f;}
+
 .nav.scrolled .nav-links a{color:rgba(0,0,0,0.5);}.nav.scrolled .nav-links a:hover{color:#1d1d1f;}
 .nav-inner{max-width:1320px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:56px;}
-.nav-logo{display:flex;align-items:center;gap:6px;text-decoration:none;font-family:'Inter',sans-serif;}
-.nl{font-size:1.6rem;font-weight:700;color:#fff;transition:color .4s;}
+
 .nav-product{font-size:0.95rem;font-weight:700;color:#fff;letter-spacing:-0.02em;transition:color .4s;}
 .nav-links{display:flex;gap:16px;align-items:center;}
 .nav-links a{font-size:0.78rem;color:rgba(255,255,255,0.6);text-decoration:none;font-weight:500;transition:color .2s;}.nav-links a:hover{color:#fff;}
@@ -85,7 +84,6 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 .fc-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .fc-text h4{font-size:0.88rem;font-weight:700;margin-bottom:4px;}
 .fc-text p{font-size:0.78rem;color:var(--gray);line-height:1.5;}
-
 
 /* IMG CARD (order style) */
 .vs-grid{display:grid;grid-template-columns:1fr;gap:24px;max-width:600px;margin:0 auto;}
@@ -154,18 +152,11 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 @media(max-width:1024px){.feat-grid{grid-template-columns:1fr 1fr;}.install-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:768px){.nav-links{display:none;}.hero h1{font-size:2.6rem;}.ap-card{min-height:420px;padding:36px 28px 0;}.ap-img-wrap img{max-height:260px;}.vs-sec{padding:80px 0 60px;}.install-grid{grid-template-columns:1fr;}.spec-table{font-size:0.82rem;}.sec-inner,.vs-inner,.feat-inner,.spec-inner,.install-inner{padding:0 24px;}}
 
-
-
 .nav-store:active,.nav-store.on{color:#FFD54F!important;}.nav-store:active::after,.nav-store.on::after{width:80%;background:#FFD54F;}
 .header.scrolled 
 .header.scrolled 
 .header.scrolled .nav-store:hover{color:#1d1d1f!important;}
 .header.scrolled .nav-store:active,.header.scrolled .nav-store.on{color:var(--primary)!important;}
-
-
-
-
-
 
 .nav-drop{position:relative;display:flex;align-items:center;}
 .nav-drop>a{cursor:pointer;}
@@ -173,8 +164,6 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 .nav-drop:hover .drop-menu{display:block;}
 .drop-menu a{display:block!important;padding:9px 22px!important;font-size:.82rem!important;font-weight:600!important;color:#333!important;white-space:nowrap;}
 .drop-menu a:hover{background:rgba(27,58,140,.06);color:#1B3A8C!important;}
-
-.nav-logo{display:flex;align-items:center;text-decoration:none;}
 
 .nav-logo img{height:36px;width:auto;transition:all .4s;}
 .nav-logo img{filter:brightness(0) invert(1);}
@@ -329,10 +318,6 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <span style="color:rgba(255,255,255,.35);font-size:.75rem;font-family:Inter,sans-serif;">포스 · 배리어프리키오스크 · 테이블오더 · QR오더 · 소프트웨어 · 토스 · 사인패드 · 유선단말기 · 무선단말기 · PG · 부가장비</span>
 </div></div></div>
 <style>@keyframes tickS{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-
-
-
 
 .nav-drop{position:relative;display:flex;align-items:center;}
 .nav-drop>a{cursor:pointer;}

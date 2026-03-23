@@ -15,12 +15,12 @@
 
         .header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,0.82);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,0.06);}
         .header-inner{max-width:1320px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:76px;}
-        .lg{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:'Inter','Noto Sans KR',sans-serif;}
-        .lg-n{font-weight:700;color:#1d1d1f;line-height:0.85;text-shadow:none;letter-spacing:-0.04em;font-size:2.4rem;}
-        .lg-right{display:flex;flex-direction:column;justify-content:center;}.lg-top{display:flex;align-items:baseline;}
-        .lg-nuri{font-weight:300;color:#1d1d1f;letter-spacing:-0.01em;font-size:1.1rem;}.lg-nwp{font-weight:600;color:#1d1d1f;letter-spacing:-0.01em;font-size:1.1rem;}
-        .lg-cc{font-weight:300;color:#86868b;letter-spacing:0.02em;font-size:0.55rem;margin-top:1px;}
-        .lg-star{color:#8BADD9;line-height:1;font-size:0.55em;position:relative;top:-0.8em;}
+        
+        
+        
+        
+        
+        
         .nav{display:flex;align-items:center;gap:32px;}.nav a{text-decoration:none;color:rgba(0,0,0,0.55);font-size:0.9rem;font-weight:400;transition:color .2s;}.nav a:hover,.nav a.active{color:#1d1d1f;}
         .nav-cta{background:var(--primary)!important;color:#fff!important;padding:10px 26px;border-radius:50px;font-weight:600!important;}
         .mobile-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;}.mobile-toggle span{width:22px;height:2px;background:#1d1d1f;border-radius:2px;}
@@ -110,12 +110,15 @@
             .b-inner{padding:0 24px;}.price-grid,.promo-grid,.info-grid{grid-template-columns:1fr;}
             .tabs-inner{padding:0 16px;}.tab-btn{font-size:0.82rem;padding:14px 8px;}
         }
-    </style>
+    
+
+.nav-logo img{height:36px;width:auto;transition:all .4s;}
+</style>
 </head>
 <body>
 
 <header class="header"><div class="header-inner">
-    <a href="index.html" style="text-decoration:none;"><div class="lg"><span class="lg-n">N</span><div class="lg-right"><div class="lg-top"><span class="lg-nuri">nuri</span><span class="lg-nwp">networkspay</span><span class="lg-star lg-star-lg">✦</span></div><div class="lg-cc">credit&amp;cash</div></div></div></a>
+    <a href="index.html" class="nav-logo"><img src="logo.png" alt="Nurinetworkspos" style="height:36px;"></a>
     <nav class="nav" id="nav">
         <a href="index.html#products">제품소개</a>
         <a href="benefits.html" class="active">계약혜택</a>

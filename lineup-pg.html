@@ -15,13 +15,11 @@ html{scroll-behavior:smooth;}
 body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid transparent;transition:all .4s;}
 .nav.scrolled{background:rgba(255,255,255,0.85);border-bottom-color:rgba(0,0,0,0.06);}
-.nav.scrolled .nl,.nav.scrolled .nav-product{color:#1d1d1f;}
-.nav.scrolled .nt{color:rgba(0,0,0,0.4);}.nav.scrolled .nt b{color:rgba(0,0,0,0.6);}
+
+.nav.scrolled 
 .nav.scrolled .nav-links a{color:rgba(0,0,0,0.5);}
 .nav-inner{max-width:1320px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:56px;}
-.nav-logo{display:flex;align-items:center;gap:6px;text-decoration:none;font-family:'Inter',sans-serif;}
-.nl{font-size:1.6rem;font-weight:700;color:#1d1d1f;transition:color .4s;}
-.nt{font-size:0.7rem;color:rgba(0,0,0,0.4);font-weight:300;transition:color .4s;}.nt b{font-weight:600;color:rgba(0,0,0,0.6);transition:color .4s;}
+
 .nav-product{font-size:0.95rem;font-weight:700;color:#1d1d1f;letter-spacing:-0.02em;transition:color .4s;}
 .nav-links{display:flex;gap:16px;align-items:center;}
 .nav-links a{font-size:0.78rem;color:rgba(0,0,0,0.5);text-decoration:none;font-weight:500;transition:color .2s;}
@@ -169,8 +167,6 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 .footer-mini a{color:var(--primary);text-decoration:none;font-weight:600;}
 @media(max-width:900px){.feat-compare{grid-template-columns:1fr;}.vs-grid{grid-template-columns:1fr!important;}.diff-table{font-size:0.78rem;}.diff-table thead th,.diff-table tbody td{padding:12px 10px;}.instant-box{padding:40px 24px;}.instant-features{flex-direction:column;align-items:center;}}
 @media(max-width:600px){.nav-links{display:none;}}
-
-.nav-logo{display:flex;align-items:center;text-decoration:none;}
 
 .nav-logo img{height:36px;width:auto;transition:all .4s;}
 </style>
