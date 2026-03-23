@@ -240,12 +240,18 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 .sw-card h4{font-size:.95rem;font-weight:800;margin-bottom:5px;}
 .sw-card p{font-size:.82rem;color:var(--gray);line-height:1.6;}
 @media(max-width:768px){.sw-compare{grid-template-columns:1fr;}}
+
+.nav-logo{display:flex;align-items:center;text-decoration:none;}
+
+.nav-logo img{height:36px;width:auto;transition:all .4s;}
+.nav-logo img{filter:brightness(0) invert(1);}
+.header.scrolled .nav-logo img,.nav.scrolled .nav-logo img{filter:none;}
 </style>
 </head>
 <body>
 
 <nav class="nav" id="mainNav"><div class="nav-inner">
-<a href="index.html" class="nav-logo"><span class="nl">N</span><span class="nt"><b>nuri</b>networkspay</span></a>
+<a href="index.html" class="nav-logo"><img src="logo.png" alt="Nurinetworkspos" style="height:36px;"></a>
 <div class="nav-links">
 <a href="index.html">HOME</a>
 <a href="about.html">회사소개</a>
