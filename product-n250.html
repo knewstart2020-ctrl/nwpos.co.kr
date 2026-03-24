@@ -106,13 +106,20 @@
         }
     
 
-.nav-logo img{height:44px;width:auto;transition:all .4s;}
+.nav-logo img{height:40px;width:auto;transition:all .4s;}
+
+.nav-drop{position:relative;display:flex;align-items:center;}
+.nav-drop>a{cursor:pointer;}
+.nav-drop .drop-menu{display:none;position:absolute;top:100%;left:0;background:#fff;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:8px 0;min-width:200px;z-index:999;}
+.nav-drop:hover .drop-menu{display:block;}
+.nav-drop .drop-menu a{display:block;padding:10px 20px;color:#333;font-size:.85rem;font-weight:500;white-space:nowrap;transition:background .2s;}
+.nav-drop .drop-menu a:hover{background:#f5f5f7;color:#1B3A8C;}
 </style>
 </head>
 <body>
 
 <nav class="nav"><div class="nav-inner">
-    <a href="index.html" class="nav-logo"><img src="logo.png" alt="Nurinetworkspos" style="height:44px;"></a>
+    <a href="index.html" class="nav-logo"><img src="logo.png" alt="Nurinetworkspos" style="height:40px;"></a>
     <span class="nav-product">N250 포스</span>
     <div class="nav-links">
         <a href="#features">특징</a>
@@ -225,17 +232,17 @@
         <div class="fs-img rv rv1" style="max-width:700px;margin:0 auto;"><img src="https://imupos.com/img/sub/200_img12_01.png" alt="프로세서 성능"></div>
         <div class="feat-grid" style="grid-template-columns:repeat(3,1fr);margin-top:40px;">
             <div class="feat-card rv">
-                <div style="margin-bottom:12px;"><img src="https://imupos.com/img/sub/gb_img01.png" alt="메모리" style="height:44px;"></div>
+                <div style="margin-bottom:12px;"><img src="https://imupos.com/img/sub/gb_img01.png" alt="메모리" style="height:40px;"></div>
                 <h3>4GB 메모리</h3>
                 <p>최대 16GB까지 확장 가능</p>
             </div>
             <div class="feat-card rv rv1">
-                <div style="margin-bottom:12px;"><img src="https://imupos.com/img/sub/kiposImg4-3.png" alt="SSD" style="height:44px;"></div>
+                <div style="margin-bottom:12px;"><img src="https://imupos.com/img/sub/kiposImg4-3.png" alt="SSD" style="height:40px;"></div>
                 <h3>128GB SSD</h3>
                 <p>최대 512GB까지 확장 가능</p>
             </div>
             <div class="feat-card rv rv2">
-                <div style="margin-bottom:12px;"><img src="https://imupos.com/img/sub/gb_img03.png" alt="OS" style="height:44px;"></div>
+                <div style="margin-bottom:12px;"><img src="https://imupos.com/img/sub/gb_img03.png" alt="OS" style="height:40px;"></div>
                 <h3>Windows 10/11 IoT</h3>
                 <p>안정적인 운영체제</p>
             </div>

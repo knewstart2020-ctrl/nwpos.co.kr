@@ -126,14 +126,14 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 .drop-list a{display:block;padding:9px 22px;font-size:.82rem;font-weight:600;color:#333;text-decoration:none;transition:all .15s;white-space:nowrap;}
 .drop-list a:hover{background:rgba(27,58,140,.06);color:#1B3A8C;}
 
-.nav-logo img{height:44px;width:auto;transition:all .4s;}
-.nav-logo img{filter:brightness(0) invert(1);}
+.nav-logo img{height:40px;width:auto;transition:all .4s;}
+.header .nav-logo img{filter:brightness(0) invert(1);}
 .header.scrolled .nav-logo img,.nav.scrolled .nav-logo img{filter:none;}
 </style>
 </head>
 <body>
 <header class="header" id="mainHeader"><div class="header-inner">
-<a href="index.html" class="nav-logo"><img src="logo.png" alt="Nurinetworkspos" style="height:44px;"></a>
+<a href="index.html" class="nav-logo"><img src="logo.png" alt="Nurinetworkspos" style="height:40px;"></a>
 <nav class="nav" id="nav"><a href="index.html" class="nav-store">HOME</a><a href="about.html" class="nav-store on">회사소개</a><div class="nav-drop-wrap"><a href="lineup.html" class="nav-store">제품라인업 ▾</a><div class="drop-list"><a href="lineup-pos.html">포스 POS</a><a href="lineup-kiosk.html">배리어프리 키오스크</a><a href="lineup-order.html">테이블오더/QR오더</a><a href="lineup-software.html">소프트웨어</a><a href="lineup-signpad.html">토스/네이버 단말기</a><a href="lineup-terminal.html">유무선 카드단말기</a><a href="lineup-pg.html">PG 온오프라인결제</a><a href="lineup-extra.html">부가장비</a></div></div><a href="support.html#store" class="nav-store">구매스토어</a></nav>
 <div class="mobile-toggle" onclick="document.getElementById('nav').classList.toggle('open')"><span></span><span></span><span></span></div>
 </div></header>
@@ -260,7 +260,36 @@ var ro=new IntersectionObserver(function(e){e.forEach(function(el,i){if(el.isInt
 document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el);});
 var co=new IntersectionObserver(function(e){e.forEach(function(el){if(el.isIntersecting){var t=el.target,g=parseInt(t.getAttribute('data-target')),d=1800,s=performance.now();function a(n){var p=Math.min((n-s)/d,1);t.textContent=Math.floor((1-Math.pow(1-p,3))*g).toLocaleString();if(p<1)requestAnimationFrame(a);}requestAnimationFrame(a);co.unobserve(t);}});},{threshold:.5});
 document.querySelectorAll('.counter').forEach(function(el){co.observe(el);});
-var ho=new IntersectionObserver(function(e){e.forEach(function(el){if(el.isIntersecting){el.target.querySelectorAll('.hist-card').forEach(function(c,i){setTimeout(function(){c.classList.add('slide-in');},i*400);});ho.unobserve(el.target);}});},{threshold:.1});
+var ho=new IntersectionObserver(function(e){e.forEach(function(el){if(el.isIntersecting){el.target.querySelectorAll('.hist-card').forEach(function(c,i){setTimeout(function(){c.classList.add('slide-in');},i*400);});
+/* 카드 슬라이드인 완료 후 자동 스크롤 시작 */
+var totalCards=el.target.querySelectorAll('.hist-card').length;
+setTimeout(function(){
+  var scr=document.getElementById('histScroll');
+  if(!scr)return;
+  var maxScroll=scr.scrollWidth-scr.clientWidth;
+  var direction=1; /* 1=오른쪽(2025→2012), -1=왼쪽(2012→2025) */
+  var speed=1.2;
+  function autoScroll(){
+    scr.scrollLeft+=direction*speed;
+    if(direction===1 && scr.scrollLeft>=maxScroll){
+      scr.scrollLeft=maxScroll;
+      return;
+    }
+    if(direction===-1 && scr.scrollLeft<=0){
+      scr.scrollLeft=0;
+      return;
+    }
+    requestAnimationFrame(autoScroll);
+  }
+  autoScroll();
+  /* 15초 후 역방향 */
+  setInterval(function(){
+    direction=direction*-1;
+    maxScroll=scr.scrollWidth-scr.clientWidth;
+    autoScroll();
+  },15000);
+},totalCards*400+500);
+ho.unobserve(el.target);}});},{threshold:.1});
 var hs=document.getElementById('histScroll');if(hs)ho.observe(hs);
 var wo=new IntersectionObserver(function(e){e.forEach(function(el){if(el.isIntersecting){var h1=document.getElementById('hw1'),h2=document.getElementById('hw2'),h3=document.getElementById('hw3');function r(){[h1,h2,h3].forEach(function(h){if(h)h.classList.remove('write');});void(h1&&h1.offsetWidth);if(h1)setTimeout(function(){h1.classList.add('write');},300);if(h2)setTimeout(function(){h2.classList.add('write');},2400);if(h3)setTimeout(function(){h3.classList.add('write');},4000);}r();setInterval(r,7000);wo.unobserve(el.target);}});},{threshold:.3});
 var cc=document.getElementById('ceoCard');if(cc)wo.observe(cc);
