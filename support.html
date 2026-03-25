@@ -83,7 +83,7 @@ select.fi{appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns='
 <!-- LEFT: 상담 신청 -->
 <div class="card" id="formCard">
 <img src="mascot-thumbsup.png" alt="" style="width:80px;height:80px;animation:bounce 2s ease infinite;">
-<span class="store-badge" style="margin-bottom:8px;">서비스 오픈 준비중</span>
+
 <h2>📋 상담 신청</h2>
 <p>전문 상담사가 매장에 맞는 최적의 솔루션을 추천해 드립니다.</p>
 <div class="fg"><label class="fl">업체/고객명</label><input class="fi" type="text" id="bizName" placeholder="업체 또는 고객명"></div>
@@ -155,7 +155,7 @@ var now=new Date();
 var dateStr=now.getFullYear()+'.'+(now.getMonth()+1)+'.'+now.getDate()+' '+now.getHours()+':'+String(now.getMinutes()).padStart(2,'0');
 
 /* Google Apps Script Web App URL (구글시트 저장 + 네이버웍스 전송) */
-var SCRIPT_URL='https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+var SCRIPT_URL='https://script.google.com/macros/s/AKfycbx7ehczO8H27GXO58JHPvNUbZWocPUSKpL9NMMbtQgHlglVgRhaua4_WAOhv5MZqqzThA/exec';
 
 var formData={
   name:name,
@@ -163,7 +163,11 @@ var formData={
   consultType:type,
   time:time.join(', '),
   memo:memo,
-  date:dateStr
+  date:dateStr,
+  duration:Math.round(parseInt(sessionStorage.getItem('nw_duration')||'0')+((Date.now()-performance.now())/1000)),
+  pages:(JSON.parse(sessionStorage.getItem('nw_pages')||'[]')).join(' → '),
+  referrer:sessionStorage.getItem('nw_ref')||'직접 방문',
+  interests:(JSON.parse(sessionStorage.getItem('nw_interests')||'[]')).join(', ')
 };
 
 b.textContent='전송 중...';
@@ -209,6 +213,52 @@ var h='';
 items.forEach(function(x){h+='<span class="ticker-item"><span class="t-name">'+x.n+'</span><span class="t-val">'+x.v+'</span></span>';});
 news.forEach(function(x){h+='<span class="ticker-item"><span class="t-news">'+x+'</span></span>';});
 tk.innerHTML=h+h;
+})();
+</script>
+
+<script>
+(function(){
+  var startTime = Date.now();
+  var pageTitle = document.title || location.pathname.split('/').pop().replace('.html','');
+  
+  // 방문 페이지 기록
+  var pages = JSON.parse(sessionStorage.getItem('nw_pages') || '[]');
+  if (pages[pages.length-1] !== pageTitle) pages.push(pageTitle);
+  if (pages.length > 20) pages = pages.slice(-20);
+  sessionStorage.setItem('nw_pages', JSON.stringify(pages));
+  
+  // 사이트 최초 방문 시간
+  if (!sessionStorage.getItem('nw_start')) sessionStorage.setItem('nw_start', String(startTime));
+  
+  // 유입 경로
+  if (!sessionStorage.getItem('nw_ref')) {
+    var ref = document.referrer || 'direct';
+    if (ref.indexOf('naver') > -1) ref = '네이버 검색';
+    else if (ref.indexOf('google') > -1) ref = '구글 검색';
+    else if (ref.indexOf('kakao') > -1) ref = '카카오';
+    else if (ref.indexOf('instagram') > -1) ref = '인스타그램';
+    else if (ref === 'direct' || ref === '') ref = '직접 방문';
+    else ref = ref.split('/')[2] || ref;
+    sessionStorage.setItem('nw_ref', ref);
+  }
+  
+  // 클릭 관심 제품 추적
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href*="lineup-"], a[href*="product-"], .cat-tab, .product-card');
+    if (!el) return;
+    var interests = JSON.parse(sessionStorage.getItem('nw_interests') || '[]');
+    var name = el.textContent.trim().substring(0, 20);
+    if (name && interests.indexOf(name) === -1) interests.push(name);
+    if (interests.length > 10) interests = interests.slice(-10);
+    sessionStorage.setItem('nw_interests', JSON.stringify(interests));
+  });
+  
+  // 체류시간 갱신
+  window.addEventListener('beforeunload', function() {
+    var total = parseInt(sessionStorage.getItem('nw_duration') || '0');
+    total += Math.round((Date.now() - startTime) / 1000);
+    sessionStorage.setItem('nw_duration', String(total));
+  });
 })();
 </script>
 </body>

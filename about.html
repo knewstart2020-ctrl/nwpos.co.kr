@@ -305,5 +305,51 @@ tk2.innerHTML=h+h;
 fetch('https://api.coingecko.com/api/v3/simple/price?ids=tether&vs_currencies=krw').then(function(r){return r.json();}).then(function(d){if(d.tether){var rate=Math.round(d.tether.krw);var newH='<span class="ticker-item"><span class="t-name">USD/KRW</span><span class="t-val">'+rate.toLocaleString()+'</span></span>';newH+='<span class="ticker-item"><span class="t-name">누리네트웍스</span><span class="t-val">No.1 Payment Service</span></span>';tk2.innerHTML=newH+newH;}}).catch(function(){});
 }
 </script>
+
+<script>
+(function(){
+  var startTime = Date.now();
+  var pageTitle = document.title || location.pathname.split('/').pop().replace('.html','');
+  
+  // 방문 페이지 기록
+  var pages = JSON.parse(sessionStorage.getItem('nw_pages') || '[]');
+  if (pages[pages.length-1] !== pageTitle) pages.push(pageTitle);
+  if (pages.length > 20) pages = pages.slice(-20);
+  sessionStorage.setItem('nw_pages', JSON.stringify(pages));
+  
+  // 사이트 최초 방문 시간
+  if (!sessionStorage.getItem('nw_start')) sessionStorage.setItem('nw_start', String(startTime));
+  
+  // 유입 경로
+  if (!sessionStorage.getItem('nw_ref')) {
+    var ref = document.referrer || 'direct';
+    if (ref.indexOf('naver') > -1) ref = '네이버 검색';
+    else if (ref.indexOf('google') > -1) ref = '구글 검색';
+    else if (ref.indexOf('kakao') > -1) ref = '카카오';
+    else if (ref.indexOf('instagram') > -1) ref = '인스타그램';
+    else if (ref === 'direct' || ref === '') ref = '직접 방문';
+    else ref = ref.split('/')[2] || ref;
+    sessionStorage.setItem('nw_ref', ref);
+  }
+  
+  // 클릭 관심 제품 추적
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('a[href*="lineup-"], a[href*="product-"], .cat-tab, .product-card');
+    if (!el) return;
+    var interests = JSON.parse(sessionStorage.getItem('nw_interests') || '[]');
+    var name = el.textContent.trim().substring(0, 20);
+    if (name && interests.indexOf(name) === -1) interests.push(name);
+    if (interests.length > 10) interests = interests.slice(-10);
+    sessionStorage.setItem('nw_interests', JSON.stringify(interests));
+  });
+  
+  // 체류시간 갱신
+  window.addEventListener('beforeunload', function() {
+    var total = parseInt(sessionStorage.getItem('nw_duration') || '0');
+    total += Math.round((Date.now() - startTime) / 1000);
+    sessionStorage.setItem('nw_duration', String(total));
+  });
+})();
+</script>
 </body>
 </html>
