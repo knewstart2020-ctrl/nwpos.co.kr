@@ -110,6 +110,7 @@ select.fi{appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns='
 <div style="font-size:3rem;margin-bottom:16px;">✅</div>
 <h3 style="font-size:1.3rem;font-weight:800;margin-bottom:8px;">상담 신청 완료!</h3>
 <p style="color:#86868b;">빠른 시일 내에 연락드리겠습니다.</p>
+<button onclick="resetForm()" style="margin-top:20px;padding:12px 28px;background:var(--primary);color:#fff;border:none;border-radius:12px;font-size:.9rem;font-weight:700;cursor:pointer;">다시 신청하기</button>
 </div>
 </div>
 <!-- RIGHT: 구매스토어 -->
@@ -164,7 +165,7 @@ var formData={
   time:time.join(', '),
   memo:memo,
   date:dateStr,
-  duration:Math.round(parseInt(sessionStorage.getItem('nw_duration')||'0')+((Date.now()-performance.now())/1000)),
+  duration:parseInt(sessionStorage.getItem('nw_duration')||'0')+Math.round(performance.now()/1000),
   pages:(JSON.parse(sessionStorage.getItem('nw_pages')||'[]')).join(' → '),
   referrer:sessionStorage.getItem('nw_ref')||'직접 방문',
   interests:(JSON.parse(sessionStorage.getItem('nw_interests')||'[]')).join(', ')
@@ -187,6 +188,19 @@ fetch(SCRIPT_URL,{
   document.getElementById('formCard').style.pointerEvents='none';
   document.getElementById('formOk').style.display='block';
 });
+}
+function resetForm(){
+  document.getElementById('formCard').style.opacity='1';
+  document.getElementById('formCard').style.pointerEvents='auto';
+  document.getElementById('formOk').style.display='none';
+  document.getElementById('bizName').value='';
+  document.getElementById('phone').value='';
+  document.getElementById('consultType').selectedIndex=0;
+  document.querySelectorAll('.time-btn.selected').forEach(function(t){t.classList.remove('selected');});
+  document.getElementById('memo').value='';
+  document.getElementById('cbox').classList.remove('checked');
+  document.getElementById('submitBtn').textContent='상담 신청하기';
+  updBtn();
 }
 (async function(){
 var tk=document.getElementById('tickerTrack');
