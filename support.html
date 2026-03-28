@@ -47,7 +47,7 @@ select.fi{appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns='
 .form-ok{display:none;text-align:center;padding:48px 20px;}
 .store-inner{text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px;}
 .store-badge{display:inline-block;padding:6px 18px;background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;border-radius:50px;font-size:.8rem;font-weight:700;}
-.store-naver{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:#03C75A;color:#fff;border-radius:50px;font-weight:700;font-size:.88rem;text-decoration:none;opacity:.4;cursor:not-allowed;}
+.store-naver{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:#03C75A;color:#fff;border-radius:50px;font-weight:700;font-size:.88rem;text-decoration:none;transition:all .3s;box-shadow:0 4px 16px rgba(3,199,90,.3);}.store-naver:hover{background:#02B34E;transform:translateY(-2px);box-shadow:0 6px 20px rgba(3,199,90,.4);}
 .ticker-section{background:#1d1d1f;padding:10px 0;overflow:hidden;}
 .ticker-track{display:flex;gap:32px;animation:tickS 40s linear infinite;width:max-content;white-space:nowrap;}
 @keyframes tickS{from{transform:translateX(0)}to{transform:translateX(-50%)}}
@@ -117,10 +117,10 @@ select.fi{appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns='
 <div class="card">
 <div class="store-inner">
 <img src="mascot-heart.png" alt="" style="width:120px;height:120px;animation:bounce 2s ease infinite;">
-<span class="store-badge">Coming Soon</span>
-<h2>구매스토어 오픈 준비중</h2>
-<p style="color:var(--gray);font-size:.88rem;line-height:1.7;">누리네트웍스 공식 온라인 스토어를<br>준비하고 있습니다.<br><br>조금만 기다려 주세요!<br>네이버 스토어로 곧 찾아뵙겠습니다.</p>
-<a class="store-naver">🛒 네이버 스토어 (준비중)</a>
+<span class="store-badge" style="background:#03C75A;color:#fff;">OPEN</span>
+<h2>누리네트웍스 스마트스토어</h2>
+<p style="color:var(--gray);font-size:.88rem;line-height:1.7;">누리네트웍스 공식 온라인 스토어에서<br>포스·키오스크·테이블오더·단말기 등<br>결제 솔루션을 만나보세요.</p>
+<a href="https://smartstore.naver.com/nurinetworks" target="_blank" class="store-naver">🛒 네이버 스마트스토어 바로가기</a>
 <a href="tel:1544-7754" style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:linear-gradient(135deg,#1B3A8C,#2E5BDB);color:#fff;border-radius:50px;font-weight:700;font-size:.9rem;text-decoration:none;box-shadow:0 6px 20px rgba(27,58,140,.3);transition:all .3s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''">📞 전화문의 1544-7754</a>
 </div>
 </div>
