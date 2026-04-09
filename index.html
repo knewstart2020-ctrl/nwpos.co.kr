@@ -242,6 +242,71 @@
     <meta name="google-site-verification" content="eMupPrhE5lKmqjNvV3oviRMPM4mjmGdbVPfJlbh7lww" />
 </head>
 <body>
+<!-- ═══ BRAND INTRO ═══ -->
+<div id="brandIntro" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:99999;display:flex;align-items:center;justify-content:center;flex-direction:column;overflow:hidden;transition:opacity .6s ease,transform .6s ease;">
+
+<style>
+#brandIntro *{margin:0;padding:0;box-sizing:border-box;}
+.intro-glow{position:absolute;width:200px;height:200px;border-radius:50%;border:1.5px solid rgba(49,130,246,0.1);animation:introRing 3s ease-in-out infinite;}
+.intro-glow:nth-child(2){width:300px;height:300px;animation-delay:.5s;}
+.intro-glow:nth-child(3){width:400px;height:400px;animation-delay:1s;}
+.intro-logo-row{display:flex;align-items:baseline;position:relative;z-index:2;}
+.intro-n{font-family:Inter,sans-serif;font-size:52px;font-weight:800;color:#fff;opacity:0;animation:introNpop .7s cubic-bezier(.34,1.56,.64,1) forwards .4s;letter-spacing:-1px;}
+.intro-rest{font-family:Inter,sans-serif;font-size:52px;font-weight:800;color:#fff;opacity:0;max-width:0;overflow:hidden;white-space:nowrap;animation:introSlide .8s ease forwards 1.1s;letter-spacing:-1px;}
+.intro-line{width:0;height:2px;background:#3182F6;position:relative;z-index:2;margin-top:6px;animation:introLine .5s ease forwards .9s;}
+.intro-ps{font-family:Inter,sans-serif;font-size:12px;color:rgba(255,255,255,0.3);letter-spacing:4px;opacity:0;animation:introFade .5s ease forwards 1.5s;position:relative;z-index:2;margin-top:10px;}
+.intro-tag{font-family:'Noto Sans KR',sans-serif;font-size:15px;color:rgba(255,255,255,0.6);opacity:0;animation:introFade .6s ease forwards 1.9s;position:relative;z-index:2;margin-top:8px;letter-spacing:.5px;}
+.intro-mascot{position:relative;z-index:2;margin-top:16px;opacity:0;animation:introMascotIn .6s cubic-bezier(.34,1.56,.64,1) forwards 2.3s;}
+.intro-mascot img{width:90px;height:90px;animation:introWave .4s ease-in-out infinite alternate 2.4s;transform-origin:bottom center;}
+.intro-welcome{font-family:'Noto Sans KR',sans-serif;font-size:13px;color:rgba(255,255,255,0.5);opacity:0;animation:introFade .4s ease forwards 2.6s;position:relative;z-index:2;margin-top:6px;}
+.intro-skip{position:absolute;bottom:24px;right:28px;font-family:Inter,sans-serif;font-size:13px;color:rgba(255,255,255,0.3);z-index:3;cursor:pointer;padding:6px 16px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:transparent;opacity:0;animation:introFade .3s ease forwards .5s;transition:all .2s;}
+.intro-skip:hover{background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.6);}
+@keyframes introRing{0%,100%{opacity:.08;transform:scale(1)}50%{opacity:.18;transform:scale(1.04)}}
+@keyframes introNpop{0%{opacity:0;transform:scale(.3)}60%{opacity:1;transform:scale(1.08)}100%{opacity:1;transform:scale(1)}}
+@keyframes introSlide{0%{opacity:0;max-width:0}15%{opacity:1}100%{opacity:1;max-width:500px}}
+@keyframes introLine{0%{width:0}100%{width:180px}}
+@keyframes introFade{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:translateY(0)}}
+@keyframes introMascotIn{0%{opacity:0;transform:translateY(50px) scale(.5)}60%{transform:translateY(-8px) scale(1.05)}100%{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes introWave{0%{transform:rotate(-5deg)}100%{transform:rotate(5deg)}}
+</style>
+
+<div class="intro-glow"></div>
+<div class="intro-glow"></div>
+<div class="intro-glow"></div>
+
+<div class="intro-logo-row">
+<span class="intro-n">N</span><span class="intro-rest">urinetworkspos</span>
+</div>
+<div class="intro-line"></div>
+<div class="intro-ps">PAYMENT SERVICE</div>
+<div class="intro-tag">결제는 더 쉽게, 매장은 더 스마트하게</div>
+
+<div class="intro-mascot">
+<img src="mascot-heart.png" alt="누리 마스코트">
+</div>
+<div class="intro-welcome">Welcome!</div>
+
+<div class="intro-skip" onclick="closeIntro()">건너뛰기</div>
+
+<script>
+function closeIntro(){
+  var el=document.getElementById('brandIntro');
+  if(!el)return;
+  el.style.opacity='0';
+  el.style.transform='translateY(-100%)';
+  setTimeout(function(){el.remove();},700);
+  sessionStorage.setItem('nw_intro_seen','1');
+}
+if(sessionStorage.getItem('nw_intro_seen')){
+  var el=document.getElementById('brandIntro');
+  if(el)el.remove();
+}else{
+  setTimeout(closeIntro,4500);
+}
+</script>
+</div>
+<!-- ═══ END BRAND INTRO ═══ -->
+
 <header class="header"><div class="header-inner"><a href="index.html" class="nav-logo"><img src="logo.png" alt="Nurinetworkspos" style="height:36px;"></a><nav class="nav" id="nav"><a href="index.html" class="nav-store">HOME</a><a href="about.html" class="nav-store">회사소개</a><div class="nav-drop-wrap"><a href="lineup.html" class="nav-store">제품라인업 ▾</a><div class="drop-list"><a href="lineup-pos.html">포스 POS</a><a href="lineup-kiosk.html">배리어프리 키오스크</a><a href="lineup-order.html">테이블오더/QR오더</a><a href="lineup-software.html">소프트웨어</a><a href="lineup-signpad.html">토스/네이버 단말기</a><a href="lineup-terminal.html">유무선 카드단말기</a><a href="lineup-pg.html">PG 온오프라인결제</a><a href="lineup-extra.html">부가장비</a></div></div><a href="support.html#store" class="nav-store">구매스토어</a></nav><div class="mobile-toggle" onclick="document.getElementById('nav').classList.toggle('open')"><span></span><span></span><span></span></div></div></header>
 
 <section class="hero" id="hero">
