@@ -242,38 +242,40 @@
     <meta name="google-site-verification" content="eMupPrhE5lKmqjNvV3oviRMPM4mjmGdbVPfJlbh7lww" />
 </head>
 <body>
-<!-- ═══ BRAND INTRO V5 ═══ -->
+<!-- ═══ BRAND INTRO V6 ═══ -->
 <div id="brandIntro" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:99999;display:flex;align-items:center;justify-content:center;flex-direction:column;overflow:hidden;">
 
 <style>
 #brandIntro *{margin:0;padding:0;box-sizing:border-box;}
-.i-glow{position:absolute;border-radius:50%;border:1.5px solid rgba(49,130,246,0.08);animation:iRing 4s ease-in-out infinite;}
-.i-glow-1{width:180px;height:180px;}
-.i-glow-2{width:300px;height:300px;animation-delay:.6s;}
-.i-glow-3{width:440px;height:440px;animation-delay:1.2s;}
-.i-glow-4{width:580px;height:580px;animation-delay:1.8s;}
-.i-logo-row{display:flex;align-items:baseline;position:relative;z-index:2;}
-.i-n{font-family:Inter,sans-serif;font-size:100px;font-weight:800;color:#fff;opacity:0;animation:iNbig 1.4s cubic-bezier(.34,1.56,.64,1) forwards 1s;letter-spacing:-2px;}
-.i-rest{font-family:Inter,sans-serif;font-size:44px;font-weight:700;color:#fff;opacity:0;max-width:0;overflow:hidden;white-space:nowrap;animation:iSlide 1.2s cubic-bezier(.25,.46,.45,.94) forwards 2.6s;letter-spacing:-1px;line-height:1;align-self:flex-end;padding-bottom:10px;}
-.i-line{width:0;height:2.5px;background:linear-gradient(90deg,transparent,#3182F6,#3182F6,transparent);position:relative;z-index:2;margin-top:10px;animation:iLine .8s ease forwards 2.2s;}
-.i-ps{font-family:Inter,sans-serif;font-size:11px;color:rgba(255,255,255,0.25);letter-spacing:5px;opacity:0;animation:iFade .8s ease forwards 4.0s;position:relative;z-index:2;margin-top:14px;}
-.i-tag{font-family:'Noto Sans KR',sans-serif;font-size:16px;color:rgba(255,255,255,0.55);opacity:0;animation:iFade .8s ease forwards 4.8s;position:relative;z-index:2;margin-top:10px;letter-spacing:.5px;}
-.i-dots{position:relative;z-index:2;margin-top:28px;display:flex;gap:8px;opacity:0;animation:iFade .5s ease forwards 5.6s;}
+.i-bg-video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0.15;z-index:0;}
+.i-glow{position:absolute;border-radius:50%;border:1.5px solid rgba(49,130,246,0.06);animation:iRing 4s ease-in-out infinite;z-index:1;}
+.i-glow-1{width:250px;height:250px;}
+.i-glow-2{width:400px;height:400px;animation-delay:.6s;}
+.i-glow-3{width:560px;height:560px;animation-delay:1.2s;}
+.i-glow-4{width:720px;height:720px;animation-delay:1.8s;}
+.i-center{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;}
+.i-logo-row{display:flex;align-items:baseline;justify-content:center;overflow:hidden;}
+.i-n{font-family:Inter,sans-serif;font-size:clamp(120px,25vw,300px);font-weight:800;color:#fff;opacity:0;animation:iNbig 1.6s cubic-bezier(.34,1.56,.64,1) forwards 1s;letter-spacing:-4px;line-height:1;}
+.i-rest{font-family:Inter,sans-serif;font-size:clamp(120px,25vw,300px);font-weight:800;color:#fff;opacity:0;max-width:0;overflow:hidden;white-space:nowrap;animation:iSlide 1.8s cubic-bezier(.16,1,.3,1) forwards 2.8s;letter-spacing:-4px;line-height:1;}
+.i-line{width:0;height:3px;background:linear-gradient(90deg,transparent,#3182F6,#3182F6,transparent);position:relative;z-index:2;margin-top:12px;animation:iLine 1s ease forwards 2.4s;}
+.i-ps{font-family:Inter,sans-serif;font-size:clamp(10px,1.5vw,14px);color:rgba(255,255,255,0.2);letter-spacing:6px;opacity:0;animation:iFade .8s ease forwards 4.8s;position:relative;z-index:2;margin-top:16px;}
+.i-tag{font-family:'Noto Sans KR',sans-serif;font-size:clamp(13px,2vw,18px);color:rgba(255,255,255,0.5);opacity:0;animation:iFade .8s ease forwards 5.5s;position:relative;z-index:2;margin-top:10px;letter-spacing:1px;}
+.i-dots{position:relative;z-index:2;margin-top:32px;display:flex;gap:10px;opacity:0;animation:iFade .5s ease forwards 6.2s;}
 .i-dot{width:6px;height:6px;border-radius:50%;animation:iDot .6s ease infinite alternate;}
 .i-dot:nth-child(1){background:#0D2B5C;}
 .i-dot:nth-child(2){background:#3182F6;animation-delay:.15s;}
 .i-dot:nth-child(3){background:#8B95A1;animation-delay:.3s;}
-.i-skip{position:absolute;bottom:28px;right:32px;font-family:Inter,sans-serif;font-size:13px;color:rgba(255,255,255,0.2);z-index:3;cursor:pointer;padding:8px 20px;border:1px solid rgba(255,255,255,0.1);border-radius:10px;background:transparent;opacity:0;animation:iFade .3s ease forwards 1.5s;transition:all .2s;}
-.i-skip:hover{background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.5);}
-.i-particle{position:absolute;width:3px;height:3px;background:rgba(49,130,246,0.25);border-radius:50%;z-index:1;}
-.i-flash{position:absolute;width:100%;height:100%;background:rgba(49,130,246,0.08);z-index:1;opacity:0;animation:iFlash .3s ease forwards 0.9s;}
-@keyframes iRing{0%,100%{opacity:.06;transform:scale(1)}50%{opacity:.15;transform:scale(1.03)}}
-@keyframes iNbig{0%{opacity:0;transform:scale(.1)}30%{opacity:1;transform:scale(1.2)}50%{transform:scale(.92)}70%{transform:scale(1.05)}100%{opacity:1;transform:scale(1)}}
-@keyframes iSlide{0%{opacity:0;max-width:0}10%{opacity:.5}100%{opacity:1;max-width:420px}}
-@keyframes iLine{0%{width:0}100%{width:240px}}
+.i-skip{position:absolute;bottom:28px;right:32px;font-family:Inter,sans-serif;font-size:13px;color:rgba(255,255,255,0.2);z-index:3;cursor:pointer;padding:8px 20px;border:1px solid rgba(255,255,255,0.08);border-radius:10px;background:transparent;opacity:0;animation:iFade .3s ease forwards 1.5s;transition:all .2s;}
+.i-skip:hover{background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.4);}
+.i-particle{position:absolute;width:2px;height:2px;background:rgba(49,130,246,0.2);border-radius:50%;z-index:1;}
+.i-flash{position:absolute;width:100%;height:100%;background:rgba(49,130,246,0.06);z-index:1;opacity:0;animation:iFlash .4s ease forwards 0.9s;}
+@keyframes iRing{0%,100%{opacity:.04;transform:scale(1)}50%{opacity:.12;transform:scale(1.03)}}
+@keyframes iNbig{0%{opacity:0;transform:scale(.08)}25%{opacity:.8;transform:scale(1.15)}45%{transform:scale(.9)}65%{transform:scale(1.06)}85%{transform:scale(.98)}100%{opacity:1;transform:scale(1)}}
+@keyframes iSlide{0%{opacity:0;max-width:0}8%{opacity:.6}100%{opacity:1;max-width:2400px}}
+@keyframes iLine{0%{width:0}100%{width:clamp(100px,30vw,300px)}}
 @keyframes iFade{0%{opacity:0;transform:translateY(6px)}100%{opacity:1;transform:translateY(0)}}
 @keyframes iDot{0%{transform:translateY(0)}100%{transform:translateY(-3px)}}
-@keyframes particleFloat{0%{opacity:0;transform:translateY(0) scale(0)}30%{opacity:1}100%{opacity:0;transform:translateY(-140px) scale(1.5)}}
+@keyframes particleFloat{0%{opacity:0;transform:translateY(0) scale(0)}30%{opacity:1}100%{opacity:0;transform:translateY(-160px) scale(1.5)}}
 @keyframes iFlash{0%{opacity:0}50%{opacity:1}100%{opacity:0}}
 </style>
 
@@ -284,6 +286,7 @@
 <div class="i-glow i-glow-4"></div>
 <div id="particles"></div>
 
+<div class="i-center">
 <div class="i-logo-row">
 <span class="i-n">N</span><span class="i-rest">urinetworkspos</span>
 </div>
@@ -291,44 +294,45 @@
 <div class="i-ps">PAYMENT SERVICE</div>
 <div class="i-tag">결제는 더 쉽게, 매장은 더 스마트하게</div>
 <div class="i-dots"><span class="i-dot"></span><span class="i-dot"></span><span class="i-dot"></span></div>
+</div>
 
 <div class="i-skip" onclick="closeIntro()">건너뛰기</div>
 
 <script>
-function playNetflixSound(){
+function playIntroSound(){
   try{
     var a=new(window.AudioContext||window.webkitAudioContext)();
     var now=a.currentTime;
-    function tone(f,s,d,v,type){
+    function t(f,s,d,v,type){
       var o=a.createOscillator(),g=a.createGain();
       o.type=type||'sine';o.frequency.setValueAtTime(f,now+s);
       g.gain.setValueAtTime(0,now+s);
-      g.gain.linearRampToValueAtTime(v,now+s+0.03);
-      g.gain.setValueAtTime(v,now+s+d*0.6);
+      g.gain.linearRampToValueAtTime(v,now+s+0.04);
+      g.gain.setValueAtTime(v*0.8,now+s+d*0.5);
       g.gain.exponentialRampToValueAtTime(0.001,now+s+d);
       o.connect(g);g.connect(a.destination);
       o.start(now+s);o.stop(now+s+d);
     }
-    tone(130.81,0,2.5,0.25,'sine');
-    tone(65.41,0,2.5,0.18,'triangle');
-    tone(261.63,0.05,1.8,0.12,'sine');
-    tone(329.63,0.08,1.5,0.10,'sine');
-    tone(392.00,0.12,1.8,0.08,'sine');
-    tone(523.25,0.2,2.0,0.06,'sine');
-    tone(55,0,0.4,0.15,'square');
-    tone(110,0.05,0.3,0.08,'sawtooth');
+    t(65.41,0,3,0.3,'sine');
+    t(130.81,0,2.8,0.25,'sine');
+    t(98,0.02,2.5,0.15,'triangle');
+    t(261.63,0.08,2,0.12,'sine');
+    t(329.63,0.12,1.8,0.10,'sine');
+    t(392,0.18,2,0.08,'sine');
+    t(523.25,0.3,2.5,0.06,'sine');
+    t(55,0,0.5,0.2,'square');
   }catch(e){}
 }
 
 function createParticles(){
   var c=document.getElementById('particles');
   if(!c)return;
-  for(var i=0;i<15;i++){
+  for(var i=0;i<18;i++){
     var p=document.createElement('div');
     p.className='i-particle';
     p.style.left=Math.random()*100+'%';
-    p.style.top=40+Math.random()*50+'%';
-    p.style.animation='particleFloat '+(2+Math.random()*3)+'s ease-in-out '+(Math.random()*5)+'s infinite';
+    p.style.top=30+Math.random()*60+'%';
+    p.style.animation='particleFloat '+(2+Math.random()*4)+'s ease-in-out '+(Math.random()*6)+'s infinite';
     c.appendChild(p);
   }
 }
@@ -336,9 +340,9 @@ function createParticles(){
 function closeIntro(){
   var el=document.getElementById('brandIntro');
   if(!el)return;
-  el.style.transition='opacity 1.2s ease';
+  el.style.transition='opacity 1.5s ease';
   el.style.opacity='0';
-  setTimeout(function(){el.remove();},1300);
+  setTimeout(function(){el.remove();},1600);
   sessionStorage.setItem('nw_intro_seen','1');
 }
 
@@ -346,12 +350,12 @@ if(sessionStorage.getItem('nw_intro_seen')){
   document.getElementById('brandIntro').remove();
 }else{
   createParticles();
-  setTimeout(playNetflixSound,800);
+  setTimeout(playIntroSound,900);
   setTimeout(closeIntro,8000);
 }
 </script>
 </div>
-<!-- ═══ END BRAND INTRO V5 ═══ -->
+<!-- ═══ END BRAND INTRO V6 ═══ -->
 
 <header class="header"><div class="header-inner"><a href="index.html" class="nav-logo"><img src="logo.png" alt="Nurinetworkspos" style="height:36px;"></a><nav class="nav" id="nav"><a href="index.html" class="nav-store">HOME</a><a href="about.html" class="nav-store">회사소개</a><div class="nav-drop-wrap"><a href="lineup.html" class="nav-store">제품라인업 ▾</a><div class="drop-list"><a href="lineup-pos.html">포스 POS</a><a href="lineup-kiosk.html">배리어프리 키오스크</a><a href="lineup-order.html">테이블오더/QR오더</a><a href="lineup-software.html">소프트웨어</a><a href="lineup-signpad.html">토스/네이버 단말기</a><a href="lineup-terminal.html">유무선 카드단말기</a><a href="lineup-pg.html">PG 온오프라인결제</a><a href="lineup-extra.html">부가장비</a></div></div><a href="support.html#store" class="nav-store">구매스토어</a></nav><div class="mobile-toggle" onclick="document.getElementById('nav').classList.toggle('open')"><span></span><span></span><span></span></div></div></header>
 
