@@ -907,14 +907,17 @@ function closeExitPopup(){
   var el=document.getElementById('exitPopup');
   if(el){el.style.transition='opacity .3s';el.style.opacity='0';setTimeout(function(){el.style.display='none';},350);}
 }
+var epPageTime=Date.now();
 document.addEventListener('mouseout',function(e){
-  if(!e.toElement&&!e.relatedTarget&&e.clientY<10){showExitPopup();}
+  if(Date.now()-epPageTime<8000)return;
+  if(!e.toElement&&!e.relatedTarget&&e.clientY<0){showExitPopup();}
 });
 var lastSY=0;
 window.addEventListener('scroll',function(){
+  if(Date.now()-epPageTime<8000)return;
   var sy=window.scrollY||window.pageYOffset;
   var mx=document.documentElement.scrollHeight-window.innerHeight;
-  if(sy<lastSY&&sy>mx*0.3&&(lastSY-sy)>80){showExitPopup();}
+  if(sy<lastSY&&sy>mx*0.5&&(lastSY-sy)>120){showExitPopup();}
   lastSY=sy;
 });
 </script>
