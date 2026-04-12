@@ -837,5 +837,124 @@ loadTicker();
   });
 })();
 </script>
+<!-- ═══ EXIT POPUP ═══ -->
+<div id="exitPopup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:99998;align-items:center;justify-content:center;">
+
+<style>
+#exitPopup.show{display:flex!important;animation:epOverIn .4s ease forwards;}
+.ep-overlay{position:absolute;inset:0;background:rgba(0,0,0,.45);z-index:0;}
+.ep-bg{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none;background:linear-gradient(180deg,rgba(245,245,247,.97),rgba(238,242,250,.97) 30%,rgba(255,255,255,.97) 50%,rgba(240,244,255,.97) 70%,rgba(245,245,247,.97));}
+.ep-hft{position:absolute;font-family:'Inter',sans-serif;font-weight:900;white-space:nowrap;color:rgba(27,58,140,.04);letter-spacing:.05em;text-transform:uppercase;}
+.ep-hft-1{font-size:clamp(2rem,6vw,4.5rem);top:5%;animation:epHft 22s linear infinite;}
+.ep-hft-2{font-size:clamp(1.8rem,5vw,3.5rem);top:22%;animation:epHft 28s linear infinite reverse;}
+.ep-hft-3{font-size:clamp(2rem,6vw,4rem);top:42%;animation:epHft 25s linear infinite;}
+.ep-hft-4{font-size:clamp(1.8rem,5vw,3.5rem);top:62%;animation:epHft 30s linear infinite reverse;}
+.ep-hft-5{font-size:clamp(2rem,6vw,4.5rem);top:82%;animation:epHft 23s linear infinite;}
+.ep-card{position:relative;z-index:2;background:#fff;border-radius:24px;padding:0;max-width:440px;width:92%;text-align:center;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.12);animation:epCardIn .5s cubic-bezier(.34,1.56,.64,1) .1s both;}
+.ep-ticker{background:#0D2B5C;padding:9px 0;overflow:hidden;}
+.ep-tk{display:flex;gap:20px;white-space:nowrap;animation:epTk 16s linear infinite;width:max-content;}
+.ep-ti{font-family:Inter,sans-serif;font-size:12px;color:rgba(255,255,255,.45);letter-spacing:1px;display:flex;align-items:center;gap:6px;}
+.ep-td{width:3px;height:3px;border-radius:50%;background:#3182F6;}
+.ep-tg{color:#F0B429;}
+.ep-body{padding:24px 24px 20px;}
+.ep-mascots{display:flex;justify-content:center;gap:4px;margin-bottom:10px;}
+.ep-mascot{width:58px;height:58px;border-radius:50%;object-fit:cover;border:2px solid #f0f0f0;}
+.ep-mascot:nth-child(1){animation:epW .5s ease-in-out infinite alternate;}
+.ep-mascot:nth-child(2){animation:epW .5s ease-in-out infinite alternate .15s;}
+.ep-mascot:nth-child(3){animation:epW .5s ease-in-out infinite alternate .3s;}
+.ep-line{width:44px;height:2px;background:linear-gradient(90deg,#3182F6,#F0B429);margin:0 auto 10px;border-radius:2px;}
+.ep-msg{font-family:'Noto Sans KR',sans-serif;font-size:13.5px;color:#333;line-height:1.9;}
+.ep-phone{font-family:Inter,sans-serif;font-size:19px;font-weight:700;color:#0D2B5C;margin:12px 0;letter-spacing:1.5px;}
+.ep-tw-wrap{height:24px;margin-bottom:12px;display:flex;align-items:center;justify-content:center;}
+.ep-tw{font-family:'Noto Sans KR',sans-serif;font-size:13px;color:#86868b;display:inline-block;overflow:hidden;white-space:nowrap;border-right:2px solid #3182F6;max-width:0;animation:epType 2.5s steps(14,end) .6s forwards,epBlink .6s step-end infinite;}
+.ep-close{display:inline-block;padding:9px 32px;background:#0D2B5C;color:#fff;border:none;border-radius:10px;font-family:'Noto Sans KR',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;}
+.ep-close:hover{background:#3182F6;transform:translateY(-1px);}
+@keyframes epHft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes epOverIn{from{opacity:0}to{opacity:1}}
+@keyframes epCardIn{from{opacity:0;transform:scale(.85) translateY(30px)}to{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes epTk{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes epW{0%{transform:rotate(-5deg) translateY(0)}100%{transform:rotate(5deg) translateY(-3px)}}
+@keyframes epType{0%{max-width:0}100%{max-width:210px}}
+@keyframes epBlink{0%,100%{border-color:#3182F6}50%{border-color:transparent}}
+</style>
+
+<div class="ep-overlay" onclick="closeExitPopup()"></div>
+<div class="ep-bg">
+<div class="ep-hft ep-hft-1">N250포스 · NOVA포스 · 배리어프리키오스크 · 업오더테이블오더 · UP포스솔루션 · N250포스 · NOVA포스 · 배리어프리키오스크 · 업오더테이블오더 · UP포스솔루션 · </div>
+<div class="ep-hft ep-hft-2">토스프론트사인패드 · 네이버커넥트사인패드 · T226유선단말기 · SLK-TS100프린터 · 토스프론트사인패드 · 네이버커넥트사인패드 · T226유선단말기 · SLK-TS100프린터 · </div>
+<div class="ep-hft ep-hft-3">POS · KIOSK · TABLE ORDER · SIGNPAD · TERMINAL · PG · PRINTER · POS · KIOSK · TABLE ORDER · SIGNPAD · TERMINAL · PG · PRINTER · </div>
+<div class="ep-hft ep-hft-4">결제솔루션 · 스마트매장 · 배리어프리 · 무인주문 · QR오더 · 결제솔루션 · 스마트매장 · 배리어프리 · 무인주문 · QR오더 · </div>
+<div class="ep-hft ep-hft-5">NURINETWORKSPOS · PAYMENT SERVICE · NURINETWORKSPOS · PAYMENT SERVICE · NURINETWORKSPOS · PAYMENT SERVICE · </div>
+</div>
+
+<div class="ep-card">
+<div class="ep-ticker">
+<div class="ep-tk">
+<span class="ep-ti"><span class="ep-td"></span>N250포스</span>
+<span class="ep-ti"><span class="ep-td"></span>NOVA포스</span>
+<span class="ep-ti ep-tg"><span class="ep-td" style="background:#F0B429"></span>배리어프리 키오스크</span>
+<span class="ep-ti"><span class="ep-td"></span>업오더 테이블오더</span>
+<span class="ep-ti"><span class="ep-td"></span>UP포스 솔루션</span>
+<span class="ep-ti ep-tg"><span class="ep-td" style="background:#F0B429"></span>토스프론트 사인패드</span>
+<span class="ep-ti"><span class="ep-td"></span>네이버커넥트 사인패드</span>
+<span class="ep-ti"><span class="ep-td"></span>T226 유선단말기</span>
+<span class="ep-ti ep-tg"><span class="ep-td" style="background:#F0B429"></span>SLK-TS100 프린터</span>
+<span class="ep-ti"><span class="ep-td"></span>N250포스</span>
+<span class="ep-ti"><span class="ep-td"></span>NOVA포스</span>
+<span class="ep-ti ep-tg"><span class="ep-td" style="background:#F0B429"></span>배리어프리 키오스크</span>
+<span class="ep-ti"><span class="ep-td"></span>업오더 테이블오더</span>
+<span class="ep-ti"><span class="ep-td"></span>UP포스 솔루션</span>
+<span class="ep-ti ep-tg"><span class="ep-td" style="background:#F0B429"></span>토스프론트 사인패드</span>
+<span class="ep-ti"><span class="ep-td"></span>네이버커넥트 사인패드</span>
+<span class="ep-ti"><span class="ep-td"></span>T226 유선단말기</span>
+<span class="ep-ti ep-tg"><span class="ep-td" style="background:#F0B429"></span>SLK-TS100 프린터</span>
+</div>
+</div>
+<div class="ep-body">
+<div class="ep-mascots">
+<img class="ep-mascot" src="mascot-heart.png" alt="mascot">
+<img class="ep-mascot" src="mascot-thumbsup.png" alt="mascot">
+<img class="ep-mascot" src="mascot-peace.png" alt="mascot">
+</div>
+<div class="ep-line"></div>
+<div class="ep-msg">
+방문해 주셔서 감사합니다.<br>
+오늘 하루도 행복과 행운이<br>
+가득하기를 기원합니다.
+</div>
+<div class="ep-phone">1544-7754</div>
+<div class="ep-tw-wrap">
+<span class="ep-tw">주식회사 누리네트웍스</span>
+</div>
+<button class="ep-close" onclick="closeExitPopup()">닫기</button>
+</div>
+</div>
+
+<script>
+var exitShown=false;
+function showExitPopup(){
+  if(exitShown||sessionStorage.getItem('nw_exit_shown'))return;
+  exitShown=true;
+  var el=document.getElementById('exitPopup');
+  if(el){el.classList.add('show');sessionStorage.setItem('nw_exit_shown','1');}
+}
+function closeExitPopup(){
+  var el=document.getElementById('exitPopup');
+  if(el){el.style.transition='opacity .4s';el.style.opacity='0';setTimeout(function(){el.style.display='none';},450);}
+}
+document.addEventListener('mouseout',function(e){
+  if(!e.toElement&&!e.relatedTarget&&e.clientY<10){showExitPopup();}
+});
+var lastScY=0;
+window.addEventListener('scroll',function(){
+  var sy=window.scrollY||window.pageYOffset;
+  var maxS=document.documentElement.scrollHeight-window.innerHeight;
+  if(sy<lastScY&&sy>maxS*0.3&&(lastScY-sy)>80){showExitPopup();}
+  lastScY=sy;
+});
+</script>
+</div>
+<!-- ═══ END EXIT POPUP ═══ -->
+
 </body>
 </html>
