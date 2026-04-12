@@ -841,6 +841,8 @@ loadTicker();
 
 
 
+
+
 <!-- ═══ EXIT POPUP ═══ -->
 <div id="exitPopup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:99998;align-items:center;justify-content:center;background:rgba(0,0,0,.5);">
 
@@ -852,26 +854,18 @@ loadTicker();
 .ep-ti{font-family:Inter,sans-serif;font-size:12px;color:rgba(255,255,255,.45);letter-spacing:1px;display:flex;align-items:center;gap:6px;}
 .ep-td{width:3px;height:3px;border-radius:50%;background:#3182F6;}
 .ep-tg{color:#F0B429;}
-.ep-body{padding:28px 24px 22px;position:relative;overflow:hidden;}
+.ep-body{padding:28px 24px 22px;}
 .ep-line{width:44px;height:2px;background:linear-gradient(90deg,#3182F6,#F0B429);margin:0 auto 14px;border-radius:2px;}
 .ep-msg{font-family:'Noto Sans KR',sans-serif;font-size:14px;color:#333;line-height:1.9;}
 .ep-phone{font-family:Inter,sans-serif;font-size:20px;font-weight:700;color:#0D2B5C;margin:14px 0 12px;letter-spacing:1.5px;}
-.ep-tw-row{display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:14px;min-height:36px;}
-.ep-tw{font-family:'Noto Sans KR',sans-serif;font-size:13px;color:#86868b;display:inline-block;overflow:hidden;white-space:nowrap;border-right:2px solid #3182F6;max-width:0;animation:epType 2.5s steps(14,end) .6s forwards,epBlink .6s step-end infinite;}
-.ep-mascots{display:flex;gap:2px;opacity:0;animation:epMascotJump .6s cubic-bezier(.34,1.56,.64,1) 2.8s forwards;}
-.ep-mascot{width:32px;height:32px;border-radius:50%;object-fit:cover;border:1.5px solid #f0f0f0;}
-.ep-mascot:nth-child(1){animation:epBounce .4s ease infinite alternate 3s;}
-.ep-mascot:nth-child(2){animation:epBounce .4s ease infinite alternate 3.15s;}
-.ep-mascot:nth-child(3){animation:epBounce .4s ease infinite alternate 3.3s;}
+.ep-cursive-wrap{overflow:hidden;margin-bottom:14px;height:30px;position:relative;}
+.ep-cursive{font-family:'Dancing Script',cursive;font-size:22px;color:#86868b;white-space:nowrap;position:absolute;animation:epCursiveFlow 8s linear infinite;}
 .ep-close{display:inline-block;padding:10px 36px;background:#0D2B5C;color:#fff;border:none;border-radius:12px;font-family:'Noto Sans KR',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;}
 .ep-close:hover{background:#3182F6;transform:translateY(-1px);}
 @keyframes epIn{from{opacity:0}to{opacity:1}}
 @keyframes epCardIn{from{opacity:0;transform:scale(.85) translateY(30px)}to{opacity:1;transform:scale(1) translateY(0)}}
 @keyframes epTk{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-@keyframes epType{0%{max-width:0}100%{max-width:210px}}
-@keyframes epBlink{0%,100%{border-color:#3182F6}50%{border-color:transparent}}
-@keyframes epMascotJump{0%{opacity:0;transform:translateX(60px) scale(0)}50%{opacity:1;transform:translateX(-5px) scale(1.1)}70%{transform:translateX(3px) scale(.95)}100%{opacity:1;transform:translateX(0) scale(1)}}
-@keyframes epBounce{0%{transform:translateY(0)}100%{transform:translateY(-3px)}}
+@keyframes epCursiveFlow{0%{left:100%}100%{left:-100%}}
 </style>
 
 <div style="position:absolute;inset:0;" onclick="closeExitPopup()"></div>
@@ -908,13 +902,8 @@ loadTicker();
 가득하기를 기원합니다.
 </div>
 <div class="ep-phone">1544-7754</div>
-<div class="ep-tw-row">
-<span class="ep-tw">주식회사 누리네트웍스</span>
-<div class="ep-mascots">
-<img class="ep-mascot" src="mascot-heart.png" alt="m">
-<img class="ep-mascot" src="mascot-thumbsup.png" alt="m">
-<img class="ep-mascot" src="mascot-peace.png" alt="m">
-</div>
+<div class="ep-cursive-wrap">
+<span class="ep-cursive">Nurinetworks &nbsp;&nbsp;&middot;&nbsp;&nbsp; Nurinetworks &nbsp;&nbsp;&middot;&nbsp;&nbsp; Nurinetworks &nbsp;&nbsp;&middot;&nbsp;&nbsp; Nurinetworks &nbsp;&nbsp;&middot;&nbsp;&nbsp; Nurinetworks</span>
 </div>
 <button class="ep-close" onclick="closeExitPopup()">닫기</button>
 </div>
