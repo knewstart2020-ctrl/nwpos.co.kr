@@ -37,20 +37,20 @@
         .footer-new 
         .footer-new 
         .js-loaded .reveal{opacity:0;transform:translateY(24px);transition:all .7s ease;}.js-loaded .reveal.visible{opacity:1;transform:translateY(0);}
-        .header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(0,0,0,0.0);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid transparent;transition:all .4s;}.header.scrolled{background:rgba(255,255,255,0.82);border-bottom-color:rgba(0,0,0,0.06);}
+        .header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,0.95);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,0.06);transition:all .4s;}.header.scrolled{background:rgba(255,255,255,0.95);border-bottom-color:rgba(0,0,0,0.08);}
         .header-inner{max-width:1320px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:76px;}
         
         .nav{display:flex;align-items:center;gap:8px;}.nav a{text-decoration:none;transition:all .2s;}
         .nav-cta{background:var(--primary)!important;color:#fff!important;padding:10px 26px;border-radius:50px;font-weight:600!important;}.nav-cta:hover{background:var(--primary-light)!important;}
-        .nav-store{border:none!important;background:none!important;color:rgba(255,255,255,0.7)!important;padding:10px 20px;border-radius:8px;font-weight:700!important;font-size:1rem!important;letter-spacing:0.02em;transition:all .25s!important;position:relative;cursor:pointer;}
-        .nav-store::after{content:'';position:absolute;bottom:4px;left:50%;width:0;height:2.5px;background:#FFD54F;border-radius:2px;transition:all .3s cubic-bezier(0.34,1.56,0.64,1);transform:translateX(-50%);}
-        .nav-store:hover{color:#fff!important;}.nav-store:hover::after{width:60%;}
-        .nav-store:active,.nav-store.on{color:#FFD54F!important;}.nav-store:active::after,.nav-store.on::after{width:80%;background:#FFD54F;}
+        .nav-store{border:none!important;background:none!important;color:rgba(0,0,0,0.5)!important;padding:10px 20px;border-radius:8px;font-weight:700!important;font-size:1rem!important;letter-spacing:0.02em;transition:all .25s!important;position:relative;cursor:pointer;}
+        .nav-store::after{content:'';position:absolute;bottom:4px;left:50%;width:0;height:2.5px;background:var(--primary);border-radius:2px;transition:all .3s cubic-bezier(0.34,1.56,0.64,1);transform:translateX(-50%);}
+        .nav-store:hover{color:#1d1d1f!important;}.nav-store:hover::after{width:60%;}
+        .nav-store:active,.nav-store.on{color:var(--primary)!important;}.nav-store:active::after,.nav-store.on::after{width:80%;background:var(--primary);}
         .header.scrolled .nav-store{color:rgba(0,0,0,0.5)!important;}
         .header.scrolled .nav-store::after{background:var(--primary);}
         .header.scrolled .nav-store:hover{color:#1d1d1f!important;}
         .header.scrolled .nav-store:active,.header.scrolled .nav-store.on{color:var(--primary)!important;}
-        .mobile-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;}.mobile-toggle span{width:22px;height:2px;background:#fff;border-radius:2px;}
+        .mobile-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;}.mobile-toggle span{width:22px;height:2px;background:#1d1d1f;border-radius:2px;}
         .hero{position:relative;min-height:100vh;overflow:hidden;background:#000;}
         .hs-slides{position:absolute;inset:0;}
         .hs-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease;}
@@ -216,7 +216,7 @@
 .drop-list a:hover{background:rgba(27,58,140,.06);color:#1B3A8C;}
 
 .nav-logo img{height:36px;width:auto;transition:all .4s;}
-.header .nav-logo img{filter:brightness(0) invert(1);}
+.header .nav-logo img{filter:none;}
 .header.scrolled .nav-logo img,.nav.scrolled .nav-logo img{filter:none;}
 
 .footer-new .nav-logo img{filter:none !important;}
@@ -368,7 +368,7 @@ if(sessionStorage.getItem('nw_intro_seen')){
 </div>
 <!-- ═══ END BRAND INTRO V7 ═══ -->
 
-<header class="header"><div class="header-inner"><a href="index.html" class="nav-logo"><img src="logo.svg" alt="Nurinetworkspos" style="height:36px;"></a><nav class="nav" id="nav"><a href="index.html" class="nav-store">HOME</a><a href="about.html" class="nav-store">회사소개</a><div class="nav-drop-wrap"><a href="lineup.html" class="nav-store">제품라인업 ▾</a><div class="drop-list"><a href="lineup-pos.html">포스 POS</a><a href="lineup-kiosk.html">배리어프리 키오스크</a><a href="lineup-order.html">테이블오더/QR오더</a><a href="lineup-software.html">소프트웨어</a><a href="lineup-signpad.html">토스/네이버 단말기</a><a href="lineup-terminal.html">유무선 카드단말기</a><a href="lineup-pg.html">PG 온오프라인결제</a><a href="lineup-extra.html">부가장비</a></div></div><a href="support.html#store" class="nav-store">구매스토어</a></nav><div class="mobile-toggle" onclick="document.getElementById('nav').classList.toggle('open')"><span></span><span></span><span></span></div></div></header>
+<header class="header"><div class="header-inner"><a href="index.html" class="nav-logo" style="display:flex;align-items:center;gap:8px;text-decoration:none;"><img src="logo.svg" alt="Nurinetworkspos" style="height:36px;"><span style="font-family:Inter,sans-serif;font-size:0.85rem;font-weight:700;color:#0032A0;letter-spacing:-0.02em;">nurinetworkspos</span></a><nav class="nav" id="nav"><a href="index.html" class="nav-store">HOME</a><a href="about.html" class="nav-store">회사소개</a><div class="nav-drop-wrap"><a href="lineup.html" class="nav-store">제품라인업 ▾</a><div class="drop-list"><a href="lineup-pos.html">포스 POS</a><a href="lineup-kiosk.html">배리어프리 키오스크</a><a href="lineup-order.html">테이블오더/QR오더</a><a href="lineup-software.html">소프트웨어</a><a href="lineup-signpad.html">토스/네이버 단말기</a><a href="lineup-terminal.html">유무선 카드단말기</a><a href="lineup-pg.html">PG 온오프라인결제</a><a href="lineup-extra.html">부가장비</a></div></div><a href="support.html#store" class="nav-store">구매스토어</a></nav><div class="mobile-toggle" onclick="document.getElementById('nav').classList.toggle('open')"><span></span><span></span><span></span></div></div></header>
 
 <section class="hero" id="hero">
 <div class="hs-slides" id="hsSlides">
