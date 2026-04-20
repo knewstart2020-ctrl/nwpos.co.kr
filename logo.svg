@@ -27,7 +27,7 @@
   <text x="212" y="128" font-family="Inter Tight, sans-serif" font-weight="800" font-size="104" letter-spacing="-3.12" fill="#0B1A3A">pa</text>
   <text x="316.4" y="128" font-family="Inter Tight, sans-serif" font-weight="800" font-size="104" letter-spacing="-3.12" fill="#0B1A3A">y</text>
   
-  <path d="M 80 168 C 160 198 290 182 370 158" stroke="#0066FF" stroke-width="9.36" fill="none" stroke-linecap="round"></path>
+  <path d="M 92 172 C 150 186, 250 182, 360 165" stroke="#0066FF" stroke-width="9.36" fill="none" stroke-linecap="round"></path>
   
   <g transform="translate(297.4 26.08)">
     <path d="M 0 -18.72 L 5.616 -5.616 L 18.72 0 L 5.616 5.616 L 0 18.72 L -5.616 5.616 L -18.72 0 L -5.616 -5.616 Z" fill="#0066FF"></path>
