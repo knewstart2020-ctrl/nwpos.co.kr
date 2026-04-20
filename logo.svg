@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 200" width="430" height="200">
+  <title>Nurinetworks npay logo</title>
+  <defs>
+    <mask id="notch">
+      <rect x="-20" y="-20" width="470" height="240" fill="#fff"></rect>
+      <circle cx="140" cy="30.72" r="30.4" fill="#000"></circle>
+    </mask>
+  </defs>
+  
+  <g mask="url(#notch)">
+    <circle cx="100" cy="100" r="80" fill="#0032A0"></circle>
+  </g>
+  <text x="100" y="128.8" text-anchor="middle" font-family="Inter Tight, sans-serif" font-weight="900" font-size="120" letter-spacing="-6.4" fill="#fff">n</text>
+  
+  <g transform="translate(140 30.72) rotate(-10)">
+    <g transform="skewY(-9) translate(2.128 2.9792)" opacity="0.18">
+      <rect x="-24.6848" y="-16.1728" width="49.3696" height="32.3456" rx="8.512" fill="#000"></rect>
+    </g>
+    <g transform="skewY(-9)">
+      <rect x="-24.6848" y="-16.1728" width="49.3696" height="32.3456" rx="8.512" fill="#0066FF"></rect>
+      <rect x="-24.6848" y="-5.1072" width="49.3696" height="5.1072" fill="#fff" opacity="0.9"></rect>
+      <rect x="-19.152" y="4.256" width="10.2144" height="6.8096" rx="2.5536" fill="#fff" opacity="0.7"></rect>
+      <rect x="-23.8336" y="-15.3216" width="47.6672" height="3.4048" rx="3.4048" fill="rgba(255,255,255,.28)"></rect>
+    </g>
+  </g>
+  
+  <text x="212" y="128" font-family="Inter Tight, sans-serif" font-weight="800" font-size="104" letter-spacing="-3.12" fill="#0B1A3A">pa</text>
+  <text x="316.4" y="128" font-family="Inter Tight, sans-serif" font-weight="800" font-size="104" letter-spacing="-3.12" fill="#0B1A3A">y</text>
+  
+  <path d="M 356 164.4 Q 311.2 174.88 228 150" stroke="#0066FF" stroke-width="9.36" fill="none" stroke-linecap="round"></path>
+  
+  <g transform="translate(297.4 26.08)">
+    <path d="M 0 -18.72 L 5.616 -5.616 L 18.72 0 L 5.616 5.616 L 0 18.72 L -5.616 5.616 L -18.72 0 L -5.616 -5.616 Z" fill="#0066FF"></path>
+  </g>
+</svg>
