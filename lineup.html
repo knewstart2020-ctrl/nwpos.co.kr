@@ -109,6 +109,132 @@ body{font-family:'Noto Sans KR','Inter',sans-serif;color:#1d1d1f;background:#f5f
     <meta name="google-site-verification" content="eMupPrhE5lKmqjNvV3oviRMPM4mjmGdbVPfJlbh7lww" />
 </head>
 <body>
+<!-- ═══ FILM SLIDE INTRO ═══ -->
+<div id="filmIntro">
+<style>
+#filmIntro{position:fixed;inset:0;z-index:99999;background:radial-gradient(ellipse at center,#1a2344 0%,#0d1528 50%,#050814 100%);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+#filmIntro.hide{animation:fiOut .8s ease forwards;}
+@keyframes fiOut{to{opacity:0;visibility:hidden;}}
+
+.fi-skip{position:absolute;top:28px;right:28px;z-index:20;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);color:#fff;padding:10px 22px;border-radius:30px;font-family:Inter,sans-serif;font-size:12px;letter-spacing:1px;cursor:pointer;transition:all .2s;}
+.fi-skip:hover{background:rgba(255,255,255,.2);}
+.fi-brand{position:absolute;top:32px;left:32px;z-index:20;font-family:Inter,sans-serif;font-size:11px;color:rgba(255,255,255,.65);letter-spacing:3px;text-transform:uppercase;font-weight:700;}
+.fi-counter{position:absolute;top:45px;right:180px;font-family:'Courier New',monospace;color:#F0B429;font-size:13px;letter-spacing:2px;z-index:20;text-shadow:0 0 8px rgba(240,180,41,.5);}
+.fi-counter::before{content:'● ';color:#e24b4a;animation:fiPulse 1s ease infinite;}
+@keyframes fiPulse{50%{opacity:.3;}}
+
+.fi-stage{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;}
+
+.fi-strip-wrap{position:relative;width:92%;max-width:1200px;height:56vh;max-height:480px;overflow:hidden;background:#000;border-top:12px solid #1a1a1a;border-bottom:12px solid #1a1a1a;box-shadow:0 0 80px rgba(0,102,255,.2),inset 0 0 40px rgba(0,0,0,.8);z-index:2;}
+
+.fi-perf-top,.fi-perf-bot{position:absolute;left:0;right:0;height:22px;background:#000;z-index:5;pointer-events:none;}
+.fi-perf-top{top:0;}
+.fi-perf-bot{bottom:0;}
+.fi-perf-top::before,.fi-perf-bot::before{content:'';position:absolute;top:50%;left:0;right:0;height:12px;transform:translateY(-50%);background-image:radial-gradient(ellipse at center,#fff 2px,transparent 3px);background-size:22px 12px;background-repeat:repeat-x;opacity:.9;}
+
+.fi-strip{display:flex;gap:0;height:100%;width:max-content;animation:fiScroll 22s linear infinite;}
+.fi-cell{flex-shrink:0;width:calc(56vh * 1.65);max-width:680px;height:100%;position:relative;background:#000;border-left:3px solid #0a0a0a;border-right:3px solid #0a0a0a;overflow:hidden;}
+.fi-cell video{width:100%;height:100%;object-fit:cover;}
+.fi-cell-label{position:absolute;bottom:22px;left:0;right:0;text-align:center;z-index:3;font-family:'Playfair Display',serif;color:#fff;font-size:1.5rem;font-weight:700;letter-spacing:6px;text-transform:uppercase;text-shadow:0 2px 16px rgba(0,0,0,.9),0 0 24px rgba(0,102,255,.5);}
+.fi-cell-sub{position:absolute;bottom:8px;left:0;right:0;text-align:center;z-index:3;font-family:Inter,sans-serif;color:rgba(255,255,255,.7);font-size:.8rem;letter-spacing:3px;text-transform:uppercase;}
+.fi-cell-num{position:absolute;top:14px;left:14px;z-index:3;font-family:'Courier New',monospace;color:#F0B429;font-size:11px;letter-spacing:2px;background:rgba(0,0,0,.6);padding:3px 8px;border-radius:2px;border:1px solid rgba(240,180,41,.4);}
+.fi-cell-tag{position:absolute;top:14px;right:14px;z-index:3;font-family:Inter,sans-serif;color:#fff;font-size:10px;letter-spacing:2px;background:rgba(0,102,255,.85);padding:3px 10px;border-radius:20px;font-weight:700;}
+
+@keyframes fiScroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+.fi-cell::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.08) 0%,transparent 30%,transparent 65%,rgba(0,0,0,.3) 100%);pointer-events:none;z-index:2;}
+
+.fi-strip-wrap::before,.fi-strip-wrap::after{content:'';position:absolute;top:0;bottom:0;width:160px;z-index:4;pointer-events:none;}
+.fi-strip-wrap::before{left:0;background:linear-gradient(to right,#000,transparent);}
+.fi-strip-wrap::after{right:0;background:linear-gradient(to left,#000,transparent);}
+
+.fi-grain{position:absolute;inset:0;pointer-events:none;opacity:.08;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='3'/></filter><rect width='200' height='200' filter='url(%23n)' opacity='.5'/></svg>");animation:fiGrain .3s steps(4) infinite;z-index:7;}
+@keyframes fiGrain{0%{transform:translate(0,0)}25%{transform:translate(-2%,1%)}50%{transform:translate(1%,-2%)}75%{transform:translate(-1%,2%)}100%{transform:translate(2%,-1%)}}
+
+.fi-caption{position:absolute;bottom:8%;left:0;right:0;text-align:center;z-index:10;font-family:'Playfair Display',serif;color:rgba(255,255,255,.95);font-size:14px;letter-spacing:4px;text-transform:uppercase;opacity:0;animation:fiCapIn 1s ease 2s forwards;}
+.fi-caption strong{display:block;font-size:22px;font-weight:700;margin-top:8px;letter-spacing:6px;background:linear-gradient(90deg,#3182F6,#F0B429);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+@keyframes fiCapIn{to{opacity:1;}}
+
+.fi-ticker{position:absolute;top:0;left:0;right:0;background:#0D2B5C;padding:10px 0;overflow:hidden;z-index:15;border-bottom:1px solid rgba(255,255,255,.1);}
+.fi-tk-track{display:flex;gap:24px;white-space:nowrap;animation:fiTkScroll 20s linear infinite;width:max-content;}
+.fi-tk-item{font-family:Inter,sans-serif;font-size:12px;color:rgba(255,255,255,.55);letter-spacing:2px;display:flex;align-items:center;gap:6px;}
+.fi-tk-dot{width:4px;height:4px;border-radius:50%;background:#3182F6;}
+.fi-tk-gold{color:#F0B429;}
+@keyframes fiTkScroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+</style>
+
+<div class="fi-ticker">
+<div class="fi-tk-track">
+<span class="fi-tk-item"><span class="fi-tk-dot"></span>NURINETWORKSPOS · PRODUCT REEL</span>
+<span class="fi-tk-item fi-tk-gold"><span class="fi-tk-dot" style="background:#F0B429"></span>Since 2012</span>
+<span class="fi-tk-item"><span class="fi-tk-dot"></span>N250포스</span>
+<span class="fi-tk-item"><span class="fi-tk-dot"></span>NOVA포스</span>
+<span class="fi-tk-item fi-tk-gold"><span class="fi-tk-dot" style="background:#F0B429"></span>배리어프리 키오스크</span>
+<span class="fi-tk-item"><span class="fi-tk-dot"></span>업오더 테이블오더</span>
+<span class="fi-tk-item"><span class="fi-tk-dot"></span>UP포스 솔루션</span>
+<span class="fi-tk-item fi-tk-gold"><span class="fi-tk-dot" style="background:#F0B429"></span>토스프론트 사인패드</span>
+<span class="fi-tk-item"><span class="fi-tk-dot"></span>네이버커넥트</span>
+<span class="fi-tk-item"><span class="fi-tk-dot"></span>T226 단말기</span>
+<span class="fi-tk-item fi-tk-gold"><span class="fi-tk-dot" style="background:#F0B429"></span>SLK-TS100</span>
+<span class="fi-tk-item"><span class="fi-tk-dot"></span>NURINETWORKSPOS · PRODUCT REEL</span>
+<span class="fi-tk-item fi-tk-gold"><span class="fi-tk-dot" style="background:#F0B429"></span>Since 2012</span>
+<span class="fi-tk-item"><span class="fi-tk-dot"></span>N250포스</span>
+<span class="fi-tk-item"><span class="fi-tk-dot"></span>NOVA포스</span>
+<span class="fi-tk-item fi-tk-gold"><span class="fi-tk-dot" style="background:#F0B429"></span>배리어프리 키오스크</span>
+<span class="fi-tk-item"><span class="fi-tk-dot"></span>업오더 테이블오더</span>
+<span class="fi-tk-item"><span class="fi-tk-dot"></span>UP포스 솔루션</span>
+<span class="fi-tk-item fi-tk-gold"><span class="fi-tk-dot" style="background:#F0B429"></span>토스프론트 사인패드</span>
+<span class="fi-tk-item"><span class="fi-tk-dot"></span>네이버커넥트</span>
+<span class="fi-tk-item"><span class="fi-tk-dot"></span>T226 단말기</span>
+<span class="fi-tk-item fi-tk-gold"><span class="fi-tk-dot" style="background:#F0B429"></span>SLK-TS100</span>
+</div>
+</div>
+
+<div class="fi-brand" style="top:55px;">■ REEL 01 · PRODUCT LINEUP</div>
+<button class="fi-skip" style="top:50px;" onclick="skipFilmIntro()">SKIP ▶</button>
+<div class="fi-counter" style="top:60px;">REC 00:07</div>
+
+<div class="fi-stage">
+<div class="fi-strip-wrap">
+<div class="fi-perf-top"></div>
+<div class="fi-perf-bot"></div>
+
+<div class="fi-strip">
+<div class="fi-cell"><div class="fi-cell-num">01</div><div class="fi-cell-tag">POS</div><video autoplay muted loop playsinline><source src="lineup-pos-zoom.mp4" type="video/mp4"></video><div class="fi-cell-label">POS</div><div class="fi-cell-sub">N250 · NOVA</div></div>
+<div class="fi-cell"><div class="fi-cell-num">02</div><div class="fi-cell-tag">KIOSK</div><video autoplay muted loop playsinline><source src="lineup-kiosk-pan.mp4" type="video/mp4"></video><div class="fi-cell-label">KIOSK</div><div class="fi-cell-sub">배리어프리</div></div>
+<div class="fi-cell"><div class="fi-cell-num">03</div><div class="fi-cell-tag">ORDER</div><video autoplay muted loop playsinline><source src="lineup-order-tilt.mp4" type="video/mp4"></video><div class="fi-cell-label">TABLE ORDER</div><div class="fi-cell-sub">업오더</div></div>
+<div class="fi-cell"><div class="fi-cell-num">04</div><div class="fi-cell-tag">SIGN</div><video autoplay muted loop playsinline><source src="lineup-signpad-360.mp4" type="video/mp4"></video><div class="fi-cell-label">SIGNPAD</div><div class="fi-cell-sub">토스 · 네이버</div></div>
+<div class="fi-cell"><div class="fi-cell-num">05</div><div class="fi-cell-tag">CARD</div><video autoplay muted loop playsinline><source src="lineup-terminal-flash.mp4" type="video/mp4"></video><div class="fi-cell-label">TERMINAL</div><div class="fi-cell-sub">T226 · M6202NQ</div></div>
+<div class="fi-cell"><div class="fi-cell-num">06</div><div class="fi-cell-tag">EXTRA</div><video autoplay muted loop playsinline><source src="lineup-extra-zoom.mp4" type="video/mp4"></video><div class="fi-cell-label">ACCESSORY</div><div class="fi-cell-sub">부가 장비</div></div>
+<!-- 복제 (무한 루프) -->
+<div class="fi-cell"><div class="fi-cell-num">01</div><div class="fi-cell-tag">POS</div><video autoplay muted loop playsinline><source src="lineup-pos-zoom.mp4" type="video/mp4"></video><div class="fi-cell-label">POS</div><div class="fi-cell-sub">N250 · NOVA</div></div>
+<div class="fi-cell"><div class="fi-cell-num">02</div><div class="fi-cell-tag">KIOSK</div><video autoplay muted loop playsinline><source src="lineup-kiosk-pan.mp4" type="video/mp4"></video><div class="fi-cell-label">KIOSK</div><div class="fi-cell-sub">배리어프리</div></div>
+<div class="fi-cell"><div class="fi-cell-num">03</div><div class="fi-cell-tag">ORDER</div><video autoplay muted loop playsinline><source src="lineup-order-tilt.mp4" type="video/mp4"></video><div class="fi-cell-label">TABLE ORDER</div><div class="fi-cell-sub">업오더</div></div>
+<div class="fi-cell"><div class="fi-cell-num">04</div><div class="fi-cell-tag">SIGN</div><video autoplay muted loop playsinline><source src="lineup-signpad-360.mp4" type="video/mp4"></video><div class="fi-cell-label">SIGNPAD</div><div class="fi-cell-sub">토스 · 네이버</div></div>
+<div class="fi-cell"><div class="fi-cell-num">05</div><div class="fi-cell-tag">CARD</div><video autoplay muted loop playsinline><source src="lineup-terminal-flash.mp4" type="video/mp4"></video><div class="fi-cell-label">TERMINAL</div><div class="fi-cell-sub">T226 · M6202NQ</div></div>
+<div class="fi-cell"><div class="fi-cell-num">06</div><div class="fi-cell-tag">EXTRA</div><video autoplay muted loop playsinline><source src="lineup-extra-zoom.mp4" type="video/mp4"></video><div class="fi-cell-label">ACCESSORY</div><div class="fi-cell-sub">부가 장비</div></div>
+</div>
+</div>
+</div>
+
+<div class="fi-grain"></div>
+
+<div class="fi-caption">결제를 넘어<strong>매장의 성장을 함께합니다</strong></div>
+
+<script>
+(function(){
+  if(sessionStorage.getItem('nw_film_shown')){document.getElementById('filmIntro').style.display='none';return;}
+  sessionStorage.setItem('nw_film_shown','1');
+  setTimeout(endFilmIntro,7000);
+})();
+function endFilmIntro(){var el=document.getElementById('filmIntro');if(el){el.classList.add('hide');setTimeout(function(){el.style.display='none';},900);}}
+function skipFilmIntro(){endFilmIntro();}
+</script>
+</div>
+<!-- ═══ END FILM INTRO ═══ -->
+
+
+
 <header class="header"><div class="header-inner">
 <a href="index.html" class="nav-logo" style="display:flex;align-items:center;gap:8px;text-decoration:none;"><img src="logo.svg" alt="Nurinetworkspos" style="height:36px;"><span style="font-family:Inter,sans-serif;font-size:1.2rem;font-weight:700;color:#0066FF;letter-spacing:-0.02em;">nurinetworkspos</span></a>
 <nav class="nav" id="nav"><a href="index.html" class="nav-store">HOME</a><a href="about.html" class="nav-store">회사소개</a><div class="nav-drop-wrap"><a href="lineup.html" class="nav-store">제품라인업 ▾</a><div class="drop-list"><a href="lineup-pos.html">포스 POS</a><a href="lineup-kiosk.html">배리어프리 키오스크</a><a href="lineup-order.html">테이블오더/QR오더</a><a href="lineup-software.html">소프트웨어</a><a href="lineup-signpad.html">토스/네이버 단말기</a><a href="lineup-terminal.html">유무선 카드단말기</a><a href="lineup-pg.html">PG 온오프라인결제</a><a href="lineup-extra.html">부가장비</a></div></div><a href="support.html#store" class="nav-store">구매스토어</a></nav>
@@ -175,7 +301,10 @@ body{font-family:'Noto Sans KR','Inter',sans-serif;color:#1d1d1f;background:#f5f
 
 <!-- 6. 프로그램/소프트웨어 -->
 <a href="lineup-software.html" class="lineup-card">
-<div class="card-visual" style="background-image:url('https://lh3.googleusercontent.com/d/1pNOcW2zocxna5ZvOOnHpCOJNd0qQOAYu');background-size:cover;background-position:center;background-color:#1a2a4a;">
+<div class="card-visual" style="background:linear-gradient(135deg,#1a2a4a 0%,#2a3a6a 50%,#1B3A8C 100%);padding:0;overflow:hidden;">
+<video style="width:100%;height:100%;object-fit:cover;" autoplay muted loop playsinline>
+<source src="software-showcase.mp4" type="video/mp4">
+</video>
 </div>
 <div class="card-text">
 <h3>프로그램 / 소프트웨어</h3>
