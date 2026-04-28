@@ -877,40 +877,40 @@ loadTicker();
 
 /* 봉투 더 크게 (640px) - 편지지가 봉투 안에 자연스럽게 */
 .lt-envelope{position:relative;width:640px;max-width:96%;perspective:1500px;}
-.lt-back{position:relative;width:100%;aspect-ratio:1.45/1;background:linear-gradient(135deg,#F0B429 0%,#FFD54F 50%,#F0B429 100%);border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.4);}
+.lt-back{position:relative;width:100%;aspect-ratio:1.1/1;background:linear-gradient(135deg,#F0B429 0%,#FFD54F 50%,#F0B429 100%);border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.4);}
 .lt-flap{position:absolute;top:0;left:0;right:0;width:100%;height:50%;background:linear-gradient(135deg,#d99c1f,#F0B429);clip-path:polygon(0 0,50% 70%,100% 0);transform-origin:top;animation:ltOpen 0.5s cubic-bezier(.55,.06,.68,.19) .1s forwards;z-index:3;box-shadow:0 4px 16px rgba(0,0,0,.15);}
 @keyframes ltOpen{0%{transform:rotateX(0deg);}100%{transform:rotateX(180deg) translateY(-10px);}}
 
 /* 편지지: 봉투 안에 들어감, 살짝만 위로 솟아오름 */
-.lt-paper{position:absolute;top:6%;left:5%;right:5%;bottom:6%;background:linear-gradient(180deg,#fffef9 0%,#fff 100%);border-radius:8px;padding:30px 36px 24px;box-shadow:0 8px 30px rgba(0,0,0,.15),inset 0 0 0 1px rgba(13,43,92,.06);z-index:1;animation:ltRise 0.6s cubic-bezier(.34,1.56,.64,1) 0.3s forwards;transform:translateY(0);opacity:0;background-image:repeating-linear-gradient(180deg,transparent 0,transparent 30px,rgba(13,43,92,.05) 30px,rgba(13,43,92,.05) 31px);overflow:hidden;}
-@keyframes ltRise{0%{opacity:0;transform:translateY(30%) scale(.95);}100%{opacity:1;transform:translateY(-12%) scale(1);}}
+.lt-paper{position:absolute;top:5%;left:4%;right:4%;bottom:5%;background:linear-gradient(180deg,#fffef9 0%,#fff 100%);border-radius:8px;padding:24px 30px 20px;box-shadow:0 8px 30px rgba(0,0,0,.15),inset 0 0 0 1px rgba(13,43,92,.06);z-index:1;animation:ltRise 0.6s cubic-bezier(.34,1.56,.64,1) 0.3s forwards;transform:translateY(0);opacity:0;background-image:repeating-linear-gradient(180deg,transparent 0,transparent 28px,rgba(13,43,92,.05) 28px,rgba(13,43,92,.05) 29px);}
+@keyframes ltRise{0%{opacity:0;transform:translateY(20%) scale(.95);}100%{opacity:1;transform:translateY(-8%) scale(1);}}
 
-.lt-content{position:relative;height:100%;display:flex;flex-direction:column;}
+.lt-content{position:relative;height:100%;display:flex;flex-direction:column;justify-content:space-between;}
 
 /* 헤더 (우표 + From) */
-.lt-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;padding-bottom:10px;border-bottom:1px dashed rgba(13,43,92,.2);}
+.lt-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;padding-bottom:8px;border-bottom:1px dashed rgba(13,43,92,.2);}
 .lt-stamp{width:50px;height:60px;background:linear-gradient(135deg,#0066FF,#0D2B5C);border-radius:4px;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Inter',sans-serif;font-size:9px;font-weight:900;letter-spacing:1px;text-align:center;line-height:1.2;padding:4px;box-shadow:0 4px 8px rgba(0,0,0,.15);transform:rotate(-3deg);flex-shrink:0;}
 .lt-from{font-family:'Dancing Script',cursive;font-size:1.5rem;color:#0066FF;font-weight:700;}
 
 /* 첫 인사 - 펜글씨 (큰 사이즈) */
-.lt-greeting{font-family:'Nanum Pen Script',cursive;font-size:1.9rem;color:#0D2B5C;margin-bottom:14px;line-height:1.3;font-weight:700;text-align:center;}
+.lt-greeting{font-family:'Nanum Pen Script',cursive;font-size:1.7rem;color:#0D2B5C;margin-bottom:10px;line-height:1.3;font-weight:700;text-align:center;}
 .lt-greeting .heart-icon{color:#e24b4a;display:inline-block;animation:ltHeart 1.2s ease infinite;}
 @keyframes ltHeart{0%,100%{transform:scale(1);}50%{transform:scale(1.2);}}
 
 /* 본문 - 명확한 세리프 (가독성 + 인사말 격조) */
-.lt-body{font-family:'Noto Serif KR','Nanum Pen Script',serif;font-size:1.05rem;color:#1d1d1f;line-height:1.85;flex:1;text-align:center;font-weight:500;}
+.lt-body{font-family:'Noto Serif KR','Nanum Pen Script',serif;font-size:.98rem;color:#1d1d1f;line-height:1.7;text-align:center;font-weight:500;margin-bottom:6px;}
 .lt-body p{margin-bottom:6px;}
 .lt-body .gold{color:#0D2B5C;font-weight:900;}
 .lt-body .blue{color:#0066FF;font-weight:700;}
 
 /* 1544-7754 연락처 강조 박스 */
-.lt-tel-box{margin:6px auto 12px;padding:10px 32px;background:linear-gradient(135deg,#0D2B5C,#1B3A8C);border-radius:50px;display:inline-flex;align-items:center;gap:10px;box-shadow:0 6px 20px rgba(13,43,92,.3);min-width:220px;justify-content:center;}
+.lt-tel-box{margin:4px auto 8px;padding:9px 28px;background:linear-gradient(135deg,#0D2B5C,#1B3A8C);border-radius:50px;display:inline-flex;align-items:center;gap:10px;box-shadow:0 6px 20px rgba(13,43,92,.3);min-width:220px;justify-content:center;}
 .lt-tel-icon{font-size:1.1rem;flex-shrink:0;}
 .lt-tel-text{font-family:'Inter',sans-serif;font-size:1.25rem;color:#fff;font-weight:900;letter-spacing:1.5px;white-space:nowrap;}
 .lt-tel-label{font-family:'Noto Sans KR',sans-serif;font-size:.75rem;color:#1d1d1f;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;}
 
 /* 마지막 서명 - 필기체 */
-.lt-signature{font-family:'Dancing Script',cursive;font-size:2rem;color:#0066FF;font-weight:700;text-align:center;margin-top:10px;line-height:1;}
+.lt-signature{font-family:'Dancing Script',cursive;font-size:1.8rem;color:#0066FF;font-weight:700;text-align:center;margin-top:6px;line-height:1;}
 
 /* === 손글씨 펜 애니메이션 (about.html의 hw 스타일) === */
 .lt-hw{position:relative;display:inline-block;overflow:hidden;white-space:nowrap;}
@@ -920,10 +920,10 @@ loadTicker();
 .lt-hw.write::before{animation:ltHwP 1.8s cubic-bezier(.4,0,.2,1) forwards;}
 @keyframes ltHwR{0%{width:100%}100%{width:0}}
 @keyframes ltHwP{0%{right:100%;opacity:1}90%{opacity:1}100%{right:-5%;opacity:0}}
-.lt-signature-sub{font-family:'Nanum Pen Script',cursive;font-size:1.1rem;color:#0D2B5C;text-align:center;margin-top:2px;letter-spacing:1px;}
+.lt-signature-sub{font-family:'Nanum Pen Script',cursive;font-size:1rem;color:#0D2B5C;text-align:center;margin-top:1px;margin-bottom:6px;letter-spacing:1px;}
 
 /* 액션 버튼 */
-.lt-actions{display:flex;gap:8px;margin-top:14px;justify-content:center;}
+.lt-actions{display:flex;gap:8px;margin-top:8px;justify-content:center;}
 .lt-btn{padding:10px 26px;background:#0D2B5C;color:#fff;border:none;border-radius:50px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:1px;transition:all .2s;}
 .lt-btn:hover{background:#0066FF;transform:translateY(-2px);}
 .lt-btn.gold{background:#F0B429;color:#0D2B5C;}
