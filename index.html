@@ -846,102 +846,171 @@ loadTicker();
 
 
 
-<!-- ═══ EXIT POPUP ═══ -->
-<div id="exitPopup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:99998;align-items:center;justify-content:center;background:rgba(0,0,0,.5);">
 
+
+<!-- ═══ BULLDOG + LETTER WIDGET ═══ -->
 <style>
-#exitPopup.show{display:flex!important;animation:epIn .4s ease forwards;}
-.ep-card{position:relative;background:#fff;border-radius:24px;max-width:420px;width:92%;text-align:center;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.15);animation:epCardIn .5s cubic-bezier(.34,1.56,.64,1) .1s both;}
-.ep-ticker{background:#0D2B5C;padding:9px 0;overflow:hidden;border-radius:24px 24px 0 0;}
-.ep-tk{display:flex;gap:20px;white-space:nowrap;animation:epTk 16s linear infinite;width:max-content;}
-.ep-ti{font-family:Inter,sans-serif;font-size:12px;color:rgba(255,255,255,.45);letter-spacing:1px;display:flex;align-items:center;gap:6px;}
-.ep-td{width:3px;height:3px;border-radius:50%;background:#3182F6;}
-.ep-tg{color:#F0B429;}
-.ep-body{padding:28px 24px 22px;}
-.ep-line{width:44px;height:2px;background:linear-gradient(90deg,#3182F6,#F0B429);margin:0 auto 14px;border-radius:2px;}
-.ep-msg{font-family:'Noto Sans KR',sans-serif;font-size:14px;color:#333;line-height:1.9;}
-.ep-phone{font-family:Inter,sans-serif;font-size:20px;font-weight:700;color:#0D2B5C;margin:14px 0 12px;letter-spacing:1.5px;}
-.ep-cursive-wrap{overflow:hidden;margin-bottom:14px;height:30px;position:relative;}
-.ep-cursive{font-family:'Dancing Script',cursive;font-size:22px;color:#86868b;white-space:nowrap;position:absolute;animation:epCursiveFlow 8s linear infinite;}
-.ep-close{display:inline-block;padding:10px 36px;background:#0D2B5C;color:#fff;border:none;border-radius:12px;font-family:'Noto Sans KR',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;}
-.ep-close:hover{background:#3182F6;transform:translateY(-1px);}
-@keyframes epIn{from{opacity:0}to{opacity:1}}
-@keyframes epCardIn{from{opacity:0;transform:scale(.85) translateY(30px)}to{opacity:1;transform:scale(1) translateY(0)}}
-@keyframes epTk{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-@keyframes epCursiveFlow{0%{left:100%}100%{left:-100%}}
+/* === 폰트 === */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Nanum+Pen+Script&display=swap');
+
+/* === 불독 위젯 (우측 하단) === */
+.bd-widget{position:fixed;bottom:20px;right:20px;z-index:9998;display:none;flex-direction:column;align-items:flex-end;gap:8px;}
+.bd-widget.show{display:flex;animation:bdPopIn .8s cubic-bezier(.34,1.56,.64,1) forwards;}
+.bd-bubble{background:#fff;padding:14px 18px;border-radius:18px;box-shadow:0 12px 30px rgba(0,0,0,.15);max-width:240px;position:relative;border:2px solid #0066FF;animation:bdBubblePop .5s ease 0.3s both;}
+.bd-bubble::after{content:'';position:absolute;bottom:-8px;right:30px;width:16px;height:16px;background:#fff;transform:rotate(45deg);border-right:2px solid #0066FF;border-bottom:2px solid #0066FF;}
+.bd-bubble-text{font-family:'Nanum Pen Script','Noto Sans KR',sans-serif;font-size:1.3rem;color:#0D2B5C;line-height:1.3;font-weight:700;}
+.bd-bubble-text .heart{color:#e24b4a;animation:bdHeart 1s ease infinite;display:inline-block;}
+.bd-img-wrap{position:relative;}
+.bd-img{width:100px;height:100px;border-radius:50%;object-fit:cover;border:4px solid #fff;box-shadow:0 8px 24px rgba(0,0,0,.2);background:#FAEEDA;display:flex;align-items:center;justify-content:center;font-size:60px;animation:bdWave 2s ease infinite;cursor:pointer;transition:transform .2s;}
+.bd-img:hover{transform:scale(1.1) rotate(-5deg);}
+.bd-close{position:absolute;top:0;right:0;width:24px;height:24px;background:#0D2B5C;color:#fff;border:none;border-radius:50%;cursor:pointer;font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,.2);}
+@keyframes bdPopIn{0%{opacity:0;transform:translateY(40px) scale(.5);}50%{opacity:1;transform:translateY(-10px) scale(1.05);}100%{opacity:1;transform:translateY(0) scale(1);}}
+@keyframes bdBubblePop{0%{opacity:0;transform:scale(0) translateY(20px);}100%{opacity:1;transform:scale(1) translateY(0);}}
+@keyframes bdWave{0%,100%{transform:rotate(-5deg);}50%{transform:rotate(5deg) translateY(-3px);}}
+@keyframes bdHeart{0%,100%{transform:scale(1);}50%{transform:scale(1.3);}}
+
+/* === 편지지 슬라이드 === */
+.lt-overlay{position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;background:rgba(13,43,92,.4);backdrop-filter:blur(6px);}
+.lt-overlay.show{display:flex;animation:ltFade .3s ease forwards;}
+@keyframes ltFade{from{opacity:0;}to{opacity:1;}}
+.lt-envelope{position:relative;width:560px;max-width:92%;perspective:1500px;padding-top:280px;}
+.lt-back{position:relative;width:100%;aspect-ratio:1.6/1;background:linear-gradient(135deg,#F0B429 0%,#FFD54F 50%,#F0B429 100%);border-radius:8px;box-shadow:0 30px 80px rgba(0,0,0,.4);}
+.lt-flap{position:absolute;top:0;left:0;right:0;width:100%;height:55%;background:linear-gradient(135deg,#d99c1f,#F0B429);clip-path:polygon(0 0,50% 70%,100% 0);transform-origin:top;animation:ltOpen 0.5s cubic-bezier(.55,.06,.68,.19) .1s forwards;z-index:3;box-shadow:0 4px 16px rgba(0,0,0,.15);}
+@keyframes ltOpen{0%{transform:rotateX(0deg);}100%{transform:rotateX(180deg) translateY(-10px);}}
+.lt-paper{position:absolute;top:50%;left:5%;right:5%;height:380px;background:linear-gradient(180deg,#fffef9 0%,#fff 100%);border-radius:6px;padding:24px 28px 20px;box-shadow:0 8px 30px rgba(0,0,0,.15),inset 0 0 0 1px rgba(13,43,92,.06);z-index:1;animation:ltRise 0.6s cubic-bezier(.34,1.56,.64,1) 0.3s forwards;transform:translateY(0);opacity:0;background-image:repeating-linear-gradient(180deg,transparent 0,transparent 26px,rgba(13,43,92,.06) 26px,rgba(13,43,92,.06) 27px);}
+@keyframes ltRise{0%{opacity:0;transform:translateY(20%) scale(.95);}100%{opacity:1;transform:translateY(-90%) scale(1);}}
+.lt-content{position:relative;height:100%;display:flex;flex-direction:column;}
+.lt-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;padding-bottom:10px;border-bottom:1px dashed rgba(13,43,92,.2);}
+.lt-stamp{width:50px;height:60px;background:linear-gradient(135deg,#0066FF,#0D2B5C);border-radius:4px;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Inter',sans-serif;font-size:9px;font-weight:900;letter-spacing:1px;text-align:center;line-height:1.2;padding:4px;box-shadow:0 4px 8px rgba(0,0,0,.15);transform:rotate(-3deg);}
+.lt-from{font-family:'Dancing Script',cursive;font-size:1.5rem;color:#0066FF;font-weight:700;}
+.lt-greeting{font-family:'Nanum Pen Script',cursive;font-size:1.5rem;color:#0D2B5C;margin-bottom:10px;line-height:1.3;}
+.lt-body{font-family:'Nanum Pen Script',cursive;font-size:1.2rem;color:#333;line-height:1.5;flex:1;}
+.lt-body p{margin-bottom:8px;}
+.lt-body .gold{color:#F0B429;font-weight:700;}
+.lt-body .blue{color:#0066FF;font-weight:700;}
+.lt-signature{font-family:'Dancing Script',cursive;font-size:1.6rem;color:#0066FF;font-weight:700;text-align:right;margin-top:8px;}
+.lt-actions{display:flex;gap:8px;margin-top:14px;justify-content:center;}
+.lt-btn{padding:10px 24px;background:#0D2B5C;color:#fff;border:none;border-radius:50px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:1px;transition:all .2s;}
+.lt-btn:hover{background:#0066FF;transform:translateY(-2px);}
+.lt-btn.gold{background:#F0B429;color:#0D2B5C;}
+.lt-btn.gold:hover{background:#FFD54F;}
+.lt-close{position:absolute;top:-40px;right:0;width:auto;padding:6px 14px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:30px;cursor:pointer;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(10px);}
+.lt-confetti{position:absolute;width:8px;height:8px;border-radius:50%;animation:ltConfetti 2.5s ease-out forwards;pointer-events:none;}
+@keyframes ltConfetti{0%{transform:translateY(-200px) rotate(0deg);opacity:1;}100%{transform:translateY(400px) rotate(720deg);opacity:0;}}
 </style>
 
-<div style="position:absolute;inset:0;" onclick="closeExitPopup()"></div>
-<div class="ep-card">
-
-<div class="ep-ticker">
-<div class="ep-tk">
-<span class="ep-ti"><span class="ep-td"></span>N250포스</span>
-<span class="ep-ti"><span class="ep-td"></span>NOVA포스</span>
-<span class="ep-ti ep-tg"><span class="ep-td" style="background:#F0B429"></span>배리어프리 키오스크</span>
-<span class="ep-ti"><span class="ep-td"></span>업오더 테이블오더</span>
-<span class="ep-ti"><span class="ep-td"></span>UP포스 솔루션</span>
-<span class="ep-ti ep-tg"><span class="ep-td" style="background:#F0B429"></span>토스프론트 사인패드</span>
-<span class="ep-ti"><span class="ep-td"></span>네이버커넥트 사인패드</span>
-<span class="ep-ti"><span class="ep-td"></span>T226 유선단말기</span>
-<span class="ep-ti ep-tg"><span class="ep-td" style="background:#F0B429"></span>SLK-TS100 프린터</span>
-<span class="ep-ti"><span class="ep-td"></span>N250포스</span>
-<span class="ep-ti"><span class="ep-td"></span>NOVA포스</span>
-<span class="ep-ti ep-tg"><span class="ep-td" style="background:#F0B429"></span>배리어프리 키오스크</span>
-<span class="ep-ti"><span class="ep-td"></span>업오더 테이블오더</span>
-<span class="ep-ti"><span class="ep-td"></span>UP포스 솔루션</span>
-<span class="ep-ti ep-tg"><span class="ep-td" style="background:#F0B429"></span>토스프론트 사인패드</span>
-<span class="ep-ti"><span class="ep-td"></span>네이버커넥트 사인패드</span>
-<span class="ep-ti"><span class="ep-td"></span>T226 유선단말기</span>
-<span class="ep-ti ep-tg"><span class="ep-td" style="background:#F0B429"></span>SLK-TS100 프린터</span>
+<!-- 불독 위젯 -->
+<div class="bd-widget" id="bdWidget">
+<div class="bd-bubble">
+<div class="bd-bubble-text">
+왈왈! 더 궁금한 게<br>있으세요? <span class="heart">♥</span>
+</div>
+</div>
+<div class="bd-img-wrap">
+<img class="bd-img" src="mascot-heart.png" alt="누리 불독" onerror="this.outerHTML='<div class=&quot;bd-img&quot; style=&quot;font-size:60px;&quot;>🐶</div>'" onclick="showLetterPopup()">
+<button class="bd-close" onclick="hideBulldog()">×</button>
 </div>
 </div>
 
-<div class="ep-body">
-<div class="ep-line"></div>
-<div class="ep-msg">
-방문해 주셔서 감사합니다.<br>
-오늘 하루도 행복과 행운이<br>
-가득하기를 기원합니다.
+<!-- 편지지 슬라이드 -->
+<div class="lt-overlay" id="ltOverlay">
+<div class="lt-envelope">
+<button class="lt-close" onclick="hideLetterPopup()">✕ 닫기</button>
+<div class="lt-back">
+<div class="lt-flap"></div>
+<div class="lt-paper">
+<div class="lt-content">
+<div class="lt-header">
+<div class="lt-stamp">NURI<br>NETWORKS<br>2012</div>
+<div class="lt-from">From. 누리네트웍스</div>
 </div>
-<div class="ep-phone">1544-7754</div>
-<div class="ep-cursive-wrap">
-<span class="ep-cursive">Nurinetworks &nbsp;&nbsp;&middot;&nbsp;&nbsp; Nurinetworks &nbsp;&nbsp;&middot;&nbsp;&nbsp; Nurinetworks &nbsp;&nbsp;&middot;&nbsp;&nbsp; Nurinetworks &nbsp;&nbsp;&middot;&nbsp;&nbsp; Nurinetworks</span>
+<div class="lt-greeting">방문해주셔서 감사합니다 ♥</div>
+<div class="lt-body">
+<p>오늘 하루도 행복과 행운이</p>
+<p>가득하기를 진심으로 기원합니다.</p>
+<p style="margin-top:8px;">매장의 모든 결제,</p>
+<p><span class="blue">누리네트웍스</span>가 <span class="gold">함께</span>합니다.</p>
 </div>
-<button class="ep-close" onclick="closeExitPopup()">닫기</button>
+<div class="lt-signature">- Nurinetworks -</div>
+<div class="lt-actions">
+<button class="lt-btn gold" onclick="window.location.href='tel:1544-7754'">📞 1544-7754</button>
+<button class="lt-btn" onclick="hideLetterPopup()">고이 접어두기</button>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
 <script>
-var exitShown=false;
-function showExitPopup(){
-  if(exitShown||sessionStorage.getItem('nw_exit_shown'))return;
-  exitShown=true;
-  var el=document.getElementById('exitPopup');
-  if(el){el.classList.add('show');sessionStorage.setItem('nw_exit_shown','1');}
+(function(){
+  // 1. 불독 30초 후 자동 등장 (세션당 1회)
+  if(!sessionStorage.getItem('nw_bulldog_shown')){
+    setTimeout(function(){
+      var bd=document.getElementById('bdWidget');
+      if(bd){
+        bd.classList.add('show');
+        sessionStorage.setItem('nw_bulldog_shown','1');
+      }
+    },30000); // 30초
+  }
+  
+  // 2. 편지지: 마우스가 브라우저 영역을 떠날 때 (8초 딜레이)
+  var pageTime=Date.now();
+  document.addEventListener('mouseout',function(e){
+    if(Date.now()-pageTime<8000)return;
+    if(sessionStorage.getItem('nw_letter_shown'))return;
+    if(!e.toElement&&!e.relatedTarget&&e.clientY<0){
+      showLetterPopup();
+    }
+  });
+})();
+
+function showLetterPopup(){
+  if(sessionStorage.getItem('nw_letter_shown'))return;
+  var lt=document.getElementById('ltOverlay');
+  if(lt){
+    lt.classList.add('show');
+    sessionStorage.setItem('nw_letter_shown','1');
+    setTimeout(spawnConfetti,900);
+    // 불독도 같이 닫기
+    hideBulldog();
+  }
 }
-function closeExitPopup(){
-  window.open('about:blank','_self');
-  window.close();
-  var el=document.getElementById('exitPopup');
-  if(el){el.style.transition='opacity .3s';el.style.opacity='0';setTimeout(function(){el.style.display='none';},350);}
+function hideLetterPopup(){
+  var lt=document.getElementById('ltOverlay');
+  if(lt){
+    lt.style.animation='ltFade .3s reverse forwards';
+    setTimeout(function(){lt.classList.remove('show');lt.style.animation='';},300);
+  }
 }
-var epPageTime=Date.now();
-document.addEventListener('mouseout',function(e){
-  if(Date.now()-epPageTime<8000)return;
-  if(!e.toElement&&!e.relatedTarget&&e.clientY<0){showExitPopup();}
-});
-var lastSY=0;
-window.addEventListener('scroll',function(){
-  if(Date.now()-epPageTime<8000)return;
-  var sy=window.scrollY||window.pageYOffset;
-  var mx=document.documentElement.scrollHeight-window.innerHeight;
-  if(sy<lastSY&&sy>mx*0.5&&(lastSY-sy)>120){showExitPopup();}
-  lastSY=sy;
-});
+function hideBulldog(){
+  var bd=document.getElementById('bdWidget');
+  if(bd){
+    bd.style.animation='bdPopIn .5s reverse forwards';
+    setTimeout(function(){bd.classList.remove('show');bd.style.animation='';},500);
+  }
+}
+function spawnConfetti(){
+  var colors=['#0066FF','#F0B429','#FFD54F','#3182F6','#fff'];
+  var env=document.querySelector('.lt-envelope');
+  if(!env)return;
+  for(var i=0;i<25;i++){
+    setTimeout(function(){
+      var c=document.createElement('div');
+      c.className='lt-confetti';
+      c.style.background=colors[Math.floor(Math.random()*colors.length)];
+      c.style.left=(Math.random()*100)+'%';
+      c.style.top='40%';
+      c.style.animationDuration=(2+Math.random()*1.5)+'s';
+      c.style.animationDelay=(Math.random()*.5)+'s';
+      env.appendChild(c);
+      setTimeout(function(){c.remove();},3500);
+    },i*40);
+  }
+}
 </script>
-</div>
-<!-- ═══ END EXIT POPUP ═══ -->
+<!-- ═══ END BULLDOG + LETTER ═══ -->
 
 </body>
 </html>
