@@ -630,16 +630,46 @@ if(sessionStorage.getItem('nw_intro_seen')){
 <div class="footer-top-new">
 <a href="index.html" class="nav-logo"><img src="logo.svg" alt="Nurinetworkspos" style="height:36px;"></a>
 <div class="footer-info">사업자등록번호: 107-87-71087<br>주식회사 누리네트웍스 ㅣ 대표: 김정식<br>07294 서울특별시 영등포구 선유로 70 우리벤처타운 4층 408호<br><br>수원지사: 경기도 용인시 기흥구 중부대로 1315 힉스유스타워 A동 801-3호<br>부산지사: 부산시 부산진구 신암로 151 드림스파티움 2층</div>
-<div style="display:flex;gap:16px;margin-top:24px;flex-wrap:wrap;">
-<a href="https://blog.naver.com/nuriposone" target="_blank" style="display:flex;align-items:center;gap:12px;padding:14px 24px;background:linear-gradient(135deg,#03C75A,#02B34E);border-radius:16px;text-decoration:none;color:#fff;font-weight:700;font-size:.9rem;box-shadow:0 6px 20px rgba(3,199,90,.3);transition:all .3s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''">
-<svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M16.27 3H7.73A4.73 4.73 0 003 7.73v8.54A4.73 4.73 0 007.73 21h8.54A4.73 4.73 0 0021 16.27V7.73A4.73 4.73 0 0016.27 3zm-2.6 12.62h-2.42l-2.6-3.6v3.6H6.61V8.38h2.42l2.6 3.62V8.38h2.04v7.24z"/></svg>
-네이버 블로그</a>
-<a href="https://www.instagram.com/nurinetworkspos/" target="_blank" style="display:flex;align-items:center;gap:12px;padding:14px 24px;background:linear-gradient(135deg,#F58529,#DD2A7B,#8134AF);border-radius:16px;text-decoration:none;color:#fff;font-weight:700;font-size:.9rem;box-shadow:0 6px 20px rgba(221,42,123,.3);transition:all .3s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''">
-<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="#fff" stroke="none"/></svg>
-인스타그램</a>
-<a href="https://www.youtube.com/@nurinetworkspos_official" target="_blank" style="display:flex;align-items:center;gap:12px;padding:14px 24px;background:linear-gradient(135deg,#FF0000,#CC0000);border-radius:16px;text-decoration:none;color:#fff;font-weight:700;font-size:.9rem;box-shadow:0 6px 20px rgba(255,0,0,.3);transition:all .3s;cursor:pointer;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''">
-<svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M23.5 6.19a3.02 3.02 0 00-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.55A3.02 3.02 0 00.5 6.19 31.6 31.6 0 000 12a31.6 31.6 0 00.5 5.81 3.02 3.02 0 002.12 2.14c1.88.55 9.38.55 9.38.55s7.5 0 9.38-.55a3.02 3.02 0 002.12-2.14A31.6 31.6 0 0024 12a31.6 31.6 0 00-.5-5.81zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>
-유튜브</a>
+<div class="sns-grid">
+<a href="https://blog.naver.com/nuriposone" target="_blank" class="sns-card sns-blog">
+<div class="sns-card-head">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M16.27 3H7.73A4.73 4.73 0 003 7.73v8.54A4.73 4.73 0 007.73 21h8.54A4.73 4.73 0 0021 16.27V7.73A4.73 4.73 0 0016.27 3zm-2.6 12.62h-2.42l-2.6-3.6v3.6H6.61V8.38h2.42l2.6 3.62V8.38h2.04v7.24z"/></svg>
+<span>블로그</span>
+</div>
+<div class="sns-card-body">
+<div class="sns-ticker"><div class="sns-ticker-track" data-channel="blog">
+<div class="sns-item">📝 최신 포스팅 업데이트 중</div>
+<div class="sns-item">📝 nuriposone 블로그</div>
+<div class="sns-item">📝 포스/키오스크/단말기 후기</div>
+</div></div>
+</div>
+</a>
+<a href="https://www.instagram.com/nurinetworkspos/" target="_blank" class="sns-card sns-insta">
+<div class="sns-card-head">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="#fff" stroke="none"/></svg>
+<span>인스타</span>
+</div>
+<div class="sns-card-body">
+<div class="sns-ticker"><div class="sns-ticker-track" data-channel="insta">
+<div class="sns-item">📷 누리 패밀리 인사</div>
+<div class="sns-item">📷 매장 도입 사례</div>
+<div class="sns-item">📷 @nurinetworkspos</div>
+</div></div>
+</div>
+</a>
+<a href="https://www.youtube.com/@nurinetworkspos_official" target="_blank" class="sns-card sns-tube">
+<div class="sns-card-head">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M23.5 6.19a3.02 3.02 0 00-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.55A3.02 3.02 0 00.5 6.19 31.6 31.6 0 000 12a31.6 31.6 0 00.5 5.81 3.02 3.02 0 002.12 2.14c1.88.55 9.38.55 9.38.55s7.5 0 9.38-.55a3.02 3.02 0 002.12-2.14A31.6 31.6 0 0024 12a31.6 31.6 0 00-.5-5.81zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>
+<span>유튜브</span>
+</div>
+<div class="sns-card-body">
+<div class="sns-ticker"><div class="sns-ticker-track" data-channel="tube">
+<div class="sns-item">▶ 브랜드필름 30초</div>
+<div class="sns-item">▶ N250 Champion Series</div>
+<div class="sns-item">▶ @nurinetworkspos_official</div>
+</div></div>
+</div>
+</a>
 </div>
 </div>
 <div class="ticker-section" style="margin:20px -40px 0;border-radius:0;">
@@ -854,6 +884,23 @@ loadTicker();
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Nanum+Pen+Script&family=Noto+Serif+KR:wght@400;500;600;700&display=swap');
 
+/* === SNS 카드 (블로그/인스타/유튜브 동일크기) === */
+.sns-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px;width:100%;max-width:680px;}
+.sns-card{display:flex;flex-direction:column;height:124px;border-radius:18px;text-decoration:none;color:#fff;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,.18);transition:transform .3s ease,box-shadow .3s ease;position:relative;}
+.sns-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.25);}
+.sns-card-head{display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px;font-weight:800;font-size:.95rem;letter-spacing:.5px;flex-shrink:0;}
+.sns-card-head svg{flex-shrink:0;}
+.sns-card-body{flex:1;background:rgba(255,255,255,.12);backdrop-filter:blur(4px);display:flex;align-items:center;overflow:hidden;border-top:1px solid rgba(255,255,255,.15);}
+.sns-blog{background:linear-gradient(135deg,#03C75A,#02B34E);}
+.sns-insta{background:linear-gradient(135deg,#F58529,#DD2A7B,#8134AF);}
+.sns-tube{background:linear-gradient(135deg,#FF0000,#CC0000);}
+.sns-ticker{width:100%;height:100%;overflow:hidden;position:relative;}
+.sns-ticker-track{position:absolute;width:100%;animation:snsScroll 12s linear infinite;}
+.sns-item{padding:10px 14px;font-size:.78rem;font-weight:600;color:#fff;line-height:1.3;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}
+.sns-card:hover .sns-ticker-track{animation-play-state:paused;}
+@keyframes snsScroll{0%{transform:translateY(0);}33%{transform:translateY(-33.33%);}66%{transform:translateY(-66.66%);}100%{transform:translateY(0);}}
+@media(max-width:680px){.sns-grid{grid-template-columns:repeat(3,1fr);gap:8px;}.sns-card{height:108px;}.sns-card-head{font-size:.78rem;padding:10px 8px;}.sns-card-head svg{width:16px;height:16px;}.sns-item{font-size:.7rem;padding:8px 10px;}}
+
 /* === 불독 위젯 (우측 하단) === */
 .bd-widget{position:fixed;bottom:20px;right:20px;z-index:9998;display:none;flex-direction:column;align-items:flex-end;gap:8px;}
 .bd-widget.show{display:flex;animation:bdPopIn .8s cubic-bezier(.34,1.56,.64,1) forwards;}
@@ -862,140 +909,29 @@ loadTicker();
 .bd-bubble-text{font-family:'Nanum Pen Script','Noto Sans KR',sans-serif;font-size:1.3rem;color:#0D2B5C;line-height:1.3;font-weight:700;}
 .bd-bubble-text .heart{color:#e24b4a;animation:bdHeart 1s ease infinite;display:inline-block;}
 .bd-img-wrap{position:relative;}
-.bd-img{width:100px;height:100px;border-radius:50%;object-fit:cover;border:4px solid #fff;box-shadow:0 8px 24px rgba(0,0,0,.2);background:#FAEEDA;display:flex;align-items:center;justify-content:center;font-size:60px;animation:bdWave 2s ease infinite;cursor:pointer;transition:transform .2s;}
-.bd-img:hover{transform:scale(1.1) rotate(-5deg);}
+.bd-img{width:100px;height:100px;border-radius:50%;object-fit:cover;border:4px solid #fff;box-shadow:0 8px 24px rgba(0,102,255,.3);background:linear-gradient(135deg,#E6F1FB,#C7DDF5);display:flex;align-items:center;justify-content:center;font-size:60px;animation:bdWave 3s ease infinite;cursor:pointer;transition:transform .2s;}
+.bd-img:hover{transform:scale(1.1);}
 .bd-close{position:absolute;top:0;right:0;width:24px;height:24px;background:#0D2B5C;color:#fff;border:none;border-radius:50%;cursor:pointer;font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,.2);}
 @keyframes bdPopIn{0%{opacity:0;transform:translateY(40px) scale(.5);}50%{opacity:1;transform:translateY(-10px) scale(1.05);}100%{opacity:1;transform:translateY(0) scale(1);}}
 @keyframes bdBubblePop{0%{opacity:0;transform:scale(0) translateY(20px);}100%{opacity:1;transform:scale(1) translateY(0);}}
-@keyframes bdWave{0%,100%{transform:rotate(-5deg);}50%{transform:rotate(5deg) translateY(-3px);}}
+@keyframes bdWave{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
 @keyframes bdHeart{0%,100%{transform:scale(1);}50%{transform:scale(1.3);}}
 
-/* === 편지지 슬라이드 (봉투 크게 + 본문 명확) === */
-.lt-overlay{position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;background:rgba(13,43,92,.5);backdrop-filter:blur(6px);padding:20px;}
-.lt-overlay.show{display:flex;animation:ltFade .3s ease forwards;}
-@keyframes ltFade{from{opacity:0;}to{opacity:1;}}
-
-/* 봉투 더 크게 (640px) - 편지지가 봉투 안에 자연스럽게 */
-.lt-envelope{position:relative;width:520px;max-width:92%;perspective:1500px;}
-.lt-back{position:relative;width:100%;aspect-ratio:1.05/1;background:linear-gradient(135deg,#F0B429 0%,#FFD54F 50%,#F0B429 100%);border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.4);}
-.lt-flap{position:absolute;top:0;left:0;right:0;width:100%;height:50%;background:linear-gradient(135deg,#d99c1f,#F0B429);clip-path:polygon(0 0,50% 70%,100% 0);transform-origin:top;animation:ltOpen 0.5s cubic-bezier(.55,.06,.68,.19) .1s forwards;z-index:3;box-shadow:0 4px 16px rgba(0,0,0,.15);}
-@keyframes ltOpen{0%{transform:rotateX(0deg);}100%{transform:rotateX(180deg) translateY(-10px);}}
-
-/* 편지지: 봉투 안에 들어감, 살짝만 위로 솟아오름 */
-.lt-paper{position:absolute;top:5%;left:4%;right:4%;bottom:5%;background:linear-gradient(180deg,#fffef9 0%,#fff 100%);border-radius:8px;padding:22px 26px 20px;box-shadow:0 8px 30px rgba(0,0,0,.15),inset 0 0 0 1px rgba(13,43,92,.06);z-index:1;animation:ltRise 0.6s cubic-bezier(.34,1.56,.64,1) 0.3s forwards;transform:translateY(0);opacity:0;background-image:repeating-linear-gradient(180deg,transparent 0,transparent 30px,rgba(13,43,92,.05) 30px,rgba(13,43,92,.05) 31px);}
-@keyframes ltRise{0%{opacity:0;transform:translateY(20%) scale(.95);}100%{opacity:1;transform:translateY(-8%) scale(1);}}
-
-.lt-content{position:relative;height:100%;display:flex;flex-direction:column;justify-content:space-between;}
-
-/* 헤더 (우표 + From) */
-.lt-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;padding-bottom:8px;border-bottom:1px dashed rgba(13,43,92,.2);}
-.lt-stamp{width:42px;height:52px;background:linear-gradient(135deg,#0066FF,#0D2B5C);border-radius:4px;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Inter',sans-serif;font-size:9px;font-weight:900;letter-spacing:1px;text-align:center;line-height:1.2;padding:4px;box-shadow:0 4px 8px rgba(0,0,0,.15);transform:rotate(-3deg);flex-shrink:0;}
-.lt-from{font-family:'Dancing Script',cursive;font-size:1.3rem;color:#0066FF;font-weight:700;}
-
-/* 첫 인사 - 펜글씨 (큰 사이즈) */
-.lt-greeting{font-family:'Nanum Pen Script',cursive;font-size:1.5rem;color:#0D2B5C;margin-bottom:10px;line-height:1.3;font-weight:700;text-align:left;}
-.lt-greeting .heart-icon{color:#e24b4a;display:inline-block;animation:ltHeart 1.2s ease infinite;}
-@keyframes ltHeart{0%,100%{transform:scale(1);}50%{transform:scale(1.2);}}
-
-/* 본문 - 명확한 세리프 (가독성 + 인사말 격조) */
-.lt-body{font-family:'Noto Serif KR','Nanum Pen Script',serif;font-size:.92rem;color:#1d1d1f;line-height:1.7;text-align:left;font-weight:500;margin-bottom:8px;}
-.lt-body p{margin-bottom:6px;}
-.lt-body .gold{color:#0D2B5C;font-weight:900;}
-.lt-body .blue{color:#0066FF;font-weight:700;}
-
-/* 1544-7754 연락처 강조 박스 */
-.lt-tel-box{margin:0;padding:8px 22px;background:linear-gradient(135deg,#0D2B5C,#1B3A8C);border-radius:50px;display:inline-flex;align-items:center;gap:8px;box-shadow:0 6px 20px rgba(13,43,92,.3);}
-.lt-tel-icon{font-size:1.1rem;flex-shrink:0;}
-.lt-tel-text{font-family:'Inter',sans-serif;font-size:1.1rem;color:#fff;font-weight:900;letter-spacing:1.5px;white-space:nowrap;}
-.lt-tel-label{font-family:'Noto Sans KR',sans-serif;font-size:.75rem;color:#1d1d1f;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;}
-
-/* 마지막 서명 - 필기체 */
-.lt-signature{font-family:'Dancing Script',cursive;font-size:1.7rem;color:#0066FF;font-weight:700;text-align:left;margin-top:8px;line-height:1;}
-
-/* === 손글씨 펜 애니메이션 (about.html의 hw 스타일) === */
-.lt-hw{position:relative;display:inline-block;overflow:hidden;white-space:nowrap;}
-.lt-hw::after{content:'';position:absolute;top:0;right:0;width:100%;height:100%;background:#fff;}
-.lt-hw.write::after{animation:ltHwR 1.8s cubic-bezier(.4,0,.2,1) forwards;}
-.lt-hw::before{content:'✏️';position:absolute;top:50%;transform:translateY(-50%);right:100%;font-size:.7em;opacity:0;z-index:2;font-family:sans-serif;}
-.lt-hw.write::before{animation:ltHwP 1.8s cubic-bezier(.4,0,.2,1) forwards;}
-@keyframes ltHwR{0%{width:100%}100%{width:0}}
-@keyframes ltHwP{0%{right:100%;opacity:1}90%{opacity:1}100%{right:-5%;opacity:0}}
-.lt-signature-sub{font-family:'Nanum Pen Script',cursive;font-size:1.05rem;color:#0D2B5C;text-align:left;margin-top:2px;margin-bottom:6px;letter-spacing:1px;}
-
-/* 액션 버튼 */
-.lt-actions{display:flex;gap:8px;margin-top:10px;justify-content:flex-start;}
-.lt-btn{padding:10px 26px;background:#0D2B5C;color:#fff;border:none;border-radius:50px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:1px;transition:all .2s;}
-.lt-btn:hover{background:#0066FF;transform:translateY(-2px);}
-.lt-btn.gold{background:#F0B429;color:#0D2B5C;}
-.lt-btn.gold:hover{background:#FFD54F;}
-
-.lt-close{position:absolute;top:-44px;right:0;padding:6px 14px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:30px;cursor:pointer;font-size:12px;font-weight:700;backdrop-filter:blur(10px);}
-.lt-confetti{position:absolute;width:8px;height:8px;border-radius:50%;animation:ltConfetti 2.5s ease-out forwards;pointer-events:none;}
-@keyframes ltConfetti{0%{transform:translateY(-200px) rotate(0deg);opacity:1;}100%{transform:translateY(400px) rotate(720deg);opacity:0;}}
 </style>
 
-<!-- 불독 위젯 -->
+<!-- 누리 캐릭터 위젯 -->
 <div class="bd-widget" id="bdWidget">
 <div class="bd-bubble" onclick="window.location.href='support.html'" style="cursor:pointer;">
 <div class="bd-bubble-text">
-왈왈! 더 궁금한 게<br>있으세요? <span class="heart">♥</span>
+안녕하세요! 누리예요 <span class="heart">♥</span><br>궁금하신 점 있으세요?
 </div>
 </div>
 <div class="bd-img-wrap">
-<img class="bd-img" src="mascot-heart.png" alt="누리 불독" onerror="this.outerHTML='<div class=&quot;bd-img&quot; style=&quot;font-size:60px;&quot;>🐶</div>'" onclick="window.location.href='support.html'">
+<img class="bd-img" src="mascot-nuri.png" alt="누리 캐릭터" onerror="this.outerHTML='<div class=&quot;bd-img&quot; style=&quot;font-size:60px;&quot;>🤖</div>'" onclick="window.location.href='support.html'">
 <button class="bd-close" onclick="hideBulldog()">×</button>
 </div>
 </div>
 
-<!-- 편지지 슬라이드 -->
-<div class="lt-overlay" id="ltOverlay">
-<div class="lt-envelope">
-<button class="lt-close" onclick="hideLetterPopup()">✕ 닫기</button>
-<div class="lt-back">
-<div class="lt-flap"></div>
-<div class="lt-paper">
-<div class="lt-content">
-
-<!-- 헤더: 우표 + From -->
-<div class="lt-header">
-<div class="lt-stamp">NURI<br>NETWORKS<br>2012</div>
-<div class="lt-from">From. 누리네트웍스</div>
-</div>
-
-<!-- 첫 인사: 펜글씨 -->
-<div class="lt-greeting" style="text-align:center;">
-<span class="lt-hw" id="ltHw1">방문해 주셔서 감사합니다 ♥</span>
-</div>
-
-<!-- 본문: 명확한 세리프 -->
-<div class="lt-body">
-<p>오늘 하루도 행복과 행운이</p>
-<p>가득하기를 진심으로 기원합니다.</p>
-<p style="margin-top:6px;">매장의 모든 결제,</p>
-<p><span class="blue">누리네트웍스</span>가 <span class="gold">함께</span>합니다.</p>
-</div>
-
-<!-- 1544-7754 연락처 (왼쪽 정렬) -->
-<div style="text-align:left;margin:6px 0;">
-<div class="lt-tel-box">
-<span class="lt-tel-icon">📞</span>
-<span class="lt-tel-text">1544-7754</span>
-</div>
-</div>
-
-<!-- 마지막 서명: 필기체 (손글씨 애니메이션) -->
-<div class="lt-signature" style="text-align:center;">
-<span class="lt-hw" id="ltHw2">Nurinetworks</span>
-</div>
-
-
-
-
-</div>
-</div>
-</div>
-</div>
-</div>
 
 <script>
 (function(){
@@ -1005,64 +941,12 @@ loadTicker();
       if(bd){bd.classList.add('show');sessionStorage.setItem('nw_bulldog_shown','1');}
     },30000);
   }
-  var pageTime=Date.now();
-  document.addEventListener('mouseout',function(e){
-    if(Date.now()-pageTime<8000)return;
-    if(sessionStorage.getItem('nw_letter_shown'))return;
-    if(!e.toElement&&!e.relatedTarget&&e.clientY<0){showLetterPopup();}
-  });
 })();
-
-function showLetterPopup(){
-  if(sessionStorage.getItem('nw_letter_shown'))return;
-  var lt=document.getElementById('ltOverlay');
-  if(lt){
-    lt.classList.add('show');
-    sessionStorage.setItem('nw_letter_shown','1');
-    setTimeout(spawnConfetti,900);
-    hideBulldog();
-    // 손글씨 애니메이션 시퀀스 (편지지 등장 후 순차 재생)
-    setTimeout(function(){
-      var h1=document.getElementById('ltHw1');
-      if(h1){h1.classList.remove('write');void h1.offsetWidth;h1.classList.add('write');}
-    },1100);
-    setTimeout(function(){
-      var h2=document.getElementById('ltHw2');
-      if(h2){h2.classList.remove('write');void h2.offsetWidth;h2.classList.add('write');}
-    },3000);
-
-  }
-}
-function hideLetterPopup(){
-  var lt=document.getElementById('ltOverlay');
-  if(lt){
-    lt.style.animation='ltFade .3s reverse forwards';
-    setTimeout(function(){lt.classList.remove('show');lt.style.animation='';},300);
-  }
-}
 function hideBulldog(){
   var bd=document.getElementById('bdWidget');
   if(bd){
     bd.style.animation='bdPopIn .5s reverse forwards';
     setTimeout(function(){bd.classList.remove('show');bd.style.animation='';},500);
-  }
-}
-function spawnConfetti(){
-  var colors=['#0066FF','#F0B429','#FFD54F','#3182F6','#fff'];
-  var env=document.querySelector('.lt-envelope');
-  if(!env)return;
-  for(var i=0;i<25;i++){
-    setTimeout(function(){
-      var c=document.createElement('div');
-      c.className='lt-confetti';
-      c.style.background=colors[Math.floor(Math.random()*colors.length)];
-      c.style.left=(Math.random()*100)+'%';
-      c.style.top='40%';
-      c.style.animationDuration=(2+Math.random()*1.5)+'s';
-      c.style.animationDelay=(Math.random()*.5)+'s';
-      env.appendChild(c);
-      setTimeout(function(){c.remove();},3500);
-    },i*40);
   }
 }
 </script>
