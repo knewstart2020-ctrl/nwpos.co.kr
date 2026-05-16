@@ -878,9 +878,9 @@ loadTicker();
 @media(max-width:480px){.sns-grid{gap:6px;max-width:none;}.sns-card{height:42px;padding:0 8px;gap:4px;}.sns-card-icon svg{width:16px;height:16px;}.sns-card-title{font-size:.74rem;}}
 
 /* === 불독 위젯 (우측 하단) === */
-.bd-widget{position:fixed;bottom:20px;right:20px;z-index:9998;display:none;flex-direction:column;align-items:flex-end;gap:8px;transition:opacity .4s ease,transform .4s ease;}
-.bd-widget.show{display:flex;animation:bdPopIn .8s cubic-bezier(.34,1.56,.64,1) forwards;}
+.bd-widget{position:fixed;bottom:20px;right:20px;z-index:9998;display:flex;flex-direction:column;align-items:flex-end;gap:8px;transition:opacity .4s ease,transform .4s ease;}
 .bd-widget.scrolled{opacity:0;transform:translateY(40px);pointer-events:none;}
+.bd-widget.hidden{display:none;}
 @media(max-width:680px){.bd-widget{bottom:14px;right:14px;}}
 .bd-bubble{background:#fff;padding:14px 18px;border-radius:18px;box-shadow:0 12px 30px rgba(0,0,0,.15);max-width:240px;position:relative;border:2px solid #0066FF;animation:bdBubblePop .5s ease 0.3s both;cursor:pointer;}
 .bd-bubble::after{content:'';position:absolute;bottom:-8px;right:30px;width:16px;height:16px;background:#fff;transform:rotate(45deg);border-right:2px solid #0066FF;border-bottom:2px solid #0066FF;}
@@ -902,25 +902,16 @@ loadTicker();
 
 <script>
 (function(){
-  // 누리 마스코트는 우측 하단에 등장 (1.5초 후)
-  // 스크롤하여 첫 화면(100vh)의 70%를 벗어나면 자동으로 사라짐
+  // 누리 캐릭터는 처음부터 우측 하단에 표시됨 (CSS로 처리)
+  // 스크롤하면 부드럽게 사라짐
   var bd=document.getElementById('bdWidget');
   if(!bd)return;
-  setTimeout(function(){bd.classList.add('show');},1500);
   
-  // 스크롤 감지
-  var ticking=false;
   window.addEventListener('scroll',function(){
-    if(!ticking){
-      window.requestAnimationFrame(function(){
-        if(window.scrollY>window.innerHeight*0.7){
-          bd.classList.add('scrolled');
-        }else{
-          bd.classList.remove('scrolled');
-        }
-        ticking=false;
-      });
-      ticking=true;
+    if(window.scrollY>window.innerHeight*0.7){
+      bd.classList.add('scrolled');
+    }else{
+      bd.classList.remove('scrolled');
     }
   });
 })();
@@ -928,7 +919,7 @@ function hideBulldog(){
   var bd=document.getElementById('bdWidget');
   if(bd){
     bd.style.animation='bdPopIn .5s reverse forwards';
-    setTimeout(function(){bd.classList.remove('show');bd.style.animation='';},500);
+    setTimeout(function(){bd.classList.add('hidden');bd.style.animation='';},500);
   }
 }
 </script>
