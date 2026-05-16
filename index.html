@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Inter:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
+/* CACHE-BREAK-2026-05-16-v12 */
         :root{--primary:#1B3A8C;--primary-light:#2E5BDB;--primary-pale:#EAF0FF;--accent:#C9A84C;--dark:#1d1d1f;--gray-900:#1d1d1f;--gray-700:#424245;--gray-500:#86868b;--gray-300:#d2d2d7;--gray-100:#f5f5f7;--white:#FFF;--radius:20px;--radius-sm:12px;}
         *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
         body{font-family:'Noto Sans KR',sans-serif;color:var(--gray-900);background:var(--white);line-height:1.75;overflow-x:hidden;}
@@ -396,6 +397,19 @@ if(sessionStorage.getItem('nw_intro_seen')){
 <button class="hs-dot" onclick="hsGo(7)"></button>
 </div>
 <div class="hs-bar" id="hsBar"></div>
+<!-- 누리 캐릭터 위젯 -->
+<div class="bd-widget" id="bdWidget" style="position:absolute !important;bottom:30px !important;right:30px !important;top:auto !important;left:auto !important;z-index:50 !important;display:flex !important;flex-direction:column !important;align-items:flex-end !important;gap:8px !important;">
+<div class="bd-bubble" onclick="window.location.href='support.html'" style="cursor:pointer;">
+<div class="bd-bubble-text">
+안녕하세요! 누리예요 <span class="heart">♥</span><br>궁금하신 점 있으세요?
+</div>
+</div>
+<div class="bd-img-wrap">
+<img class="bd-img" src="mascot-nuri.png" alt="누리 캐릭터" onerror="this.outerHTML='<div class=&quot;bd-img&quot; style=&quot;font-size:60px;&quot;>🤖</div>'" onclick="window.location.href='support.html'">
+<button class="bd-close" onclick="hideBulldog()">×</button>
+</div>
+</div>
+
 </section>
 
 <section class="section" id="products" style="padding:80px 0;">
@@ -878,10 +892,9 @@ loadTicker();
 @media(max-width:480px){.sns-grid{gap:6px;max-width:none;}.sns-card{height:42px;padding:0 8px;gap:4px;}.sns-card-icon svg{width:16px;height:16px;}.sns-card-title{font-size:.74rem;}}
 
 /* === 불독 위젯 (우측 하단) === */
-.bd-widget{position:fixed;bottom:20px;right:20px;z-index:9998;display:flex;flex-direction:column;align-items:flex-end;gap:8px;transition:opacity .4s ease,transform .4s ease;}
-.bd-widget.scrolled{opacity:0;transform:translateY(40px);pointer-events:none;}
+.bd-widget{position:absolute;bottom:30px;right:30px;z-index:50;display:flex;flex-direction:column;align-items:flex-end;gap:8px;}
 .bd-widget.hidden{display:none;}
-@media(max-width:680px){.bd-widget{bottom:14px;right:14px;}}
+@media(max-width:680px){.bd-widget{bottom:20px;right:20px;}}
 .bd-bubble{background:#fff;padding:14px 18px;border-radius:18px;box-shadow:0 12px 30px rgba(0,0,0,.15);max-width:240px;position:relative;border:2px solid #0066FF;animation:bdBubblePop .5s ease 0.3s both;cursor:pointer;}
 .bd-bubble::after{content:'';position:absolute;bottom:-8px;right:30px;width:16px;height:16px;background:#fff;transform:rotate(45deg);border-right:2px solid #0066FF;border-bottom:2px solid #0066FF;}
 .bd-bubble-text{font-family:'Nanum Pen Script','Noto Sans KR',sans-serif;font-size:1.3rem;color:#0D2B5C;line-height:1.3;font-weight:700;}
@@ -925,18 +938,6 @@ function hideBulldog(){
 </script>
 <!-- ═══ END BULLDOG + LETTER ═══ -->
 
-<!-- 누리 캐릭터 위젯 -->
-<div class="bd-widget" id="bdWidget">
-<div class="bd-bubble" onclick="window.location.href='support.html'" style="cursor:pointer;">
-<div class="bd-bubble-text">
-안녕하세요! 누리예요 <span class="heart">♥</span><br>궁금하신 점 있으세요?
-</div>
-</div>
-<div class="bd-img-wrap">
-<img class="bd-img" src="mascot-nuri.png" alt="누리 캐릭터" onerror="this.outerHTML='<div class=&quot;bd-img&quot; style=&quot;font-size:60px;&quot;>🤖</div>'" onclick="window.location.href='support.html'">
-<button class="bd-close" onclick="hideBulldog()">×</button>
-</div>
-</div>
 
 </body>
 </html>
