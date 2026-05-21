@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>[내부용] 보고서 HTML 웹발행 표준 SOP — 누리네트웍스</title>
+<style>
+  :root{
+    --navy:#0A1A3A; --navy2:#142A55; --gold:#C9A961; --blue:#0066FF;
+    --paper:#F7F4ED; --ink:#1A2236; --ink-soft:#4A5470; --line:#E3E1D7;
+    --ok:#1A7F5A; --warn:#B8860B; --danger:#8B0000;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:'Noto Sans KR','Malgun Gothic',sans-serif;
+    background:var(--paper); color:var(--ink); line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:880px; margin:0 auto; padding:32px 24px 80px;}
+
+  /* 표지 배너 */
+  .cover{
+    background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 60%,#1F3A6E 100%);
+    color:#fff; border-radius:14px; padding:36px 32px;
+    box-shadow:0 8px 28px rgba(10,26,58,.18);
+    margin-bottom:28px;
+  }
+  .cover .tag{
+    display:inline-block; background:var(--gold); color:var(--navy);
+    font-weight:800; font-size:12px; padding:5px 12px; border-radius:999px;
+    letter-spacing:.4px;
+  }
+  .cover h1{font-size:30px; margin:14px 0 6px; font-weight:800; line-height:1.3;}
+  .cover .meta{opacity:.85; font-size:14px;}
+  .cover .core{
+    margin-top:20px; padding:16px 18px; background:rgba(255,255,255,.07);
+    border-left:4px solid var(--gold); border-radius:6px; font-size:14.5px;
+  }
+
+  /* 비공개 배너 */
+  .secret{
+    background:#FFE4E1; border:1px solid var(--danger); color:var(--danger);
+    padding:12px 16px; border-radius:8px; margin-bottom:24px;
+    font-size:14px;
+  }
+  .secret b{color:#5A0000;}
+
+  h2{
+    font-size:22px; font-weight:800; color:var(--navy);
+    border-bottom:2px solid var(--gold); padding-bottom:8px;
+    margin:40px 0 16px;
+  }
+  h3{
+    font-size:17px; font-weight:700; color:var(--navy2);
+    margin:24px 0 10px;
+  }
+  p,li{font-size:15px;}
+  ul,ol{padding-left:22px;}
+  li{margin:6px 0;}
+
+  code{
+    background:#FFF7E0; color:#5A4A00; padding:2px 6px;
+    border-radius:4px; font-size:13.5px;
+    font-family:'Consolas','Menlo',monospace;
+  }
+  pre{
+    background:#0E1B33; color:#E8ECF5; padding:16px 18px;
+    border-radius:8px; overflow-x:auto; font-size:13px;
+    line-height:1.6;
+    font-family:'Consolas','Menlo',monospace;
+  }
+  pre code{background:none; color:inherit; padding:0;}
+
+  table{width:100%; border-collapse:collapse; margin:12px 0 20px;
+    background:#fff; border-radius:8px; overflow:hidden;
+    box-shadow:0 1px 3px rgba(0,0,0,.04);}
+  th,td{padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; font-size:14px;}
+  th{background:var(--navy); color:#fff; font-weight:700;}
+  tr:last-child td{border-bottom:none;}
+  tr:nth-child(even) td{background:#FAFAF4;}
+
+  .step{
+    background:#fff; border:1px solid var(--line); border-left:4px solid var(--blue);
+    padding:18px 22px; border-radius:8px; margin:14px 0;
+  }
+  .step .num{
+    display:inline-block; background:var(--blue); color:#fff;
+    width:28px; height:28px; line-height:28px; text-align:center;
+    border-radius:50%; font-weight:800; margin-right:10px;
+  }
+  .step h3{display:inline; vertical-align:middle; margin:0;}
+
+  .note{
+    background:#FFF4D1; border-left:4px solid var(--warn);
+    padding:12px 16px; border-radius:6px; margin:14px 0;
+    font-size:14px; color:#5A4A00;
+  }
+  .ok{
+    background:#E8F7F0; border-left:4px solid var(--ok);
+    padding:12px 16px; border-radius:6px; margin:14px 0;
+    font-size:14px; color:#0E5A40;
+  }
+
+  .foot{
+    text-align:center; margin-top:60px; padding-top:24px;
+    border-top:1px solid var(--line); color:var(--ink-soft); font-size:13px;
+  }
+
+  @media print{
+    body{background:#fff;}
+    .secret{display:none;}
+    .wrap{padding:0;}
+    .cover{box-shadow:none; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    pre,th{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    h2{break-after:avoid;}
+    .step{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="secret no-print">
+    🔒 <b>내부용 비공개 SOP</b> — 외부 공유 금지 · 검색엔진 노출 차단 · URL을 알아야만 접근 가능
+  </div>
+
+  <div class="cover">
+    <span class="tag">CLAUDE SESSION SOP</span>
+    <h1>보고서 HTML 웹발행 표준 작업지침</h1>
+    <div class="meta">누리네트웍스 · 2026-05-22 제정 · 모든 Claude 세션 공통 적용</div>
+    <div class="core">
+      <b>핵심:</b> 모든 보고서는 ① MD 원본 + ② 브랜드 HTML + ③ noindex 비공개 + ④ GitHub Pages URL 4단계로 자동 배포. CEO·임원·협력사에게 URL 한 줄로 즉시 공유.
+    </div>
+  </div>
+
+  <h2>🎯 왜 이 SOP가 필요한가</h2>
+  <ol>
+    <li>사용자 PC 환경에서 <b>MD·TXT 파일 더블클릭으로 안 열린다</b> (이전 12회 시행착오 확인)</li>
+    <li>CEO·임원·외부 협력사에게 카톡·문자·이메일로 <b>URL 한 줄</b>만 보내면 PC·모바일 어디서나 즉시 열람</li>
+    <li>인쇄 시 자동 정리 레이아웃 → 종이 보고도 그대로 사용</li>
+    <li>URL이므로 수정·재배포 즉시 반영 (재발송 불필요)</li>
+  </ol>
+
+  <h2>✅ 4단계 표준 워크플로</h2>
+
+  <div class="step">
+    <span class="num">1</span><h3>MD 원본 작성</h3>
+    <ul>
+      <li>위치: <code>홈페이지종합\&lt;보고서명&gt;.md</code></li>
+      <li>용도: 내부 편집·버전 관리·다른 도구 호환</li>
+    </ul>
+  </div>
+
+  <div class="step">
+    <span class="num">2</span><h3>HTML 변환 (브랜드 톤)</h3>
+    <ul>
+      <li>위치: <code>홈페이지종합\nwpos.co.kr\&lt;보고서명&gt;.html</code></li>
+      <li>표준 디자인 토큰:
+        <ul>
+          <li>네이비 <code>#0A1A3A</code> · 골드 <code>#C9A961</code> · 블루 <code>#0066FF</code> · 페이퍼 <code>#F7F4ED</code></li>
+          <li>폰트: Noto Sans KR (헤딩 weight 800, 본문 400)</li>
+          <li>본문 <code>max-width: 880px</code> (가독성)</li>
+        </ul>
+      </li>
+      <li>인쇄 CSS 필수: <code>@media print { ... }</code></li>
+      <li>표지 배너 (네이비 그라데이션 + 작성일 + 핵심 요약 박스)</li>
+    </ul>
+  </div>
+
+  <div class="step">
+    <span class="num">3</span><h3>비공개 메타 태그 (내부 보고서)</h3>
+    <p>HTML <code>&lt;head&gt;</code> 안에 반드시 포함:</p>
+    <pre><code>&lt;meta name="robots" content="noindex, nofollow, noarchive, nosnippet"&gt;
+&lt;meta name="googlebot" content="noindex, nofollow"&gt;
+&lt;meta name="referrer" content="no-referrer"&gt;
+&lt;title&gt;[내부용] {보고서명}&lt;/title&gt;</code></pre>
+    <p>body 최상단에 빨간색 비공개 배너 (위의 빨간 박스와 같은 형태)</p>
+  </div>
+
+  <div class="step">
+    <span class="num">4</span><h3>GitHub Pages 배포</h3>
+    <pre><code>cd "C:\Users\knews\GoogleDrive\A.누리네트웍스업무폴더\홈페이지종합\nwpos.co.kr"
+git add &lt;보고서명&gt;.html
+git commit -m "Add internal report (noindex)"
+git push origin main</code></pre>
+    <ul>
+      <li>1~5분 후 자동 게시</li>
+      <li>URL 형식: <code>https://nwpos.co.kr/&lt;보고서명&gt;.html</code></li>
+      <li>HTTP 200 확인 후 사용자에게 전달</li>
+    </ul>
+  </div>
+
+  <h2>🔐 git config (이 PC 한정 주의사항)</h2>
+  <div class="note">
+    이 PC(knews@Nuri2012)는 git <b>글로벌 user.email/name이 비어 있어 commit이 실패</b>한다.
+    반드시 <b>로컬 repo에 한정</b>으로 설정:
+  </div>
+  <pre><code>git config user.email "knewstart2020@gmail.com"
+git config user.name "knewstart2020-ctrl"</code></pre>
+  <p class="note" style="background:#FFE4E1; border-color:#DC143C; color:#8B0000;">
+    ⚠️ <code>--global</code> <b>절대 사용 금지</b>. 사용자 시스템 설정을 변경할 권한이 없다.
+  </p>
+
+  <h2>📋 파일명 표준</h2>
+  <table>
+    <thead>
+      <tr><th>용도</th><th>파일명 패턴</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>CEO 보고서</td><td><code>ceo-report-YYYY-MM-DD.html</code></td></tr>
+      <tr><td>일반 내부 보고</td><td><code>internal-report-{주제}-YYYY-MM-DD.html</code></td></tr>
+      <tr><td>협력사 공유용</td><td><code>partner-brief-{협력사}-YYYY-MM-DD.html</code></td></tr>
+      <tr><td>SOP·작업지침</td><td><code>sop-{주제}.html</code></td></tr>
+    </tbody>
+  </table>
+  <div class="note">
+    한글 파일명 금지 (GitHub Pages URL encoding 이슈). 모두 ASCII만 사용.
+  </div>
+
+  <h2>✅ 사용자에게 답변할 때 표준 양식</h2>
+  <pre><code>✅ 보고서 작성 완료
+
+🔗 웹 URL: https://nwpos.co.kr/&lt;파일명&gt;.html
+📁 로컬 MD: 홈페이지종합\&lt;파일명&gt;.md
+📁 로컬 HTML: 홈페이지종합\nwpos.co.kr\&lt;파일명&gt;.html
+
+🔒 내부용 비공개 (검색엔진 차단 · URL 아는 사람만 접근)
+📱 PC/모바일 어디서나 즉시 열람 · 인쇄 시 자동 정리
+
+[보고서 핵심 요약 3~5줄]</code></pre>
+
+  <h2>📨 NaverWorks 알림 (5단계 옵션)</h2>
+  <p>중요 보고서는 URL을 NaverWorks 채널로 자동 전송:</p>
+  <pre><code>mcp__naverworks__nw_bot_send_channel_message
+  message: "📊 [보고서명] 웹 공유 URL\n\n🔗 https://nwpos.co.kr/...\n📋 내용: ...\n🔒 내부용 비공개"</code></pre>
+
+  <h2>🧑‍🤝‍🧑 모든 Claude 세션 공통 적용</h2>
+  <ul>
+    <li><b>Claude Code (영상·합성·발행 트랙)</b>: 보고서 직접 작성 시 이 SOP 4단계 자동 실행</li>
+    <li><b>클로드디자인팀</b>: 디자인 시안 보고도 HTML로 같은 경로에 push</li>
+    <li><b>향후 새 Claude 세션</b>: <code>MEMORY.md</code>에서 <code>policy_report_html_publish.md</code> 자동 로딩 → 별도 설명 불필요</li>
+  </ul>
+
+  <div class="ok">
+    ✅ <b>최초 검증 완료</b>: <a href="https://nwpos.co.kr/ceo-report-2026-05-22.html">CEO 보고서 2026-05-22</a> (HTTP 200)
+  </div>
+
+  <h2>📎 참고</h2>
+  <ul>
+    <li>저장소: <code>knewstart2020-ctrl/nwpos.co.kr.git</code></li>
+    <li>커스텀 도메인: <code>nwpos.co.kr</code> (CNAME 설정 완료)</li>
+    <li>메모리 파일: <code>.claude\memory\policy_report_html_publish.md</code></li>
+  </ul>
+
+  <div class="foot">
+    © 누리네트웍스 · Claude Code 자동 발행 · 2026-05-22
+  </div>
+
+</div>
+</body>
+</html>
