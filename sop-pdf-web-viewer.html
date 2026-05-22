@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>[내부용] PDF·문서 웹뷰어 표준 SOP — 누리네트웍스</title>
+<style>
+  :root{
+    --navy:#0A1A3A; --navy2:#142A55; --gold:#C9A961; --blue:#0066FF;
+    --paper:#F7F4ED; --ink:#1A2236; --ink-soft:#4A5470; --line:#E3E1D7;
+    --ok:#1A7F5A; --warn:#B8860B; --danger:#8B0000;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:'Noto Sans KR','Malgun Gothic',sans-serif;
+    background:var(--paper); color:var(--ink); line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:880px; margin:0 auto; padding:32px 24px 80px;}
+
+  .cover{
+    background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 60%,#1F3A6E 100%);
+    color:#fff; border-radius:14px; padding:36px 32px;
+    box-shadow:0 8px 28px rgba(10,26,58,.18);
+    margin-bottom:28px;
+  }
+  .cover .tag{
+    display:inline-block; background:var(--gold); color:var(--navy);
+    font-weight:800; font-size:12px; padding:5px 12px; border-radius:999px;
+    letter-spacing:.4px;
+  }
+  .cover h1{font-size:30px; margin:14px 0 6px; font-weight:800; line-height:1.3;}
+  .cover .meta{opacity:.85; font-size:14px;}
+  .cover .core{
+    margin-top:20px; padding:16px 18px; background:rgba(255,255,255,.07);
+    border-left:4px solid var(--gold); border-radius:6px; font-size:14.5px;
+  }
+
+  .secret{
+    background:#FFE4E1; border:1px solid var(--danger); color:var(--danger);
+    padding:12px 16px; border-radius:8px; margin-bottom:24px;
+    font-size:14px;
+  }
+  .secret b{color:#5A0000;}
+
+  h2{font-size:22px; font-weight:800; color:var(--navy);
+    border-bottom:2px solid var(--gold); padding-bottom:8px;
+    margin:40px 0 16px;}
+  h3{font-size:17px; font-weight:700; color:var(--navy2); margin:24px 0 10px;}
+  p,li{font-size:15px;}
+  ul,ol{padding-left:22px;}
+  li{margin:6px 0;}
+
+  code{
+    background:#FFF7E0; color:#5A4A00; padding:2px 6px;
+    border-radius:4px; font-size:13.5px;
+    font-family:'Consolas','Menlo',monospace;
+  }
+  pre{
+    background:#0E1B33; color:#E8ECF5; padding:16px 18px;
+    border-radius:8px; overflow-x:auto; font-size:13px;
+    line-height:1.6;
+    font-family:'Consolas','Menlo',monospace;
+  }
+  pre code{background:none; color:inherit; padding:0;}
+
+  table{width:100%; border-collapse:collapse; margin:12px 0 20px;
+    background:#fff; border-radius:8px; overflow:hidden;
+    box-shadow:0 1px 3px rgba(0,0,0,.04);}
+  th,td{padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; font-size:14px;}
+  th{background:var(--navy); color:#fff; font-weight:700;}
+  tr:last-child td{border-bottom:none;}
+  tr:nth-child(even) td{background:#FAFAF4;}
+
+  .step{
+    background:#fff; border:1px solid var(--line); border-left:4px solid var(--blue);
+    padding:18px 22px; border-radius:8px; margin:14px 0;
+  }
+  .step .num{
+    display:inline-block; background:var(--blue); color:#fff;
+    width:28px; height:28px; line-height:28px; text-align:center;
+    border-radius:50%; font-weight:800; margin-right:10px;
+  }
+  .step h3{display:inline; vertical-align:middle; margin:0;}
+
+  .note{background:#FFF4D1; border-left:4px solid var(--warn);
+    padding:12px 16px; border-radius:6px; margin:14px 0;
+    font-size:14px; color:#5A4A00;}
+  .ok{background:#E8F7F0; border-left:4px solid var(--ok);
+    padding:12px 16px; border-radius:6px; margin:14px 0;
+    font-size:14px; color:#0E5A40;}
+  .danger{background:#FFE4E1; border-left:4px solid var(--danger);
+    padding:12px 16px; border-radius:6px; margin:14px 0;
+    font-size:14px; color:#5A0000;}
+
+  .foot{text-align:center; margin-top:60px; padding-top:24px;
+    border-top:1px solid var(--line); color:var(--ink-soft); font-size:13px;}
+
+  @media print{
+    body{background:#fff;}
+    .secret{display:none;}
+    .wrap{padding:0;}
+    .cover{box-shadow:none; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    pre,th{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    h2{break-after:avoid;}
+    .step{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="secret no-print">
+    🔒 <b>내부용 비공개 SOP</b> — 외부 공유 금지 · 검색엔진 노출 차단 · URL을 알아야만 접근 가능
+  </div>
+
+  <div class="cover">
+    <span class="tag">CLAUDE SESSION SOP</span>
+    <h1>PDF·문서 웹뷰어 표준 작업지침</h1>
+    <div class="meta">누리네트웍스 · 2026-05-22 제정 · 모든 Claude 세션 공통 적용</div>
+    <div class="core">
+      <b>핵심:</b> 견적서·계약서·카탈로그 등 PDF·이미지 첨부 → ASCII 파일명 복사 + 브랜드 HTML 뷰어 페이지 + noindex + GitHub Pages URL 5단계로 자동 배포. 거래처·고객에게 URL 한 줄로 즉시 공유.
+    </div>
+  </div>
+
+  <h2>🎯 왜 이 SOP가 필요한가</h2>
+  <ol>
+    <li>PDF 파일은 카톡·문자 첨부 시 <b>용량 제한</b>이 있고, 받는 사람이 다운로드 후 열어야 해서 불편</li>
+    <li><b>URL 한 줄</b>로 거래처·고객에게 즉시 견적·자료 공유 가능</li>
+    <li>모바일에서 PDF 뷰어 앱 없이도 <b>브라우저 내 미리보기</b> 지원</li>
+    <li>URL은 유지하면서 <b>PDF만 교체</b>해서 자동 업데이트 가능</li>
+    <li>누리네트웍스 브랜드 헤더로 <b>신뢰감 부여</b></li>
+  </ol>
+
+  <h2>✅ 5단계 표준 워크플로</h2>
+
+  <div class="step">
+    <span class="num">1</span><h3>원본 파일 ASCII 이름으로 복사</h3>
+    <ul>
+      <li>위치: <code>홈페이지종합\nwpos.co.kr\&lt;파일명&gt;.pdf</code></li>
+      <li><b>한글 파일명 금지</b> (GitHub Pages URL encoding 이슈)</li>
+      <li>파일명 표준은 아래 표 참조</li>
+    </ul>
+  </div>
+
+  <div class="step">
+    <span class="num">2</span><h3>HTML 뷰어 페이지 생성</h3>
+    <ul>
+      <li>위치: <code>홈페이지종합\nwpos.co.kr\&lt;파일명&gt;.html</code> (PDF와 같은 파일명, 확장자만 <code>.html</code>)</li>
+      <li>핵심 구성:
+        <ul>
+          <li>누리네트웍스 브랜드 헤더 (네이비 그라데이션 + 골드 버튼)</li>
+          <li>PDF 미리보기 영역 (<code>&lt;object&gt;</code> + <code>&lt;iframe&gt;</code> 폴백)</li>
+          <li>다운로드 버튼(<code>&lt;a download&gt;</code>) + 새 창 열기 버튼(<code>target="_blank"</code>)</li>
+          <li>비공개 배너 + 모바일 반응형</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="step">
+    <span class="num">3</span><h3>noindex 메타 + 비공개 배너 (내부 문서)</h3>
+    <pre><code>&lt;meta name="robots" content="noindex, nofollow, noarchive, nosnippet"&gt;
+&lt;meta name="googlebot" content="noindex, nofollow"&gt;
+&lt;meta name="referrer" content="no-referrer"&gt;
+&lt;title&gt;[내부용] {문서명} — 누리네트웍스&lt;/title&gt;</code></pre>
+  </div>
+
+  <div class="step">
+    <span class="num">4</span><h3>GitHub Pages 배포</h3>
+    <pre><code>cd "C:\Users\knews\GoogleDrive\A.누리네트웍스업무폴더\홈페이지종합\nwpos.co.kr"
+git add &lt;파일명&gt;.pdf &lt;파일명&gt;.html
+git commit -m "Add internal document: &lt;문서명&gt; (noindex viewer)"
+git push origin main</code></pre>
+    <ul>
+      <li>1~5분 후 자동 게시</li>
+      <li>두 URL 모두 발급:
+        <ul>
+          <li>웹 뷰어: <code>https://nwpos.co.kr/&lt;파일명&gt;.html</code></li>
+          <li>PDF 직접: <code>https://nwpos.co.kr/&lt;파일명&gt;.pdf</code></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="step">
+    <span class="num">5</span><h3>NaverWorks 알림 + 사용자에게 URL 전달</h3>
+  </div>
+
+  <h2>📋 파일명 표준</h2>
+  <table>
+    <thead>
+      <tr><th>용도</th><th>파일명 패턴</th><th>예시</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>견적서</td><td><code>quote-{제품}-YYYY-MM-DD.pdf</code></td><td>quote-pos-2026-05-22.pdf</td></tr>
+      <tr><td>계약서</td><td><code>contract-{거래처}-YYYY-MM-DD.pdf</code></td><td>contract-abc-2026-05-22.pdf</td></tr>
+      <tr><td>카탈로그</td><td><code>catalog-{제품}-YYYY-MM-DD.pdf</code></td><td>catalog-n250-2026-05-22.pdf</td></tr>
+      <tr><td>제안서</td><td><code>proposal-{프로젝트}-YYYY-MM-DD.pdf</code></td><td>proposal-cafe-2026-05-22.pdf</td></tr>
+      <tr><td>매뉴얼</td><td><code>manual-{제품}-YYYY-MM-DD.pdf</code></td><td>manual-kiosk-2026-05-22.pdf</td></tr>
+    </tbody>
+  </table>
+
+  <h2>📦 HTML 뷰어 표준 템플릿 (핵심)</h2>
+  <pre><code>&lt;object data="{파일명}.pdf#view=FitH" type="application/pdf" class="pdf-frame"&gt;
+  &lt;iframe src="{파일명}.pdf#view=FitH" class="pdf-frame" frameborder="0"&gt;
+    &lt;p&gt;브라우저에서 PDF 표시 불가.
+      &lt;a href="{파일명}.pdf"&gt;PDF 다운로드&lt;/a&gt;
+    &lt;/p&gt;
+  &lt;/iframe&gt;
+&lt;/object&gt;</code></pre>
+  <p>전체 템플릿: 메모리 파일 <code>policy_pdf_web_viewer.md</code> 참조 또는 기존 게시본 복사
+    (<a href="quote-pos-2026-05-22.html">POS 견적서</a> · <a href="quote-kiosk-2026-05-22.html">키오스크 견적서</a>)</p>
+
+  <h2>🖼️ 이미지 문서일 경우</h2>
+  <p>PDF 대신 JPG·PNG 스캔본인 경우:</p>
+  <ul>
+    <li><code>&lt;object&gt;</code>/<code>&lt;iframe&gt;</code> 대신 <code>&lt;img&gt;</code> 사용</li>
+    <li>다운로드 버튼 동일 유지</li>
+    <li>줌·회전 컨트롤 옵션 추가 가능</li>
+  </ul>
+
+  <h2>📦 다수 PDF 묶음</h2>
+  <p>여러 PDF를 한 페이지에서 보여줄 경우:</p>
+  <ul>
+    <li>파일명: <code>package-{프로젝트}-YYYY-MM-DD.html</code></li>
+    <li>탭 UI 또는 카드 그리드로 PDF 목록 표시</li>
+    <li>각 PDF는 개별 <code>quote-XXX.pdf</code>로 별도 저장 (재사용성)</li>
+  </ul>
+
+  <h2>🚨 주의사항</h2>
+  <div class="danger">
+    ⚠️ <b>개인정보(주민번호·계좌번호 등) 포함 PDF는 게시 금지</b> — 사용자에게 마스킹 요청
+  </div>
+  <ul>
+    <li><b>재무·민감정보</b> 포함 PDF: noindex만으로 부족할 수 있음 → 사용자에게 게시 가능 여부 재확인</li>
+    <li><b>외부 협력사 견적서</b>: 사용자 사전 승인 후에만 게시</li>
+    <li><b>PDF 용량 10MB 초과</b>: GitHub Pages가 느려질 수 있음 → 사용자에게 분할 또는 압축 제안</li>
+  </ul>
+
+  <h2>✅ 사용자에게 답변할 때 표준 양식</h2>
+  <pre><code>✅ 문서 웹 게시 완료
+
+🔗 웹 뷰어: https://nwpos.co.kr/&lt;파일명&gt;.html
+🔗 직접 PDF: https://nwpos.co.kr/&lt;파일명&gt;.pdf
+
+📋 페이지 구성: PDF 미리보기 + 다운로드 + 새 창 열기
+🔒 검색엔진 차단 · URL 아는 사람만 접근
+📱 PC·모바일·태블릿 모두 즉시 열람</code></pre>
+
+  <h2>🧑‍🤝‍🧑 다른 Claude 세션 공통 적용</h2>
+  <ul>
+    <li><b>모든 누리네트웍스 Claude 세션</b>에 자동 적용</li>
+    <li>사용자가 PDF·이미지 첨부 + "웹에서 볼 수 있게" 요청 시 이 SOP 자동 실행</li>
+    <li>보고서 SOP(<a href="sop-report-html-publish.html">sop-report-html-publish.html</a>)와 함께 사용</li>
+    <li>향후 새 Claude 세션: <code>MEMORY.md</code>에서 자동 로딩</li>
+  </ul>
+
+  <div class="ok">
+    ✅ <b>최초 검증 완료</b>:
+    <ul>
+      <li><a href="quote-pos-2026-05-22.html">POS 견적서</a> (HTTP 200)</li>
+      <li><a href="quote-kiosk-2026-05-22.html">키오스크 견적서</a> (HTTP 200)</li>
+    </ul>
+  </div>
+
+  <h2>📎 관련 SOP·참고</h2>
+  <ul>
+    <li>보고서 HTML 웹발행 SOP: <a href="sop-report-html-publish.html">sop-report-html-publish.html</a></li>
+    <li>저장소: <code>knewstart2020-ctrl/nwpos.co.kr.git</code></li>
+    <li>커스텀 도메인: <code>nwpos.co.kr</code></li>
+    <li>메모리 파일: <code>.claude\memory\policy_pdf_web_viewer.md</code></li>
+  </ul>
+
+  <div class="foot">
+    © 누리네트웍스 · Claude Code 자동 발행 · 2026-05-22
+  </div>
+
+</div>
+</body>
+</html>
