@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<title>[미리보기] 누리네트웍스 메인페이지 개편 v2</title>
+<style>
+  :root{
+    --navy:#0A1A3A; --navy2:#142A55; --gold:#C9A961; --gold2:#E0C988;
+    --blue:#0066FF; --blue2:#0044CC; --paper:#F7F4ED; --ink:#1A2236;
+    --ink-soft:#55607A; --line:#E3E1D7; --ok:#1A7F5A; --kakao:#FEE500;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;color:var(--ink);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  a{text-decoration:none;color:inherit;}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 20px;}
+  .btn{display:inline-flex;align-items:center;gap:8px;justify-content:center;border-radius:10px;font-weight:800;cursor:pointer;border:none;transition:.15s;}
+  .btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);}
+  .btn-gold:hover{filter:brightness(1.06);transform:translateY(-1px);}
+  .btn-blue{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;}
+  .btn-line{background:transparent;border:1.5px solid rgba(255,255,255,.5);color:#fff;}
+  .btn-kakao{background:var(--kakao);color:#3A1D1D;}
+
+  /* 미리보기 배너 */
+  .preview-bar{background:#FFE4E1;border-bottom:1px solid #DC143C;color:#8B0000;padding:9px 16px;text-align:center;font-size:13px;font-weight:700;}
+
+  /* 헤더 */
+  header{position:sticky;top:0;z-index:50;background:rgba(10,26,58,.96);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08);}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .logo{color:#fff;font-weight:900;font-size:20px;letter-spacing:-.5px;}
+  .logo b{color:var(--gold);}
+  .nav-cta{display:flex;gap:10px;align-items:center;}
+  .nav-cta .tel{color:var(--gold);font-weight:800;font-size:18px;}
+  .nav-cta .btn{padding:9px 16px;font-size:14px;}
+  @media(max-width:720px){.nav-cta .tel{display:none;}}
+
+  /* 히어로 */
+  .hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 55%,#1F3A6E 100%);color:#fff;position:relative;overflow:hidden;}
+  .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding-top:54px;padding-bottom:54px;}
+  .hero .money{display:inline-block;background:rgba(201,169,97,.16);border:1px solid rgba(201,169,97,.4);color:var(--gold2);font-weight:800;font-size:15px;padding:8px 16px;border-radius:999px;margin-bottom:18px;}
+  .hero h1{font-size:42px;line-height:1.25;font-weight:900;letter-spacing:-1px;margin-bottom:14px;}
+  .hero h1 .y{color:var(--gold);}
+  .hero .lead{font-size:17px;color:rgba(255,255,255,.82);margin-bottom:26px;}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:22px;}
+  .hero-cta .btn{padding:16px 26px;font-size:17px;}
+  .hero-cta .btn.sm{padding:16px 22px;font-size:16px;}
+  .trust{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px;color:rgba(255,255,255,.9);}
+  .trust span{display:inline-flex;align-items:center;gap:6px;}
+  .trust .ok{color:#7FE0A0;font-weight:800;}
+  .hero-visual{aspect-ratio:9/12;border-radius:18px;background:linear-gradient(160deg,#0E2148,#06122B);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.35);}
+  .hero-visual .ph{text-align:center;color:rgba(255,255,255,.5);font-size:14px;}
+  .hero-visual .ring{width:120px;height:120px;border-radius:50%;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:34px;color:var(--gold);}
+  @media(max-width:880px){.hero .wrap{grid-template-columns:1fr;}.hero h1{font-size:32px;}.hero-visual{aspect-ratio:16/10;}}
+
+  /* 실시간 통계 바 */
+  .stats{background:var(--paper);border-bottom:1px solid var(--line);}
+  .stats .wrap{display:flex;flex-wrap:wrap;justify-content:space-around;gap:14px;padding:22px 20px;text-align:center;}
+  .stat .n{font-size:30px;font-weight:900;color:var(--navy);}
+  .stat .n b{color:var(--blue);}
+  .stat .l{font-size:13px;color:var(--ink-soft);margin-top:2px;}
+
+  /* 안전망 */
+  .safety{background:#fff;padding:46px 0;}
+  .safety .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .safe-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:24px;text-align:center;}
+  .safe-card .ic{font-size:30px;margin-bottom:10px;}
+  .safe-card h3{font-size:18px;color:var(--navy);font-weight:800;margin-bottom:6px;}
+  .safe-card p{font-size:14px;color:var(--ink-soft);}
+  @media(max-width:780px){.safety .wrap{grid-template-columns:1fr;}}
+
+  /* 섹션 공통 */
+  .sec{padding:54px 0;}
+  .sec.alt{background:var(--paper);}
+  .sec h2{font-size:28px;font-weight:900;color:var(--navy);text-align:center;letter-spacing:-.5px;margin-bottom:8px;}
+  .sec .sub{text-align:center;color:var(--ink-soft);font-size:15px;margin-bottom:30px;}
+
+  /* 라인업 */
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .pcard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;text-align:center;transition:.15s;}
+  .pcard:hover{box-shadow:0 10px 26px rgba(10,26,58,.1);transform:translateY(-2px);border-color:var(--gold);}
+  .pcard .ic{font-size:30px;margin-bottom:8px;}
+  .pcard h3{font-size:16px;font-weight:800;color:var(--navy);margin-bottom:4px;}
+  .pcard p{font-size:13px;color:var(--ink-soft);}
+  @media(max-width:880px){.grid{grid-template-columns:repeat(2,1fr);}}
+
+  /* 6가치 */
+  .values{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .vcard{background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:20px;}
+  .vcard h3{font-size:17px;font-weight:800;color:var(--navy);margin-bottom:6px;}
+  .vcard p{font-size:14px;color:var(--ink-soft);}
+  @media(max-width:780px){.values{grid-template-columns:1fr;}}
+
+  /* 후기 */
+  .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .rcard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;}
+  .rcard .stars{color:var(--gold);font-size:15px;margin-bottom:8px;}
+  .rcard p{font-size:14.5px;color:var(--ink);margin-bottom:14px;}
+  .rcard .who{font-size:13px;color:var(--ink-soft);border-top:1px solid var(--line);padding-top:10px;}
+  .rcard .ph{background:var(--paper);border:1px dashed var(--line);border-radius:8px;padding:6px;text-align:center;font-size:11px;color:var(--ink-soft);margin-top:8px;}
+  @media(max-width:880px){.reviews{grid-template-columns:1fr;}}
+
+  /* 지역 */
+  .regions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
+  .rchip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:12px 22px;font-weight:700;color:var(--navy);transition:.15s;}
+  .rchip:hover{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .rchip b{color:var(--blue);} .rchip:hover b{color:var(--gold);}
+
+  /* 최종 CTA */
+  .final{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;text-align:center;padding:60px 0;}
+  .final h2{font-size:30px;font-weight:900;margin-bottom:12px;}
+  .final p{color:rgba(255,255,255,.82);margin-bottom:26px;font-size:16px;}
+  .final .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+  .final .btn{padding:16px 30px;font-size:17px;}
+
+  /* 푸터 */
+  footer{background:#05102A;color:rgba(255,255,255,.6);padding:30px 0;font-size:13px;text-align:center;}
+  footer b{color:var(--gold);}
+
+  /* 플로팅 CTA */
+  .floating{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;flex-direction:column;gap:10px;}
+  .fab{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 6px 20px rgba(0,0,0,.25);cursor:pointer;border:none;}
+  .fab.tel{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);}
+  .fab.kakao{background:var(--kakao);}
+  .fab.top{background:rgba(10,26,58,.85);color:#fff;width:46px;height:46px;font-size:18px;margin:0 auto;}
+  .fab-label{position:fixed;right:84px;bottom:30px;background:var(--navy);color:#fff;padding:8px 14px;border-radius:8px;font-size:13px;font-weight:700;z-index:60;box-shadow:0 4px 14px rgba(0,0,0,.2);}
+  @media(max-width:600px){.fab-label{display:none;}}
+</style>
+</head>
+<body>
+
+<div class="preview-bar">🔒 내부 미리보기 — 라이브(nwpos.co.kr) 미적용 · 검수용 · 검색엔진 차단</div>
+
+<!-- 헤더 -->
+<header>
+  <div class="wrap nav">
+    <div class="logo">누리<b>네트웍스</b></div>
+    <div class="nav-cta">
+      <span class="tel">📞 1544-7754</span>
+      <a class="btn btn-gold" href="#consult">무료 상담</a>
+    </div>
+  </div>
+</header>
+
+<!-- 히어로 -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="money">💰 수수료 0.5%p↓ 시 연 500만원 절감</span>
+      <h1>14년·<span class="y">12,000+</span> 매장이 선택한<br>결제솔루션 <span class="y">No.1</span></h1>
+      <p class="lead">POS · 키오스크 · 테이블오더 · 카드단말기 · 결제를 한 번에.<br>KT BC카드 계열 스마트로 수도권 지사가 직접 책임집니다.</p>
+      <div class="hero-cta">
+        <a class="btn btn-gold" href="#consult">📞 무료 상담 신청</a>
+        <a class="btn btn-kakao sm" href="#consult">💬 카카오톡 상담</a>
+        <a class="btn btn-line sm" href="#consult">30초 견적 받기</a>
+      </div>
+      <div class="trust">
+        <span><span class="ok">✅</span> KT BC 스마트로 공식</span>
+        <span><span class="ok">✅</span> 14년 · 12,000+ 매장</span>
+        <span><span class="ok">✅</span> 24시간 응대</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="ph"><div class="ring">N</div>시네마틱 6초 루프<br>(N250 제품 영상 영역)</div>
+    </div>
+  </div>
+</section>
+
+<!-- 실시간 통계 바 -->
+<section class="stats">
+  <div class="wrap">
+    <div class="stat"><div class="n">14<b>년</b></div><div class="l">업력</div></div>
+    <div class="stat"><div class="n">12,000<b>+</b></div><div class="l">누적 도입 매장</div></div>
+    <div class="stat"><div class="n">20<b>+</b></div><div class="l">제휴 파트너</div></div>
+    <div class="stat"><div class="n">24<b>시간</b></div><div class="l">장애 대응</div></div>
+    <div class="stat"><div class="n">8<b>개</b></div><div class="l">수도권 직접관리 지역</div></div>
+  </div>
+</section>
+
+<!-- 안전망 -->
+<section class="safety">
+  <div class="wrap">
+    <div class="safe-card"><div class="ic">🛡️</div><h3>30일 만족 보장</h3><p>도입 후 안 맞으면 30일 내 무상 회수. 사장님 부담 0.</p></div>
+    <div class="safe-card"><div class="ic">🏢</div><h3>KT BC 스마트로 공식</h3><p>대기업 계열 안정성 + 지사 직접 관리로 사후가 다릅니다.</p></div>
+    <div class="safe-card"><div class="ic">⚡</div><h3>24시간 장애 리커버리</h3><p>매출이 멈추지 않게. 영업시간 외에도 즉시 대응.</p></div>
+  </div>
+</section>
+
+<!-- 라인업 -->
+<section class="sec alt">
+  <div class="wrap">
+    <h2>매장에 필요한 모든 것, 한 곳에서</h2>
+    <p class="sub">POS부터 결제까지 — 따로 알아볼 필요 없이 누리네트웍스 하나로</p>
+    <div class="grid">
+      <div class="pcard"><div class="ic">🖥️</div><h3>POS (N250)</h3><p>15인치 올인원 포스</p></div>
+      <div class="pcard"><div class="ic">🤖</div><h3>키오스크</h3><p>무인 주문·결제</p></div>
+      <div class="pcard"><div class="ic">📱</div><h3>테이블오더</h3><p>비대면 주문</p></div>
+      <div class="pcard"><div class="ic">💳</div><h3>카드단말기</h3><p>모든 결제수단</p></div>
+      <div class="pcard"><div class="ic">✍️</div><h3>사인패드</h3><p>전자서명</p></div>
+      <div class="pcard"><div class="ic">🧩</div><h3>소프트웨어</h3><p>매출·재고 관리</p></div>
+      <div class="pcard"><div class="ic">🔌</div><h3>PG·간편결제</h3><p>온·오프 통합</p></div>
+      <div class="pcard"><div class="ic">➕</div><h3>주변기기</h3><p>프린터·스캐너 등</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6가지 가치 -->
+<section class="sec">
+  <div class="wrap">
+    <h2>왜 누리네트웍스인가</h2>
+    <p class="sub">14년간 12,000개 매장이 검증한 6가지</p>
+    <div class="values">
+      <div class="vcard"><h3>① 빠른 피드백</h3><p>요청 즉시 응대하는 전담 관리 체계</p></div>
+      <div class="vcard"><h3>② 장애 리커버리</h3><p>24시간 복구로 매출 공백 최소화</p></div>
+      <div class="vcard"><h3>③ 결제 네트워크</h3><p>KT BC 스마트로 기반 안정성</p></div>
+      <div class="vcard"><h3>④ 민원 원스톱</h3><p>설치·교체·정산 한 번에 처리</p></div>
+      <div class="vcard"><h3>⑤ 14년 노하우</h3><p>업종별 최적 구성 컨설팅</p></div>
+      <div class="vcard"><h3>⑥ 트렌드 대응</h3><p>키오스크·테이블오더 등 신기술</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 도입 후기 -->
+<section class="sec alt">
+  <div class="wrap">
+    <h2>실제 사장님들의 이야기</h2>
+    <p class="sub">셀럽 광고가 아닌, 진짜 매장의 후기</p>
+    <div class="reviews">
+      <div class="rcard"><div class="stars">★★★★★</div><p>"키오스크 도입하고 피크타임 줄이 사라졌어요. 알바 한 명 몫을 합니다."</p><div class="who">컴포즈커피 ○○점 · 카페</div><div class="ph">사장님 인터뷰 사진 (촬영 예정)</div></div>
+      <div class="rcard"><div class="stars">★★★★★</div><p>"고장 나도 바로 와주니까 매출 끊길 걱정이 없어요. 14년 한 이유가 있네요."</p><div class="who">소림마라 ○○점 · 식당</div><div class="ph">사장님 인터뷰 사진 (촬영 예정)</div></div>
+      <div class="rcard"><div class="stars">★★★★★</div><p>"테이블오더까지 한 번에 묶어주셔서 편했습니다. 상담이 빨라요."</p><div class="who">○○골프장 · 레저</div><div class="ph">사장님 인터뷰 사진 (촬영 예정)</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 지역별 상담 -->
+<section class="sec">
+  <div class="wrap">
+    <h2>우리 동네 전담 상담</h2>
+    <p class="sub">수도권 8개 지역 직접 관리 — 가까워서 빠릅니다</p>
+    <div class="regions">
+      <a class="rchip" href="#consult"><b>강남</b> 포스</a>
+      <a class="rchip" href="#consult"><b>서초</b> 포스</a>
+      <a class="rchip" href="#consult"><b>영등포·문래동</b> 포스</a>
+      <a class="rchip" href="#consult"><b>마포</b> 포스</a>
+      <a class="rchip" href="#consult"><b>성수</b> 포스</a>
+      <a class="rchip" href="#consult"><b>동탄</b> 포스</a>
+      <a class="rchip" href="#consult"><b>화성</b> 포스</a>
+      <a class="rchip" href="#consult"><b>송도</b> 포스</a>
+    </div>
+  </div>
+</section>
+
+<!-- 최종 CTA -->
+<section class="final" id="consult">
+  <div class="wrap">
+    <h2>30초면 충분합니다</h2>
+    <p>업종만 알려주시면, 우리 매장에 맞는 구성과 견적을 바로 드립니다.</p>
+    <div class="btns">
+      <a class="btn btn-gold" href="tel:1544-7754">📞 1544-7754 전화 상담</a>
+      <a class="btn btn-kakao" href="#">💬 카카오톡 상담</a>
+      <a class="btn btn-blue" href="#">30초 견적 신청</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <b>누리네트웍스</b> · 1544-7754 · nwpos.co.kr<br>
+    서울 영등포구 문래동 · KT BC카드 계열 스마트로 수도권 지사<br>
+    <span style="opacity:.5">© 누리네트웍스 · 메인페이지 개편 v2 미리보기</span>
+  </div>
+</footer>
+
+<!-- 플로팅 CTA -->
+<div class="fab-label">상담은 여기로 👉</div>
+<div class="floating">
+  <a class="fab tel" href="tel:1544-7754" title="전화 상담">📞</a>
+  <a class="fab kakao" href="#consult" title="카카오톡 상담">💬</a>
+  <button class="fab top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="맨 위로">↑</button>
+</div>
+
+</body>
+</html>
