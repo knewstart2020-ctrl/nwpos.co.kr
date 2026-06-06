@@ -192,10 +192,31 @@
 
   /* 히어로 제품 갤러리 */
   .gallery{position:absolute;inset:14px;border-radius:14px;background:#fff;overflow:hidden;}
-  .gimg{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:22px 22px 58px;opacity:0;transition:opacity .7s ease;}
+  .gimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .7s ease;}
   .gimg.active{opacity:1;}
   .glabel{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(0deg,rgba(10,26,58,.94),rgba(10,26,58,.8));color:#fff;text-align:center;font-weight:800;font-size:15px;padding:12px;letter-spacing:-.3px;}
   .glabel small{color:var(--gold2);font-weight:700;font-size:12px;display:block;margin-bottom:2px;letter-spacing:1px;}
+
+  /* 상담 모달 */
+  .modal-ov{position:fixed;inset:0;background:rgba(8,16,38,.62);backdrop-filter:blur(3px);z-index:200;display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:38px 16px;}
+  .modal-ov.open{display:flex;}
+  .modal-box{background:#fff;border-radius:20px;max-width:440px;width:100%;padding:30px 28px;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.42);}
+  .modal-x{position:absolute;top:12px;right:15px;background:none;border:none;font-size:27px;color:#aab;cursor:pointer;line-height:1;}
+  .modal-box h3{font-size:21px;font-weight:900;color:var(--navy);margin-bottom:6px;}
+  .modal-sub{font-size:13.5px;color:var(--ink-soft);margin-bottom:16px;}
+  .mform label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin:13px 0 5px;}
+  .mform label small{color:var(--ink-soft);font-weight:600;}
+  .mform input,.mform select,.mform textarea{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:10px;font-size:15px;font-family:inherit;color:var(--ink);}
+  .mform textarea{min-height:68px;resize:vertical;}
+  .mtimes{display:flex;gap:8px;}
+  .mtime{flex:1;text-align:center;padding:11px;border:1px solid var(--line);border-radius:10px;font-size:14px;font-weight:700;color:var(--ink-soft);cursor:pointer;transition:.12s;}
+  .mtime.on{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .mconsent{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink-soft);margin-top:14px;cursor:pointer;}
+  .mconsent input{width:auto;}
+  .msubmit{width:100%;margin-top:16px;padding:15px;background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;border:none;border-radius:11px;font-size:16px;font-weight:800;cursor:pointer;}
+  .msubmit:hover{filter:brightness(1.05);}
+  .mdone{display:none;text-align:center;padding:18px 0;}
+  .mdone p{color:var(--ink-soft);font-size:14px;margin-bottom:16px;}
 </style>
 </head>
 <body>
@@ -218,7 +239,7 @@
     </nav>
     <div class="nav-cta">
       <span class="tel">1544-7754</span>
-      <a class="btn btn-gold pulse" href="#consult">무료 상담</a>
+      <a class="btn btn-gold pulse" href="javascript:void(0)" onclick="openConsult()">무료 상담</a>
     </div>
   </div>
 </header>
@@ -231,11 +252,13 @@
       <h1>포스부터 결제까지,<br>매장의 모든 것을 <span class="y">한 곳</span>에서</h1>
       <p class="lead">14년 · 12,000개 매장이 선택한 누리네트웍스.<br>우리 동네 지사가 <b>직접 설치하고 끝까지 책임</b>집니다.</p>
       <div class="hero-cta">
-        <a class="btn btn-gold pulse" href="#consult">📞 무료 상담 신청</a>
-        <a class="btn btn-kakao sm" href="#consult">💬 카카오톡 상담</a>
+        <a class="btn btn-gold pulse" href="javascript:void(0)" onclick="openConsult()">📞 무료 상담 신청</a>
+        <a class="btn btn-kakao sm" href="http://pf.kakao.com/_EfGxmn" target="_blank" rel="noopener">💬 카카오톡 상담</a>
       </div>
       <div class="trust">
-        <span><span class="ok">✓</span> 14년 · 12,000+ 매장</span>
+        <span><span class="ok">✓</span> 월 사용료 0원</span>
+        <span><span class="ok">✓</span> 약정 없는 포스</span>
+        <span><span class="ok">✓</span> PG수수료 없는 테이블오더</span>
       </div>
     </div>
     <div class="hero-visual">
@@ -404,7 +427,7 @@
 
 <div class="floating">
   <a class="fab tel" href="tel:1544-7754" title="전화 상담">📞</a>
-  <a class="fab kakao" href="#consult" title="카카오톡 상담">💬</a>
+  <a class="fab kakao" href="http://pf.kakao.com/_EfGxmn" target="_blank" rel="noopener" title="카카오톡 상담">💬</a>
   <button class="fab top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="맨 위로">↑</button>
 </div>
 
@@ -412,6 +435,53 @@
 (function(){var L=["N250 올인원 포스","키오스크","테이블오더","토스 단말기","네이버 단말기","유선 카드단말기","부가장비"];
 var imgs=document.querySelectorAll("#gallery .gimg");var lab=document.getElementById("glabel");var i=0;
 if(imgs.length){setInterval(function(){imgs[i].classList.remove("active");i=(i+1)%imgs.length;imgs[i].classList.add("active");lab.innerHTML="<small>제품 라인업</small>"+L[i];},2600);}})();
+</script>
+<!-- 상담 모달 -->
+<div class="modal-ov" id="consultModal" onclick="if(event.target===this)closeConsult()">
+  <div class="modal-box">
+    <button class="modal-x" onclick="closeConsult()" aria-label="닫기">&times;</button>
+    <div class="mform" id="mForm">
+      <h3>📋 무료 상담 신청</h3>
+      <p class="modal-sub">전문 상담사가 매장에 맞는 최적의 솔루션을 추천해 드립니다.</p>
+      <label>업체/고객명</label>
+      <input type="text" id="mName" placeholder="업체 또는 고객명">
+      <label>연락처</label>
+      <input type="tel" id="mPhone" placeholder="01000000000" maxlength="11">
+      <label>상담유형</label>
+      <select id="mType"><option value="" disabled selected>상담유형을 선택하세요</option><option>신규상담</option><option>교체상담</option><option>제휴상담</option></select>
+      <label>상담 가능시간</label>
+      <div class="mtimes"><span class="mtime" onclick="this.classList.toggle('on')">10시~11시</span><span class="mtime" onclick="this.classList.toggle('on')">14시~16시</span></div>
+      <label>요청사항 <small>(선택)</small></label>
+      <textarea id="mMemo" placeholder="궁금한 점을 자유롭게 적어주세요"></textarea>
+      <label class="mconsent"><input type="checkbox" id="mAgree"> 개인정보 수집·이용에 동의합니다. (상담 목적으로만 사용)</label>
+      <button class="msubmit" id="mSubmit" onclick="submitConsult()">상담 신청하기</button>
+    </div>
+    <div class="mdone" id="mDone">
+      <div style="font-size:46px">✅</div>
+      <h3 style="color:var(--navy)">상담 신청 완료!</h3>
+      <p>빠른 시일 내에 연락드리겠습니다.</p>
+      <button class="msubmit" onclick="closeConsult()">닫기</button>
+    </div>
+  </div>
+</div>
+<script>
+function openConsult(){document.getElementById('consultModal').classList.add('open');}
+function closeConsult(){var m=document.getElementById('consultModal');m.classList.remove('open');document.getElementById('mForm').style.display='block';document.getElementById('mDone').style.display='none';}
+function submitConsult(){
+  var name=document.getElementById('mName').value.trim();
+  var phone=document.getElementById('mPhone').value.trim();
+  var type=document.getElementById('mType').value;
+  if(!name||!phone){alert('업체/고객명과 연락처를 입력해 주세요.');return;}
+  if(!document.getElementById('mAgree').checked){alert('개인정보 수집·이용에 동의해 주세요.');return;}
+  var times=[];document.querySelectorAll('#consultModal .mtime.on').forEach(function(t){times.push(t.textContent);});
+  var memo=document.getElementById('mMemo').value.trim();
+  var now=new Date();var d=now.getFullYear()+'.'+(now.getMonth()+1)+'.'+now.getDate()+' '+now.getHours()+':'+String(now.getMinutes()).padStart(2,'0');
+  var SCRIPT_URL='https://script.google.com/macros/s/AKfycbx7ehczO8H27GXO58JHPvNUbZWocPUSKpL9NMMbtQgHlglVgRhaua4_WAOhv5MZqqzThA/exec';
+  var fd={name:name,phone:phone,consultType:type,time:times.join(', '),memo:memo,date:d,duration:0,pages:'메인 히어로',referrer:'nwpos.co.kr 메인 무료상담',interests:''};
+  var b=document.getElementById('mSubmit');b.textContent='전송 중...';b.disabled=true;
+  fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(fd)}).then(done).catch(done);
+  function done(){document.getElementById('mForm').style.display='none';document.getElementById('mDone').style.display='block';b.textContent='상담 신청하기';b.disabled=false;}
+}
 </script>
 </body>
 </html>
