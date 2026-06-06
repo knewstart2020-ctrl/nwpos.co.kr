@@ -189,6 +189,13 @@
   .fab.tel{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);}
   .fab.kakao{background:var(--kakao);}
   .fab.top{background:rgba(10,26,58,.85);color:#fff;width:46px;height:46px;font-size:18px;margin:0 auto;}
+
+  /* 히어로 제품 갤러리 */
+  .gallery{position:absolute;inset:14px;border-radius:14px;background:#fff;overflow:hidden;}
+  .gimg{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:22px 22px 58px;opacity:0;transition:opacity .7s ease;}
+  .gimg.active{opacity:1;}
+  .glabel{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(0deg,rgba(10,26,58,.94),rgba(10,26,58,.8));color:#fff;text-align:center;font-weight:800;font-size:15px;padding:12px;letter-spacing:-.3px;}
+  .glabel small{color:var(--gold2);font-weight:700;font-size:12px;display:block;margin-bottom:2px;letter-spacing:1px;}
 </style>
 </head>
 <body>
@@ -232,7 +239,7 @@
       </div>
     </div>
     <div class="hero-visual">
-      <div class="ph"><div class="ring">N</div><b style="color:#fff;font-size:17px;letter-spacing:-.3px">N250 올인원 POS</b><br>매장의 중심이 됩니다</div>
+      <div class="gallery" id="gallery"><img class="gimg active" src="pos-n250-card.jpeg" alt="N250 포스"><img class="gimg" src="kiosk-product-1.png" alt="키오스크"><img class="gimg" src="order-card-uporder.png" alt="테이블오더"><img class="gimg" src="signpad-card-toss.jpg" alt="토스 단말기"><img class="gimg" src="signpad-card-naver.jpg" alt="네이버 단말기"><img class="gimg" src="terminal-card-t226.jpg" alt="유선 카드단말기"><img class="gimg" src="extra-monitor.png" alt="부가장비"><div class="glabel" id="glabel"><small>제품 라인업</small>N250 올인원 포스</div></div>
       <div class="badge2">누적 도입<b>12,000+ 매장</b></div>
     </div>
   </div>
@@ -401,5 +408,10 @@
   <button class="fab top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="맨 위로">↑</button>
 </div>
 
+<script>
+(function(){var L=["N250 올인원 포스","키오스크","테이블오더","토스 단말기","네이버 단말기","유선 카드단말기","부가장비"];
+var imgs=document.querySelectorAll("#gallery .gimg");var lab=document.getElementById("glabel");var i=0;
+if(imgs.length){setInterval(function(){imgs[i].classList.remove("active");i=(i+1)%imgs.length;imgs[i].classList.add("active");lab.innerHTML="<small>제품 라인업</small>"+L[i];},2600);}})();
+</script>
 </body>
 </html>
