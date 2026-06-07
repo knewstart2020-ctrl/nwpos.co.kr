@@ -188,11 +188,13 @@
   .fab.top{background:rgba(10,26,58,.85);color:#fff;width:46px;height:46px;font-size:18px;margin:0 auto;}
 
   /* 히어로 제품 갤러리 */
-  .gallery{position:absolute;inset:14px;border-radius:14px;background:#fff;overflow:hidden;}
+  .gallery{position:absolute;inset:14px;border-radius:14px;background:#fff;overflow:hidden;display:flex;flex-direction:column;}
   .gimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .7s ease;}
   .gimg.active{opacity:1;}
-  .glabel{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(0deg,rgba(10,26,58,.94),rgba(10,26,58,.8));color:#fff;text-align:center;font-weight:800;font-size:15px;padding:12px;letter-spacing:-.3px;}
-  .glabel small{color:var(--gold2);font-weight:700;font-size:12px;display:block;margin-bottom:2px;letter-spacing:1px;}
+  .g-head{text-align:center;padding:13px 10px 11px;border-bottom:1px solid var(--line);}
+  .g-head small{display:block;color:var(--gold);font-weight:800;font-size:11px;letter-spacing:1px;margin-bottom:2px;}
+  .g-head b{color:var(--navy);font-size:17px;font-weight:900;letter-spacing:-.3px;}
+  .g-img{position:relative;flex:1;overflow:hidden;}
 
   /* 상담 모달 */
   .modal-ov{position:fixed;inset:0;background:rgba(8,16,38,.62);backdrop-filter:blur(3px);z-index:200;display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:38px 16px;}
@@ -259,8 +261,7 @@
       </div>
     </div>
     <div class="hero-visual">
-      <div class="gallery" id="gallery"><img class="gimg active" src="pos-n250-card.jpeg" alt="N250 포스" style="object-position:30% center"><img class="gimg" src="kiosk-product-1.png" alt="키오스크"><img class="gimg" src="order-card-uporder.png" alt="테이블오더"><img class="gimg" src="signpad-card-toss.jpg" alt="토스 단말기"><img class="gimg" src="signpad-card-naver.jpg" alt="네이버 단말기"><img class="gimg" src="terminal-card-t226.jpg" alt="유선 카드단말기"><div class="glabel" id="glabel"><small>제품 라인업</small>N250 올인원 포스</div></div>
-      <div class="badge2">누적 도입<b>12,000+ 매장</b></div>
+      <div class="gallery" id="gallery"><div class="g-head"><small>제품 라인업</small><b id="gname">N250 올인원 포스</b></div><div class="g-img"><img class="gimg active" src="pos-n250-card.jpeg" style="object-position:30% center"><img class="gimg" src="kiosk-product-1.png"><img class="gimg" src="order-card-uporder.png"><img class="gimg" src="signpad-card-toss.jpg"><img class="gimg" src="signpad-card-naver.jpg"><img class="gimg" src="terminal-card-t226.jpg"></div></div>
     </div>
   </div>
 </section>
@@ -430,8 +431,8 @@
 
 <script>
 (function(){var L=["N250 올인원 포스","키오스크","테이블오더","토스 단말기","네이버 단말기","유선 카드단말기"];
-var imgs=document.querySelectorAll("#gallery .gimg");var lab=document.getElementById("glabel");var i=0;
-if(imgs.length){setInterval(function(){imgs[i].classList.remove("active");i=(i+1)%imgs.length;imgs[i].classList.add("active");lab.innerHTML="<small>제품 라인업</small>"+L[i];},2600);}})();
+var imgs=document.querySelectorAll("#gallery .gimg");var nm=document.getElementById("gname");var i=0;
+if(imgs.length){setInterval(function(){imgs[i].classList.remove("active");i=(i+1)%imgs.length;imgs[i].classList.add("active");nm.textContent=L[i];},2600);}})();
 </script>
 <!-- 상담 모달 -->
 <div class="modal-ov" id="consultModal" onclick="if(event.target===this)closeConsult()">
