@@ -28,10 +28,9 @@
   .btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);}
   @keyframes ctapulse{0%{box-shadow:0 0 0 0 rgba(201,169,97,.55);}70%{box-shadow:0 0 0 13px rgba(201,169,97,0);}100%{box-shadow:0 0 0 0 rgba(201,169,97,0);}}
   .btn.pulse{animation:ctapulse 1.7s infinite;}
-  .offerbar{background:linear-gradient(90deg,#0A1A3A,#1F3A6E);overflow:hidden;border-bottom:1px solid var(--line);}
-  .offer-track{display:inline-flex;align-items:center;white-space:nowrap;animation:offerscroll 28s linear infinite;padding:13px 0;}
-  .offer-track span.it{color:#fff;font-weight:800;font-size:14px;padding:8px 18px;border-radius:999px;margin:0 7px;box-shadow:0 3px 9px rgba(0,0,0,.22);}
-  @keyframes offerscroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+  .offerbar{background:linear-gradient(90deg,#0A1A3A,#1F3A6E);border-bottom:1px solid var(--line);padding:14px 16px;}
+  .offer-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:9px;max-width:1160px;margin:0 auto;}
+  .offer-row .it{color:#fff;font-weight:800;font-size:14px;padding:8px 16px;border-radius:999px;box-shadow:0 3px 9px rgba(0,0,0,.22);white-space:nowrap;}
   .btn-blue{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;}
   .btn-kakao{background:var(--kakao);color:#3A1D1D;}
   .btn-line{background:transparent;border:1.5px solid rgba(255,255,255,.5);color:#fff;}
@@ -267,7 +266,7 @@
 </section>
 
 <!-- 오퍼 마퀴 -->
-<div class="offerbar"><div class="offer-track"><span class="it" style="background:#0064FF">월 사용료 0원 · 토스단말기</span><span class="it" style="background:#03C75A">약정 없는 · 네이버단말기</span><span class="it" style="background:#FF6B2C">PG수수료 없는 · 테이블오더</span><span class="it" style="background:#00B5C8">약정 없는 · 포스</span><span class="it" style="background:#8B5CF6">위약금 없는 · 키오스크</span><span class="it" style="background:#FF3B57">최저가 · 카드단말기</span><span class="it" style="background:#0064FF">월 사용료 0원 · 토스단말기</span><span class="it" style="background:#03C75A">약정 없는 · 네이버단말기</span><span class="it" style="background:#FF6B2C">PG수수료 없는 · 테이블오더</span><span class="it" style="background:#00B5C8">약정 없는 · 포스</span><span class="it" style="background:#8B5CF6">위약금 없는 · 키오스크</span><span class="it" style="background:#FF3B57">최저가 · 카드단말기</span></div></div>
+<div class="offerbar"><div class="offer-row"><span class="it" style="background:#0064FF">토스단말기 · 월 사용료 0원</span><span class="it" style="background:#03C75A">네이버단말기 · 약정 없음</span><span class="it" style="background:#FF6B2C">테이블오더 · PG수수료 없음</span><span class="it" style="background:#00B5C8">포스 · 최저 렌탈료</span><span class="it" style="background:#8B5CF6">배리어프리 키오스크 · 최저가</span><span class="it" style="background:#FF3B57">카드단말기 · 위약금 없음</span></div></div>
 
 <!-- 신뢰 지표 바 (아이샵·티오더) -->
 <section class="stats">
