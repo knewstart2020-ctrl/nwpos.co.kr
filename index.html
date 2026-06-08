@@ -436,7 +436,7 @@
 (function(){var L=["N250 올인원 포스","키오스크","테이블오더","토스 단말기","네이버 단말기","유선 카드단말기"];
 var F=[["15인치 올인원","최저 렌탈료","매출·재고"],["무인 주문·결제","배리어프리 인증","대기 ↓"],["비대면 주문","PG수수료 0원","회전율 ↑"],["월 사용료 0원","간편결제","빠른 승인"],["네이버페이 연동","약정 없음","적립·리뷰"],["전 카드사","위약금 없음","안정적"]];
 var imgs=document.querySelectorAll("#gallery .gimg");var nm=document.getElementById("gname");var ch=document.getElementById("gchips");var i=0;
-if(imgs.length){setInterval(function(){imgs[i].classList.remove("active");i=(i+1)%imgs.length;imgs[i].classList.add("active");nm.textContent=L[i];if(ch)ch.innerHTML=F[i].map(function(x){return "<span>"+x+"</span>";}).join("");},2600);}})();
+if(imgs.length){setInterval(function(){imgs[i].classList.remove("active");i=(i+1)%imgs.length;imgs[i].classList.add("active");nm.textContent=L[i];if(ch)ch.innerHTML=F[i].map(function(x){return "<span>"+x+"</span>";}).join("");},5000);}})();
 </script>
 <!-- 상담 모달 -->
 <div class="modal-ov" id="consultModal" onclick="if(event.target===this)closeConsult()">
