@@ -216,6 +216,9 @@
   .msubmit:hover{filter:brightness(1.05);}
   .mdone{display:none;text-align:center;padding:18px 0;}
   .mdone p{color:var(--ink-soft);font-size:14px;margin-bottom:16px;}
+
+  .g-chips{position:absolute;left:0;right:0;bottom:0;padding:16px 12px 13px;background:linear-gradient(0deg,rgba(10,26,58,.92),rgba(10,26,58,.35),transparent);display:flex;flex-wrap:wrap;gap:6px;justify-content:center;}
+  .g-chips span{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.32);backdrop-filter:blur(4px);color:#fff;font-size:12px;font-weight:700;padding:5px 11px;border-radius:999px;white-space:nowrap;}
 </style>
 </head>
 <body>
@@ -261,7 +264,7 @@
       </div>
     </div>
     <div class="hero-visual">
-      <div class="gallery" id="gallery"><div class="g-head"><small>제품 라인업</small><b id="gname">N250 올인원 포스</b></div><div class="g-img"><img class="gimg active" src="pos-n250-card.jpeg" style="object-position:30% center"><img class="gimg" src="kiosk-product-1.png"><img class="gimg" src="order-card-uporder.png"><img class="gimg" src="signpad-card-toss.jpg"><img class="gimg" src="signpad-card-naver.jpg"><img class="gimg" src="terminal-card-t226.jpg"></div></div>
+      <div class="gallery" id="gallery"><div class="g-head"><small>제품 라인업</small><b id="gname">N250 올인원 포스</b></div><div class="g-img"><img class="gimg active" src="pos-n250-card.jpeg" style="object-position:30% center"><img class="gimg" src="kiosk-product-1.png"><img class="gimg" src="order-card-uporder.png"><img class="gimg" src="signpad-card-toss.jpg"><img class="gimg" src="signpad-card-naver.jpg"><img class="gimg" src="terminal-card-t226.jpg"><div class="g-chips" id="gchips"><span>15인치 올인원</span><span>최저 렌탈료</span><span>매출·재고</span></div></div></div>
     </div>
   </div>
 </section>
@@ -431,8 +434,9 @@
 
 <script>
 (function(){var L=["N250 올인원 포스","키오스크","테이블오더","토스 단말기","네이버 단말기","유선 카드단말기"];
-var imgs=document.querySelectorAll("#gallery .gimg");var nm=document.getElementById("gname");var i=0;
-if(imgs.length){setInterval(function(){imgs[i].classList.remove("active");i=(i+1)%imgs.length;imgs[i].classList.add("active");nm.textContent=L[i];},2600);}})();
+var F=[["15인치 올인원","최저 렌탈료","매출·재고"],["무인 주문·결제","배리어프리 인증","대기 ↓"],["비대면 주문","PG수수료 0원","회전율 ↑"],["월 사용료 0원","간편결제","빠른 승인"],["네이버페이 연동","약정 없음","적립·리뷰"],["전 카드사","위약금 없음","안정적"]];
+var imgs=document.querySelectorAll("#gallery .gimg");var nm=document.getElementById("gname");var ch=document.getElementById("gchips");var i=0;
+if(imgs.length){setInterval(function(){imgs[i].classList.remove("active");i=(i+1)%imgs.length;imgs[i].classList.add("active");nm.textContent=L[i];if(ch)ch.innerHTML=F[i].map(function(x){return "<span>"+x+"</span>";}).join("");},2600);}})();
 </script>
 <!-- 상담 모달 -->
 <div class="modal-ov" id="consultModal" onclick="if(event.target===this)closeConsult()">
