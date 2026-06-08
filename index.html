@@ -488,6 +488,6 @@ function submitConsult(){
   function done(){document.getElementById('mForm').style.display='none';document.getElementById('mDone').style.display='block';b.textContent='상담 신청하기';b.disabled=false;}
 }
 </script>
-<!-- hero-bg play-keeper --><script>(function(){var hb=document.querySelector(".hero-bg");if(!hb)return;function go(){try{hb.muted=true;var p=hb.play();if(p&&p.catch)p.catch(function(){});}catch(e){}}go();hb.addEventListener("loadeddata",go);hb.addEventListener("pause",function(){if(!document.hidden)setTimeout(go,80);});document.addEventListener("visibilitychange",function(){if(!document.hidden)go();});})();</script>
+<!-- hero-bg play-keeper --><script>(function(){var hb=document.querySelector(".hero-bg");if(!hb)return;function go(){try{hb.muted=true;var p=hb.play();if(p&&p.catch)p.catch(function(){});}catch(e){}}go();hb.addEventListener("loadeddata",go);hb.addEventListener("pause",function(){if(!document.hidden)setTimeout(go,80);});document.addEventListener("visibilitychange",function(){if(!document.hidden)go();});hb.addEventListener("canplay",go);["pointerdown","touchstart","scroll","keydown","mousemove"].forEach(function(ev){window.addEventListener(ev,function(){go();},{once:true,passive:true});});})();</script>
 </body>
 </html>
