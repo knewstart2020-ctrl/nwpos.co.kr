@@ -104,6 +104,8 @@
   .li-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;}
   .litile{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 12px 18px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px;box-shadow:0 4px 14px rgba(10,26,58,.05);transition:.16s;}
   .litile:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(10,26,58,.13);border-color:var(--gold);}
+  .litile.spot{transform:translateY(-6px) scale(1.06);box-shadow:0 22px 46px rgba(201,169,97,.34);border-color:var(--gold);position:relative;z-index:2;}
+  @media(prefers-reduced-motion:reduce){.litile.spot{transform:none;}}
   .liemoji{font-size:46px;line-height:1;filter:drop-shadow(0 6px 10px rgba(10,26,58,.18));}
   .liname{font-size:14.5px;font-weight:800;color:var(--navy);letter-spacing:-.3px;}
   .lipill{font-size:11.5px;font-weight:800;color:#fff;background:var(--blue);padding:3px 10px;border-radius:999px;}
@@ -300,7 +302,6 @@
       <p class="lead">14년 · 30,000개 매장이 선택한 누리네트웍스.<br>우리 동네 지사가 <b>직접 설치하고 끝까지 책임</b>집니다.</p>
       <div class="hero-cta">
         <a class="btn btn-gold pulse" href="javascript:void(0)" onclick="openConsult()">📞 무료 상담 신청</a>
-        <a class="btn btn-kakao sm" href="http://pf.kakao.com/_EfGxmn" target="_blank" rel="noopener">💬 카카오톡 상담</a>
       </div>
       <div class="trust">
         <span><span class="ok">✓</span> 월 사용료 0원</span>
@@ -319,7 +320,7 @@
     <p class="sub">매장에 필요한 기기부터 모든 간편결제까지 — 부담 없는 조건으로</p>
     <div class="li-grid">
       <a class="litile" href="javascript:void(0)" onclick="openConsult()"><div class="liemoji">🖥️</div><div class="liname">포스</div><div class="lipill gold">최저 렌탈료</div></a>
-      <a class="litile" href="javascript:void(0)" onclick="openConsult()"><div class="liemoji">♿</div><div class="liname">배리어프리 키오스크</div><div class="lipill gold">최저 렌탈료</div></a>
+      <a class="litile" href="javascript:void(0)" onclick="openConsult()"><div class="liemoji"><img src="kiosk-product-1.png" alt="배리어프리 키오스크" style="height:48px;width:auto;max-width:62px;object-fit:contain"></div><div class="liname">배리어프리 키오스크</div><div class="lipill gold">최저 렌탈료</div></a>
       <a class="litile" href="javascript:void(0)" onclick="openConsult()"><div class="liemoji">🍽️</div><div class="liname">테이블오더</div><div class="lipill">PG수수료 0원</div></a>
       <a class="litile" href="javascript:void(0)" onclick="openConsult()"><div class="liemoji">📲</div><div class="liname">토스·네이버 단말기</div><div class="lipill">월 0원·약정 없음</div></a>
       <a class="litile" href="javascript:void(0)" onclick="openConsult()"><div class="liemoji">💳</div><div class="liname">유선 카드단말기</div><div class="lipill">월 5,000원</div></a>
@@ -338,6 +339,8 @@
     </div>
   </div>
 </section>
+<!-- 라인업 순차 스포트라이트 -->
+<script>(function(){var t=document.querySelectorAll('#lineup-grid .litile');if(t.length<2)return;var i=0;function spot(){for(var j=0;j<t.length;j++)t[j].classList.remove('spot');t[i].classList.add('spot');i=(i+1)%t.length;}spot();setInterval(spot,1300);})();</script>
 
 <!-- 신뢰 지표 바 (아이샵·티오더) -->
 <section class="stats">
