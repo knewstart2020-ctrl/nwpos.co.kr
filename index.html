@@ -325,12 +325,12 @@
     <p class="sub">업종별 설치 현장을 영상으로 — 우리 제품이 매장의 중심이 됩니다</p>
     <div class="showcase">
       <div class="sc-stage">
-        <video class="sc-vid active" src="vid-n250.mp4" loop muted playsinline preload="none" poster="pos-n250-card.jpeg"></video>
-        <video class="sc-vid" src="vid-toss-naver.mp4" loop muted playsinline preload="none" poster="signpad-card-toss.jpg"></video>
-        <video class="sc-vid" src="vid-tableorder.mp4" loop muted playsinline preload="none" poster="order-card-uporder.png"></video>
-        <video class="sc-vid" src="vid-kiosk.mp4" loop muted playsinline preload="none" poster="kiosk-product-1.png"></video>
-        <video class="sc-vid" src="vid-terminal.mp4" loop muted playsinline preload="none" poster="terminal-card-t226.jpg"></video>
-        <div class="sc-label"><b id="scName">N250 올인원 포스</b><span id="scStore">커피전문점</span></div>
+        <video class="sc-vid active" src="real-n250.mp4" loop muted playsinline preload="none" poster="pos-n250-card.jpeg"></video>
+        <video class="sc-vid" src="real-tossnaver.mp4" loop muted playsinline preload="none" poster="signpad-card-toss.jpg"></video>
+        <video class="sc-vid" src="real-tableorder.mp4" loop muted playsinline preload="none" poster="order-card-uporder.png"></video>
+        <video class="sc-vid" src="real-kiosk.mp4" loop muted playsinline preload="none" poster="kiosk-product-1.png"></video>
+        <video class="sc-vid" src="real-terminal.mp4" loop muted playsinline preload="none" poster="terminal-card-t226.jpg"></video>
+        <div class="sc-label"><b id="scName">N250 올인원 포스</b><span id="scStore">국밥·한식당</span></div>
       </div>
       <div class="sc-tabs" id="scTabs">
         <button class="sc-tab active" onclick="scGo(0)">POS (N250)</button>
@@ -528,7 +528,7 @@ function submitConsult(){
 </script>
 <!-- hero-bg play-keeper --><script>(function(){var hb=document.querySelector(".hero-bg");if(!hb)return;function go(){try{hb.muted=true;var p=hb.play();if(p&&p.catch)p.catch(function(){});}catch(e){}}go();hb.addEventListener("loadeddata",go);hb.addEventListener("pause",function(){if(!document.hidden)setTimeout(go,80);});document.addEventListener("visibilitychange",function(){if(!document.hidden)go();});hb.addEventListener("canplay",go);["pointerdown","touchstart","scroll","keydown","mousemove"].forEach(function(ev){window.addEventListener(ev,function(){go();},{once:true,passive:true});});})();</script>
 <!-- showcase -->
-<script>(function(){var D=[["N250 올인원 포스","커피전문점"],["토스·네이버 단말기","라멘 음식점"],["테이블오더","레스토랑"],["배리어프리 키오스크","수제버거 전문점"],["유선 카드단말기","의류 전문점"]];
+<script>(function(){var D=[["N250 올인원 포스","국밥·한식당"],["토스·네이버 단말기","편의점"],["테이블오더","고깃집·BBQ"],["배리어프리 키오스크","무인 스터디카페"],["유선 카드단말기","약국"]];
 var vids=document.querySelectorAll("#showcase .sc-vid");var tabs=document.querySelectorAll("#showcase .sc-tab");
 var nm=document.getElementById("scName"),st=document.getElementById("scStore");var i=0,timer;
 function play(v){try{v.muted=true;var p=v.play();if(p&&p.catch)p.catch(function(){});}catch(e){}}
