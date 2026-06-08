@@ -529,6 +529,8 @@ function submitConsult(){
   var fd={name:name,phone:phone,consultType:type,time:times.join(', '),memo:memo,date:d,duration:0,pages:'메인 히어로',referrer:'nwpos.co.kr 메인 무료상담',interests:''};
   var b=document.getElementById('mSubmit');b.textContent='전송 중...';b.disabled=true;
   fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(fd)}).then(done).catch(done);
+  // 관제(ACD) 병행 전송 — 비파괴, 실패해도 사용자 화면 무영향
+  try{var acdPayload=Object.assign({type:'homeConsult',source:'nwpos.co.kr 모달'},fd);fetch('https://script.google.com/macros/s/AKfycbw2uWFTq2Sr2k5Sa0r2YukUK4siGTjSTu68JJVPDla-QLssQXkZYAUJRiPlgk9rqhs/exec',{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(acdPayload)}).catch(function(){});}catch(e){}
   function done(){document.getElementById('mForm').style.display='none';document.getElementById('mDone').style.display='block';b.textContent='상담 신청하기';b.disabled=false;}
 }
 </script>
