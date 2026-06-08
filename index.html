@@ -62,15 +62,15 @@
   .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
   .hero:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(115deg,rgba(8,16,38,.93) 0%,rgba(10,26,58,.82) 48%,rgba(20,42,85,.6) 100%);pointer-events:none;}
   .hero:after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);background-size:22px 22px;opacity:.35;pointer-events:none;z-index:1;}
-  .hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.08fr .92fr;gap:44px;align-items:center;padding:58px 22px 60px;}
+  .hero .wrap{position:relative;z-index:2;max-width:820px;margin:0 auto;text-align:center;padding:92px 22px 88px;}
   .badge{display:inline-flex;align-items:center;gap:7px;background:rgba(201,169,97,.14);border:1px solid rgba(201,169,97,.42);color:var(--gold2);font-weight:800;font-size:13.5px;padding:7px 15px;border-radius:999px;margin-bottom:18px;}
   .hero h1{font-size:44px;line-height:1.22;font-weight:900;letter-spacing:-1.2px;margin-bottom:16px;}
   .hero h1 .y{color:var(--gold);}
   .hero .lead{font-size:17.5px;color:rgba(255,255,255,.84);margin-bottom:28px;}
-  .hero-cta{display:flex;flex-wrap:wrap;gap:11px;margin-bottom:24px;}
+  .hero-cta{display:flex;flex-wrap:wrap;justify-content:center;gap:11px;margin-bottom:24px;}
   .hero-cta .btn{padding:16px 26px;font-size:16.5px;}
   .hero-cta .btn.sm{padding:16px 20px;font-size:15px;}
-  .trust{display:flex;flex-wrap:wrap;gap:9px 20px;font-size:14px;color:rgba(255,255,255,.92);}
+  .trust{display:flex;flex-wrap:wrap;justify-content:center;gap:9px 20px;font-size:14px;color:rgba(255,255,255,.92);}
   .trust span{display:inline-flex;align-items:center;gap:6px;}
   .trust .ok{color:#7FE0A0;font-weight:900;}
   .hero-visual{aspect-ratio:9/11;border-radius:20px;background:linear-gradient(160deg,#0E2148,#06122B);border:1px solid rgba(255,255,255,.13);display:flex;align-items:center;justify-content:center;box-shadow:0 26px 70px rgba(0,0,0,.4);position:relative;}
@@ -78,7 +78,7 @@
   .hero-visual .ring{width:118px;height:118px;border-radius:50%;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:34px;color:var(--gold);font-weight:900;}
   .hero-visual .badge2{position:absolute;right:-14px;top:24px;background:#fff;color:var(--navy);border-radius:12px;padding:12px 16px;font-size:13px;font-weight:800;box-shadow:0 12px 30px rgba(0,0,0,.25);}
   .hero-visual .badge2 b{color:var(--blue);font-size:20px;display:block;}
-  @media(max-width:900px){.hero .wrap{grid-template-columns:1fr;}.hero h1{font-size:33px;}.hero-visual{aspect-ratio:16/10;}.hero-visual .badge2{display:none;}}
+  @media(max-width:900px){.hero h1{font-size:33px;}.hero .wrap{padding:64px 20px 60px;}}
 
   /* 신뢰 지표 바 (벤치마크: 아이샵·티오더) */
   .stats{background:#fff;border-bottom:1px solid var(--line);}
@@ -221,6 +221,21 @@
 
   .g-chips{position:absolute;left:0;right:0;bottom:0;padding:16px 12px 13px;background:linear-gradient(0deg,rgba(10,26,58,.92),rgba(10,26,58,.35),transparent);display:flex;flex-wrap:wrap;gap:6px;justify-content:center;}
   .g-chips span{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.32);backdrop-filter:blur(4px);color:#fff;font-size:12px;font-weight:700;padding:5px 11px;border-radius:999px;white-space:nowrap;}
+
+  /* 제품 쇼케이스 (설치매장 영상) */
+  .showcase{max-width:940px;margin:0 auto;}
+  .sc-stage{position:relative;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#0A1A3A;box-shadow:0 22px 55px rgba(10,26,58,.2);}
+  .sc-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s;}
+  .sc-vid.active{opacity:1;}
+  .sc-label{position:absolute;left:0;bottom:0;padding:20px 24px;background:linear-gradient(0deg,rgba(10,26,58,.92),rgba(10,26,58,.2),transparent);text-align:left;}
+  .sc-label b{display:block;color:#fff;font-size:22px;font-weight:900;letter-spacing:-.4px;}
+  .sc-label span{color:var(--gold2);font-size:13.5px;font-weight:800;letter-spacing:.3px;}
+  .sc-tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:18px;}
+  .sc-tab{background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 17px;font-size:13.5px;font-weight:800;color:var(--ink-soft);cursor:pointer;transition:.15s;}
+  .sc-tab.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .sc-tab:hover{border-color:var(--gold);color:var(--navy);}
+  .sc-tab.active:hover{color:#fff;}
+  @media(max-width:600px){.sc-label b{font-size:18px;}.sc-tab{font-size:12.5px;padding:8px 13px;}}
 </style>
 </head>
 <body>
@@ -266,9 +281,6 @@
         <span><span class="ok">✓</span> PG수수료 없는 테이블오더</span>
       </div>
     </div>
-    <div class="hero-visual">
-      <div class="gallery" id="gallery"><div class="g-head"><small>제품 라인업</small><b id="gname">N250 올인원 포스</b></div><div class="g-img"><img class="gimg active" src="pos-n250-card.jpeg" style="object-position:30% center"><img class="gimg" src="kiosk-product-1.png"><img class="gimg" src="order-card-uporder.png"><img class="gimg" src="signpad-card-toss.jpg"><img class="gimg" src="signpad-card-naver.jpg"><img class="gimg" src="terminal-card-t226.jpg"><div class="g-chips" id="gchips"><span>15인치 올인원</span><span>최저 렌탈료</span><span>매출·재고</span></div></div></div>
-    </div>
   </div>
 </section>
 
@@ -301,6 +313,32 @@
       <a class="pcard" href="lineup-software.html"><div class="ic">🧩</div><h3>매장 소프트웨어</h3><p>매출·재고 관리</p></a>
       <a class="pcard" href="lineup-pg.html"><div class="ic">🔌</div><h3>PG·간편결제</h3><p>온·오프 통합</p></a>
       <a class="pcard" href="lineup-extra.html"><div class="ic">➕</div><h3>주변기기</h3><p>프린터·스캐너 등</p></a>
+    </div>
+  </div>
+</section>
+
+<!-- 제품 쇼케이스 (설치매장 영상) -->
+<section class="sec showcase-sec" id="showcase">
+  <div class="wrap">
+    <div class="ey">REAL STORE FILM</div>
+    <h2>실제 매장에서, <span class="y">이렇게 쓰입니다</span></h2>
+    <p class="sub">업종별 설치 현장을 영상으로 — 우리 제품이 매장의 중심이 됩니다</p>
+    <div class="showcase">
+      <div class="sc-stage">
+        <video class="sc-vid active" src="vid-n250.mp4" loop muted playsinline preload="none" poster="pos-n250-card.jpeg"></video>
+        <video class="sc-vid" src="vid-toss-naver.mp4" loop muted playsinline preload="none" poster="signpad-card-toss.jpg"></video>
+        <video class="sc-vid" src="vid-tableorder.mp4" loop muted playsinline preload="none" poster="order-card-uporder.png"></video>
+        <video class="sc-vid" src="vid-kiosk.mp4" loop muted playsinline preload="none" poster="kiosk-product-1.png"></video>
+        <video class="sc-vid" src="vid-terminal.mp4" loop muted playsinline preload="none" poster="terminal-card-t226.jpg"></video>
+        <div class="sc-label"><b id="scName">N250 올인원 포스</b><span id="scStore">커피전문점</span></div>
+      </div>
+      <div class="sc-tabs" id="scTabs">
+        <button class="sc-tab active" onclick="scGo(0)">POS (N250)</button>
+        <button class="sc-tab" onclick="scGo(1)">토스·네이버 단말기</button>
+        <button class="sc-tab" onclick="scGo(2)">테이블오더</button>
+        <button class="sc-tab" onclick="scGo(3)">배리어프리 키오스크</button>
+        <button class="sc-tab" onclick="scGo(4)">유선 단말기</button>
+      </div>
     </div>
   </div>
 </section>
@@ -489,5 +527,13 @@ function submitConsult(){
 }
 </script>
 <!-- hero-bg play-keeper --><script>(function(){var hb=document.querySelector(".hero-bg");if(!hb)return;function go(){try{hb.muted=true;var p=hb.play();if(p&&p.catch)p.catch(function(){});}catch(e){}}go();hb.addEventListener("loadeddata",go);hb.addEventListener("pause",function(){if(!document.hidden)setTimeout(go,80);});document.addEventListener("visibilitychange",function(){if(!document.hidden)go();});hb.addEventListener("canplay",go);["pointerdown","touchstart","scroll","keydown","mousemove"].forEach(function(ev){window.addEventListener(ev,function(){go();},{once:true,passive:true});});})();</script>
+<!-- showcase -->
+<script>(function(){var D=[["N250 올인원 포스","커피전문점"],["토스·네이버 단말기","라멘 음식점"],["테이블오더","레스토랑"],["배리어프리 키오스크","수제버거 전문점"],["유선 카드단말기","의류 전문점"]];
+var vids=document.querySelectorAll("#showcase .sc-vid");var tabs=document.querySelectorAll("#showcase .sc-tab");
+var nm=document.getElementById("scName"),st=document.getElementById("scStore");var i=0,timer;
+function play(v){try{v.muted=true;var p=v.play();if(p&&p.catch)p.catch(function(){});}catch(e){}}
+window.scGo=function(n){if(n===i||!vids.length)return;vids[i].classList.remove("active");try{vids[i].pause();}catch(e){}tabs[i].classList.remove("active");i=n;vids[i].classList.add("active");play(vids[i]);tabs[i].classList.add("active");nm.textContent=D[i][0];st.textContent=D[i][1];clearInterval(timer);timer=setInterval(next,6500);};
+function next(){var n=(i+1)%vids.length;vids[i].classList.remove("active");try{vids[i].pause();}catch(e){}tabs[i].classList.remove("active");i=n;vids[i].classList.add("active");play(vids[i]);tabs[i].classList.add("active");nm.textContent=D[i][0];st.textContent=D[i][1];}
+if(vids.length){play(vids[0]);timer=setInterval(next,6500);["pointerdown","scroll","keydown","touchstart"].forEach(function(ev){window.addEventListener(ev,function(){play(vids[i]);},{once:true,passive:true});});}})();</script>
 </body>
 </html>
