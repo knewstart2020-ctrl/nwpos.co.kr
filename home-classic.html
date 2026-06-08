@@ -929,5 +929,7 @@ function hideBulldog(){
 <!-- ═══ END BULLDOG + LETTER ═══ -->
 
 
+<!-- NW 방문정보 트래킹 (체류·유입·경로) -->
+<script>(function(){try{var ss=sessionStorage;if(!ss.getItem('nw_t0')){ss.setItem('nw_t0',String(Date.now()));ss.setItem('nw_entry',location.pathname+location.search);ss.setItem('nw_ref',document.referrer||'직접유입');}var key=location.pathname;if(key.charAt(0)==='/')key=key.slice(1);if(key.slice(-5)==='.html')key=key.slice(0,-5);var M={'':'메인','index':'메인','about':'회사소개','lineup':'제품라인업','support':'구매스토어','home-classic':'홈'};var cur=M[key]||key||'메인';var p=ss.getItem('nw_pages')||'';var arr=p?p.split(' > '):[];if(arr[arr.length-1]!==cur){arr.push(cur);ss.setItem('nw_pages',arr.slice(-8).join(' > '));}}catch(e){}})();</script>
 </body>
 </html>
