@@ -290,9 +290,9 @@
 <!-- 신뢰 지표 바 (아이샵·티오더) -->
 <section class="stats">
   <div class="wrap">
-    <div class="stat"><div class="n">5,110<b>일</b></div><div class="l">업력</div></div>
-    <div class="stat"><div class="n">30,000<b>+</b></div><div class="l">누적 도입 매장</div></div>
-    <div class="stat"><div class="n">20<b>시</b></div><div class="l">평일 운영·토·일 당직</div></div>
+    <div class="stat"><div class="n"><span id="daysCount">5,134</span><b>일</b></div><div class="l">업력</div></div>
+    <div class="stat"><div class="n"><span id="storeCount">30,000</span><b>+</b></div><div class="l">누적 도입 매장</div></div>
+    <div class="stat"><div class="n">20<b>시</b></div><div class="l">평일 야간·토·일·공휴일 당직</div></div>
     <div class="stat"><div class="n">100<b>%</b></div><div class="l">누리네트웍스 직접관리</div></div>
     <div class="stat"><div class="n">30<b>일</b></div><div class="l">안 맞으면 무상 회수</div></div>
   </div>
@@ -535,5 +535,7 @@ function play(v){try{v.muted=true;var p=v.play();if(p&&p.catch)p.catch(function(
 window.scGo=function(n){if(n===i||!vids.length)return;vids[i].classList.remove("active");try{vids[i].pause();}catch(e){}tabs[i].classList.remove("active");i=n;vids[i].classList.add("active");play(vids[i]);tabs[i].classList.add("active");nm.textContent=D[i][0];st.textContent=D[i][1];clearInterval(timer);timer=setInterval(next,6500);};
 function next(){var n=(i+1)%vids.length;vids[i].classList.remove("active");try{vids[i].pause();}catch(e){}tabs[i].classList.remove("active");i=n;vids[i].classList.add("active");play(vids[i]);tabs[i].classList.add("active");nm.textContent=D[i][0];st.textContent=D[i][1];}
 if(vids.length){play(vids[0]);timer=setInterval(next,6500);["pointerdown","scroll","keydown","touchstart"].forEach(function(ev){window.addEventListener(ev,function(){play(vids[i]);},{once:true,passive:true});});}})();</script>
+<!-- live counters: 일수=창립(2012-05-18) 자동, 매장=30,000+5/일 -->
+<script>(function(){var founding=new Date(2012,4,18).getTime();var days=Math.floor((Date.now()-founding)/864e5);var sBase=new Date(2026,5,8).getTime();var sd=Math.max(0,Math.floor((Date.now()-sBase)/864e5));var stores=30000+5*sd;var T={daysCount:days,storeCount:stores};function fmt(n){return Math.round(n).toLocaleString("en-US");}function anim(el,target){var start=Math.floor(target*0.92),t0=null,dur=1500;function st(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/dur,1),e=1-Math.pow(1-p,3);el.textContent=fmt(start+(target-start)*e);if(p<1)requestAnimationFrame(st);else el.textContent=fmt(target);}requestAnimationFrame(st);}var done=false;function go(){if(done)return;done=true;for(var id in T){var el=document.getElementById(id);if(el)anim(el,T[id]);}}var sec=document.querySelector(".stats");if(window.IntersectionObserver&&sec){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){go();io.disconnect();}});});io.observe(sec);}else{go();}})();</script>
 </body>
 </html>
