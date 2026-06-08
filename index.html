@@ -218,18 +218,11 @@
   .phone-wrap{display:flex;align-items:stretch;gap:8px;}
   .phone-pre{display:flex;align-items:center;justify-content:center;min-width:52px;padding:0 12px;background:var(--soft);border:1px solid var(--line);border-radius:10px;font-weight:800;color:var(--navy);font-size:15px;}
   .phone-wrap input{flex:1;min-width:0;width:auto;}
-  /* 상담유형 멀티셀렉트 드롭다운 */
-  .msel{position:relative;}
-  .msel-btn{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 13px;border:1px solid var(--line);border-radius:10px;background:#fff;font-size:15px;font-family:inherit;color:var(--ink-soft);cursor:pointer;text-align:left;}
-  .msel-btn.has-val{color:var(--ink);font-weight:600;}
-  #mTypeLabel{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-  .msel-caret{color:var(--ink-soft);font-size:11px;flex-shrink:0;transition:transform .15s;}
-  .msel.open .msel-caret{transform:rotate(180deg);}
-  .msel-pop{display:none;position:absolute;left:0;right:0;top:calc(100% + 5px);z-index:6;background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 16px 36px rgba(10,26,58,.17);padding:6px;}
-  .msel.open .msel-pop{display:block;}
-  .msel-pop label{display:flex;align-items:center;gap:9px;padding:10px 11px;border-radius:8px;font-size:14.5px;font-weight:600;color:var(--ink);cursor:pointer;margin:0;}
-  .msel-pop label:hover{background:var(--soft);}
-  .msel-pop input{width:auto;margin:0;accent-color:var(--navy);transform:scale(1.15);}
+  /* 상담유형 — 나열형 멀티셀렉트 칩 */
+  .mtypes{display:flex;flex-wrap:wrap;gap:8px;}
+  .mtype{padding:9px 14px;border:1px solid var(--line);border-radius:999px;font-size:13.5px;font-weight:700;color:var(--ink-soft);cursor:pointer;transition:.12s;user-select:none;}
+  .mtype.on{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .mtype:hover{border-color:var(--gold);}
   .mconsent{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink-soft);margin-top:14px;cursor:pointer;}
   .mconsent input{width:auto;}
   .msubmit{width:100%;margin-top:16px;padding:15px;background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;border:none;border-radius:11px;font-size:16px;font-weight:800;cursor:pointer;}
@@ -268,7 +261,7 @@
   <div class="wrap nav">
     <a href="index.html" class="logo"><img src="logo.svg" alt="누리네트웍스" style="height:34px;display:block"></a>
     <nav class="menu">
-      <a href="index.html">nurinetworks</a>
+      <a href="index.html">Store</a>
       <a href="home-classic.html">HOME</a>
       <a href="about.html">회사소개</a>
       <a href="lineup.html">제품 라인업</a>
@@ -276,7 +269,7 @@
     </nav>
     <div class="nav-cta">
       <span class="tel">1544-7754</span>
-      <a class="btn btn-gold pulse" href="javascript:void(0)" onclick="openConsult()">무료 상담</a>
+      <a class="btn btn-gold pulse" href="javascript:void(0)" onclick="openConsult()">무료 상담 신청</a>
     </div>
   </div>
 </header>
@@ -510,15 +503,12 @@ if(imgs.length){setInterval(function(){imgs[i].classList.remove("active");i=(i+1
       <label>연락처</label>
       <div class="phone-wrap"><span class="phone-pre">010</span><input type="tel" id="mPhone" inputmode="numeric" maxlength="9" placeholder="1234-5678" oninput="fmtPhone(this)"></div>
       <label>상담유형 <small>(중복 선택 가능)</small></label>
-      <div class="msel" id="mTypeSel">
-        <button type="button" class="msel-btn" id="mTypeBtn" onclick="toggleTypeDrop(event)"><span id="mTypeLabel">상담유형을 선택하세요</span><span class="msel-caret">▾</span></button>
-        <div class="msel-pop" id="mTypePop">
-          <label><input type="checkbox" class="mtchk" value="포스(POS)" onchange="syncTypeLabel()"> 포스(POS)</label>
-          <label><input type="checkbox" class="mtchk" value="테이블오더" onchange="syncTypeLabel()"> 테이블오더</label>
-          <label><input type="checkbox" class="mtchk" value="토스·네이버 단말기" onchange="syncTypeLabel()"> 토스·네이버 단말기</label>
-          <label><input type="checkbox" class="mtchk" value="배리어프리 키오스크" onchange="syncTypeLabel()"> 배리어프리 키오스크</label>
-          <label><input type="checkbox" class="mtchk" value="카드단말기" onchange="syncTypeLabel()"> 카드단말기</label>
-        </div>
+      <div class="mtypes">
+        <span class="mtype" onclick="this.classList.toggle('on')">포스(POS)</span>
+        <span class="mtype" onclick="this.classList.toggle('on')">테이블오더</span>
+        <span class="mtype" onclick="this.classList.toggle('on')">토스·네이버 단말기</span>
+        <span class="mtype" onclick="this.classList.toggle('on')">배리어프리 키오스크</span>
+        <span class="mtype" onclick="this.classList.toggle('on')">카드단말기</span>
       </div>
       <label>요청사항 <small>(선택)</small></label>
       <textarea id="mMemo" placeholder="궁금한 점을 자유롭게 적어주세요"></textarea>
@@ -535,18 +525,15 @@ if(imgs.length){setInterval(function(){imgs[i].classList.remove("active");i=(i+1
 </div>
 <script>
 function openConsult(){document.getElementById('consultModal').classList.add('open');}
-function closeConsult(){var m=document.getElementById('consultModal');m.classList.remove('open');document.getElementById('mForm').style.display='block';document.getElementById('mDone').style.display='none';var s=document.getElementById('mTypeSel');if(s)s.classList.remove('open');}
+function closeConsult(){var m=document.getElementById('consultModal');m.classList.remove('open');document.getElementById('mForm').style.display='block';document.getElementById('mDone').style.display='none';}
 function fmtPhone(el){var v=el.value.replace(/\D/g,'').slice(0,8);el.value=v.length>4?v.slice(0,4)+'-'+v.slice(4):v;}
-function toggleTypeDrop(e){e.stopPropagation();document.getElementById('mTypeSel').classList.toggle('open');}
-function syncTypeLabel(){var t=[];document.querySelectorAll('#consultModal .mtchk:checked').forEach(function(c){t.push(c.value);});var L=document.getElementById('mTypeLabel'),B=document.getElementById('mTypeBtn');if(t.length){L.textContent=t.join(', ');B.classList.add('has-val');}else{L.textContent='상담유형을 선택하세요';B.classList.remove('has-val');}}
-document.addEventListener('click',function(e){var s=document.getElementById('mTypeSel');if(s&&!s.contains(e.target))s.classList.remove('open');});
 function submitConsult(){
   var name=document.getElementById('mName').value.trim();
   var pd=document.getElementById('mPhone').value.replace(/\D/g,'');
   if(!name||pd.length!==8){alert('업체/고객명과 연락처(010 뒤 8자리)를 정확히 입력해 주세요.');return;}
   if(!document.getElementById('mAgree').checked){alert('개인정보 수집·이용에 동의해 주세요.');return;}
   var phone='010-'+pd.slice(0,4)+'-'+pd.slice(4);
-  var types=[];document.querySelectorAll('#consultModal .mtchk:checked').forEach(function(c){types.push(c.value);});var type=types.join(', ');
+  var types=[];document.querySelectorAll('#consultModal .mtype.on').forEach(function(c){types.push(c.textContent);});var type=types.join(', ');
   var memo=document.getElementById('mMemo').value.trim();
   var now=new Date();var d=now.getFullYear()+'.'+(now.getMonth()+1)+'.'+now.getDate()+' '+now.getHours()+':'+String(now.getMinutes()).padStart(2,'0');
   var SCRIPT_URL='https://script.google.com/macros/s/AKfycbx7ehczO8H27GXO58JHPvNUbZWocPUSKpL9NMMbtQgHlglVgRhaua4_WAOhv5MZqqzThA/exec';
