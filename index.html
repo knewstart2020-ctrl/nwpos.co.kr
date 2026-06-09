@@ -121,6 +121,8 @@
   .pay-cols{display:flex;gap:22px;margin-top:36px;align-items:stretch;}
   .pay-col{flex:1;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 16px 22px;box-shadow:0 4px 14px rgba(10,26,58,.05);}
   .pay-col .pay-head{margin:0 0 14px;}
+  .pay-grid.g3{max-width:292px;margin:0 auto;gap:9px;}
+  .pay-grid.g3 .paypill{flex:0 0 auto;min-width:80px;text-align:center;}
   @media(max-width:760px){.pay-cols{flex-direction:column;}}
   @media(max-width:860px){.li-grid{grid-template-columns:repeat(3,1fr);}}
   @media(max-width:520px){.li-grid{grid-template-columns:repeat(2,1fr);}.liemoji{font-size:40px;}}
@@ -215,7 +217,12 @@
 
   .floating{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;flex-direction:column;gap:10px;}
   /* 우측 상담 패널 (벤치마크: 아정당) */
-  .side-consult{position:fixed;right:16px;top:50%;transform:translateY(-50%);z-index:120;width:198px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 18px 50px rgba(10,26,58,.22);padding:16px 14px;display:flex;flex-direction:column;gap:9px;}
+  .side-consult{position:fixed;right:16px;top:50%;transform:translateY(-50%);z-index:120;width:198px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 18px 50px rgba(10,26,58,.22);padding:16px 14px;display:flex;flex-direction:column;gap:9px;transition:transform .32s cubic-bezier(.4,0,.2,1);}
+  .side-consult.collapsed{transform:translateY(-50%) translateX(216px);}
+  .sc-toggle{position:absolute;left:-29px;top:50%;transform:translateY(-50%);width:29px;height:58px;background:#fff;border:1px solid var(--line);border-right:none;border-radius:12px 0 0 12px;box-shadow:-6px 0 14px rgba(10,26,58,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--navy);font-size:18px;font-weight:900;padding:0;}
+  .sc-arrow{display:block;transition:transform .3s;}
+  .side-consult.collapsed .sc-arrow{transform:rotate(180deg);}
+  .sc-mascot{width:90px;height:auto;display:block;margin:8px auto 0;}
   .sc-head{font-size:14px;font-weight:900;color:var(--navy);text-align:center;}
   .sc-btn{display:flex;align-items:center;justify-content:center;gap:6px;padding:11px;border-radius:11px;font-size:14px;font-weight:800;cursor:pointer;border:1px solid var(--line);background:#fff;color:var(--navy);transition:.14s;}
   .sc-btn:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(10,26,58,.12);}
@@ -361,7 +368,7 @@
       </div>
       <div class="pay-col">
         <div class="pay-head">모든 <span>결제방식</span></div>
-        <div class="pay-grid">
+        <div class="pay-grid g3">
           <span class="paypill method">IC</span>
           <span class="paypill method">MS</span>
           <span class="paypill method">NFC</span>
@@ -559,15 +566,14 @@
 </footer>
 
 <!-- 우측 상담 패널 (벤치마크: 아정당) -->
-<aside class="side-consult">
+<aside class="side-consult" id="sideConsult">
+  <button class="sc-toggle" onclick="document.getElementById('sideConsult').classList.toggle('collapsed')" aria-label="상담 패널 접기/펼치기"><span class="sc-arrow">›</span></button>
   <div class="sc-head">상담하기</div>
-  <button class="sc-btn primary" onclick="openConsult()">📋 무료 상담 신청</button>
-  <a class="sc-btn kakao" href="http://pf.kakao.com/_EfGxmn" target="_blank" rel="noopener">💬 실시간 카톡상담</a>
-  <a class="sc-btn" href="tel:1544-7754">📞 전화 상담</a>
+  <button class="sc-btn primary" onclick="openConsult()">🎯 나에게 딱 맞는 상담</button>
   <div class="sc-tel">
-    <div class="lab">평일 야간·주말 상담 OK</div>
     <div class="num">1544-7754</div>
     <div class="sub">무료 상담</div>
+    <img class="sc-mascot" src="mascot-thumbsup.png" alt="누리 마스코트">
   </div>
 </aside>
 
