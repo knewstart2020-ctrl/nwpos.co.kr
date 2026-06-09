@@ -118,6 +118,10 @@
   .paypill{padding:11px 20px;border-radius:999px;font-size:14px;font-weight:800;color:#fff;box-shadow:0 4px 12px rgba(10,26,58,.14);transition:.14s;}
   .paypill:hover{transform:translateY(-2px);}
   .paypill.method{background:#fff;color:var(--navy);border:1.5px solid var(--navy);box-shadow:0 3px 10px rgba(10,26,58,.08);}
+  .pay-cols{display:flex;gap:22px;margin-top:36px;align-items:stretch;}
+  .pay-col{flex:1;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 16px 22px;box-shadow:0 4px 14px rgba(10,26,58,.05);}
+  .pay-col .pay-head{margin:0 0 14px;}
+  @media(max-width:760px){.pay-cols{flex-direction:column;}}
   @media(max-width:860px){.li-grid{grid-template-columns:repeat(3,1fr);}}
   @media(max-width:520px){.li-grid{grid-template-columns:repeat(2,1fr);}.liemoji{font-size:40px;}}
 
@@ -210,6 +214,19 @@
   footer .fnav a:hover{color:var(--gold);}
 
   .floating{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;flex-direction:column;gap:10px;}
+  /* 우측 상담 패널 (벤치마크: 아정당) */
+  .side-consult{position:fixed;right:16px;top:50%;transform:translateY(-50%);z-index:120;width:198px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 18px 50px rgba(10,26,58,.22);padding:16px 14px;display:flex;flex-direction:column;gap:9px;}
+  .sc-head{font-size:14px;font-weight:900;color:var(--navy);text-align:center;}
+  .sc-btn{display:flex;align-items:center;justify-content:center;gap:6px;padding:11px;border-radius:11px;font-size:14px;font-weight:800;cursor:pointer;border:1px solid var(--line);background:#fff;color:var(--navy);transition:.14s;}
+  .sc-btn:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(10,26,58,.12);}
+  .sc-btn.primary{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);border:none;}
+  .sc-btn.kakao{background:var(--kakao);color:#3A1D1D;border:none;}
+  .sc-tel{margin-top:3px;background:var(--soft);border-radius:12px;padding:11px;text-align:center;}
+  .sc-tel .lab{font-size:11px;color:var(--ink-soft);font-weight:700;}
+  .sc-tel .num{font-size:21px;font-weight:900;color:var(--navy);letter-spacing:-.5px;}
+  .sc-tel .sub{font-size:11.5px;color:var(--blue);font-weight:800;}
+  @media(max-width:1199px){.side-consult{display:none;}}
+  @media(min-width:1200px){.floating{display:none;}}
   .fab{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 6px 20px rgba(0,0,0,.28);cursor:pointer;border:none;}
   .fab.tel{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);}
   .fab.kakao{background:var(--kakao);}
@@ -323,29 +340,35 @@
     <p class="sub">매장에 필요한 기기부터 모든 간편결제까지 — 부담 없는 조건으로</p>
     <div class="li-grid">
       <a class="litile" href="javascript:void(0)" onclick="openConsult()"><div class="liemoji">📲</div><div class="liname">토스네이버단말기</div><div class="lipill">월 0원·약정 없음</div></a>
-      <a class="litile" href="javascript:void(0)" onclick="openConsult()"><div class="liemoji">🖥️</div><div class="liname">포스</div><div class="lipill gold">최저 렌탈료</div></a>
+      <a class="litile" href="javascript:void(0)" onclick="openConsult()"><div class="liemoji">🧾</div><div class="liname">포스</div><div class="lipill gold">최저 렌탈료</div></a>
       <a class="litile" href="javascript:void(0)" onclick="openConsult()"><div class="liemoji">🍽️</div><div class="liname">테이블오더</div><div class="lipill">PG수수료 0원</div></a>
-      <a class="litile" href="javascript:void(0)" onclick="openConsult()"><div class="liemoji"><img src="kiosk-product-1.png" alt="배리어프리키오스크" style="height:48px;width:auto;max-width:62px;object-fit:contain"></div><div class="liname">배리어프리키오스크</div><div class="lipill gold">최저 렌탈료</div></a>
+      <a class="litile" href="javascript:void(0)" onclick="openConsult()"><div class="liemoji">🖥️</div><div class="liname">배리어프리키오스크</div><div class="lipill gold">최저 렌탈료</div></a>
       <a class="litile" href="javascript:void(0)" onclick="openConsult()"><div class="liemoji">💳</div><div class="liname">유선카드단말기</div><div class="lipill">월 5,000원</div></a>
       <a class="litile" href="javascript:void(0)" onclick="openConsult()"><div class="liemoji">📡</div><div class="liname">무선카드단말기</div><div class="lipill">구매가 1만원</div></a>
     </div>
-    <div class="pay-head">모든 <span>간편결제</span></div>
-    <div class="pay-grid">
-      <span class="paypill" style="background:#111">애플페이</span>
-      <span class="paypill" style="background:#1428A0">삼성페이</span>
-      <span class="paypill" style="background:#03C75A">네이버페이</span>
-      <span class="paypill" style="background:#FEE500;color:#3A1D1D">카카오페이</span>
-      <span class="paypill" style="background:#0064FF">토스페이</span>
-      <span class="paypill" style="background:#00A4E3">제로페이</span>
-      <span class="paypill" style="background:linear-gradient(135deg,#1677FF,#07C160)">알리위챗페이</span>
-    </div>
-    <div class="pay-head">모든 <span>결제방식</span></div>
-    <div class="pay-grid">
-      <span class="paypill method">IC</span>
-      <span class="paypill method">MS</span>
-      <span class="paypill method">NFC</span>
-      <span class="paypill method">페이스</span>
-      <span class="paypill method">KEY-IN</span>
+    <div class="pay-cols">
+      <div class="pay-col">
+        <div class="pay-head">모든 <span>간편결제</span></div>
+        <div class="pay-grid">
+          <span class="paypill" style="background:#111">애플페이</span>
+          <span class="paypill" style="background:#1428A0">삼성페이</span>
+          <span class="paypill" style="background:#03C75A">네이버페이</span>
+          <span class="paypill" style="background:#FEE500;color:#3A1D1D">카카오페이</span>
+          <span class="paypill" style="background:#0064FF">토스페이</span>
+          <span class="paypill" style="background:#00A4E3">제로페이</span>
+          <span class="paypill" style="background:linear-gradient(135deg,#1677FF,#07C160)">알리위챗페이</span>
+        </div>
+      </div>
+      <div class="pay-col">
+        <div class="pay-head">모든 <span>결제방식</span></div>
+        <div class="pay-grid">
+          <span class="paypill method">IC</span>
+          <span class="paypill method">MS</span>
+          <span class="paypill method">NFC</span>
+          <span class="paypill method">페이스</span>
+          <span class="paypill method">KEY-IN</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -534,6 +557,19 @@
     <span class="fnav"><a href="lineup.html">제품 라인업</a> · <a href="about.html">회사소개</a> · <a href="support.html">고객지원</a> · <a href="benefits.html">도입 혜택</a> · <a href="home-classic.html">기존 홈</a></span><br><span style="opacity:.5">© 누리네트웍스</span>
   </div>
 </footer>
+
+<!-- 우측 상담 패널 (벤치마크: 아정당) -->
+<aside class="side-consult">
+  <div class="sc-head">상담하기</div>
+  <button class="sc-btn primary" onclick="openConsult()">📋 무료 상담 신청</button>
+  <a class="sc-btn kakao" href="http://pf.kakao.com/_EfGxmn" target="_blank" rel="noopener">💬 실시간 카톡상담</a>
+  <a class="sc-btn" href="tel:1544-7754">📞 전화 상담</a>
+  <div class="sc-tel">
+    <div class="lab">평일 야간·주말 상담 OK</div>
+    <div class="num">1544-7754</div>
+    <div class="sub">무료 상담</div>
+  </div>
+</aside>
 
 <div class="floating">
   <a class="fab tel" href="tel:1544-7754" title="전화 상담">📞</a>
