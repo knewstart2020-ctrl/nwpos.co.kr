@@ -83,8 +83,9 @@
   @media(max-width:900px){.hero h1{font-size:33px;}.hero .wrap{padding:64px 20px 60px;}}
 
   /* 신뢰 지표 바 (벤치마크: 아이샵·티오더) */
-  .stats{background:#fff;border-bottom:1px solid var(--line);}
-  .stats .wrap{display:flex;flex-wrap:wrap;justify-content:space-around;gap:10px;padding:24px 22px;text-align:center;}
+  .stats{background:var(--soft);border-bottom:1px solid var(--line);}
+  .stats .wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;padding:30px 22px;text-align:center;}
+  .stat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 14px;box-shadow:0 5px 16px rgba(10,26,58,.07);flex:1 1 150px;min-width:148px;max-width:200px;display:flex;flex-direction:column;justify-content:center;}
   .stat .n{font-size:32px;font-weight:900;color:var(--navy);letter-spacing:-1px;}
   .stat .n b{color:var(--blue);}
   .stat .l{font-size:13px;color:var(--ink-soft);margin-top:2px;}
@@ -222,7 +223,9 @@
   .sc-toggle{position:absolute;left:-29px;top:50%;transform:translateY(-50%);width:29px;height:58px;background:#fff;border:1px solid var(--line);border-right:none;border-radius:12px 0 0 12px;box-shadow:-6px 0 14px rgba(10,26,58,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--navy);font-size:18px;font-weight:900;padding:0;}
   .sc-arrow{display:block;transition:transform .3s;}
   .side-consult.collapsed .sc-arrow{transform:rotate(180deg);}
-  .sc-mascot{width:104px;height:auto;display:block;margin:8px auto 0;border-radius:12px;}
+  .sc-mascot{width:104px;height:auto;display:block;margin:8px auto 0;border-radius:12px;transform-origin:bottom center;animation:nuriWave 1.5s ease-in-out infinite;}
+  @keyframes nuriWave{0%,100%{transform:rotate(-6deg);}25%{transform:rotate(5deg);}50%{transform:rotate(-4deg);}75%{transform:rotate(5deg);}}
+  @media(prefers-reduced-motion:reduce){.sc-mascot{animation:none;}}
   .sc-head{font-size:14px;font-weight:900;color:var(--navy);text-align:center;}
   .sc-btn{display:flex;align-items:center;justify-content:center;gap:6px;padding:11px;border-radius:11px;font-size:14px;font-weight:800;cursor:pointer;border:1px solid var(--line);background:#fff;color:var(--navy);transition:.14s;}
   .sc-btn:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(10,26,58,.12);}
