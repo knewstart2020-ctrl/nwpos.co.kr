@@ -245,6 +245,15 @@
   .sc-arrow{display:block;transition:transform .3s;}
   .side-consult.collapsed .sc-arrow{transform:rotate(180deg);}
   .sc-mascot{width:100%;max-width:164px;height:auto;display:block;margin:10px auto 0;border-radius:12px;}
+  /* 스티키 하단 상담 배너 (벤치마크: 아정당) */
+  .sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:130;background:rgba(10,26,58,.97);backdrop-filter:blur(8px);border-top:1px solid rgba(255,255,255,.13);display:flex;align-items:center;justify-content:center;gap:18px;padding:12px 20px;transform:translateY(110%);transition:transform .35s ease;}
+  .sticky-cta.show{transform:translateY(0);}
+  .sticky-cta .sct{color:#fff;font-size:15px;font-weight:700;}
+  .sticky-cta .sct b{color:var(--gold2);}
+  .sticky-cta .scgo{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);border:none;border-radius:999px;padding:12px 26px;font-size:15px;font-weight:900;cursor:pointer;white-space:nowrap;box-shadow:0 6px 18px rgba(201,169,97,.4);}
+  .sticky-cta .scgo:hover{filter:brightness(1.05);}
+  .sticky-cta.show ~ .floating{bottom:74px;transition:bottom .35s;}
+  @media(max-width:600px){.sticky-cta .sct{display:none;}}
   @keyframes nuriWave{0%,100%{transform:rotate(-6deg);}25%{transform:rotate(5deg);}50%{transform:rotate(-4deg);}75%{transform:rotate(5deg);}}
   @media(prefers-reduced-motion:reduce){.sc-mascot{animation:none;}}
   .sc-head{font-size:14px;font-weight:900;color:var(--navy);text-align:center;}
@@ -612,6 +621,13 @@
     <span class="fnav"><a href="lineup.html">제품 라인업</a> · <a href="about.html">회사소개</a> · <a href="support.html">고객지원</a> · <a href="benefits.html">도입 혜택</a> · <a href="home-classic.html">기존 홈</a></span><br><span style="opacity:.5">© 누리네트웍스</span>
   </div>
 </footer>
+
+<!-- 스티키 하단 상담 배너 (벤치마크: 아정당) -->
+<div class="sticky-cta" id="stickyCta">
+  <span class="sct">결제기기, <b>누리포스</b>에서 한 번에 — 약정 0 · 월 0원부터</span>
+  <button class="scgo" onclick="openConsult()">💬 바로 상담하기</button>
+</div>
+<script>(function(){var b=document.getElementById('stickyCta');if(!b)return;function chk(){if(window.scrollY>520)b.classList.add('show');else b.classList.remove('show');}window.addEventListener('scroll',chk,{passive:true});chk();})();</script>
 
 <!-- 우측 상담 패널 (벤치마크: 아정당) -->
 <aside class="side-consult" id="sideConsult">
