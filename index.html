@@ -76,14 +76,22 @@
   .tk-badge{display:inline-block;font-size:14.5px;font-weight:900;padding:7px 14px;border-radius:999px;margin-bottom:3px;letter-spacing:-.3px;}
   .tk-badge.free{background:rgba(56,200,126,.2);color:#8FE7B4;border:1px solid rgba(127,224,160,.35);}
   .tk-badge.rental{background:rgba(90,150,255,.22);color:#A9C9FF;border:1px solid rgba(140,180,255,.35);}
-  .tk-sub{font-size:12.5px;color:rgba(255,255,255,.62);margin:3px 0 12px;font-weight:600;}
+  .tk-head{display:flex;align-items:center;flex-wrap:wrap;gap:9px;margin-bottom:13px;}
+  .tk-sub{font-size:12.5px;color:rgba(255,255,255,.62);font-weight:600;}
   .track ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;}
   .track li{font-size:15.5px;font-weight:800;display:flex;align-items:center;flex-wrap:wrap;gap:7px 9px;letter-spacing:-.3px;word-break:keep-all;}
   .tk-pill{font-style:normal;font-size:11.5px;font-weight:900;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);border-radius:999px;padding:3px 10px;margin-left:2px;white-space:nowrap;}
   .tk-pill.soft{background:rgba(255,255,255,.13);color:#EAF0FF;border:1px solid rgba(255,255,255,.25);}
-  .hero-benefit{margin:0 0 20px;font-size:16px;font-weight:800;color:rgba(255,255,255,.95);line-height:1.7;word-break:keep-all;}
-  .hero-benefit b{color:var(--gold2);font-size:20px;letter-spacing:-.3px;}
-  @media(max-width:430px){.track{padding:17px 18px;}.track li{font-size:14.5px;}.hero-benefit{font-size:14.5px;}.hero-benefit b{font-size:17px;}}
+  @keyframes pillPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.12);}}
+  .track .tk-pill{display:inline-block;animation:pillPulse 1.8s ease-in-out infinite;}
+  .track li:nth-child(2) .tk-pill{animation-delay:.35s;}
+  .track li:nth-child(3) .tk-pill{animation-delay:.7s;}
+  .track li:nth-child(4) .tk-pill{animation-delay:1.05s;}
+  .track li:nth-child(5) .tk-pill{animation-delay:1.4s;}
+  @media(prefers-reduced-motion:reduce){.track .tk-pill{animation:none;}}
+  .hero-benefit{margin:0 0 20px;font-size:19.5px;font-weight:900;color:#fff;line-height:1.75;word-break:keep-all;letter-spacing:-.3px;}
+  .hero-benefit b{color:var(--gold2);font-size:25px;letter-spacing:-.5px;}
+  @media(max-width:430px){.track{padding:17px 18px;}.track li{font-size:14.5px;}.hero-benefit{font-size:16px;}.hero-benefit b{font-size:20px;}}
   .trust{display:flex;flex-wrap:wrap;justify-content:center;gap:9px 20px;font-size:14px;color:rgba(255,255,255,.92);}
   .trust span{display:inline-flex;align-items:center;gap:6px;}
   .trust .ok{color:#7FE0A0;font-weight:900;}
@@ -373,27 +381,25 @@
   <div class="wrap">
     <div>
       
-      <h1>약정·위약금 없이, 업계 최저 렌탈료로<br><span class="y">내 매장 맞춤 결제기기</span></h1>
+      <h1>약정·위약금 없이, 업계 최저 렌탈료<br><span class="y">내 매장 맞춤 결제기기</span></h1>
       <p class="lead">결제는 더 쉽게, 매장은 더 스마트하게.</p>
       <div class="track-grid">
         <div class="track">
-          <div class="tk-badge free">🆓 약정·위약금 0원</div>
-          <div class="tk-sub">묶이는 게 싫다면</div>
+          <div class="tk-head"><div class="tk-badge free">🆓 약정·위약금 0원</div><span class="tk-sub">묶이는 게 싫다면</span></div>
           <ul>
             <li>📲 토스단말기 <em class="tk-pill soft">금전함무상제공</em></li>
             <li>📲 네이버단말기 <em class="tk-pill soft">금전함무상제공</em></li>
+            <li>📡 무선카드단말기 <em class="tk-pill">구매가 10,000원</em></li>
             <li>🛒 구매(전제품) <em class="tk-pill">최저가</em></li>
           </ul>
         </div>
         <div class="track">
-          <div class="tk-badge rental">💙 업계 최저 렌탈료 · 약정형</div>
-          <div class="tk-sub">초기비용 없이 바로 시작</div>
+          <div class="tk-head"><div class="tk-badge rental">💙 업계 최저 렌탈료</div><span class="tk-sub">초기비용 없이 바로 시작</span></div>
           <ul>
             <li>🧾 포스 <em class="tk-pill soft">QR오더무상제공</em></li>
             <li>🖥️ 배리어프리키오스크 <em class="tk-pill soft">QR오더무상제공</em></li>
             <li>🍽️ 테이블오더 <em class="tk-pill soft">QR오더무상제공</em></li>
             <li>💳 유선카드단말기 <em class="tk-pill">월5,000원</em></li>
-            <li>📡 무선카드단말기 <em class="tk-pill">구매가 10,000원</em></li>
           </ul>
         </div>
       </div>
