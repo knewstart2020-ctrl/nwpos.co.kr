@@ -173,6 +173,13 @@
   .paypill.method{background:#fff;color:var(--navy);border:1.5px solid var(--navy);box-shadow:0 3px 10px rgba(10,26,58,.08);}
   .pay-cols{display:flex;gap:22px;margin-top:36px;align-items:stretch;}
   .pay-col{flex:1;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 16px 22px;box-shadow:0 4px 14px rgba(10,26,58,.05);}
+  .pay-logos{display:flex;flex-wrap:wrap;gap:11px;justify-content:center;align-items:center;}
+  .pay-logos img{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:#fff;object-fit:contain;padding:6px;box-shadow:0 3px 10px rgba(10,26,58,.1);transition:.15s;}
+  .pay-logos img:hover{transform:translateY(-3px) scale(1.08);}
+  .pay-col.pc-methods{position:relative;overflow:hidden;}
+  .pay-col.pc-methods:before{content:"";position:absolute;right:-10px;bottom:-16px;width:128px;height:128px;background:url('li-toss.png') center/contain no-repeat;opacity:.13;pointer-events:none;}
+  .pay-col.pc-methods:after{content:"";position:absolute;left:-10px;bottom:-16px;width:118px;height:118px;background:url('li-naver.png') center/contain no-repeat;opacity:.13;pointer-events:none;}
+  .pay-col.pc-methods .pay-head,.pay-col.pc-methods .pay-grid{position:relative;z-index:1;}
   .pay-col .pay-head{margin:0 0 14px;}
   .pay-grid.g3{max-width:292px;margin:0 auto;gap:9px;}
   .pay-grid.g3 .paypill{flex:0 0 auto;min-width:80px;text-align:center;}
@@ -460,17 +467,18 @@
     <div class="pay-cols">
       <div class="pay-col">
         <div class="pay-head">모든 <span>간편결제</span></div>
-        <div class="pay-grid">
-          <span class="paypill" style="background:#111">애플페이</span>
-          <span class="paypill" style="background:#1428A0">삼성페이</span>
-          <span class="paypill" style="background:#03C75A">네이버페이</span>
-          <span class="paypill" style="background:#FEE500;color:#3A1D1D">카카오페이</span>
-          <span class="paypill" style="background:#0064FF">토스페이</span>
-          <span class="paypill" style="background:#00A4E3">제로페이</span>
-          <span class="paypill" style="background:linear-gradient(135deg,#1677FF,#07C160)">알리위챗페이</span>
+        <div class="pay-logos">
+          <img src="pay-apple.png" alt="애플페이" title="애플페이">
+          <img src="pay-samsung.png" alt="삼성페이" title="삼성페이">
+          <img src="pay-naver.png" alt="네이버페이" title="네이버페이">
+          <img src="pay-kakao.png" alt="카카오페이" title="카카오페이">
+          <img src="pay-toss.png" alt="토스페이" title="토스페이">
+          <img src="pay-zero.png" alt="제로페이" title="제로페이">
+          <img src="pay-alipay.png" alt="알리페이" title="알리페이">
+          <img src="pay-wechat.png" alt="위챗페이" title="위챗페이">
         </div>
       </div>
-      <div class="pay-col">
+      <div class="pay-col pc-methods">
         <div class="pay-head">모든 <span>결제방식</span></div>
         <div class="pay-grid g3">
           <span class="paypill method">IC</span>
