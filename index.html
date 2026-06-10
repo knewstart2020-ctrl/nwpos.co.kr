@@ -272,7 +272,7 @@
   .why-list li{position:relative;padding-left:28px;font-size:15.5px;color:rgba(255,255,255,.86);line-height:1.55;word-break:keep-all;}
   .why-list li:before{content:"✓";position:absolute;left:0;top:0;color:var(--gold2);font-weight:900;}
   .why-list b{color:#fff;}
-  .fwrite{line-height:1.9;min-height:108px;word-break:keep-all;margin-bottom:12px;}
+  .fwrite{line-height:1.9;min-height:60px;word-break:keep-all;}
   .fcaret{display:inline-block;width:2px;height:1em;background:var(--gold2);margin-left:2px;vertical-align:-2px;animation:fblink .75s steps(1) infinite;}
   @keyframes fblink{50%{opacity:0;}}
   .cform input,.cform select{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:10px;font-size:15px;margin-bottom:10px;font-family:inherit;}
@@ -690,11 +690,10 @@
 <footer>
   <div class="wrap">
     <p class="fwrite" id="fWrite"></p>
-    <span class="fnav"><a href="lineup.html">제품 라인업</a> · <a href="about.html">회사소개</a> · <a href="support.html">고객지원</a> · <a href="benefits.html">도입 혜택</a> · <a href="home-classic.html">기존 홈</a></span>
   </div>
 </footer>
 <script>(function(){var el=document.getElementById('fWrite');if(!el)return;
-var T="주식회사 누리네트웍스  128-86-19835  대표자: 김정식\nnuri@posone.co.kr · 1544-7754\n서울시 영등포구 선유로70 우리벤처타운 4층 408호\nCopyright 2012. 주식회사 누리네트웍스 All rights reserved.";
+var T="주식회사 누리네트웍스  128-86-19835  대표자: 김정식  nuri@posone.co.kr  1544-7754  서울시 영등포구 선유로70 우리벤처타운 4층 408호\nCopyright 2012. 주식회사 누리네트웍스 All rights reserved.";
 function full(){el.innerHTML=T.replace(/\n/g,'<br>');}
 if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){full();return;}
 var i=0,started=false;
