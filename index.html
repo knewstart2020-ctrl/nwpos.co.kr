@@ -82,13 +82,9 @@
   .track li{font-size:15.5px;font-weight:800;display:flex;align-items:center;flex-wrap:wrap;gap:7px 9px;letter-spacing:-.3px;word-break:keep-all;}
   .tk-pill{font-style:normal;font-size:11.5px;font-weight:900;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);border-radius:999px;padding:3px 10px;margin-left:2px;white-space:nowrap;}
   .tk-pill.soft{background:rgba(255,255,255,.13);color:#EAF0FF;border:1px solid rgba(255,255,255,.25);}
-  @keyframes pillPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.12);}}
-  .track .tk-pill{display:inline-block;animation:pillPulse 1.8s ease-in-out infinite;}
-  .track li:nth-child(2) .tk-pill{animation-delay:.35s;}
-  .track li:nth-child(3) .tk-pill{animation-delay:.7s;}
-  .track li:nth-child(4) .tk-pill{animation-delay:1.05s;}
-  .track li:nth-child(5) .tk-pill{animation-delay:1.4s;}
-  @media(prefers-reduced-motion:reduce){.track .tk-pill{animation:none;}}
+  .track .tk-pill{display:inline-block;transition:transform .28s,box-shadow .28s,filter .28s;}
+  .track .tk-pill.pspot{transform:scale(1.18);filter:brightness(1.12);box-shadow:0 8px 22px rgba(255,255,255,.28);}
+  @media(prefers-reduced-motion:reduce){.track .tk-pill.pspot{transform:none;}}
   .hero-benefit{margin:0 0 20px;font-size:19.5px;font-weight:900;color:#fff;line-height:1.75;word-break:keep-all;letter-spacing:-.3px;}
   .hero-benefit b{color:var(--gold2);font-size:25px;letter-spacing:-.5px;}
   @media(max-width:430px){.track{padding:17px 18px;}.track li{font-size:14.5px;}.hero-benefit{font-size:16px;}.hero-benefit b{font-size:20px;}}
@@ -424,7 +420,7 @@
           </ul>
         </div>
         <div class="track">
-          <div class="tk-head"><div class="tk-badge rental">💙 업계 최저 렌탈료</div><span class="tk-sub">초기비용 없이 바로 시작</span></div>
+          <div class="tk-head"><div class="tk-badge rental">💙 최저렌탈구매가</div><span class="tk-sub">초기비용 없이 바로 시작</span></div>
           <ul>
             <li>🧾 포스 <em class="tk-pill soft">QR오더무상제공</em></li>
             <li>🖥️ 배리어프리키오스크 <em class="tk-pill soft">QR오더무상제공</em></li>
@@ -443,6 +439,9 @@
     </div>
   </div>
 </section>
+
+<!-- 히어로 트랙 필 순차 강조 -->
+<script>(function(){var p=document.querySelectorAll('.track .tk-pill');if(!p.length)return;var i=0;setInterval(function(){for(var j=0;j<p.length;j++)p[j].classList.remove('pspot');p[i%p.length].classList.add('pspot');i++;},1300);})();</script>
 
 <!-- 올인원 라인업 (벤치마크: 아정당) -->
 <section class="sec lineup-sec" id="lineup-grid">
