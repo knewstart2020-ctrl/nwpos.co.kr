@@ -272,6 +272,9 @@
   .why-list li{position:relative;padding-left:28px;font-size:15.5px;color:rgba(255,255,255,.86);line-height:1.55;word-break:keep-all;}
   .why-list li:before{content:"✓";position:absolute;left:0;top:0;color:var(--gold2);font-weight:900;}
   .why-list b{color:#fff;}
+  .fwrite{line-height:1.9;min-height:108px;word-break:keep-all;margin-bottom:12px;}
+  .fcaret{display:inline-block;width:2px;height:1em;background:var(--gold2);margin-left:2px;vertical-align:-2px;animation:fblink .75s steps(1) infinite;}
+  @keyframes fblink{50%{opacity:0;}}
   .cform input,.cform select{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:10px;font-size:15px;margin-bottom:10px;font-family:inherit;}
   .cform .btn{width:100%;padding:15px;font-size:16px;}
   .cform .agree{font-size:11.5px;color:var(--ink-soft);margin-top:8px;text-align:center;}
@@ -686,11 +689,19 @@
 
 <footer>
   <div class="wrap">
-    <b>누리네트웍스</b> · 1544-7754 · nwpos.co.kr<br>
-    서울 영등포구 문래동 · KT BC카드 계열 스마트로 수도권 지사<br>
-    <span class="fnav"><a href="lineup.html">제품 라인업</a> · <a href="about.html">회사소개</a> · <a href="support.html">고객지원</a> · <a href="benefits.html">도입 혜택</a> · <a href="home-classic.html">기존 홈</a></span><br><span style="opacity:.5">© 누리네트웍스</span>
+    <p class="fwrite" id="fWrite"></p>
+    <span class="fnav"><a href="lineup.html">제품 라인업</a> · <a href="about.html">회사소개</a> · <a href="support.html">고객지원</a> · <a href="benefits.html">도입 혜택</a> · <a href="home-classic.html">기존 홈</a></span>
   </div>
 </footer>
+<script>(function(){var el=document.getElementById('fWrite');if(!el)return;
+var T="주식회사 누리네트웍스  128-86-19835  대표자: 김정식\nnuri@posone.co.kr · 1544-7754\n서울시 영등포구 선유로70 우리벤처타운 4층 408호\nCopyright 2012. 주식회사 누리네트웍스 All rights reserved.";
+function full(){el.innerHTML=T.replace(/\n/g,'<br>');}
+if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){full();return;}
+var i=0,started=false;
+function tick(){if(i<=T.length){el.innerHTML=T.slice(0,i).replace(/\n/g,'<br>')+'<span class="fcaret"></span>';i++;setTimeout(tick,26);}else{full();}}
+function start(){if(started)return;started=true;tick();}
+if(window.IntersectionObserver){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){start();io.disconnect();}});});io.observe(el);}else{start();}
+})();</script>
 
 <!-- 스티키 하단 상담 배너 (벤치마크: 아정당) -->
 <div class="sticky-cta" id="stickyCta">
