@@ -548,6 +548,7 @@
         <video class="sc-vid" src="real-gas.mp4" muted playsinline preload="none"></video>
         <video class="sc-vid" src="real-hangang.mp4" muted playsinline preload="none"></video>
         <video class="sc-vid" src="real-resto.mp4" muted playsinline preload="none"></video>
+        <video class="sc-vid" src="real-care.mp4" muted playsinline preload="none"></video>
         <video class="sc-vid" src="real-ending.mp4" muted playsinline preload="none"></video>
         <div class="sc-label"><b id="scName">N250 올인원 포스</b><span id="scStore">한식 전문점</span></div>
       </div>
@@ -560,7 +561,8 @@
         <button class="sc-tab" onclick="scGo(5)">유선단말기</button>
         <button class="sc-tab" onclick="scGo(6)">무선단말기</button>
         <button class="sc-tab" onclick="scGo(7)">부가장비</button>
-        <button class="sc-tab" onclick="scGo(8)">누리포스</button>
+        <button class="sc-tab" onclick="scGo(8)">설치·유지보수</button>
+        <button class="sc-tab" onclick="scGo(9)">누리포스</button>
       </div>
     </div>
   </div>
@@ -639,7 +641,7 @@
           <a class="rchip" href="#consult"><b>두 번 반복되지 않는</b> A/S</a>
         </div>
       </div>
-      <div class="region-photo"><img src="region-care2.jpg" alt="매장을 직접 방문해 설치·케어하는 누리네트웍스 설치엔지니어" loading="lazy"></div>
+      <div class="region-photo"><img src="region-care3.jpg" alt="가맹점에서 점주님과 함께 단말기를 설치·점검하는 누리네트웍스 설치엔지니어" loading="lazy"></div>
     </div>
   </div>
 </section>
@@ -775,7 +777,7 @@ function submitConsult(){
 </script>
 <!-- hero-bg play-keeper --><script>(function(){var hb=document.querySelector(".hero-bg");if(!hb)return;function go(){try{hb.muted=true;var p=hb.play();if(p&&p.catch)p.catch(function(){});}catch(e){}}go();hb.addEventListener("loadeddata",go);hb.addEventListener("pause",function(){if(!document.hidden)setTimeout(go,80);});document.addEventListener("visibilitychange",function(){if(!document.hidden)go();});hb.addEventListener("canplay",go);["pointerdown","touchstart","scroll","keydown","mousemove"].forEach(function(ev){window.addEventListener(ev,function(){go();},{once:true,passive:true});});})();</script>
 <!-- showcase -->
-<script>(function(){var D=[["N250 올인원 포스","한식 전문점"],["테이블오더","고기 전문점"],["토스 단말기","편의점"],["네이버 단말기","병원"],["배리어프리 키오스크","베이커리 카페"],["유선 카드단말기","주유소"],["무선 카드단말기","한강 치킨배달"],["TS100 프린터","고급 레스토랑"],["누리포스","창업의 첫걸음, 함께합니다"]];
+<script>(function(){var D=[["N250 올인원 포스","한식 전문점"],["테이블오더","고기 전문점"],["토스 단말기","편의점"],["네이버 단말기","병원"],["배리어프리 키오스크","베이커리 카페"],["유선 카드단말기","주유소"],["무선 카드단말기","한강 치킨배달"],["TS100 프린터","고급 레스토랑"],["설치·유지보수","우리 동네 가맹점"],["누리포스","창업의 첫걸음, 함께합니다"]];
 var vids=document.querySelectorAll("#showcase .sc-vid");var tabs=document.querySelectorAll("#showcase .sc-tab");
 var nm=document.getElementById("scName"),st=document.getElementById("scStore");var i=0,guard;
 function play(v){try{v.muted=true;v.currentTime=0;var p=v.play();if(p&&p.catch)p.catch(function(){});}catch(e){}}
