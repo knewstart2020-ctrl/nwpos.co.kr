@@ -302,8 +302,8 @@
 
   .floating{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;flex-direction:column;gap:10px;}
   /* 우측 상담 패널 (벤치마크: 아정당) */
-  .side-consult{position:fixed;right:16px;top:50%;transform:translateY(-50%);z-index:120;width:198px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 18px 50px rgba(10,26,58,.22);padding:16px 14px;display:flex;flex-direction:column;gap:9px;transition:transform .32s cubic-bezier(.4,0,.2,1);}
-  .side-consult.collapsed{transform:translateY(-50%) translateX(216px);}
+  .side-consult{position:fixed;right:12px;top:50%;transform:translateY(-50%);z-index:120;width:148px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 50px rgba(10,26,58,.22);padding:12px 10px;display:flex;flex-direction:column;gap:8px;transition:transform .32s cubic-bezier(.4,0,.2,1);}
+  .side-consult.collapsed{transform:translateY(-50%) translateX(168px);}
   .sc-toggle{position:absolute;left:-29px;top:50%;transform:translateY(-50%);width:29px;height:58px;background:#fff;border:1px solid var(--line);border-right:none;border-radius:12px 0 0 12px;box-shadow:-6px 0 14px rgba(10,26,58,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--navy);font-size:18px;font-weight:900;padding:0;}
   .sc-arrow{display:block;transition:transform .3s;}
   .side-consult.collapsed .sc-arrow{transform:rotate(180deg);}
@@ -322,10 +322,10 @@
   .sc-btn.kakao{background:var(--kakao);color:#3A1D1D;border:none;}
   .sc-tel{margin-top:3px;background:var(--soft);border-radius:12px;padding:11px;text-align:center;}
   .sc-tel .lab{font-size:11px;color:var(--ink-soft);font-weight:700;}
-  .sc-tel .num{font-size:21px;font-weight:900;color:var(--navy);letter-spacing:-.5px;}
+  .sc-tel .num{font-size:16.5px;font-weight:900;color:var(--navy);letter-spacing:-.5px;white-space:nowrap;}
   .sc-tel .sub{font-size:11.5px;color:var(--blue);font-weight:800;line-height:1.5;margin-top:2px;word-break:keep-all;}
-  @media(max-width:1199px){.side-consult{display:none;}}
-  @media(min-width:1200px){.floating{display:none;}}
+  @media(max-width:1499px){.side-consult{display:none;}}
+  @media(min-width:1500px){.floating{display:none;}}
   .fab{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 6px 20px rgba(0,0,0,.28);cursor:pointer;border:none;}
   .fab.tel{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);}
   .fab.kakao{background:var(--kakao);}
@@ -423,8 +423,8 @@
         <div class="track">
           <div class="tk-head"><div class="tk-badge free">🆓 약정·위약금 0원</div><span class="tk-sub">묶이는 게 싫다면</span></div>
           <ul>
-            <li>📲 토스단말기 <em class="tk-pill soft">금전함무상제공</em></li>
-            <li>📲 네이버단말기 <em class="tk-pill soft">금전함무상제공</em></li>
+            <li>📲 토스단말기 <em class="tk-pill soft">금전함 무상제공</em></li>
+            <li>📲 네이버단말기 <em class="tk-pill soft">금전함 무상제공</em></li>
             <li>📡 무선카드단말기 <em class="tk-pill">구매가 10,000원</em></li>
             <li>🛒 구매(전제품) <em class="tk-pill">최저가</em></li>
           </ul>
@@ -432,15 +432,15 @@
         <div class="track">
           <div class="tk-head"><div class="tk-badge rental">💙 최저렌탈구매가</div><span class="tk-sub">초기비용 없이 바로 시작</span></div>
           <ul>
-            <li>🧾 포스 <em class="tk-pill soft">QR오더무상제공</em></li>
-            <li>🖥️ 배리어프리키오스크 <em class="tk-pill soft">QR오더무상제공</em></li>
-            <li>🍽️ 테이블오더 <em class="tk-pill soft">QR오더무상제공</em></li>
+            <li>🧾 포스 <em class="tk-pill soft">QR오더 무상제공</em></li>
+            <li>🖥️ 배리어프리키오스크 <em class="tk-pill soft">QR오더 무상제공</em></li>
+            <li>🍽️ 테이블오더 <em class="tk-pill soft">QR오더 무상제공</em></li>
             <li>💳 유선카드단말기 <em class="tk-pill">월5,000원</em></li>
           </ul>
         </div>
       </div>
       <div class="hero-benefit">
-        계약 시 용지 1박스(50개) <b>무상지원!!!</b><br>
+        계약 시 용지 50개 <b>무상지원!!!</b><br>
         설치비·교육비·카드사 접수대행비 모두 <b>"0"원!!!</b>
       </div>
       <div class="hero-cta">
@@ -488,7 +488,7 @@
         <div class="wc-emoji">💸</div>
         <h3>확인 안 하면<br>매달 새고 있어요.</h3>
         <p>토스·네이버 단말기에<br>월 사용료와 약정이 숨어 있어요.</p>
-        <div class="wc-chips"><span>금전함무상제공</span><span>QR오더무상제공</span><span>토스·네이버단말기 월사용료 0원</span></div>
+        <div class="wc-chips"><span>금전함 무상제공</span><span>QR오더 무상제공</span><span>토스·네이버단말기 월사용료 0원</span></div>
       </div>
       <div class="wcard">
         <div class="wc-emoji">🔍</div>
