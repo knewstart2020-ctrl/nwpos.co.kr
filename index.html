@@ -237,16 +237,13 @@
   @media(max-width:880px){.reviews{grid-template-columns:1fr;}}
 
   /* 지역 (벤치마크: 큐플 전국 → 우리 동네 직접 차별화) */
-  .region-hero{background:var(--navy);color:#fff;border-radius:18px;padding:40px 38px;display:flex;align-items:center;gap:36px;text-align:left;}
+  .region-hero{background:linear-gradient(100deg,rgba(10,26,58,.94) 0%,rgba(10,26,58,.76) 46%,rgba(10,26,58,.3) 100%),url('region-care-bg.jpg') center/cover no-repeat;color:#fff;border-radius:18px;padding:52px 44px;text-align:left;overflow:hidden;}
   .region-hero h2{color:#fff;text-align:left;}
-  .region-hero .sub{color:rgba(255,255,255,.72);text-align:left;word-break:keep-all;}
-  .region-copy{flex:1 1 320px;}
+  .region-hero .sub{color:rgba(255,255,255,.8);text-align:left;word-break:keep-all;}
+  .region-copy{max-width:560px;}
   .region-copy .ey{text-align:left;}
   .region-copy .regions{justify-content:flex-start;}
-  .region-photo{flex:1 1 300px;max-width:440px;position:relative;}
-  .region-photo img{width:100%;border-radius:14px;display:block;border:1px solid rgba(201,169,97,.4);box-shadow:0 18px 44px rgba(0,0,0,.38);}
-  .region-photo:after{content:"";position:absolute;inset:0;border-radius:14px;background:linear-gradient(165deg,rgba(10,26,58,0) 55%,rgba(10,26,58,.34) 100%);pointer-events:none;}
-  @media(max-width:860px){.region-hero{flex-direction:column;text-align:center;padding:32px 22px;}.region-hero h2,.region-hero .sub,.region-copy .ey{text-align:center;}.region-copy .regions{justify-content:center;}.region-photo{max-width:100%;}}
+  @media(max-width:860px){.region-hero{padding:36px 22px;text-align:center;background:linear-gradient(rgba(10,26,58,.9),rgba(10,26,58,.82)),url('region-care-bg.jpg') center/cover no-repeat;}.region-hero h2,.region-hero .sub,.region-copy .ey{text-align:center;}.region-copy .regions{justify-content:center;}.region-copy{max-width:100%;}}
   .regions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:24px;}
   .rchip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:12px 22px;font-weight:800;color:#fff;transition:.15s;}
   .rchip:hover{background:var(--gold);color:var(--navy);border-color:var(--gold);}
@@ -641,7 +638,6 @@
           <a class="rchip" href="#consult"><b>두 번 반복되지 않는</b> A/S</a>
         </div>
       </div>
-      <div class="region-photo"><img src="region-care3.jpg" alt="가맹점에서 점주님과 함께 단말기를 설치·점검하는 누리네트웍스 설치엔지니어" loading="lazy"></div>
     </div>
   </div>
 </section>
