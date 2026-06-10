@@ -551,18 +551,7 @@
         <video class="sc-vid" src="real-ending.mp4" muted playsinline preload="none"></video>
         <div class="sc-label"><b id="scName">N250 올인원 포스</b><span id="scStore">한식 전문점</span></div>
       </div>
-      <div class="sc-tabs" id="scTabs">
-        <button class="sc-tab active" onclick="scGo(0)">포스</button>
-        <button class="sc-tab" onclick="scGo(1)">테이블오더</button>
-        <button class="sc-tab" onclick="scGo(2)">토스단말기</button>
-        <button class="sc-tab" onclick="scGo(3)">네이버단말기</button>
-        <button class="sc-tab" onclick="scGo(4)">키오스크</button>
-        <button class="sc-tab" onclick="scGo(5)">유선단말기</button>
-        <button class="sc-tab" onclick="scGo(6)">무선단말기</button>
-        <button class="sc-tab" onclick="scGo(7)">부가장비</button>
-        <button class="sc-tab" onclick="scGo(8)">설치·유지보수</button>
-        <button class="sc-tab" onclick="scGo(9)">누리포스</button>
-      </div>
+      <!-- (영상 탭 삭제 — 연속 자동재생) -->
     </div>
   </div>
 </section>
@@ -766,7 +755,7 @@ function submitConsult(){
 var vids=document.querySelectorAll("#showcase .sc-vid");var tabs=document.querySelectorAll("#showcase .sc-tab");
 var nm=document.getElementById("scName"),st=document.getElementById("scStore");var i=0,guard;
 function play(v){try{v.muted=true;v.currentTime=0;var p=v.play();if(p&&p.catch)p.catch(function(){});}catch(e){}}
-function show(n){vids[i].classList.remove("active");try{vids[i].pause();}catch(e){}tabs[i].classList.remove("active");i=n;vids[i].classList.add("active");play(vids[i]);tabs[i].classList.add("active");nm.textContent=D[i][0];st.textContent=D[i][1];var nx=vids[(i+1)%vids.length];try{nx.preload="auto";nx.load&&nx.readyState<2&&nx.load();}catch(e){}clearTimeout(guard);guard=setTimeout(next,12000);}
+function show(n){vids[i].classList.remove("active");try{vids[i].pause();}catch(e){}if(tabs[i])tabs[i].classList.remove("active");i=n;vids[i].classList.add("active");play(vids[i]);if(tabs[i])tabs[i].classList.add("active");nm.textContent=D[i][0];st.textContent=D[i][1];var nx=vids[(i+1)%vids.length];try{nx.preload="auto";nx.load&&nx.readyState<2&&nx.load();}catch(e){}clearTimeout(guard);guard=setTimeout(next,12000);}
 function next(){show((i+1)%vids.length);}
 window.scGo=function(n){if(n===i||!vids.length)return;show(n);};
 if(vids.length){for(var k=0;k<vids.length;k++){vids[k].addEventListener("ended",next);}play(vids[0]);try{vids[1].preload="auto";vids[1].load();}catch(e){}guard=setTimeout(next,12000);["pointerdown","scroll","keydown","touchstart"].forEach(function(ev){window.addEventListener(ev,function(){play(vids[i]);},{once:true,passive:true});});}})();</script>
