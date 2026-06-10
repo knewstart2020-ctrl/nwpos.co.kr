@@ -533,19 +533,27 @@
     <p class="sub">업종별 설치 현장을 영상으로 — 우리 제품이 매장의 중심이 됩니다</p>
     <div class="showcase">
       <div class="sc-stage">
-        <video class="sc-vid active" src="real-n250.mp4" loop muted playsinline preload="none" poster="pos-n250-card.jpeg"></video>
-        <video class="sc-vid" src="real-tossnaver.mp4" loop muted playsinline preload="none" poster="signpad-card-toss.jpg"></video>
-        <video class="sc-vid" src="real-tableorder.mp4" loop muted playsinline preload="none" poster="order-card-uporder.png"></video>
-        <video class="sc-vid" src="real-kiosk.mp4" loop muted playsinline preload="none" poster="kiosk-product-1.png"></video>
-        <video class="sc-vid" src="real-terminal.mp4" loop muted playsinline preload="none" poster="terminal-card-t226.jpg"></video>
-        <div class="sc-label"><b id="scName">N250 올인원 포스</b><span id="scStore">국밥·한식당</span></div>
+        <video class="sc-vid active" src="real-n250.mp4" muted playsinline preload="auto" poster="pos-n250-card.jpeg"></video>
+        <video class="sc-vid" src="real-tableorder.mp4" muted playsinline preload="none" poster="order-card-uporder.png"></video>
+        <video class="sc-vid" src="real-tossnaver.mp4" muted playsinline preload="none" poster="signpad-card-toss.jpg"></video>
+        <video class="sc-vid" src="real-naver.mp4" muted playsinline preload="none"></video>
+        <video class="sc-vid" src="real-kiosk2.mp4" muted playsinline preload="none"></video>
+        <video class="sc-vid" src="real-gas.mp4" muted playsinline preload="none"></video>
+        <video class="sc-vid" src="real-hangang.mp4" muted playsinline preload="none"></video>
+        <video class="sc-vid" src="real-resto.mp4" muted playsinline preload="none"></video>
+        <video class="sc-vid" src="real-ending.mp4" muted playsinline preload="none"></video>
+        <div class="sc-label"><b id="scName">N250 올인원 포스</b><span id="scStore">한식 전문점</span></div>
       </div>
       <div class="sc-tabs" id="scTabs">
-        <button class="sc-tab active" onclick="scGo(0)">POS (N250)</button>
-        <button class="sc-tab" onclick="scGo(1)">토스·네이버 단말기</button>
-        <button class="sc-tab" onclick="scGo(2)">테이블오더</button>
-        <button class="sc-tab" onclick="scGo(3)">배리어프리 키오스크</button>
-        <button class="sc-tab" onclick="scGo(4)">유선 단말기</button>
+        <button class="sc-tab active" onclick="scGo(0)">포스</button>
+        <button class="sc-tab" onclick="scGo(1)">테이블오더</button>
+        <button class="sc-tab" onclick="scGo(2)">토스단말기</button>
+        <button class="sc-tab" onclick="scGo(3)">네이버단말기</button>
+        <button class="sc-tab" onclick="scGo(4)">키오스크</button>
+        <button class="sc-tab" onclick="scGo(5)">유선단말기</button>
+        <button class="sc-tab" onclick="scGo(6)">무선단말기</button>
+        <button class="sc-tab" onclick="scGo(7)">부가장비</button>
+        <button class="sc-tab" onclick="scGo(8)">누리포스</button>
       </div>
     </div>
   </div>
@@ -762,13 +770,14 @@ function submitConsult(){
 </script>
 <!-- hero-bg play-keeper --><script>(function(){var hb=document.querySelector(".hero-bg");if(!hb)return;function go(){try{hb.muted=true;var p=hb.play();if(p&&p.catch)p.catch(function(){});}catch(e){}}go();hb.addEventListener("loadeddata",go);hb.addEventListener("pause",function(){if(!document.hidden)setTimeout(go,80);});document.addEventListener("visibilitychange",function(){if(!document.hidden)go();});hb.addEventListener("canplay",go);["pointerdown","touchstart","scroll","keydown","mousemove"].forEach(function(ev){window.addEventListener(ev,function(){go();},{once:true,passive:true});});})();</script>
 <!-- showcase -->
-<script>(function(){var D=[["N250 올인원 포스","국밥·한식당"],["토스·네이버 단말기","편의점"],["테이블오더","고깃집·BBQ"],["배리어프리 키오스크","무인 스터디카페"],["유선 카드단말기","약국"]];
+<script>(function(){var D=[["N250 올인원 포스","한식 전문점"],["테이블오더","고기 전문점"],["토스 단말기","편의점"],["네이버 단말기","병원"],["배리어프리 키오스크","베이커리 카페"],["유선 카드단말기","주유소"],["무선 카드단말기","한강 치킨배달"],["TS100 프린터","고급 레스토랑"],["누리포스","창업의 첫걸음, 함께합니다"]];
 var vids=document.querySelectorAll("#showcase .sc-vid");var tabs=document.querySelectorAll("#showcase .sc-tab");
-var nm=document.getElementById("scName"),st=document.getElementById("scStore");var i=0,timer;
-function play(v){try{v.muted=true;var p=v.play();if(p&&p.catch)p.catch(function(){});}catch(e){}}
-window.scGo=function(n){if(n===i||!vids.length)return;vids[i].classList.remove("active");try{vids[i].pause();}catch(e){}tabs[i].classList.remove("active");i=n;vids[i].classList.add("active");play(vids[i]);tabs[i].classList.add("active");nm.textContent=D[i][0];st.textContent=D[i][1];clearInterval(timer);timer=setInterval(next,6500);};
-function next(){var n=(i+1)%vids.length;vids[i].classList.remove("active");try{vids[i].pause();}catch(e){}tabs[i].classList.remove("active");i=n;vids[i].classList.add("active");play(vids[i]);tabs[i].classList.add("active");nm.textContent=D[i][0];st.textContent=D[i][1];}
-if(vids.length){play(vids[0]);timer=setInterval(next,6500);["pointerdown","scroll","keydown","touchstart"].forEach(function(ev){window.addEventListener(ev,function(){play(vids[i]);},{once:true,passive:true});});}})();</script>
+var nm=document.getElementById("scName"),st=document.getElementById("scStore");var i=0,guard;
+function play(v){try{v.muted=true;v.currentTime=0;var p=v.play();if(p&&p.catch)p.catch(function(){});}catch(e){}}
+function show(n){vids[i].classList.remove("active");try{vids[i].pause();}catch(e){}tabs[i].classList.remove("active");i=n;vids[i].classList.add("active");play(vids[i]);tabs[i].classList.add("active");nm.textContent=D[i][0];st.textContent=D[i][1];var nx=vids[(i+1)%vids.length];try{nx.preload="auto";nx.load&&nx.readyState<2&&nx.load();}catch(e){}clearTimeout(guard);guard=setTimeout(next,12000);}
+function next(){show((i+1)%vids.length);}
+window.scGo=function(n){if(n===i||!vids.length)return;show(n);};
+if(vids.length){for(var k=0;k<vids.length;k++){vids[k].addEventListener("ended",next);}play(vids[0]);try{vids[1].preload="auto";vids[1].load();}catch(e){}guard=setTimeout(next,12000);["pointerdown","scroll","keydown","touchstart"].forEach(function(ev){window.addEventListener(ev,function(){play(vids[i]);},{once:true,passive:true});});}})();</script>
 <!-- live counters: 일수=창립(2012-05-18) 자동, 매장=30,000+5/일 -->
 <script>(function(){var founding=new Date(2012,4,18).getTime();var days=Math.floor((Date.now()-founding)/864e5);var sBase=new Date(2026,5,8).getTime();var sd=Math.max(0,Math.floor((Date.now()-sBase)/864e5));var stores=30000+5*sd;var T={daysCount:days,storeCount:stores};function fmt(n){return Math.round(n).toLocaleString("en-US");}function anim(el,target){var start=Math.floor(target*0.92),t0=null,dur=1500;function st(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/dur,1),e=1-Math.pow(1-p,3);el.textContent=fmt(start+(target-start)*e);if(p<1)requestAnimationFrame(st);else el.textContent=fmt(target);}requestAnimationFrame(st);}var done=false;function go(){if(done)return;done=true;for(var id in T){var el=document.getElementById(id);if(el)anim(el,T[id]);}}var sec=document.querySelector(".worry-sec");if(window.IntersectionObserver&&sec){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){go();io.disconnect();}});});io.observe(sec);}else{go();}})();</script>
 <!-- NW 방문정보 트래킹 (체류·유입·경로) -->
