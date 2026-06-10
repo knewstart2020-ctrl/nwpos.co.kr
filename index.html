@@ -240,9 +240,11 @@
   .region-hero{background:linear-gradient(100deg,rgba(10,26,58,.94) 0%,rgba(10,26,58,.76) 46%,rgba(10,26,58,.3) 100%),url('region-care-bg.jpg') center/cover no-repeat;color:#fff;border-radius:18px;padding:52px 44px;text-align:left;overflow:hidden;}
   .region-hero h2{color:#fff;text-align:left;}
   .region-hero .sub{color:rgba(255,255,255,.8);text-align:left;word-break:keep-all;}
-  .region-copy{max-width:560px;}
+  .region-copy{max-width:760px;}
   .region-copy .ey{text-align:left;}
-  .region-copy .regions{justify-content:flex-start;}
+  .region-copy .regions{justify-content:flex-start;flex-wrap:nowrap;}
+  .region-copy .rchip{white-space:nowrap;padding:11px 16px;font-size:13.5px;}
+  @media(max-width:860px){.region-copy .regions{flex-wrap:wrap;}}
   @media(max-width:860px){.region-hero{padding:36px 22px;text-align:center;background:linear-gradient(rgba(10,26,58,.9),rgba(10,26,58,.82)),url('region-care-bg.jpg') center/cover no-repeat;}.region-hero h2,.region-hero .sub,.region-copy .ey{text-align:center;}.region-copy .regions{justify-content:center;}.region-copy{max-width:100%;}}
   .regions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:24px;}
   .rchip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:12px 22px;font-weight:800;color:#fff;transition:.15s;}
@@ -631,7 +633,7 @@
       <div class="region-copy">
         <div class="ey">LOCAL EXPERT</div>
         <h2>전국이 아니라, <span style="color:var(--gold)">우리 동네</span> 전담입니다</h2>
-        <p class="sub">매장에서 가장 가까운 <b style="color:var(--gold)">담당 기사</b>가 직접 찾아갑니다.<br>상담·설치·교육·A/S까지 — 얼굴 보고 해결합니다.</p>
+        <p class="sub">매장에서 가장 가까운 <b style="color:var(--gold)">담당 엔지니어</b>가 직접 찾아갑니다.<br>상담·설치·교육·A/S까지 — 얼굴 보고 해결합니다.</p>
         <div class="regions">
           <a class="rchip" href="#consult"><b>설치엔지니어·원격설치팀</b> 전담 운영</a>
           <a class="rchip" href="#consult">설치 후 재방문 <b>무료 교육</b></a>
