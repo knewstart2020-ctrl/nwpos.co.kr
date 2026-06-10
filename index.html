@@ -162,10 +162,10 @@
   .liemoji{font-size:46px;line-height:1;filter:drop-shadow(0 6px 10px rgba(10,26,58,.18));}
   .liimg{width:92px;height:92px;object-fit:contain;display:block;mix-blend-mode:multiply;}
   .pcard .solimg{width:80px;height:80px;object-fit:contain;display:block;margin:0 auto;mix-blend-mode:multiply;}
-  .sol-chips{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;align-items:center;align-content:center;min-height:80px;}
-  .sol-chips span{background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:4px 11px;font-size:11.5px;font-weight:800;color:var(--navy);}
-  .sol-pays{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;align-items:center;align-content:center;min-height:80px;}
-  .sol-pays span{color:#fff;border-radius:999px;padding:4px 9px;font-size:10.5px;font-weight:800;white-space:nowrap;}
+  .sol-chips{display:grid;grid-template-columns:repeat(2,auto);gap:6px;justify-content:center;align-items:center;align-content:center;min-height:80px;}
+  .sol-chips span{background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:4px 11px;font-size:11.5px;font-weight:800;color:var(--navy);text-align:center;}
+  .sol-pays{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;align-items:center;align-content:center;min-height:80px;max-width:160px;margin:0 auto;}
+  .sol-pays img{width:31px;height:31px;border-radius:50%;border:1px solid var(--line);background:#fff;object-fit:contain;padding:3px;box-shadow:0 2px 6px rgba(10,26,58,.08);}
   .liname{font-size:14.5px;font-weight:800;color:var(--navy);letter-spacing:-.3px;}
   .lipill{font-size:11.5px;font-weight:800;color:#fff;background:var(--blue);padding:3px 10px;border-radius:999px;}
   .lipill.gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);}
@@ -511,7 +511,7 @@
   <div class="wrap">
     <div class="ey">ALL-IN-ONE</div>
     <h2>매장에 필요한 모든 것, <span class="y">따로 알아볼 필요 없이</span></h2>
-    <p class="sub">포스부터 결제까지 — 누리네트웍스 하나로 묶어 한 번에 설치·관리합니다</p>
+    <p class="sub">포스부터 결제까지 — 누리네트웍스 하나로 묶어 한 번에 설치·관리합니다 <span style="color:var(--blue);font-weight:800;white-space:nowrap;">· 제품 클릭 시 상세 스펙으로 이동</span></p>
     <div class="grid">
       <a class="pcard" href="lineup-pos.html"><img class="solimg" src="li-pos.png" alt="POS N250"><h3>POS (N250)</h3><p>15인치 올인원 포스</p></a>
       <a class="pcard" href="lineup-kiosk.html"><img class="solimg" src="li-kiosk.png" alt="배리어프리 키오스크"><h3>키오스크</h3><p>무인 주문·결제</p></a>
@@ -519,7 +519,7 @@
       <a class="pcard" href="lineup-terminal.html"><img class="solimg" src="li-wired.png" alt="카드단말기"><h3>카드단말기</h3><p>모든 결제수단</p></a>
       <a class="pcard" href="lineup-signpad.html"><img class="solimg" src="li-naver.png" alt="네이버단말기 사인패드"><h3>사인패드</h3><p>전자서명</p></a>
       <a class="pcard" href="lineup-software.html"><div class="sol-chips"><span>업포스</span><span>오케이포스</span><span>유통</span><span>병원 등</span></div><h3>매장 소프트웨어</h3><p>매출·재고 관리</p></a>
-      <a class="pcard" href="lineup-pg.html"><div class="sol-pays"><span style="background:#111">애플페이</span><span style="background:#1428A0">삼성페이</span><span style="background:#03C75A">네이버페이</span><span style="background:#FEE500;color:#3A1D1D">카카오페이</span><span style="background:#0064FF">토스페이</span><span style="background:#00A4E3">제로페이</span><span style="background:linear-gradient(135deg,#1677FF,#07C160)">알리·위챗페이</span></div><h3>PG·간편결제</h3><p>온·오프 통합</p></a>
+      <a class="pcard" href="lineup-pg.html"><div class="sol-pays"><img src="pay-apple.png" alt="애플페이" title="애플페이"><img src="pay-samsung.png" alt="삼성페이" title="삼성페이"><img src="pay-naver.png" alt="네이버페이" title="네이버페이"><img src="pay-kakao.png" alt="카카오페이" title="카카오페이"><img src="pay-toss.png" alt="토스페이" title="토스페이"><img src="pay-zero.png" alt="제로페이" title="제로페이"><img src="pay-alipay.png" alt="알리페이" title="알리페이"><img src="pay-wechat.png" alt="위챗페이" title="위챗페이"></div><h3>PG·간편결제</h3><p>온·오프 통합</p></a>
       <a class="pcard" href="lineup-extra.html"><img class="solimg" src="li-printer.png" alt="TS100 프린터"><h3>주변기기</h3><p>TS100 프린터·스캐너 등</p></a>
     </div>
   </div>
