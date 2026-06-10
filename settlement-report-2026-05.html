@@ -79,6 +79,9 @@
   .trend-wrap { flex:1; display:flex; gap:16px; margin-top:10px; min-height:0; }
   .trend-chart { flex:1 1 0; min-width:0; position:relative; }
   .trend-chart canvas { width:100% !important; height:100% !important; }
+  .tcorner { position:absolute; top:2px; z-index:2; color:var(--navy); font-size:12px; font-weight:800; background:rgba(255,255,255,0.85); padding:2px 8px; border-radius:4px; }
+  .tc-l { left:44px; }
+  .tc-r { right:6px; }
   .trend-labels { flex:0 0 150px; display:flex; flex-direction:column; gap:8px; padding-top:8px; }
   .tl-apr { color:var(--blue); font-size:10px; font-weight:700; letter-spacing:2px; text-align:center; margin-bottom:2px; }
   .tl-card { background:var(--soft); border:1px solid var(--line); border-left:3px solid; border-radius:6px; padding:7px 12px; }
@@ -362,7 +365,7 @@
   <h1 class="ch-title">30개월 매출 추이</h1>
   <div class="ch-sub">CMS · 유상 · 위약금 · 전표판매 · 카드사대행</div>
   <div class="trend-wrap">
-    <div class="trend-chart"><canvas id="c4"></canvas></div>
+    <div class="trend-chart"><span class="tcorner tc-l">2023년 12월</span><span class="tcorner tc-r">2026년 05월</span><canvas id="c4"></canvas></div>
     <div class="trend-labels">
       <div class="tl-apr">M A Y</div>
       <div class="tl-card" style="border-left-color:#B8923E"><div class="tl-n" style="color:#B8923E">유상</div><div class="tl-v">1,495만</div></div><div class="tl-card" style="border-left-color:#0066FF"><div class="tl-n" style="color:#0066FF">위약금</div><div class="tl-v">368만</div></div><div class="tl-card" style="border-left-color:#7FB0FF"><div class="tl-n" style="color:#7FB0FF">전표판매</div><div class="tl-v">250만</div></div><div class="tl-card" style="border-left-color:#16A34A"><div class="tl-n" style="color:#16A34A">카드사대행</div><div class="tl-v">78만</div></div><div class="tl-card" style="border-left-color:#DC2626"><div class="tl-n" style="color:#DC2626">CMS</div><div class="tl-v">-8.2만</div></div>
@@ -386,7 +389,7 @@
   <h1 class="ch-title">30개월 건수 추이</h1>
   <div class="ch-sub">신규 · 테이블오더 · 해지 · 명변</div>
   <div class="trend-wrap">
-    <div class="trend-chart"><canvas id="c5"></canvas></div>
+    <div class="trend-chart"><span class="tcorner tc-l">2023년 12월</span><span class="tcorner tc-r">2026년 05월</span><canvas id="c5"></canvas></div>
     <div class="trend-labels">
       <div class="tl-apr">M A Y</div>
       <div class="tl-card" style="border-left-color:#DC2626"><div class="tl-n" style="color:#DC2626">해지</div><div class="tl-v">36건</div></div><div class="tl-card" style="border-left-color:#16A34A"><div class="tl-n" style="color:#16A34A">신규</div><div class="tl-v">18건</div></div><div class="tl-card" style="border-left-color:#B8923E"><div class="tl-n" style="color:#B8923E">테이블오더</div><div class="tl-v">9건</div></div><div class="tl-card" style="border-left-color:#0066FF"><div class="tl-n" style="color:#0066FF">명변</div><div class="tl-v">7건</div></div>
@@ -820,6 +823,49 @@ const fmtShort = (v, unit) => {
   const m = v / 10000;
   return (Math.abs(m) >= 100 ? Math.round(m).toLocaleString('ko-KR') : m.toFixed(1).replace(/\.0$/, '')) + '만';
 };
+// 라인 곡선 위 항목명 직접 표기 — 색이 아닌 이름으로 라인 추적 가능
+// posMap: { 시리즈명: { idx: 데이터인덱스, dy: 세로오프셋 } }
+const seriesNamePlugin = (posMap) => ({
+  id: 'seriesName',
+  afterDatasetsDraw(chart) {
+    const { ctx } = chart;
+    chart.data.datasets.forEach((ds, di) => {
+      const pos = posMap[ds.label];
+      if (!pos) return;
+      const meta = chart.getDatasetMeta(di);
+      const pt = meta.data[pos.idx];
+      if (!pt) return;
+      ctx.save();
+      ctx.font = "800 14px Pretendard, sans-serif";
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'alphabetic';
+      // 흰 외곽선으로 라인 위에서도 또렷하게
+      ctx.strokeStyle = 'rgba(255,255,255,0.92)';
+      ctx.lineWidth = 5;
+      ctx.lineJoin = 'round';
+      ctx.strokeText(ds.label, pt.x, pt.y + pos.dy);
+      ctx.fillStyle = ds.borderColor;
+      ctx.fillText(ds.label, pt.x, pt.y + pos.dy);
+      ctx.restore();
+    });
+  }
+});
+// P4 매출: 각 시리즈 피크 지점 분산
+const NAME_POS_C4 = {
+  '유상':       { idx:15, dy:-12 },  // 25.03 최고 피크
+  '위약금':     { idx:18, dy:-12 },  // 25.06 피크
+  'CMS':        { idx:2,  dy:-12 },  // 24.02 양수 구간
+  '전표판매':   { idx:21, dy:-12 },  // 25.09 피크
+  '카드사대행': { idx:14, dy:-12 },  // 25.02 피크
+};
+// P5 건수
+const NAME_POS_C5 = {
+  '테이블오더': { idx:5,  dy:-12 },  // 24.05 최고 201건
+  '해지':       { idx:4,  dy:-12 },  // 24.04 피크 58건
+  '신규':       { idx:8,  dy:-12 },  // 24.08 44건
+  '명변':       { idx:26, dy:18 },   // 26.02 저점 아래
+};
+
 const edgeLabelPlugin = (unit) => ({
   id: 'edgeLabel',
   afterDatasetsDraw(chart) {
@@ -881,7 +927,7 @@ new Chart(document.getElementById('c4'), {
     layout:{ padding:{ top:16, left:4, right:4 } },
     plugins:{ legend:{ display:false }, tooltip: trendTooltip('원') },
     scales:{ x:{ ticks:xTicks, grid:{display:false} }, y:{ ticks:tick, grid } } },
-  plugins:[edgeLabelPlugin('원')]
+  plugins:[edgeLabelPlugin('원'), seriesNamePlugin(NAME_POS_C4)]
 });
 
 new Chart(document.getElementById('c5'), {
@@ -900,7 +946,7 @@ new Chart(document.getElementById('c5'), {
     layout:{ padding:{ top:16, left:4, right:4 } },
     plugins:{ legend:{ display:false }, tooltip: trendTooltip('건') },
     scales:{ x:{ ticks:xTicks, grid:{display:false} }, y:{ ticks:tick, grid } } },
-  plugins:[edgeLabelPlugin('건')]
+  plugins:[edgeLabelPlugin('건'), seriesNamePlugin(NAME_POS_C5)]
 });
 
 const POS = [{"name":"전표판매","diff":0.822},{"name":"유상","diff":0.362},{"name":"해지","diff":-0.178},{"name":"위약금","diff":-0.3},{"name":"카드사대행","diff":-0.354},{"name":"신규","diff":-0.451},{"name":"명변","diff":-0.607},{"name":"테이블오더","diff":-0.856},{"name":"CMS","diff":-1.214}];
