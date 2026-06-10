@@ -644,20 +644,7 @@
   </div>
 </section>
 
-<!-- 안전망 (비버 직영CS · 아이샵 0원/무약정) -->
-<section class="sec paper">
-  <div class="wrap">
-    <div class="ey">SAFE CHOICE</div>
-    <h2>도입이 부담되지 않게</h2>
-    <p class="sub">사장님 부담을 줄이는 4가지 약속</p>
-    <div class="safety">
-      <div class="scard"><div class="ic">🛡️</div><h3>30일 만족 보장</h3><p>안 맞으면 30일 내 무상 회수</p></div>
-      <div class="scard"><div class="ic">🏢</div><h3>KT BC 스마트로</h3><p>대기업 계열 안정성</p></div>
-      <div class="scard"><div class="ic">⚡</div><h3>24시간 리커버리</h3><p>영업시간 외에도 즉시 대응</p></div>
-      <div class="scard"><div class="ic">🤝</div><h3>지사 직접 관리</h3><p>대리점 거치지 않는 직접 사후</p></div>
-    </div>
-  </div>
-</section>
+<!-- (SAFE CHOICE 섹션 삭제됨) -->
 
 <!-- 최종 CTA + 상담폼 -->
 <section class="final" id="consult">
@@ -692,7 +679,7 @@
 <div class="sticky-cta" id="stickyCta">
   <button class="scgo" onclick="openConsult()">💬 바로 상담하기</button>
 </div>
-<script>(function(){var b=document.getElementById('stickyCta');if(!b)return;function chk(){if(window.scrollY>520)b.classList.add('show');else b.classList.remove('show');}window.addEventListener('scroll',chk,{passive:true});chk();})();</script>
+<script>(function(){var b=document.getElementById('stickyCta');if(!b)return;var sec=document.querySelector('.region-hero');function chk(){var ok=window.scrollY>520;if(ok&&sec){ok=sec.getBoundingClientRect().bottom>0;}if(ok)b.classList.add('show');else b.classList.remove('show');}window.addEventListener('scroll',chk,{passive:true});chk();})();</script>
 
 <!-- 우측 상담 패널 (벤치마크: 아정당) -->
 <aside class="side-consult" id="sideConsult">
