@@ -180,6 +180,10 @@
   .pay-col.pc-methods:before{content:"";position:absolute;right:-10px;bottom:-16px;width:128px;height:128px;background:url('li-toss.png') center/contain no-repeat;opacity:.13;pointer-events:none;}
   .pay-col.pc-methods:after{content:"";position:absolute;left:-10px;bottom:-16px;width:118px;height:118px;background:url('li-naver.png') center/contain no-repeat;opacity:.13;pointer-events:none;}
   .pay-col.pc-methods .pay-head,.pay-col.pc-methods .pay-grid{position:relative;z-index:1;}
+  .pay-col.pc-easy{position:relative;overflow:hidden;}
+  .pay-col.pc-easy:before{content:"";position:absolute;right:-10px;bottom:-16px;width:128px;height:128px;background:url('li-pos.png') center/contain no-repeat;opacity:.13;pointer-events:none;}
+  .pay-col.pc-easy:after{content:"";position:absolute;left:-10px;bottom:-16px;width:118px;height:118px;background:url('li-order.png') center/contain no-repeat;opacity:.13;pointer-events:none;}
+  .pay-col.pc-easy .pay-head,.pay-col.pc-easy .pay-logos{position:relative;z-index:1;}
   .pay-col .pay-head{margin:0 0 14px;}
   .pay-grid.g3{max-width:292px;margin:0 auto;gap:9px;}
   .pay-grid.g3 .paypill{flex:0 0 auto;min-width:80px;text-align:center;}
@@ -288,11 +292,9 @@
   /* 배경 흐르는 텍스트 (회사소개 hft 방식) */
   .fft-wrap{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;}
   .fft{position:absolute;font-weight:900;white-space:nowrap;color:rgba(0,0,0,.022);letter-spacing:.05em;text-transform:uppercase;line-height:1;}
-  .fft-1{font-size:clamp(2rem,6vw,3.8rem);top:4%;animation:fftM 30s linear infinite;}
-  .fft-2{font-size:clamp(1.7rem,5vw,3rem);top:40%;animation:fftM 36s linear infinite reverse;}
-  .fft-3{font-size:clamp(1.8rem,5.5vw,3.4rem);top:72%;animation:fftM 33s linear infinite;}
-  @keyframes fftM{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-  @media(prefers-reduced-motion:reduce){.fft{animation:none;}}
+  .fft-1{font-size:clamp(2rem,6vw,3.8rem);top:4%;}
+  .fft-2{font-size:clamp(1.7rem,5vw,3rem);top:40%;}
+  .fft-3{font-size:clamp(1.8rem,5.5vw,3.4rem);top:72%;}
   footer b{color:var(--gold);}
   footer .fnav a{color:rgba(255,255,255,.78);text-decoration:underline;text-underline-offset:3px;padding:0 4px;}
   footer .fnav a:hover{color:var(--gold);}
@@ -465,7 +467,7 @@
       <a class="litile" href="javascript:void(0)" onclick="openConsult()"><img class="liimg" src="li-wireless.png" alt="무선카드단말기"><div class="liname">무선카드단말기</div><div class="lipill">구매가 1만원</div></a>
     </div>
     <div class="pay-cols">
-      <div class="pay-col">
+      <div class="pay-col pc-easy">
         <div class="pay-head">모든 <span>간편결제</span></div>
         <div class="pay-logos">
           <img src="pay-apple.png" alt="애플페이" title="애플페이">
@@ -664,6 +666,8 @@
     <div>
       <h2>누리포스를<br><span class="y">선택해야 하는 이유</span></h2>
       <ul class="why-list">
+        <li><b>약정·위약금 없는</b> 토스/네이버단말기 제공</li>
+        <li>포스·테이블오더·배리어프리키오스크 <b>QR오더 무상제공</b></li>
         <li><b>피드백 최우선</b> — 요청 즉시 응대하는 전담 관리</li>
         <li><b>리커버리 시스템</b> — 같은 실수를 반복하지 않는 조직</li>
         <li><b>전국 네트워크 조직</b> — 수도권 직영 + 전국 위탁 서비스망</li>
@@ -710,18 +714,9 @@
     <div class="fft fft-3">POS · KIOSK · TABLE ORDER · SIGNPAD · TERMINAL · POS · KIOSK · TABLE ORDER · SIGNPAD · TERMINAL · POS · KIOSK · TABLE ORDER · </div>
   </div>
   <div class="wrap">
-    <p class="fwrite" id="fWrite"></p>
+    <p class="fwrite">주식회사 누리네트웍스  107-87-71087  대표자: 김정식  nuri@posone.co.kr  1544-7754  서울시 영등포구 선유로70 우리벤처타운 4층 408호<br>Copyright 2012. 주식회사 누리네트웍스 All rights reserved.</p>
   </div>
 </footer>
-<script>(function(){var el=document.getElementById('fWrite');if(!el)return;
-var T="주식회사 누리네트웍스  107-87-71087  대표자: 김정식  nuri@posone.co.kr  1544-7754  서울시 영등포구 선유로70 우리벤처타운 4층 408호\nCopyright 2012. 주식회사 누리네트웍스 All rights reserved.";
-function full(){el.innerHTML=T.replace(/\n/g,'<br>');}
-if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){full();return;}
-var i=0,started=false;
-function tick(){if(i<=T.length){el.innerHTML=T.slice(0,i).replace(/\n/g,'<br>')+'<span class="fcaret"></span>';i++;setTimeout(tick,26);}else{full();}}
-function start(){if(started)return;started=true;tick();}
-if(window.IntersectionObserver){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){start();io.disconnect();}});});io.observe(el);}else{start();}
-})();</script>
 
 <!-- 스티키 하단 상담 배너 (벤치마크: 아정당) -->
 <div class="sticky-cta" id="stickyCta">
@@ -734,7 +729,7 @@ if(window.IntersectionObserver){var io=new IntersectionObserver(function(es){es.
   <button class="sc-toggle" onclick="document.getElementById('sideConsult').classList.toggle('collapsed')" aria-label="상담 패널 접기/펼치기"><span class="sc-arrow">›</span></button>
   <button class="sc-btn primary" onclick="openConsult()">💬 바로 상담하기</button>
   <div class="sc-tel">
-    <div class="num">1544-7754</div>
+    <div class="num">📞 1544-7754</div>
     <div class="sub">창업의 첫걸음,<br>누리포스가 끝까지 함께합니다 💙</div>
     <img class="sc-mascot" src="staff-model-blue.png" alt="누리네트웍스 직원">
   </div>
