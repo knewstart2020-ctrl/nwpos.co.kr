@@ -280,7 +280,16 @@
   .cform .agree{font-size:11.5px;color:var(--ink-soft);margin-top:8px;text-align:center;}
   @media(max-width:880px){.final .wrap{grid-template-columns:1fr;}}
 
-  footer{background:#05102A;color:rgba(255,255,255,.6);padding:32px 0;font-size:13px;text-align:center;}
+  footer{background:#05102A;color:rgba(255,255,255,.6);padding:44px 0;font-size:13px;text-align:center;position:relative;overflow:hidden;}
+  footer .wrap{position:relative;z-index:1;}
+  /* 배경 흐르는 텍스트 (회사소개 hft 방식) */
+  .fft-wrap{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;}
+  .fft{position:absolute;font-weight:900;white-space:nowrap;color:rgba(255,255,255,.05);letter-spacing:.05em;text-transform:uppercase;line-height:1;}
+  .fft-1{font-size:clamp(2rem,6vw,3.8rem);top:4%;animation:fftM 30s linear infinite;}
+  .fft-2{font-size:clamp(1.7rem,5vw,3rem);top:40%;animation:fftM 36s linear infinite reverse;}
+  .fft-3{font-size:clamp(1.8rem,5.5vw,3.4rem);top:72%;animation:fftM 33s linear infinite;}
+  @keyframes fftM{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media(prefers-reduced-motion:reduce){.fft{animation:none;}}
   footer b{color:var(--gold);}
   footer .fnav a{color:rgba(255,255,255,.78);text-decoration:underline;text-underline-offset:3px;padding:0 4px;}
   footer .fnav a:hover{color:var(--gold);}
@@ -688,6 +697,11 @@
 </section>
 
 <footer>
+  <div class="fft-wrap">
+    <div class="fft fft-1">NURINETWORKS · NO.1 PAYMENT SERVICE · SINCE 2012 · NURINETWORKS · NO.1 PAYMENT SERVICE · SINCE 2012 · NURINETWORKS · NO.1 PAYMENT SERVICE · SINCE 2012 · </div>
+    <div class="fft fft-2">누리네트웍스 · 결제솔루션 · 스마트로 · 지불결제 · 누리네트웍스 · 결제솔루션 · 스마트로 · 지불결제 · 누리네트웍스 · 결제솔루션 · 스마트로 · </div>
+    <div class="fft fft-3">POS · KIOSK · TABLE ORDER · SIGNPAD · TERMINAL · POS · KIOSK · TABLE ORDER · SIGNPAD · TERMINAL · POS · KIOSK · TABLE ORDER · </div>
+  </div>
   <div class="wrap">
     <p class="fwrite" id="fWrite"></p>
   </div>
