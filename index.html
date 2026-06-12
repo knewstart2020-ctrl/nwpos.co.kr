@@ -776,7 +776,7 @@ function submitConsult(){
   var memo=document.getElementById('mMemo').value.trim();
   var now=new Date();var d=now.getFullYear()+'.'+(now.getMonth()+1)+'.'+now.getDate()+' '+now.getHours()+':'+String(now.getMinutes()).padStart(2,'0');
   var SCRIPT_URL='https://script.google.com/macros/s/AKfycbx7ehczO8H27GXO58JHPvNUbZWocPUSKpL9NMMbtQgHlglVgRhaua4_WAOhv5MZqqzThA/exec';
-  var fd={name:name,phone:phone,consultType:type,time:'',memo:memo,date:d,duration:0,pages:'메인 히어로',referrer:'nwpos.co.kr 메인 무료상담',interests:type};
+  var fd={name:name,phone:phone,consultType:type,time:'',memo:memo,date:d,duration:0,pages:'메인 히어로',referrer:'nwpos.co.kr 메인 무료상담 | 유입:'+(function(){try{return sessionStorage.getItem('nw_entry')||location.pathname+location.search}catch(e){return '-'}})(),interests:type};
   var b=document.getElementById('mSubmit');b.textContent='전송 중...';b.disabled=true;
   fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(fd)}).then(done).catch(done);
   // 관제(ACD) 병행 전송 — 비파괴, 실패해도 사용자 화면 무영향
@@ -794,7 +794,7 @@ function submitConsultFinal(){
   var memo=document.getElementById('fMemo').value.trim();
   var now=new Date();var d=now.getFullYear()+'.'+(now.getMonth()+1)+'.'+now.getDate()+' '+now.getHours()+':'+String(now.getMinutes()).padStart(2,'0');
   var SCRIPT_URL='https://script.google.com/macros/s/AKfycbx7ehczO8H27GXO58JHPvNUbZWocPUSKpL9NMMbtQgHlglVgRhaua4_WAOhv5MZqqzThA/exec';
-  var fd={name:name,phone:phone,consultType:type,time:'',memo:memo,date:d,duration:0,pages:'메인 최종 CTA',referrer:'nwpos.co.kr 메인 무료상담',interests:type};
+  var fd={name:name,phone:phone,consultType:type,time:'',memo:memo,date:d,duration:0,pages:'메인 최종 CTA',referrer:'nwpos.co.kr 메인 무료상담 | 유입:'+(function(){try{return sessionStorage.getItem('nw_entry')||location.pathname+location.search}catch(e){return '-'}})(),interests:type};
   var b=document.getElementById('fSubmit');b.textContent='전송 중...';b.disabled=true;
   fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(fd)}).then(done).catch(done);
   var vt={};try{var vs=sessionStorage,vt0=parseInt(vs.getItem('nw_t0')||'0',10);if(vt0){var vsec=Math.max(0,Math.round((Date.now()-vt0)/1000));vt.stayTime=vsec>=60?(Math.floor(vsec/60)+'분 '+(vsec%60)+'초'):(vsec+'초');}vt.entryPage=vs.getItem('nw_entry')||location.pathname;vt.referrer=vs.getItem('nw_ref')||document.referrer||'직접유입';vt.pageViews=vs.getItem('nw_pages')||'메인';}catch(e){}
