@@ -470,8 +470,8 @@ body.price-off .hero .h1-trust{display:block;animation:chIn .6s ease forwards;}
 
 <!-- 히어로 트랙 필 순차 강조 -->
 <script>(function(){var p=document.querySelectorAll('.track .tk-pill');if(!p.length)return;var i=0;setInterval(function(){for(var j=0;j<p.length;j++)p[j].classList.remove('pspot');p[i%p.length].classList.add('pspot');i++;},1300);})();</script>
-<!-- 가격 노출 요일 토글: 일·월·수·금 가격 / 화·목·토 신뢰 버전 (대리점 저격 방어) -->
-<script>(function(){var d=new Date().getDay();var show=[0,1,3,5].indexOf(d)>=0;if(!show){document.body.classList.add('price-off');var pp=document.querySelectorAll('.pricepill');for(var i=0;i<pp.length;i++)pp[i].textContent='상담 시 안내';}})();</script>
+<!-- 가격 노출 요일 토글: 신뢰 버전(가격 숨김)은 월·수만 / 그 외 5일은 가격 노출 (대리점 저격 방어) -->
+<script>(function(){var d=new Date().getDay();var off=[1,3].indexOf(d)>=0;if(off){document.body.classList.add('price-off');var pp=document.querySelectorAll('.pricepill');for(var i=0;i<pp.length;i++)pp[i].textContent='상담 시 안내';}})();</script>
 
 <!-- 올인원 라인업 (벤치마크: 아정당) -->
 <section class="sec lineup-sec" id="lineup-grid">
