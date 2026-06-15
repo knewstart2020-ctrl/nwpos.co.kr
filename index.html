@@ -294,17 +294,17 @@
   .cform .agree{font-size:11.5px;color:var(--ink-soft);margin-top:8px;text-align:center;}
   @media(max-width:880px){.final .wrap{grid-template-columns:1fr;}}
 
-  footer{background:#fff;color:#1d1d1f;border-top:1px solid var(--line);padding:44px 0;font-size:13px;text-align:center;position:relative;overflow:hidden;}
-  footer .wrap{position:relative;z-index:1;}
-  /* 배경 흐르는 텍스트 (회사소개 hft 방식) */
-  .fft-wrap{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;}
-  .fft{position:absolute;font-weight:900;white-space:nowrap;color:rgba(0,0,0,.022);letter-spacing:.05em;text-transform:uppercase;line-height:1;}
-  .fft-1{font-size:clamp(2rem,6vw,3.8rem);top:4%;}
-  .fft-2{font-size:clamp(1.7rem,5vw,3rem);top:40%;}
-  .fft-3{font-size:clamp(1.8rem,5.5vw,3.4rem);top:72%;}
-  footer b{color:var(--gold);}
-  footer .fnav a{color:rgba(255,255,255,.78);text-decoration:underline;text-underline-offset:3px;padding:0 4px;}
-  footer .fnav a:hover{color:var(--gold);}
+  footer{background:#0a1a3a;color:#cdd6e6;padding:42px 0 34px;font-size:13px;text-align:center;}
+  footer .wrap{max-width:880px;}
+  .foot-brand{font-size:19px;font-weight:900;color:#fff;letter-spacing:-.3px;}
+  .foot-tag{font-size:11.5px;color:#8da3c8;letter-spacing:.05em;margin:6px 0 20px;text-transform:uppercase;}
+  .foot-info{list-style:none;margin:0 auto 16px;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:9px 24px;max-width:760px;}
+  .foot-info li{font-size:13px;color:#dbe3f2;white-space:nowrap;}
+  .foot-info li span{color:#7f97c0;font-weight:700;margin-right:7px;}
+  .foot-info li.full{flex-basis:100%;white-space:normal;}
+  .foot-disc{font-size:11.5px;line-height:1.7;color:#8696b5;max-width:700px;margin:0 auto 14px;word-break:keep-all;border-top:1px solid rgba(255,255,255,.09);padding-top:16px;}
+  .foot-copy{font-size:12px;color:#9fb0cd;font-weight:600;}
+  @media(max-width:600px){.foot-info{flex-direction:column;gap:8px;}.foot-info li{white-space:normal;}.foot-brand{font-size:17px;}}
 
   .floating{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;flex-direction:column;gap:10px;}
   /* 우측 상담 패널 (벤치마크: 아정당) */
@@ -694,13 +694,18 @@ body.price-off .hero .h1-trust{display:block;animation:chIn .6s ease forwards;}
 </section>
 
 <footer>
-  <div class="fft-wrap">
-    <div class="fft fft-1">NURINETWORKS · NO.1 PAYMENT SERVICE · SINCE 2012 · NURINETWORKS · NO.1 PAYMENT SERVICE · SINCE 2012 · NURINETWORKS · NO.1 PAYMENT SERVICE · SINCE 2012 · </div>
-    <div class="fft fft-2">누리네트웍스 · 결제솔루션 · 스마트로 · 지불결제 · 누리네트웍스 · 결제솔루션 · 스마트로 · 지불결제 · 누리네트웍스 · 결제솔루션 · 스마트로 · </div>
-    <div class="fft fft-3">POS · KIOSK · TABLE ORDER · SIGNPAD · TERMINAL · POS · KIOSK · TABLE ORDER · SIGNPAD · TERMINAL · POS · KIOSK · TABLE ORDER · </div>
-  </div>
   <div class="wrap">
-    <p class="fwrite">주식회사 누리네트웍스  107-87-71087  대표자: 김정식  nuri@posone.co.kr  1544-7754  서울시 영등포구 선유로70 우리벤처타운 4층 408호<br><span style="font-weight:600;font-size:12px;opacity:.85;">당사는 결제 단말기 판매·설치·유지보수 전문 기업이며, 결제 대금 정산은 전자금융업 등록 사업자(VAN·PG) 및 각 카드사를 통해 가맹점에 직접 지급됩니다.</span><br>Copyright 2012. 주식회사 누리네트웍스 All rights reserved.</p>
+    <div class="foot-brand">주식회사 누리네트웍스</div>
+    <div class="foot-tag">POS · KIOSK · TABLE ORDER · SIGNPAD · TERMINAL — Since 2012</div>
+    <ul class="foot-info">
+      <li><span>대표자</span>김정식</li>
+      <li><span>사업자등록번호</span>107-87-71087</li>
+      <li><span>대표전화</span>1544-7754</li>
+      <li><span>이메일</span>nuri@posone.co.kr</li>
+      <li class="full"><span>주소</span>서울특별시 영등포구 선유로70 우리벤처타운 4층 408호</li>
+    </ul>
+    <p class="foot-disc">당사는 결제 단말기 판매·설치·유지보수 전문 기업이며, 결제 대금 정산은 전자금융업 등록 사업자(VAN·PG) 및 각 카드사를 통해 가맹점에 직접 지급됩니다.</p>
+    <p class="foot-copy">Copyright © 2012. 주식회사 누리네트웍스 All rights reserved.</p>
   </div>
 </footer>
 
