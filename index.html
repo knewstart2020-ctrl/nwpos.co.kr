@@ -578,45 +578,34 @@ body.price-off .hero .h1-trust{display:block;animation:chIn .6s ease forwards;}
   </div>
 </section>
 
-<!-- 업종별 추천 패키지 (메이트) -->
-<section class="sec alt" id="packages">
-  <div class="wrap">
-    <div class="ey">BEST PACKAGE</div>
-    <h2>우리 매장엔 <span class="y">어떤 조합</span>이 맞을까요?</h2>
-    <p class="sub">업종별로 가장 많이 선택한 구성 — 상담 시 매장에 딱 맞게 조정해 드립니다</p>
-    <div class="pkgs">
-      <div class="pkg">
-        <div class="ic">☕</div><h3>카페 패키지</h3><div class="for">테이크아웃·소형 매장</div>
-        <ul><li>POS N250</li><li>키오스크 (무인 주문)</li><li>카드단말기</li><li>매출 관리 SW</li></ul>
-        <a class="btn btn-ghost" href="#consult">카페 구성 상담</a>
-      </div>
-      <div class="pkg best">
-        <div class="tag">가장 인기</div>
-        <div class="ic">🍽️</div><h3>식당·주점 패키지</h3><div class="for">홀·테이블 운영 매장</div>
-        <ul><li>POS N250</li><li>테이블오더 (비대면 주문)</li><li>키오스크 + 카드단말기</li><li>주방 프린터·정산 SW</li></ul>
-        <a class="btn btn-gold" href="#consult">식당 구성 상담</a>
-      </div>
-      <div class="pkg">
-        <div class="ic">🏪</div><h3>리테일·기타 패키지</h3><div class="for">편의·미용·병원 등</div>
-        <ul><li>POS + 카드단말기</li><li>사인패드</li><li>PG·간편결제 연동</li><li>재고·고객 관리 SW</li></ul>
-        <a class="btn btn-ghost" href="#consult">맞춤 구성 상담</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 도입 효과 데이터 (티오더 데이터증명) -->
+<!-- 도입 효과: 제품별 8카드 (포스·배리어프리키오스크·테이블오더·토스프론트) -->
+<style>
+.change-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:10px;}
+.chcard{background:#fff;border:1px solid #e6e9f0;border-radius:14px;padding:20px 18px;text-align:left;transition:transform .2s,box-shadow .2s;}
+.chcard:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(10,26,58,.1);}
+.chic{font-size:30px;margin-bottom:8px;line-height:1;}
+.chtag{font-size:11px;font-weight:800;color:var(--blue);letter-spacing:.3px;margin-bottom:6px;}
+.chcard h3{font-size:15.5px;color:#0a1a3a;margin:0 0 7px;line-height:1.35;word-break:keep-all;font-weight:800;}
+.chcard p{font-size:12.5px;color:#5a6677;line-height:1.6;word-break:keep-all;margin:0;}
+@media(max-width:980px){.change-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:520px){.change-grid{grid-template-columns:1fr;}}
+</style>
 <section class="sec" id="effect">
   <div class="wrap">
     <div class="ey">WHY IT WORKS</div>
     <h2>도입 후, 매장이 이렇게 바뀝니다</h2>
-    <p class="sub">키오스크·테이블오더로 사람 손이 덜 가는 매장</p>
-    <div class="data">
-      <div class="dcard"><div class="big">↓ 피크타임</div><div class="lab">대기 줄 감소</div><div class="desc">무인 주문으로 주문 적체 해소</div></div>
-      <div class="dcard"><div class="big">↑ 회전율</div><div class="lab">테이블 회전 향상</div><div class="desc">비대면 주문·결제로 응대 시간 단축</div></div>
-      <div class="dcard"><div class="big">↓ 인건비</div><div class="lab">운영 부담 절감</div><div class="desc">주문·정산 자동화로 일손 절약</div></div>
+    <p class="sub">포스 · 배리어프리 키오스크 · 테이블오더 · 토스프론트 — 제품마다 매장이 이렇게 달라집니다</p>
+    <div class="change-grid">
+      <div class="chcard"><div class="chic">🖥️</div><div class="chtag">POS · N250</div><h3>주문·결제·매출이 한 화면에</h3><p>메뉴·가격을 외울 필요 없이 터치 한 번으로 주문부터 정산까지. 직원이 바뀌어도 운영이 흔들리지 않습니다.</p></div>
+      <div class="chcard"><div class="chic">📊</div><div class="chtag">POS · 매출관리</div><h3>매출이 알아서 정리됩니다</h3><p>일·월 매출, 인기 메뉴, 재고까지 자동 집계. 매장 밖에서도 휴대폰으로 우리 가게 상황을 확인합니다.</p></div>
+      <div class="chcard"><div class="chic">🧑‍🦽</div><div class="chtag">배리어프리 키오스크</div><h3>모든 손님이 스스로 주문</h3><p>정부 인증 접근성으로 휠체어·고령 고객도 편하게. 줄 서서 기다리는 대기 손님이 줄어듭니다.</p></div>
+      <div class="chcard"><div class="chic">🌙</div><div class="chtag">배리어프리 키오스크</div><h3>사람 없이도 도는 매장</h3><p>피크타임 주문 적체를 무인 주문으로 해소. 주문받는 일손을 줄여 인건비 부담을 낮춥니다.</p></div>
+      <div class="chcard"><div class="chic">🍽️</div><div class="chtag">테이블오더</div><h3>앉은 자리에서 바로 주문</h3><p>직원을 부르지 않아도 비대면 주문·결제. 응대 시간이 줄어 테이블 회전이 빨라집니다.</p></div>
+      <div class="chcard"><div class="chic">🌐</div><div class="chtag">테이블오더</div><h3>외국인 손님도 막힘없이</h3><p>다국어 메뉴로 언어 장벽 해소. 주문 실수와 오해가 줄어 직원도 손님도 편해집니다.</p></div>
+      <div class="chcard"><div class="chic">✍️</div><div class="chtag">토스프론트</div><h3>결제 수단 전부 한 대로</h3><p>IC·삼성페이·애플페이·NFC·QR까지 한 번에. 놓치는 결제 없이 매출 기회를 넓힙니다.</p></div>
+      <div class="chcard"><div class="chic">⚡</div><div class="chtag">토스프론트</div><h3>기존 포스에 바로 연결</h3><p>장비 교체 없이 간편 설치. 빠른 결제 처리로 계산대 앞 대기 줄을 줄여 줍니다.</p></div>
     </div>
-    <p class="note">* 실제 수치는 매장·업종별로 상이합니다. (도입 매장 데이터 확보 시 구체 수치로 교체 예정)</p>
+    <p class="note">* 도입 효과는 매장·업종별로 다를 수 있습니다. 상담 시 매장에 맞는 구성을 안내해 드립니다.</p>
   </div>
 </section>
 
