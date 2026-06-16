@@ -614,8 +614,14 @@ body.price-off .hero .h1-trust{display:block;animation:chIn .6s ease forwards;}
     <p class="note">* 도입 효과는 매장·업종별로 다를 수 있습니다. 상담 시 매장에 맞는 구성을 안내해 드립니다.</p>
   </div>
 </section>
-<!-- 도입효과 8카드 순차 색상 강조 (화면 진입 시 시작) -->
-<script>(function(){var cards=document.querySelectorAll('#effect .chcard');if(!cards.length)return;var i=0,timer=null;function step(){for(var j=0;j<cards.length;j++)cards[j].classList.remove('chspot');cards[i%cards.length].classList.add('chspot');i++;}function start(){if(timer)return;step();timer=setInterval(step,1300);}function stop(){clearInterval(timer);timer=null;}var sec=document.getElementById('effect');if(window.IntersectionObserver&&sec){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)start();else stop();});},{threshold:.2});io.observe(sec);}else{start();}})();</script>
+<!-- 도입효과 8카드 순차 색상 강조 (인라인 스타일 직접 적용, 화면 진입 시 시작) -->
+<script>(function(){var cards=document.querySelectorAll('#effect .chcard');if(!cards.length)return;
+var ON={borderColor:'#0066FF',background:'linear-gradient(180deg,#e8f1ff,#f6faff)',boxShadow:'0 16px 40px rgba(0,102,255,.26)',transform:'translateY(-6px) scale(1.02)'};
+function clear(c){c.style.borderColor='';c.style.background='';c.style.boxShadow='';c.style.transform='';var ic=c.querySelector('.chic');if(ic)ic.style.transform='';var h=c.querySelector('h3');if(h)h.style.color='';var tg=c.querySelector('.chtag');if(tg)tg.style.color='';}
+function on(c){c.style.borderColor=ON.borderColor;c.style.background=ON.background;c.style.boxShadow=ON.boxShadow;c.style.transform=ON.transform;var ic=c.querySelector('.chic');if(ic)ic.style.transform='scale(1.12)';var h=c.querySelector('h3');if(h)h.style.color='#003a99';var tg=c.querySelector('.chtag');if(tg)tg.style.color='#0052cc';}
+var i=0,timer=null;function step(){for(var j=0;j<cards.length;j++)clear(cards[j]);on(cards[i%cards.length]);i++;}
+function start(){if(timer)return;step();timer=setInterval(step,1300);}function stop(){if(timer){clearInterval(timer);timer=null;}}
+var sec=document.getElementById('effect');if(window.IntersectionObserver&&sec){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)start();else stop();});},{threshold:.15});io.observe(sec);}else{start();}})();</script>
 
 <!-- 지역별 전담 (큐플 전국 → 우리 동네 직접 차별화) -->
 <section class="sec">
