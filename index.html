@@ -736,10 +736,15 @@ var sec=document.getElementById('effect');if(window.IntersectionObserver&&sec){v
   .wing-cap .t b{color:var(--gold);}
   .wing-cap a{display:inline-block;margin-top:12px;background:var(--blue);color:#fff;font-size:12.5px;font-weight:800;padding:9px 18px;border-radius:22px;text-decoration:none;pointer-events:auto;box-shadow:0 6px 18px rgba(23,99,232,.4);transition:background .2s;}
   .wing-cap a:hover{background:#1763E8;}
-  /* 인트로: 3D 결제 영상 → 엔지니어 크로스페이드 */
-  .wf-intro{position:absolute;inset:0;z-index:5;background:#0a1a3a;overflow:hidden;transition:opacity .8s ease,visibility .8s ease;}
+  /* 인트로: 제품 6종 순차 쇼케이스 → 엔지니어 크로스페이드 */
+  .wf-intro{position:absolute;inset:0;z-index:5;background:linear-gradient(160deg,#0c1f47 0%,#0a1a3a 62%,#091633 100%);overflow:hidden;transition:opacity .8s ease,visibility .8s ease;}
   .wf-intro.done{opacity:0;visibility:hidden;}
-  .wf-payvid{width:100%;height:100%;object-fit:cover;display:block;}
+  .wf-slide{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:15px;opacity:0;transform:translateY(10px) scale(.96);transition:opacity .45s ease,transform .6s cubic-bezier(.2,.7,.2,1);padding:0 12%;pointer-events:none;}
+  .wf-slide.show{opacity:1;transform:translateY(0) scale(1);}
+  .wf-slide .wf-card{width:100%;background:#fff;border-radius:16px;padding:14px;box-shadow:0 16px 40px rgba(0,0,0,.42);}
+  .wf-slide .wf-card img{width:100%;aspect-ratio:1/1;object-fit:contain;display:block;}
+  .wf-slide .wf-name{color:#fff;font-size:14.5px;font-weight:800;letter-spacing:.2px;text-align:center;text-shadow:0 2px 10px rgba(0,0,0,.5);word-break:keep-all;}
+  .wf-slide .wf-name b{color:var(--gold);}
   @media(prefers-reduced-motion:reduce){.wf-intro{display:none;}}
   @media(max-width:1499px){.wing-take{display:none;}}
 </style>
@@ -747,15 +752,20 @@ var sec=document.getElementById('effect');if(window.IntersectionObserver&&sec){v
   <img src="wing-engineer.jpg" alt="누리네트웍스 설치 엔지니어">
   <div class="wf-blur" aria-hidden="true"></div>
   <div class="wf-intro" id="wfIntro" aria-hidden="true">
-    <video class="wf-payvid" id="wfPayVid" src="wing-pay.mp4" muted playsinline preload="auto"></video>
+    <div class="wf-slide"><div class="wf-card"><img src="li-toss.png" alt="토스 단말기"></div><div class="wf-name">토스 단말기</div></div>
+    <div class="wf-slide"><div class="wf-card"><img src="li-pos.png" alt="N250 올인원 포스"></div><div class="wf-name"><b>N250</b> 올인원 포스</div></div>
+    <div class="wf-slide"><div class="wf-card"><img src="li-naver.png" alt="네이버 단말기"></div><div class="wf-name">네이버 단말기</div></div>
+    <div class="wf-slide"><div class="wf-card"><img src="li-order.png" alt="테이블오더"></div><div class="wf-name">테이블오더</div></div>
+    <div class="wf-slide"><div class="wf-card"><img src="li-kiosk.png" alt="배리어프리 키오스크"></div><div class="wf-name">배리어프리 키오스크</div></div>
+    <div class="wf-slide"><div class="wf-card"><img src="li-wired.png" alt="유선 단말기"></div><div class="wf-name">유선 단말기</div></div>
   </div>
   <div class="wing-cap">
     <div class="t">한 번 맡기면<br><b>끝까지 책임집니다</b></div>
     <a href="javascript:void(0)" onclick="openConsult()">상담하기 ›</a>
   </div>
 </aside>
-<!-- 윙배너 인트로: 3D 결제 영상 재생 후 엔지니어로 크로스페이드, 세션당 1회 -->
-<script>(function(){var intro=document.getElementById('wfIntro');if(!intro)return;var v=document.getElementById('wfPayVid');function done(){intro.classList.add('done');}try{if(sessionStorage.getItem('wf_intro_played')){intro.style.display='none';return;}sessionStorage.setItem('wf_intro_played','1');}catch(e){}if(v){v.muted=true;var p=v.play();if(p&&p.catch)p.catch(done);v.addEventListener('ended',done);setTimeout(done,8000);}else{done();}})();</script>
+<!-- 윙배너 인트로: 제품 6종 순차 쇼케이스 후 엔지니어로 크로스페이드, 세션당 1회 -->
+<script>(function(){var intro=document.getElementById('wfIntro');if(!intro)return;var slides=intro.querySelectorAll('.wf-slide');function done(){intro.classList.add('done');}try{if(sessionStorage.getItem('wf_intro_played')){intro.style.display='none';return;}sessionStorage.setItem('wf_intro_played','1');}catch(e){}if(!slides.length){done();return;}var i=0,HOLD=950;function step(){if(i>=slides.length){done();return;}if(i>0)slides[i-1].classList.remove('show');slides[i].classList.add('show');i++;setTimeout(step,HOLD);}setTimeout(step,250);setTimeout(done,slides.length*HOLD+1800);})();</script>
 
 <!-- 스티키 하단 상담 배너 (벤치마크: 아정당) -->
 <div class="sticky-cta" id="stickyCta">
