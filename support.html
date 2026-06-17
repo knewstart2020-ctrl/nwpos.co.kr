@@ -99,24 +99,29 @@ select.fi{appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns='
 <div class="hft hft-2">누리네트웍스 · 결제솔루션 · 스마트로 · 구매스토어 · 누리네트웍스 · 결제솔루션 · 스마트로 · 구매스토어 · 누리네트웍스 · 결제솔루션 · </div>
 <div class="hft hft-3">TRUST · INNOVATION · GROWTH · PARTNERSHIP · TRUST · INNOVATION · GROWTH · PARTNERSHIP · TRUST · INNOVATION · GROWTH · PARTNERSHIP · </div>
 </div>
+<style>
+.mtypes{display:flex;flex-wrap:wrap;gap:8px;}
+.mtype{padding:9px 14px;border:1px solid #E5E3DA;border-radius:999px;font-size:13.5px;font-weight:700;color:#586079;cursor:pointer;transition:.12s;user-select:none;}
+.mtype.on{background:#0A1A3A;color:#fff;border-color:#0A1A3A;}
+.phone-wrap{display:flex;align-items:stretch;gap:8px;}
+.phone-pre{display:flex;align-items:center;justify-content:center;min-width:54px;padding:0 14px;background:#F4F6FB;border:1px solid #E5E3DA;border-radius:10px;font-weight:800;color:#0A1A3A;font-size:15px;}
+.phone-wrap input{flex:1;min-width:0;width:auto;}
+</style>
 <div class="main-grid">
 <!-- LEFT: 상담 신청 -->
 <div class="card" id="formCard">
 <h2>📋 상담 신청</h2>
 <p>전문 상담사가 매장에 맞는 최적의 솔루션을 추천해 드립니다.</p>
 <div class="fg"><label class="fl">업체/고객명</label><input class="fi" type="text" id="bizName" placeholder="업체 또는 고객명"></div>
-<div class="fg"><label class="fl">연락처</label><input class="fi" type="tel" id="phone" placeholder="01000000000" maxlength="11"></div>
-<div class="fg"><label class="fl">상담유형</label>
-<select class="fi" id="consultType">
-<option value="" disabled selected>상담유형을 선택하세요</option>
-<option value="신규상담">신규상담</option>
-<option value="교체상담">교체상담</option>
-<option value="제휴상담">제휴상담</option>
-</select></div>
-<div class="fg"><label class="fl">상담가능시간</label>
-<div class="time-grid">
-<div class="time-btn" onclick="this.classList.toggle('selected')">10시~11시</div>
-<div class="time-btn" onclick="this.classList.toggle('selected')">14시~16시</div>
+<div class="fg"><label class="fl">연락처</label><div class="phone-wrap"><span class="phone-pre">010</span><input class="fi" type="tel" id="phone" inputmode="numeric" maxlength="9" placeholder="1234-5678" oninput="fmtPhone(this)"></div></div>
+<div class="fg"><label class="fl">상담유형 <small>(중복 선택 가능)</small></label>
+<div class="mtypes">
+<span class="mtype" onclick="this.classList.toggle('on')">포스(POS)</span>
+<span class="mtype" onclick="this.classList.toggle('on')">테이블오더</span>
+<span class="mtype" onclick="this.classList.toggle('on')">토스·네이버 단말기</span>
+<span class="mtype" onclick="this.classList.toggle('on')">배리어프리 키오스크</span>
+<span class="mtype" onclick="this.classList.toggle('on')">카드단말기</span>
+<span class="mtype" onclick="this.classList.toggle('on')">업무제휴/기타</span>
 </div></div>
 <div class="fg"><label class="fl">요청사항 <small>(선택)</small></label><textarea class="fi" id="memo" placeholder="궁금한 점을 자유롭게 적어주세요"></textarea></div>
 <div class="consent" onclick="var c=document.getElementById('cbox');c.classList.toggle('checked');updBtn();">
@@ -162,13 +167,15 @@ var b=document.getElementById('submitBtn');
 if(n&&p&&c){b.classList.add('on');}else{b.classList.remove('on');}
 }
 document.querySelectorAll('.fi').forEach(function(i){i.addEventListener('input',updBtn);});
+function fmtPhone(el){var v=el.value.replace(/\D/g,'').slice(0,8);el.value=v.length>4?v.slice(0,4)+'-'+v.slice(4):v;}
 function doSubmit(){
 var b=document.getElementById('submitBtn');
 if(!b.classList.contains('on'))return;
 var name=document.getElementById('bizName').value.trim();
-var phone=document.getElementById('phone').value.trim();
-var type=document.getElementById('consultType').value;
-var time=[];document.querySelectorAll('.time-btn.selected').forEach(function(t){time.push(t.textContent);});
+var pd=document.getElementById('phone').value.replace(/\D/g,'');
+if(!name||pd.length!==8){alert('업체/고객명과 연락처(010 뒤 8자리)를 정확히 입력해 주세요.');return;}
+var phone='010-'+pd.slice(0,4)+'-'+pd.slice(4);
+var types=[];document.querySelectorAll('#formCard .mtype.on').forEach(function(c){types.push(c.textContent);});var type=types.join(', ');
 var memo=document.getElementById('memo').value.trim();
 var now=new Date();
 var dateStr=now.getFullYear()+'.'+(now.getMonth()+1)+'.'+now.getDate()+' '+now.getHours()+':'+String(now.getMinutes()).padStart(2,'0');
@@ -180,13 +187,13 @@ var formData={
   name:name,
   phone:phone,
   consultType:type,
-  time:time.join(', '),
+  time:'',
   memo:memo,
   date:dateStr,
   duration:parseInt(sessionStorage.getItem('nw_duration')||'0')+Math.round(performance.now()/1000),
   pages:(JSON.parse(sessionStorage.getItem('nw_pages')||'[]')).join(' → '),
-  referrer:sessionStorage.getItem('nw_ref')||'직접 방문',
-  interests:(JSON.parse(sessionStorage.getItem('nw_interests')||'[]')).join(', ')
+  referrer:'nwpos.co.kr 구매스토어 상담신청 | 유입:'+(sessionStorage.getItem('nw_ref')||'직접 방문'),
+  interests:type
 };
 
 b.textContent='전송 중...';
@@ -197,15 +204,13 @@ fetch(SCRIPT_URL,{
   mode:'no-cors',
   headers:{'Content-Type':'application/json'},
   body:JSON.stringify(formData)
-}).then(function(){
-  document.getElementById('formCard').style.opacity='0.3';
-  document.getElementById('formCard').style.pointerEvents='none';
-  document.getElementById('formOk').style.display='block';
-}).catch(function(){
-  document.getElementById('formCard').style.opacity='0.3';
-  document.getElementById('formCard').style.pointerEvents='none';
-  document.getElementById('formOk').style.display='block';
-});
+}).then(showOk).catch(showOk);
+
+/* 관제(ACD) 병행 전송 — 홈페이지 상담과 동일 (방문정보 포함) */
+var vt={};try{var vs=sessionStorage,vt0=parseInt(vs.getItem('nw_t0')||vs.getItem('nw_start')||'0',10);if(vt0){var vsec=Math.max(0,Math.round((Date.now()-vt0)/1000));vt.stayTime=vsec>=60?(Math.floor(vsec/60)+'분 '+(vsec%60)+'초'):(vsec+'초');}vt.entryPage=vs.getItem('nw_entry')||location.pathname;vt.referrer=vs.getItem('nw_ref')||document.referrer||'직접유입';vt.pageViews=(JSON.parse(vs.getItem('nw_pages')||'[]')).join(' → ')||'구매스토어';}catch(e){}
+try{var acdPayload=Object.assign({type:'homeConsult',source:'nwpos.co.kr 구매스토어 상담신청'},formData,vt);fetch('https://script.google.com/macros/s/AKfycbw2uWFTq2Sr2k5Sa0r2YukUK4siGTjSTu68JJVPDla-QLssQXkZYAUJRiPlgk9rqhs/exec',{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(acdPayload)}).catch(function(){});}catch(e){}
+
+function showOk(){document.getElementById('formCard').style.opacity='0.3';document.getElementById('formCard').style.pointerEvents='none';document.getElementById('formOk').style.display='block';}
 }
 function resetForm(){
   document.getElementById('formCard').style.opacity='1';
@@ -213,8 +218,7 @@ function resetForm(){
   document.getElementById('formOk').style.display='none';
   document.getElementById('bizName').value='';
   document.getElementById('phone').value='';
-  document.getElementById('consultType').selectedIndex=0;
-  document.querySelectorAll('.time-btn.selected').forEach(function(t){t.classList.remove('selected');});
+  document.querySelectorAll('#formCard .mtype.on').forEach(function(c){c.classList.remove('on');});
   document.getElementById('memo').value='';
   document.getElementById('cbox').classList.remove('checked');
   document.getElementById('submitBtn').textContent='상담 신청하기';
