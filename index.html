@@ -760,8 +760,8 @@ var sec=document.getElementById('effect');if(window.IntersectionObserver&&sec){v
     <a href="javascript:void(0)" onclick="openConsult()">상담하기 ›</a>
   </div>
 </aside>
-<!-- 윙배너 인트로: 제품 시네마틱 영상 순차 재생 후 엔지니어로 크로스페이드, 세션당 1회 -->
-<script>(function(){var intro=document.getElementById('wfIntro');if(!intro)return;var vids=intro.querySelectorAll('.wf-vid');function done(){intro.classList.add('done');}try{if(sessionStorage.getItem('wf_intro_played')){intro.style.display='none';return;}sessionStorage.setItem('wf_intro_played','1');}catch(e){}if(!vids.length){done();return;}var i=0,HOLD=2600;function step(){if(i>=vids.length){done();return;}var v=vids[i];if(i>0)vids[i-1].classList.remove('show');v.classList.add('show');try{v.currentTime=0;var p=v.play();if(p&&p.catch)p.catch(function(){});}catch(e){}var nx=vids[i+1];if(nx){try{nx.preload='auto';nx.load();}catch(e){}}i++;setTimeout(step,HOLD);}setTimeout(step,200);setTimeout(done,vids.length*HOLD+1800);})();</script>
+<!-- 윙배너 인트로: 제품 시네마틱 영상 순차 재생 → 엔지니어 크로스페이드, 90초마다 반복 -->
+<script>(function(){var intro=document.getElementById('wfIntro');if(!intro)return;var vids=intro.querySelectorAll('.wf-vid');if(!vids.length)return;var HOLD=2600;function pauseAll(){for(var k=0;k<vids.length;k++){try{vids[k].pause();}catch(e){}vids[k].classList.remove('show');}}function done(){intro.classList.add('done');setTimeout(pauseAll,900);}function step(i){if(i>=vids.length){done();return;}if(i>0)vids[i-1].classList.remove('show');var v=vids[i];v.classList.add('show');try{v.currentTime=0;var p=v.play();if(p&&p.catch)p.catch(function(){});}catch(e){}var nx=vids[i+1];if(nx){try{nx.preload='auto';nx.load();}catch(e){}}setTimeout(function(){step(i+1);},HOLD);}function cycle(){intro.classList.remove('done');for(var k=0;k<vids.length;k++)vids[k].classList.remove('show');setTimeout(function(){step(0);},150);}cycle();setInterval(cycle,90000);})();</script>
 
 <!-- 스티키 하단 상담 배너 (벤치마크: 아정당) -->
 <div class="sticky-cta" id="stickyCta">
