@@ -418,7 +418,8 @@
 </header>
 
 <style>
-.hero-trust{display:flex;flex-wrap:wrap;gap:8px 12px;margin:2px 0 18px;}
+.hero-eyebrow{display:inline-block;background:rgba(201,169,97,.16);border:1px solid rgba(201,169,97,.55);color:var(--gold);font-weight:800;font-size:14px;letter-spacing:.3px;padding:5px 15px;border-radius:20px;margin-bottom:12px;}
+.hero-trust{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 12px;margin:2px 0 18px;}
 .hero-trust span{background:rgba(10,22,48,.5);backdrop-filter:blur(8px);border:1px solid rgba(120,170,255,.4);border-radius:20px;padding:5px 13px;font-size:14px;font-weight:800;color:#eaf2ff;white-space:nowrap;}
 @media(max-width:600px){.hero-trust span{font-size:12px;padding:4px 10px;}}
 </style>
@@ -429,7 +430,8 @@
   <div class="wrap">
     <div>
       
-      <h1 class="h1-price"><span class="hrow"><span class="ch y" style="animation-delay:0s">포</span><span class="ch y" style="animation-delay:.05s">스</span><span class="ch y" style="animation-delay:.1s">기</span> <span class="ch" style="animation-delay:.15s">월</span> <span class="pch" style="animation-delay:.2s,1.6s">1</span><span class="pch" style="animation-delay:.25s,1.68s">8</span><span class="pch" style="animation-delay:.3s,1.76s">,</span><span class="pch" style="animation-delay:.35s,1.84s">0</span><span class="pch" style="animation-delay:.4s,1.92s">0</span><span class="pch" style="animation-delay:.45s,2s">0</span><span class="pch" style="animation-delay:.5s,2.08s">원</span></span><span class="hrow"><span class="ch y" style="animation-delay:.6s">테</span><span class="ch y" style="animation-delay:.65s">이</span><span class="ch y" style="animation-delay:.7s">블</span><span class="ch y" style="animation-delay:.75s">오</span><span class="ch y" style="animation-delay:.8s">더</span> <span class="ch" style="animation-delay:.85s">월</span> <span class="pch" style="animation-delay:.9s,1.6s">9</span><span class="pch" style="animation-delay:.95s,1.68s">,</span><span class="pch" style="animation-delay:1s,1.76s">0</span><span class="pch" style="animation-delay:1.05s,1.84s">0</span><span class="pch" style="animation-delay:1.1s,1.92s">0</span><span class="pch" style="animation-delay:1.15s,2s">원</span></span></h1>
+      <div class="hero-eyebrow">💎 월 렌탈료 기준</div>
+      <h1 class="h1-price"><span class="hrow"><span class="ch y" style="animation-delay:0s">포</span><span class="ch y" style="animation-delay:.05s">스</span> <span class="pch" style="animation-delay:.15s,1.6s">1</span><span class="pch" style="animation-delay:.2s,1.68s">8</span><span class="pch" style="animation-delay:.25s,1.76s">,</span><span class="pch" style="animation-delay:.3s,1.84s">0</span><span class="pch" style="animation-delay:.35s,1.92s">0</span><span class="pch" style="animation-delay:.4s,2s">0</span><span class="pch" style="animation-delay:.45s,2.08s">원</span></span><span class="hrow"><span class="ch y" style="animation-delay:.55s">테</span><span class="ch y" style="animation-delay:.6s">이</span><span class="ch y" style="animation-delay:.65s">블</span><span class="ch y" style="animation-delay:.7s">오</span><span class="ch y" style="animation-delay:.75s">더</span> <span class="pch" style="animation-delay:.85s,1.6s">9</span><span class="pch" style="animation-delay:.9s,1.68s">,</span><span class="pch" style="animation-delay:.95s,1.76s">0</span><span class="pch" style="animation-delay:1s,1.84s">0</span><span class="pch" style="animation-delay:1.05s,1.92s">0</span><span class="pch" style="animation-delay:1.1s,2s">원</span></span><span class="hrow"><span class="ch y" style="animation-delay:1.15s">배</span><span class="ch y" style="animation-delay:1.2s">리</span><span class="ch y" style="animation-delay:1.25s">어</span><span class="ch y" style="animation-delay:1.3s">프</span><span class="ch y" style="animation-delay:1.35s">리</span><span class="ch y" style="animation-delay:1.4s">키</span><span class="ch y" style="animation-delay:1.45s">오</span><span class="ch y" style="animation-delay:1.5s">스</span><span class="ch y" style="animation-delay:1.55s">크</span> <span class="pch" style="animation-delay:1.65s,1.6s">4</span><span class="pch" style="animation-delay:1.7s,1.68s">0</span><span class="pch" style="animation-delay:1.75s,1.76s">,</span><span class="pch" style="animation-delay:1.8s,1.84s">0</span><span class="pch" style="animation-delay:1.85s,1.92s">0</span><span class="pch" style="animation-delay:1.9s,2s">0</span><span class="pch" style="animation-delay:1.95s,2.08s">원</span></span></h1>
       <div class="hero-trust"><span>✅ 정품 신제품 보증</span><span>🎁 설치·교육·카드사 접수비 모두 <b style="color:var(--gold)">"0"원</b></span><span>💧 거품 뺀 직접 공급가</span></div>
       <div class="track-grid">
         <div class="track">
@@ -675,7 +677,7 @@ var sec=document.getElementById('effect');if(window.IntersectionObserver&&sec){v
         <div class="phone-wrap"><span class="phone-pre">010</span><input type="tel" id="fPhone" inputmode="numeric" maxlength="9" placeholder="1234-5678" oninput="fmtPhone(this)"></div>
         <label>상담유형 <small>(중복 선택 가능)</small></label>
         <div class="mtypes">
-          <span class="mtype" onclick="this.classList.toggle('on')">포스(POS)</span>
+          <span class="mtype" onclick="this.classList.toggle('on')">포스</span>
           <span class="mtype" onclick="this.classList.toggle('on')">테이블오더</span>
           <span class="mtype" onclick="this.classList.toggle('on')">토스·네이버 단말기</span>
           <span class="mtype" onclick="this.classList.toggle('on')">배리어프리 키오스크</span>
@@ -800,7 +802,7 @@ if(imgs.length){setInterval(function(){imgs[i].classList.remove("active");i=(i+1
       <div class="phone-wrap"><span class="phone-pre">010</span><input type="tel" id="mPhone" inputmode="numeric" maxlength="9" placeholder="1234-5678" oninput="fmtPhone(this)"></div>
       <label>상담유형 <small>(중복 선택 가능)</small></label>
       <div class="mtypes">
-        <span class="mtype" onclick="this.classList.toggle('on')">포스(POS)</span>
+        <span class="mtype" onclick="this.classList.toggle('on')">포스</span>
         <span class="mtype" onclick="this.classList.toggle('on')">테이블오더</span>
         <span class="mtype" onclick="this.classList.toggle('on')">토스·네이버 단말기</span>
         <span class="mtype" onclick="this.classList.toggle('on')">배리어프리 키오스크</span>
