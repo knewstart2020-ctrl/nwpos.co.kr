@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <script>if([0,2,4,6].indexOf(new Date().getDay())>-1)document.documentElement.classList.add('price-off');</script>
+  <script>/* 요금모드: 'price'=기본(요금표시) / 'noprice'=요금없음. "요금없음" 명령시 noprice로, "원복" 명령시 price로 이 값만 변경 */ var NWPRICE='price'; if(NWPRICE==='noprice'){document.documentElement.classList.add('price-off');}</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>누리네트웍스 | 포스·키오스크·테이블오더·카드결제 한 곳에서</title>
