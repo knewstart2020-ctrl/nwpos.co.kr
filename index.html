@@ -482,9 +482,9 @@
     <h2>결제의 모든 것, <span class="y">한 곳</span>에서</h2>
     <p class="sub">매장에 필요한 기기부터 모든 간편결제까지 — 부담 없는 조건으로</p>
     <div class="li-grid">
-      <a class="litile" href="javascript:void(0)" onclick="openConsult()"><img class="liimg" src="li-toss.png" alt="토스네이버단말기"><div class="liname">토스네이버단말기</div><div class="lipill">월 0원·약정 없음</div></a>
-      <a class="litile" href="javascript:void(0)" onclick="openConsult()"><img class="liimg" src="li-pos.png" alt="포스"><div class="liname">포스</div><div class="lipill gold"><span class="p-price">월 18,000원</span><span class="p-supply">최저공급가</span></div></a>
-      <a class="litile" href="javascript:void(0)" onclick="openConsult()"><img class="liimg" src="li-order.png" alt="테이블오더"><div class="liname">테이블오더</div><div class="lipill gold"><span class="p-price">월 9,000원</span><span class="p-supply">최저공급가</span></div></a>
+      <a id="li-toss" class="litile" href="javascript:void(0)" onclick="openConsult()"><img class="liimg" src="li-toss.png" alt="토스네이버단말기"><div class="liname">토스네이버단말기</div><div class="lipill">월 0원·약정 없음</div></a>
+      <a id="li-pos" class="litile" href="javascript:void(0)" onclick="openConsult()"><img class="liimg" src="li-pos.png" alt="포스"><div class="liname">포스</div><div class="lipill gold"><span class="p-price">월 18,000원</span><span class="p-supply">최저공급가</span></div></a>
+      <a id="li-order" class="litile" href="javascript:void(0)" onclick="openConsult()"><img class="liimg" src="li-order.png" alt="테이블오더"><div class="liname">테이블오더</div><div class="lipill gold"><span class="p-price">월 9,000원</span><span class="p-supply">최저공급가</span></div></a>
       <a class="litile" href="javascript:void(0)" onclick="openConsult()"><img class="liimg" src="li-kiosk.png" alt="배리어프리키오스크"><div class="liname">배리어프리키오스크</div><div class="lipill gold"><span class="p-price">월 40,000원</span><span class="p-supply">최저공급가</span></div></a>
       <a class="litile" href="javascript:void(0)" onclick="openConsult()"><img class="liimg" src="li-wired.png" alt="유선카드단말기"><div class="liname">유선카드단말기</div><div class="lipill"><span class="p-price">월 5,000원</span><span class="p-supply">최저공급가</span></div></a>
       <a class="litile" href="javascript:void(0)" onclick="openConsult()"><img class="liimg" src="li-wireless.png" alt="무선카드단말기"><div class="liname">무선카드단말기</div><div class="lipill"><span class="p-price">구매가 1만원</span><span class="p-supply">최저공급가</span></div></a>
@@ -492,6 +492,8 @@
     <!-- (모든 간편결제·결제방식 카드 삭제 — ALL-IN-ONE PG·간편결제 카드로 통합) -->
   </div>
 </section>
+<!-- 광고 키워드 랜딩 앵커 하이라이트(#li-toss/#li-pos/#li-order) -->
+<style>#lineup-grid .litile{scroll-margin-top:94px}#lineup-grid .litile:target{outline:3px solid var(--gold);outline-offset:4px;animation:kwPulse 1.5s ease 2}@keyframes kwPulse{0%,100%{box-shadow:0 0 0 0 rgba(246,183,60,.55)}50%{box-shadow:0 0 0 14px rgba(246,183,60,0)}}</style>
 <!-- 라인업 순차 스포트라이트 -->
 <script>(function(){var t=document.querySelectorAll('#lineup-grid .litile');if(t.length<2)return;var i=0;function spot(){for(var j=0;j<t.length;j++)t[j].classList.remove('spot');t[i].classList.add('spot');i=(i+1)%t.length;}spot();setInterval(spot,1300);})();</script>
 
