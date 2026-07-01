@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>키워드 광고 효율 분석 v2 — 실측 CPC + 지인 계산 | 누리네트웍스</title>
+<style>
+ :root{--navy:#0e1f3a;--navy2:#16315a;--blue:#1a6dff;--gold:#f6b73c;--green:#16a34a;--red:#e23b3b;--amber:#f59e0b;--ink:#1a2233;--muted:#5b6577;--line:#e6eaf1;--bg:#f4f6fb;}
+ *{box-sizing:border-box;margin:0;padding:0;}
+ body{font-family:'Pretendard','Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--bg);color:var(--ink);line-height:1.62;}
+ .wrap{max-width:1040px;margin:0 auto;padding:0 18px 80px;}
+ header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:42px 0 32px;margin-bottom:26px;}
+ header .wrap{padding-bottom:0;}
+ .eyebrow{color:var(--gold);font-weight:800;font-size:13px;letter-spacing:2px;}
+ h1{font-size:27px;font-weight:900;margin:8px 0 6px;}
+ .sub{color:#c7d3e8;font-size:15px;} .meta{margin-top:14px;font-size:12.5px;color:#9fb0cc;}
+ h2{font-size:21px;font-weight:900;margin:38px 0 12px;padding-left:13px;border-left:5px solid var(--blue);}
+ h3{font-size:15.5px;font-weight:800;margin:18px 0 7px;color:var(--navy2);}
+ p{margin:8px 0;font-size:14.3px;}
+ table{width:100%;border-collapse:collapse;margin:10px 0;font-size:12.4px;background:#fff;border-radius:10px;overflow:hidden;border:1px solid var(--line);}
+ th,td{padding:7px 6px;text-align:center;border-bottom:1px solid var(--line);}
+ th{background:var(--navy);color:#fff;font-weight:700;font-size:11.5px;}
+ td.l,th.l{text-align:left;} .mono{font-variant-numeric:tabular-nums;font-weight:700;}
+ .good{color:var(--green);font-weight:800;}.bad{color:var(--red);font-weight:800;}
+ .pill{display:inline-block;font-size:10px;font-weight:800;padding:2px 6px;border-radius:9px;line-height:1.25;}
+ .p-win{background:#e4f7ec;color:#1a7d42;}.p-mid{background:#fff3d6;color:#b7791f;}.p-no{background:#fde8e8;color:#c0392b;}
+ .okbox{background:#f0fbf4;border-left:4px solid var(--green);padding:12px 15px;border-radius:0 8px 8px 0;font-size:13.6px;margin:12px 0;}
+ .warnbox{background:#fff5f5;border-left:4px solid var(--red);padding:11px 14px;border-radius:0 8px 8px 0;font-size:13.4px;margin:11px 0;}
+ .note{background:#eef3fb;border-left:4px solid var(--blue);padding:11px 14px;border-radius:0 8px 8px 0;font-size:13.2px;margin:11px 0;}
+ .ji{background:linear-gradient(135deg,#fff8ec,#fff);border:1px solid #f0dcae;border-radius:12px;padding:14px 16px;margin:12px 0;}
+ .ji b{color:#b7791f;}
+ ul{margin:7px 0 7px 18px;} li{margin:5px 0;font-size:14px;}
+ .legend{font-size:11.5px;color:var(--muted);margin:4px 0 0;}
+ .grp-a{color:#3b5bdb;} .grp-b{color:#b7791f;}
+ footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;}
+ @media(max-width:760px){table{font-size:10px;}th,td{padding:5px 3px;}}
+</style></head><body>
+<header><div class="wrap">
+ <div class="eyebrow">KEYWORD AD EFFICIENCY · v2 (REAL CPC + PEER BENCHMARK)</div>
+ <h1>키워드 광고 효율 분석 v2</h1>
+ <div class="sub">실측 CPC(네이버 API) 위에 지인 실측 성사율 10% 반영 · 두 기준 병기</div>
+ <div class="meta">작성 2026-07-01 · CPC·클릭·광고비 = 네이버 검색광고 API 실측(6/29 레이더 확인) · 전환 = 지인 실측 성사율 10% + 상담 두 기준 · 누리네트웍스</div>
+</div></header>
+<div class="wrap">
+
+<div class="ji">
+ <b>📌 지인(인테리어 중계) 실측 벤치마크</b> — 월 광고비 <b>1억(네이버+메타)</b> → 상담 <b>1,300건</b> → 계약 <b>130건</b>.<br>
+ ⇒ <b>상담 1건당 광고비 ≈ 8만원 · 계약 1건당(CPA) ≈ 77만원 · 성사율(상담→계약) = 10%</b>.
+ <span style="color:var(--muted);font-size:12px">단, 인테리어는 <b>계약 1건 마진이 수백만~수천만</b>이라 77만 CPA·월1억이 남는 구조. 우리는 단말/포스라 건당 가치가 작아 <b>절대 광고비·CPA를 그대로 따라갈 수 없음</b>(우리 CPA 상한은 가맹점 1곳 가치로 별도 산정 — 아래 6번).</span>
+</div>
+
+<div class="note"><b>이 리포트가 바뀐 점:</b> ① CPC·클릭·광고비는 <b>예상이 아니라 네이버 API 실측</b>(원래부터 실측이었음) ② <b>예상이었던 전환율(상담 3%·체결 20%)을 지인 실측(성사 10%)으로 교체</b> ③ 상담 예상은 <b class="grp-a">기준A(지인 상담단가 8만원)</b>와 <b class="grp-b">기준B(실클릭×5%)</b> <b>두 가지를 병기</b>해 비교.</div>
+
+<h2>1. 키워드별 효율 — 실측 CPC + 지인 계산(두 기준 병기)</h2>
+<table>
+ <tr>
+   <th class="l" rowspan="2">키워드 / 역할</th><th rowspan="2">추천<br>위치</th>
+   <th colspan="3">📡 네이버 API 실측</th>
+   <th colspan="4" class="grp-a" style="background:#26407a">🅰 지인 단가 기준(성사10%)</th>
+   <th colspan="3" class="grp-b" style="background:#8a5a12">🅱 실클릭 기준(전환5%·성사10%)</th>
+ </tr>
+ <tr>
+   <th>실 CPC</th><th>월 클릭</th><th>월 광고비</th>
+   <th style="background:#26407a">상담<br><span style="font-weight:400;font-size:9px">광고비÷8만</span></th><th style="background:#26407a">계약<br><span style="font-weight:400;font-size:9px">×10%</span></th><th style="background:#26407a">계약당</th><th style="background:#26407a">실현 필요<br>클릭→상담</th>
+   <th style="background:#8a5a12">상담<br><span style="font-weight:400;font-size:9px">클릭×5%</span></th><th style="background:#8a5a12">계약<br><span style="font-weight:400;font-size:9px">×10%</span></th><th style="background:#8a5a12">계약당</th>
+ </tr>
+ <tr>
+      <td class="l"><b>🟢 네이버단말기</b><br><span style="font-size:10.5px;color:var(--muted)">초저비용 유입 · 주력</span></td>
+      <td>2위</td>
+      <td class="mono">1,045</td><td class="mono">186</td><td class="mono">19만</td>
+      <td class="mono" style="background:#f7f9ff">2.5</td><td class="mono" style="background:#f7f9ff">0.25</td>
+      <td class="mono" style="background:#f7f9ff">77만</td>
+      <td style="background:#f7f9ff"><span class="pill p-win">1.4%<br>달성 쉬움</span></td>
+      <td class="mono" style="background:#fffaf2">9.3</td><td class="mono" style="background:#fffaf2">0.93</td>
+      <td class="mono good" style="background:#fffaf2">21만</td>
+    </tr>
+<tr>
+      <td class="l"><b>🟢 토스단말기</b><br><span style="font-size:10.5px;color:var(--muted)">최다검색 유입 · 주력</span></td>
+      <td>2위</td>
+      <td class="mono">3,996</td><td class="mono">318</td><td class="mono">127만</td>
+      <td class="mono" style="background:#f7f9ff">16.5</td><td class="mono" style="background:#f7f9ff">1.65</td>
+      <td class="mono" style="background:#f7f9ff">77만</td>
+      <td style="background:#f7f9ff"><span class="pill p-mid">5.2%<br>빠듯</span></td>
+      <td class="mono" style="background:#fffaf2">15.9</td><td class="mono" style="background:#fffaf2">1.59</td>
+      <td class="mono bad" style="background:#fffaf2">80만</td>
+    </tr>
+<tr>
+      <td class="l"><b>🟡 포스기</b><br><span style="font-size:10.5px;color:var(--muted)">간판(브랜드 노출)만</span></td>
+      <td>3위</td>
+      <td class="mono">20,332</td><td class="mono">29</td><td class="mono">59만</td>
+      <td class="mono" style="background:#f7f9ff">7.7</td><td class="mono" style="background:#f7f9ff">0.77</td>
+      <td class="mono" style="background:#f7f9ff">77만</td>
+      <td style="background:#f7f9ff"><span class="pill p-no">26.4%<br>사실상 불가</span></td>
+      <td class="mono" style="background:#fffaf2">1.5</td><td class="mono" style="background:#fffaf2">0.15</td>
+      <td class="mono bad" style="background:#fffaf2">407만</td>
+    </tr>
+<tr>
+      <td class="l"><b>🔴 테이블오더</b><br><span style="font-size:10.5px;color:var(--muted)">관찰/상담제안</span></td>
+      <td>5위</td>
+      <td class="mono">14,177</td><td class="mono">113</td><td class="mono">160만</td>
+      <td class="mono" style="background:#f7f9ff">20.8</td><td class="mono" style="background:#f7f9ff">2.08</td>
+      <td class="mono" style="background:#f7f9ff">77만</td>
+      <td style="background:#f7f9ff"><span class="pill p-no">18.4%<br>사실상 불가</span></td>
+      <td class="mono" style="background:#fffaf2">5.7</td><td class="mono" style="background:#fffaf2">0.57</td>
+      <td class="mono bad" style="background:#fffaf2">284만</td>
+    </tr>
+<tr>
+      <td class="l"><b>⚪ 포스</b><br><span style="font-size:10.5px;color:var(--muted)">의도 모호 · 제외권장</span></td>
+      <td>1위</td>
+      <td class="mono">16,066</td><td class="mono">39</td><td class="mono">63만</td>
+      <td class="mono" style="background:#f7f9ff">8.1</td><td class="mono" style="background:#f7f9ff">0.81</td>
+      <td class="mono" style="background:#f7f9ff">77만</td>
+      <td style="background:#f7f9ff"><span class="pill p-no">20.9%<br>사실상 불가</span></td>
+      <td class="mono" style="background:#fffaf2">2.0</td><td class="mono" style="background:#fffaf2">0.20</td>
+      <td class="mono bad" style="background:#fffaf2">321만</td>
+    </tr>
+<tr>
+      <td class="l"><b>⚪ QR오더</b><br><span style="font-size:10.5px;color:var(--muted)">검색적음 · 제외권장</span></td>
+      <td>2위</td>
+      <td class="mono">24,669</td><td class="mono">28</td><td class="mono">69만</td>
+      <td class="mono" style="background:#f7f9ff">9.0</td><td class="mono" style="background:#f7f9ff">0.90</td>
+      <td class="mono" style="background:#f7f9ff">77만</td>
+      <td style="background:#f7f9ff"><span class="pill p-no">32.1%<br>사실상 불가</span></td>
+      <td class="mono" style="background:#fffaf2">1.4</td><td class="mono" style="background:#fffaf2">0.14</td>
+      <td class="mono bad" style="background:#fffaf2">493만</td>
+    </tr>
+</table>
+<p class="legend">※ 🅰 계약당 광고비는 지인 단가를 그대로 적용하므로 <b>모든 키워드 77만으로 동일</b> — 대신 "<b>실현 필요 클릭→상담</b>"이 그 효율의 <b>달성 가능성</b>을 말함(초록=쉬움 ≤3% / 노랑=빠듯 ~6% / 빨강=불가). 🅱는 우리 실 CPC를 그대로 태워 <b>키워드별 실제 계약단가</b>를 보여줌(전환율 가정은 조정 가능).</p>
+
+<h2>2. 핵심 발견 — "실 CPC 3,846원"이 지인 효율의 손익분기선</h2>
+<div class="okbox">
+ 기준B에서 <b>계약당 광고비 = 실 CPC ÷ (클릭→상담 5% × 성사 10%) = 실 CPC × 200</b>.<br>
+ → 지인 CPA(77만)와 같아지는 지점은 <b>실 CPC ≈ 3,846원</b>. 즉 <b>실 CPC 3,846원 이하 키워드만 지인 수준 효율 이상</b>을 냅니다.
+ <ul style="margin-top:6px">
+   <li class="good">✅ 네이버단말기(1,045원)·토스단말기 3위(2,784원) — <b>손익분기 아래, 지인보다 효율↑</b></li>
+   <li style="color:var(--amber)">⚠️ 토스단말기 2위(3,996원) — 손익분기 근처(빠듯). <b>3위 운영이 더 안전</b></li>
+   <li class="bad">❌ 포스기(20,332)·테이블오더(14,177)·포스(16,066)·QR오더(24,669) — 손익분기의 4~6배. 직접광고 부적합</li>
+ </ul>
+</div>
+<div class="warnbox"><b>왜 포스기·테이블오더는 "지인 효율(상담 7.7만)"이 불가능한가</b> — 그 단가로 상담을 받으려면 클릭의 <b>18~32%가 상담 전환</b>돼야 하는데(표의 빨강), 현실 랜딩 전환율은 아무리 좋아도 5~8%. 클릭이 너무 비싸 <b>구조적으로 불가능</b>합니다.</div>
+
+<h2>3. 전략 결론 (지인 계산으로도 동일 — 오히려 강화)</h2>
+<table>
+ <tr><th class="l">키워드</th><th>역할</th><th>운영</th><th>예산</th><th>기준B 계약단가</th></tr>
+ <tr><td class="l"><b>🟢 네이버단말기</b></td><td>초저비용 유입</td><td>1~2위</td><td class="good">높게</td><td class="mono good">약 21~26만</td></tr>
+ <tr><td class="l"><b>🟢 토스단말기</b></td><td>최다검색 유입</td><td><b>3위</b> 권장</td><td class="good">높게</td><td class="mono good">약 56만(3위)</td></tr>
+ <tr><td class="l">카드단말기<span style="color:var(--muted);font-size:10px"> (별도)</span></td><td>유입 보강</td><td>2~3위</td><td>중간</td><td class="mono">별도 산정</td></tr>
+ <tr><td class="l">포스기</td><td>간판만</td><td>3~4위 소액</td><td style="color:var(--amber)">낮게</td><td class="mono bad">약 407만</td></tr>
+ <tr><td class="l">테이블오더</td><td>상담에서 제안</td><td>제외/5위 관찰</td><td class="bad">최소</td><td class="mono bad">약 284만</td></tr>
+ <tr><td class="l">포스·QR오더</td><td>비효율</td><td>제외</td><td class="bad">0</td><td class="mono bad">320~490만</td></tr>
+</table>
+<p><b>변함없는 정답:</b> 싼 단말기 키워드로 유입 → 상담 전화에서 포스·테이블오더·키오스크까지 교차 제안. 광고는 입구(싼 키워드)에만, 본 매출은 상담에서.</p>
+
+<h2>4. 규모의 한계 — 우리는 지인처럼 "월 1억"이 물리적으로 불가</h2>
+<p>지인은 1억으로 1,300 상담을 삽니다. 우리 핵심 키워드는 <b>검색량 천장</b>이 있습니다: 토스단말기 월검색 11,090(전 키워드 최다)·네이버단말기 2,330. 1~2위를 다 잡아도 월 실측 클릭이 네이버단말기 ~186 + 토스단말기 ~318 수준 → <b>돈을 더 부어도 클릭(=상담)이 비례해 늘지 않습니다.</b> 현실적 광고예산은 <b>월 50~300만 규모</b>이고, 그 이상은 비싼 키워드로 밀려 효율이 급락합니다.</p>
+
+<h2>5. 다음 액션 — 가정을 실데이터로</h2>
+<ul>
+ <li><b>월 50~100만 소액 테스트</b>: 네이버·토스단말기(3위)만 켜서 2~4주.</li>
+ <li>이미 붙여둔 <b>UTM 키워드 추적 + 상담폼</b>으로 <b>실제 클릭→상담·상담→계약</b>을 측정 → 표의 가정(5%·10%)을 실값으로 교체.</li>
+ <li>실측 후 ROI 맞으면 확대 / 안 맞으면 랜딩·상담 멘트 보강 후 재측정. <b>가동은 전무 "켜줘" 후에만.</b></li>
+</ul>
+
+<h2>6. ⚠️ 채워야 할 칸 — 가맹점 1곳의 가치(우리 CPA 상한)</h2>
+<div class="note">지인은 계약당 77만을 써도 남습니다(마진 수백만). <b>우리가 계약당 얼마까지 써도 남는지</b>는 <b>가맹점 1곳의 생애가치(LTV)</b>로 정해집니다:<br>
+<b>LTV ≈ (월 VAN 수수료 마진 + 포스/단말 임대 마진) × 평균 유지개월</b>. 이 값을 주시면 → <b>감당 가능한 최대 CPA</b>와 <b>손익분기 상담 수</b>를 역산해 이 리포트에 확정 넣겠습니다. (예: LTV 60만이면 계약당 광고비는 그 이하여야 하고 → 네이버·토스단말기만 통과)</div>
+
+<footer>주식회사 누리네트웍스 · 1544-7754 · nwpos.co.kr<br>
+CPC·클릭·광고비 = 네이버 검색광고 API 실측(2026-06-29 레이더) · 전환 = 지인 실측 성사율 10% + 상담 두 기준(A 지인단가 8만원 / B 클릭×5%) · noindex 내부자료</footer>
+</div></body></html>
