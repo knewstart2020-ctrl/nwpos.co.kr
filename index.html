@@ -772,6 +772,29 @@ var sec=document.getElementById('effect');if(window.IntersectionObserver&&sec){v
     <a href="javascript:void(0)" onclick="openConsult()">상담하기 ›</a>
   </div>
 </aside>
+<!-- 우측 윙: 신제품 ZED-Ⅲ 시네마틱 배너 (와이드 1500px+ 전용) → zed3.html -->
+<style>
+  .wing-zed3{position:fixed;right:0;top:0;bottom:0;z-index:60;width:clamp(150px, calc((100vw - 1200px)/2), 340px);overflow:hidden;pointer-events:none;background:#06070c;-webkit-mask-image:linear-gradient(to left,#000 84%,transparent 100%);mask-image:linear-gradient(to left,#000 84%,transparent 100%);}
+  .wing-zed3 video,.wing-zed3 img{width:100%;height:100%;object-fit:cover;object-position:62% 46%;display:block;}
+  .wing-zed3::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,7,12,.5) 0%,rgba(6,7,12,0) 26%,rgba(6,7,12,0) 50%,rgba(6,7,12,.94) 100%);}
+  .wz-cap{position:absolute;left:32%;right:0;bottom:28px;text-align:center;color:#fff;z-index:2;padding:0 14px;}
+  .wz-cap .new{display:inline-block;background:var(--blue);color:#fff;font-size:10.5px;font-weight:800;padding:3px 11px;border-radius:20px;letter-spacing:1.5px;margin-bottom:9px;}
+  .wz-cap .t{font-size:22px;font-weight:900;line-height:1.12;text-shadow:0 2px 16px rgba(0,0,0,.65);letter-spacing:-.02em;}
+  .wz-cap .s{font-size:11.5px;color:#c7d3e8;margin-top:5px;word-break:keep-all;line-height:1.4;}
+  .wz-cap a{display:inline-block;margin-top:13px;background:#fff;color:#06070c;font-size:12.5px;font-weight:800;padding:9px 19px;border-radius:22px;text-decoration:none;pointer-events:auto;box-shadow:0 8px 20px rgba(0,0,0,.45);transition:transform .2s;}
+  .wz-cap a:hover{transform:translateY(-2px);}
+  @media(max-width:1499px){.wing-zed3{display:none;}}
+</style>
+<aside class="wing-zed3" aria-label="신제품 ZED-Ⅲ 소개">
+  <video src="zed3-hero.mp4" muted loop playsinline autoplay preload="metadata" poster="zed3-front.png"></video>
+  <div class="wz-cap">
+    <span class="new">NEW</span>
+    <div class="t">신제품 ZED-Ⅲ</div>
+    <div class="s">인텔 12세대 · 듀얼 디스플레이</div>
+    <a href="zed3.html">자세히 보기 →</a>
+  </div>
+</aside>
+<script>(function(){var v=document.querySelector('.wing-zed3 video');if(!v)return;function go(){try{v.muted=true;var p=v.play();if(p&&p.catch)p.catch(function(){});}catch(e){}}go();v.addEventListener('canplay',go);['pointerdown','scroll','keydown'].forEach(function(ev){window.addEventListener(ev,go,{once:true,passive:true});});})();</script>
 <!-- 윙배너 인트로: 제품 시네마틱 영상 순차 재생 → 엔지니어 크로스페이드, 90초마다 반복 -->
 <script>(function(){var intro=document.getElementById('wfIntro');if(!intro)return;var vids=intro.querySelectorAll('.wf-vid');if(!vids.length)return;var HOLD=2600;function pauseAll(){for(var k=0;k<vids.length;k++){try{vids[k].pause();}catch(e){}vids[k].classList.remove('show');}}function done(){intro.classList.add('done');setTimeout(pauseAll,900);var eng=document.getElementById('wingEng');if(eng){try{eng.currentTime=0;var q=eng.play();if(q&&q.catch)q.catch(function(){});}catch(e){}}}function step(i){if(i>=vids.length){done();return;}if(i>0)vids[i-1].classList.remove('show');var v=vids[i];v.classList.add('show');try{v.currentTime=0;var p=v.play();if(p&&p.catch)p.catch(function(){});}catch(e){}var nx=vids[i+1];if(nx){try{nx.preload='auto';nx.load();}catch(e){}}setTimeout(function(){step(i+1);},HOLD);}function cycle(){intro.classList.remove('done');for(var k=0;k<vids.length;k++)vids[k].classList.remove('show');setTimeout(function(){step(0);},150);}cycle();setInterval(cycle,90000);})();</script>
 
