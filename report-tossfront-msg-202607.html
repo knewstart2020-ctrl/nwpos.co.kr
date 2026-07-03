@@ -14,12 +14,11 @@
  .handoff b{color:var(--navy2);}
  .sechead{font-size:18px;font-weight:900;margin:26px 0 8px;color:var(--navy);display:flex;align-items:center;gap:9px;}
  .secnum{display:inline-block;background:var(--blue);color:#fff;font-size:12px;font-weight:800;border-radius:7px;padding:2px 9px;}
- .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
  .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;box-shadow:0 2px 12px rgba(20,40,80,.04);}
  .card h3{font-size:14px;color:var(--navy2);font-weight:800;margin-bottom:8px;}
  ul.feat{margin:4px 0 0 2px;list-style:none;} ul.feat li{margin:7px 0;font-size:13.8px;padding-left:22px;position:relative;}
  ul.feat li:before{content:"▸";color:var(--blue);position:absolute;left:4px;font-weight:900;}
- ul.feat.b li:before{content:"✓";color:var(--green);}
+ .offer{margin-top:12px;background:#eef7f0;border:1px solid #cdead6;border-radius:9px;padding:9px 13px;font-size:13.6px;color:#12633a;font-weight:700;}
  .imgrow{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start;}
  .imgcard{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;}
  .imgcard img{width:100%;display:block;background:#0e1f3a;}
@@ -31,55 +30,47 @@
  .tpl .th{display:flex;align-items:center;gap:8px;padding:11px 14px;background:#f7f9fd;border-bottom:1px solid var(--line);}
  .tpl .tid{font-weight:800;font-size:13.5px;color:var(--navy);}
  .badge{font-size:11px;font-weight:800;border-radius:20px;padding:2px 9px;color:#fff;} .b-MMS{background:var(--gold);color:#4a3600;} .b-SMS{background:#8894a8;} .b-LMS{background:var(--blue);}
- .tpl pre{margin:12px 14px;background:#0e1f3a;color:#eaf1ff;border-radius:9px;padding:14px 16px;font-size:13.4px;line-height:1.62;white-space:pre-wrap;font-family:'Pretendard','Malgun Gothic',sans-serif;}
+ .tpl pre{margin:12px 14px;background:#0e1f3a;color:#eaf1ff;border-radius:9px;padding:14px 16px;font-size:13.6px;line-height:1.62;white-space:pre-wrap;font-family:'Pretendard','Malgun Gothic',sans-serif;}
  .tpl .bar{padding:0 14px 13px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;} .bar .by{font-size:11.5px;color:var(--muted);margin-left:auto;}
  .cpbtn{background:var(--blue);color:#fff;border:none;border-radius:8px;padding:8px 15px;font-size:12.5px;font-weight:800;cursor:pointer;} .cpbtn:hover{filter:brightness(1.08);} .cpbtn.ok{background:var(--green);}
- .rules{background:#fff7ea;border:1px solid #f0dcae;border-radius:12px;padding:13px 18px;margin:10px 0;}
- .rules b{color:#b7791f;} .rules ul{margin:8px 0 0 18px;} .rules li{margin:5px 0;font-size:13px;}
+ .rules{background:#eef3fb;border:1px solid #c9d8f5;border-radius:12px;padding:13px 18px;margin:10px 0;}
+ .rules b{color:var(--navy2);} .rules ul{margin:8px 0 0 18px;} .rules li{margin:5px 0;font-size:13px;}
+ .rules .warn{color:#b7791f;}
  footer{margin-top:36px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;}
- @media(max-width:680px){.grid2,.imgrow{grid-template-columns:1fr;}}
+ @media(max-width:680px){.imgrow{grid-template-columns:1fr;}}
 </style></head><body>
 <header><div class="wrap">
- <div class="eyebrow">TOSS FRONT · 가맹점 안내 문자 템플릿</div>
- <h1>토스프론트 / 토스단말기 — 이미지 문자 발송 템플릿</h1>
- <div class="sub">토스플레이스 Front 페이지 참조 · 장점·특징 정리 + 힉스필드 제품 이미지</div>
+ <div class="eyebrow">TOSS FRONT · 기존 가맹점 안내 문자</div>
+ <h1>토스프론트 / 토스단말기 — 우리 가맹점 안내 문자 템플릿</h1>
+ <div class="sub">현재 관리 중인 가맹점 대상 · 정보성 안내 · 힉스필드 제품 이미지 첨부</div>
  <div class="meta">작성 2026-07-03 · 누리네트웍스 내부 자료(noindex) · 일정정보등록시스템(MCP서버2) 문자보내기 등록용</div>
 </div></header>
 <div class="wrap">
  <div class="handoff">
-  📮 <b>MCP서버2 전달용</b> — 아래 <b>문자 템플릿(본문)</b>과 <b>제품 이미지</b>를 일정정보등록시스템 '문자보내기'에 등록해 사용하시면 됩니다. <b>{상호}</b> 등 변수는 시스템에서 가맹점 DB값으로 치환(미보유 시 '사장님'), <b>080-XXX-XXXX</b>는 실제 무료수신거부 번호로 치환하세요. 실발송은 전무 확인 후.
+  📮 <b>MCP서버2 전달용</b> — <b>현재 관리 중인 우리 가맹점</b> 대상 정보성 안내입니다. 아래 <b>문자 템플릿</b>과 <b>제품 이미지</b>를 일정정보등록시스템 '문자보내기'에 등록해 사용하세요. <b>{상호}</b>는 가맹점 DB값으로 치환(미보유 시 '사장님'). 연락처는 <b>1544-7754</b>로 표기. 실발송은 전무 확인 후.
  </div>
 
  <div class="sechead"><span class="secnum">1</span> 토스프론트 장점·특징</div>
- <div class="grid2">
-  <div class="card"><h3>특징 (제품)</h3>
-   <ul class="feat">
-    <li>카드·삼성페이·<b>애플페이</b>·QR 간편결제·페이스페이까지 <b>한 대로</b></li>
-    <li><b>외국인 손님 결제</b>도 문제없이 (관광지·외국인 상권 강점)</li>
-    <li><b>7인치 컬러 터치</b>스크린 · 검정/흰색 — 매장 분위기에 맞는 세련된 디자인</li>
-    <li>토스포스(무료 POS 앱) 연동 — 주문·매출 관리</li>
-    <li>토스터미널(백업 단말기·영수증 프린터) 연동</li>
-   </ul>
-  </div>
-  <div class="card"><h3>혜택 (누리네트웍스)</h3>
-   <ul class="feat b">
-    <li><b>약정·위약금 0원</b></li>
-    <li><b>금전함 무상</b> 제공</li>
-    <li>설치·교육·<b>카드사 접수비 0원</b></li>
-    <li>수도권 <b>직영</b> · 업력 <b>14년</b> · 정품 설치·교육·A/S 책임</li>
-   </ul>
-  </div>
+ <div class="card">
+  <h3>특징</h3>
+  <ul class="feat">
+   <li>카드·삼성페이·<b>애플페이</b>·QR 간편결제·페이스페이까지 <b>한 대로</b></li>
+   <li><b>외국인 손님 결제</b>도 문제없이</li>
+   <li><b>7인치 컬러 터치</b>스크린 · 검정/흰색 — 매장 분위기에 맞는 세련된 디자인</li>
+   <li>토스포스(무료 POS 앱) 연동 · 토스터미널(백업 단말기·영수증 프린터) 연동</li>
+  </ul>
+  <div class="offer">✓ 약정·위약금 0원</div>
  </div>
 
  <div class="sechead"><span class="secnum">2</span> 힉스필드 제품 이미지 (문자 첨부용)</div>
  <div class="imgrow">
   <div class="imgcard">
    <img src="tossfront-catalog.png" alt="토스프론트 제품 카탈로그 이미지">
-   <div class="cap"><span class="tag">추천</span><b>카탈로그컷 (1:1)</b> — 세련된 블랙 핸드헬드 결제단말기. 문자 메인 첨부 권장.<br><a href="tossfront-catalog.png" download>⬇ 이미지 내려받기</a></div>
+   <div class="cap"><span class="tag">추천</span><b>카탈로그컷 (1:1)</b> — 세련된 블랙 핸드헬드 결제단말기.<br><a href="tossfront-catalog.png" download>⬇ 이미지 내려받기</a></div>
   </div>
   <div class="imgcard">
    <img src="tossfront-store.png" alt="매장 설치 이미지">
-   <div class="cap"><span class="tag alt">대안</span><b>매장컷 (3:4)</b> — 프리미엄 카페 카운터 앰비언트(듀얼스크린 폼팩터).<br><a href="tossfront-store.png" download>⬇ 이미지 내려받기</a></div>
+   <div class="cap"><span class="tag alt">대안</span><b>매장컷 (3:4)</b> — 프리미엄 카페 카운터 앰비언트.<br><a href="tossfront-store.png" download>⬇ 이미지 내려받기</a></div>
   </div>
  </div>
 
@@ -87,60 +78,52 @@
 
  <div class="tpl">
   <div class="th"><span class="tid">TF-MMS · 메인 (이미지 문자)</span><span class="badge b-MMS">MMS/이미지</span></div>
-  <pre id="t1">(광고) 토스단말기(토스프론트) 안내
+  <pre id="t1">토스단말기(토스프론트) 안내
 {상호} 사장님, 결제 이제 한 대로 끝내세요.
 
 ▸카드·삼성·애플페이·QR·간편결제
 ▸외국인 손님 결제도 문제없이
 ▸7인치 컬러 터치 · 검정/흰색 디자인
-▸약정·위약금 0원 · 금전함 무상
-▸설치·교육·카드사 접수비 0원
-▸수도권 직영 · 14년 정품 설치·교육·A/S
+▸약정·위약금 0원
 
-무료상담 ☎1544-7754
-nwpos.co.kr · 카톡 pf.kakao.com/_EfGxmn
-무료수신거부 080-XXX-XXXX
-— 주식회사 누리네트웍스</pre>
-  <div class="bar"><button class="cpbtn" data-t="t1">📋 문안 복사</button><span class="by">첨부: tossfront-catalog.png · 텍스트 LMS 규격 내</span></div>
+문의 ☎1544-7754
+— 누리네트웍스</pre>
+  <div class="bar"><button class="cpbtn" data-t="t1">📋 문안 복사</button><span class="by">첨부: tossfront-catalog.png</span></div>
  </div>
 
  <div class="tpl">
   <div class="th"><span class="tid">TF-LMS · 텍스트만 (이미지 없이)</span><span class="badge b-LMS">LMS</span></div>
-  <pre id="t2">(광고) 토스단말기(토스프론트)
+  <pre id="t2">토스단말기(토스프론트) 안내
 {상호} 사장님, 카드·삼성·애플페이·QR·외국인 결제까지 한 대로.
 
-▸약정·위약금 0원 · 금전함 무상
-▸설치·교육·카드사 접수비 0원
 ▸7인치 컬러 · 검정/흰색 디자인
-▸수도권 직영 · 14년 정품 A/S
+▸약정·위약금 0원
 
-무료상담 ☎1544-7754 · nwpos.co.kr
-무료수신거부 080-XXX-XXXX
-— 주식회사 누리네트웍스</pre>
+문의 ☎1544-7754
+— 누리네트웍스</pre>
   <div class="bar"><button class="cpbtn" data-t="t2">📋 문안 복사</button><span class="by">이미지 없이 발송할 때</span></div>
  </div>
 
  <div class="tpl">
-  <div class="th"><span class="tid">TF-SMS · 짧은 티저</span><span class="badge b-SMS">SMS 단문</span></div>
-  <pre id="t3">(광고)애플페이·외국인결제 되는 토스단말기. 약정0원 ☎1544-7754 무료거부080-XXX-XXXX</pre>
-  <div class="bar"><button class="cpbtn" data-t="t3">📋 문안 복사</button><span class="by">약 83B · SMS 90B 이내 · {상호} 미포함 권장</span></div>
+  <div class="th"><span class="tid">TF-SMS · 짧은 안내</span><span class="badge b-SMS">SMS 단문</span></div>
+  <pre id="t3">[누리네트웍스] 애플페이·외국인결제 되는 토스단말기 약정0원. 문의 ☎1544-7754</pre>
+  <div class="bar"><button class="cpbtn" data-t="t3">📋 문안 복사</button><span class="by">약 75B · SMS 90B 이내 · {상호} 미포함</span></div>
  </div>
 
- <div class="sechead"><span class="secnum">4</span> 발송 전 필수 체크 (간단)</div>
+ <div class="sechead"><span class="secnum">4</span> 발송 참고 (기존 가맹점 정보성)</div>
  <div class="rules">
-  <b>정보통신망법 광고문자 필수</b>
+  <b>이 문안은 현재 관리 중인 가맹점 대상 정보성 안내입니다.</b>
   <ul>
-   <li>첫 글자 <b>(광고)</b> 표기 유지 (생략 불가)</li>
-   <li><b>무료수신거부 080번호</b> 실제 발급번호로 치환 (플레이스홀더 <code>XXX</code> 잔존 금지, "무료" 명시)</li>
-   <li>발송 금지 시간: <b>21:00 ~ 익일 08:00</b></li>
-   <li>발송 대상: <b>마케팅 수신동의</b> 확보 또는 기존 거래관계 예외 적격 매장만</li>
-   <li>발신번호: 사전등록 대표번호(1544-7754 계열)</li>
-   <li>표현: <b>"최저가"·과장·미확인 수치(수수료·월요금) 금지</b> — 위 문안엔 숫자 없음</li>
-   <li>변수 <code>{상호}</code>는 DB값 치환(미보유 시 '사장님'), SMS는 길이 초과 주의</li>
+   <li>연락처는 <b>1544-7754</b> 한 곳만 표기 (홈페이지·카톡·수신거부 제외).</li>
+   <li>변수 <code>{상호}</code>는 DB값 치환(미보유 시 '사장님').</li>
+   <li>발신번호: 사전등록 대표번호(1544-7754 계열).</li>
+   <li>표현: 수수료·월요금 등 미확인 수치·과장 없음(약정·위약금 0원만 표기).</li>
+   <li>매너: 야간 발송 지양(매장 영업시간 고려).</li>
+   <li class="warn">⚠️ 만약 <b>광고성 대량 발송</b>(신규 유치 등)으로 전환하실 경우엔 <b>(광고) 머리표기 + 무료수신거부</b>를 함께 넣어야 합니다(둘은 세트). 그때는 말씀해 주세요.</li>
   </ul>
  </div>
 
- <footer>주식회사 누리네트웍스 · 1544-7754 · nwpos.co.kr · 카톡 pf.kakao.com/_EfGxmn<br>내부 자료(noindex) · 토스프론트 문자 템플릿 · 2026-07-03 · 실발송은 전무 확인 후</footer>
+ <footer>주식회사 누리네트웍스 · 1544-7754<br>내부 자료(noindex) · 토스프론트 기존 가맹점 안내 문자 · 2026-07-03 · 실발송은 전무 확인 후</footer>
 </div>
 <script>
 document.querySelectorAll('.cpbtn').forEach(function(b){
