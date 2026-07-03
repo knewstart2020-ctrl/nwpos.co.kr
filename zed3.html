@@ -534,14 +534,25 @@
  // 자동 stagger delay (그리드)
  document.querySelectorAll('.eco .ecard,.specs .spec,.q3 .qcard,.stripgrid .scell').forEach(function(el,i){el.style.transitionDelay=((i%3)*0.09)+'s';});
 
- // 가로 스냅 갤러리
+ // 가로 스냅 갤러리 (자동 흐름 + 화살표 · 호버 시 일시정지)
  var gal=document.getElementById('gal'), gdots=document.getElementById('gdots');
  if(gal&&gdots){
    var cards=gal.querySelectorAll('.gcard');
    cards.forEach(function(_,i){var d=document.createElement('i');if(i===0)d.className='active';gdots.appendChild(d);});
    var dts=gdots.querySelectorAll('i');
    gal.addEventListener('scroll',function(){var idx=Math.round(gal.scrollLeft/(gal.scrollWidth/cards.length));dts.forEach(function(d,i){d.classList.toggle('active',i===idx);});},{passive:true});
-   window.galMove=function(dir){var w=gal.querySelector('.gcard').offsetWidth+16;gal.scrollBy({left:dir*w,behavior:'smooth'});};
+   window.galMove=function(dir){var w=gal.querySelector('.gcard').offsetWidth+16;var atEnd=gal.scrollLeft+gal.clientWidth>=gal.scrollWidth-8;if(dir>0&&atEnd){gal.scrollTo({left:0,behavior:'smooth'});}else{gal.scrollBy({left:dir*w,behavior:'smooth'});}};
+   // 자동 흐름
+   if(!reduce){
+     var galTimer=null, galwrap=gal.closest('.galwrap');
+     function galStart(){if(!galTimer)galTimer=setInterval(function(){window.galMove(1);},3000);}
+     function galStop(){if(galTimer){clearInterval(galTimer);galTimer=null;}}
+     galStart();
+     galwrap.addEventListener('pointerenter',galStop);
+     galwrap.addEventListener('pointerleave',galStart);
+     galwrap.addEventListener('touchstart',galStop,{passive:true});
+     document.addEventListener('visibilitychange',function(){if(document.hidden)galStop();else galStart();});
+   }
  }
 })();
 </script>
@@ -572,6 +583,11 @@
  .zbox input,.zbox textarea{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:11px;padding:12px 13px;color:#fff;font-size:14.5px;font-family:inherit;}
  .zbox textarea{min-height:68px;resize:vertical;}
  .zbox .zagree{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:12.5px;color:var(--muted);}
+ .zbox .zphone{display:flex;align-items:center;gap:8px;}
+ .zbox .zphone .zpre{flex:none;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:11px;padding:12px 13px;color:var(--muted);font-size:14.5px;}
+ .zbox .ztypes{display:flex;flex-wrap:wrap;gap:7px;margin-top:6px;}
+ .zbox .ztype{border:1px solid rgba(255,255,255,.16);border-radius:20px;padding:7px 13px;font-size:12.5px;color:var(--muted);cursor:pointer;user-select:none;transition:background .2s,border-color .2s,color .2s;}
+ .zbox .ztype.on{background:var(--blue);border-color:var(--blue);color:#fff;}
  .zbox .zsubmit{width:100%;margin-top:18px;background:var(--blue);color:#fff;border:none;border-radius:12px;padding:14px;font-size:16px;font-weight:800;cursor:pointer;box-shadow:0 12px 30px rgba(43,140,255,.35);}
  .zbox .zx{position:absolute;top:12px;right:16px;background:none;border:none;color:var(--muted);font-size:26px;cursor:pointer;line-height:1;}
  .zdone{text-align:center;padding:12px 0;} .zdone .zc{font-size:44px;} .zdone p{color:var(--muted);font-size:14px;margin-top:8px;}
@@ -585,7 +601,17 @@
    <label>업체/고객명</label>
    <input type="text" id="zName" placeholder="업체 또는 고객명">
    <label>연락처</label>
-   <input type="tel" id="zPhone" inputmode="numeric" placeholder="010 뒤 8자리" oninput="this.value=this.value.replace(/\D/g,'').slice(0,8)">
+   <div class="zphone"><span class="zpre">010</span><input type="tel" id="zPhone" inputmode="numeric" placeholder="1234-5678" oninput="var v=this.value.replace(/\D/g,'').slice(0,8);this.value=v.length>4?v.slice(0,4)+'-'+v.slice(4):v;"></div>
+   <label>상담유형 <span style="font-weight:500;color:#7c8aa5">(중복 선택 가능)</span></label>
+   <div class="ztypes">
+    <span class="ztype on" onclick="this.classList.toggle('on')">ZED-Ⅲ 신제품</span>
+    <span class="ztype" onclick="this.classList.toggle('on')">포스</span>
+    <span class="ztype" onclick="this.classList.toggle('on')">테이블오더</span>
+    <span class="ztype" onclick="this.classList.toggle('on')">토스·네이버 단말기</span>
+    <span class="ztype" onclick="this.classList.toggle('on')">배리어프리 키오스크</span>
+    <span class="ztype" onclick="this.classList.toggle('on')">카드단말기</span>
+    <span class="ztype" onclick="this.classList.toggle('on')">업무제휴/기타</span>
+   </div>
    <label>문의 내용 (선택)</label>
    <textarea id="zMemo" placeholder="예) 매장 업종 · 대수 · 희망 일정"></textarea>
    <label class="zagree"><input type="checkbox" id="zAgree"> 개인정보 수집·이용에 동의합니다.</label>
@@ -606,8 +632,10 @@ function submitZConsult(){
  if(!document.getElementById('zAgree').checked){alert('개인정보 수집·이용에 동의해 주세요.');return;}
  var phone='010-'+pd.slice(0,4)+'-'+pd.slice(4);
  var memo=document.getElementById('zMemo').value.trim();
+ var types=[];document.querySelectorAll('#zConsult .ztype.on').forEach(function(c){types.push(c.textContent);});
+ var type=types.length?types.join(', '):'ZED-Ⅲ 신제품';
  var now=new Date();var d=now.getFullYear()+'.'+(now.getMonth()+1)+'.'+now.getDate()+' '+now.getHours()+':'+String(now.getMinutes()).padStart(2,'0');
- var fd={name:name,phone:phone,consultType:'ZED-Ⅲ 신제품',time:'',memo:memo,date:d,duration:0,pages:'ZED-Ⅲ 신제품 페이지',referrer:'nwpos.co.kr ZED-III 페이지',interests:'ZED-Ⅲ'};
+ var fd={name:name,phone:phone,consultType:type,time:'',memo:memo,date:d,duration:0,pages:'ZED-Ⅲ 신제품 페이지',referrer:'nwpos.co.kr ZED-III 페이지',interests:type};
  var b=document.getElementById('zSubmit');b.textContent='전송 중...';b.disabled=true;
  fetch('https://script.google.com/macros/s/AKfycbx7ehczO8H27GXO58JHPvNUbZWocPUSKpL9NMMbtQgHlglVgRhaua4_WAOhv5MZqqzThA/exec',{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(fd)}).then(done).catch(done);
  try{var acd=Object.assign({type:'homeConsult',source:'nwpos.co.kr ZED-Ⅲ 페이지'},fd);fetch('https://script.google.com/macros/s/AKfycbw2uWFTq2Sr2k5Sa0r2YukUK4siGTjSTu68JJVPDla-QLssQXkZYAUJRiPlgk9rqhs/exec',{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(acd)}).catch(function(){});}catch(e){}
