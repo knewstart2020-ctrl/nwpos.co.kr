@@ -409,7 +409,7 @@
 <!-- 헤더 (비버·티오더) -->
 <header>
   <div class="wrap nav">
-    <a href="index.html" class="logo" style="display:flex;align-items:center;gap:9px;background:linear-gradient(110deg,#ffe7f1 0%,#eef0ff 48%,#e3f0ff 100%);padding:5px 14px;border-radius:14px;"><img src="logo.svg" alt="누리네트웍스" style="height:34px;display:block"><span style="color:var(--blue);font-family:'Pretendard','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-weight:800;letter-spacing:.2px;">누리포스</span></a>
+    <a href="index.html" class="logo" style="display:flex;align-items:center;gap:9px;background:linear-gradient(110deg,#ffe7f1 0%,#eef0ff 48%,#e3f0ff 100%);padding:5px 14px;border-radius:14px;"><span id="brandSlot" style="position:relative;display:inline-block;border-radius:8px;overflow:hidden;flex:none;line-height:0;"><img id="brandLogo" src="logo.svg" alt="누리네트웍스" style="height:34px;display:block;position:relative;z-index:2;transition:opacity .5s;"><video id="brandVid" muted loop playsinline preload="none" poster="brand-zed3-tx-poster.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;z-index:1;transition:opacity .5s;"><source src="brand-zed3-tx.mp4" type="video/mp4"></video></span><span style="color:var(--blue);font-family:'Pretendard','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-weight:800;letter-spacing:.2px;">누리포스</span></a>
     <nav class="menu">
       <a href="index.html">Store</a>
       <a href="zed3.html" style="color:var(--gold)!important">ZED-Ⅲ<sup style="color:#e23b3b;font-size:9px;font-weight:900;margin-left:1px;">NEW</sup></a>
@@ -424,6 +424,8 @@
     </div>
   </div>
 </header>
+<!-- 헤더 브랜드 애니: 심볼+누리포스 고정 → 60초마다 ZED-Ⅲ 주문·결제 영상 6초 → 복귀 -->
+<script>(function(){var logo=document.getElementById('brandLogo'),vid=document.getElementById('brandVid');if(!logo||!vid)return;if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;var busy=false;function flourish(){if(busy)return;busy=true;try{vid.currentTime=0;}catch(e){}var p=vid.play&&vid.play();if(p&&p.catch)p.catch(function(){});vid.style.opacity='1';logo.style.opacity='0';setTimeout(function(){vid.style.opacity='0';logo.style.opacity='1';setTimeout(function(){try{vid.pause();}catch(e){}busy=false;},600);},6000);}setInterval(flourish,60000);setTimeout(flourish,4000);})();</script>
 
 <style>
 .hero-eyebrow{display:inline-block;background:rgba(201,169,97,.16);border:1px solid rgba(201,169,97,.55);color:var(--gold);font-weight:800;font-size:14px;letter-spacing:.3px;padding:5px 15px;border-radius:20px;margin-bottom:12px;}
