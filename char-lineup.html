@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>누리포스 3D 캐릭터 라인업 — 검수</title>
+<title>누리포스 3D 캐릭터 라인업 — 살아 움직이는 7종</title>
 <style>
   :root{--navy:#0a1830;--navy2:#12294f;--blue:#2b8cff;--gold:#c9a961;--ink:#eaf1ff;}
   *{box-sizing:border-box;margin:0;padding:0;}
@@ -14,14 +14,14 @@
   .eyebrow{display:inline-block;background:rgba(43,140,255,.16);border:1px solid rgba(43,140,255,.5);color:#9fc4ff;font-weight:800;font-size:12.5px;letter-spacing:.4px;padding:5px 14px;border-radius:20px;margin-bottom:14px;}
   h1{font-size:26px;font-weight:900;letter-spacing:-.5px;margin-bottom:9px;}
   h1 b{color:var(--blue);}
-  .sub{color:#a8bbdb;font-size:14.5px;line-height:1.7;max-width:660px;margin:0 auto;}
+  .sub{color:#a8bbdb;font-size:14.5px;line-height:1.7;max-width:680px;margin:0 auto;}
   .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px;}
   @media(max-width:860px){.grid{grid-template-columns:repeat(2,1fr);}}
   @media(max-width:480px){.grid{grid-template-columns:1fr;}}
   .card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(120,160,230,.18);border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(4,10,24,.5);transition:transform .25s,box-shadow .25s;}
   .card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(4,10,24,.65);}
-  .card .imgwrap{aspect-ratio:1/1;background:radial-gradient(120% 120% at 50% 25%,#e8eefb 0%,#d3ddf2 100%);display:flex;align-items:center;justify-content:center;}
-  .card img{width:100%;height:100%;object-fit:cover;display:block;}
+  .card .imgwrap{aspect-ratio:1/1;background:radial-gradient(120% 120% at 50% 25%,#e8eefb 0%,#d3ddf2 100%);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+  .card video{width:100%;height:100%;object-fit:cover;display:block;}
   .card .cap{padding:13px 14px 15px;text-align:center;}
   .card .cap .kr{font-weight:800;font-size:15.5px;color:#fff;}
   .card .cap .en{font-size:11px;letter-spacing:.6px;color:#7f9ac6;margin-top:3px;text-transform:uppercase;}
@@ -29,6 +29,7 @@
   .card.pos .badge{display:inline-block;background:var(--gold);color:#241a05;font-weight:900;font-size:10px;padding:2px 8px;border-radius:10px;margin-top:6px;letter-spacing:.3px;}
   .note{margin-top:34px;background:rgba(43,140,255,.08);border:1px solid rgba(43,140,255,.28);border-radius:16px;padding:20px 22px;font-size:14px;line-height:1.85;color:#cfe0ff;}
   .note b{color:#fff;}
+  .note .ok{color:#6ee7a8;font-weight:800;}
   .note .q{color:var(--gold);font-weight:800;}
   .foot{text-align:center;color:#6f88b3;font-size:12px;margin-top:26px;line-height:1.7;}
 </style>
@@ -36,51 +37,48 @@
 <body>
 <div class="wrap">
   <div class="top">
-    <span class="eyebrow">CHARACTER LINEUP · 검수용</span>
-    <h1>누리포스 <b>3D 캐릭터 라인업</b> 7종</h1>
-    <p class="sub">기존 <b>포스 3D 카툰</b>과 동일한 스타일(글로시 토이·스마일 얼굴·소프트 스튜디오)로 결제기기 6종을 새로 제작했습니다. 각 기기의 실제 형태·색(네이버 그린LED, 유선 키패드, 토스 도크 등)은 그대로 살렸습니다.</p>
+    <span class="eyebrow">CHARACTER LINEUP · 살아 움직이는 7종</span>
+    <h1>누리포스 <b>3D 캐릭터</b> — 다 움직입니다 🎬</h1>
+    <p class="sub">포스 스타일 그대로 결제기기 7종을 3D 카툰 캐릭터로 만들고, 각각 <b>통통 살아 움직이는 개별 애니메이션</b>(주문→결제)까지 제작했습니다. 카드에 마우스를 올리면 떠오릅니다.</p>
   </div>
 
   <div class="grid">
     <div class="card pos">
-      <div class="imgwrap"><img src="char-pos.png" alt="포스"></div>
-      <div class="cap"><div class="kr">포스 (ZED-Ⅲ)</div><div class="en">POS</div><span class="badge">기존 · 기준</span></div>
+      <div class="imgwrap"><video autoplay loop muted playsinline poster="char-pos.png"><source src="anim-pos.mp4" type="video/mp4"></video></div>
+      <div class="cap"><div class="kr">포스 (ZED-Ⅲ)</div><div class="en">POS</div><span class="badge">기준</span></div>
     </div>
     <div class="card">
-      <div class="imgwrap"><img src="char-order.png" alt="테이블오더"></div>
+      <div class="imgwrap"><video autoplay loop muted playsinline poster="char-order.png"><source src="anim-order.mp4" type="video/mp4"></video></div>
       <div class="cap"><div class="kr">테이블오더</div><div class="en">Table Order</div></div>
     </div>
     <div class="card">
-      <div class="imgwrap"><img src="char-kiosk.png" alt="배리어프리 키오스크"></div>
+      <div class="imgwrap"><video autoplay loop muted playsinline poster="char-kiosk.png"><source src="anim-kiosk.mp4" type="video/mp4"></video></div>
       <div class="cap"><div class="kr">배리어프리 키오스크</div><div class="en">Kiosk</div></div>
     </div>
     <div class="card">
-      <div class="imgwrap"><img src="char-toss.png" alt="토스프론트"></div>
+      <div class="imgwrap"><video autoplay loop muted playsinline poster="char-toss.png"><source src="anim-toss.mp4" type="video/mp4"></video></div>
       <div class="cap"><div class="kr">토스프론트</div><div class="en">Toss Front</div></div>
     </div>
     <div class="card">
-      <div class="imgwrap"><img src="char-naver.png" alt="네이버단말기"></div>
+      <div class="imgwrap"><video autoplay loop muted playsinline poster="char-naver.png"><source src="anim-naver.mp4" type="video/mp4"></video></div>
       <div class="cap"><div class="kr">네이버단말기</div><div class="en">Naver Terminal</div></div>
     </div>
     <div class="card">
-      <div class="imgwrap"><img src="char-wired.png" alt="유선단말기"></div>
+      <div class="imgwrap"><video autoplay loop muted playsinline poster="char-wired.png"><source src="anim-wired.mp4" type="video/mp4"></video></div>
       <div class="cap"><div class="kr">유선단말기</div><div class="en">Wired Terminal</div></div>
     </div>
     <div class="card">
-      <div class="imgwrap"><img src="char-wireless.png" alt="무선단말기"></div>
+      <div class="imgwrap"><video autoplay loop muted playsinline poster="char-wireless.png"><source src="anim-wireless.mp4" type="video/mp4"></video></div>
       <div class="cap"><div class="kr">무선단말기</div><div class="en">Wireless Terminal</div></div>
     </div>
   </div>
 
   <div class="note">
-    <b>다음 단계 (확정 시 진행):</b><br>
-    ① 7종 각각 <b>포스처럼 살아 움직이는 개별 애니메이션</b> 제작<br>
-    ② <b>톰과제리식 추격 씬</b> — 포스+결제기기들이 한 줄로 서로 쫓고 쫓기며 달리다가 → <b>회사심볼 + 누리포스</b> 등장<br>
-    ③ 헤더 브랜드 박스에 통합 (배경 제거 후 합성)<br><br>
-    <span class="q">▶ 이 캐릭터들로 진행할까요?</span> 특정 기기 색감·형태 조정이 필요하면 말씀해 주세요. 확정되면 바로 애니메이션·추격씬 제작에 들어가겠습니다.
+    <span class="ok">✔ 완료</span> &nbsp;① 7종 개별 애니메이션(위 카드) &nbsp;·&nbsp; ② 톰과제리식 <b>추격 씬</b> &nbsp;·&nbsp; ③ 헤더 통합(추격 → npay 로고 등장) — <b>메인 nwpos.co.kr 헤더 라이브</b><br><br>
+    <span class="q">▶ 다음(전무님 확인용):</span> 헤더 박스가 작아 추격이 아담하게 보입니다. 원하시면 ⑴히어로 영역에 <b>풀사이즈 브랜드 필름</b>으로 크게, ⑵개별 애니를 각 <b>제품(라인업) 페이지</b> 히어로에 적용 — 다음 세션에 진행하겠습니다.
   </div>
 
-  <div class="foot">누리네트웍스 · 내부 검수용 페이지 (검색 비노출) · nwpos.co.kr/char-lineup.html</div>
+  <div class="foot">누리네트웍스 · 내부 검수용 (검색 비노출) · nwpos.co.kr/char-lineup.html</div>
 </div>
 </body>
 </html>
