@@ -1,0 +1,65 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><meta name="robots" content="noindex, nofollow">
+<title>부정클릭 대시보드 | 누리네트웍스</title>
+<style>
+ :root{--navy:#0e1f3a;--navy2:#16315a;--blue:#1a6dff;--gold:#f6b73c;--green:#16a34a;--red:#e23b3b;--ink:#1a2233;--muted:#5b6577;--line:#e6eaf1;--bg:#f4f6fb;}
+ *{box-sizing:border-box;margin:0;padding:0;} body{font-family:'Pretendard','Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;}
+ .wrap{max-width:1000px;margin:0 auto;padding:0 18px 70px;}
+ header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:34px 0 26px;margin-bottom:20px;} header .wrap{padding-bottom:0;}
+ .eyebrow{color:var(--gold);font-weight:800;font-size:12.5px;letter-spacing:2px;} h1{font-size:23px;font-weight:900;margin:7px 0 5px;}
+ .sub{color:#c7d3e8;font-size:14px;} .meta{margin-top:10px;font-size:12px;color:#9fb0cc;}
+ .standby{background:#eaf7ef;border:1px solid #cdead6;border-radius:11px;padding:13px 16px;margin:0 0 16px;font-size:13.6px;color:#12633a;}
+ .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 20px;}
+ .kpi{background:#fff;border:1px solid var(--line);border-radius:13px;padding:16px 14px;text-align:center;box-shadow:0 2px 12px rgba(20,40,80,.04);}
+ .kpi .n{font-size:28px;font-weight:900;color:var(--navy);} .kpi .n.warn{color:var(--red);} .kpi .l{font-size:12px;color:var(--muted);margin-top:3px;}
+ h2{font-size:16px;font-weight:900;color:var(--navy);margin:24px 0 8px;}
+ table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:11px;overflow:hidden;font-size:13px;}
+ th,td{padding:9px 11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;}
+ th{background:var(--navy);color:#fff;font-weight:700;font-size:12px;}
+ tr.susp td{background:#fff5f5;} .mono{font-family:ui-monospace,Consolas,monospace;font-weight:700;}
+ .rf{display:inline-block;background:var(--red);color:#fff;font-size:10.5px;font-weight:800;border-radius:10px;padding:1px 7px;margin:1px;}
+ .ok{color:var(--green);font-weight:700;font-size:12px;} .empty{color:var(--muted);text-align:center;padding:16px;}
+ .cand{margin-top:8px;} .cmd{font-family:ui-monospace,Consolas,monospace;font-size:12px;background:#0e1f3a;color:#eaf1ff;border-radius:8px;padding:9px 12px;margin:5px 0;overflow-x:auto;white-space:nowrap;}
+ .none{color:var(--green);font-weight:700;padding:8px 0;}
+ .legend{background:#fff;border:1px solid var(--line);border-radius:11px;padding:13px 16px;margin-top:10px;font-size:12.5px;color:var(--muted);} .legend b{color:var(--navy2);}
+ .wl{font-size:12px;color:var(--muted);margin-top:6px;}
+ .scroll{overflow-x:auto;} footer{margin-top:30px;padding-top:14px;border-top:1px solid var(--line);font-size:11.5px;color:var(--muted);text-align:center;}
+ @media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr);}}
+</style></head><body>
+<header><div class="wrap">
+ <div class="eyebrow">AD FRAUD GUARD · 부정클릭 대시보드</div>
+ <h1>네이버 광고 부정클릭 현황</h1>
+ <div class="sub">파워링크 랜딩 클릭 로그 · 의심 IP 자동 탐지 (R1~R4)</div>
+ <div class="meta">갱신 2026-07-04 15:35 · 매주 월 07:40 자동 재집계 · 내부 자료(noindex) · 차단 등록은 전무 확인 후</div>
+</div></header>
+<div class="wrap">
+ <div class="standby">🟢 <b>대기 상태</b> — 네이버 광고가 가동되면(“켜줘” 후) 이 화면에 광고 클릭이 자동으로 쌓입니다. 지금은 수집된 광고 클릭이 없습니다.</div>
+ <div class="kpis">
+  <div class="kpi"><div class="n">0</div><div class="l">최근 7일 광고 클릭</div></div>
+  <div class="kpi"><div class="n">0</div><div class="l">최근 30일 광고 클릭</div></div>
+  <div class="kpi"><div class="n ">0</div><div class="l">의심 IP (30일)</div></div>
+  <div class="kpi"><div class="n ">0</div><div class="l">🚫 차단 후보</div></div>
+ </div>
+
+ <h2>⚠️ 의심 IP (최근 30일)</h2>
+ <div class="scroll"><table>
+  <thead><tr><th>IP</th><th>클릭수</th><th>평균체류</th><th>키워드</th><th>탐지규칙</th></tr></thead>
+  <tbody><tr><td colspan="5" class="empty">집계된 광고 클릭 IP가 없습니다 — 광고 미가동이거나 유입 없음 (대기 상태)</td></tr></tbody>
+ </table></div>
+ <div class="wl">🏢 화이트리스트(차단 제외): 1.201.19.117, 106.248.53.227 — 회사 IP</div>
+
+ <h2>🚫 차단 후보 명령 (전무 확인 후 실행)</h2>
+ <div class="cand"><div class="none">차단 후보 없음 ✅</div></div>
+
+ <h2>🕘 최근 광고 클릭 20건</h2>
+ <div class="scroll"><table>
+  <thead><tr><th>시각</th><th>IP</th><th>키워드</th><th>소스</th><th>체류</th><th>랜딩</th></tr></thead>
+  <tbody><tr><td colspan="6" class="empty">최근 광고 클릭 기록 없음</td></tr></tbody>
+ </table></div>
+
+ <div class="legend">
+  <b>탐지 규칙</b> — <b>R1</b> 하루 3회+ · <b>R2</b> 주 5회+ · <b>R3</b> 즉시이탈 반복 · <b>R4</b> 10분 다중키워드.<br>
+  네이버 자체 무효클릭 필터(자동 환불)가 1차 방어, 이 대시보드는 <b>상습 IP 증거 수집·수동 차단</b>용입니다. 모바일 통신사 IP(NAT 공유)는 차단 신중.
+ </div>
+ <footer>주식회사 누리네트웍스 · 1544-7754 · 부정클릭 가드 · 자동 생성</footer>
+</div>
+</body></html>
