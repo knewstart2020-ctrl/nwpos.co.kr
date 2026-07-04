@@ -916,5 +916,29 @@ if(vids.length){for(var k=0;k<vids.length;k++){vids[k].addEventListener("ended",
 <script>(function(){var founding=new Date(2012,4,18).getTime();var days=Math.floor((Date.now()-founding)/864e5);var sBase=new Date(2026,5,8).getTime();var sd=Math.max(0,Math.floor((Date.now()-sBase)/864e5));var stores=30000+5*sd;var T={daysCount:days,storeCount:stores};function fmt(n){return Math.round(n).toLocaleString("en-US");}function anim(el,target){var start=Math.floor(target*0.92),t0=null,dur=1500;function st(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/dur,1),e=1-Math.pow(1-p,3);el.textContent=fmt(start+(target-start)*e);if(p<1)requestAnimationFrame(st);else el.textContent=fmt(target);}requestAnimationFrame(st);}var done=false;function go(){if(done)return;done=true;for(var id in T){var el=document.getElementById(id);if(el)anim(el,T[id]);}}var sec=document.querySelector(".worry-sec");if(window.IntersectionObserver&&sec){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){go();io.disconnect();}});});io.observe(sec);}else{go();}})();</script>
 <!-- NW 방문정보 트래킹 (체류·유입·경로) -->
 <script>(function(){try{var ss=sessionStorage;if(!ss.getItem('nw_t0')){ss.setItem('nw_t0',String(Date.now()));ss.setItem('nw_entry',location.pathname+location.search);ss.setItem('nw_ref',document.referrer||'직접유입');}var key=location.pathname;if(key.charAt(0)==='/')key=key.slice(1);if(key.slice(-5)==='.html')key=key.slice(0,-5);var M={'':'메인','index':'메인','about':'회사소개','lineup':'제품라인업','support':'구매스토어','home-classic':'홈'};var cur=M[key]||key||'메인';var p=ss.getItem('nw_pages')||'';var arr=p?p.split(' > '):[];if(arr[arr.length-1]!==cur){arr.push(cur);ss.setItem('nw_pages',arr.slice(-8).join(' > '));}}catch(e){}})();</script>
+<!-- 부정클릭 가드: 광고(파워링크) 랜딩 클릭 로거 — 광고 유입일 때만 동작, 리드/일반 방문 무관 -->
+<script>(function(){try{
+var q=new URLSearchParams(location.search);
+var isAd=q.has('n_ad')||q.has('n_keyword')||q.has('n_query')||q.has('n_campaign_type')||(q.get('utm_medium')==='cpc');
+if(!isAd)return;
+var FR='https://docs.google.com/forms/d/e/1FAIpQLSfgtXHE8EEsfG2YxnQuFVQMov7E8tOaaD6u9jtIzINKds133Q/formResponse';
+var E={t:'entry.1802150400',ip:'entry.30060983',kw:'entry.2052456654',src:'entry.1605185620',landing:'entry.1131687443',ref:'entry.714376131',ua:'entry.147698271',scr:'entry.808585799',sid:'entry.930257776',dwell:'entry.1769772164'};
+var sid=Date.now().toString(36)+Math.random().toString(36).slice(2,8);
+var kw=q.get('n_keyword')||q.get('n_query')||q.get('utm_term')||'';
+var src=(q.get('n_media')||q.get('utm_source')||'naver')+(q.get('n_match')?'|'+q.get('n_match'):'');
+var landing=location.pathname+(q.get('n_rank')?'|rank:'+q.get('n_rank'):'')+(q.get('n_ad')?'|ad:'+q.get('n_ad'):'');
+function body(o){var p=new URLSearchParams();for(var k in o){if(o[k]!=null&&o[k]!=='')p.append(E[k],String(o[k]).slice(0,300));}return p;}
+function post(o){try{fetch(FR,{method:'POST',mode:'no-cors',body:body(o)});}catch(e){}}
+var base={t:'click',kw:kw,src:src,landing:landing,ref:document.referrer||'',ua:navigator.userAgent,scr:screen.width+'x'+screen.height,sid:sid,dwell:0};
+var ipDone=false;
+function fire(){if(ipDone)return;ipDone=true;post(base);}
+try{fetch('https://api.ipify.org?format=json').then(function(r){return r.json();}).then(function(j){base.ip=(j&&j.ip)||'';fire();}).catch(fire);}catch(e){fire();}
+setTimeout(fire,2500);
+var t0=Date.now(),sent=0;
+function dwell(){var s=Math.round((Date.now()-t0)/1000);if(s<=sent)return;sent=s;try{navigator.sendBeacon(FR,body({t:'dwell',sid:sid,dwell:s}));}catch(e){}}
+setTimeout(dwell,15000);
+window.addEventListener('pagehide',dwell);
+document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')dwell();});
+}catch(e){}})();</script>
 </body>
 </html>
