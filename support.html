@@ -208,7 +208,8 @@ fetch(SCRIPT_URL,{
 
 /* 관제(ACD) 병행 전송 — 홈페이지 상담과 동일 (방문정보 포함) */
 var vt={};try{var vs=sessionStorage,vt0=parseInt(vs.getItem('nw_t0')||vs.getItem('nw_start')||'0',10);if(vt0){var vsec=Math.max(0,Math.round((Date.now()-vt0)/1000));vt.stayTime=vsec>=60?(Math.floor(vsec/60)+'분 '+(vsec%60)+'초'):(vsec+'초');}vt.entryPage=vs.getItem('nw_entry')||location.pathname;vt.referrer=vs.getItem('nw_ref')||document.referrer||'직접유입';vt.pageViews=(JSON.parse(vs.getItem('nw_pages')||'[]')).join(' → ')||'구매스토어';}catch(e){}
-try{var acdPayload=Object.assign({type:'homeConsult',source:'nwpos.co.kr 구매스토어 상담신청'},formData,vt);fetch('https://script.google.com/macros/s/AKfycbw2uWFTq2Sr2k5Sa0r2YukUK4siGTjSTu68JJVPDla-QLssQXkZYAUJRiPlgk9rqhs/exec',{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(acdPayload)}).catch(function(){});}catch(e){}
+var _u={};try{var _e=sessionStorage.getItem('nw_entry')||'';var _qs=_e.indexOf('?')>=0?_e.slice(_e.indexOf('?')+1):'';var _p=new URLSearchParams(_qs);_u.utm_source=_p.get('utm_source')||_p.get('n_media')||'';_u.utm_medium=_p.get('utm_medium')||((_p.has('n_ad')||_p.has('n_keyword'))?'cpc':'');_u.utm_campaign=_p.get('utm_campaign')||'';_u.utm_content=_p.get('utm_content')||'';_u.utm_term=_p.get('utm_term')||_p.get('n_keyword')||_p.get('n_query')||'';}catch(_x){}
+try{var acdPayload=Object.assign({type:'homeConsult',source:'nwpos.co.kr 구매스토어 상담신청'},formData,vt,_u);fetch('https://script.google.com/macros/s/AKfycbw2uWFTq2Sr2k5Sa0r2YukUK4siGTjSTu68JJVPDla-QLssQXkZYAUJRiPlgk9rqhs/exec',{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(acdPayload)}).catch(function(){});}catch(e){}
 
 function showOk(){document.getElementById('formCard').style.opacity='0.3';document.getElementById('formCard').style.pointerEvents='none';document.getElementById('formOk').style.display='block';}
 }

@@ -917,9 +917,10 @@ function submitConsult(){
   fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(fd)}).then(done).catch(done);
   // 관제(ACD) 병행 전송 — 비파괴, 실패해도 사용자 화면 무영향
   var vt={};try{var vs=sessionStorage,vt0=parseInt(vs.getItem('nw_t0')||'0',10);if(vt0){var vsec=Math.max(0,Math.round((Date.now()-vt0)/1000));vt.stayTime=vsec>=60?(Math.floor(vsec/60)+'분 '+(vsec%60)+'초'):(vsec+'초');}vt.entryPage=vs.getItem('nw_entry')||location.pathname;vt.referrer=vs.getItem('nw_ref')||document.referrer||'직접유입';vt.pageViews=vs.getItem('nw_pages')||'메인';}catch(e){}
-  try{var acdPayload=Object.assign({type:'homeConsult',source:'nwpos.co.kr 모달'},fd,vt);fetch('https://script.google.com/macros/s/AKfycbw2uWFTq2Sr2k5Sa0r2YukUK4siGTjSTu68JJVPDla-QLssQXkZYAUJRiPlgk9rqhs/exec',{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(acdPayload)}).catch(function(){});}catch(e){}
+  try{var acdPayload=Object.assign({type:'homeConsult',source:'nwpos.co.kr 모달'},fd,vt,nwUtm());fetch('https://script.google.com/macros/s/AKfycbw2uWFTq2Sr2k5Sa0r2YukUK4siGTjSTu68JJVPDla-QLssQXkZYAUJRiPlgk9rqhs/exec',{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(acdPayload)}).catch(function(){});}catch(e){}
   function done(){document.getElementById('mForm').style.display='none';document.getElementById('mDone').style.display='block';b.textContent='상담 신청하기';b.disabled=false;}
 }
+function nwUtm(){var u={};try{var e=sessionStorage.getItem('nw_entry')||'';var qs=e.indexOf('?')>=0?e.slice(e.indexOf('?')+1):'';var p=new URLSearchParams(qs);u.utm_source=p.get('utm_source')||p.get('n_media')||'';u.utm_medium=p.get('utm_medium')||((p.has('n_ad')||p.has('n_keyword'))?'cpc':'');u.utm_campaign=p.get('utm_campaign')||'';u.utm_content=p.get('utm_content')||'';u.utm_term=p.get('utm_term')||p.get('n_keyword')||p.get('n_query')||'';}catch(e){}return u;}
 function submitConsultFinal(){
   var name=document.getElementById('fName').value.trim();
   var pd=document.getElementById('fPhone').value.replace(/\D/g,'');
@@ -934,7 +935,7 @@ function submitConsultFinal(){
   var b=document.getElementById('fSubmit');b.textContent='전송 중...';b.disabled=true;
   fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(fd)}).then(done).catch(done);
   var vt={};try{var vs=sessionStorage,vt0=parseInt(vs.getItem('nw_t0')||'0',10);if(vt0){var vsec=Math.max(0,Math.round((Date.now()-vt0)/1000));vt.stayTime=vsec>=60?(Math.floor(vsec/60)+'분 '+(vsec%60)+'초'):(vsec+'초');}vt.entryPage=vs.getItem('nw_entry')||location.pathname;vt.referrer=vs.getItem('nw_ref')||document.referrer||'직접유입';vt.pageViews=vs.getItem('nw_pages')||'메인';}catch(e){}
-  try{var acdPayload=Object.assign({type:'homeConsult',source:'nwpos.co.kr 최종폼'},fd,vt);fetch('https://script.google.com/macros/s/AKfycbw2uWFTq2Sr2k5Sa0r2YukUK4siGTjSTu68JJVPDla-QLssQXkZYAUJRiPlgk9rqhs/exec',{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(acdPayload)}).catch(function(){});}catch(e){}
+  try{var acdPayload=Object.assign({type:'homeConsult',source:'nwpos.co.kr 최종폼'},fd,vt,nwUtm());fetch('https://script.google.com/macros/s/AKfycbw2uWFTq2Sr2k5Sa0r2YukUK4siGTjSTu68JJVPDla-QLssQXkZYAUJRiPlgk9rqhs/exec',{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(acdPayload)}).catch(function(){});}catch(e){}
   function done(){document.getElementById('fForm').style.display='none';document.getElementById('fDone').style.display='block';b.textContent='💬 바로 상담하기';b.disabled=false;}
 }
 </script>
