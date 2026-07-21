@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>타임라인 조회 (파일럿)</title>
+<style>
+/* [파일럿 2026-07-21] 프런트 분리 속도 검증 — 화면=정적(nwpos.co.kr), 데이터=일정보고시스템 GAS JSON API */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #eef2f7; font-family: 'Malgun Gothic', -apple-system, system-ui, sans-serif; color: #0B1A3A; }
+.wrap { max-width: 1100px; margin: 0 auto; padding: 16px; }
+.hd { background: linear-gradient(135deg, #1B3A8C, #2E5BDB); color: #fff; border-radius: 12px; padding: 16px 22px; margin-bottom: 12px; }
+.hd h1 { font-size: 1.12em; margin: 0 0 3px; }
+.hd .sub { font-size: 0.78em; opacity: 0.9; }
+.speed { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+.spbox { background: #fff; border: 1px solid #d7dee8; border-radius: 10px; padding: 9px 16px; font-size: 0.84em; font-weight: 700; color: #475569; }
+.spbox b { color: #0f766e; font-size: 1.15em; }
+.bar { display: flex; gap: 6px; margin-bottom: 12px; background: #fff; border: 1.5px solid #e5e7eb; border-radius: 9px; padding: 7px 10px; }
+.bar input { flex: 1; border: none; outline: none; font-size: 0.95em; font-family: inherit; padding: 6px 4px; }
+.bar button { background: #1d4ed8; color: #fff; border: 0; padding: 8px 20px; border-radius: 7px; font-weight: 800; cursor: pointer; font-size: 0.9em; }
+.card { background: #fff; border: 1px solid #d7dee8; border-radius: 12px; padding: 14px 18px; margin-bottom: 12px; }
+.cust b.nm { font-size: 1.05em; color: #1B3A8C; }
+.cust .meta { font-size: 0.84em; color: #475569; margin-top: 4px; line-height: 1.7; }
+.it { border-bottom: 1px solid #eef1f5; padding: 8px 4px; display: flex; gap: 8px; align-items: flex-start; font-size: 0.9em; line-height: 1.55; }
+.kb { border-radius: 4px; padding: 1px 7px; font-size: 0.78em; font-weight: 800; white-space: nowrap; }
+.dt { font-family: monospace; font-size: 0.82em; font-weight: 800; color: #1d4ed8; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 4px; padding: 2px 6px; white-space: nowrap; }
+.datehd { font-weight: 800; color: #1B3A8C; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 6px; padding: 4px 10px; margin: 10px 0 4px; font-size: 0.86em; }
+.muted { color: #94a3b8; }
+#gate { max-width: 420px; margin: 60px auto; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hd">
+    <h1>📜 가맹점 타임라인 조회 <span style="font-size:0.7em;opacity:.85;">파일럿</span></h1>
+    <div class="sub">화면 = 회사 홈페이지 서버(정적) · 데이터 = 일정보고시스템 — 프런트 분리 속도 검증용 (조회 전용)</div>
+  </div>
+
+  <div id="gate" class="card" style="display:none;">
+    <div style="font-weight:800;margin-bottom:8px;">🔑 접속키를 입력하세요</div>
+    <div style="display:flex;gap:6px;">
+      <input id="keyIn" type="password" placeholder="직원 공유 접속키" style="flex:1;border:1px solid #d7dbe4;border-radius:7px;padding:9px;font-family:inherit;" onkeydown="if(event.key==='Enter')saveKey()">
+      <button onclick="saveKey()" style="background:#1B3A8C;color:#fff;border:0;border-radius:7px;padding:9px 18px;font-weight:800;cursor:pointer;">확인</button>
+    </div>
+  </div>
+
+  <div id="app" style="display:none;">
+    <div class="speed">
+      <div class="spbox">🖥 화면 로드 <b id="spPage">-</b> ms <span class="muted">(GAS 방식은 4,000~5,000ms)</span></div>
+      <div class="spbox">📡 데이터 응답 <b id="spApi">-</b> ms</div>
+    </div>
+    <div class="bar">
+      <input id="kw" placeholder="상호 / 사업자번호 / 대표자이름 입력" onkeydown="if(event.key==='Enter')go()">
+      <button onclick="go()">🔍 조회</button>
+    </div>
+    <div id="out"><div class="card muted" style="text-align:center;">가맹점을 조회하면 고객정보와 이력이 표시됩니다</div></div>
+  </div>
+</div>
+
+<script>
+var EXEC = 'https://script.google.com/macros/s/AKfycbw2uWFTq2Sr2k5Sa0r2YukUK4siGTjSTu68JJVPDla-QLssQXkZYAUJRiPlgk9rqhs/exec';
+function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+// 화면 로드 속도 표시 (정적 서빙 증명)
+window.addEventListener('load', function(){
+  try {
+    var nav = performance.getEntriesByType('navigation')[0];
+    var ms = nav ? Math.round(nav.domContentLoadedEventEnd) : Math.round(performance.now());
+    document.getElementById('spPage').textContent = ms.toLocaleString();
+  } catch(e){}
+});
+
+// 접속키 게이트 (localStorage 저장 — 관리 토큰 아님, 직원 공유 접속키)
+function getKey(){ try { return localStorage.getItem('nuriTlKey') || ''; } catch(e){ return ''; } }
+function saveKey(){
+  var v = (document.getElementById('keyIn').value || '').trim();
+  if (!v) return;
+  try { localStorage.setItem('nuriTlKey', v); } catch(e){}
+  boot();
+}
+function boot(){
+  var has = !!getKey();
+  document.getElementById('gate').style.display = has ? 'none' : 'block';
+  document.getElementById('app').style.display = has ? 'block' : 'none';
+  if (!has) { try { document.getElementById('keyIn').focus(); } catch(e){} }
+}
+
+function badge(it){
+  var c = String(it.content||'');
+  if (it.kind === 'counsel') {
+    if (/^\[출입고·입고\]/.test(c)) return ['📥 입고','#fee2e2','#b91c1c'];
+    if (/^\[출입고·출고\]/.test(c)) return ['🚚 출고','#dcfce7','#15803d'];
+    if (/^\[카드사접수\]/.test(c)) return ['💳 카드사접수','#e0e7ff','#3730a3'];
+    if (/^\[수발주\]/.test(c)) return ['📦 수발주','#ccfbf1','#0f766e'];
+    if (it.memoEntry) return ['📝 메모','#fef3c7','#92400e'];
+    return ['📞 상담','#cffafe','#0e7490'];
+  }
+  if (it.kind === 'complaint') return ['📨 민원','#ffedd5','#c2410c'];
+  return ['📅 일정','#dbeafe','#1d4ed8'];
+}
+
+function go(){
+  var kw = (document.getElementById('kw').value || '').trim();
+  if (!kw) return;
+  var out = document.getElementById('out');
+  out.innerHTML = '<div class="card muted" style="text-align:center;">⏳ 데이터 조회 중… (화면은 이미 떠 있음 — 이것이 프런트 분리의 차이)</div>';
+  var t0 = Date.now();
+  fetch(EXEC + '?action=tlData&k=' + encodeURIComponent(getKey()) + '&kw=' + encodeURIComponent(kw))
+    .then(function(r){ return r.json(); })
+    .then(function(r){
+      document.getElementById('spApi').textContent = (Date.now() - t0).toLocaleString();
+      if (r && r.error === 'FORBIDDEN') { try { localStorage.removeItem('nuriTlKey'); } catch(e){} boot(); return; }
+      render(r || {});
+    })
+    .catch(function(e){ out.innerHTML = '<div class="card" style="color:#b91c1c;">❌ ' + esc(e.message) + '</div>'; });
+}
+
+function render(r){
+  var out = document.getElementById('out');
+  var custs = (r.customers && r.customers.length) ? r.customers : (r.customer ? [r.customer] : []);
+  var items = r.items || [];
+  if (!custs.length && !items.length) { out.innerHTML = '<div class="card muted" style="text-align:center;">📭 조회 결과 없음</div>'; return; }
+  var h = '';
+  custs.slice(0, 3).forEach(function(c){
+    h += '<div class="card cust"><b class="nm">🏪 ' + esc(c.shop || c.name || '(상호없음)') + '</b>'
+      + '<div class="meta">'
+      + (c.bizNo || c.biz ? '🔢 ' + esc(c.bizNo || c.biz) + ' · ' : '')
+      + (c.mobile || c.tel ? '☎ ' + esc(c.mobile || c.tel) + ' · ' : '')
+      + (c.van ? 'VAN ' + esc(c.van) + ' · ' : '')
+      + (c.addr ? '📍 ' + esc(c.addr) : '')
+      + '</div></div>';
+  });
+  // 날짜 내림차순 그룹
+  var grp = {}, ord = [];
+  items.forEach(function(it){
+    var d = String(it.schedDate || '날짜미상').substring(0, 10);
+    if (!grp[d]) { grp[d] = []; ord.push(d); }
+    grp[d].push(it);
+  });
+  ord.sort(function(a, b){ return String(b).localeCompare(String(a)); });
+  h += '<div class="card"><div style="font-weight:800;color:#1B3A8C;margin-bottom:4px;">🕒 이력 ' + items.length + '건</div>';
+  ord.forEach(function(d){
+    h += '<div class="datehd">📅 ' + esc(d) + ' · ' + grp[d].length + '건</div>';
+    grp[d].forEach(function(it){
+      var b = badge(it);
+      var txt = String(it.content || it.workType || '').replace(/\s+/g, ' ');
+      if (it.kind !== 'counsel' && it.kind !== 'complaint') txt = String(it.workType || '') + (it.detail ? ' · ' + it.detail : '') + (it.status ? ' [' + it.status + ']' : '');
+      h += '<div class="it"><span class="kb" style="background:' + b[1] + ';color:' + b[2] + ';">' + b[0] + '</span>'
+        + '<div style="min-width:0;"><span style="font-weight:700;color:#475569;">' + esc(it.worker || it.receiver || '-') + '</span> · '
+        + esc(txt.length > 160 ? txt.substring(0, 160) + '…' : txt) + '</div></div>';
+    });
+  });
+  h += '</div>';
+  out.innerHTML = h;
+}
+
+boot();
+</script>
+</body>
+</html>
