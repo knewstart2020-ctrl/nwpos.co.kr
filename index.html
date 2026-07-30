@@ -447,7 +447,7 @@
       
       <!-- 제품 아이브로우 바 삭제 (전무 지시 2026-07-04) -->
       <h1 style="font-size:clamp(21px,3.9vw,34px);font-weight:900;line-height:1.3;letter-spacing:-.5px;color:#fff;margin:8px 0 4px;word-break:keep-all;">가맹점마다 결제환경은 다릅니다. <span class="y">그 결제환경, 누리포스가 올인원.</span></h1>
-      <div class="hero-trust"><span>✅ 정품 신제품 보증</span><span>🧾 주문하다 · 결제하다 · 정산하다</span><span>🏆 <span id="franchiseCount">101,160</span> 가맹점의 선택</span></div>
+      <div class="hero-trust"><span>✅ 정품 신제품 보증</span><span>🧾 주문하다 · 결제하다 · 정산하다</span><span>🏆 누적 계약 9,400곳</span></div>
       <div class="track-grid">
         <div class="track">
           <div class="tk-head"><div class="tk-badge free">🆓 묶이지 않고 시작</div><span class="tk-sub">부담 없이 가볍게</span></div>
@@ -950,11 +950,18 @@ function next(){show((i+1)%vids.length);}
 window.scGo=function(n){if(n===i||!vids.length)return;show(n);};
 if(vids.length){for(var k=0;k<vids.length;k++){vids[k].addEventListener("ended",next);}play(vids[0]);try{vids[1].preload="auto";vids[1].load();}catch(e){}guard=setTimeout(next,12000);["pointerdown","scroll","keydown","touchstart"].forEach(function(ev){window.addEventListener(ev,function(){play(vids[i]);},{once:true,passive:true});});}})();</script>
 <!-- 매장·업력 카운터 제거(2026-07-30): 대상 요소 id="storeCount"·"daysCount"가 index.html에 없어 실행돼도 아무것도 갱신하지 않는 사문화 코드였고, 30,000+5/일 역시 근거 미확인. -->
-<!-- 가맹점 카운터: 2026-07-30 자동증가 정지(동결). 표시값은 HTML 정적값 101,160 그대로.
-     사유: +10/일 증가율과 기준값 100,900의 산출 근거가 사내에 없음(전수조사 2026-07-30).
-     사내 실측 = 계약서대장 9,446 / CMS 과금 2,640 / 밴사원장 상한 약 14,850.
-     또한 결산보고서 31개월 KPI는 순증 월 -12.0건(감소)으로 증가율과 반대 방향.
-     표시 수치 자체의 변경(철회·대체)은 전무 결정 대기. 그때까지 '매일 새 주장'만 멈춘다. -->
+<!-- 가맹점 카운터 폐지 (2026-07-30, 전무 결정 (b) 실증 가능한 숫자로 교체).
+     기존: 100,900 기준(2026-07-04) + 10/일 자동증가 → 101,160 표시.
+     폐지 사유: +10/일과 기준값 100,900의 산출 자료가 사내에 0건(전수조사 2026-07-30).
+       · 사내 실측 = 계약서대장 9,446 / CMS 과금 2,640 / 밴사원장 상한 약 14,850
+       · 결산보고서 31개월 KPI는 순증 월 -12.0건(감소)으로 증가율과 반대 방향
+     교체: 히어로 배지 → "🏆 누적 계약 9,400곳" (계약서대장 9,446 기준, 보수적 절하)
+       근거자료 = 일정보고시스템 V2 '계약서대장' — 사업자번호별 이용계약서·설치확인서
+                  Drive 스캔본 보유. 표시광고법 실증 요구 시 제출 가능.
+       ※ '월 1,000만 건 카드 거래'는 후보였으나 채택하지 않음 — 출처인 밴사원장이
+         관리코드 011 채널 장부(타 대리점 포함, 채널 수수료 연 376억 = 자사 연매출의 5.4배)라
+         누리 단독 실적으로 귀속할 수 없음.
+     미결(전무 결정 대기): meta·og·본문의 "14년·30,000개 매장", about.html "누적 설치 매장 30,000+" -->
 <!-- NW 방문정보 트래킹 (체류·유입·경로) -->
 <script>(function(){try{var ss=sessionStorage;if(!ss.getItem('nw_t0')){ss.setItem('nw_t0',String(Date.now()));ss.setItem('nw_entry',location.pathname+location.search);ss.setItem('nw_ref',document.referrer||'직접유입');}var key=location.pathname;if(key.charAt(0)==='/')key=key.slice(1);if(key.slice(-5)==='.html')key=key.slice(0,-5);var M={'':'메인','index':'메인','about':'회사소개','lineup':'제품라인업','support':'구매스토어','home-classic':'홈'};var cur=M[key]||key||'메인';var p=ss.getItem('nw_pages')||'';var arr=p?p.split(' > '):[];if(arr[arr.length-1]!==cur){arr.push(cur);ss.setItem('nw_pages',arr.slice(-8).join(' > '));}}catch(e){}})();</script>
 <!-- 부정클릭 가드: 광고(파워링크) 랜딩 클릭 로거 — 광고 유입일 때만 동작, 리드/일반 방문 무관 -->
