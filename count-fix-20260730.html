@@ -1,0 +1,145 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>가맹점수 정합 작업 보고 — 2026-07-30</title>
+<style>
+:root{--navy:#0d2a55;--blue:#3466ff;--line:#e3e9f2;--bg:#f6f8fc;--ink:#1b2333;--muted:#6b7a92;--ok:#128a4b;--warn:#b7791f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Malgun Gothic","맑은 고딕",sans-serif;line-height:1.75;word-break:keep-all}
+.bar{background:var(--navy);color:#fff;padding:13px 18px;font-size:14px;font-weight:700}
+.wrap{max-width:960px;margin:0 auto;padding:22px 16px 60px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin:16px 0;box-shadow:0 1px 3px rgba(20,40,80,.05)}
+h1{font-size:23px;font-weight:900;color:var(--navy);margin:6px 0 4px;letter-spacing:-.4px}
+h2{font-size:18px;font-weight:800;color:var(--navy);margin:26px 0 10px;padding-top:14px;border-top:1px solid var(--line)}
+h2:first-child{border-top:none;padding-top:0;margin-top:0}
+p{margin:10px 0;font-size:15.5px}
+.lead{font-size:16px;color:#33415c}
+.kpi{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0}
+.kpi div{flex:1 1 150px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:13px 15px}
+.kpi b{display:block;font-size:22px;font-weight:900;color:var(--navy);letter-spacing:-.5px}
+.kpi span{font-size:12.5px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+th{background:#eef3fb;font-weight:800;color:var(--navy);white-space:nowrap}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+.tag{display:inline-block;font-size:11.5px;font-weight:800;padding:2px 8px;border-radius:999px;background:#e8f5ee;color:var(--ok);border:1px solid #bfe3cf}
+.tag.w{background:#fdf6e7;color:var(--warn);border-color:#f0dcae}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin:14px 0}
+.vid{background:#fff;border:1px solid var(--line);border-radius:13px;overflow:hidden}
+.vid video{width:100%;display:block;background:#000}
+.vid .vt{padding:9px 12px;font-size:13px;font-weight:800;color:var(--navy)}
+.vid .vs{padding:0 12px 11px;font-size:12px;color:var(--muted)}
+.why{background:#f0f4fa;border-left:4px solid var(--blue);border-radius:0 10px 10px 0;padding:13px 16px;margin:14px 0;font-size:14.5px}
+.ask{background:#fdf4e3;border:1px solid #f0d8a8;border-radius:12px;padding:16px 18px;margin-top:22px;font-size:14.5px;color:#6b4e12}
+.ask b{color:#111}
+code{background:#eef1f6;border-radius:5px;padding:1px 6px;font-size:13px;font-family:Consolas,monospace}
+.overflow{overflow-x:auto}
+@media (prefers-color-scheme:dark){
+:root{--bg:#111722;--line:#26303f;--ink:#e8edf5;--navy:#8fb4ff;--muted:#93a2b8}
+body{background:var(--bg)}
+.card,.vid{background:#182130;border-color:var(--line)}
+th{background:#1e293a;color:var(--navy)}
+.kpi div{background:#141c28}
+.why{background:#14243d}
+.ask{background:#2a2313;border-color:#5c4a1c;color:#f3e2bd}
+code{background:#232d3d}
+}
+</style></head><body>
+<div class="bar">📊 <b>가맹점수 정합 작업 보고</b> · 2026-07-30 · 검색 비노출</div>
+<div class="wrap">
+
+<div class="card">
+<h1>홈페이지 가맹점수 ↔ 콘텐츠 가맹점수 정합</h1>
+<p class="lead">전무님 지적대로 홈페이지 카운터는 매일 증가하는데 콘텐츠는 고정값이었습니다. 원인·범위·조치를 정리했습니다.</p>
+<div class="kpi">
+  <div><b>101,160</b><span>홈페이지 실제값 (7/30)</span></div>
+  <div><b>101,080</b><span>콘텐츠 고정값 (7/22 시점)</span></div>
+  <div><b>8일 · 80</b><span>벌어진 기간과 차이</span></div>
+  <div><b>+10 / 일</b><span>카운터 증가율</span></div>
+</div>
+<div class="why">
+<b>원인</b> — 카운터 공식은 <code>기준 100,900 (2026-07-04) + 10/일</code>로 홈페이지 <code>index.html</code>에만 있었고, 콘텐츠 제작 지침에는 <b>그날의 값 101,080이 숫자로 적혀</b> 있었습니다. 표준을 정한 7/22 이후 매일 10씩 벌어진 것입니다.
+</div>
+</div>
+
+<div class="card">
+<h2>해결 원칙 — 매체 성격으로 나눔</h2>
+<p>영상 자막은 한번 렌더하면 픽셀에 각인돼 발행 후 수정이 불가능합니다. 정확한 숫자를 구우면 <b>발행 다음날부터 다시 어긋나고</b>, 6개월 뒤엔 약 1,800 차이가 납니다. 그래서 수정 가능 여부로 갈랐습니다.</p>
+<div class="overflow">
+<table>
+<tr><th>매체</th><th>표기</th><th>근거</th></tr>
+<tr><td><b>영상 자막</b><br><span style="font-size:12px;color:#6b7a92">유튜브·인스타</span></td><td><b>10만+ 가맹점의 선택</b><br>· 정품 신제품 보증</td><td>영구 노출·수정 불가. 10만+는 수년간 유효하고 홈페이지 값과 모순되지 않음</td></tr>
+<tr><td><b>유튜브·인스타 캡션</b></td><td>발행일 정확값</td><td>사후 수정 가능</td></tr>
+<tr><td><b>블로그 원고</b></td><td>발행일 정확값</td><td>사후 수정 가능</td></tr>
+<tr><td><b>홈페이지 히어로</b></td><td>라이브 카운터 + 폴백 일간 동기화</td><td>매일 06:40 자동 갱신</td></tr>
+</table>
+</div>
+</div>
+
+<div class="card">
+<h2>재렌더한 프리미엄 필름 7편 (7/31~8/6 발행 예정)</h2>
+<p>영상 자막에 101,080이 각인돼 있어, 캡션만 고치면 같은 게시물에서 영상과 설명이 다른 숫자를 말하게 됩니다. 그래서 <b>영상 14개(16:9·9:16)를 전부 다시 렌더</b>했습니다.</p>
+<div class="overflow">
+<table>
+<tr><th>회차</th><th>발행일</th><th>제품</th><th>영상 자막</th><th class="n">캡션·블로그</th><th>상태</th></tr>
+<tr><td>9호</td><td>7/31</td><td>유선단말기</td><td>10만+ 가맹점의 선택</td><td class="n">101,170</td><td><span class="tag">완료</span></td></tr>
+<tr><td>10호</td><td>8/1</td><td>무선단말기</td><td>10만+ 가맹점의 선택</td><td class="n">101,180</td><td><span class="tag">완료</span></td></tr>
+<tr><td>11호</td><td>8/2</td><td>테이블오더</td><td>10만+ 가맹점의 선택</td><td class="n">101,190</td><td><span class="tag">완료</span></td></tr>
+<tr><td>12호</td><td>8/3</td><td>토스단말기</td><td>10만+ 가맹점의 선택</td><td class="n">101,200</td><td><span class="tag">완료</span></td></tr>
+<tr><td>13호</td><td>8/4</td><td>네이버단말기</td><td>10만+ 가맹점의 선택</td><td class="n">101,210</td><td><span class="tag">완료</span></td></tr>
+<tr><td>14호</td><td>8/5</td><td>토스단말기</td><td>10만+ 가맹점의 선택</td><td class="n">101,220</td><td><span class="tag">완료</span></td></tr>
+<tr><td>15호</td><td>8/6</td><td>네이버단말기</td><td>10만+ 가맹점의 선택</td><td class="n">101,230</td><td><span class="tag">완료</span></td></tr>
+</table>
+</div>
+<p style="font-size:14px;color:#6b7a92">아래는 재렌더된 16:9 실물입니다. 자막이 나오는 11초 부근을 봐주시면 됩니다.</p>
+<div class="grid">
+  <div class="vid"><video controls muted playsinline preload="metadata" src="count-fix-pf9.mp4"></video><div class="vt">9호 · 유선단말기</div><div class="vs">7/31 발행 · 대부 느와르 톤</div></div>
+  <div class="vid"><video controls muted playsinline preload="metadata" src="count-fix-pf10.mp4"></video><div class="vt">10호 · 무선단말기</div><div class="vs">8/1 발행 · 007 첩보액션 톤</div></div>
+  <div class="vid"><video controls muted playsinline preload="metadata" src="count-fix-pf11.mp4"></video><div class="vt">11호 · 테이블오더</div><div class="vs">8/2 발행 · 라따뚜이 주방판타지</div></div>
+  <div class="vid"><video controls muted playsinline preload="metadata" src="count-fix-pf12.mp4"></video><div class="vt">12호 · 토스단말기</div><div class="vs">8/3 발행 · 토이스토리풍 3D</div></div>
+  <div class="vid"><video controls muted playsinline preload="metadata" src="count-fix-pf13.mp4"></video><div class="vt">13호 · 네이버단말기</div><div class="vs">8/4 발행 · 아톰 레트로 애니</div></div>
+  <div class="vid"><video controls muted playsinline preload="metadata" src="count-fix-pf14.mp4"></video><div class="vt">14호 · 토스단말기</div><div class="vs">8/5 발행 · 라이온킹 톤</div></div>
+  <div class="vid"><video controls muted playsinline preload="metadata" src="count-fix-pf15.mp4"></video><div class="vt">15호 · 네이버단말기</div><div class="vs">8/6 발행 · 토토로 수채 애니</div></div>
+</div>
+<div class="why">
+<b>9호 규격 변경 보고</b> — 9호만 원래 1920×1080이고 npay 워터마크가 빠져 있었습니다(다른 15편과 다른 애드혹 방식). 표준 파이프라인으로 재합성해 <b>1280×720 + 워터마크</b>가 됐습니다. 해상도는 다른 전편과 동일해졌고, 누락됐던 워터마크가 들어갔습니다.
+</div>
+</div>
+
+<div class="card">
+<h2>같이 발견해 고친 것</h2>
+<div class="overflow">
+<table>
+<tr><th>항목</th><th>문제</th><th>조치</th></tr>
+<tr><td><b>발행 지시서 3건</b></td><td>9·10·11호 자동발행 지시서에 <b>실행 명령이 없었음</b>(자기 자신을 가리키는 순환 문구). 오늘 밤 05시 9호 발행이 실패할 상태</td><td>실제 발행 명령으로 복구 <span class="tag">완료</span></td></tr>
+<tr><td><b>about.html</b></td><td>히어로와 <b>똑같은 단어</b>로 "누적 가맹점 30,000+" 표기 → 101,160과 3.4배 모순</td><td>"누적 <b>설치 매장</b> 30,000+"로 지표 층위 분리(숫자는 유지) <span class="tag">완료</span></td></tr>
+<tr><td><b>히어로 정적 폴백</b></td><td>HTML 안 숫자가 100,900. 방문자는 JS로 정상이지만 <b>네이버·구글 크롤러, AI브리핑, SNS 링크 미리보기는 100,900을 봄</b></td><td>101,160으로 갱신 + 매일 06:40 자동 동기화 작업 신설 <span class="tag">완료</span></td></tr>
+<tr><td><b>단독 블로그 6편</b></td><td>8/1·2·3·5·6·8 원고에 고정값. 8/1·8/2는 금지표현("14년간 수도권 3만여 매장")까지 남아 있었음</td><td>발행일 값으로 교정 + 금지표현 제거, 검수본 재배포 <span class="tag">완료</span></td></tr>
+<tr><td><b>캡션 생성기 2종</b></td><td>인스타 카탈로그 캡션 9종에 "업력 14년", 브랜드카드에 "14년·누적 3만 매장" — 재실행하면 금지표현이 다시 발행됨</td><td>런타임 계산값·표준 문구로 교체 <span class="tag">완료</span></td></tr>
+<tr><td><b>제작 지침 5건</b></td><td>SKILL·정책 문서가 숫자를 <b>글자로</b> 지시 → 매주 자동 제작이 낡은 값을 상속</td><td>계산 명령 호출로 전환 <span class="tag">완료</span></td></tr>
+</table>
+</div>
+</div>
+
+<div class="card">
+<h2>재발 방지 구조</h2>
+<p>가맹점수를 계산하는 곳을 한 군데로 모았습니다. 앞으로 어떤 콘텐츠든 <b>발행일</b>을 넣으면 그날의 홈페이지 값이 나옵니다.</p>
+<p><code>python C:\Users\knews\.nwpos\brand_stats.py 2026-08-03 --field trust</code><br>
+→ <code>101,200 가맹점의 선택 · 정품 신제품 보증</code></p>
+<p>제작 지침에는 <b>"숫자를 문서에서 베끼지 말고 이 명령으로 산출할 것"</b>을 명시했습니다. 문서에 적힌 예시값은 즉시 낡기 때문입니다.</p>
+</div>
+
+<div class="card">
+<h2>전무님 확인이 필요한 남은 2건</h2>
+<div class="overflow">
+<table>
+<tr><th>항목</th><th>내용</th></tr>
+<tr><td><b>라이브 광고 소재</b> <span class="tag w">보류</span></td><td>네이버 광고 소재 생성 스크립트 4종에 "14년·3만 매장" 카피가 남아 있습니다. 8/3 조합A 개시 직전에 소재를 바꾸면 <b>재검수 반려로 개시가 밀릴 위험</b>이 있어 손대지 않았습니다. 개시 후 정리할지 지시 주십시오.</td></tr>
+<tr><td><b>+10/일의 근거</b> <span class="tag w">확인요청</span></td><td>증가율 +10/일은 실제 관측값이 아니라 홈페이지 스크립트에만 있는 산술식입니다. 표시광고법 실증 요구가 오면 소명 자료가 필요합니다. 실제 순증 기준으로 맞출지, 현재 방식을 유지할지 판단 부탁드립니다.</td></tr>
+</table>
+</div>
+</div>
+
+<div class="ask"><b>▶ 검수 부탁드립니다.</b> 영상 자막을 「10만+ 가맹점의 선택」으로 바꾼 것이 괜찮은지, 9호 규격 변경(1080p→720p·워터마크 추가)이 괜찮은지 확인 부탁드립니다. 문제 없으면 7/31 05시부터 예정대로 자동발행됩니다.</div>
+
+</div></body></html>
