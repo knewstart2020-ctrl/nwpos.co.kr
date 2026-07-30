@@ -949,10 +949,12 @@ function show(n){vids[i].classList.remove("active");try{vids[i].pause();}catch(e
 function next(){show((i+1)%vids.length);}
 window.scGo=function(n){if(n===i||!vids.length)return;show(n);};
 if(vids.length){for(var k=0;k<vids.length;k++){vids[k].addEventListener("ended",next);}play(vids[0]);try{vids[1].preload="auto";vids[1].load();}catch(e){}guard=setTimeout(next,12000);["pointerdown","scroll","keydown","touchstart"].forEach(function(ev){window.addEventListener(ev,function(){play(vids[i]);},{once:true,passive:true});});}})();</script>
-<!-- live counters: 일수=창립(2012-05-18) 자동, 매장=30,000+5/일 -->
-<script>(function(){var founding=new Date(2012,4,18).getTime();var days=Math.floor((Date.now()-founding)/864e5);var sBase=new Date(2026,5,8).getTime();var sd=Math.max(0,Math.floor((Date.now()-sBase)/864e5));var stores=30000+5*sd;var T={daysCount:days,storeCount:stores};function fmt(n){return Math.round(n).toLocaleString("en-US");}function anim(el,target){var start=Math.floor(target*0.92),t0=null,dur=1500;function st(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/dur,1),e=1-Math.pow(1-p,3);el.textContent=fmt(start+(target-start)*e);if(p<1)requestAnimationFrame(st);else el.textContent=fmt(target);}requestAnimationFrame(st);}var done=false;function go(){if(done)return;done=true;for(var id in T){var el=document.getElementById(id);if(el)anim(el,T[id]);}}var sec=document.querySelector(".worry-sec");if(window.IntersectionObserver&&sec){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){go();io.disconnect();}});});io.observe(sec);}else{go();}})();</script>
-<!-- 가맹점 라이브 카운터: 100,900 기준(2026-07-04) + 10/일 -->
-<script>(function(){var b=new Date(2026,6,4).getTime();var d=Math.max(0,Math.floor((Date.now()-b)/864e5));var el=document.getElementById('franchiseCount');if(el)el.textContent=(100900+10*d).toLocaleString('en-US');})();</script>
+<!-- 매장·업력 카운터 제거(2026-07-30): 대상 요소 id="storeCount"·"daysCount"가 index.html에 없어 실행돼도 아무것도 갱신하지 않는 사문화 코드였고, 30,000+5/일 역시 근거 미확인. -->
+<!-- 가맹점 카운터: 2026-07-30 자동증가 정지(동결). 표시값은 HTML 정적값 101,160 그대로.
+     사유: +10/일 증가율과 기준값 100,900의 산출 근거가 사내에 없음(전수조사 2026-07-30).
+     사내 실측 = 계약서대장 9,446 / CMS 과금 2,640 / 밴사원장 상한 약 14,850.
+     또한 결산보고서 31개월 KPI는 순증 월 -12.0건(감소)으로 증가율과 반대 방향.
+     표시 수치 자체의 변경(철회·대체)은 전무 결정 대기. 그때까지 '매일 새 주장'만 멈춘다. -->
 <!-- NW 방문정보 트래킹 (체류·유입·경로) -->
 <script>(function(){try{var ss=sessionStorage;if(!ss.getItem('nw_t0')){ss.setItem('nw_t0',String(Date.now()));ss.setItem('nw_entry',location.pathname+location.search);ss.setItem('nw_ref',document.referrer||'직접유입');}var key=location.pathname;if(key.charAt(0)==='/')key=key.slice(1);if(key.slice(-5)==='.html')key=key.slice(0,-5);var M={'':'메인','index':'메인','about':'회사소개','lineup':'제품라인업','support':'구매스토어','home-classic':'홈'};var cur=M[key]||key||'메인';var p=ss.getItem('nw_pages')||'';var arr=p?p.split(' > '):[];if(arr[arr.length-1]!==cur){arr.push(cur);ss.setItem('nw_pages',arr.slice(-8).join(' > '));}}catch(e){}})();</script>
 <!-- 부정클릭 가드: 광고(파워링크) 랜딩 클릭 로거 — 광고 유입일 때만 동작, 리드/일반 방문 무관 -->
