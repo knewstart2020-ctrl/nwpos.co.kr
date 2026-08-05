@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><meta name="robots" content="noindex, nofollow">
-<title>힉스필드 요금제 검토 보고서 (v2) | 누리네트웍스</title>
+<title>힉스필드 요금제 검토 보고서 | 누리네트웍스</title>
 <style>
 :root{--bg:#0f1115;--card:#171a21;--line:#262b36;--tx:#e8eaf0;--dim:#9aa3b2;--pt:#3b82f6;--ok:#22c55e;--warn:#f59e0b;--bad:#ef4444}
 *{box-sizing:border-box}
@@ -30,7 +30,7 @@ td.num{text-align:right;font-variant-numeric:tabular-nums}
 ul{padding-left:20px}
 </style></head><body><div class="wrap">
 
-<h1>힉스필드 요금제 검토 보고서 <span style="color:var(--warn);font-size:16px">v2 (정정판)</span></h1>
+<h1>힉스필드 요금제 검토 보고서 <span style="color:var(--ok);font-size:16px">최종</span></h1>
 <div class="sub">2026-08-06 (목) · 실측 기준 · 작성 Claude / 누리네트웍스</div>
 
 <div class="card err">
@@ -40,10 +40,10 @@ ul{padding-left:20px}
 그 결과 <b>실측 소비량이 4,978이 아니라 9,978</b>로, 정확히 두 배였습니다. 아래는 정정된 내용입니다.
 </div>
 
-<div class="card">
-<b>한 줄 결론</b><br>
-<b>9,000 티어로 올리고, 블로그 영상을 없애면 딱 맞습니다.</b>
-티어를 올릴수록 크레딧 단가가 내려가므로(6,000보다 9,000이 쌉니다), 부족분을 탑업으로 메우는 것보다 티어 상향이 유리합니다.
+<div class="card pick">
+<b>한 줄 결론 — 9,000 연간으로 올리고 블로그 영상을 없애면 연 $1,186 아낍니다.</b><br>
+<b>9,000 상향의 추가비용은 월 $76인데, 같은 3,000 크레딧을 탑업으로 사면 $142입니다.</b>
+상향이 탑업보다 <b>월 $66 쌉니다</b>. 지금처럼 부족분을 매달 탑업으로 메우는 것이 가장 비싼 방식입니다.
 </div>
 
 <h2>1. 실측 — 월 1만 크레딧을 쓰고 있습니다</h2>
@@ -90,12 +90,21 @@ ul{padding-left:20px}
 <h2>2. 요금제 구조 — 티어를 올릴수록 싸집니다</h2>
 
 <div class="tw"><table>
-<tr><th>티어</th><th class="num">월 크레딧</th><th class="num">월 가격<br>(연간결제)</th><th class="num">크레딧당 $</th><th>상태</th></tr>
-<tr><td>ULTRA 3,000</td><td class="num">3,000</td><td class="num">$99</td><td class="num">30.3</td><td>—</td></tr>
-<tr class="pick"><td><b>ULTRA 6,000</b></td><td class="num">6,000</td><td class="num warn">미확인</td><td class="num warn">미확인</td><td><span class="badge b-w">현행</span></td></tr>
-<tr class="pick"><td><b>ULTRA 9,000</b></td><td class="num">9,000</td><td class="num"><b>$270</b><br><span style="color:var(--dim);font-size:12px">정가 $387 · 30% 할인</span></td><td class="num ok"><b>33.3</b></td><td><span class="badge b-ok">권고</span></td></tr>
-<tr><td>ENTERPRISE</td><td class="num">비공개</td><td class="num">문의</td><td class="num">?</td><td>영업 문의</td></tr>
+<tr><th>티어</th><th class="num">월 크레딧</th><th class="num">연간결제<br>월 환산</th><th class="num">월간결제</th><th class="num">크레딧당 $<br>(연간)</th><th>상태</th></tr>
+<tr><td>ULTRA 3,000</td><td class="num">3,000</td><td class="num">$99</td><td class="num">—</td><td class="num">30.3</td><td>—</td></tr>
+<tr class="pick"><td><b>ULTRA 6,000</b></td><td class="num">6,000</td><td class="num"><b>$194</b><br><span style="color:var(--dim);font-size:12px">정가 $258 · 25%↓</span></td><td class="num">$220<br><span style="color:var(--dim);font-size:12px">갱신 $250</span></td><td class="num">30.9</td><td><span class="badge b-w">현행</span></td></tr>
+<tr class="pick"><td><b>ULTRA 9,000</b></td><td class="num">9,000</td><td class="num ok"><b>$270</b><br><span style="color:var(--dim);font-size:12px">정가 $387 · 30%↓</span></td><td class="num">$310<br><span style="color:var(--dim);font-size:12px">갱신 $375</span></td><td class="num ok"><b>33.3</b></td><td><span class="badge b-ok">권고</span></td></tr>
+<tr><td>ENTERPRISE</td><td class="num">비공개</td><td class="num">문의</td><td class="num">문의</td><td class="num">?</td><td>영업 문의</td></tr>
 </table></div>
+
+<h3>9,000 상향의 진짜 값 — 크레딧을 39.5개/$에 사는 것</h3>
+<div class="tw"><table>
+<tr><th>같은 3,000 크레딧을 얻는 두 방법</th><th class="num">비용</th><th class="num">크레딧당 $</th></tr>
+<tr class="pick"><td><b>6,000 → 9,000 티어 상향</b> (연간)</td><td class="num ok"><b>+$76/월</b></td><td class="num ok"><b>39.5</b></td></tr>
+<tr><td>탑업 4,000팩으로 구매</td><td class="num bad">$142/월</td><td class="num bad">21.1</td></tr>
+</table></div>
+<p class="note"><b>상향이 탑업보다 월 $66 쌉니다 (연 $798).</b> 게다가 탑업은 90일 만료 관리가 붙고,
+상향분은 매달 자동으로 들어옵니다.</p>
 
 <p class="note"><b>티어가 높을수록 크레딧당 단가가 내려갑니다.</b> 3,000은 30.3, 9,000은 33.3입니다.
 즉 <b>많이 쓸수록 상위 티어가 유리한 구조</b>이고, 우리처럼 월 1만을 쓰는 상황에서는 티어 상향이 정답에 가깝습니다.</p>
@@ -115,14 +124,14 @@ ul{padding-left:20px}
 
 <h2>3. 선택지 비교</h2>
 
-<p>월 필요량 9,978 기준. 부족분은 탑업 4,000팩($190) 단가로 환산했습니다.</p>
+<p>월 필요량 9,978 기준. 모두 <b>연간결제</b>. 부족분은 탑업 4,000팩 단가(21.1 크레딧/$)로 환산했습니다.</p>
 
 <div class="tw"><table>
-<tr><th>안</th><th>구성</th><th class="num">월 부족</th><th class="num">월 탑업비</th><th>평가</th></tr>
-<tr><td>A</td><td>현행 6,000 유지</td><td class="num bad">3,978</td><td class="num bad">약 $189</td><td>가장 비싼 방식으로 매달 메움</td></tr>
-<tr><td>B</td><td>9,000 상향</td><td class="num">978</td><td class="num">약 $46</td><td>부족분 대폭 축소</td></tr>
-<tr class="pick"><td><b>C</b></td><td><b>9,000 상향 + 블로그 영상 폐지</b></td><td class="num ok">298</td><td class="num ok">거의 $0</td><td><span class="badge b-ok">권고 — 자급자족</span></td></tr>
-<tr><td>D</td><td>6,000 유지 + 제작량 대폭 축소</td><td class="num">—</td><td class="num">$0</td><td>발행 빈도를 절반으로 줄여야 함</td></tr>
+<tr><th>안</th><th>구성</th><th class="num">구독</th><th class="num">탑업</th><th class="num">월 합계</th><th class="num">연 합계</th><th class="num">절감</th></tr>
+<tr><td>A</td><td>6,000 유지 <b>(현행)</b></td><td class="num">$194</td><td class="num bad">$189</td><td class="num bad">$383</td><td class="num bad">$4,595</td><td class="num">—</td></tr>
+<tr><td>B</td><td>9,000 상향</td><td class="num">$270</td><td class="num">$46</td><td class="num">$316</td><td class="num">$3,797</td><td class="num ok">$798</td></tr>
+<tr class="pick"><td><b>C</b></td><td><b>9,000 상향 + 블로그 영상 폐지</b></td><td class="num">$270</td><td class="num ok">$14</td><td class="num ok"><b>$284</b></td><td class="num ok"><b>$3,410</b></td><td class="num ok"><b>$1,186</b></td></tr>
+<tr><td>D</td><td>6,000 유지 + 블로그 영상 폐지</td><td class="num">$194</td><td class="num">$157</td><td class="num">$351</td><td class="num">$4,208</td><td class="num">$388</td></tr>
 </table></div>
 
 <p class="note"><b>C안이면 탑업이 사실상 필요 없어집니다.</b> 월 298 부족은 오차 범위이고,
@@ -152,18 +161,20 @@ ul{padding-left:20px}
 
 <div class="card pick">
 <h3 style="margin-top:0">다음 결제일(8/19)까지 결정</h3>
-<p><b>② 9,000 티어로 상향</b> — 크레딧당 단가가 내려가고, 탑업 의존이 사라집니다.<br>
+<p><b>② 9,000 티어로 상향 (연간결제)</b> — 추가 $76/월로 크레딧 3,000이 늘어납니다. 탑업으로 사면 $142입니다.<br>
 <b>③ 블로그 영상 폐지</b> — 월 약 680 절감. ②와 함께하면 자급자족이 됩니다.</p>
 </div>
 
 <div class="card">
-<h3 style="margin-top:0">확인 필요 — 판단을 확정하려면 이 숫자가 있어야 합니다</h3>
-<p><b>④ 6,000 티어의 현재 월 가격</b><br>
-화면에서 슬라이더를 <b>6,000</b>에 놓았을 때 표시되는 금액을 알려주십시오.
-그래야 <b>9,000 상향의 추가 비용</b>과 <b>절약되는 탑업 비용(월 약 $143)</b>을 정확히 비교할 수 있습니다.<br>
-<span class="warn">현재 추정으로는 상향 추가비용이 절약되는 탑업비보다 작아 이득으로 보이나, 확정하지 않았습니다.</span></p>
-<p><b>⑤ Enterprise 문의(선택)</b> — 월 1만을 안정적으로 쓰는 규모이므로 문의해볼 가치가 있습니다.
-공개가가 없어 비교가 불가능합니다.</p>
+<h3 style="margin-top:0">반드시 연간으로 — 월간은 비쌉니다</h3>
+<p>9,000 기준 <b>월간 $310 vs 연간 $270</b>으로 <b>연 $480 차이</b>입니다.
+월간은 할인율도 낮습니다(17% vs 30%). 상향하실 때 <b>연간결제</b>를 선택하십시오.</p>
+</div>
+
+<div class="card">
+<h3 style="margin-top:0">선택 — Enterprise 문의</h3>
+<p>월 1만 크레딧을 안정적으로 쓰는 규모이므로 문의해볼 여지는 있습니다. 다만 공개가가 없어 비교가 불가능하고,
+<b>9,000 연간이면 이미 자급자족에 가까워</b> 굳이 서두를 필요는 없어 보입니다.</p>
 </div>
 
 <h2>6. 근거 데이터</h2>
@@ -171,7 +182,7 @@ ul{padding-left:20px}
 <li><b>실측 소비</b>: 2026-07-19 사이클 시작 6,000 → 2026-08-06 06:44 잔량 13.5 (18일간 5,986.5)</li>
 <li><b>직전 사이클</b>: 658 잔량 소멸 실증 (당시엔 6,000으로 충분했음)</li>
 <li><b>단가</b>: 거래내역 200건 표본 — Seedance 2.0 = 22.5 / 27 / 45, Nano Banana Pro = 2, Nano Banana 2 = 1.5</li>
-<li><b>요금제</b>: 힉스필드 결제 화면 실물 확인(2026-08-06) + MCP 요금 API + higgsfield.ai/pricing · /enterprise</li>
+<li><b>요금제</b>: 힉스필드 결제 화면 실물 확인(2026-08-06, 전무 제공) — 6,000/9,000 × 연간/월간 4개 조합 전부 확인</li>
 <li><b>v1 오류 원인</b>: MCP 요금 API가 기본 티어(3,000)만 반환 → 실제 구독(6,000)과 불일치. 플랜 확인은 결제 화면 실물로 해야 함</li>
 <li><b>환율 미적용</b>: 모든 금액 USD</li>
 </ul>
