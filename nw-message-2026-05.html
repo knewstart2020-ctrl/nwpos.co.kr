@@ -38,6 +38,14 @@
   .bubble a{ color:#0B5ED7; text-decoration:underline; word-break:break-all; }
   .pv-copy{ display:flex; gap:8px; justify-content:flex-end; margin-top:2px; }
   .pv-note{ font-size:11.5px; color:var(--muted); line-height:1.6; margin-bottom:16px; }
+  .tcnt{ font-size:10.5px; font-weight:600; opacity:.75; margin-left:5px; }
+  .staff-note{ background:#F2FBF5; border:1px solid #B7E4C7; border-radius:9px; padding:11px 14px; font-size:12.5px; line-height:1.7; color:var(--navy); margin-bottom:14px; }
+  .raw{ background:#fff; border:1px solid var(--line); border-radius:10px; padding:0 16px; margin-bottom:16px; box-shadow:0 2px 8px rgba(10,26,58,0.05); }
+  .raw summary{ cursor:pointer; font-size:13px; font-weight:700; color:var(--navy); padding:13px 0; list-style:none; }
+  .raw summary::-webkit-details-marker{ display:none; }
+  .raw summary::before{ content:'▸ '; color:var(--blue); }
+  .raw[open] summary::before{ content:'▾ '; }
+  .raw pre{ margin-bottom:14px; }
   .msg{ background:#fff; border:1px solid var(--line); border-left:4px solid var(--blue); border-radius:12px; padding:16px 18px 18px; margin-bottom:16px; box-shadow:0 3px 12px rgba(10,26,58,0.06); }
   .msg-h{ display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; margin-bottom:10px; }
   .msg-t{ font-size:16px; font-weight:800; color:var(--navy); }
@@ -69,35 +77,39 @@
   </div>
 
   <div class="tabs">
-    <button class="tab active" data-view="preview">📱 발송 미리보기</button>
-    <button class="tab" data-view="raw">📋 원문 (복사용)</button>
+    <button class="tab active" data-view="ceo">🏢 CEO·임원용 <span class="tcnt">메시지 2개</span></button>
+    <button class="tab" data-view="staff">👥 전직원 공지용 <span class="tcnt">메시지 1개</span></button>
   </div>
 
-  <div class="view show" id="view-preview">
+  <!-- ── CEO·임원용 ── -->
+  <div class="view show" id="view-ceo">
     <div class="chat">
-      <div class="chat-h"><span class="dot"></span>결산보고서 공유<small>NAVER WORKS · 보내는 사람 기준 화면</small></div>
+      <div class="chat-h"><span class="dot"></span>CEO·임원 보고<small>NAVER WORKS · 보내는 사람 기준 화면</small></div>
       <div class="chat-body">
         <div class="brow">
-          <span class="btag">메시지 1 / 2</span>
+          <span class="btag">메시지 1 / 2 &nbsp;·&nbsp; <span class="msg-len" id="len1"></span></span>
           <div class="bwrap"><span class="btime">1</span><div class="bubble" id="b1"></div></div>
           <div class="pv-copy"><button class="copy" data-target="m1">📋 메시지 1 복사</button></div>
         </div>
         <div class="brow">
-          <span class="btag">메시지 2 / 2</span>
+          <span class="btag">메시지 2 / 2 &nbsp;·&nbsp; <span class="msg-len" id="len2"></span></span>
           <div class="bwrap"><span class="btime">1</span><div class="bubble" id="b2"></div></div>
           <div class="pv-copy"><button class="copy" data-target="m2">📋 메시지 2 복사</button></div>
         </div>
       </div>
     </div>
     <div class="pv-note">※ 실제 NAVER WORKS 화면과 글꼴·말풍선 색·간격은 다를 수 있습니다. <b>줄바꿈·이모지·링크가 어떻게 보이는지</b> 확인하는 용도입니다.</div>
-  </div>
 
-  <div class="view" id="view-raw">
-    <div class="msg">
-      <div class="msg-h">
-        <div><span class="msg-n">메시지 1</span><span class="msg-t">결산 요약 · 종합진단</span></div>
-        <div><span class="msg-len" id="len1"></span> &nbsp; <button class="copy" data-target="m1">📋 복사</button></div>
-      </div>
+    <div class="links">
+      <h3>🔗 첨부 주소 (개별 복사)</h3>
+      <div class="lrow">📊 웹 <a href="settlement-report-2026-05.html" target="_blank">https://nwpos.co.kr/settlement-report-2026-05.html</a>
+        <button class="mini" data-url="https://nwpos.co.kr/settlement-report-2026-05.html">복사</button></div>
+      <div class="lrow">📄 PDF <a href="settlement-report-2026-05.pdf" target="_blank">https://nwpos.co.kr/settlement-report-2026-05.pdf</a>
+        <button class="mini" data-url="https://nwpos.co.kr/settlement-report-2026-05.pdf">복사</button></div>
+    </div>
+
+    <details class="raw">
+      <summary>📋 원문 텍스트 보기 (직접 선택·복사용)</summary>
       <pre id="m1">📊 2026년 05월 결산보고서
 ━━━━━━━━━━━━━━━━━
 
@@ -125,13 +137,6 @@
 
 5월은 통상 영업이 가장 활성화되는 시기인데 신규가 크게 저조했습니다.
 창업 수요 위축이 신규 가입 풀을 제약한 것으로 보입니다.</pre>
-    </div>
-
-    <div class="msg">
-      <div class="msg-h">
-        <div><span class="msg-n">메시지 2</span><span class="msg-t">상세 · 과제 · 첨부</span></div>
-        <div><span class="msg-len" id="len2"></span> &nbsp; <button class="copy" data-target="m2">📋 복사</button></div>
-      </div>
       <pre id="m2">📈 2026년 05월 결산 — 연간 진도율 (6개월 경과 · 기준 50.0%)
 
 🟢 카드사대행  85.5%
@@ -160,15 +165,54 @@ https://nwpos.co.kr/settlement-report-2026-05.html
 
 📄 PDF 다운로드
 https://nwpos.co.kr/settlement-report-2026-05.pdf</pre>
-    </div>
+    </details>
+  </div>
 
-    <div class="links">
-      <h3>🔗 첨부 주소 (개별 복사)</h3>
-      <div class="lrow">📊 웹 <a href="settlement-report-2026-05.html" target="_blank">https://nwpos.co.kr/settlement-report-2026-05.html</a>
-        <button class="mini" data-url="https://nwpos.co.kr/settlement-report-2026-05.html">복사</button></div>
-      <div class="lrow">📄 PDF <a href="settlement-report-2026-05.pdf" target="_blank">https://nwpos.co.kr/settlement-report-2026-05.pdf</a>
-        <button class="mini" data-url="https://nwpos.co.kr/settlement-report-2026-05.pdf">복사</button></div>
+  <!-- ── 전직원 공지용 ── -->
+  <div class="view" id="view-staff">
+    <div class="staff-note">
+      🔒 <b>숫자 미노출 원칙</b> — 이 공지문에는 실적 수치·금액·건수가 들어 있지 않습니다.
+      <b>결산보고서 링크도 넣지 않았습니다</b> (보고서에는 수치가 있어 전직원 공유 대상이 아닙니다).
+      대상 대화방을 확인하고 보내주세요.
     </div>
+    <div class="chat">
+      <div class="chat-h"><span class="dot"></span>전직원 공지<small>NAVER WORKS · 보내는 사람 기준 화면</small></div>
+      <div class="chat-body">
+        <div class="brow">
+          <span class="btag">메시지 1 / 1 &nbsp;·&nbsp; <span class="msg-len" id="len3"></span></span>
+          <div class="bwrap"><span class="btime">1</span><div class="bubble" id="b3"></div></div>
+          <div class="pv-copy"><button class="copy" data-target="m3">📋 공지문 복사</button></div>
+        </div>
+      </div>
+    </div>
+    <div class="pv-note">※ 한 번에 전송하는 단일 메시지입니다.</div>
+
+    <details class="raw">
+      <summary>📋 원문 텍스트 보기 (직접 선택·복사용)</summary>
+      <pre id="m3">📢 2026년 05월 결산 결과 공유
+
+임직원 여러분, 5월 결산 결과를 공유드립니다.
+
+👍 잘된 부분
+· 금액 지표가 모두 목표를 넘겼습니다.
+· 전표판매는 역대 가장 좋은 실적을 기록했습니다.
+· 카드사대행은 연간 목표에 빠르게 다가서고 있습니다.
+
+🙏 아쉬운 부분
+· 신규 가맹점 · 테이블오더 · 명의변경이 모두 크게 저조했습니다.
+· 5월은 보통 영업이 가장 활발한 달인데 신규가 특히 부진했습니다.
+· 창업 자체가 줄어든 영향이 커 보입니다.
+
+📌 지난달과 비교하면
+금액은 올라갔지만 건수는 내려갔습니다. 한쪽으로 크게 기운 달이었습니다.
+
+🎯 앞으로
+기존 가맹점에서 나오는 매출은 잘 지켜지고 있습니다.
+문제는 새로 들어오는 가맹점이 줄고 있다는 점입니다.
+7월부터 온라인 영업을 시작해 새로운 유입 경로를 만들 준비를 하고 있습니다.
+
+늘 애써주셔서 감사합니다.</pre>
+    </details>
   </div>
 
   <a class="back" href="reports.html">← 월별 결산보고서 아카이브</a>
@@ -176,12 +220,19 @@ https://nwpos.co.kr/settlement-report-2026-05.pdf</pre>
 </div>
 
 <script>
-  function setLen(id, el){ el.textContent = document.getElementById(id).textContent.length.toLocaleString() + '자'; }
-  setLen('m1', document.getElementById('len1'));
-  setLen('m2', document.getElementById('len2'));
+  function setLen(preId, spanId){
+    var n = document.getElementById(preId).textContent.length;
+    var el = document.getElementById(spanId);
+    el.textContent = n.toLocaleString() + '자';
+    if (n > 1000) { el.style.color = '#DC2626'; el.textContent += ' ⚠️ NW 제한 초과'; }
+  }
+  ['1','2','3'].forEach(function(i){
+    if (document.getElementById('m'+i)) setLen('m'+i, 'len'+i);
+  });
 
   // 미리보기 말풍선은 원문(pre)에서 그대로 생성 → 내용이 어긋날 수 없음
   function buildBubble(srcId, dstId){
+    if (!document.getElementById(srcId) || !document.getElementById(dstId)) return;
     const text = document.getElementById(srcId).textContent;
     const box = document.getElementById(dstId);
     box.textContent = '';
@@ -197,6 +248,7 @@ https://nwpos.co.kr/settlement-report-2026-05.pdf</pre>
   }
   buildBubble('m1','b1');
   buildBubble('m2','b2');
+  buildBubble('m3','b3');
 
   document.querySelectorAll('.tab').forEach(function(t){
     t.addEventListener('click', function(){
