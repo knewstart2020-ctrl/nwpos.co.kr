@@ -2,3 +2,9 @@ User-agent: *
 Allow: /
 
 Sitemap: https://nwpos.co.kr/sitemap.xml
+
+# 내부용 비공개 문서 — 색인 차단 (PDF는 meta noindex 불가하여 여기서 차단)
+Disallow: /settlement-report-
+Disallow: /nw-message-
+Disallow: /settlement-hub.html
+Disallow: /reports.html
