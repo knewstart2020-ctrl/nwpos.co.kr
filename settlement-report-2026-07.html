@@ -86,6 +86,27 @@
   .db-note { font-size:11.5px; color:var(--ink); margin-top:6px; line-height:1.5; }
   .db-link { font-size:11.5px; color:var(--navy); margin-top:6px; background:#FFF6E9; border:1px solid #F0DCBB; border-radius:5px; padding:6px 8px; } .db-link b { color:var(--gold); }
 
+  /* P7 CMS 브리지 */
+  .wf-grid { display:grid; grid-template-columns:1.45fr 1fr; gap:13px; margin-top:6px; flex:1; min-height:0; }
+  .wf-box { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:13px 15px; box-shadow:0 2px 6px rgba(10,26,58,0.05); display:flex; flex-direction:column; min-height:0; overflow:hidden; }
+  .mom-list { flex:1; display:flex; flex-direction:column; justify-content:center; gap:4px; min-height:0; }
+  .mom-row { display:grid; grid-template-columns:78px 1fr 52px; align-items:center; gap:6px; font-size:11px; padding:3px 6px; border-radius:5px; }
+  .mom-row:nth-child(odd) { background:var(--soft); }
+  .mm-n { color:var(--navy); font-weight:700; }
+  .mm-v { color:var(--muted); font-variant-numeric:tabular-nums; } .mm-v b { color:var(--navy); }
+  .mm-d { font-weight:800; text-align:right; font-variant-numeric:tabular-nums; }
+  .mom-sum { margin-top:8px; padding-top:8px; border-top:1px dashed var(--line); font-size:11px; }
+  .mom-sum > div { display:flex; justify-content:space-between; gap:8px; padding:2px 6px; }
+  .mom-sum span { color:var(--muted); }
+  .mm-net { background:var(--navy); border-radius:5px; margin-top:4px; padding:5px 6px !important; }
+  .mm-net span { color:#9BC1FF !important; } .mm-net b { color:#fff; }
+  .wf-verdict { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:10px; }
+  .wv-box { border:1px solid var(--line); border-radius:9px; padding:9px 12px; background:var(--card); }
+  .wv-box.wv-ok { border-left:3px solid var(--ok); } .wv-box.wv-risk { border-left:3px solid var(--risk); } .wv-box.wv-warn { border-left:3px solid var(--warn); }
+  .wv-t { font-size:11.5px; font-weight:800; color:var(--navy); margin-bottom:4px; }
+  .wv-b { font-size:10.5px; color:var(--ink); line-height:1.55; }
+  .wf-note { margin-top:9px; font-size:11px; color:var(--navy); background:#FFF6E9; border:1px solid #F0DCBB; border-radius:6px; padding:8px 11px; line-height:1.55; }
+
   /* 프로그레스 */
   .prog-list { flex:1; display:flex; flex-direction:column; justify-content:center; gap:9px; margin-top:6px; padding:0 4px; }
   .prog-list.fc { gap:7px; }
@@ -175,7 +196,7 @@
   <div class="cover-wm"></div>
   <div class="cv-top">
     <div class="hd-l"><span class="nlogo">n</span><b>Nurinetworks<span class="blue">.</span></b></div>
-    <div class="cv-meta-top">M O N T H L Y &nbsp; R E P O R T &nbsp;·&nbsp; 1 2 &nbsp; P A G E S</div>
+    <div class="cv-meta-top">M O N T H L Y &nbsp; R E P O R T &nbsp;·&nbsp; 1 3 &nbsp; P A G E S</div>
   </div>
   <div class="cv-main">
     <div class="cv-tag">■ &nbsp;2 0 2 6 &nbsp;·&nbsp; 0 7 &nbsp;·&nbsp; J U L Y &nbsp; · &nbsp; Q 3 &nbsp; S T A R T</div>
@@ -197,7 +218,7 @@
   
   <div class="hd">
     <div class="hd-l"><span class="nlogo">n</span><b>Nurinetworks<span class="blue">.</span></b><span class="hd-meta">| &nbsp;2 0 2 6 &nbsp;·&nbsp; 0 7 &nbsp;·&nbsp; M O N T H L Y &nbsp; R E P O R T</span></div>
-    <div class="hd-r"><div class="hd-ch">K P I &nbsp;·&nbsp; 핵심지표</div><div class="hd-pg">02 &nbsp;/&nbsp; 12</div></div>
+    <div class="hd-r"><div class="hd-ch">K P I &nbsp;·&nbsp; 핵심지표</div><div class="hd-pg">02 &nbsp;/&nbsp; 13</div></div>
   </div>
   
   <div class="ch-label"><span class="dot"></span>C H A P T E R &nbsp; 01 &nbsp;·&nbsp; K P I</div>
@@ -271,7 +292,7 @@
   
   <div class="hd">
     <div class="hd-l"><span class="nlogo">n</span><b>Nurinetworks<span class="blue">.</span></b><span class="hd-meta">| &nbsp;2 0 2 6 &nbsp;·&nbsp; 0 7 &nbsp;·&nbsp; M O N T H L Y &nbsp; R E P O R T</span></div>
-    <div class="hd-r"><div class="hd-ch">D A S H B O A R D &nbsp;·&nbsp; 대시보드</div><div class="hd-pg">03 &nbsp;/&nbsp; 12</div></div>
+    <div class="hd-r"><div class="hd-ch">D A S H B O A R D &nbsp;·&nbsp; 대시보드</div><div class="hd-pg">03 &nbsp;/&nbsp; 13</div></div>
   </div>
   
   <div class="ch-label"><span class="dot"></span>C H A P T E R &nbsp; 02 &nbsp;·&nbsp; D A S H B O A R D</div>
@@ -349,7 +370,7 @@
   
   <div class="hd">
     <div class="hd-l"><span class="nlogo">n</span><b>Nurinetworks<span class="blue">.</span></b><span class="hd-meta">| &nbsp;2 0 2 6 &nbsp;·&nbsp; 0 7 &nbsp;·&nbsp; M O N T H L Y &nbsp; R E P O R T</span></div>
-    <div class="hd-r"><div class="hd-ch">T R E N D &nbsp;·&nbsp; 매출추이</div><div class="hd-pg">04 &nbsp;/&nbsp; 12</div></div>
+    <div class="hd-r"><div class="hd-ch">T R E N D &nbsp;·&nbsp; 매출추이</div><div class="hd-pg">04 &nbsp;/&nbsp; 13</div></div>
   </div>
   
   <div class="ch-label"><span class="dot"></span>C H A P T E R &nbsp; 03 &nbsp;·&nbsp; T R E N D</div>
@@ -373,7 +394,7 @@
   
   <div class="hd">
     <div class="hd-l"><span class="nlogo">n</span><b>Nurinetworks<span class="blue">.</span></b><span class="hd-meta">| &nbsp;2 0 2 6 &nbsp;·&nbsp; 0 7 &nbsp;·&nbsp; M O N T H L Y &nbsp; R E P O R T</span></div>
-    <div class="hd-r"><div class="hd-ch">T R E N D &nbsp;·&nbsp; 건수추이</div><div class="hd-pg">05 &nbsp;/&nbsp; 12</div></div>
+    <div class="hd-r"><div class="hd-ch">T R E N D &nbsp;·&nbsp; 건수추이</div><div class="hd-pg">05 &nbsp;/&nbsp; 13</div></div>
   </div>
   
   <div class="ch-label"><span class="dot"></span>C H A P T E R &nbsp; 04 &nbsp;·&nbsp; T R E N D</div>
@@ -397,7 +418,7 @@
   
   <div class="hd">
     <div class="hd-l"><span class="nlogo">n</span><b>Nurinetworks<span class="blue">.</span></b><span class="hd-meta">| &nbsp;2 0 2 6 &nbsp;·&nbsp; 0 7 &nbsp;·&nbsp; M O N T H L Y &nbsp; R E P O R T</span></div>
-    <div class="hd-r"><div class="hd-ch">D E E P - D I V E &nbsp;·&nbsp; 심층분석</div><div class="hd-pg">06 &nbsp;/&nbsp; 12</div></div>
+    <div class="hd-r"><div class="hd-ch">D E E P - D I V E &nbsp;·&nbsp; 심층분석</div><div class="hd-pg">06 &nbsp;/&nbsp; 13</div></div>
   </div>
   
   <div class="ch-label"><span class="dot"></span>C H A P T E R &nbsp; 05 &nbsp;·&nbsp; D E E P   D I V E</div>
@@ -428,12 +449,94 @@
   
   <div class="hd">
     <div class="hd-l"><span class="nlogo">n</span><b>Nurinetworks<span class="blue">.</span></b><span class="hd-meta">| &nbsp;2 0 2 6 &nbsp;·&nbsp; 0 7 &nbsp;·&nbsp; M O N T H L Y &nbsp; R E P O R T</span></div>
-    <div class="hd-r"><div class="hd-ch">P R O G R E S S &nbsp;·&nbsp; 연간진도율</div><div class="hd-pg">07 &nbsp;/&nbsp; 12</div></div>
+    <div class="hd-r"><div class="hd-ch">C M S - B R I D G E &nbsp;·&nbsp; CMS 구조</div><div class="hd-pg">07 &nbsp;/&nbsp; 13</div></div>
   </div>
   
-  <div class="ch-label"><span class="dot"></span>C H A P T E R &nbsp; 06 &nbsp;·&nbsp; P R O G R E S S</div>
+  <div class="ch-label"><span class="dot"></span>C H A P T E R &nbsp; 06 &nbsp;·&nbsp; C M S   B R I D G E</div>
+  <h1 class="ch-title">CMS 흑자전환의 <span class="blue">실체</span></h1>
+  <div class="ch-sub">7월 유입 53건 / 유출 72건 원장 분해 — 워터폴 &nbsp;|&nbsp; 6월 대비 구조 변화</div>
+  <div class="wf-grid">
+    <div class="wf-box">
+      <div class="db-t">유입 → 유출 → 순액 <span class="db-t-sub">(단위: 원)</span></div>
+      <div class="db-chart-wide"><canvas id="cmsWaterfall"></canvas></div>
+      <div class="db-note">유입 <b style="color:#16A34A">185.1만</b>(53건) &nbsp;−&nbsp; 유출 <b style="color:#DC2626">133.3만</b>(72건) &nbsp;=&nbsp; 순액 <b style="color:#0066FF">+51.8만</b></div>
+    </div>
+    <div class="wf-box">
+      <div class="db-t">6월 대비 항목별 변화</div>
+      <div class="mom-list">
+        <div class="mom-row">
+            <span class="mm-n">신규 유입</span>
+            <span class="mm-v">37.5만 → <b>52.6만</b></span>
+            <span class="mm-d" style="color:#16A34A">+40%</span>
+          </div><div class="mom-row">
+            <span class="mm-n">재계약</span>
+            <span class="mm-v">11.8만 → <b>59.8만</b></span>
+            <span class="mm-d" style="color:#16A34A">+408%</span>
+          </div><div class="mom-row">
+            <span class="mm-n">추가계약</span>
+            <span class="mm-v">0.9만 → <b>13.8만</b></span>
+            <span class="mm-d" style="color:#16A34A">+1463%</span>
+          </div><div class="mom-row">
+            <span class="mm-n">명의변경 유입</span>
+            <span class="mm-v">44.3만 → <b>58.9만</b></span>
+            <span class="mm-d" style="color:#16A34A">+33%</span>
+          </div><div class="mom-row">
+            <span class="mm-n">폐업그룹</span>
+            <span class="mm-v">110만 → <b>40.8만</b></span>
+            <span class="mm-d" style="color:#16A34A">-63%</span>
+          </div><div class="mom-row">
+            <span class="mm-n">명변 유출</span>
+            <span class="mm-v">48.1만 → <b>73.8만</b></span>
+            <span class="mm-d" style="color:#DC2626">+53%</span>
+          </div><div class="mom-row">
+            <span class="mm-n">약정만기할인</span>
+            <span class="mm-v">29.8만 → <b>18.1만</b></span>
+            <span class="mm-d" style="color:#16A34A">-39%</span>
+          </div><div class="mom-row">
+            <span class="mm-n">CMS인하</span>
+            <span class="mm-v">1.2만 → <b>0.6만</b></span>
+            <span class="mm-d" style="color:#16A34A">-52%</span>
+          </div>
+      </div>
+      <div class="mom-sum">
+        <div><span>유입 계</span><b style="color:#16A34A">94.5만 → 185.1만 (+95.9%)</b></div>
+        <div><span>유출 계</span><b style="color:#16A34A">189.3만 → 133.3만 (-29.6%)</b></div>
+        <div class="mm-net"><span>순액</span><b>-94.8만 → +51.8만 (+146.6만)</b></div>
+      </div>
+    </div>
+  </div>
+  <div class="wf-verdict">
+    <div class="wv-box wv-ok">
+      <div class="wv-t">🟢 구조 개선으로 볼 근거</div>
+      <div class="wv-b"><b>폐업 유출 -69.4만(-63.0%)</b>이 개선폭 146.6만의 <b>47.4%</b>를 설명합니다. 신규 유입도 +40.2%로 함께 늘어, 유입·유출 <b>양쪽이 동시에</b> 좋아졌습니다.</div>
+    </div>
+    <div class="wv-box wv-risk">
+      <div class="wv-t">🔴 일회성으로 볼 근거</div>
+      <div class="wv-b">재계약 59.8만 중 <b>이억집박촌점 1건이 30.8만(51.5%)</b>입니다. 이 <b>단일 건이 순액 51.8만의 59.5%</b>를 차지하며, 제외 시 순액은 <b>+21.0만</b>으로 줄어듭니다.</div>
+    </div>
+    <div class="wv-box wv-warn">
+      <div class="wv-t">⚠️ 악화된 항목</div>
+      <div class="wv-b"><b>명변은 순유출이 확대</b>됐습니다(6월 -3.8만 → 7월 <b>-14.9만</b>). 폐업 44건의 건당 해지액은 9,268원으로 <b>소액 가맹점 이탈 위주</b>입니다.</div>
+    </div>
+  </div>
+  <div class="wf-note">📌 <b>판정</b> — 흑자전환은 <b>절반은 구조(폐업 유출 감소), 절반은 일회성(대형 재계약 1건)</b>입니다. <b>8월에 30만원급 재계약 없이도 흑자면 구조 개선 확정</b>으로 봐야 합니다. &nbsp;|&nbsp; ※ 유입 명의변경에서 본부 이관 1건(27,500원)을 제외해 결산 확정치와 대사 완료.</div>
+  
+  <div class="ft">
+    <span>P O S &nbsp;·&nbsp; K I O S K &nbsp;·&nbsp; T A B L E &nbsp; O R D E R &nbsp;·&nbsp; C A T &nbsp;·&nbsp; P G</span>
+    <span class="blue-t">W W W . N W P O S . C O . K R</span>
+  </div>
+</section>
+
+<section class="pg">
+  
+  <div class="hd">
+    <div class="hd-l"><span class="nlogo">n</span><b>Nurinetworks<span class="blue">.</span></b><span class="hd-meta">| &nbsp;2 0 2 6 &nbsp;·&nbsp; 0 7 &nbsp;·&nbsp; M O N T H L Y &nbsp; R E P O R T</span></div>
+    <div class="hd-r"><div class="hd-ch">P R O G R E S S &nbsp;·&nbsp; 연간진도율</div><div class="hd-pg">08 &nbsp;/&nbsp; 13</div></div>
+  </div>
+  
+  <div class="ch-label"><span class="dot"></span>C H A P T E R &nbsp; 07 &nbsp;·&nbsp; P R O G R E S S</div>
   <h1 class="ch-title">연간진도율 <span class="blue">— 8개월 경과</span></h1>
-  <div class="ch-sub">기준선 66.7% · 프로그레스 바 &nbsp;|&nbsp; 우측 = 동기간 전년대비(YoY) 실체 점검</div>
+  <div class="ch-sub">기준선 66.7% · 프로그레스 바 &nbsp;|&nbsp; 하단 = 동기간 전년대비(YoY) 실체 점검</div>
   <div class="prog-list">
     <div class="prog-row">
         <div class="pr-name">신규</div>
@@ -522,10 +625,10 @@
   
   <div class="hd">
     <div class="hd-l"><span class="nlogo">n</span><b>Nurinetworks<span class="blue">.</span></b><span class="hd-meta">| &nbsp;2 0 2 6 &nbsp;·&nbsp; 0 7 &nbsp;·&nbsp; M O N T H L Y &nbsp; R E P O R T</span></div>
-    <div class="hd-r"><div class="hd-ch">P O S I T I O N &nbsp;·&nbsp; 포지션</div><div class="hd-pg">08 &nbsp;/&nbsp; 12</div></div>
+    <div class="hd-r"><div class="hd-ch">P O S I T I O N &nbsp;·&nbsp; 포지션</div><div class="hd-pg">09 &nbsp;/&nbsp; 13</div></div>
   </div>
   
-  <div class="ch-label"><span class="dot"></span>C H A P T E R &nbsp; 07 &nbsp;·&nbsp; P O S I T I O N</div>
+  <div class="ch-label"><span class="dot"></span>C H A P T E R &nbsp; 08 &nbsp;·&nbsp; P O S I T I O N</div>
   <h1 class="ch-title">32개월 평균 대비 + KPI 균형</h1>
   <div class="ch-sub">다이버징 바(평균대비) · 레이더(달성률 균형)</div>
   <div class="pos2-grid">
@@ -553,10 +656,10 @@
   
   <div class="hd">
     <div class="hd-l"><span class="nlogo">n</span><b>Nurinetworks<span class="blue">.</span></b><span class="hd-meta">| &nbsp;2 0 2 6 &nbsp;·&nbsp; 0 7 &nbsp;·&nbsp; M O N T H L Y &nbsp; R E P O R T</span></div>
-    <div class="hd-r"><div class="hd-ch">M A C R O &nbsp;·&nbsp; 경제전망</div><div class="hd-pg">09 &nbsp;/&nbsp; 12</div></div>
+    <div class="hd-r"><div class="hd-ch">M A C R O &nbsp;·&nbsp; 경제전망</div><div class="hd-pg">10 &nbsp;/&nbsp; 13</div></div>
   </div>
   
-  <div class="ch-label"><span class="dot"></span>C H A P T E R &nbsp; 08 &nbsp;·&nbsp; M A C R O</div>
+  <div class="ch-label"><span class="dot"></span>C H A P T E R &nbsp; 09 &nbsp;·&nbsp; M A C R O</div>
   <h1 class="ch-title">경제전망 및 소상공인 환경</h1>
   <div class="ch-sub">2026년 하반기 · 카드수수료 정책 · 폐업 동향 · 단말 시장 · 소비 지지</div>
   <div class="macro-grid">
@@ -581,10 +684,10 @@
   
   <div class="hd">
     <div class="hd-l"><span class="nlogo">n</span><b>Nurinetworks<span class="blue">.</span></b><span class="hd-meta">| &nbsp;2 0 2 6 &nbsp;·&nbsp; 0 7 &nbsp;·&nbsp; M O N T H L Y &nbsp; R E P O R T</span></div>
-    <div class="hd-r"><div class="hd-ch">A C T I O N &nbsp;·&nbsp; 핵심과제</div><div class="hd-pg">10 &nbsp;/&nbsp; 12</div></div>
+    <div class="hd-r"><div class="hd-ch">A C T I O N &nbsp;·&nbsp; 핵심과제</div><div class="hd-pg">11 &nbsp;/&nbsp; 13</div></div>
   </div>
   
-  <div class="ch-label"><span class="dot"></span>C H A P T E R &nbsp; 09 &nbsp;·&nbsp; A C T I O N</div>
+  <div class="ch-label"><span class="dot"></span>C H A P T E R &nbsp; 10 &nbsp;·&nbsp; A C T I O N</div>
   <h1 class="ch-title">8월 <span class="blue">5대 핵심과제</span></h1>
   <div class="ch-sub">달성률 추격이 아니라 — <b>2027년에 쓸 데이터를 남기는 것</b>이 목표. 각 과제는 (근거지표 / 측정방법)을 갖춘 항목만 채택</div>
   <div class="task-grid">
@@ -631,10 +734,10 @@
   
   <div class="hd">
     <div class="hd-l"><span class="nlogo">n</span><b>Nurinetworks<span class="blue">.</span></b><span class="hd-meta">| &nbsp;2 0 2 6 &nbsp;·&nbsp; 0 7 &nbsp;·&nbsp; M O N T H L Y &nbsp; R E P O R T</span></div>
-    <div class="hd-r"><div class="hd-ch">F O R E C A S T &nbsp;·&nbsp; 8월 예상</div><div class="hd-pg">11 &nbsp;/&nbsp; 12</div></div>
+    <div class="hd-r"><div class="hd-ch">F O R E C A S T &nbsp;·&nbsp; 8월 예상</div><div class="hd-pg">12 &nbsp;/&nbsp; 13</div></div>
   </div>
   
-  <div class="ch-label"><span class="dot"></span>C H A P T E R &nbsp; 10 &nbsp;·&nbsp; F O R E C A S T</div>
+  <div class="ch-label"><span class="dot"></span>C H A P T E R &nbsp; 11 &nbsp;·&nbsp; F O R E C A S T</div>
   <h1 class="ch-title">8월 예상실적 진단</h1>
   <div class="ch-sub">12월~7월 월평균 기준 8월 목표 대비 도달률 — 프로그레스 바</div>
   <div class="prog-list fc">
@@ -701,7 +804,7 @@
   <div class="cover-wm wm-left"></div>
   <div class="cv-top">
     <div class="hd-l"><span class="nlogo">n</span><b>Nurinetworks<span class="blue">.</span></b></div>
-    <div class="cv-meta-top">E N D &nbsp; O F &nbsp; R E P O R T &nbsp;·&nbsp; 1 2 &nbsp;/&nbsp; 1 2</div>
+    <div class="cv-meta-top">E N D &nbsp; O F &nbsp; R E P O R T &nbsp;·&nbsp; 1 3 &nbsp;/&nbsp; 1 3</div>
   </div>
   <div class="cv-main">
     <div class="cv-tag">C L O S I N G &nbsp;·&nbsp; 2 0 2 6 &nbsp; 0 7 &nbsp; 결산</div>
@@ -725,6 +828,9 @@ const TM = ["23.12","24.01","24.02","24.03","24.04","24.05","24.06","24.07","24.
 const TREND = {"신규":[44,37,30,38,38,53,32,36,44,38,39,34,34,28,36,51,48,26,27,21,25,24,25,25,29,29,20,20,35,18,22,23],"CMS":[1890360,2114200,1955400,1695000,2062315,2466800,-31800,-217050,1215300,169650,144900,601300,850775,-208625,-98100,-1645300,-639700,-915625,-584050,-370250,-15600,-783553,115750,372050,1027800,721800,162780,-618350,166500,-82150,-948000,517873],"유상":[15292000,3584700,13567900,10388510,5160359,10377400,8635230,11599190,7579220,11614310,9575450,14941890,17922820,3605600,10122860,25153780,13590280,7527630,16856950,11174340,13136860,10571500,9862820,12659400,5963210,6406730,6739260,9547450,11214720,14952470,17812090,13605460],"테이블오더":[107,127,85,117,168,201,39,20,56,116,73,58,73,29,21,15,9,16,20,45,30,65,77,48,47,64,92,39,33,9,27,40],"해지":[46,52,37,49,58,40,34,47,32,42,55,42,40,47,42,48,50,40,41,32,51,71,39,34,35,45,36,55,53,36,48,41],"위약금":[4247000,5409500,1338500,4439111,8151000,2621000,4602000,5672500,4070000,6678000,7100000,4490000,6531000,5179800,9337500,11487800,5943703,4902000,9389320,7364600,6496400,6066000,4445400,3028400,3300000,662400,3050000,5541800,2465578,3677500,7617000,2210500],"전표판매":[1095600,1058200,1237500,919800,1145100,980500,865700,1028500,1211100,1136300,793100,533500,1304000,1386000,1659900,1949750,1397000,1646700,1893100,1678050,907500,2227500,1502600,1265000,2145550,1600500,1479500,1166000,1509450,2503700,2920500,2241800],"카드사대행":[913000,1353000,1100000,1771000,1045000,473000,865000,506000,1150000,704000,990000,902000,1485000,1595000,2167000,1342000,2046000,1331000,1485000,1529000,770000,1254000,904000,1100000,1364000,1155000,1342000,1386000,1485000,781000,1342000,1364000],"명변":[32,12,24,20,22,20,19,26,17,16,23,16,24,18,16,13,19,19,11,15,15,17,20,17,17,17,11,13,19,7,12,23]};
 const POSITION = [{"name":"전표판매","diff":0.546},{"name":"CMS","diff":0.494},{"name":"명변","diff":0.291},{"name":"유상","diff":0.207},{"name":"카드사대행","diff":0.119},{"name":"해지","diff":-0.075},{"name":"신규","diff":-0.285},{"name":"테이블오더","diff":-0.349},{"name":"위약금","diff":-0.578}];
 const RADAR = [{"name":"신규","v":75.14999999999999},{"name":"CMS","v":83.42},{"name":"유상","v":157.7},{"name":"테이블오더","v":114.29},{"name":"해지","v":157.69},{"name":"위약금","v":83.32000000000001},{"name":"명변","v":153.33},{"name":"전표판매","v":247.94},{"name":"카드사대행","v":250}];
+const CMS_IN = [{"n":"신규","v":525800,"c":17},{"n":"재계약","v":598400,"c":15},{"n":"추가계약","v":137500,"c":3},{"n":"명의변경","v":589050,"c":17}];
+const CMS_OUT = [{"n":"폐업그룹","v":407777,"c":44},{"n":"명변","v":738100,"c":26},{"n":"약정만기","v":181500,"c":1},{"n":"CMS인하","v":5500,"c":1}];
+const CMS_NET = 517873;
 const FY_M = ["25.12","26.01","26.02","26.03","26.04","26.05","26.06","26.07"];
 const FY_CMS = [1027800,721800,162780,-618350,166500,-82150,-948000,517873];
 const FY_NEW = [29,29,20,20,35,18,22,23];
@@ -834,6 +940,40 @@ new Chart(document.getElementById('cmsFy'), {
         ctx.fillText(t, pt.x, v>=0 ? pt.y-5 : pt.y+13); ctx.restore(); }); } },
   ]
 });
+
+// ── P7 : CMS 유입/유출 워터폴 ──
+(function(){
+  const steps = [];
+  let run = 0;
+  CMS_IN.forEach(x=>{ steps.push({label:x.n+'
+('+x.c+'건)', base:run, val:x.v, color:'#16A34A', type:'up'}); run += x.v; });
+  CMS_OUT.forEach(x=>{ steps.push({label:x.n+'
+('+x.c+'건)', base:run-x.v, val:x.v, color:'#DC2626', type:'down'}); run -= x.v; });
+  steps.push({label:'순액
+(확정)', base:Math.min(0,run), val:Math.abs(run), color:'#0066FF', type:'net'});
+  new Chart(document.getElementById('cmsWaterfall'), {
+    type:'bar',
+    data:{ labels: steps.map(s=>s.label.split('
+')), datasets:[
+      { data: steps.map(s=>s.base), backgroundColor:'transparent', stack:'w' },
+      { data: steps.map(s=>s.val), backgroundColor: steps.map(s=>s.color), stack:'w', borderRadius:3, barPercentage:0.78 },
+    ] },
+    options:{ responsive:true, maintainAspectRatio:false, layout:{padding:{top:20}},
+      plugins:{ legend:{display:false},
+        tooltip:{ filter:it=>it.datasetIndex===1, backgroundColor:'#0A1A3A', padding:9, cornerRadius:6,
+          callbacks:{ label:c=>{ const s=steps[c.dataIndex];
+            const sign = s.type==='down' ? '−' : s.type==='up' ? '+' : '';
+            return ' ' + sign + c.parsed.y.toLocaleString('ko-KR') + '원'; } } } },
+      scales:{ x:{ ticks:{color:'#3D4C63',font:{family:'Pretendard',size:9.5,weight:'600'}}, grid:{display:false} },
+               y:{ ticks:{color:'#8395A8',font:{family:'Pretendard',size:9},callback:v=>(v/10000)+'만'}, grid } } },
+    plugins:[{ id:'wfval', afterDatasetsDraw(c){ const {ctx}=c; const m=c.getDatasetMeta(1);
+      m.data.forEach((pt,i)=>{ const s=steps[i];
+        const sign = s.type==='down' ? '−' : s.type==='up' ? '+' : '';
+        const t = sign + (s.val/10000).toFixed(1).replace(/.0$/,'') + '만';
+        ctx.save(); ctx.font = "800 10.5px Pretendard, sans-serif"; ctx.textAlign='center';
+        ctx.fillStyle = s.color; ctx.fillText(t, pt.x, pt.y-6); ctx.restore(); }); } }]
+  });
+})();
 
 // ── P6-우 : 가맹점 순증감 (신규/해지 막대 + 누적 순증감 라인) ──
 new Chart(document.getElementById('netChart'), {
