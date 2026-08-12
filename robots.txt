@@ -8,3 +8,4 @@ Disallow: /settlement-report-
 Disallow: /nw-message-
 Disallow: /settlement-hub.html
 Disallow: /reports.html
+Disallow: /quote-   # 견적서 PDF — 금액이 들어 있어 색인 금지
