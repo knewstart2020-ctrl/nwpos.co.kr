@@ -1,0 +1,9 @@
+
+# 🔴 백업본은 저장소에 올리지 않는다 (2026-08-14 사고)
+#    밑줄로 시작하면 Jekyll이 배포에서 빼주지만, 밑줄 없는 이름(index-v3-hero.html)은
+#    그대로 배포돼 메인 페이지의 새 중복본이 된다. git add '*.html' 이 통째로 잡아간다.
+_backup/
+_backup_*.html
+*.bak-*
+index-v3-*.html
+*-backup.html
