@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>월~일 콘텐츠 업로드 기준</title>
+<style>
+  :root{
+    --bg:#f5f7fa; --card:#fff; --ink:#16233a; --sub:#5b6b85; --line:#e2e8f2;
+    --red:#d92d20; --orange:#e8820c; --blue:#1f6feb; --gray:#8794aa;
+    --green:#0f8a4d; --purple:#7048c4;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+       font-family:'Pretendard','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+       line-height:1.7;word-break:keep-all;-webkit-text-size-adjust:100%}
+  .wrap{max-width:1040px;margin:0 auto;padding:26px 18px 80px}
+
+  header{background:linear-gradient(135deg,#12294f,#1f4d94);color:#eaf1ff;
+         border-radius:18px;padding:30px 28px;margin-bottom:22px;
+         box-shadow:0 10px 30px rgba(12,32,64,.18)}
+  header .date{font-size:13.5px;opacity:.85;letter-spacing:.4px}
+  header h1{margin:6px 0 10px;font-size:29px;font-weight:800;letter-spacing:-.5px}
+  header p{margin:0;font-size:15.5px;opacity:.93}
+  header .note{margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.18);
+               font-size:13.5px;opacity:.8}
+
+  h2{font-size:21px;margin:34px 0 6px;padding-left:12px;border-left:5px solid var(--blue)}
+  h2.red{border-color:var(--red)} h2.orange{border-color:var(--orange)}
+  h2.gray{border-color:var(--gray)} h2.green{border-color:var(--green)}
+  h2.purple{border-color:var(--purple)}
+  .lead{color:var(--sub);font-size:14.5px;margin:0 0 14px;padding-left:13px}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+        padding:6px 4px;box-shadow:0 2px 10px rgba(20,40,80,.05);overflow-x:auto}
+  table{width:100%;border-collapse:collapse;min-width:620px}
+  th,td{padding:13px 14px;text-align:left;vertical-align:top;font-size:14.8px;
+        border-bottom:1px solid var(--line)}
+  th{background:#f0f4fa;color:#3c4f6d;font-weight:700;font-size:13.5px;white-space:nowrap}
+  tr:last-child td{border-bottom:none}
+  td.day{font-weight:800;white-space:nowrap;width:74px}
+  td.kind{font-weight:700;white-space:nowrap}
+  .why{color:var(--sub)}
+  .sun td{background:#fdf7ff}
+  .wk td{background:#fffdf4}
+  .auto{color:var(--green);font-weight:700}
+  .manual{color:var(--orange);font-weight:700}
+  .tag{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12.5px;
+       font-weight:700;white-space:nowrap}
+  .t-blue{background:#e7f0ff;color:#1f4f9c}
+  .t-green{background:#e6f6ee;color:#0f6f42}
+  .t-purple{background:#f2ecff;color:#5a37a8}
+  .t-orange{background:#fff2df;color:#a8600a}
+
+  .box{background:#fff8ec;border:1px solid #f2d9a8;border-radius:12px;
+       padding:17px 20px;margin:18px 0}
+  .box h3{margin:0 0 7px;font-size:16.5px}
+  .box p{margin:0 0 8px;font-size:14.8px;color:#4a3b26}
+  .box p:last-child{margin-bottom:0}
+  .box.fix{background:#eef7f1;border-color:#bfe0cb}
+  .box.fix p{color:#2c4a37}
+
+  .doneblock{background:#fff;border:1px solid var(--line);border-radius:14px;
+             padding:18px 22px;box-shadow:0 2px 10px rgba(20,40,80,.05)}
+  .doneblock ul{margin:0;padding-left:20px}
+  .doneblock li{margin-bottom:9px}
+
+  footer{margin-top:42px;padding-top:16px;border-top:1px solid var(--line);
+         color:var(--gray);font-size:12.8px;text-align:center}
+  @media(max-width:640px){
+    header h1{font-size:23px} h2{font-size:18.5px}
+    .wrap{padding:16px 12px 60px} th,td{padding:11px 10px;font-size:14px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="date">최종 갱신 · 2026년 8월 23일 (일)</div>
+  <h1>월~일 콘텐츠 업로드 기준</h1>
+  <p>어느 요일에 무엇이, 어느 채널로, 누구 손을 거쳐 나가는지 한 장으로 정리했습니다.</p>
+  <div class="note">이 주소는 고정입니다. 기준이 바뀔 때마다 같은 자리에서 갱신됩니다.</div>
+</header>
+
+<h2 class="red">오늘 바로잡은 것 두 가지</h2>
+<p class="lead">전무님 지적 두 건 모두 원인이 확인됐고 코드에서 고쳤습니다.</p>
+
+<div class="box fix">
+  <h3>① 주간에 금·토가 계속 비던 이유</h3>
+  <p>빠뜨린 게 아니라 <b>구조가 그랬습니다.</b> 월요일 배치는 「다음 주 월~목」을,
+     웹드라마는 「다음 주 일요일」을 만드는데 <b>트렌드편만 「이번 주 금·토」</b>를
+     만들고 있었습니다. 그래서 주말에 다음 주를 펼쳐 보면 금·토 두 칸이
+     <b>매번</b> 비어 있었습니다.</p>
+  <p>트렌드편 제작 대상을 <b>「다음 주 금·토」로 옮겼습니다.</b>
+     이번 주 금·토(8/28·8/29)는 오늘 채웠으므로 겹치지 않고,
+     <b>다음 주부터는 월요일 아침에 그 주 일곱 칸이 전부 차 있습니다.</b></p>
+</div>
+
+<div class="box fix">
+  <h3>② 영상이 화면에 맞지 않던 이유</h3>
+  <p>제품편·트렌드편은 세로(9:16)가 원본인데, 유튜브에는 가로(16:9)로 올리고
+     있었습니다. 가로 화면에 세로 영상을 넣으니 <b>좌우가 흐린 띠로 채워지고
+     실제 내용은 화면의 34%</b>만 차지했습니다.</p>
+  <p>17초 세로 영상은 <b>쇼츠</b>가 제자리입니다. 유튜브에도 세로 원본을 올리도록
+     바꿨습니다. 발행 예정분 6편 중 제품·트렌드 4편이 자동 전환되고,
+     웹드라마는 원래 가로가 원본이라 그대로 둡니다.</p>
+</div>
+
+<h2 class="blue">한 주 배치 — 월요일부터 일요일까지</h2>
+<p class="lead">세 채널이 <b>같은 날 같은 주제</b>로 나갑니다. 블로그 글, 인스타 릴스,
+   유튜브 쇼츠가 한 벌입니다.</p>
+
+<div class="card">
+<table>
+  <thead>
+    <tr><th>요일</th><th>유형</th><th>무엇을 다루나</th><th>제품</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="day">월</td><td class="kind"><span class="tag t-blue">증상편</span></td>
+        <td class="why">고장·오류가 났을 때 사장님이 직접 볼 순서<br>
+            <span style="font-size:13.5px">예 · 영수증이 안 나올 때 볼 곳 6군데</span></td>
+        <td class="why">그 증상에 맞는 기기</td></tr>
+    <tr><td class="day">화</td><td class="kind"><span class="tag t-blue">선택편</span></td>
+        <td class="why">기기를 고를 때의 판단 기준<br>
+            <span style="font-size:13.5px">예 · 토스·네이버단말기 업종별 기준</span></td>
+        <td class="why">비교 대상 기기</td></tr>
+    <tr><td class="day">수</td><td class="kind"><span class="tag t-blue">절차편</span></td>
+        <td class="why">서류·신청·변경처럼 순서가 있는 일<br>
+            <span style="font-size:13.5px">예 · 가맹점 정보변경 순서</span></td>
+        <td class="why">절차와 닿는 기기</td></tr>
+    <tr><td class="day">목</td><td class="kind"><span class="tag t-blue">업종편</span></td>
+        <td class="why">한 업종의 하루를 따라가며 병목을 짚기<br>
+            <span style="font-size:13.5px">예 · 카페 아침 피크</span></td>
+        <td class="why">그 업종에 맞는 기기</td></tr>
+    <tr class="wk"><td class="day">금</td><td class="kind"><span class="tag t-orange">트렌드편</span></td>
+        <td class="why"><b>사람이 몰리는 일</b>에서 출발해 매장 이야기로<br>
+            <span style="font-size:13.5px">예 · 아시안게임 → 중계 보는 저녁 테이블 회전</span></td>
+        <td class="why">본문 70% 뒤 1곳</td></tr>
+    <tr class="wk"><td class="day">토</td><td class="kind"><span class="tag t-orange">트렌드편</span></td>
+        <td class="why"><b>규칙이 바뀌거나 돈이 나가는 일</b>에서 출발<br>
+            <span style="font-size:13.5px">예 · 기름값 → 배달 한 건에 얼마 남나</span></td>
+        <td class="why">본문 70% 뒤 1곳</td></tr>
+    <tr class="sun"><td class="day">일</td><td class="kind"><span class="tag t-purple">웹드라마</span></td>
+        <td class="why">「단말기 기사단」 — 우리 직원이 현장에서 겪는 이야기<br>
+            <span style="font-size:13.5px">1분 내외 · 연속 서사</span></td>
+        <td class="why">이야기 속에 자연히</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 class="green">채널별 발행 방식</h2>
+<p class="lead">유튜브와 인스타는 사람 손이 안 갑니다. 블로그만 전무님 예약발행입니다.</p>
+
+<div class="card">
+<table>
+  <thead>
+    <tr><th>채널</th><th>형식</th><th>발행 시각</th><th>누가</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="kind">유튜브</td>
+        <td class="why">쇼츠 · 세로 9:16 · 18초<br>
+            <span style="font-size:13.5px">웹드라마만 가로 16:9 · 1분대</span></td>
+        <td class="why">매일 06:00</td>
+        <td class="auto">자동</td></tr>
+    <tr><td class="kind">인스타그램</td>
+        <td class="why">릴스 · 세로 9:16 · 18초<br>
+            <span style="font-size:13.5px">표지는 1.0초 지점 = 결제기기</span></td>
+        <td class="why">매일 06:00</td>
+        <td class="auto">자동</td></tr>
+    <tr><td class="kind">네이버 블로그</td>
+        <td class="why">글 1,200자 이상 + 이미지 2장<br>
+            <span style="font-size:13.5px">본문 이미지 · 하단 배너</span></td>
+        <td class="why">같은 날 오전</td>
+        <td class="manual">전무님 예약발행</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 class="purple">언제 만들어지나 — 제작 일정</h2>
+<p class="lead">발행 한 주 전에 전부 만들어 둡니다. 아래가 오늘 바로잡은 부분입니다.</p>
+
+<div class="card">
+<table>
+  <thead>
+    <tr><th>제작 시각</th><th>무엇을</th><th>대상</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="kind">월 10:00</td><td class="why">제품편 4세트</td>
+        <td class="why">다음 주 월~목</td></tr>
+    <tr><td class="kind">수 11:00</td><td class="why">웹드라마 1편</td>
+        <td class="why">다음 주 일요일</td></tr>
+    <tr class="wk"><td class="kind">수 20:00</td><td class="why">트렌드편 1세트</td>
+        <td class="why"><b>다음 주 금요일</b>
+            <span style="font-size:13px;color:#a8600a"> ← 오늘 「이번 주」에서 옮김</span></td></tr>
+    <tr class="wk"><td class="kind">목 20:00</td><td class="why">트렌드편 1세트</td>
+        <td class="why"><b>다음 주 토요일</b>
+            <span style="font-size:13px;color:#a8600a"> ← 오늘 「이번 주」에서 옮김</span></td></tr>
+    <tr><td class="kind">목 21:30</td><td class="why">블로그 예약발행 요청</td>
+        <td class="why">전무님께 알림</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 class="orange">세트 하나에 반드시 들어가는 것</h2>
+<p class="lead">하나라도 없으면 매일 08시 자동 점검에서 걸립니다.</p>
+
+<div class="doneblock">
+  <ul>
+    <li><b>영상 2종</b> — 세로 원본(인스타·유튜브), 가로 파생본(보관용)</li>
+    <li><b>글 3종</b> — 유튜브 설명, 네이버 블로그 원고(1,200자 이상), 인스타 캡션</li>
+    <li><b>블로그 이미지 2장</b> — 매장·상황컷 1장, 제품컷 1장</li>
+    <li><b>배너 4종</b> — 유튜브·인스타 배너, SNS 안내 이미지</li>
+    <li><b>태그 30개</b> · <b>전화·홈페이지·SNS 링크 4줄</b></li>
+  </ul>
+</div>
+
+<h2 class="gray">이번 주 상태 (8/24 ~ 8/30)</h2>
+<div class="card">
+<table>
+  <thead><tr><th>날짜</th><th>제목</th><th>상태</th></tr></thead>
+  <tbody>
+    <tr><td class="day">8/24 월</td><td class="why">영수증이 안 나올 때 볼 곳 6군데</td><td class="auto">준비 완료</td></tr>
+    <tr><td class="day">8/25 화</td><td class="why">토스·네이버단말기 업종별 기준</td><td class="auto">준비 완료</td></tr>
+    <tr><td class="day">8/26 수</td><td class="why">가맹점 정보변경 순서 6가지</td><td class="auto">준비 완료</td></tr>
+    <tr><td class="day">8/27 목</td><td class="why">카페 아침 피크</td><td class="auto">준비 완료</td></tr>
+    <tr class="wk"><td class="day">8/28 금</td><td class="why">중계 보는 저녁, 테이블이 안 도는 이유 4가지</td><td class="auto">오늘 제작</td></tr>
+    <tr class="wk"><td class="day">8/29 토</td><td class="why">배달 한 건에 얼마 남는지, 계산 순서 5단계</td><td class="auto">오늘 제작</td></tr>
+    <tr class="sun"><td class="day">8/30 일</td><td class="why">웹드라마 2화 「밤 열한 시에 포스가 죽었습니다」</td><td class="auto">준비 완료</td></tr>
+  </tbody>
+</table>
+</div>
+
+<footer>
+  누리네트웍스 내부 문서 · 검색 노출 차단(noindex) · 2026-08-23 갱신
+</footer>
+
+</div>
+</body>
+</html>
