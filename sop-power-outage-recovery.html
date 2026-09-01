@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>[내부용] 정전 후 사무실 장비 복구 매뉴얼</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root { --navy:#0A1A3A; --gold:#C9A961; --blue:#0066FF; --paper:#F7F4ED; --ink:#1f2937; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Noto Sans KR','Malgun Gothic',sans-serif; font-weight:400; color:var(--ink); background:var(--paper); line-height:1.7; }
+  .wrap { max-width:880px; margin:0 auto; padding:0 20px 60px; }
+  .banner-private { background:#dc2626; color:#fff; padding:8px 16px; font-size:13px; text-align:center; font-weight:600; }
+  .cover { background:linear-gradient(135deg,#0A1A3A 0%,#12275c 100%); color:#fff; border-radius:0 0 18px 18px; padding:38px 34px 30px; margin-bottom:28px; }
+  .cover .tag { display:inline-block; background:var(--gold); color:var(--navy); font-weight:800; font-size:0.8em; border-radius:6px; padding:3px 12px; margin-bottom:12px; letter-spacing:0.04em; }
+  .cover h1 { font-weight:800; font-size:1.65em; line-height:1.35; margin-bottom:8px; }
+  .cover .meta { font-size:0.88em; opacity:.85; }
+  .cover .summary { background:rgba(255,255,255,.08); border-left:4px solid var(--gold); border-radius:8px; padding:14px 18px; margin-top:18px; font-size:0.95em; }
+  h2 { font-weight:800; color:var(--navy); font-size:1.25em; margin:38px 0 14px; padding-bottom:8px; border-bottom:3px solid var(--gold); }
+  h3 { font-weight:800; color:var(--navy); font-size:1.02em; margin:24px 0 10px; }
+  p { margin:10px 0; }
+  table { width:100%; border-collapse:collapse; margin:14px 0; background:#fff; border-radius:10px; overflow:hidden; font-size:0.92em; }
+  th { background:var(--navy); color:#fff; font-weight:600; padding:10px 12px; text-align:left; }
+  td { padding:10px 12px; border-bottom:1px solid #e8e2d4; vertical-align:top; }
+  tr:last-child td { border-bottom:none; }
+  code { background:#eceada; border-radius:5px; padding:1px 7px; font-size:0.9em; font-family:Consolas,monospace; color:#0A1A3A; }
+  .card { background:#fff; border:1px solid #e8e2d4; border-radius:12px; padding:18px 22px; margin:14px 0; }
+  .card.action { border-left:5px solid var(--blue); }
+  .card.warn { border-left:5px solid #d97706; background:#fffaf0; }
+  .card.ok { border-left:5px solid #16a34a; background:#f4fbf5; }
+  ol.steps { margin:8px 0 8px 22px; }
+  ol.steps li { margin:9px 0; }
+  ul { margin:8px 0 8px 22px; }
+  ul li { margin:6px 0; }
+  .big { font-size:1.06em; font-weight:800; color:var(--navy); }
+  .pill { display:inline-block; background:var(--blue); color:#fff; font-weight:800; font-size:0.78em; border-radius:99px; padding:2px 12px; margin-right:8px; vertical-align:middle; }
+  .footer { margin-top:44px; padding-top:16px; border-top:1px solid #ddd5c2; color:#8a8270; font-size:0.82em; }
+  .checklist li { list-style:none; margin:8px 0; }
+  .checklist li::before { content:'☐ '; color:var(--blue); font-weight:800; }
+  @media print {
+    .banner-private { display:none; }
+    body { background:#fff; }
+    .cover { border-radius:0; }
+    .card, table { break-inside:avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="banner-private">🔒 내부용 비공개 SOP — 외부 공유 금지 · 검색엔진 노출 차단 · URL을 알아야만 접근 가능</div>
+<div class="wrap">
+
+<div class="cover">
+  <span class="tag">SOP · 사내 매뉴얼</span>
+  <h1>⚡ 정전 후 사무실 장비 복구 매뉴얼</h1>
+  <div class="meta">제정 2026-09-02 · 근거: 2026-09-01 정전 실사고 복구 기록 · 누리네트웍스</div>
+  <div class="summary">
+    정전으로 <b>공유기가 재시작되면 장비들의 네트워크 주소 배정이 리셋</b>됩니다.
+    NAS(Y:드라이브)·프린터가 안 되는 것은 대부분 이 때문이며, 장비 고장이 아닙니다.
+    2026-09-02부로 <b>NAS와 프린터에 고정 주소 예약</b>을 걸어 재발을 막았습니다 — 남는 것은 아래 <b>직원 확인 2가지</b>뿐입니다.
+  </div>
+</div>
+
+<h2>1부 · 전 직원 — 정전 복구 후 확인 2가지 <span style="color:#8a8270;font-size:0.7em;font-weight:400">(1분이면 끝)</span></h2>
+
+<div class="card action">
+  <span class="pill">1</span><span class="big">프린터 전원을 손으로 켜세요</span>
+  <ul>
+    <li>Kyocera 프린터는 정전 후 <b>자동으로 다시 켜지지 않습니다.</b></li>
+    <li>전원 램프가 꺼져 있으면 본체 전원 버튼을 누르고 1~2분 기다립니다.</li>
+    <li>프린터가 물린 <b>멀티탭 스위치</b>도 함께 확인하세요.</li>
+    <li>인쇄 대기 중이던 문서는 살아나면 자동 출력됩니다. 안 나오면 그 문서만 삭제 후 다시 인쇄.</li>
+  </ul>
+</div>
+
+<div class="card action">
+  <span class="pill">2</span><span class="big">NAS(Y: 드라이브)는 2~3분 기다린 뒤 재시도</span>
+  <ul>
+    <li>NAS는 자동으로 다시 켜지지만 <b>부팅에 2~3분</b> 걸립니다.</li>
+    <li>Y: 드라이브가 안 열리면 잠시 후 다시 시도 → 그래도 안 되면 관리자에게 알려주세요.</li>
+  </ul>
+</div>
+
+<h2>2부 · 관리자 — 복구 절차 <span style="color:#8a8270;font-size:0.7em;font-weight:400">(장애가 계속될 때)</span></h2>
+
+<h3>장비 고정 주소표</h3>
+<table>
+  <tr><th>장비</th><th>고정 IP</th><th>MAC</th><th>서비스</th></tr>
+  <tr><td>Synology NAS (SM_NURI)</td><td><code>192.168.0.3</code></td><td><code>00-11-32-AC-62-DA</code> (활성 LAN1)<br><code>…-62-DB</code> (예비 LAN2)</td><td>DSM :5000 · WebDAV(Y:) :5006 · 파일공유 :445</td></tr>
+  <tr><td>Kyocera ECOSYS PA3500cx</td><td><code>192.168.0.14</code></td><td><code>D4-F0-C9-26-45-8F</code></td><td>인쇄 :9100</td></tr>
+  <tr><td>공유기 ipTIME T3008</td><td><code>192.168.0.1</code></td><td>—</td><td>관리화면 http://192.168.0.1</td></tr>
+</table>
+
+<h3>절차</h3>
+<ol class="steps">
+  <li><b>실태 파악</b> — 명령 프롬프트에서 <code>ping 192.168.0.3</code> / <code>ping 192.168.0.14</code>.
+      응답이 있어도 <code>arp -a</code>로 MAC이 위 표와 일치하는지 확인.
+      다르면 다른 기기가 주소를 차지한 것입니다(MAC 두 번째 자리가 2·6·A·E면 휴대폰류 랜덤 주소).</li>
+  <li><b>공유기 고정 예약 확인</b> — <code>http://192.168.0.1</code> → 고급설정 → 네트워크관리 → <b>DHCP 서버 설정</b>
+    <ul>
+      <li>「등록된 주소 관리」에 NAS(.3)·프린터(.14) 두 줄이 있는지 확인</li>
+      <li>없으면 「수동 주소 입력」에 IP+MAC 입력 → [수동 등록] → [적용] → 우측 상단 [저장]</li>
+      <li>원래 주소를 다른 기기가 차지했으면 그 줄 체크 → [삭제] (휴대폰이면 Wi-Fi 껐다 켜기)</li>
+    </ul>
+  </li>
+  <li><b>장비 재시작</b> — 새 예약 주소를 받게:
+    <ul>
+      <li>NAS: 현재 IP의 DSM(:5000) 접속 → 재시작 (또는 본체 전원 버튼)</li>
+      <li>프린터: 전원 껐다 켜기</li>
+    </ul>
+  </li>
+  <li><b>확인</b> — ping 응답 + Y: 드라이브 열기 + 시험 인쇄</li>
+</ol>
+
+<div class="card warn">
+  <b>⚠️ 흔한 함정</b>
+  <ul>
+    <li>「연결 거부」 오류인데 핑은 되는 경우 = <b>다른 기기가 그 주소를 차지</b>한 것 (장비 고장 아님)</li>
+    <li>NAS는 LAN 포트가 2개(MAC 끝 DA/DB) — MAC 확인 시 둘 다 NAS입니다</li>
+    <li>프린터 「오프라인」은 대부분 본체 전원 꺼짐이 먼저입니다 — 네트워크보다 전원부터 확인</li>
+  </ul>
+</div>
+
+<h3>예방 체크리스트 (분기 1회 점검)</h3>
+<div class="card ok">
+  <ul class="checklist">
+    <li>공유기 「등록된 주소 관리」에 NAS(.3)·프린터(.14) 예약 유지</li>
+    <li>NAS DSM → 제어판 → 하드웨어 및 전원 → <b>「정전 후 자동 재시작」 켜짐</b></li>
+    <li>공유기·NAS는 가능하면 UPS(무정전 전원장치) 연결 검토</li>
+  </ul>
+</div>
+
+<h2>부록 · 2026-09-01 정전 실사고 기록</h2>
+<div class="card">
+  <ul>
+    <li>9/1 밤 정전 → 공유기 재시작으로 주소 배정 리셋</li>
+    <li>휴대폰이 NAS 자리(.3)를 선점 → NAS가 .2로 밀림 → 전 직원 Y: 드라이브 불통</li>
+    <li>프린터는 본체가 꺼진 채였고, 켜니 새 주소(.32)를 받음 → 전 PC 「오프라인」</li>
+    <li>복구: 공유기 고정 예약(NAS .3, 프린터 .14) 등록 + 장비 재시작 → 원상 복귀</li>
+    <li><b>데이터 손상 없음</b> (NAS 볼륨 정상 확인)</li>
+  </ul>
+</div>
+
+<div class="footer">
+  누리네트웍스 내부용 SOP · 제정 2026-09-02 · 문의: 관제<br>
+  원본 MD: 홈페이지종합\sop-power-outage-recovery.md
+</div>
+
+</div>
+</body>
+</html>
