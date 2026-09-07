@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>[내부용] N방문일지 계약출고 종합 보고 2026-09-07 — 해야 할 일 · 추가 기능 · 개선 기능</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --navy:#0A1A3A; --gold:#C9A961; --blue:#0066FF; --paper:#F7F4ED; --ink:#1f2937; --muted:#64748b; --line:#e5e7eb; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink); font-family:'Noto Sans KR', 'Malgun Gothic', sans-serif; font-size:15px; line-height:1.65; }
+  .wrap { max-width:880px; margin:0 auto; padding:0 18px 60px; }
+  .cover { background:linear-gradient(135deg, var(--navy), #163a7a); color:#fff; border-radius:0 0 18px 18px; padding:30px 28px 24px; margin:0 -18px 26px; }
+  .cover h1 { font-size:1.55em; font-weight:800; margin:0 0 6px; letter-spacing:-0.01em; }
+  .cover .meta { font-size:0.86em; opacity:.85; }
+  .cover .sum { margin-top:16px; background:rgba(255,255,255,.1); border-left:4px solid var(--gold); border-radius:8px; padding:12px 14px; font-size:0.95em; }
+  .cover .sum b { color:var(--gold); }
+  h2 { color:var(--navy); font-size:1.22em; font-weight:800; margin:34px 0 10px; padding-bottom:6px; border-bottom:2px solid var(--gold); }
+  h3 { color:var(--navy); font-size:1.02em; font-weight:800; margin:20px 0 8px; }
+  table { width:100%; border-collapse:collapse; background:#fff; font-size:0.9em; margin:8px 0 14px; }
+  th, td { border:1px solid var(--line); padding:7px 9px; vertical-align:top; text-align:left; }
+  th { background:#eef2f7; color:var(--navy); font-weight:800; white-space:nowrap; }
+  td.n { text-align:center; white-space:nowrap; color:var(--muted); font-weight:700; width:40px; }
+  ul { padding-left:20px; } li { margin:3px 0; }
+  .tag { display:inline-block; background:#e8eefc; color:var(--blue); border-radius:5px; padding:1px 7px; font-size:0.8em; font-weight:700; margin-right:4px; }
+  .warn { background:#fff7ed; border:1px solid #fdba74; border-radius:8px; padding:10px 12px; margin:10px 0; }
+  .ok { background:#f0fdf4; border:1px solid #86efac; border-radius:8px; padding:10px 12px; margin:10px 0; }
+  .muted { color:var(--muted); font-size:0.9em; }
+  .foot { margin-top:40px; padding-top:12px; border-top:1px solid var(--line); color:var(--muted); font-size:0.82em; }
+  @media (max-width:640px) { body { font-size:14px; } .cover h1 { font-size:1.25em; } table { font-size:0.84em; } }
+  @media print { body { background:#fff; } .banner { display:none !important; } .cover { border-radius:0; margin:0 0 18px; -webkit-print-color-adjust:exact; print-color-adjust:exact; } .wrap { max-width:none; padding:0; } h2 { page-break-after:avoid; } table { page-break-inside:auto; } tr { page-break-inside:avoid; } @page { size:A4; margin:14mm; } }
+</style>
+</head>
+<body>
+<div class="banner" style="background:#dc2626;color:#fff;padding:8px 16px;font-size:13px;text-align:center;font-weight:600">
+  🔒 내부용 비공개 보고 — 외부 공유 금지 · 검색엔진 노출 차단 · URL을 알아야만 접근 가능
+</div>
+<div class="wrap">
+  <div class="cover">
+    <h1>N방문일지 계약출고 — 종합 보고</h1>
+    <div class="meta">해야 할 일 · 추가할 기능 · 개선할 기능 &nbsp;|&nbsp; 작성 2026-09-07(월) 20:0x · 관제 세션(Claude) → 강길봉 전무</div>
+    <div class="sum">
+      <b>기준</b> 카드 /_shipcard9.js v20261017(오늘 fix12~39 · 28판) · GAS v3516 · 서버 api_shop(cms9·pick9) · 번들(addr9·cms9·upte9) · 출고원장 79~86열 신설<br>
+      <b>핵심</b> 계약출고 카드 ①~⑥이 모두 살아 있고 ⑥에서 다섯 서류가 카드 값으로 그려집니다. 내일(9/8, Opus 5 세션)은 <b>서류 판단 5건(30분) → 입고 항목 구조화</b>를 권합니다. 9/11 마감 차례: 출고 → 입고 → 명변 → AS → 서류 → 검증.
+    </div>
+  </div>
+
+  <h2>0. 지금 상태(오늘 라이브)</h2>
+  <table>
+    <tr><th style="width:120px">걸음</th><th>오늘 확정·적용</th></tr>
+    <tr><td>① 누구</td><td>두 단계 확인([✔확인]/[✖아니오]→CST 정보수정 요청) · 가맹점DB 9줄 · 카드사접수자 · 서류함→미리보기 · 1-2 후보 카드 구분선·줄 나눔</td></tr>
+    <tr><td>② 무슨 일</td><td>큐밴이어도 당사 기록 없으면 「신규」 제안 · 갈래 누르면 곧 다음 · 카드 글 가독성</td></tr>
+    <tr><td>③ 무엇이</td><td>＋추가 = 칩 팝업(대분류→초성→제품) · 「재사용제품」 토글</td></tr>
+    <tr><td>④ 계약은</td><td>계약 묶음(체크로 나눔, 묶음마다 원장 행) · 계약형태 3종(CMS렌탈·판매유상·무상, 겹침) · CMS렌탈 출금 정보(기준표 출금일 · 임대기준 A/B/C · 최초~최종 출금일 · 37~60월 · 통장사본/신분증 · AI 판독 후보 · 개인 6자리/법인 사업자번호) · 약정개월수 기타 · 무상도 4-2에서 약정 · 최초~최종 계약일 · 4-5 전표(종류→유상/무상→가격→배송→선불/착불)</td></tr>
+    <tr><td>⑤ 서류·확인</td><td>「💳 CMS 출금」 줄 · 사유 13열에 「임대기준 · CMS출금」 토막</td></tr>
+    <tr><td>⑥ 서류양식 <span class="tag">새</span></td><td>다섯 서류 모두 카드 값으로 미리보기·인쇄: 이용계약서(전자, 8/11 정본) · 출고내역서 · 설치확인서 · 거래명세표 · 위탁확인서(전무 첨부 xlsx 3종 그대로) · 반박 검토 11건 수리</td></tr>
+    <tr><td>N방문일지 판</td><td>검색 칸 테두리 · 가맹점 줄 7항목(본부그룹·가맹점등급·상호·사업자번호·인덱스·대표자·주소) · ② 줄 구분선</td></tr>
+    <tr><td>원장</td><td>79 CMS출금일 · 80 CMS첫출금일 · 81 출금은행 · 82 계좌번호 · 83 예금주 · 84 예금주생년월일 · 85 증빙자료 · 86 CMS비고(GAS v3514 · 미러 d9 8키)</td></tr>
+  </table>
+
+  <h2>1. 해야 할 일(순서대로)</h2>
+  <h3>A. 내일 첫 30분 — 전무 판단 5건(각 10~20분)</h3>
+  <ul>
+    <li>거래명세표 담당자 칸: 첨부 기본값(이선정·CST·1544-7754) 고정 ↔ 작성자로</li>
+    <li>위탁확인서 대리점명: 설치자 이름 ↔ 위탁사 회사명(환경설정 13곳) — 설치자→위탁사 짝 목록 필요</li>
+    <li>설치확인서 제품유형: 카드 분류(유선단말기·사인패드…) ↔ POS/KIOSK/단말기/부가장비/용지 5종</li>
+    <li>최종계약일 = 출고일+N개월 같은 날(원장 만료와 동일) ↔ 하루 앞</li>
+    <li>MCP서버2 방 답 확인(이용계약서 정본 여부 · 다른 양식 유무)</li>
+  </ul>
+  <h3>B. 입고 항목 구조화(9/8 하루, 예상 3~4시간 + 점검)</h3>
+  <ul>
+    <li>출고 카드 틀(계약 묶음·CMS·전표·⑥ 양식)을 그대로 입고(해지·회수·위약금·CMS해지)에 얹음. 입고 실측 63건</li>
+    <li>입고확인서 양식(원본 요청) · 위약금 산식(임대기준 A/B/C·잔여회차) · 회수 S/N 대조 · 출고↔입고 연결(41열 linkId)</li>
+  </ul>
+  <h3>C. 명변 → AS 구조화(9/9~9/10, 각 1.5~2시간)</h3>
+  <ul>
+    <li>명변: 양도 입고 + 양수 출고 짝(MB ID) · 승계 장비별 약정 · 명변 카드 CMS 칸(지금 없음)</li>
+    <li>AS: 왕복 카드(AS 의뢰서 → 방문 → 결과) — 완주 0/64 실측</li>
+  </ul>
+  <h3>D. 9/11 마감 · 9/14 직원 테스트 준비</h3>
+  <ul>
+    <li>검수 대기 띠(노랑·빨강 남은 건) · 전수 검증(shipAudit9 기준선) · 안내서 3판 · CHECKLIST_20260914 · 직원 계정 확인</li>
+    <li>낮 저장 검증 5건(시험 가맹점): D2 가져오기 · 타밴전환 신규 · 재계약 CMS 인하 · 추가(기기) · 명변 새 어휘</li>
+  </ul>
+  <h3>E. 8월 결산(9/10) — 전무 답 4건 뒤 스크립트</h3>
+  <ul><li>오늘/내일 · 구)엑셀 마스터 위치 · 테이블오더 원천 · 회계년월=출고일 달?</li></ul>
+  <h3>F. 데이터 정리</h3>
+  <ul><li>설치자 「보통」 44건 · 입고 옛 서류 6행 개명 · 자유문 48행 표준 표기 · 어휘 「주/부」「테/태」 · 재계약 일부교체 8행 72열 · 검수 띠 14건 · 전무 판정표(panjeong.html) 답</li></ul>
+  <h3>G. 별건(관측·점검)</h3>
+  <ul><li>1분 미러 nsyncShip1m 8/19부터 죽음 · RT- 반복일정 같은 ID 3쌍 · 미건수예정 사업자번호 빈칸 7행 · 장완 관문 9/19 판정(rateCovered≥95) · 시험행 6 · 모두싸인 커넥터 키</li></ul>
+
+  <h2>2. 추가할 기능(가치 순)</h2>
+  <table>
+    <tr><th>#</th><th>기능</th><th>왜</th><th style="width:90px">예상</th></tr>
+    <tr><td class="n">1</td><td>원장 79~86열(CMS 출금 정보) → CMS납부자현황·결산 연동</td><td>지금은 저장만. 카드가 모은 계좌·출금일을 CMS 등록·결산이 읽어야 이중 입력이 끝남</td><td>1.5h</td></tr>
+    <tr><td class="n">2</td><td>임대기준 A 예정카드 자동 생성(37~60월 50% · 60월 소유권 이전)</td><td>전무 판정 ②: 사람이 안 적고 자동 예정</td><td>1.5h</td></tr>
+    <tr><td class="n">3</td><td>⑥에서 전자서명 발송(ecCreate/ecSend 연결)</td><td>지금은 미리보기·인쇄까지. 카드 값으로 만든 계약서를 바로 서명 링크로</td><td>1h</td></tr>
+    <tr><td class="n">4</td><td>최종계약일·최종출금일 원장 열</td><td>지금은 사유 13열 글 안에만 — 결산·만기 독촉이 열로 읽어야 함</td><td>1h</td></tr>
+    <tr><td class="n">5</td><td>설치자→위탁사 사전</td><td>위탁확인서 대리점명 자동 · 위탁사 비용 근거</td><td>40분</td></tr>
+    <tr><td class="n">6</td><td>매월 3일 자동 결산(9항목+세부자료, 6·7월 재현 검증)</td><td>8월 결산부터</td><td>워크플로</td></tr>
+    <tr><td class="n">7</td><td>사업계획서 세부자료 자동(32·33열)</td><td>결산 사슬</td><td>1h</td></tr>
+    <tr><td class="n">8</td><td>SM↔원장 차이 자동 입고행(ㄴ) · ⑤ 노랑(ㄱ)</td><td>장완 뒤 현장에서 빠진 장비 — 지금 아무도 표시 안 함</td><td>1.5h</td></tr>
+    <tr><td class="n">9</td><td>품목 단위 파생표 ship_items(재고) · 공급가=목록×라인업 단가</td><td>재고·단가 자동 · ⑥ 장비별 공급가</td><td>2h</td></tr>
+    <tr><td class="n">10</td><td>명변 카드 CMS 칸 · 접수→일정등록 미리 채움 확장</td><td>카드 3종 일관성</td><td>1h</td></tr>
+    <tr><td class="n">11</td><td>통장사본 판독 결과 보관·재사용(CMS납부자 등록 때)</td><td>6시간 보관뿐</td><td>30분</td></tr>
+    <tr><td class="n">12</td><td>거래명세표 담당자 자동(작성자·부서)</td><td>첨부 기본값 고정 상태</td><td>20분</td></tr>
+  </table>
+
+  <h2>3. 개선할 기능(작은 것부터)</h2>
+  <table>
+    <tr><th>#</th><th>항목</th><th>지금</th><th>개선</th></tr>
+    <tr><td class="n">1</td><td>이용계약서(전자) 자동 생성 원천</td><td>카드사접수(caEcFromApply9)는 상호·사업자·대표자·연락처·주소만</td><td>카드 값(계약형태·월액·약정·CMS·장비·전표) 그대로 → ⑥과 같은 d로 생성</td></tr>
+    <tr><td class="n">2</td><td>⑥ 장비별 공급가격</td><td>묶음 금액을 첫 줄에만</td><td>라인업 단가표 연결(추가 9)</td></tr>
+    <tr><td class="n">3</td><td>업태/종목</td><td>40자에서 자름</td><td>마스터 업태종목 표준화(업태/종목 분리)</td></tr>
+    <tr><td class="n">4</td><td>통장사본 AI 예금주</td><td>「기업자유예금」 오독 → 카드가 버림</td><td>프롬프트에 예금주 라벨 위치 명시 · 실측 20건 뒤 조정</td></tr>
+    <tr><td class="n">5</td><td>v2call 첫 판독(40초↑) echo 실패</td><td>HTML 「페이지를 찾을 수 없음」, 서버 경유는 정상</td><td>카드는 서버 경유만(이미) · 직접 v2call 시험은 재시도 규칙</td></tr>
+    <tr><td class="n">6</td><td>Drive 썸네일 지연</td><td>⏳ 뒤 30~60초</td><td>서버 썸네일 프록시(캐시)</td></tr>
+    <tr><td class="n">7</td><td>검수 띠 판정 과다(117/322=36%)</td><td>설치자 「보통」 109건이 구조적</td><td>설치자 스위치 · 팀 공유</td></tr>
+    <tr><td class="n">8</td><td>접수 등록장비 채움 38%</td><td>노랑 되묻기 2주 관측</td><td>접수 폼 필수화 판단</td></tr>
+    <tr><td class="n">9</td><td>영업자·대리점 원천</td><td>접수 요청자 없으면 작성자</td><td>본부그룹(최초영업자) 자동 · 채움률↑</td></tr>
+    <tr><td class="n">10</td><td>옛 어휘 쓰기 잔여 4곳 → 옛 폼 제거 · GAS 사본 안내</td><td>옛 폼과 어휘 병존</td><td>어휘 6으로 통일 뒤 옛 폼 닫기</td></tr>
+    <tr><td class="n">11</td><td>명변 번들 10~20초</td><td>캐시 없음</td><td>10~20초 캐시</td></tr>
+    <tr><td class="n">12</td><td>시험 기대값·산정식</td><td>옛 시험이 새 규칙에 밀려 보정 반복</td><td>규칙 표(원장 낱말·걸음 순서)를 시험 공용 데이터로</td></tr>
+    <tr><td class="n">13</td><td>걸음표 far-goto</td><td>①에서 ⑥까지 아무 데나 감(지적 뒤 방어済)</td><td>갈래·제품 없으면 ④~⑥은 「먼저 ②③」 안내로 막을지 판단</td></tr>
+    <tr><td class="n">14</td><td>원장 16열 전표 낱말</td><td>「전표:3인치 무상·직접배송」 새 꼴</td><td>결산이 낱말을 세면 알림 · 접두 「전표:」 기준 유지</td></tr>
+  </table>
+
+  <h2>4. 되돌리기 · 함정(9/8 세션 필독)</h2>
+  <div class="ok">되돌리기: 카드 <code>.bak_0907_f12</code>~<code>f39</code> · 서버 <code>.bak_0907_cms9/pick9</code> · 번들 <code>.bak_0907_cms9/upte9</code> · GAS <code>WDS.v3512.gs</code> merge:true(79~86 머리글은 남아도 무해)</div>
+  <div class="warn">⛔ wdShipUpdate는 5~14열 통째 · 22~08시 NW 전송 시험 금지 · GAS merge:true만 · 서버 grep은 /opt로 · 미러 DB UPDATE 차단(SQL은 파일로 /tmp) · 검증 임시계정 row_no=-905는 끝나면 반드시 삭제(오늘 전부 삭제済) · 셋팅완료일 77%가 방문일 이전(설치확인서 날짜 오염) — ⑥ 설치확인서는 설치완료일 있으면 그것, 없으면 출고일 + 표시</div>
+
+  <h2>5. 오늘 예상 ↔ 실제</h2>
+  <table>
+    <tr><th>작업</th><th style="width:80px">예상</th><th style="width:80px">실제</th></tr>
+    <tr><td>CMS렌탈 출금 정보(fix29 + GAS·서버·번들)</td><td>1h30</td><td>22분</td></tr>
+    <tr><td>입력 칸 테두리</td><td>10분</td><td>9분</td></tr>
+    <tr><td>가맹점 줄 7항목 + 구분선(서버 /shopPick9)</td><td>20분</td><td>11분</td></tr>
+    <tr><td>4-2 CMS 상자 재배치 · 최초~최종 출금일 · 통장사본</td><td>40분</td><td>45분</td></tr>
+    <tr><td>예금주 개인/법인 · 대표자신분증</td><td>25분</td><td>22분</td></tr>
+    <tr><td>통장사본 AI 판독 → 은행·계좌 후보(GAS v3515)</td><td>45분</td><td>22분</td></tr>
+    <tr><td>약정개월수 기타 · 무상 약정 · 최초~최종 계약일</td><td>40분</td><td>17분</td></tr>
+    <tr><td>4-5 전표 재구성</td><td>35분</td><td>14분</td></tr>
+    <tr><td>⑥ 서류양식(조사 12분 + 만들기)</td><td>1h30</td><td>30분</td></tr>
+    <tr><td>설치확인서·위탁확인서 양식</td><td>1h20</td><td>30분</td></tr>
+    <tr><td>거래명세표 양식 + 검토 11건 수리</td><td>30분</td><td>25분</td></tr>
+  </table>
+
+  <div class="foot">원본 MD: 홈페이지종합/report-nvisit-shipcard-20260907.md · 세부 기록: 메모 project_handoff_20260906.md ⑧~㉞ · 노션 일일정리 2026-09-07 · 내부용 비공개(noindex)</div>
+</div>
+</body>
+</html>
