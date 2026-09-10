@@ -87,6 +87,35 @@
   .db-link { font-size:11.5px; color:var(--navy); margin-top:6px; background:#FFF6E9; border:1px solid #F0DCBB; border-radius:5px; padding:6px 8px; } .db-link b { color:var(--gold); }
 
   /* P7 CMS 브리지 */
+
+  /* ── 재영업 구조(P8) ── */
+  .rj-alert { display:flex; gap:9px; align-items:flex-start; background:#FFF7ED; border:1px solid #FDBA74; border-left:3px solid #EA580C;
+              border-radius:8px; padding:9px 13px; font-size:11px; line-height:1.55; color:#3D4C63; margin-top:6px; }
+  .rj-a-k { flex:none; background:#EA580C; color:#fff; font-size:9px; font-weight:800; letter-spacing:.5px; border-radius:4px; padding:2px 7px; margin-top:1px; }
+  .rj-grid { display:grid; grid-template-columns:1.25fr 1fr; gap:13px; margin-top:9px; flex:1; min-height:0; }
+  .rj-box { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px 14px;
+            box-shadow:0 2px 6px rgba(10,26,58,0.05); display:flex; flex-direction:column; min-height:0; overflow:hidden; }
+  .rj-layers { display:flex; flex-direction:column; gap:9px; margin-top:9px; }
+  .rj-row { display:grid; grid-template-columns:150px 1fr 118px; gap:9px; align-items:center; }
+  .rj-n b { display:block; font-size:11px; font-weight:800; color:#0A1A3A; }
+  .rj-n span { display:block; font-size:9px; color:#8395A8; margin-top:1px; }
+  .rj-bar { height:16px; background:#EEF3FA; border-radius:4px; overflow:hidden; }
+  .rj-fill { height:100%; border-radius:4px; }
+  .rj-v { text-align:right; font-size:12.5px; font-weight:800; }
+  .rj-v span { display:block; font-size:9px; font-weight:600; color:#8395A8; margin-top:1px; }
+  .rj-sum { margin-top:11px; padding-top:9px; border-top:1px solid var(--line); font-size:10.5px; }
+  .rj-sum div { display:flex; justify-content:space-between; padding:2.5px 0; color:#3D4C63; }
+  .rj-sum b { font-weight:800; color:#0A1A3A; }
+  .rj-net { border-top:1px dashed var(--line); margin-top:4px; padding-top:6px !important; }
+  .rj-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:10px; }
+  .rj-card { border-radius:8px; padding:9px 12px; font-size:10px; line-height:1.55; }
+  .rj-c-t { font-size:10.5px; font-weight:800; margin-bottom:3px; }
+  .rj-c-b { color:#3D4C63; }
+  .rj-c-red   { background:#FEF2F2; border:1px solid #FECACA; } .rj-c-red   .rj-c-t { color:#DC2626; }
+  .rj-c-blue  { background:#EFF6FF; border:1px solid #BFDBFE; } .rj-c-blue  .rj-c-t { color:#0066FF; }
+  .rj-c-green { background:#F0FDF4; border:1px solid #BBF7D0; } .rj-c-green .rj-c-t { color:#16A34A; }
+  .rj-note { margin-top:9px; background:#FFFBEB; border:1px solid #FDE68A; border-radius:8px;
+             padding:8px 12px; font-size:9.5px; line-height:1.6; color:#3D4C63; }
   .wf-grid { display:grid; grid-template-columns:1.45fr 1fr; gap:13px; margin-top:6px; flex:1; min-height:0; }
   .wf-box { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:13px 15px; box-shadow:0 2px 6px rgba(10,26,58,0.05); display:flex; flex-direction:column; min-height:0; overflow:hidden; }
   .mom-list { flex:1; display:flex; flex-direction:column; justify-content:center; gap:4px; min-height:0; }
@@ -218,7 +247,7 @@
   
   <div class="hd">
     <div class="hd-l"><span class="nlogo">n</span><b>Nurinetworks<span class="blue">.</span></b><span class="hd-meta">| &nbsp;2 0 2 6 &nbsp;·&nbsp; 0 8 &nbsp;·&nbsp; M O N T H L Y &nbsp; R E P O R T</span></div>
-    <div class="hd-r"><div class="hd-ch">K P I &nbsp;·&nbsp; 핵심지표</div><div class="hd-pg">02 &nbsp;/&nbsp; 13</div></div>
+    <div class="hd-r"><div class="hd-ch">K P I &nbsp;·&nbsp; 핵심지표</div><div class="hd-pg">02 &nbsp;/&nbsp; 14</div></div>
   </div>
   
   <div class="ch-label"><span class="dot"></span>C H A P T E R &nbsp; 01 &nbsp;·&nbsp; K P I</div>
@@ -277,7 +306,7 @@
     <div class="kf-box" style="border-top:3px solid #D97706"><div class="kf-n" style="color:#D97706">3/9</div><div class="kf-l">주의</div></div>
     <div class="kf-box" style="border-top:3px solid #DC2626"><div class="kf-n" style="color:#DC2626">3/9</div><div class="kf-l">위험</div></div>
     <div class="kf-diag">
-      <div class="kf-diag-t">7 월 종합 진단</div>
+      <div class="kf-diag-t">8 월 종합 진단</div>
       <div class="kf-diag-b"><b>7월의 반등이 한 달 만에 무너졌습니다.</b> CMS가 <b>+51.8만 → -39.3만으로 적자 전환</b>(91.1만 반전)했고, <b>신규 16건은 33개월 역대 최저</b>, 해지 46건으로 <b>순증감 -30건</b>입니다. 7월에 <b>「흑자의 절반은 대형 재계약 1건」</b>이라 짚었는데, 8월 재계약 유입이 <b>-95.7%</b> 증발하며 그대로 확인됐습니다.</div>
     </div>
   </div>
@@ -292,7 +321,7 @@
   
   <div class="hd">
     <div class="hd-l"><span class="nlogo">n</span><b>Nurinetworks<span class="blue">.</span></b><span class="hd-meta">| &nbsp;2 0 2 6 &nbsp;·&nbsp; 0 8 &nbsp;·&nbsp; M O N T H L Y &nbsp; R E P O R T</span></div>
-    <div class="hd-r"><div class="hd-ch">D A S H B O A R D &nbsp;·&nbsp; 대시보드</div><div class="hd-pg">03 &nbsp;/&nbsp; 13</div></div>
+    <div class="hd-r"><div class="hd-ch">D A S H B O A R D &nbsp;·&nbsp; 대시보드</div><div class="hd-pg">03 &nbsp;/&nbsp; 14</div></div>
   </div>
   
   <div class="ch-label"><span class="dot"></span>C H A P T E R &nbsp; 02 &nbsp;·&nbsp; D A S H B O A R D</div>
@@ -327,7 +356,7 @@
       <div class="dcard">
         <div class="dc-top"><span class="dc-name">해지</span><span class="sig" style="color:#DC2626">R I S K</span></div>
         <div class="dc-main"><b class="dc-act">46</b><span class="dc-tgt"> / 목표 30</span></div>
-        <div class="dc-row"><span class="dc-rate" style="color:#D97706">달성 153.3%</span><span class="dc-mom">전월 +12.2%</span></div>
+        <div class="dc-row"><span class="dc-rate" style="color:#DC2626">달성 153.3%</span><span class="dc-mom">전월 +12.2%</span></div>
         <canvas class="spark" id="sp4"></canvas>
       </div>
       <div class="dcard">
@@ -370,7 +399,7 @@
   
   <div class="hd">
     <div class="hd-l"><span class="nlogo">n</span><b>Nurinetworks<span class="blue">.</span></b><span class="hd-meta">| &nbsp;2 0 2 6 &nbsp;·&nbsp; 0 8 &nbsp;·&nbsp; M O N T H L Y &nbsp; R E P O R T</span></div>
-    <div class="hd-r"><div class="hd-ch">T R E N D &nbsp;·&nbsp; 매출추이</div><div class="hd-pg">04 &nbsp;/&nbsp; 13</div></div>
+    <div class="hd-r"><div class="hd-ch">T R E N D &nbsp;·&nbsp; 매출추이</div><div class="hd-pg">04 &nbsp;/&nbsp; 14</div></div>
   </div>
   
   <div class="ch-label"><span class="dot"></span>C H A P T E R &nbsp; 03 &nbsp;·&nbsp; T R E N D</div>
@@ -394,7 +423,7 @@
   
   <div class="hd">
     <div class="hd-l"><span class="nlogo">n</span><b>Nurinetworks<span class="blue">.</span></b><span class="hd-meta">| &nbsp;2 0 2 6 &nbsp;·&nbsp; 0 8 &nbsp;·&nbsp; M O N T H L Y &nbsp; R E P O R T</span></div>
-    <div class="hd-r"><div class="hd-ch">T R E N D &nbsp;·&nbsp; 건수추이</div><div class="hd-pg">05 &nbsp;/&nbsp; 13</div></div>
+    <div class="hd-r"><div class="hd-ch">T R E N D &nbsp;·&nbsp; 건수추이</div><div class="hd-pg">05 &nbsp;/&nbsp; 14</div></div>
   </div>
   
   <div class="ch-label"><span class="dot"></span>C H A P T E R &nbsp; 04 &nbsp;·&nbsp; T R E N D</div>
@@ -418,7 +447,7 @@
   
   <div class="hd">
     <div class="hd-l"><span class="nlogo">n</span><b>Nurinetworks<span class="blue">.</span></b><span class="hd-meta">| &nbsp;2 0 2 6 &nbsp;·&nbsp; 0 8 &nbsp;·&nbsp; M O N T H L Y &nbsp; R E P O R T</span></div>
-    <div class="hd-r"><div class="hd-ch">D E E P - D I V E &nbsp;·&nbsp; 심층분석</div><div class="hd-pg">06 &nbsp;/&nbsp; 13</div></div>
+    <div class="hd-r"><div class="hd-ch">D E E P - D I V E &nbsp;·&nbsp; 심층분석</div><div class="hd-pg">06 &nbsp;/&nbsp; 14</div></div>
   </div>
   
   <div class="ch-label"><span class="dot"></span>C H A P T E R &nbsp; 05 &nbsp;·&nbsp; D E E P   D I V E</div>
@@ -449,17 +478,17 @@
   
   <div class="hd">
     <div class="hd-l"><span class="nlogo">n</span><b>Nurinetworks<span class="blue">.</span></b><span class="hd-meta">| &nbsp;2 0 2 6 &nbsp;·&nbsp; 0 8 &nbsp;·&nbsp; M O N T H L Y &nbsp; R E P O R T</span></div>
-    <div class="hd-r"><div class="hd-ch">C M S - B R I D G E &nbsp;·&nbsp; CMS 구조</div><div class="hd-pg">07 &nbsp;/&nbsp; 13</div></div>
+    <div class="hd-r"><div class="hd-ch">C M S - B R I D G E &nbsp;·&nbsp; CMS 구조</div><div class="hd-pg">07 &nbsp;/&nbsp; 14</div></div>
   </div>
   
   <div class="ch-label"><span class="dot"></span>C H A P T E R &nbsp; 06 &nbsp;·&nbsp; C M S   B R I D G E</div>
   <h1 class="ch-title">CMS 적자전환의 <span class="blue">원인</span></h1>
-  <div class="ch-sub">8월 유입 40건 · 유출 63건 원장 전량 분해 &nbsp;|&nbsp; 7월 대비 구조 변화</div>
+  <div class="ch-sub">8월 유입 40건 · 유출 61건 원장 전량 분해 &nbsp;|&nbsp; 7월 대비 구조 변화</div>
   <div class="wf-grid">
     <div class="wf-box">
       <div class="db-t">유입 → 유출 → 순액 <span class="db-t-sub">(단위: 원)</span></div>
       <div class="db-chart-wide"><canvas id="cmsWaterfall"></canvas></div>
-      <div class="db-note">유입 <b style="color:#16A34A">97.1만</b>(40건) &nbsp;−&nbsp; 유출 <b style="color:#DC2626">136.4만</b>(63건) &nbsp;=&nbsp; 순액 <b style="color:#DC2626">-39.3만</b> &nbsp;<span style="color:#8395A8">(결산 확정치와 원 단위 일치)</span></div>
+      <div class="db-note">유입 <b style="color:#16A34A">97.1만</b>(40건) &nbsp;−&nbsp; 유출 <b style="color:#DC2626">136.4만</b>(61건) &nbsp;=&nbsp; 순액 <b style="color:#DC2626">-39.3만</b> &nbsp;<span style="color:#8395A8">(결산 확정치와 원 단위 일치)</span></div>
     </div>
     <div class="wf-box">
       <div class="db-t">7월 대비 항목별 변화 <span class="db-t-sub">(7월 → 8월)</span></div>
@@ -482,7 +511,7 @@
             <span class="mm-d" style="color:#DC2626">-58%</span>
           </div><div class="mom-row">
             <span class="mm-n">폐업그룹</span>
-            <span class="mm-v">40.8만 → <b>115만</b></span>
+            <span class="mm-v">40.8만 → <b>114.6만</b></span>
             <span class="mm-d" style="color:#DC2626">+181%</span>
           </div><div class="mom-row">
             <span class="mm-n">명변 유출</span>
@@ -516,10 +545,10 @@
     </div>
     <div class="wv-box wv-warn">
       <div class="wv-t">✅ 원장 대사 완료</div>
-      <div class="wv-b">유입 40건 · 유출 63건을 각각 직접 집계한 결과 <b>순액이 결산 확정치(-393,200원)와 원 단위까지 일치</b>합니다. 7월에 이어 두 달 연속 대사가 맞았습니다.</div>
+      <div class="wv-b">유입 40건 · 유출 61건을 각각 직접 집계한 결과 <b>순액이 결산 확정치(-393,200원)와 원 단위까지 일치</b>합니다. 7월에 이어 두 달 연속 금액 대사가 맞았습니다.</div>
     </div>
   </div>
-  <div class="wf-note">📌 <b>판정</b> — 7월에 제시한 검증 조건(<b>“30만원급 재계약 없이도 흑자면 구조 개선”</b>)의 답이 나왔습니다. <b>흑자를 지키지 못하고 적자로 돌아섰습니다.</b> 7월 반등은 구조 개선이 아니라 <b>대형 재계약 1건이 만든 일시적 현상</b>이었습니다. &nbsp;|&nbsp; ※ 유입 40건 · 유출 63건 전량 직접 집계, 결산 확정치와 원 단위 일치.</div>
+  <div class="wf-note">📌 <b>판정</b> — 7월에 제시한 검증 조건(<b>“30만원급 재계약 없이도 흑자면 구조 개선”</b>)의 답이 나왔습니다. <b>흑자를 지키지 못하고 적자로 돌아섰습니다.</b> 7월 반등은 구조 개선이 아니라 <b>대형 재계약 1건이 만든 일시적 현상</b>이었습니다. &nbsp;|&nbsp; ※ 유입 40건 · 유출 61건 전량 직접 집계, 결산 확정치와 원 단위 일치.</div>
   
   <div class="ft">
     <span>P O S &nbsp;·&nbsp; K I O S K &nbsp;·&nbsp; T A B L E &nbsp; O R D E R &nbsp;·&nbsp; C A T &nbsp;·&nbsp; P G</span>
@@ -531,10 +560,90 @@
   
   <div class="hd">
     <div class="hd-l"><span class="nlogo">n</span><b>Nurinetworks<span class="blue">.</span></b><span class="hd-meta">| &nbsp;2 0 2 6 &nbsp;·&nbsp; 0 8 &nbsp;·&nbsp; M O N T H L Y &nbsp; R E P O R T</span></div>
-    <div class="hd-r"><div class="hd-ch">P R O G R E S S &nbsp;·&nbsp; 연간진도율</div><div class="hd-pg">08 &nbsp;/&nbsp; 13</div></div>
+    <div class="hd-r"><div class="hd-ch">R E - E N G A G E &nbsp;·&nbsp; 재영업 구조</div><div class="hd-pg">08 &nbsp;/&nbsp; 14</div></div>
   </div>
   
-  <div class="ch-label"><span class="dot"></span>C H A P T E R &nbsp; 07 &nbsp;·&nbsp; P R O G R E S S</div>
+  <div class="ch-label"><span class="dot"></span>C H A P T E R &nbsp; 07 &nbsp;·&nbsp; R E - E N G A G E M E N T</div>
+  <h1 class="ch-title">기존 가맹점 <span class="blue">재영업</span>의 실체</h1>
+  <div class="ch-sub">재계약·추가계약 874건 원장 전량 집계 (2024-12 ~ 2026-04 · 17개월)</div>
+  <div class="rj-alert">
+    <span class="rj-a-k">핵심</span>
+    <span><b>「재계약이 CMS를 깎는다」는 라벨 오염이었습니다.</b> 재계약 안에 성격이 정반대인 두 가지가 섞여 있습니다 —
+    <b>약정만기 자동할인(계약조항 이행)</b>과 <b>실제 재영업</b>. 만기 할인분을 걷어내면 재영업 <b>714건은 CMS를 +663만원</b> 만들었습니다.</span>
+  </div>
+  <div class="rj-grid">
+    <div class="rj-box">
+      <div class="db-t">재영업 874건의 3층 분해 <span class="db-t-sub">(CMS 월액 증감)</span></div>
+      <div class="rj-layers">
+        
+        <div class="rj-row">
+          <div class="rj-n"><b>① 약정만기 할인성</b><span>160건 · 계약조항 이행 — 영업행위 아님</span></div>
+          <div class="rj-bar"><div class="rj-fill" style="width:77.77222222222223%;background:#DC2626"></div></div>
+          <div class="rj-v" style="color:#DC2626">-350만<span>건당 -21,873원</span></div>
+        </div>
+        <div class="rj-row">
+          <div class="rj-n"><b>② 테이블오더 재영업</b><span>50건 · 재영업 CMS 증액의 62%</span></div>
+          <div class="rj-bar"><div class="rj-fill" style="width:91.946%;background:#16A34A"></div></div>
+          <div class="rj-v" style="color:#16A34A">+413.8만<span>건당 +82,751원</span></div>
+        </div>
+        <div class="rj-row">
+          <div class="rj-n"><b>③ 그 외 재영업</b><span>664건 · 만기 외 통상 재영업</span></div>
+          <div class="rj-bar"><div class="rj-fill" style="width:55.446666666666665%;background:#8395A8"></div></div>
+          <div class="rj-v" style="color:#8395A8">+249.5만<span>건당 +3,758원</span></div>
+        </div>
+      </div>
+      <div class="rj-sum">
+        <div><span>재영업 전체</span><b>874건 &nbsp; +313.3만</b></div>
+        <div class="rj-net"><span>① 약정만기 제외 = 순수 재영업</span><b style="color:#16A34A">714건 &nbsp; +663.3만</b></div>
+      </div>
+      <div class="db-link">📌 ①은 <b>관대·보수 두 집계기준이 원 단위까지 일치</b>하는 유일한 층입니다 — 계정 관행 모호성의 영향을 받지 않는 가장 견고한 숫자입니다.</div>
+    </div>
+    <div class="rj-box">
+      <div class="db-t">품목별 재영업 <span class="db-t-sub">건당 CMS — 부호가 갈린다</span></div>
+      <div class="db-chart-wide"><canvas id="rjItem"></canvas></div>
+      <div class="db-note">테이블오더 <b style="color:#16A34A">건당 +86,278원</b> &nbsp;↔&nbsp; 키오스크 <b style="color:#DC2626">건당 -18,998원</b></div>
+      <div class="db-link">⚠️ <b>키오스크</b>는 일회성 장비매출 <b>1,833만원</b>을 만들지만 <b>월 반복수익은 파괴</b>합니다. CMS 적자 탈출이 목표라면 두 품목은 정반대 자산입니다.</div>
+    </div>
+  </div>
+  <div class="rj-cards">
+    <div class="rj-card rj-c-red">
+      <div class="rj-c-t">① 약정만기 — 방어 실패율 94.4%</div>
+      <div class="rj-c-b">3년 만기가 재계약 테이블에 올라오면 할인은 사실상 확정입니다(판정가능 178건 중 168건 감액·무상전환).
+      감액 폭은 <b>정확히 50% 이분법</b> — 전후 금액이 명기된 13건 중 <b>12건이 정확히 50.0%</b>이고 중간 비율은 0건입니다.
+      <b>방어 성공 5건은 전부 「장비교체를 끼워 넣은」 건</b>이고, 가격 협상으로 지킨 사례는 없습니다.</div>
+    </div>
+    <div class="rj-card rj-c-blue">
+      <div class="rj-c-t">② 감액은 중위 4개월 후행한다</div>
+      <div class="rj-c-b">계약 체결월과 CMS 타격월이 다릅니다 — <b>84%가 3~4개월 후 적용</b>됩니다.
+      즉 <b>8월 적자는 4~5월 재계약 시점에 이미 확정</b>되어 있었고, 지금 체결하는 만기 재계약이 <b>12~1월 CMS</b>를 깎습니다.
+      다만 적용월 기재율이 최근 붕괴해(2026-03 12.5%) 미상 감액 <b>-68.7만원</b>이 남아 있어 하한으로만 봐야 합니다.</div>
+    </div>
+    <div class="rj-card rj-c-green">
+      <div class="rj-c-t">③ 타겟 483개소가 계산된다</div>
+      <div class="rj-c-b">음식점 고유 가맹점 <b>805개</b> 중 테이블오더 미보유 700개, <b>그중 포스를 이미 보유해 부착 가능한 곳이 483개소</b>입니다.
+      재영업 테이블오더 증액 중위값 <b>96,250원</b> 적용 시 <b>침투율 5%면 월 232만원</b> — 8월 CMS 적자(-39.3만)의 <b>5.9배</b>입니다.
+      프랜차이즈 본부 채널은 건당 <b>27,244원</b>으로 직영(2,439원)의 <b>11배</b>입니다.</div>
+    </div>
+  </div>
+  <div class="rj-note">⚠️ <b>리스크</b> — 테이블오더는 <b>2026.09.01부터 렌탈 전용</b>입니다. 이를 걷어내면 추가계약 CMS는 <b>월 27만원 → 월 5만원</b>으로 사실상 소멸하며,
+  테이블오더는 전체 CMS 총증액의 <b>55.9%</b>를 차지합니다. 수익이 사라지는 게 아니라 계정이 이동하는 것일 수 있으나 <b>CMS 지표는 구조적으로 악화</b>합니다.
+  공급사도 아임유업 <b>1개사에 97% 의존</b>(107건 중 104건)이며, 「36개월 후 대당 3,300원」 자동 인하가 명시된 건이 4건 57.9만원 확인됩니다.
+  &nbsp;|&nbsp; ※ 원장 커버리지 2024-12~2026-04. 2026-05는 부분, 06~08은 미수록 — 8월 적자의 직접 증거가 아니라 과거 17개월 패턴입니다.</div>
+  
+  <div class="ft">
+    <span>P O S &nbsp;·&nbsp; K I O S K &nbsp;·&nbsp; T A B L E &nbsp; O R D E R &nbsp;·&nbsp; C A T &nbsp;·&nbsp; P G</span>
+    <span class="blue-t">W W W . N W P O S . C O . K R</span>
+  </div>
+</section>
+
+<section class="pg">
+  
+  <div class="hd">
+    <div class="hd-l"><span class="nlogo">n</span><b>Nurinetworks<span class="blue">.</span></b><span class="hd-meta">| &nbsp;2 0 2 6 &nbsp;·&nbsp; 0 8 &nbsp;·&nbsp; M O N T H L Y &nbsp; R E P O R T</span></div>
+    <div class="hd-r"><div class="hd-ch">P R O G R E S S &nbsp;·&nbsp; 연간진도율</div><div class="hd-pg">09 &nbsp;/&nbsp; 14</div></div>
+  </div>
+  
+  <div class="ch-label"><span class="dot"></span>C H A P T E R &nbsp; 08 &nbsp;·&nbsp; P R O G R E S S</div>
   <h1 class="ch-title">연간진도율 <span class="blue">— 9개월 경과</span></h1>
   <div class="ch-sub">기준선 75.0% · 프로그레스 바 &nbsp;|&nbsp; 하단 = 동기간 전년대비(YoY) 실체 점검</div>
   <div class="prog-list">
@@ -560,13 +669,13 @@
         <div class="pr-sig"><span class="sig" style="color:#D97706">W A T C H</span></div>
       </div><div class="prog-row">
         <div class="pr-name">해지</div>
-        <div class="pr-track"><div class="pr-base" style="left:60%"></div><div class="pr-fill" style="width:69.12%;background:#D97706"></div></div>
-        <div class="pr-val" style="color:#D97706">86.4%</div>
+        <div class="pr-track"><div class="pr-base" style="left:60%"></div><div class="pr-fill" style="width:69.12%;background:#DC2626"></div></div>
+        <div class="pr-val" style="color:#DC2626">86.4%</div>
         <div class="pr-sig"><span class="sig" style="color:#DC2626">R I S K</span></div>
       </div><div class="prog-row">
         <div class="pr-name">위약금</div>
-        <div class="pr-track"><div class="pr-base" style="left:60%"></div><div class="pr-fill" style="width:53.84000000000001%;background:#16A34A"></div></div>
-        <div class="pr-val" style="color:#16A34A">67.3%</div>
+        <div class="pr-track"><div class="pr-base" style="left:60%"></div><div class="pr-fill" style="width:53.84000000000001%;background:#D97706"></div></div>
+        <div class="pr-val" style="color:#D97706">67.3%</div>
         <div class="pr-sig"><span class="sig" style="color:#D97706">W A T C H</span></div>
       </div><div class="prog-row">
         <div class="pr-name">명변</div>
@@ -625,10 +734,10 @@
   
   <div class="hd">
     <div class="hd-l"><span class="nlogo">n</span><b>Nurinetworks<span class="blue">.</span></b><span class="hd-meta">| &nbsp;2 0 2 6 &nbsp;·&nbsp; 0 8 &nbsp;·&nbsp; M O N T H L Y &nbsp; R E P O R T</span></div>
-    <div class="hd-r"><div class="hd-ch">P O S I T I O N &nbsp;·&nbsp; 포지션</div><div class="hd-pg">09 &nbsp;/&nbsp; 13</div></div>
+    <div class="hd-r"><div class="hd-ch">P O S I T I O N &nbsp;·&nbsp; 포지션</div><div class="hd-pg">10 &nbsp;/&nbsp; 14</div></div>
   </div>
   
-  <div class="ch-label"><span class="dot"></span>C H A P T E R &nbsp; 08 &nbsp;·&nbsp; P O S I T I O N</div>
+  <div class="ch-label"><span class="dot"></span>C H A P T E R &nbsp; 09 &nbsp;·&nbsp; P O S I T I O N</div>
   <h1 class="ch-title">33개월 평균 대비 + KPI 균형</h1>
   <div class="ch-sub">다이버징 바(평균대비) · 레이더(달성률 균형)</div>
   <div class="pos2-grid">
@@ -643,7 +752,7 @@
   </div>
   <div class="alert-bar">
     <span class="ab-lab" style="background:#16A34A">강점</span>
-    <span>전표판매 <b>+70%</b>(백분위 97%) · 카드사대행 +5% · 해지 +4% 평균 상회 &nbsp;&nbsp;|&nbsp;&nbsp; <b style="color:#DC2626">약점</b> <b>CMS -221%</b> · <b>신규 -50%(백분위 3%)</b> · 테이블오더 -44% · 위약금 -34%</span>
+    <span>전표판매 <b>+70%</b>(백분위 97%) · 카드사대행 +5% 평균 상회 &nbsp;&nbsp;|&nbsp;&nbsp; <b style="color:#DC2626">약점</b> <b>CMS -221%</b> · <b>신규 -50%(백분위 3%)</b> · 테이블오더 -44% · 위약금 -34% · <b>해지 +4%(역방향 — 평균 상회 = 악화)</b></span>
   </div>
   
   <div class="ft">
@@ -656,10 +765,10 @@
   
   <div class="hd">
     <div class="hd-l"><span class="nlogo">n</span><b>Nurinetworks<span class="blue">.</span></b><span class="hd-meta">| &nbsp;2 0 2 6 &nbsp;·&nbsp; 0 8 &nbsp;·&nbsp; M O N T H L Y &nbsp; R E P O R T</span></div>
-    <div class="hd-r"><div class="hd-ch">M A C R O &nbsp;·&nbsp; 경제전망</div><div class="hd-pg">10 &nbsp;/&nbsp; 13</div></div>
+    <div class="hd-r"><div class="hd-ch">M A C R O &nbsp;·&nbsp; 경제전망</div><div class="hd-pg">11 &nbsp;/&nbsp; 14</div></div>
   </div>
   
-  <div class="ch-label"><span class="dot"></span>C H A P T E R &nbsp; 09 &nbsp;·&nbsp; M A C R O</div>
+  <div class="ch-label"><span class="dot"></span>C H A P T E R &nbsp; 10 &nbsp;·&nbsp; M A C R O</div>
   <h1 class="ch-title">경제전망 및 소상공인 환경</h1>
   <div class="ch-sub">2026년 하반기 · 카드수수료 정책 · 폐업 동향 · 단말 시장 · 소비 지지</div>
   <div class="macro-grid">
@@ -667,7 +776,7 @@
       <div class="mcard risk"><div class="mc-tag" style="color:#DC2626">R I S K</div><div class="mc-t">카드 우대수수료율 확대</div><div class="mc-s">2026.02.14부터 가맹점 308.7만개(95.7%)에 우대수수료율 적용, 영세 0.4% (금융위 2026.02.12)</div><div class="mc-i" style="color:#DC2626">가맹점당 수익기반 구조적 축소</div></div>
       <div class="mcard risk"><div class="mc-tag" style="color:#DC2626">R I S K</div><div class="mc-t">폐업 사상 첫 100만 돌파</div><div class="mc-s">2024년 폐업 사업자 100만 8,282명. 소매업 29.7%·음식점업 15.2% — 두 업종이 폐업의 45%로 당사 모집단과 일치 (국세청 국세통계)</div><div class="mc-i" style="color:#DC2626">해지 모집단 구조적 확대</div></div>
       <div class="mcard risk"><div class="mc-tag" style="color:#DC2626">R I S K</div><div class="mc-t">단말 시장 잠식</div><div class="mc-s">토스플레이스 프론트2 37만개 · 네이버페이 커넥트 10만개 보급 (ZDNet Korea 2026.07.02)</div><div class="mc-i" style="color:#DC2626">신규 가맹점 경쟁 심화</div></div>
-    <div class="mcard van"><div class="mc-tag" style="color:#9BC1FF">V A N &nbsp;·&nbsp; N U R I &nbsp; 전망</div><div class="mc-t" style="color:#fff">"심리는 개선,<br>실물은 구조조정"</div><div class="mc-s" style="color:#C9D9F5">외부환경은 <b>심리는 개선, 실물은 구조조정</b> 국면이다. 특히 2026년 2월 우대수수료율 확대는 가맹점당 수익 기반을 구조적으로 낮추는 요인으로, 당사 CMS가 2026년 3월부터 마이너스로 전환한 시점과 겹친다(인과관계는 미검증 — 8월 CMS 세부내역으로 확인 필요). <b>가맹점 순감은 경기 변수가 아니라 구조 변수이며, 이를 영업조직 성과 문제로만 귀결시키면 오진 위험이 있다.</b></div></div>
+    <div class="mcard van"><div class="mc-tag" style="color:#9BC1FF">V A N &nbsp;·&nbsp; N U R I &nbsp; 전망</div><div class="mc-t" style="color:#fff">"심리는 개선,<br>실물은 구조조정"</div><div class="mc-s" style="color:#C9D9F5">외부환경은 <b>심리는 개선, 실물은 구조조정</b> 국면이다. 특히 2026년 2월 우대수수료율 확대는 가맹점당 수익 기반을 구조적으로 낮추는 요인으로, 당사 CMS가 2026년 3월 첫 적자를 낸 뒤 흑자·적자를 오가다 8월 재차 적자 전환한 흐름과 겹친다(8월 원장을 전량 분해했으나 수수료율 인하와의 인과는 특정되지 않았다 — 7p 참조). <b>가맹점 순감은 경기 변수가 아니라 구조 변수이며, 이를 영업조직 성과 문제로만 귀결시키면 오진 위험이 있다.</b></div></div>
     
       <div class="mcard opp"><div class="mc-tag" style="color:#16A34A">O P P O R T U N I T Y</div><div class="mc-t">민생회복 소비쿠폰 4.8조원</div><div class="mc-s">연매출 30억 이하 소상공인 매장 전용 · 2026.12.31까지 — 당사 가맹점 대다수가 사용처</div><div class="mc-i" style="color:#16A34A">하반기 가맹점 매출 지지</div></div>
       <div class="mcard opp"><div class="mc-tag" style="color:#16A34A">O P P O R T U N I T Y</div><div class="mc-t">민간소비 회복 전망</div><div class="mc-s">2026년 민간소비 +1.7~2.2% 전망 (자본시장연구원·KIET)</div><div class="mc-i" style="color:#16A34A">폐업 압력 완화 여지</div></div>
@@ -684,10 +793,10 @@
   
   <div class="hd">
     <div class="hd-l"><span class="nlogo">n</span><b>Nurinetworks<span class="blue">.</span></b><span class="hd-meta">| &nbsp;2 0 2 6 &nbsp;·&nbsp; 0 8 &nbsp;·&nbsp; M O N T H L Y &nbsp; R E P O R T</span></div>
-    <div class="hd-r"><div class="hd-ch">A C T I O N &nbsp;·&nbsp; 핵심과제</div><div class="hd-pg">11 &nbsp;/&nbsp; 13</div></div>
+    <div class="hd-r"><div class="hd-ch">A C T I O N &nbsp;·&nbsp; 핵심과제</div><div class="hd-pg">12 &nbsp;/&nbsp; 14</div></div>
   </div>
   
-  <div class="ch-label"><span class="dot"></span>C H A P T E R &nbsp; 10 &nbsp;·&nbsp; A C T I O N</div>
+  <div class="ch-label"><span class="dot"></span>C H A P T E R &nbsp; 11 &nbsp;·&nbsp; A C T I O N</div>
   <h1 class="ch-title">9월 <span class="blue">5대 핵심과제</span></h1>
   <div class="ch-sub">달성률 추격이 아니라 — <b>2027년에 쓸 데이터를 남기는 것</b>이 목표. 각 과제는 (근거지표 / 측정방법)을 갖춘 항목만 채택</div>
   <div class="task-grid">
@@ -734,10 +843,10 @@
   
   <div class="hd">
     <div class="hd-l"><span class="nlogo">n</span><b>Nurinetworks<span class="blue">.</span></b><span class="hd-meta">| &nbsp;2 0 2 6 &nbsp;·&nbsp; 0 8 &nbsp;·&nbsp; M O N T H L Y &nbsp; R E P O R T</span></div>
-    <div class="hd-r"><div class="hd-ch">F O R E C A S T &nbsp;·&nbsp; 9월 예상</div><div class="hd-pg">12 &nbsp;/&nbsp; 13</div></div>
+    <div class="hd-r"><div class="hd-ch">F O R E C A S T &nbsp;·&nbsp; 9월 예상</div><div class="hd-pg">13 &nbsp;/&nbsp; 14</div></div>
   </div>
   
-  <div class="ch-label"><span class="dot"></span>C H A P T E R &nbsp; 11 &nbsp;·&nbsp; F O R E C A S T</div>
+  <div class="ch-label"><span class="dot"></span>C H A P T E R &nbsp; 12 &nbsp;·&nbsp; F O R E C A S T</div>
   <h1 class="ch-title">9월 예상실적 진단</h1>
   <div class="ch-sub">12월~8월 월평균 기준 9월 목표 대비 도달률 — 프로그레스 바</div>
   <div class="prog-list fc">
@@ -827,9 +936,10 @@ const KPI = [{"name":"신규","t":36.4,"a":16,"u":"건","achv":0.4394,"sig":"RIS
 const TM = ["23.12","24.01","24.02","24.03","24.04","24.05","24.06","24.07","24.08","24.09","24.10","24.11","24.12","25.01","25.02","25.03","25.04","25.05","25.06","25.07","25.08","25.09","25.10","25.11","25.12","26.01","26.02","26.03","26.04","26.05","26.06","26.07","26.08"];
 const TREND = {"신규":[44,37,30,38,38,53,32,36,44,38,39,34,34,28,36,51,48,26,27,21,25,24,25,25,29,29,20,20,35,18,22,23,16],"CMS":[1890360,2114200,1955400,1695000,2062315,2466800,-31800,-217050,1215300,169650,144900,601300,850775,-208625,-98100,-1645300,-639700,-915625,-584050,-370250,-15600,-783553,115750,372050,1027800,721800,162780,-618350,166500,-82150,-948000,517873,-393200],"유상":[15292000,3584700,13567900,10388510,5160359,10377400,8635230,11599190,7579220,11614310,9575450,14941890,17922820,3605600,10122860,25153780,13590280,7527630,16856950,11174340,13136860,10571500,9862820,12659400,5963210,6406730,6739260,9547450,11214720,14952470,17812090,13605460,8365840],"테이블오더":[107,127,85,117,168,201,39,20,56,116,73,58,73,29,21,15,9,16,20,45,30,65,77,48,47,64,92,39,33,9,27,40,34],"해지":[46,52,37,49,58,40,34,47,32,42,55,42,40,47,42,48,50,40,41,32,51,71,39,34,35,45,36,55,53,36,48,41,46],"위약금":[4247000,5409500,1338500,4439111,8151000,2621000,4602000,5672500,4070000,6678000,7100000,4490000,6531000,5179800,9337500,11487800,5943703,4902000,9389320,7364600,6496400,6066000,4445400,3028400,3300000,662400,3050000,5541800,2465578,3677500,7617000,2210500,3441000],"전표판매":[1095600,1058200,1237500,919800,1145100,980500,865700,1028500,1211100,1136300,793100,533500,1304000,1386000,1659900,1949750,1397000,1646700,1893100,1678050,907500,2227500,1502600,1265000,2145550,1600500,1479500,1166000,1509450,2503700,2920500,2241800,2521800],"카드사대행":[913000,1353000,1100000,1771000,1045000,473000,865000,506000,1150000,704000,990000,902000,1485000,1595000,2167000,1342000,2046000,1331000,1485000,1529000,770000,1254000,904000,1100000,1364000,1155000,1342000,1386000,1485000,781000,1342000,1364000,1287000],"명변":[32,12,24,20,22,20,19,26,17,16,23,16,24,18,16,13,19,19,11,15,15,17,20,17,17,17,11,13,19,7,12,23,13]};
 const POSITION = [{"name":"전표판매","diff":0.701},{"name":"카드사대행","diff":0.054},{"name":"해지","diff":0.037},{"name":"명변","diff":-0.264},{"name":"유상","diff":-0.252},{"name":"위약금","diff":-0.336},{"name":"테이블오더","diff":-0.439},{"name":"신규","diff":-0.495},{"name":"CMS","diff":-2.213}];
-const RADAR = [{"name":"신규","v":43.94},{"name":"CMS","v":0},{"name":"유상","v":81.45},{"name":"테이블오더","v":82.93},{"name":"해지","v":153.33},{"name":"위약금","v":108.94999999999999},{"name":"명변","v":86.67},{"name":"전표판매","v":234.29000000000002},{"name":"카드사대행","v":220.33}];
+const RADAR = [{"name":"신규","v":43.94,"achv":0.4394},{"name":"CMS","v":0,"achv":-0.532},{"name":"유상","v":81.45,"achv":0.8145},{"name":"테이블오더","v":82.93,"achv":0.8293},{"name":"해지","v":153.33,"achv":1.5333},{"name":"위약금","v":108.94999999999999,"achv":1.0895},{"name":"명변","v":86.67,"achv":0.8667},{"name":"전표판매","v":234.29000000000002,"achv":2.3429},{"name":"카드사대행","v":220.33,"achv":2.2033}];
 const CMS_IN = [{"n":"신규","v":248600,"c":7},{"n":"신규(타밴)","v":22000,"c":3},{"n":"재계약","v":25850,"c":11},{"n":"추가계약","v":426800,"c":10},{"n":"명의변경","v":247500,"c":9}];
 const CMS_OUT = [{"n":"폐업그룹","v":1145600,"c":47},{"n":"명변","v":203500,"c":12},{"n":"CMS인하","v":14850,"c":2}];
+const REITEM = [{"n":"테이블오더","c":47,"per":86278,"sale":1254000},{"n":"부가장비","c":153,"per":2225,"sale":22239800},{"n":"무선단말기","c":100,"per":1793,"sale":3390000},{"n":"유선단말기","c":197,"per":196,"sale":16740570},{"n":"포스","c":315,"per":-1334,"sale":10252000},{"n":"키오스크","c":59,"per":-18998,"sale":18326000}];
 const CMS_NET = -393200;
 const FY_M = ["25.12","26.01","26.02","26.03","26.04","26.05","26.06","26.07","26.08"];
 const FY_CMS = [1027800,721800,162780,-618350,166500,-82150,-948000,517873,-393200];
@@ -846,7 +956,7 @@ const grid = { color:'#E4ECF7' };
 KPI.forEach((k,i)=>{
   const raw = k.achv<0 ? 0 : Math.min(2.5, k.achv);   // 0~250% 스케일
   const ratio = raw/2.5;
-  const col = k.reverse ? (k.achv<=1?'#16A34A':'#D97706') : sigColor(k.sig);
+  const col = k.reverse ? (k.achv<=1?'#16A34A':k.achv<=1.3?'#D97706':'#DC2626') : sigColor(k.sig);
   new Chart(document.getElementById('g'+i), {
     type:'doughnut',
     data:{ datasets:[{ data:[ratio, 1-ratio], backgroundColor:[col, '#E8EEF7'], borderWidth:0 }] },
@@ -1023,19 +1133,52 @@ const posSorted = [...POSITION].sort((a,b)=>a.diff-b.diff);
 new Chart(document.getElementById('c8bar'), {
   type:'bar',
   data:{ labels:posSorted.map(p=>p.name), datasets:[{ data:posSorted.map(p=>+(p.diff*100).toFixed(1)),
-    backgroundColor:posSorted.map(p=>p.diff>=0?'#16A34A':'#DC2626'), borderRadius:4, barThickness:18 }] },
+    // 해지는 역방향 지표 — 평균 상회(양수)가 악화이므로 색을 반전한다
+    backgroundColor:posSorted.map(p=> p.name==='해지' ? (p.diff<=0?'#16A34A':'#DC2626') : (p.diff>=0?'#16A34A':'#DC2626')), borderRadius:4, barThickness:18 }] },
   options:{ indexAxis:'y', responsive:true, maintainAspectRatio:false,
     plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label:c=>c.parsed.x+'%' } } },
     scales:{ x:{ ticks:{...tick,callback:v=>v+'%'}, grid, suggestedMin:-100, suggestedMax:120 },
              y:{ ticks:{color:'#0A1A3A',font:{family:'Pretendard',size:12,weight:'700'}}, grid:{display:false} } } }
 });
+
+// ── P8 재영업 : 품목별 건당 CMS (부호가 갈리는 것이 메시지) ──
+(function(){
+  const D = REITEM.slice().sort((a,b)=>a.per-b.per);
+  new Chart(document.getElementById('rjItem'), {
+    type:'bar',
+    data:{ labels:D.map(x=>x.n), datasets:[{ data:D.map(x=>x.per),
+      backgroundColor:D.map(x=>x.per>=0?'#16A34A':'#DC2626'), borderRadius:4, barThickness:16 }] },
+    options:{ indexAxis:'y', responsive:true, maintainAspectRatio:false, layout:{padding:{right:52}},
+      plugins:{ legend:{display:false},
+        tooltip:{ backgroundColor:'#0A1A3A', padding:9, cornerRadius:6,
+          callbacks:{ label:c=>{ const x=D[c.dataIndex];
+            return [' 건당 '+x.per.toLocaleString('ko-KR')+'원', ' 재영업 '+x.c+'건',
+                    ' 장비판매 '+x.sale.toLocaleString('ko-KR')+'원']; } } } },
+      scales:{ x:{ ticks:{color:'#8395A8',font:{family:'Pretendard',size:9},callback:v=>(v/10000)+'만'}, grid,
+                   suggestedMin:-30000, suggestedMax:100000 },
+               y:{ ticks:{color:'#3D4C63',font:{family:'Pretendard',size:10,weight:'700'}}, grid:{display:false} } } },
+    plugins:[
+      { id:'rjzero', beforeDatasetsDraw(c){ const {ctx,chartArea}=c; const x=c.scales.x.getPixelForValue(0);
+        ctx.save(); ctx.strokeStyle='#0A1A3A'; ctx.lineWidth=1; ctx.globalAlpha=0.4;
+        ctx.beginPath(); ctx.moveTo(x,chartArea.top); ctx.lineTo(x,chartArea.bottom); ctx.stroke(); ctx.restore(); } },
+      { id:'rjval', afterDatasetsDraw(c){ const {ctx}=c; const m=c.getDatasetMeta(0);
+        m.data.forEach((pt,i)=>{ const x=D[i];
+          ctx.save(); ctx.font="800 10px Pretendard, sans-serif"; ctx.textAlign=x.per>=0?'left':'right';
+          ctx.fillStyle=x.per>=0?'#16A34A':'#DC2626';
+          const lab = Math.abs(x.per)<10000 ? (x.per>=0?'+':'')+x.per.toLocaleString('ko-KR')+'원' : (x.per>=0?'+':'')+man(x.per);
+          ctx.fillText(lab, pt.x+(x.per>=0?6:-6), pt.y+4); ctx.restore(); }); } },
+    ]
+  });
+})();
 // ── P8 레이더 ──
 new Chart(document.getElementById('c8radar'), {
   type:'radar',
   data:{ labels:RADAR.map(r=>r.name), datasets:[{ data:RADAR.map(r=>r.v),
     backgroundColor:'rgba(0,102,255,0.15)', borderColor:'#0066FF', borderWidth:2, pointBackgroundColor:'#0066FF', pointRadius:3 }] },
   options:{ responsive:true, maintainAspectRatio:false,
-    plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label:c=>c.label+' '+c.parsed.r.toFixed(0)+'%' } } },
+    plugins:{ legend:{display:false}, tooltip:{ callbacks:{
+      // 적자(음수 달성률)는 0으로 클램프되므로 툴팁에서 원값을 되살린다
+      label:c=>c.label+' '+(RADAR[c.dataIndex].achv<0 ? '적자 '+(RADAR[c.dataIndex].achv*100).toFixed(1)+'%' : c.parsed.r.toFixed(0)+'%') } } },
     scales:{ r:{ min:0, max:250, ticks:{ stepSize:100, color:'#8395A8', font:{size:9}, backdropColor:'transparent' },
       grid:{color:'#D9E4F2'}, angleLines:{color:'#D9E4F2'}, pointLabels:{ color:'#0A1A3A', font:{family:'Pretendard',size:11,weight:'700'} } } } }
 });
