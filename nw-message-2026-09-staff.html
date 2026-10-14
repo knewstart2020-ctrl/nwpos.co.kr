@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>[내부용] NW 발송문 · 2026년 09월 전직원 공지용</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+  :root{ --navy:#0A1A3A; --blue:#0066FF; --ink:#3D4C63; --muted:#8395A8; --line:#D9E4F2; --soft:#F4F8FE; --ok:#16A34A; --risk:#DC2626; }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{ font-family:'Pretendard Variable',Pretendard,sans-serif; background:linear-gradient(160deg,#EAF1FE 0%,#F7FAFF 60%,#FFFFFF 100%); color:var(--ink); -webkit-font-smoothing:antialiased; min-height:100vh; }
+  .wrap{ max-width:820px; margin:0 auto; padding:36px 18px 60px; }
+  .top{ display:flex; align-items:center; gap:12px; margin-bottom:6px; }
+  .nlogo{ width:34px;height:34px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;font-size:20px;display:flex;align-items:center;justify-content:center; }
+  .brand{ font-size:20px; font-weight:800; color:var(--navy); } .brand .b{ color:var(--blue); }
+  h1{ font-size:27px; color:var(--navy); font-weight:800; letter-spacing:-0.02em; margin:16px 0 4px; }
+  .sub{ color:var(--muted); font-size:13px; }
+  .notice{ display:inline-block; background:#FFF5F5; color:var(--risk); border:1px solid #F5CCCC; border-radius:6px; padding:5px 12px; font-size:12px; font-weight:700; margin:12px 0 6px; }
+  .howto{ background:#FFF6E9; border:1px solid #F0DCBB; border-radius:9px; padding:12px 15px; font-size:13px; line-height:1.7; margin:14px 0 18px; color:var(--navy); }
+  .howto b{ color:var(--blue); }
+  .tabs{ display:flex; gap:7px; margin-bottom:16px; }
+  .tab{ background:#fff; border:1px solid var(--line); color:var(--muted); border-radius:9px; padding:9px 16px; font-size:13px; font-weight:700; cursor:pointer; font-family:inherit; transition:.12s; }
+  .tab:hover{ border-color:var(--blue); color:var(--blue); }
+  .tab.active{ background:var(--blue); border-color:var(--blue); color:#fff; }
+  .view{ display:none; } .view.show{ display:block; }
+  .chat{ background:#DDE5EF; border:1px solid var(--line); border-radius:14px; overflow:hidden; box-shadow:0 3px 12px rgba(10,26,58,0.08); margin-bottom:12px; }
+  .chat-h{ background:#fff; border-bottom:1px solid var(--line); padding:11px 16px; font-size:13px; font-weight:800; color:var(--navy); display:flex; align-items:center; gap:8px; }
+  .chat-h .dot{ width:8px;height:8px;border-radius:50%;background:var(--ok); }
+  .chat-h small{ margin-left:auto; color:var(--muted); font-weight:600; font-size:11px; }
+  .chat-body{ padding:16px 14px 20px; display:flex; flex-direction:column; gap:16px; }
+  .brow{ display:flex; flex-direction:column; align-items:flex-end; gap:5px; }
+  .btag{ font-size:10.5px; color:#5A6B84; font-weight:700; }
+  .bwrap{ display:flex; align-items:flex-end; gap:6px; max-width:90%; }
+  .btime{ font-size:10px; color:#7C8CA3; white-space:nowrap; padding-bottom:3px; }
+  .bubble{ background:#FFE812; color:#1A1A1A; border-radius:14px 4px 14px 14px; padding:12px 14px; font-size:13px; line-height:1.72; white-space:pre-wrap; word-break:break-word; box-shadow:0 1px 3px rgba(10,26,58,0.12); }
+  .bubble a{ color:#0B5ED7; text-decoration:underline; word-break:break-all; }
+  .pv-copy{ display:flex; gap:8px; justify-content:flex-end; margin-top:2px; }
+  .pv-note{ font-size:11.5px; color:var(--muted); line-height:1.6; margin-bottom:16px; }
+  .tcnt{ font-size:10.5px; font-weight:600; opacity:.75; margin-left:5px; }
+  .staff-note{ background:#F2FBF5; border:1px solid #B7E4C7; border-radius:9px; padding:11px 14px; font-size:12.5px; line-height:1.7; color:var(--navy); margin-bottom:14px; }
+  .raw{ background:#fff; border:1px solid var(--line); border-radius:10px; padding:0 16px; margin-bottom:16px; box-shadow:0 2px 8px rgba(10,26,58,0.05); }
+  .raw summary{ cursor:pointer; font-size:13px; font-weight:700; color:var(--navy); padding:13px 0; list-style:none; }
+  .raw summary::-webkit-details-marker{ display:none; }
+  .raw summary::before{ content:'▸ '; color:var(--blue); }
+  .raw[open] summary::before{ content:'▾ '; }
+  .raw pre{ margin-bottom:14px; }
+  .msg{ background:#fff; border:1px solid var(--line); border-left:4px solid var(--blue); border-radius:12px; padding:16px 18px 18px; margin-bottom:16px; box-shadow:0 3px 12px rgba(10,26,58,0.06); }
+  .msg-h{ display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; margin-bottom:10px; }
+  .msg-t{ font-size:16px; font-weight:800; color:var(--navy); }
+  .msg-n{ font-size:11px; font-weight:700; color:var(--blue); background:var(--soft); border-radius:20px; padding:3px 11px; margin-right:7px; }
+  .msg-len{ font-size:11px; color:var(--muted); }
+  .copy{ background:var(--blue); color:#fff; border:0; border-radius:8px; padding:9px 17px; font-size:13px; font-weight:700; cursor:pointer; font-family:inherit; transition:background .12s; }
+  .copy:hover{ background:#0052CC; } .copy.done{ background:var(--ok); }
+  pre{ background:var(--soft); border:1px solid var(--line); border-radius:8px; padding:14px 15px; font-family:inherit; font-size:13px; line-height:1.75; color:var(--navy); white-space:pre-wrap; word-break:break-word; max-height:420px; overflow:auto; }
+  .links{ background:#fff; border:1px solid var(--line); border-radius:12px; padding:15px 18px; margin-bottom:16px; box-shadow:0 3px 12px rgba(10,26,58,0.06); }
+  .links h3{ font-size:14px; color:var(--navy); margin-bottom:9px; }
+  .lrow{ display:flex; align-items:center; gap:9px; flex-wrap:wrap; margin-bottom:7px; font-size:13px; }
+  .lrow a{ color:var(--blue); text-decoration:none; word-break:break-all; } .lrow a:hover{ text-decoration:underline; }
+  .mini{ background:#fff; color:var(--navy); border:1px solid var(--line); border-radius:6px; padding:4px 10px; font-size:11px; font-weight:700; cursor:pointer; font-family:inherit; }
+  .mini.done{ background:var(--ok); color:#fff; border-color:var(--ok); }
+  .foot{ text-align:center; color:var(--muted); font-size:11px; margin-top:30px; letter-spacing:.5px; }
+  .back{ display:inline-block; margin-top:20px; color:var(--blue); font-size:13px; font-weight:700; text-decoration:none; }
+  @media(max-width:560px){ h1{font-size:22px;} pre{font-size:12.5px;} .bwrap{max-width:97%;} .bubble{font-size:12.5px;} }
+</style>
+</head><body>
+<div class="wrap">
+  <div class="top"><span class="nlogo">n</span><span class="brand">Nurinetworks<span class="b">.</span></span></div>
+  <h1>NW 발송문 · 2026년 09월</h1>
+  <div class="sub">(주)누리네트웍스 · Q4 진입 · 전직원 공지용 · 단일 메시지 · 숫자 미노출</div>
+  <div class="notice">🔒 내부용 비공개 · 검색엔진 차단</div>
+
+  <div class="howto">
+    <b>발송 방법</b> &nbsp;①&nbsp; <b>복사</b> 버튼 &nbsp;→&nbsp; ②&nbsp; NAVER WORKS 대화방에 붙여넣고 전송
+    <br>한 번에 전송하는 <b>단일 메시지</b>입니다.
+  </div>
+
+  <!-- ── CEO·임원용 ── -->
+  
+
+  <!-- ── 전직원 공지용 ── -->
+  
+  <div class="view show" id="view-staff">
+    <div class="staff-note">
+      🔒 <b>숫자 미노출 · 링크 없음</b> — 이 페이지에는 실적 수치·금액·건수가 없고,
+      결산보고서 링크와 아카이브 링크도 <b>의도적으로 넣지 않았습니다</b>.
+      이 URL을 다른 직원에게 전달해도 CEO용 수치에 접근할 수 없습니다.
+    </div>
+    <div class="chat">
+      <div class="chat-h"><span class="dot"></span>전직원 공지<small>NAVER WORKS · 보내는 사람 기준 화면</small></div>
+      <div class="chat-body">
+        <div class="brow">
+          <span class="btag">메시지 1 / 1 &nbsp;·&nbsp; <span class="msg-len" id="len3"></span></span>
+          <div class="bwrap"><span class="btime">1</span><div class="bubble" id="b3"></div></div>
+          <div class="pv-copy"><button class="copy" data-target="m3">📋 공지문 복사</button></div>
+        </div>
+      </div>
+    </div>
+    <div class="pv-note">※ 한 번에 전송하는 단일 메시지입니다.</div>
+
+    <details class="raw">
+      <summary>📋 원문 텍스트 보기 (직접 선택·복사용)</summary>
+      <pre id="m3">📢 2026년 09월 결산 결과 공유
+
+임직원 여러분, 9월 결산이 마무리되어 결과를 공유드립니다.
+
+👍 잘된 부분
+· 전표판매는 이번 달에도 목표를 크게 넘겼고, 연간 목표도 이미 넘었습니다.
+· 유상매출은 지난달 수준을 지켰습니다.
+· 재계약이 지난달보다 늘었습니다.
+
+🙏 아쉬운 부분
+· 월 반복수익(CMS) 적자가 두 달째 이어지고 폭도 커졌습니다.
+· 신규 가맹점이 두 달 연속 집계 이래 가장 적었습니다.
+· 해지가 신규보다 훨씬 많아 가맹점 수가 계속 줄고 있습니다.
+· 명의변경과 카드사대행도 이번 달 크게 줄었습니다.
+
+📌 지난달과 비교하면
+지난달에는 재계약이 거의 없어 반복수익이 줄었다고 말씀드렸습니다.
+이번 달은 재계약이 조금 돌아왔는데도 적자가 커졌습니다.
+폐업으로 빠져나가는 가맹점의 규모가 커진 것이 가장 큰 원인입니다.
+
+🎯 앞으로
+반복수익이 큰 가맹점의 폐업·이탈 조짐을 미리 알 수 있도록 점검 체계를 만듭니다.
+신규가 왜 줄었는지 유입 경로별로 나누어 보는 일도 계속합니다.
+내년 목표를 지금 실적에 맞게 다시 세우는 초안을 다음 달까지 준비하겠습니다.
+
+늘 고생 많으십니다. 감사합니다.</pre>
+    </details>
+  </div>
+
+  
+  <div class="foot">(주)누리네트웍스 · SINCE 2012 · www.nwpos.co.kr</div>
+</div>
+
+<script>
+  function setLen(preId, spanId){
+    var n = document.getElementById(preId).textContent.length;
+    var el = document.getElementById(spanId);
+    el.textContent = n.toLocaleString() + '자';
+    if (n > 1000) { el.style.color = '#DC2626'; el.textContent += ' ⚠️ NW 제한 초과'; }
+  }
+  ['1','2','3'].forEach(function(i){
+    if (document.getElementById('m'+i)) setLen('m'+i, 'len'+i);
+  });
+
+  // 미리보기 말풍선은 원문(pre)에서 그대로 생성 → 내용이 어긋날 수 없음
+  function buildBubble(srcId, dstId){
+    if (!document.getElementById(srcId) || !document.getElementById(dstId)) return;
+    const text = document.getElementById(srcId).textContent;
+    const box = document.getElementById(dstId);
+    box.textContent = '';
+    text.split(/(https?:\/\/[^\s]+)/g).forEach(function(part){
+      if (/^https?:\/\//.test(part)) {
+        const a = document.createElement('a');
+        a.href = part; a.textContent = part; a.target = '_blank'; a.rel = 'noopener noreferrer';
+        box.appendChild(a);
+      } else if (part) {
+        box.appendChild(document.createTextNode(part));
+      }
+    });
+  }
+  buildBubble('m1','b1');
+  buildBubble('m2','b2');
+  buildBubble('m3','b3');
+
+  document.querySelectorAll('.tab').forEach(function(t){
+    t.addEventListener('click', function(){
+      document.querySelectorAll('.tab').forEach(function(x){ x.classList.remove('active'); });
+      t.classList.add('active');
+      document.querySelectorAll('.view').forEach(function(v){ v.classList.remove('show'); });
+      document.getElementById('view-' + t.dataset.view).classList.add('show');
+    });
+  });
+
+  async function toClipboard(text){
+    try { await navigator.clipboard.writeText(text); return true; }
+    catch(e){
+      const ta = document.createElement('textarea');
+      ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      let ok = false; try { ok = document.execCommand('copy'); } catch(_){}
+      document.body.removeChild(ta); return ok;
+    }
+  }
+  function flash(btn, label){
+    const old = btn.textContent;
+    btn.textContent = label; btn.classList.add('done');
+    setTimeout(function(){ btn.textContent = old; btn.classList.remove('done'); }, 1600);
+  }
+  document.querySelectorAll('.copy').forEach(function(btn){
+    btn.addEventListener('click', async function(){
+      const ok = await toClipboard(document.getElementById(btn.dataset.target).textContent);
+      flash(btn, ok ? '✅ 복사됨' : '⚠️ 직접 선택');
+    });
+  });
+  document.querySelectorAll('.mini').forEach(function(btn){
+    btn.addEventListener('click', async function(){
+      const ok = await toClipboard(btn.dataset.url);
+      flash(btn, ok ? '✅' : '⚠️');
+    });
+  });
+</script>
+</body></html>
