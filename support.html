@@ -134,7 +134,7 @@ select.fi{appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns='
 <button class="submit-btn" id="submitBtn" onclick="doSubmit()">상담 신청하기</button>
 <div class="form-ok" id="formOk">
 <div style="font-size:3rem;margin-bottom:16px;">✅</div>
-<h3 id="formOkT" style="font-size:1.3rem;font-weight:800;margin-bottom:8px;">접수되었습니다</h3>
+<h3 id="formOkT" style="font-size:1.3rem;font-weight:800;margin-bottom:8px;">접수 요청을 보냈습니다</h3>
 <p id="formOkP" style="color:#86868b;">확인 문자가 곧 갑니다. 30분 안에 문자가 없으면 1544-7754 로 전화 주세요.</p>
 <button onclick="resetForm()" style="margin-top:20px;padding:12px 28px;background:var(--primary);color:#fff;border:none;border-radius:12px;font-size:.9rem;font-weight:700;cursor:pointer;">다시 신청하기</button>
 </div>
@@ -162,6 +162,8 @@ select.fi{appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns='
 </div></div></div>
 <div class="footer-copy">&copy; 2026 Nurinetworks. All rights reserved.</div>
 <script>
+/* sessionStorage 읽기 — 저장소가 막힌 브라우저에서도 던지지 않음(없으면 기본값) */
+function nwSS(k,d){try{var v=sessionStorage.getItem(k);return (v===null||v==='')?d:v;}catch(e){return d;}}
 /* 방문 경로(nw_pages) 읽기 한 곳 — 옛 JSON 배열 꼴 · 새 ' > ' 글 꼴 · 둘 섞인 꼴 다 받음 · 던지지 않음 */
 function nwPagesArr(){
   var s='';try{s=sessionStorage.getItem('nw_pages')||'';}catch(e){return [];}
@@ -204,9 +206,9 @@ var formData={
   time:'',
   memo:memo,
   date:dateStr,
-  duration:parseInt(sessionStorage.getItem('nw_duration')||'0')+Math.round(performance.now()/1000),
+  duration:parseInt(nwSS('nw_duration','0'),10)+Math.round(performance.now()/1000),
   pages:nwPagesArr().join(' → '),
-  referrer:'nwpos.co.kr 구매스토어 상담신청 | 유입:'+(sessionStorage.getItem('nw_ref')||'직접 방문'),
+  referrer:'nwpos.co.kr 구매스토어 상담신청 | 유입:'+nwSS('nw_ref','직접 방문'),
   interests:type
 };
 
@@ -232,7 +234,7 @@ function resetForm(){
   document.getElementById('formCard').style.opacity='1';
   document.getElementById('formCard').style.pointerEvents='auto';
   document.getElementById('formOk').style.display='none';
-  document.getElementById('formOkT').textContent='접수되었습니다';
+  document.getElementById('formOkT').textContent='접수 요청을 보냈습니다';
   document.getElementById('formOkP').textContent='확인 문자가 곧 갑니다. 30분 안에 문자가 없으면 1544-7754 로 전화 주세요.';
   document.getElementById('bizName').value='';
   document.getElementById('phone').value='';
