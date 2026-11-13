@@ -827,10 +827,10 @@ loadTicker();
   var pageTitle = document.title || location.pathname.split('/').pop().replace('.html','');
   
   // 방문 페이지 기록
-  var pages = JSON.parse(sessionStorage.getItem('nw_pages') || '[]');
+  var pages = (function(){ var s = ''; try { s = sessionStorage.getItem('nw_pages') || ''; } catch (e) { return []; } var out = []; s.split(' > ').forEach(function (part) { part = String(part).trim(); if (!part) return; if (part.charAt(0) === '[') { try { var a = JSON.parse(part); if (Array.isArray(a)) { a.forEach(function (x) { if (x) out.push(String(x)); }); return; } } catch (e2) {} } out.push(part); }); return out; })();   /* 저장 꼴 둘(옛 JSON · 새 ' > ') 다 받음 · 던지지 않음 */
   if (pages[pages.length-1] !== pageTitle) pages.push(pageTitle);
   if (pages.length > 20) pages = pages.slice(-20);
-  sessionStorage.setItem('nw_pages', JSON.stringify(pages));
+  try { sessionStorage.setItem('nw_pages', pages.join(' > ')); } catch (eNw) {}   /* 저장 꼴 하나 = ' > ' 글(아래 새 추적 블록과 같음) */
   
   // 사이트 최초 방문 시간
   if (!sessionStorage.getItem('nw_start')) sessionStorage.setItem('nw_start', String(startTime));
