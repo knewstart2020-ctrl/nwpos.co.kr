@@ -639,13 +639,13 @@ f:['쉽고 빠른 주문/결제 UI','선불·테이크아웃·배달 지원','�
 };function openM(id){const p=P[id];if(!p)return;
 const ss=p.s.map(([l,v])=>'<div class="si"><span class="sl">'+l+'</span><span class="sv">'+v+'</span></div>').join('');
 const ff=p.f.map(t=>'<div class="fi">✓ '+t+'</div>').join('');
-document.getElementById('mc').innerHTML='<button class="mx" onclick="closeM()">✕</button><div class="mh"><img class="pimg" src="'+p.img+'" alt="'+p.n+'"><span class="mm">'+p.m+'</span></div><div class="mb"><h2>'+p.n+'</h2><span class="mcat">'+p.c+'</span><p class="md">'+p.d+'</p><div class="ms"><h3>주요 사양</h3><div class="sg">'+ss+'</div></div><div class="mf"><h3>핵심 기능</h3><div class="fl">'+ff+'</div></div><div class="mcta"><a href="tel:1544-7754" class="btn btn-gold">📞 상담 문의</a><a href="'+p.u+'" target="_blank" class="btn btn-primary">제조사 사이트 →</a></div></div>';
+document.getElementById('mc').innerHTML='<button class="mx" onclick="closeM()">✕</button><div class="mh"><img class="pimg" src="'+p.img+'" alt="'+p.n+'"><span class="mm">'+p.m+'</span></div><div class="mb"><h2>'+p.n+'</h2><span class="mcat">'+p.c+'</span><p class="md">'+p.d+'</p><div class="ms"><h3>주요 사양</h3><div class="sg">'+ss+'</div></div><div class="mf"><h3>핵심 기능</h3><div class="fl">'+ff+'</div></div><div class="mcta"><a href="tel:1544-7754" class="btn btn-gold">📞 상담 문의</a><a href="'+p.u+'" target="_blank" class="btn btn-primary">제품 상세 →</a></div></div>';
 document.getElementById('mo').classList.add('open');document.body.style.overflow='hidden';}
 function closeM(){document.getElementById('mo').classList.remove('open');document.body.style.overflow='';}
 function fCat(c){document.querySelectorAll('.cat-tab').forEach(t=>t.classList.toggle('active',t.dataset.cat===c));document.querySelectorAll('.product-card').forEach(cd=>cd.classList.toggle('show',c==='all'||cd.dataset.cat===c));document.getElementById('products').scrollIntoView({behavior:'smooth'});return false;}
 document.querySelectorAll('.cat-tab').forEach(t=>t.addEventListener('click',()=>fCat(t.dataset.cat)));
-const ro=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('show');ro.unobserve(el.target);}});},{threshold:0.1});
-document.querySelectorAll('.section-inner,.product-card,.solution-card,.why-card,.p-group').forEach(el=>ro.observe(el));
+const productRevealObserver=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('show');productRevealObserver.unobserve(el.target);}});},{threshold:0.1});
+document.querySelectorAll('.section-inner,.product-card,.solution-card,.why-card,.p-group').forEach(el=>productRevealObserver.observe(el));
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){const h=this.getAttribute('href');if(h==='#')return;e.preventDefault();const t=document.querySelector(h);if(t){t.scrollIntoView({behavior:'smooth'});document.getElementById('nav').classList.remove('open');}});});
 </script>
 <script>
