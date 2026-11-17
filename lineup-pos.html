@@ -295,9 +295,132 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 </div>
 
 <!-- VS SECTION -->
-<section class="nw27" id="pos-lineup"><div class="wrap"><div class="eyebrow">POS LINEUP</div><h2>N250와 ZED-Ⅲ, 매장에 맞게 비교하세요</h2><p>사용할 프로그램, 고객용 화면, 연결할 장비와 카운터 공간을 함께 살펴봅니다.</p><div class="grid"><article class="feature"><img class="productimg" src="assets/n250.png" alt="아임유 N250 제품 이미지"><h3>N250</h3><p>아임유 250 시리즈<br>화면·주변기기 옵션과 UP솔루션 구성 검토</p><div class="links"><a href="product-n250.html">제품 상세</a><a href="#compare">사양 비교</a></div></article><article class="feature"><img class="productimg" src="assets/zed3.png" alt="오케이포스 ZED-III 제품 이미지"><h3>ZED-Ⅲ</h3><p>OKPOS POS<br>고객용 모니터와 OKPOS 솔루션 구성 검토</p><div class="links"><a href="zed3.html">제품 상세</a><a href="#compare">사양 비교</a></div></article></div></div></section>
+<section class="nw27" id="pos-lineup"><div class="wrap"><div class="eyebrow">POS LINEUP</div><h2>N250와 ZED-Ⅲ, 매장에 맞게 비교하세요</h2><p>사용할 프로그램, 고객용 화면, 연결할 장비와 카운터 공간을 함께 살펴봅니다.</p><div class="grid"><article class="feature"><img class="productimg" src="assets/n250.png" alt="아임유 N250 제품 이미지"><h3>N250</h3><p>아임유 250 시리즈<br>화면·주변기기 옵션과 UP솔루션 구성 검토</p><div class="links"><a href="product-n250.html">제품 상세</a><a href="#pos-studio">사진 보기</a><a href="#compare">사양 비교</a></div></article><article class="feature"><img class="productimg" src="assets/zed3.png" alt="오케이포스 ZED-III 제품 이미지"><h3>ZED-Ⅲ</h3><p>OKPOS POS<br>고객용 모니터와 OKPOS 솔루션 구성 검토</p><div class="links"><a href="zed3.html">제품 상세</a><a href="#pos-studio">사진 보기</a><a href="#compare">사양 비교</a></div></article></div></div></section>
 
 <!-- FEATURE CARDS - 좌우 비교 -->
+<style>
+/* POS STUDIO (2026-11-17 v4 초안) — 제조사 공식 제품 사진만 사용 · 3D 모조·생성 그림 없음 */
+.ps{position:relative;z-index:1;background:linear-gradient(180deg,#fbfbfd 0%,#f1f2f5 100%);padding:110px 24px 120px;font-family:'Noto Sans KR','Malgun Gothic',sans-serif;color:#0b1a3a;scroll-margin-top:80px}
+.ps .ps-wrap{max-width:1180px;margin:0 auto}
+.ps .ps-eyebrow{font-size:13px;letter-spacing:.14em;color:#0066ff;font-weight:700;text-align:center;margin-bottom:14px}
+.ps .ps-title{font-size:clamp(30px,4.4vw,56px);font-weight:800;letter-spacing:-.045em;line-height:1.2;text-align:center;margin:0 0 18px;word-break:keep-all}
+.ps .ps-lead{font-size:18px;line-height:1.8;color:#5a6a80;text-align:center;max-width:640px;margin:0 auto 72px;word-break:keep-all}
+.ps .ps-item{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:56px;align-items:center;margin-bottom:110px}
+.ps .ps-item:last-child{margin-bottom:0}
+.ps .ps-item.rev{grid-template-columns:minmax(0,1fr) minmax(0,1.45fr)}
+.ps .ps-item.rev .ps-stage{order:2}
+.ps .ps-stage{position:relative;border-radius:36px;overflow:hidden;aspect-ratio:1/1;box-shadow:0 40px 80px -30px rgba(11,26,58,.28),0 2px 6px rgba(11,26,58,.05)}
+.ps .ps-stage.light{background:radial-gradient(120% 90% at 50% 35%,#ffffff 0%,#f6f7f9 62%,#eceef2 100%)}
+.ps .ps-stage.gray{background:#b9bbbf}
+.ps .ps-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:opacity .45s ease,transform .9s cubic-bezier(.16,1,.3,1)}
+.ps .ps-stage.light img{mix-blend-mode:multiply;transform:scale(1.32)}
+.ps .ps-stage.gray img{object-fit:cover;transform:scale(1.02)}
+.ps .ps-stage:hover img{transform:scale(1.4)}
+.ps .ps-stage.gray:hover img{transform:scale(1.08)}
+.ps .ps-stage img.fade{opacity:0}
+.ps .ps-src{position:absolute;left:18px;bottom:14px;font-size:11px;letter-spacing:.02em;color:rgba(11,26,58,.45);background:rgba(255,255,255,.7);padding:4px 10px;border-radius:999px}
+.ps .ps-stage.gray .ps-src{color:rgba(255,255,255,.85);background:rgba(11,26,58,.25)}
+.ps .ps-maker{font-size:14px;font-weight:700;color:#0066ff;letter-spacing:.04em;margin-bottom:10px}
+.ps .ps-name{font-size:clamp(34px,4vw,52px);font-weight:800;letter-spacing:-.04em;margin:0 0 14px;line-height:1.1}
+.ps .ps-desc{font-size:17px;line-height:1.8;color:#4a5b72;margin:0 0 26px;word-break:keep-all}
+.ps .ps-angle-label{font-size:13px;font-weight:700;color:#68778b;margin-bottom:12px}
+.ps .ps-angles{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+.ps .ps-angles button{display:flex;align-items:center;gap:8px;border:1px solid #d6dde8;background:#fff;border-radius:999px;padding:5px 14px 5px 5px;font:inherit;font-size:14px;font-weight:600;color:#25344d;cursor:pointer;transition:border-color .2s,box-shadow .2s,background .2s}
+.ps .ps-angles .th{display:block;width:34px;height:34px;border-radius:50%;overflow:hidden;background:#fff;flex:none}.ps .ps-angles .th img{display:block;width:100%;height:100%;object-fit:cover}.ps .ps-item:not(.rev) .ps-angles .th img{transform:scale(1.9)}
+.ps .ps-angles button:hover{border-color:#0066ff}
+.ps .ps-angles button[aria-pressed="true"]{border-color:#0032a0;background:#0032a0;color:#fff;box-shadow:0 6px 16px -6px rgba(0,50,160,.5)}
+.ps .ps-angles button:focus-visible{outline:3px solid #66b2ff;outline-offset:2px}
+.ps .ps-cap{font-size:14px;color:#68778b;min-height:22px;margin:0 0 26px}
+.ps .ps-links{display:flex;gap:12px;flex-wrap:wrap}
+.ps .ps-links a{border:1px solid #0032a0;border-radius:10px;padding:12px 20px;color:#0032a0;font-size:15px;font-weight:700;text-decoration:none}
+.ps .ps-links a.primary{background:#0032a0;color:#fff}
+.ps .ps-note{font-size:13px;color:#7a889b;text-align:center;margin:80px auto 0;max-width:760px;line-height:1.7;word-break:keep-all}
+@media(max-width:860px){
+ .ps{padding:72px 20px 80px}
+ .ps .ps-lead{font-size:16px;margin-bottom:48px}
+ .ps .ps-item,.ps .ps-item.rev{grid-template-columns:1fr;gap:28px;margin-bottom:72px}
+ .ps .ps-item.rev .ps-stage{order:0}
+ .ps .ps-stage{border-radius:26px}
+ .ps .ps-angles button{font-size:13px;padding:4px 12px 4px 4px}
+ .ps .ps-angles .th{width:28px;height:28px}
+}
+@media(prefers-reduced-motion:reduce){.ps .ps-stage img{transition:none}}
+</style>
+<section class="ps" id="pos-studio" aria-labelledby="ps-title">
+ <div class="ps-wrap">
+  <div class="ps-eyebrow">PRODUCT STUDIO</div>
+  <h2 class="ps-title" id="ps-title">두 포스, 실제 모습 그대로.</h2>
+  <p class="ps-lead">제조사 공식 제품 사진으로 앞·옆·뒤를 살펴보세요. 사진을 누르면 각도가 바뀌고, 사진 위에 올리면 가까이 볼 수 있습니다.</p>
+
+  <article class="ps-item" data-ps>
+   <div class="ps-stage light">
+    <img class="ps-main" src="assets/pos/n250-front.png" alt="아임유 N250 포스 앞모습" width="640" height="480">
+    <span class="ps-src">사진: 아임유(IMU) 제조사 공식 이미지</span>
+   </div>
+   <div class="ps-info">
+    <div class="ps-maker">IMU · 아임유</div>
+    <h3 class="ps-name">N250</h3>
+    <p class="ps-desc">15형 또는 15.6형 화면의 올인원 포스입니다. 고객용 화면과 카드리더를 더하는 구성은 매장에 맞춰 상담에서 정합니다.</p>
+    <div class="ps-angle-label">각도 선택</div>
+    <div class="ps-angles" role="group" aria-label="N250 사진 각도">
+     <button type="button" aria-pressed="true" data-src="assets/pos/n250-front.png" data-alt="아임유 N250 포스 앞모습" data-cap="앞모습 · 15형 화면"><span class="th"><img src="assets/pos/n250-front.png" alt="" loading="lazy"></span>앞</button>
+     <button type="button" aria-pressed="false" data-src="assets/pos/n250-side.png" data-alt="아임유 N250 포스 옆모습, 고객용 화면 장착" data-cap="옆모습 · 고객용 화면(옵션) 장착 예"><span class="th"><img src="assets/pos/n250-side.png" alt="" loading="lazy"></span>옆</button>
+     <button type="button" aria-pressed="false" data-src="assets/pos/n250-rear.png" data-alt="아임유 N250 포스 뒷모습" data-cap="뒷모습 · 받침과 뒷면"><span class="th"><img src="assets/pos/n250-rear.png" alt="" loading="lazy"></span>뒤</button>
+     <button type="button" aria-pressed="false" data-src="assets/pos/n250-dual.png" data-alt="아임유 N250 포스 뒤쪽 비스듬한 모습, 고객용 화면과 카드리더 장착" data-cap="뒤쪽 비스듬히 · 고객용 화면·카드리더(옵션) 장착 예"><span class="th"><img src="assets/pos/n250-dual.png" alt="" loading="lazy"></span>구성 예</button>
+     <button type="button" aria-pressed="false" data-src="assets/pos/n250-wide.png" data-alt="아임유 250 시리즈 15.6형 블랙 구성" data-cap="15.6형 블랙 구성 예"><span class="th"><img src="assets/pos/n250-wide.png" alt="" loading="lazy"></span>15.6형</button>
+    </div>
+    <p class="ps-cap" aria-live="polite">앞모습 · 15형 화면</p>
+    <div class="ps-links"><a class="primary" href="product-n250.html">N250 자세히</a><a href="#compare">사양 비교</a></div>
+   </div>
+  </article>
+
+  <article class="ps-item rev" data-ps>
+   <div class="ps-stage gray">
+    <img class="ps-main" src="assets/pos/zed3-front.png" alt="OKPOS ZED-Ⅲ 포스 앞모습" width="500" height="500">
+    <span class="ps-src">사진: OKPOS 제조사 공식 이미지</span>
+   </div>
+   <div class="ps-info">
+    <div class="ps-maker">OKPOS · 오케이포스</div>
+    <h3 class="ps-name">ZED-Ⅲ</h3>
+    <p class="ps-desc">15형 정전식 터치 화면의 포스입니다. 고객용 화면(9.7형·15형)은 옵션으로 별도 구성합니다.</p>
+    <div class="ps-angle-label">각도 선택</div>
+    <div class="ps-angles" role="group" aria-label="ZED-Ⅲ 사진 각도">
+     <button type="button" aria-pressed="true" data-src="assets/pos/zed3-front.png" data-alt="OKPOS ZED-Ⅲ 포스 앞모습" data-cap="앞모습 · 15형 화면"><span class="th"><img src="assets/pos/zed3-front.png" alt="" loading="lazy"></span>앞</button>
+     <button type="button" aria-pressed="false" data-src="assets/pos/zed3-side.png" data-alt="OKPOS ZED-Ⅲ 포스 옆모습, 고객용 화면 장착" data-cap="옆모습 · 고객용 화면(옵션) 장착 예"><span class="th"><img src="assets/pos/zed3-side.png" alt="" loading="lazy"></span>옆</button>
+     <button type="button" aria-pressed="false" data-src="assets/pos/zed3-rear.png" data-alt="OKPOS ZED-Ⅲ 포스 뒷모습, 고객용 화면 장착" data-cap="뒷모습 · 고객용 화면(옵션) 장착 예"><span class="th"><img src="assets/pos/zed3-rear.png" alt="" loading="lazy"></span>뒤</button>
+     <button type="button" aria-pressed="false" data-src="assets/pos/zed3-angle.png" data-alt="OKPOS ZED-Ⅲ 포스 비스듬한 뒷모습" data-cap="비스듬히 · 뒷면 포트와 고객용 화면(옵션)"><span class="th"><img src="assets/pos/zed3-angle.png" alt="" loading="lazy"></span>비스듬히</button>
+     <button type="button" aria-pressed="false" data-src="assets/pos/zed3-top.png" data-alt="OKPOS ZED-Ⅲ 포스를 위에서 본 모습" data-cap="위에서 · 고객용 화면(옵션) 장착 예"><span class="th"><img src="assets/pos/zed3-top.png" alt="" loading="lazy"></span>위</button>
+    </div>
+    <p class="ps-cap" aria-live="polite">앞모습 · 15형 화면</p>
+    <div class="ps-links"><a class="primary" href="zed3.html">ZED-Ⅲ 자세히</a><a href="#compare">사양 비교</a></div>
+   </div>
+  </article>
+
+  <p class="ps-note">사진은 제조사 공식 제품 이미지이며 옵션 장착 예가 들어 있습니다. 실제 공급 구성(화면 크기·고객용 화면·카드리더·색상)은 견적에서 확인합니다.</p>
+ </div>
+</section>
+<script>
+(function(){
+  var blocks=document.querySelectorAll('#pos-studio [data-ps]');
+  Array.prototype.forEach.call(blocks,function(b){
+    var main=b.querySelector('.ps-main'), cap=b.querySelector('.ps-cap'), btns=b.querySelectorAll('.ps-angles button');
+    if(!main||!btns.length) return;
+    Array.prototype.forEach.call(btns,function(btn){
+      btn.addEventListener('click',function(){
+        if(btn.getAttribute('aria-pressed')==='true') return;
+        Array.prototype.forEach.call(btns,function(x){x.setAttribute('aria-pressed','false');});
+        btn.setAttribute('aria-pressed','true');
+        if(cap) cap.textContent=btn.getAttribute('data-cap')||'';
+        var src=btn.getAttribute('data-src'), alt=btn.getAttribute('data-alt')||'';
+        main.classList.add('fade');
+        var pre=new Image();
+        pre.onload=pre.onerror=function(){ setTimeout(function(){ main.src=src; main.alt=alt; main.classList.remove('fade'); },180); };
+        pre.src=src;
+      });
+    });
+  });
+})();
+</script>
 <section class="nw27" id="pos-features"><div class="wrap"><h2>선택할 때 확인할 네 가지</h2><div class="grid"><article class="feature"><h3>제품과 프로그램</h3><p>N250는 UP솔루션, ZED-Ⅲ는 OKPOS 솔루션의 지원 구성과 사용료를 확인합니다.</p></article><article class="feature"><h3>고객용 화면</h3><p>두 제품 모두 고객용 화면을 선택할 수 있습니다. ZED-Ⅲ는 고객용 화면(듀얼모니터)이 별도 구성입니다.</p></article><article class="feature"><h3>주변기기 연결</h3><p>프린터·금전함·카드단말기와 주문 장비의 포트·프로그램 호환을 확인합니다.</p></article><article class="feature"><h3>설치 공간</h3><p>본체 크기와 화면 선택뿐 아니라 프린터 위치, 케이블, 고객 동선을 함께 확인합니다.</p></article></div></div></section>
 
 <!-- SPEC COMPARISON -->
