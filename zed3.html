@@ -26,7 +26,7 @@
  /* 상단 미니바 */
  .bar{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px 22px;background:linear-gradient(180deg,rgba(6,7,12,.75),rgba(6,7,12,0));backdrop-filter:blur(6px);}
  .bar .bd{font-weight:900;letter-spacing:1px;font-size:15px;} .bar .bd b{color:var(--blue2);}
- .bar a.cta{background:var(--blue);color:#fff;font-weight:800;font-size:13px;padding:8px 16px;border-radius:30px;text-decoration:none;}
+ .bar .zlinks{display:flex;gap:18px;margin-left:auto;margin-right:18px}.bar .zlinks a{color:#fff;opacity:.85;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap}.bar .zlinks a:hover{opacity:1}@media(max-width:900px){.bar .zlinks{display:none}}.bar a.cta{background:var(--blue);color:#fff;font-weight:800;font-size:13px;padding:8px 16px;border-radius:30px;text-decoration:none;}
 
  /* 히어로 */
  .hero{position:relative;height:100vh;min-height:620px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
@@ -197,7 +197,7 @@
 <nav class="dots" id="dots"></nav>
 
 <div class="bar">
-  <div class="bd">NURI<b>POS</b> · 신제품</div>
+  <div class="bd">NURI<b>POS</b> · 신제품</div><nav class="zlinks" aria-label="주 메뉴"><a href="index.html">Store</a><a href="about.html">회사소개</a><a href="lineup.html">제품라인업</a><a href="support.html#store">구매스토어</a><a href="store-3d.html">3D 매장보기</a></nav>
   <a class="cta" href="javascript:void(0)" onclick="openZConsult()">📋 도입 상담</a>
 </div>
 

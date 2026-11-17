@@ -318,7 +318,7 @@ if(tk2){
 var items=['USD/KRW ','KOSPI ','KOSDAQ ','S&P 500 ','NASDAQ ','DOW ','📰 경제뉴스 로딩중...'];
 var h='';items.forEach(function(t){h+='<span class="ticker-item"><span class="t-news">'+t+'</span></span>';});
 tk2.innerHTML=h+h;
-fetch('https://api.coingecko.com/api/v3/simple/price?ids=tether&vs_currencies=krw').then(function(r){return r.json();}).then(function(d){if(d.tether){var rate=Math.round(d.tether.krw);var newH='<span class="ticker-item"><span class="t-name">USD/KRW</span><span class="t-val">'+rate.toLocaleString()+'</span></span>';newH+='<span class="ticker-item"><span class="t-name">누리네트웍스</span><span class="t-val">No.1 Payment Service</span></span>';tk2.innerHTML=newH+newH;}}).catch(function(){});
+fetch('https://api.coingecko.com/api/v3/simple/price?ids=tether&vs_currencies=krw').then(function(r){return r.json();}).then(function(d){if(d.tether){var rate=Math.round(d.tether.krw);var newH='<span class="ticker-item"><span class="t-name">USD/KRW</span><span class="t-val">'+rate.toLocaleString()+'</span></span>';newH+='<span class="ticker-item"><span class="t-name">누리네트웍스</span><span class="t-val">PAYMENT &amp; STORE SOLUTIONS</span></span>';tk2.innerHTML=newH+newH;}}).catch(function(){});
 }
 </script>
 
