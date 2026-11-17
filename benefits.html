@@ -394,7 +394,12 @@
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 document.querySelectorAll('.tab-btn').forEach(btn=>{
     btn.addEventListener('click',()=>{
-        document.querySelectorAll('.tab-btn').forEach(b=>b.classL
+        document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelectorAll('.benefit-section').forEach(s=>s.classList.toggle('active', s.id===btn.dataset.tab));
+    });
+});
+</script>
 <script>
 (function(){
   var startTime = Date.now();

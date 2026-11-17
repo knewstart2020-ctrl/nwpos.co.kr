@@ -206,7 +206,9 @@
 </section>
 <footer class="footer"><a href="index.html">© 2026 Nurinetworks. All rights reserved.</a></footer>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-const ro=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.class
+const productRevealObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('v');productRevealObserver.unobserve(entry.target);}});},{threshold:0.1});
+document.querySelectorAll('.rv').forEach(el=>productRevealObserver.observe(el));
+</script>
 <script>
 (function(){
   var startTime = Date.now();
