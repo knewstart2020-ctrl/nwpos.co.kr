@@ -463,6 +463,11 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <div class="install-card-overlay"></div>
 <div class="install-card-info"><h4>베이커리</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">🥐</span> N250</span></div></div>
 </div>
+<div class="install-card reveal" onclick="openFS('fs8')">
+<img src="field-salon-concept-20261117.webp" alt="미용실 입구와 접수 카운터 구성 예시 AI 연출 이미지" loading="lazy"><span class="fs-badge">매장 구성 예시 · AI 연출 이미지</span>
+<div class="install-card-overlay"></div>
+<div class="install-card-info"><h4>미용실</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">💇</span> N250</span></div></div>
+</div>
 </div>
 </div>
 </section>
@@ -515,13 +520,16 @@ desc:'상품이 많은 전통시장·마트에는 N250 포스와 영수증 프�
 fs6:{sign:'field-resto-1.jpg',img:'field-resto-install.jpg',title:'레스토랑',tags:['N250'],emoji:'🍽️',
 desc:'메뉴가 많은 레스토랑에는 메뉴를 분류별로 나눠 쓰는 N250 포스와 스마트로 카드단말기 구성을 권합니다.'},
 fs7:{sign:'field-bakery-1.jpg',img:'field-bakery-install.jpg',title:'베이커리',tags:['N250'],emoji:'🥐',
-desc:'빵과 음료를 함께 파는 베이커리에는 진열대 가까운 계산대에 N250 포스와 스마트로 카드단말기를 두는 구성을 권합니다. 손님이 고른 빵을 바로 계산할 수 있습니다.'}
+desc:'빵과 음료를 함께 파는 베이커리에는 진열대 가까운 계산대에 N250 포스와 스마트로 카드단말기를 두는 구성을 권합니다. 손님이 고른 빵을 바로 계산할 수 있습니다.'},
+fs8:{sign:'field-salon-concept-20261117.webp',img:'field-salon-concept-20261117.webp',title:'미용실',tags:['N250'],emoji:'💇',note:'미용실 · 매장 구성 예시 · AI 연출 이미지',
+desc:'미용실 입구와 접수 카운터의 배치를 살펴보는 연출 이미지입니다. 고객 응대 동선과 카운터 공간에 맞춰 포스 구성을 검토할 수 있습니다. 실제 설치 사례가 아니며, 프로그램·주변기기 연동 조건은 상담에서 확인합니다.'}
 };
 function openFS(id){const d=fsData[id];if(!d)return;
 document.getElementById('fsImg').src=d.sign;
 document.getElementById('fsTitle').textContent=d.title;
 document.getElementById('fsTags').innerHTML=d.tags.map(t=>'<span>'+t+'</span>').join('');
 document.getElementById('fsDesc').textContent=d.desc;
+var fn=document.querySelector('.fsm-note');if(fn){if(!fn.dataset.base)fn.dataset.base=fn.textContent;fn.textContent=d.note||fn.dataset.base;}
 var eb=document.getElementById('fsEmoji');if(eb)eb.remove();
 var em=document.createElement('div');em.className='fs-emoji-bounce';em.id='fsEmoji';em.textContent=d.emoji;
 document.querySelector('.fs-modal-card').appendChild(em);
