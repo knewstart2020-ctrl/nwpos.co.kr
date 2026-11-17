@@ -4,7 +4,7 @@
   if (window.__nwMobileNav) return; window.__nwMobileNav = true;
   var LINKS = [
     ['index.html', 'Store'], ['home-classic.html', 'Home'], ['about.html', '회사소개'],
-    ['lineup.html', '제품라인업'], ['support.html#store', '구매스토어'], ['store-3d.html', '3D 매장보기']
+    ['lineup.html', '제품라인업'], ['support.html#store', '구매스토어'], ['store-3d.html', '매장 구성 보기']
   ];
   var css = '' +
     '.nwm-btn{position:fixed;left:16px;bottom:16px;z-index:2147483000;display:none;align-items:center;gap:6px;padding:11px 16px;border:0;border-radius:999px;background:#0032a0;color:#fff;font:700 14px/1 "Noto Sans KR","Malgun Gothic",sans-serif;box-shadow:0 8px 24px rgba(0,50,160,.35);cursor:pointer}' +
