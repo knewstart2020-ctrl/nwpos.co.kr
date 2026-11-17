@@ -1,0 +1,22 @@
+/* Company price policy: user confirmed 2026-09-01 / N250=ZED III, 2026-11-17. */
+(function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory();else root.NWQuote=factory();})(typeof window!=='undefined'?window:globalThis,function(){
+ 'use strict';
+ const products=Object.freeze({
+  n250:{name:'N250 포스',group:'포스',rental:25000,sale:850000,bundle:true,image:'n250.png',detail:'product-n250.html',includes:'HW · SW · IC리더기 · 토스/네이버 1종 · 유선카드단말기 · 금전함 · 키보드 · 마우스'},
+  zed:{name:'ZED-Ⅲ 포스',group:'포스',rental:25000,sale:850000,bundle:true,image:'zed.png',detail:'zed3.html',includes:'HW · SW · IC리더기 · 토스/네이버 1종 · 유선카드단말기 · 금전함 · 키보드 · 마우스'},
+  kiosk:{name:'배리어프리 키오스크',group:'키오스크',rental:40000,sale:1350000,image:'kiosk.svg',detail:'product-kiosk.html',includes:'탁상형 · HW · SW · IC리더기 · 그림은 구성 예시'},
+  post:{name:'후불 테이블오더',group:'테이블오더',rental:10000,image:'uporder.png',detail:'lineup-order.html',includes:'HW · SW · 거치대 · 보조배터리'},
+  pre:{name:'선불 테이블오더',group:'테이블오더',rental:11000,image:'uporder.png',detail:'lineup-order.html',includes:'HW · SW · 거치대 · 보조배터리 · IC리더기'},
+  wired:{name:'SMT-T226 유선단말기',group:'유선단말기',rental:8000,sale:230000,bundle:true,image:'t226.png',detail:'product-t226.html',includes:'유선단말기 · 토스/네이버 1종'},
+  wireless:{name:'M6202NQ 무선단말기',group:'무선단말기',sale:70000,maintenance:3000,image:'wireless.png',detail:'lineup-terminal.html',includes:'통신사 약정 12개월 · 월 유지보수비 3,000원 · 통신요금 별도 확인'},
+  toss:{name:'토스프론트',group:'토스프론트',inquiry:true,image:'toss.png',detail:'product-tossfront.html',includes:'포스·유선단말기 패키지에서 선택 가능 · 단독 구성 금액은 상담'},
+  npay:{name:'네이버페이 커넥트',group:'네이버커넥트',inquiry:true,image:'npay.jpg',detail:'product-npay.html',includes:'포스·유선단말기 패키지에서 선택 가능 · 단독 구성 금액은 상담'}
+ });
+ const scenes={cafe:'카페',bakery:'베이커리',burger:'수제버거 매장',hanwoo:'한우 고깃집',station:'주유소',popup:'의류 팝업'};
+ const presets={cafe:[{id:'n250',mode:'rental',qty:1,front:'toss'}],bakery:[{id:'zed',mode:'rental',qty:1,front:'npay'}],burger:[{id:'kiosk',mode:'rental',qty:1}],hanwoo:[{id:'post',mode:'rental',qty:6}],station:[{id:'wired',mode:'rental',qty:1,front:'toss'}],popup:[{id:'wireless',mode:'sale',qty:1}]};
+ function normalize(input){const out=[];if(!Array.isArray(input))return out;for(const row of input.slice(0,50)){if(!row||typeof row.id!=='string'||!Object.hasOwn(products,row.id))continue;const p=products[row.id];const qty=Math.min(99,Math.max(0,Math.trunc(Number(row.qty)||0)));if(!qty)continue;const mode=p.inquiry?'inquiry':row.mode==='sale'&&p.sale!=null?'sale':p.rental!=null?'rental':'sale';const front=p.bundle&&row.front==='npay'?'npay':p.bundle?'toss':null;const same=out.find(r=>r.id===row.id&&r.mode===mode&&r.front===front);if(same)same.qty=Math.min(99,same.qty+qty);else out.push({id:row.id,mode,qty,front});}return out;}
+ function calculate(input){const rows=normalize(input);let upfront=0,rent=0,maintenance=0;const pending=[];const lines=rows.map(row=>{const p=products[row.id],unit=row.mode==='rental'?p.rental:row.mode==='sale'?p.sale:null,amount=unit==null?null:unit*row.qty;if(row.mode==='rental')rent+=amount;else if(row.mode==='sale')upfront+=amount;else pending.push(p.name);maintenance+=(p.maintenance||0)*row.qty;return {...row,name:p.name,unit,amount,maintenance:(p.maintenance||0)*row.qty};});return {lines,upfront,rent,rentLater:rent/2,maintenance,monthly:rent+maintenance,pending,hasUnpriced:pending.length>0,vatIncluded:true};}
+ const money=n=>new Intl.NumberFormat('ko-KR').format(n)+'원';
+ function text(input,scene='cafe'){const q=calculate(input);return ['누리네트웍스 예상 견적','업종: '+(scenes[scene]||scenes.cafe),'기준: 2026.09.01 시행 가격 · 부가세 포함','',...q.lines.map(l=>l.name+' / '+({rental:'렌탈',sale:'구매',inquiry:'단독 상담'}[l.mode])+' / '+l.qty+'대 / '+(l.amount==null?'금액 상담':money(l.unit)+' × '+l.qty+' = '+money(l.amount)+(l.mode==='rental'?'/월':''))+(l.front?' / 포함 선택: '+products[l.front].name:'')), '', '초기 구매금액: '+money(q.upfront),'월 렌탈료 1~36개월: '+money(q.rent),'월 렌탈료 37~60개월: '+money(q.rentLater),'월 유지보수비(무선): '+money(q.maintenance),q.hasUnpriced?'단독 상담 항목은 금액 합계에서 제외됩니다.':'','', '포스·유선 패키지의 토스/네이버 및 포스 포함 유선단말기는 중복 과금하지 않습니다.','렌탈 기본 약정 36개월 / 37~60개월 50% / 60개월 경과 장비 소유권 이전.','해지 위약금: 남은 개월 수 × 렌탈료. 해지 장비 반납: 택배 또는 방문 픽업. 세부 정산은 계약 조건 확인.','무선: 통신사 약정 12개월, 월 유지보수비 3,000원/대. 통신요금 별도 확인.','설치비·교육비·카드사 접수대행비 무료(현장 환경·배선 공사·추가 장비는 별도).','무상 A/S 1년(고객 과실 제외). 인터넷 회선·지방 출장비·소모품은 고객 부담.','실제 공급 구성·연동·설치 조건 확인 후 최종 견적을 안내합니다.','nwpos.co.kr · 1544-7754'].filter(x=>x!==undefined).join('\n');}
+ return {products,scenes,presets,normalize,calculate,text,money,version:'20261117-v1'};
+});
