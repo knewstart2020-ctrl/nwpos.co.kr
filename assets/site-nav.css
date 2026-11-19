@@ -8,6 +8,9 @@ body[data-nw-layout=product]{padding-top:var(--nw-local)}
 .nw-head a,.nw-head button,.nw-head summary{font-family:inherit;letter-spacing:inherit;white-space:nowrap;text-decoration:none;cursor:pointer}
 .nw-head a:focus-visible,.nw-head button:focus-visible,.nw-head summary:focus-visible{outline:3px solid #2677e0;outline-offset:-3px;border-radius:4px}
 .nw-head .nw-brand{display:inline-flex;align-items:center;gap:9px;font-size:17px;font-weight:800;color:#152f4e;flex-shrink:0}
+/* Company wordmark, Noto Sans KR 800. License: brand/NotoSansKR-OFL.txt */
+@font-face{font-family:"NW Brand";font-style:normal;font-weight:800;font-display:swap;src:url("brand/nuri-name-800.woff2") format("woff2")}
+.nw-head .nw-brand span{font-family:"NW Brand","Malgun Gothic",sans-serif}
 .nw-head .nw-brand img{display:block;width:54px;height:26px;object-fit:contain}
 .nw-head .nw-primary{position:static;inset:auto;transform:none;margin:0 auto;padding:0;height:100%;width:auto;display:flex;align-items:stretch;gap:clamp(6px,.8vw,15px);border:0;background:transparent;box-shadow:none;color:inherit}
 .nw-head .nw-item{display:flex;align-items:center;position:relative;white-space:nowrap}
