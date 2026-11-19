@@ -91,7 +91,7 @@
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
- {"@type":"ListItem","position":1,"name":"홈","item":"https://nwpos.co.kr/"},
+ {"@type":"ListItem","position":1,"name":"홈","item":"https://nwpos.co.kr/home-classic.html"},
  {"@type":"ListItem","position":2,"name":"제품 라인업","item":"https://nwpos.co.kr/lineup.html"},
  {"@type":"ListItem","position":3,"name":"토스·네이버단말기","item":"https://nwpos.co.kr/lineup-signpad.html"},
  {"@type":"ListItem","position":4,"name":"Npay 커넥트 사인패드","item":"https://nwpos.co.kr/product-npay.html"}
@@ -124,17 +124,19 @@
  }
 }
 </script>
+<link rel="stylesheet" href="assets/site-nav.css"><script defer src="assets/site-nav.js"></script>
 </head>
-<body>
+<body data-nw-layout="product">
 
-<nav class="nav"><div class="nav-inner">
-    <a href="index.html" class="nav-logo" style="display:flex;align-items:center;gap:8px;text-decoration:none;"><img src="logo.svg" alt="Nurinetworkspos" style="height:36px;"><span style="font-family:Inter,sans-serif;font-size:1.2rem;font-weight:700;color:#0066FF;letter-spacing:-0.02em;">nurinetworkspos</span></a>
-    <span class="nav-product">Npay 커넥트 사인패드</span>
-    <div class="nav-links"><a href="#features">특징</a><a href="#specs">사양</a><a href="about.html">회사소개</a><a href="lineup.html">제품소개</a><a href="support.html">고객지원</a><a href="support.html#formCard">상담신청</a><a href="support.html#store" class="nav-cta">구매스토어</a><a href="store-3d.html" class="nav-3d">매장 구성 보기</a></div>
-</div></nav>
+<div class="nw-head" role="banner">
+  <div class="nw-inner"><a class="nw-brand" href="index.html" aria-label="누리네트웍스 Store"><img src="logo.svg" alt="" width="54" height="26"><span>누리네트웍스</span></a>
+    <details class="nw-switch"><summary><i aria-hidden="true"></i>전체 메뉴</summary></details>
+    <nav id="nav" class="nw-primary" aria-label="전체 메뉴"><div class="nw-item"><a href="index.html">Store</a></div><div class="nw-item"><a href="zed3.html">ZED-III</a></div><div class="nw-item"><a href="home-classic.html">Home</a></div><div class="nw-item"><a href="about.html">회사소개</a></div><div class="nw-item"><a href="lineup.html" aria-current="location">제품 라인업</a><details class="nw-more"><summary aria-label="제품 라인업 하위 메뉴"><span aria-hidden="true"></span></summary><div class="nw-sub"><a href="lineup-pos.html">포스 POS</a><a href="lineup-kiosk.html">배리어프리 키오스크</a><a href="lineup-order.html">테이블오더 / QR오더</a><a href="lineup-software.html">포스 소프트웨어</a><a href="lineup-signpad.html">토스·네이버 단말기</a><a href="lineup-terminal.html">유·무선 카드단말기</a><a href="lineup-pg.html">PG 결제</a><a href="lineup-extra.html">부가장비</a></div></details></div><div class="nw-item"><a href="support.html#store">구매스토어</a><details class="nw-more"><summary aria-label="구매스토어 하위 메뉴"><span aria-hidden="true"></span></summary><div class="nw-sub"><a href="benefits.html">계약 혜택</a></div></details></div><div class="nw-item"><a href="store-3d.html">매장 구성 보기</a><details class="nw-more"><summary aria-label="매장 구성 보기 하위 메뉴"><span aria-hidden="true"></span></summary><div class="nw-sub"><a href="store-configurator.html">제품 선택 · 예상 견적</a></div></details></div><a class="nw-call-menu" href="tel:1544-7754">전화 상담 1544-7754</a></nav>
+    <div class="nw-contact"><a class="nw-phone" href="tel:1544-7754">1544-7754</a><a class="nw-action" href="support.html#formCard">도입 상담</a></div>
+  </div><nav class="nw-detail" aria-label="제품 상세 메뉴"><div><strong>Npay 커넥트 사인패드</strong><a href="lineup-signpad.html">토스·네이버단말기</a><a href="#features">특징</a><a href="#specs">사양</a></div></nav></div>
 
 <section class="hero">
-    <div class="bc"><a href="index.html">홈</a><span>›</span><a href="lineup.html">제품 라인업</a><span>›</span><a href="lineup-signpad.html">토스·네이버단말기</a><span>›</span><span class="cur">Npay 커넥트 사인패드</span></div>
+    <div class="bc"><a href="home-classic.html">홈</a><span>›</span><a href="lineup.html">제품 라인업</a><span>›</span><a href="lineup-signpad.html">토스·네이버단말기</a><span>›</span><span class="cur">Npay 커넥트 사인패드</span></div>
     <div class="hero-tag">Payment Signpad · 네이버페이</div>
     <h1>결제부터 마케팅까지,<br><span class="accent">네이버 연동.</span></h1>
     <p class="hero-sub">결제부터 리뷰, 쿠폰, 적립까지 네이버 생태계와 연동되는 차세대 오프라인 통합 결제 단말기. 안면인식 페이스사인까지 지원합니다.</p>
@@ -254,4 +256,4 @@ document.querySelectorAll('.rv').forEach(el=>productRevealObserver.observe(el));
   });
 })();
 </script>
-<script src="assets/nav-mobile.js" defer></script>
+

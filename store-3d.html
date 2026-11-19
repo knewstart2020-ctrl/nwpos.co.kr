@@ -36,12 +36,15 @@ body{font-family:'Noto Sans KR','Malgun Gothic',sans-serif;color:#0b1a3a;backgro
 .s3-note{font-size:13px;color:#7a889b;margin-top:18px}
 @media(max-width:860px){.s3-grid{grid-template-columns:1fr}.s3-nav .in{height:auto;padding:10px 16px;flex-wrap:wrap}.s3-nav .links{gap:12px}.s3-nav .links a{font-size:13px}.s3-hero{padding:56px 20px 24px}}
 .s3-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#0b1a3a}.s3-links{display:flex;gap:14px;flex-wrap:wrap}.s3-quote{margin-top:22px!important}.s3-quote a{display:inline-block;padding:13px 22px;border-radius:12px;background:#0032a0;color:#fff;font-weight:700;font-size:15px;text-decoration:none}.s3-quote a:hover{background:#00287f}.s3-sub{font-size:13px!important;margin:-8px 0 12px!important}.s3-sub a{font-size:13px;font-weight:600;color:#0066ff;text-decoration:underline}</style>
+<link rel="stylesheet" href="assets/site-nav.css"><script defer src="assets/site-nav.js"></script>
 </head>
-<body>
-<nav class="s3-nav"><div class="in">
-  <a href="index.html" class="logo"><img src="logo.svg" alt="Nurinetworkspos"></a>
-  <div class="links"><a href="index.html">Home</a><a href="about.html">회사소개</a><a href="lineup.html">제품라인업</a><a href="support.html">구매스토어</a><a href="store-3d.html" class="on" aria-current="page">매장 구성 보기</a></div>
-</div></nav>
+<body data-nw-layout="flow">
+<div class="nw-head" role="banner">
+  <div class="nw-inner"><a class="nw-brand" href="index.html" aria-label="누리네트웍스 Store"><img src="logo.svg" alt="" width="54" height="26"><span>누리네트웍스</span></a>
+    <details class="nw-switch"><summary><i aria-hidden="true"></i>전체 메뉴</summary></details>
+    <nav id="nav" class="nw-primary" aria-label="전체 메뉴"><div class="nw-item"><a href="index.html">Store</a></div><div class="nw-item"><a href="zed3.html">ZED-III</a></div><div class="nw-item"><a href="home-classic.html">Home</a></div><div class="nw-item"><a href="about.html">회사소개</a></div><div class="nw-item"><a href="lineup.html">제품 라인업</a><details class="nw-more"><summary aria-label="제품 라인업 하위 메뉴"><span aria-hidden="true"></span></summary><div class="nw-sub"><a href="lineup-pos.html">포스 POS</a><a href="lineup-kiosk.html">배리어프리 키오스크</a><a href="lineup-order.html">테이블오더 / QR오더</a><a href="lineup-software.html">포스 소프트웨어</a><a href="lineup-signpad.html">토스·네이버 단말기</a><a href="lineup-terminal.html">유·무선 카드단말기</a><a href="lineup-pg.html">PG 결제</a><a href="lineup-extra.html">부가장비</a></div></details></div><div class="nw-item"><a href="support.html#store">구매스토어</a><details class="nw-more"><summary aria-label="구매스토어 하위 메뉴"><span aria-hidden="true"></span></summary><div class="nw-sub"><a href="benefits.html">계약 혜택</a></div></details></div><div class="nw-item"><a href="store-3d.html" aria-current="page">매장 구성 보기</a><details class="nw-more"><summary aria-label="매장 구성 보기 하위 메뉴"><span aria-hidden="true"></span></summary><div class="nw-sub"><a href="store-configurator.html">제품 선택 · 예상 견적</a></div></details></div><a class="nw-call-menu" href="tel:1544-7754">전화 상담 1544-7754</a></nav>
+    <div class="nw-contact"><a class="nw-phone" href="tel:1544-7754">1544-7754</a><a class="nw-action" href="support.html#formCard">도입 상담</a></div>
+  </div></div>
 <section class="s3-hero">
   <div class="s3-eyebrow">3D STORE VIEW</div>
   <h1>매장 구성 보기</h1>
