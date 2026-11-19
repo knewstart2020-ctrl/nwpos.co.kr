@@ -115,33 +115,98 @@ body{font-family:'Noto Sans KR','Inter',sans-serif;color:#1d1d1f;background:#f5f
 </head>
 <body data-nw-layout="overlay">
 <!-- ═══ CINEMATIC INTRO ═══ -->
-<div id="filmIntro">
 <style>
-#filmIntro{position:fixed;inset:0;z-index:99999;background:#000;display:flex;align-items:center;justify-content:center;overflow:hidden;}
-#filmIntro.hide{animation:fiOut .8s ease forwards;}
-@keyframes fiOut{to{opacity:0;visibility:hidden;}}
-#filmIntro video{width:100%;height:100%;object-fit:cover;}
-.fi-skip{position:absolute;top:28px;right:28px;z-index:20;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);color:#fff;padding:10px 22px;border-radius:30px;font-family:Inter,sans-serif;font-size:12px;letter-spacing:1px;cursor:pointer;transition:all .2s;}
-.fi-skip:hover{background:rgba(255,255,255,.3);border-color:rgba(255,255,255,.5);}
-.fi-brand{position:absolute;top:32px;left:32px;z-index:20;font-family:Inter,sans-serif;font-size:11px;color:rgba(255,255,255,.65);letter-spacing:3px;text-transform:uppercase;font-weight:700;}
+#filmIntro {position:fixed;inset:0;z-index:100;display:grid;place-items:center;overflow:hidden;background:#0b0f16;opacity:1;transition:opacity .28s ease}
+#filmIntro[hidden] {display:none!important}
+#filmIntro[data-closing] {opacity:0;pointer-events:none}
+#filmIntro video {display:block;width:100%;height:100%;min-height:0;object-fit:contain}
+#filmIntro .film-audio {top:auto;bottom:max(15px,env(safe-area-inset-bottom));right:18px;background:#101923d9;min-width:44px;padding:0 12px}
+#filmIntro button {position:absolute;top:max(16px,env(safe-area-inset-top));right:max(18px,env(safe-area-inset-right));min-height:44px;padding:0 17px;border:1px solid #ffffff65;border-radius:24px;background:#101923dc;color:white;font:600 14px/1 system-ui,sans-serif;cursor:pointer}
+#filmIntro .film-start {inset:50% auto auto 50%;transform:translate(-50%,-50%);background:#0a1426ed;white-space:nowrap}
+#filmIntro .film-start span {margin-right:5px}
+#filmIntro[data-waiting] video {cursor:pointer}
+#filmIntro button[hidden] {display:none}
+#filmIntro button:focus-visible {outline:3px solid white;outline-offset:4px}
+@media(prefers-reduced-motion:reduce){#filmIntro {transition:none}}
 </style>
-<video autoplay muted playsinline>
-<source src="lineup-intro-wing.mp4?v=4" type="video/mp4">
-</video>
-<div class="fi-brand">■ NURINETWORKSPOS · LINEUP REEL</div>
-<button class="fi-skip" onclick="skipFilmIntro()">SKIP ▶</button>
+<section id="filmIntro" hidden aria-label="누리네트웍스 제품 라인업 인트로">
+  <video playsinline preload="none" aria-label="포스, 주문기, 간편결제 기기와 유·무선 카드 단말기"></video>
+  <button type="button">건너뛰기 <span aria-hidden="true">›</span></button>
+  <button type="button" class="film-start" hidden><span aria-hidden="true">▶</span> 소리와 함께 재생</button>
+  <button type="button" class="film-audio" hidden>소리 끄기</button>
+</section>
 <script>
-(function(){
-  if(sessionStorage.getItem('nw_film_shown')){document.getElementById('filmIntro').style.display='none';return;}
-  sessionStorage.setItem('nw_film_shown','1');
-  var v=document.querySelector('#filmIntro video');
-  if(v){v.addEventListener('ended',endFilmIntro);}
-  setTimeout(endFilmIntro,16000);
+(() => {
+  const intro = document.getElementById('filmIntro');
+  const video = intro.querySelector('video');
+  const skip = intro.querySelector('button');
+  const sound = intro.querySelector('.film-audio');
+  const startButton = intro.querySelector('.film-start');
+  const seen = 'nw_lineup_film_20261120_v5';
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  try { if (sessionStorage.getItem(seen)) return; } catch {}
+  const format = window.matchMedia('(orientation: portrait)').matches ? 'portrait' : 'landscape';
+  const asset = 'assets/lineup-direction-v5/' + format;
+  let timer;
+  function remember() { try { sessionStorage.setItem(seen, '1'); } catch {} }
+  function close() {
+    if (intro.hidden || intro.hasAttribute('data-closing')) return;
+    clearTimeout(timer);
+    intro.setAttribute('data-closing', '');
+    document.removeEventListener('keydown', onKey);
+    const focusList = intro.contains(document.activeElement);
+    video.pause();
+    setTimeout(() => {
+      intro.hidden = true;
+      if (focusList) {
+        const title = document.querySelector('h1');
+        if (title) { title.tabIndex = -1; title.focus({preventScroll:true}); }
+      }
+    }, 280);
+  }
+  function skipIntro() { remember(); close(); }
+  function onKey(event) { if (event.key === 'Escape') skipIntro(); }
+  function playWithSound() {
+    if (intro.hidden || intro.hasAttribute('data-closing')) return;
+    video.muted = false;
+    clearTimeout(timer);
+    timer = setTimeout(close, 10000);
+    video.play().catch(error => {
+      if (intro.hidden || intro.hasAttribute('data-closing')) return;
+      if (error.name !== 'NotAllowedError') { close(); return; }
+      clearTimeout(timer);
+      intro.setAttribute('data-waiting', '');
+      startButton.hidden = false;
+      sound.hidden = true;
+    });
+  }
+  startButton.addEventListener('click', playWithSound);
+  video.addEventListener('click', () => {
+    if (intro.hasAttribute('data-waiting')) playWithSound();
+  });
+  sound.addEventListener('click', () => { video.muted = !video.muted; });
+  video.addEventListener('volumechange', () => {
+    sound.textContent = video.muted ? '소리 켜기' : '소리 끄기';
+  });
+  video.addEventListener('playing', () => {
+    const transferFocus = document.activeElement === startButton;
+    intro.removeAttribute('data-waiting');
+    startButton.hidden = true;
+    sound.hidden = false;
+    if (transferFocus) sound.focus({preventScroll:true});
+    remember();
+    clearTimeout(timer);
+  });
+  video.addEventListener('ended', close, {once:true});
+  video.addEventListener('error', close, {once:true});
+  skip.addEventListener('click', skipIntro);
+  document.addEventListener('keydown', onKey);
+  video.poster = asset + '.webp';
+  video.src = asset + '.mp4';
+  intro.hidden = false;
+  playWithSound();
 })();
-function endFilmIntro(){var el=document.getElementById('filmIntro');if(el){el.classList.add('hide');setTimeout(function(){el.style.display='none';},900);}}
-function skipFilmIntro(){endFilmIntro();}
 </script>
-</div>
 <!-- ═══ END CINEMATIC INTRO ═══ -->
 
 
