@@ -53,8 +53,11 @@
         .header.scrolled .nav-store:active,.header.scrolled .nav-store.on{color:var(--primary)!important;}
         .mobile-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;}.mobile-toggle span{width:22px;height:2px;background:#1d1d1f;border-radius:2px;}
         .home-film{margin-top:calc(var(--nw-bar) + 1px);background:#171d21;color:white}
-        .film-frame{position:relative;margin-inline:auto;width:100%;max-width:calc((100vh - var(--nw-bar) - 1px) * 16 / 9);max-width:calc((100dvh - var(--nw-bar) - 1px) * 16 / 9)}
-        .home-film video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain}
+        .film-frame{position:relative;width:100%;aspect-ratio:16/9;max-height:calc(100vh - var(--nw-bar) - 1px);max-height:calc(100dvh - var(--nw-bar) - 1px);overflow:hidden;background:var(--film-still,url('assets/home/first-order-poster-v10.jpg')) center/cover no-repeat}
+        .home-film video,.film-edges{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain}
+        .film-edges{object-fit:fill}
+        .film-frame[data-panorama] video{object-fit:cover}
+        .film-frame[data-extend] video{object-fit:contain}
         .film-controls{position:absolute;right:clamp(6px,1.5vw,24px);bottom:clamp(4px,1vw,16px);display:flex;gap:4px}
         .film-controls button{width:44px;height:44px;padding:0;display:grid;place-items:center;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:rgba(24,29,32,.72);color:white;cursor:pointer}
         .film-controls button:hover{background:rgba(24,29,32,.9)}
@@ -68,8 +71,7 @@
         #film-play[data-playing] .play-mark,#film-play:not([data-playing]) .pause-mark{display:none}
         .home-film [hidden]{display:none}
         .film-copy{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-        .home-film[data-failed] .film-frame{background:var(--film-still) center/contain no-repeat}
-        .home-film[data-failed] video{visibility:hidden}
+        .home-film[data-failed] video,.home-film[data-failed] .film-edges{visibility:hidden}
         .film-status{margin:0;text-align:center;padding:8px;font-size:14px}
         .film-status:empty{display:none}
         
@@ -324,6 +326,7 @@
     <p>성공적인 매장 운영의 든든한 첫걸음, 누리네트웍스가 함께합니다.</p>
   </div>
   <div class="film-frame">
+    <canvas class="film-edges" width="640" height="180" aria-hidden="true" hidden></canvas>
     <video id="first-order" width="1280" height="720" controls muted playsinline loop preload="none"
            aria-label="첫 주문 · 누리네트웍스 소개 영상" poster="assets/home/first-order-poster-v10.jpg"
            src="assets/home/first-order-30-v10.mp4"></video>
@@ -602,6 +605,12 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
   const status = hero.querySelector('.film-status');
   const standardSrc = video.src;
   const compatibleSrc = new URL('first-order-30-compat.webm', standardSrc).href;
+  const cinemaSrc = new URL('first-order-panorama-full.mp4', standardSrc).href;
+  const cinemaWebm = new URL('first-order-panorama-full.webm', standardSrc).href;
+  const standardPoster = video.poster;
+  const cinemaPoster = new URL('first-order-panorama-full.jpg', standardSrc).href;
+  const frame = video.parentElement;
+  const edges = frame.querySelector('.film-edges');
   const failedSources = new Set();
   let wantsPlayback = false;
   let resumeTime = 0;
@@ -622,13 +631,38 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
     wantsPlayback = false;
     video.pause();
   }
+  // The panoramic edit keeps type and action in its central 16:9 safe area.
+  // Only a legacy fallback or a viewport wider than the master needs extra edge pixels.
+  function paintEdges() {
+    if (edges.hidden || video.readyState < 2 || !video.videoWidth) return;
+    const ctx = edges.getContext('2d');
+    if (!ctx) return;
+    const w = video.videoWidth, h = video.videoHeight;
+    const gap = (1 - (w / h) / (frame.clientWidth / frame.clientHeight)) * edges.width / 2;
+    if (gap <= 0) return;
+    const strip = Math.max(1, Math.round(w * .012));
+    ctx.drawImage(video, 0, 0, strip, h, 0, 0, Math.ceil(gap + 1), edges.height);
+    ctx.drawImage(video, w - strip, 0, strip, h, Math.floor(edges.width - gap - 1), 0, Math.ceil(gap + 1), edges.height);
+  }
   function selectFilm() {
-    const src = [standardSrc, compatibleSrc].find(candidate => !failedSources.has(candidate));
+    const ratio = frame.clientWidth / frame.getBoundingClientRect().height;
+    const wide = ratio > 16/9 + .002;
+    const choices = wide ? [cinemaSrc, cinemaWebm, standardSrc, compatibleSrc] : [standardSrc, compatibleSrc, cinemaSrc, cinemaWebm];
+    const src = choices.find(candidate => !failedSources.has(candidate));
+    const poster = wide ? cinemaPoster : standardPoster;
+    if (video.poster !== poster) video.poster = poster;
+    frame.style.setProperty('--film-still', 'url("' + poster + '")');
     if (!src) return false;
+    const panoramic = src === cinemaSrc || src === cinemaWebm;
+    frame.toggleAttribute('data-panorama', panoramic);
+    const extend = ratio > (panoramic ? 32/9 : 16/9) + .002;
+    frame.toggleAttribute('data-extend', extend);
+    edges.hidden = !extend;
     if (video.src !== src || video.error) {
       if (video.readyState >= 1) resumeTime = video.currentTime;
       video.src = src;
     }
+    paintEdges();
     return true;
   }
   video.addEventListener('error', () => {
@@ -638,7 +672,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
       if (wantsPlayback) start();
       return;
     }
-    hero.style.setProperty('--film-still', 'url("' + video.poster + '")');
     hero.dataset.failed = '';
     status.textContent = '영상을 불러오지 못했습니다. 재생 버튼을 눌러 다시 시도해 주세요.';
     refresh();
@@ -762,8 +795,11 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
     if (motion.matches) { if (finishIntro) finishIntro(); pause(); }
   });
 
-  video.preload = 'metadata';
   selectFilm();
+  video.preload = 'metadata';
+  if ('ResizeObserver' in window) new ResizeObserver(selectFilm).observe(frame);
+  else window.addEventListener('resize', selectFilm);
+  for (const event of ['loadeddata', 'seeked', 'timeupdate']) video.addEventListener(event, paintEdges);
   document.addEventListener('visibilitychange', () => {
     if (!document.hidden && wantsPlayback && video.paused && !video.error) start();
   });
