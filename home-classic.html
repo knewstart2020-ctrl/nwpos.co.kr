@@ -52,10 +52,9 @@
         .header.scrolled .nav-store:hover{color:#1d1d1f!important;}
         .header.scrolled .nav-store:active,.header.scrolled .nav-store.on{color:var(--primary)!important;}
         .mobile-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;}.mobile-toggle span{width:22px;height:2px;background:#1d1d1f;border-radius:2px;}
-        .home-film{margin-top:var(--nw-bar);background:#f8f7f4;color:#173148}
-        .film-frame{position:relative;width:100%}
-        .home-film video{display:block;width:100%;height:auto;aspect-ratio:auto 16/9;object-fit:contain;background:#f8f7f4}
-        .home-film[data-wide] video{aspect-ratio:auto 40/17}
+        .home-film{margin-top:calc(var(--nw-bar) + 1px);background:#171d21;color:white}
+        .film-frame{position:relative;margin-inline:auto;width:100%;max-width:calc((100vh - var(--nw-bar) - 1px) * 16 / 9);max-width:calc((100dvh - var(--nw-bar) - 1px) * 16 / 9)}
+        .home-film video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain}
         .film-controls{position:absolute;right:clamp(6px,1.5vw,24px);bottom:clamp(4px,1vw,16px);display:flex;gap:4px}
         .film-controls button{width:44px;height:44px;padding:0;display:grid;place-items:center;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:rgba(24,29,32,.72);color:white;cursor:pointer}
         .film-controls button:hover{background:rgba(24,29,32,.9)}
@@ -602,10 +601,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
   const hero = video.closest('.home-film');
   const status = hero.querySelector('.film-status');
   const standardSrc = video.src;
-  const wideSrc = new URL('first-order-30-wide.mp4', standardSrc).href;
   const compatibleSrc = new URL('first-order-30-compat.webm', standardSrc).href;
-  const standardPoster = video.poster;
-  const wideScreen = window.matchMedia('(min-width:900px) and (min-aspect-ratio:19/10)');
   const failedSources = new Set();
   let wantsPlayback = false;
   let resumeTime = 0;
@@ -627,12 +623,8 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
     video.pause();
   }
   function selectFilm() {
-    const sources = wideScreen.matches ? [wideSrc, standardSrc, compatibleSrc] : [standardSrc, compatibleSrc];
-    const src = sources.find(candidate => !failedSources.has(candidate));
+    const src = [standardSrc, compatibleSrc].find(candidate => !failedSources.has(candidate));
     if (!src) return false;
-    const wide = src === wideSrc;
-    hero.toggleAttribute('data-wide', wide);
-    video.poster = wide ? 'assets/home/first-order-poster-wide.jpg' : standardPoster;
     if (video.src !== src || video.error) {
       if (video.readyState >= 1) resumeTime = video.currentTime;
       video.src = src;
@@ -722,10 +714,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
   }
 
   const replay = document.getElementById('film-intro');
-  function seenIntro() {
-    try { return sessionStorage.getItem('nw_intro_seen') === '1'; }
-    catch { return false; }
-  }
   function showIntro(requested) {
     if (finishIntro) return;
     pause();
@@ -736,15 +724,17 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
     document.body.append(scene);
     const timers = [];
     let audio;
-    function finish() {
+    function finish(continueFilm = true) {
       timers.forEach(clearTimeout);
       if (audio && audio.state !== 'closed') audio.close().catch(() => {});
       const focusInside = scene.contains(document.activeElement);
       scene.remove();
       finishIntro = null;
-      try { sessionStorage.setItem('nw_intro_seen', '1'); } catch {}
-      if (focusInside) play.focus({preventScroll:true});
-      if (!motion.matches) start();
+      if (continueFilm) {
+        if (!requested && (!document.activeElement || document.activeElement === document.body || focusInside)) window.scrollTo({top:0,behavior:'instant'});
+        if (focusInside) play.focus({preventScroll:true});
+        if (!motion.matches) start();
+      }
     }
     finishIntro = finish;
     skip.addEventListener('click', finish);
@@ -772,10 +762,8 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
     if (motion.matches) { if (finishIntro) finishIntro(); pause(); }
   });
 
-  // Re-select the edit after rotation or a wide-window resize, keeping the same moment.
   video.preload = 'metadata';
   selectFilm();
-  wideScreen.addEventListener('change', selectFilm);
   document.addEventListener('visibilitychange', () => {
     if (!document.hidden && wantsPlayback && video.paused && !video.error) start();
   });
@@ -783,8 +771,18 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
   sound.hidden = false;
   controls.hidden = false;
   refresh();
-  if (!motion.matches && !location.hash && !seenIntro()) showIntro(false);
-  else if (!motion.matches) start();
+  function enterHome() {
+    if (!location.hash || location.hash === '#hero') showIntro(false);
+    else if (!motion.matches) start();
+  }
+  window.addEventListener('pagehide', () => {
+    if (finishIntro) finishIntro(false);
+    pause();
+  });
+  window.addEventListener('pageshow', event => {
+    if (event.persisted) enterHome();
+  });
+  enterHome();
 })();
 </script>
 <script>
