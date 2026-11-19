@@ -53,7 +53,12 @@
         .header.scrolled .nav-store:active,.header.scrolled .nav-store.on{color:var(--primary)!important;}
         .mobile-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;}.mobile-toggle span{width:22px;height:2px;background:#1d1d1f;border-radius:2px;}
         .home-film{margin-top:var(--nw-bar);background:#f8f7f4;color:#173148}
+        .film-frame{position:relative;margin-inline:auto;max-width:calc((100svh - var(--nw-bar) - 50px) * 16 / 9)}
         .home-film video{display:block;width:100%;height:auto;max-height:calc(100svh - var(--nw-bar) - 50px);object-fit:contain;background:#f8f7f4}
+        .film-speaker{position:absolute;right:clamp(10px,1.5vw,24px);bottom:clamp(10px,1.5vw,24px);width:44px;height:44px;padding:0;display:grid;place-items:center;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:rgba(24,29,32,.72);color:white;cursor:pointer}
+        .film-speaker:hover{background:rgba(24,29,32,.9)}
+        .film-speaker:focus-visible{outline:3px solid white;outline-offset:2px;box-shadow:0 0 0 6px #132e48}
+        .film-speaker[aria-pressed="false"] .sound-waves,.film-speaker[aria-pressed="true"] .mute-slash{display:none}
         .home-film .film-controls{display:flex;justify-content:flex-end;gap:8px;padding:4px clamp(12px,4vw,64px);background:#f8f7f4}
         .home-film [hidden]{display:none}
         .film-controls button{line-height:1.4;font-family:inherit;font-size:14px;font-weight:600;color:#213c50;background:transparent;border:0;border-radius:4px;min-height:42px;padding:6px 12px;cursor:pointer}
@@ -61,7 +66,7 @@
         .film-controls button:hover{background:#e9e8e4}
         .film-copy{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
         .home-film[data-failed] .film-copy{position:static;width:auto;height:auto;clip-path:none;white-space:normal;padding:28px}
-        .home-film[data-failed] video,.home-film[data-failed] .film-controls{display:none}
+        .home-film[data-failed] .film-frame,.home-film[data-failed] .film-controls{display:none}
         
         
         
@@ -313,13 +318,21 @@
     <h1 id="home-motto">결제는 더 쉽게, 매장은 더 스마트하게</h1>
     <p>성공적인 매장 운영의 든든한 첫걸음, 누리네트웍스가 함께합니다.</p>
   </div>
-  <video id="first-order" width="1280" height="720" controls muted playsinline loop preload="metadata"
-         aria-label="첫 주문 · 누리네트웍스 소개 영상" poster="assets/home/first-order-poster-v10.jpg"
-         src="assets/home/first-order-30-v10.mp4"></video>
+  <div class="film-frame">
+    <video id="first-order" width="1280" height="720" controls muted playsinline loop preload="metadata"
+           aria-label="첫 주문 · 누리네트웍스 소개 영상" poster="assets/home/first-order-poster-v10.jpg"
+           src="assets/home/first-order-30-v10.mp4"></video>
+    <button type="button" class="film-speaker" id="film-sound" aria-controls="first-order" aria-label="배경음악" aria-pressed="false" title="소리 켜기" hidden>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+        <path d="M11 5 6 9H3v6h3l5 4z" fill="currentColor"/>
+        <path class="sound-waves" d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/>
+        <path class="mute-slash" d="m4 3 16 18" stroke="#ffa3a3" stroke-width="2.4"/>
+      </svg>
+    </button>
+  </div>
   <div class="film-controls" hidden>
     <button type="button" id="film-intro">등장 장면 다시 보기</button>
     <button type="button" id="film-play" aria-controls="first-order">영상 재생</button>
-    <button type="button" id="film-sound" aria-controls="first-order">소리 켜기</button>
   </div>
 </section>
 
@@ -577,7 +590,9 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
   function refresh() {
     play.textContent = video.paused ? '영상 재생' : '일시정지';
-    sound.textContent = video.muted ? '소리 켜기' : '소리 끄기';
+    const audible = !video.muted && video.volume > 0;
+    sound.setAttribute('aria-pressed', String(audible));
+    sound.title = audible ? '소리 끄기' : '소리 켜기';
   }
   function start() { video.play().catch(refresh); }
   function fallback() { video.closest('section').dataset.failed = ''; }
@@ -586,8 +601,13 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
   for (const event of ['play', 'pause', 'volumechange']) video.addEventListener(event, refresh);
   play.addEventListener('click', () => { if (video.paused) start(); else video.pause(); });
   sound.addEventListener('click', () => {
-    video.muted = !video.muted;
-    if (!video.muted && video.paused) start();
+    if (video.muted || video.volume === 0) {
+      if (video.volume === 0) video.volume = 1;
+      video.muted = false;
+      if (video.paused) start();
+    } else {
+      video.muted = true;
+    }
   });
   function playIntroSound(){
     try{
@@ -689,6 +709,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
   });
 
   video.controls = false;
+  sound.hidden = false;
   controls.hidden = false;
   refresh();
   if (!motion.matches && !location.hash && !seenIntro()) showIntro(false);
