@@ -53,17 +53,21 @@
         .header.scrolled .nav-store:active,.header.scrolled .nav-store.on{color:var(--primary)!important;}
         .mobile-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;}.mobile-toggle span{width:22px;height:2px;background:#1d1d1f;border-radius:2px;}
         .home-film{margin-top:var(--nw-bar);background:#f8f7f4;color:#173148}
-        .film-frame{position:relative;margin-inline:auto;max-width:calc((100svh - var(--nw-bar) - 50px) * 16 / 9)}
-        .home-film video{display:block;width:100%;height:auto;max-height:calc(100svh - var(--nw-bar) - 50px);object-fit:contain;background:#f8f7f4}
-        .film-speaker{position:absolute;right:clamp(10px,1.5vw,24px);bottom:clamp(10px,1.5vw,24px);width:44px;height:44px;padding:0;display:grid;place-items:center;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:rgba(24,29,32,.72);color:white;cursor:pointer}
-        .film-speaker:hover{background:rgba(24,29,32,.9)}
-        .film-speaker:focus-visible{outline:3px solid white;outline-offset:2px;box-shadow:0 0 0 6px #132e48}
+        .film-frame{position:relative;width:100%}
+        .home-film video{display:block;width:100%;height:auto;aspect-ratio:auto 16/9;object-fit:contain;background:#f8f7f4}
+        @media (min-width:900px) and (min-aspect-ratio:19/10){.home-film video{aspect-ratio:auto 40/17}}
+        .film-controls{position:absolute;right:clamp(6px,1.5vw,24px);bottom:clamp(4px,1vw,16px);display:flex;gap:4px}
+        .film-controls button{width:44px;height:44px;padding:0;display:grid;place-items:center;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:rgba(24,29,32,.72);color:white;cursor:pointer}
+        .film-controls button:hover{background:rgba(24,29,32,.9)}
+        .film-controls button:focus-visible{outline:3px solid white;outline-offset:2px;box-shadow:0 0 0 6px #132e48}
+        @media(max-width:600px){
+          .film-controls{inset:0;pointer-events:none}
+          .film-controls button{position:absolute;pointer-events:auto}
+          #film-intro{top:4px;right:54px}#film-play{top:4px;right:6px}#film-sound{bottom:4px;right:6px}
+        }
         .film-speaker[aria-pressed="false"] .sound-waves,.film-speaker[aria-pressed="true"] .mute-slash{display:none}
-        .home-film .film-controls{display:flex;justify-content:flex-end;gap:8px;padding:4px clamp(12px,4vw,64px);background:#f8f7f4}
+        #film-play[data-playing] .play-mark,#film-play:not([data-playing]) .pause-mark{display:none}
         .home-film [hidden]{display:none}
-        .film-controls button{line-height:1.4;font-family:inherit;font-size:14px;font-weight:600;color:#213c50;background:transparent;border:0;border-radius:4px;min-height:42px;padding:6px 12px;cursor:pointer}
-        .film-controls button:focus-visible{outline:2px solid #165aa8}
-        .film-controls button:hover{background:#e9e8e4}
         .film-copy{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
         .home-film[data-failed] .film-copy{position:static;width:auto;height:auto;clip-path:none;white-space:normal;padding:28px}
         .home-film[data-failed] .film-frame,.home-film[data-failed] .film-controls{display:none}
@@ -320,8 +324,17 @@
   </div>
   <div class="film-frame">
     <video id="first-order" width="1280" height="720" controls muted playsinline loop preload="metadata"
-           aria-label="첫 주문 · 누리네트웍스 소개 영상" poster="assets/home/first-order-poster-v10.jpg"
-           src="assets/home/first-order-30-v10.mp4"></video>
+           aria-label="첫 주문 · 누리네트웍스 소개 영상" poster="assets/home/first-order-poster-v10.jpg">
+      <source media="(min-width:900px) and (min-aspect-ratio:19/10)" src="assets/home/first-order-30-wide.mp4" type="video/mp4">
+      <source src="assets/home/first-order-30-v10.mp4" type="video/mp4">
+    </video>
+    <div class="film-controls" hidden>
+    <button type="button" id="film-intro" aria-label="등장 장면 다시 보기" title="등장 장면 다시 보기">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10a8 8 0 1 1 1 8M4 4v6h6"/></svg>
+    </button>
+    <button type="button" id="film-play" aria-controls="first-order" aria-label="영상 재생" title="영상 재생">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path class="play-mark" d="m7 4 13 8-13 8z"/><path class="pause-mark" d="M6 4h4v16H6zm8 0h4v16h-4z"/></svg>
+    </button>
     <button type="button" class="film-speaker" id="film-sound" aria-controls="first-order" aria-label="배경음악" aria-pressed="false" title="소리 켜기" hidden>
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
         <path d="M11 5 6 9H3v6h3l5 4z" fill="currentColor"/>
@@ -329,10 +342,7 @@
         <path class="mute-slash" d="m4 3 16 18" stroke="#ffa3a3" stroke-width="2.4"/>
       </svg>
     </button>
-  </div>
-  <div class="film-controls" hidden>
-    <button type="button" id="film-intro">등장 장면 다시 보기</button>
-    <button type="button" id="film-play" aria-controls="first-order">영상 재생</button>
+    </div>
   </div>
 </section>
 
@@ -589,7 +599,9 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
   const sound = document.getElementById('film-sound');
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
   function refresh() {
-    play.textContent = video.paused ? '영상 재생' : '일시정지';
+    play.title = video.paused ? '영상 재생' : '일시정지';
+    play.setAttribute('aria-label', play.title);
+    play.toggleAttribute('data-playing', !video.paused);
     const audible = !video.muted && video.volume > 0;
     sound.setAttribute('aria-pressed', String(audible));
     sound.title = audible ? '소리 끄기' : '소리 켜기';
@@ -597,7 +609,8 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
   function start() { video.play().catch(refresh); }
   function fallback() { video.closest('section').dataset.failed = ''; }
   video.addEventListener('error', fallback);
-  if (video.error) fallback();
+  video.querySelector('source:last-child').addEventListener('error', fallback);
+  if (video.error || video.networkState === video.NETWORK_NO_SOURCE) fallback();
   for (const event of ['play', 'pause', 'volumechange']) video.addEventListener(event, refresh);
   play.addEventListener('click', () => { if (video.paused) start(); else video.pause(); });
   sound.addEventListener('click', () => {
@@ -708,6 +721,29 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
     if (motion.matches) { if (finishIntro) finishIntro(); video.pause(); }
   });
 
+  // Re-select the edit after rotation or a wide-window resize, keeping the same moment.
+  const wideSource = video.querySelector('source[media]');
+  const standardSource = video.querySelector('source:last-child');
+  const wideScreen = window.matchMedia(wideSource.media);
+  const normalPoster = video.poster;
+  function selectFilm() {
+    video.poster = wideScreen.matches ? 'assets/home/first-order-poster-wide.jpg' : normalPoster;
+    video.src = wideScreen.matches ? wideSource.src : standardSource.src;
+  }
+  selectFilm();
+  let resumeAfterResize;
+  wideScreen.addEventListener('change', () => {
+    if (video.readyState >= 1) resumeAfterResize = {time:video.currentTime, playing:!video.paused};
+    delete video.closest('section').dataset.failed;
+    selectFilm();
+  });
+  video.addEventListener('loadedmetadata', () => {
+    if (!resumeAfterResize) return;
+    const previous = resumeAfterResize;
+    resumeAfterResize = null;
+    video.currentTime = previous.time;
+    if (previous.playing && !finishIntro && !motion.matches && !document.hidden) start();
+  });
   video.controls = false;
   sound.hidden = false;
   controls.hidden = false;
