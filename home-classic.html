@@ -339,7 +339,7 @@
     <canvas class="film-edges" width="640" height="180" aria-hidden="true" hidden></canvas>
     <video id="first-order" width="1280" height="720" controls muted playsinline loop preload="none"
            aria-label="첫 주문 · 누리네트웍스 소개 영상" poster="assets/home/first-order-poster-v10.jpg"
-           src="assets/home/first-order-30-v10.mp4"></video>
+           src="assets/home/first-order-glider.mp4"></video>
     <div class="film-controls" hidden>
     <button type="button" id="film-intro" aria-label="등장 장면 다시 보기" title="등장 장면 다시 보기">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10a8 8 0 1 1 1 8M4 4v6h6"/></svg>
@@ -612,9 +612,9 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
   const hero = video.closest('.home-film');
   const status = hero.querySelector('.film-status');
   const standardSrc = video.src;
-  const compatibleSrc = new URL('first-order-30-compat.webm', standardSrc).href;
-  const cinemaSrc = new URL('first-order-panorama-full.mp4', standardSrc).href;
-  const cinemaWebm = new URL('first-order-panorama-full.webm', standardSrc).href;
+  const compatibleSrc = new URL('first-order-glider.webm', standardSrc).href;
+  const cinemaSrc = new URL('first-order-glider-panorama.mp4', standardSrc).href;
+  const cinemaWebm = new URL('first-order-glider-panorama.webm', standardSrc).href;
   const standardPoster = video.poster;
   const cinemaPoster = new URL('first-order-panorama-full.jpg', standardSrc).href;
   const frame = video.parentElement;
