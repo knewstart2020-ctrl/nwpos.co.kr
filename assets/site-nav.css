@@ -56,6 +56,5 @@ body:has(.nw-head) .estimate{top:calc(var(--nw-bar) + 12px)}
   .nw-head .nw-call-menu{display:block;color:#0c4d88;padding:12px 9px 4px;font-size:14px}
   .nw-head .nw-action{min-height:38px;padding:11px 13px;font-size:13px}
 }
-@media(max-width:410px){.nw-head .nw-inner{padding:0 9px;gap:5px}.nw-head .nw-brand{gap:5px;font-size:15px}.nw-head .nw-brand img{width:40px;height:22px}.nw-head .nw-store-brand{min-width:96px!important;padding:4px 6px!important}.nw-head .nw-action{padding:9px}.nw-head .nw-switch summary{font-size:13px;padding-left:3px}}
-@media(max-width:380px){body:has(.nw-store-brand) .final .wrap{grid-template-columns:minmax(0,1fr)}body:has(.nw-store-brand) .final .wrap>div{min-width:0}body:has(.nw-store-brand) .final .cform{padding:18px}}
+@media(max-width:410px){.nw-head .nw-inner{padding:0 9px;gap:5px}.nw-head .nw-brand{gap:5px;font-size:15px}.nw-head .nw-brand img{width:40px;height:22px}.nw-head .nw-action{padding:9px}.nw-head .nw-switch summary{font-size:13px;padding-left:3px}}
 @media print{.nw-head{display:none!important}body[data-nw-layout]{padding-top:0!important}html:has(.nw-head){--nw-bar:0px;--nw-local:0px}}
