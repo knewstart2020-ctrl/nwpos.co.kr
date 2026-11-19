@@ -55,7 +55,7 @@
         .home-film{margin-top:var(--nw-bar);background:#f8f7f4;color:#173148}
         .film-frame{position:relative;width:100%}
         .home-film video{display:block;width:100%;height:auto;aspect-ratio:auto 16/9;object-fit:contain;background:#f8f7f4}
-        @media (min-width:900px) and (min-aspect-ratio:19/10){.home-film video{aspect-ratio:auto 40/17}}
+        .home-film[data-wide] video{aspect-ratio:auto 40/17}
         .film-controls{position:absolute;right:clamp(6px,1.5vw,24px);bottom:clamp(4px,1vw,16px);display:flex;gap:4px}
         .film-controls button{width:44px;height:44px;padding:0;display:grid;place-items:center;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:rgba(24,29,32,.72);color:white;cursor:pointer}
         .film-controls button:hover{background:rgba(24,29,32,.9)}
@@ -69,8 +69,10 @@
         #film-play[data-playing] .play-mark,#film-play:not([data-playing]) .pause-mark{display:none}
         .home-film [hidden]{display:none}
         .film-copy{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-        .home-film[data-failed] .film-copy{position:static;width:auto;height:auto;clip-path:none;white-space:normal;padding:28px}
-        .home-film[data-failed] .film-frame,.home-film[data-failed] .film-controls{display:none}
+        .home-film[data-failed] .film-frame{background:var(--film-still) center/contain no-repeat}
+        .home-film[data-failed] video{visibility:hidden}
+        .film-status{margin:0;text-align:center;padding:8px;font-size:14px}
+        .film-status:empty{display:none}
         
         
         
@@ -323,11 +325,9 @@
     <p>성공적인 매장 운영의 든든한 첫걸음, 누리네트웍스가 함께합니다.</p>
   </div>
   <div class="film-frame">
-    <video id="first-order" width="1280" height="720" controls muted playsinline loop preload="metadata"
-           aria-label="첫 주문 · 누리네트웍스 소개 영상" poster="assets/home/first-order-poster-v10.jpg">
-      <source media="(min-width:900px) and (min-aspect-ratio:19/10)" src="assets/home/first-order-30-wide.mp4" type="video/mp4">
-      <source src="assets/home/first-order-30-v10.mp4" type="video/mp4">
-    </video>
+    <video id="first-order" width="1280" height="720" controls muted playsinline loop preload="none"
+           aria-label="첫 주문 · 누리네트웍스 소개 영상" poster="assets/home/first-order-poster-v10.jpg"
+           src="assets/home/first-order-30-v10.mp4"></video>
     <div class="film-controls" hidden>
     <button type="button" id="film-intro" aria-label="등장 장면 다시 보기" title="등장 장면 다시 보기">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10a8 8 0 1 1 1 8M4 4v6h6"/></svg>
@@ -344,6 +344,7 @@
     </button>
     </div>
   </div>
+  <p class="film-status" role="status"></p>
 </section>
 
 <section class="section" id="products" style="padding:80px 0;">
@@ -598,26 +599,76 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
   const play = document.getElementById('film-play');
   const sound = document.getElementById('film-sound');
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const hero = video.closest('.home-film');
+  const status = hero.querySelector('.film-status');
+  const standardSrc = video.src;
+  const wideSrc = new URL('first-order-30-wide.mp4', standardSrc).href;
+  const compatibleSrc = new URL('first-order-30-compat.webm', standardSrc).href;
+  const standardPoster = video.poster;
+  const wideScreen = window.matchMedia('(min-width:900px) and (min-aspect-ratio:19/10)');
+  const failedSources = new Set();
+  let wantsPlayback = false;
+  let resumeTime = 0;
+  let finishIntro;
   function refresh() {
-    play.title = video.paused ? '영상 재생' : '일시정지';
+    play.title = hero.hasAttribute('data-failed') ? '영상 다시 시도' : (video.paused ? '영상 재생' : '일시정지');
     play.setAttribute('aria-label', play.title);
     play.toggleAttribute('data-playing', !video.paused);
     const audible = !video.muted && video.volume > 0;
     sound.setAttribute('aria-pressed', String(audible));
     sound.title = audible ? '소리 끄기' : '소리 켜기';
   }
-  function start() { video.play().catch(refresh); }
-  function fallback() { video.closest('section').dataset.failed = ''; }
-  video.addEventListener('error', fallback);
-  video.querySelector('source:last-child').addEventListener('error', fallback);
-  if (video.error || video.networkState === video.NETWORK_NO_SOURCE) fallback();
+  function start() {
+    wantsPlayback = true;
+    if (!finishIntro && !document.hidden && !video.error) video.play().catch(refresh);
+  }
+  function pause() {
+    wantsPlayback = false;
+    video.pause();
+  }
+  function selectFilm() {
+    const sources = wideScreen.matches ? [wideSrc, standardSrc, compatibleSrc] : [standardSrc, compatibleSrc];
+    const src = sources.find(candidate => !failedSources.has(candidate));
+    if (!src) return false;
+    const wide = src === wideSrc;
+    hero.toggleAttribute('data-wide', wide);
+    video.poster = wide ? 'assets/home/first-order-poster-wide.jpg' : standardPoster;
+    if (video.src !== src || video.error) {
+      if (video.readyState >= 1) resumeTime = video.currentTime;
+      video.src = src;
+    }
+    return true;
+  }
+  video.addEventListener('error', () => {
+    if (!video.error) return;
+    failedSources.add(video.src);
+    if (selectFilm()) {
+      if (wantsPlayback) start();
+      return;
+    }
+    hero.style.setProperty('--film-still', 'url("' + video.poster + '")');
+    hero.dataset.failed = '';
+    status.textContent = '영상을 불러오지 못했습니다. 재생 버튼을 눌러 다시 시도해 주세요.';
+    refresh();
+  });
+  video.addEventListener('loadedmetadata', () => {
+    delete hero.dataset.failed;
+    status.textContent = '';
+    if (resumeTime) { video.currentTime = resumeTime; resumeTime = 0; }
+    refresh();
+    if (wantsPlayback && video.paused) start();
+  });
+  function requestPlayback() {
+    if (video.error) { failedSources.clear(); selectFilm(); }
+    start();
+  }
   for (const event of ['play', 'pause', 'volumechange']) video.addEventListener(event, refresh);
-  play.addEventListener('click', () => { if (video.paused) start(); else video.pause(); });
+  play.addEventListener('click', () => { if (video.paused || video.error) requestPlayback(); else pause(); });
   sound.addEventListener('click', () => {
     if (video.muted || video.volume === 0) {
       if (video.volume === 0) video.volume = 1;
       video.muted = false;
-      if (video.paused) start();
+      if (video.paused || video.error) requestPlayback();
     } else {
       video.muted = true;
     }
@@ -671,14 +722,14 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
   }
 
   const replay = document.getElementById('film-intro');
-  let finishIntro;
   function seenIntro() {
     try { return sessionStorage.getItem('nw_intro_seen') === '1'; }
     catch { return false; }
   }
   function showIntro(requested) {
     if (finishIntro) return;
-    video.pause();
+    pause();
+    resumeTime = 0;
     video.currentTime = 0;
     const scene = document.getElementById('brand-scene').content.firstElementChild.cloneNode(true);
     const skip = scene.querySelector('.i-skip');
@@ -693,7 +744,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
       finishIntro = null;
       try { sessionStorage.setItem('nw_intro_seen', '1'); } catch {}
       if (focusInside) play.focus({preventScroll:true});
-      if (!motion.matches && !document.hidden) start();
+      if (!motion.matches) start();
     }
     finishIntro = finish;
     skip.addEventListener('click', finish);
@@ -718,31 +769,15 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
     if (finishIntro && !event.target.closest('#brandIntro,.nw-head')) finishIntro();
   });
   motion.addEventListener('change', () => {
-    if (motion.matches) { if (finishIntro) finishIntro(); video.pause(); }
+    if (motion.matches) { if (finishIntro) finishIntro(); pause(); }
   });
 
   // Re-select the edit after rotation or a wide-window resize, keeping the same moment.
-  const wideSource = video.querySelector('source[media]');
-  const standardSource = video.querySelector('source:last-child');
-  const wideScreen = window.matchMedia(wideSource.media);
-  const normalPoster = video.poster;
-  function selectFilm() {
-    video.poster = wideScreen.matches ? 'assets/home/first-order-poster-wide.jpg' : normalPoster;
-    video.src = wideScreen.matches ? wideSource.src : standardSource.src;
-  }
+  video.preload = 'metadata';
   selectFilm();
-  let resumeAfterResize;
-  wideScreen.addEventListener('change', () => {
-    if (video.readyState >= 1) resumeAfterResize = {time:video.currentTime, playing:!video.paused};
-    delete video.closest('section').dataset.failed;
-    selectFilm();
-  });
-  video.addEventListener('loadedmetadata', () => {
-    if (!resumeAfterResize) return;
-    const previous = resumeAfterResize;
-    resumeAfterResize = null;
-    video.currentTime = previous.time;
-    if (previous.playing && !finishIntro && !motion.matches && !document.hidden) start();
+  wideScreen.addEventListener('change', selectFilm);
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden && wantsPlayback && video.paused && !video.error) start();
   });
   video.controls = false;
   sound.hidden = false;
