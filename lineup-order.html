@@ -151,40 +151,6 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 .badge-toss{background:rgba(49,130,246,0.1);color:#3182F6;}
 .spec-check{color:#0F6E56;font-weight:700;}.spec-dash{color:#ccc;}
 
-/* FIELD SKETCH */
-.install-sec{background:transparent;padding:100px 0;}
-.install-inner{max-width:1200px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
-.install-header{text-align:center;margin-bottom:48px;}.install-header h2{font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:8px;}.install-header p{font-size:0.95rem;color:var(--gray);line-height:1.7;}
-.install-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-.install-card{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:4/3;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,0.08);transition:all .5s;}
-.install-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,0.12);}
-.install-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
-.install-card-overlay{position:absolute;inset:0;background:rgba(0,0,0,0);z-index:1;transition:background .5s;}
-.install-card:hover .install-card-overlay{background:rgba(0,0,0,0.55);}
-.install-card-info{position:absolute;bottom:0;left:0;right:0;padding:24px;z-index:2;opacity:0;transform:translateY(12px);transition:all .4s;}
-.install-card:hover .install-card-info{opacity:1;transform:translateY(0);}
-.install-card-info h4{font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:10px;}
-.install-card-tags{display:flex;gap:8px;flex-wrap:wrap;}
-.install-card-tags span{font-size:1rem;font-weight:700;padding:6px 16px;border-radius:50px;background:rgba(255,255,255,0.2);backdrop-filter:blur(4px);color:#fff;}
-.install-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:4/3;background:#e8e8ed;border-radius:16px;color:#999;font-size:0.82rem;text-align:center;line-height:1.6;padding:20px;gap:8px;}
-.install-placeholder svg{opacity:0.3;}
-/* EMOJI ANIMATION */
-.fs-emoji{display:inline-block;font-size:32px;animation:swim 2s ease-in-out infinite;vertical-align:middle;}
-.fs-emoji-bounce{display:inline-block;font-size:48px;animation:bounce 1s ease-in-out infinite;position:absolute;top:20px;right:20px;z-index:3;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.3));}
-@keyframes swim{0%,100%{transform:translateX(0) scaleX(1)}50%{transform:translateX(8px) scaleX(-1)}}
-@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-/* FIELD SKETCH MODAL */
-.fs-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:200;justify-content:center;align-items:center;padding:20px;backdrop-filter:blur(4px);}
-.fs-modal.open{display:flex;}
-.fs-modal-card{background:#fff;border-radius:20px;max-width:600px;width:100%;overflow:hidden;animation:fadeUp .4s ease;position:relative;}
-.fs-modal-img{width:100%;height:280px;object-fit:cover;}
-.fs-modal-body{padding:28px;}
-.fs-modal-body h3{font-size:1.3rem;font-weight:800;margin-bottom:6px;}
-.fs-modal-body .fsm-tags{display:flex;gap:6px;margin-bottom:16px;}
-.fs-modal-body .fsm-tags span{font-size:0.72rem;font-weight:600;padding:4px 12px;border-radius:50px;background:rgba(27,58,140,0.08);color:var(--primary);}
-.fs-modal-body p{font-size:0.92rem;color:#424245;line-height:1.8;}
-.fs-modal-close{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.9);border:none;cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;z-index:10;}
-
 /* FOOTER */
 .footer-mini{background:#f5f5f7;text-align:center;padding:32px 40px;font-size:0.78rem;color:var(--gray);border-top:1px solid rgba(0,0,0,0.06);}
 .footer-mini a{color:var(--primary);text-decoration:none;font-weight:600;}
@@ -237,6 +203,8 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
     <meta name="naver-site-verification" content="ca73c38fc31f5fe55ea3ae985575d31fabb3a56f" />
     <meta name="google-site-verification" content="eMupPrhE5lKmqjNvV3oviRMPM4mjmGdbVPfJlbh7lww" />
 <link rel="stylesheet" href="assets/site-nav.css"><script defer src="assets/site-nav.js"></script>
+<link rel="stylesheet" href="assets/field-sketch-1120/gallery.css">
+<script defer src="assets/field-sketch-1120/gallery.js"></script>
 </head>
 <body data-nw-layout="overlay">
 
@@ -386,43 +354,35 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 </section>
 
 <!-- FIELD SKETCH -->
-<section class="install-sec">
-<div class="install-inner">
-<div class="install-header reveal"><div class="sec-tag">Field Sketch</div><h2>현장 스케치</h2><p>전국 다양한 매장에서 테이블오더/QR오더를 만나보세요.</p></div>
-<div class="install-grid">
-<div class="install-card reveal" onclick="openFS('fs1')">
-<img src="field-order-sushi.jpg" alt="스시집">
-<div class="install-card-overlay"></div>
-<div class="install-card-info"><h4>스시집</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">🍣</span> 테이블오더</span></div></div>
-</div>
-<div class="install-card reveal" onclick="openFS('fs2')">
-<img src="field-order-chicken.jpg" alt="치킨집">
-<div class="install-card-overlay"></div>
-<div class="install-card-info"><h4>치킨집</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">🍗</span> 테이블오더</span></div></div>
-</div>
-<div class="install-card reveal" onclick="openFS('fs3')">
-<img src="field-order-bbq.jpg" alt="삼겹살집">
-<div class="install-card-overlay"></div>
-<div class="install-card-info"><h4>삼겹살집</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">🥩</span> 테이블오더</span></div></div>
-</div>
-</div>
-</div>
+<section class="lineup-sketch" id="field-sketch" aria-labelledby="field-title">
+  <div class="lineup-sketch__inner">
+    <header class="lineup-sketch__header"><small lang="en">FIELD SKETCH</small>
+      <h2 id="field-title">현장 스케치</h2>
+      <p>테이블오더·QR오더의 매장 활용 예시를 담은 연출 이미지입니다.</p>
+    </header>
+    <div class="lineup-sketch__cards">
+      <button type="button" class="lineup-sketch__card" aria-haspopup="dialog" aria-label="스시집 · 테이블오더 확대" data-description="좌석에서 초밥을 고르고 주문하는 모습입니다.">
+        <img src="assets/field-sketch-1120/order-sushi.webp" width="1200" height="900" loading="lazy" decoding="async" alt="스시집에서 사용하는 테이블오더">
+        <span class="lineup-sketch__caption"><strong>스시집</strong><span>테이블오더</span></span>
+      </button>
+      <button type="button" class="lineup-sketch__card" aria-haspopup="dialog" aria-label="치킨집 · QR오더 확대" data-description="손님이 테이블의 QR을 읽고 휴대폰에서 메뉴를 고르는 모습입니다.">
+        <img src="assets/field-sketch-1120/order-chicken.webp" width="1200" height="900" loading="lazy" decoding="async" alt="치킨집에서 사용하는 QR오더">
+        <span class="lineup-sketch__caption"><strong>치킨집</strong><span>QR오더</span></span>
+      </button>
+      <button type="button" class="lineup-sketch__card" aria-haspopup="dialog" aria-label="삼겹살집 · 테이블오더 확대" data-description="불판에서 떨어진 테이블 가장자리에 놓인 화면으로 고기와 곁들임을 추가하는 모습입니다.">
+        <img src="assets/field-sketch-1120/order-bbq.webp" width="1200" height="900" loading="lazy" decoding="async" alt="삼겹살집에서 사용하는 테이블오더">
+        <span class="lineup-sketch__caption"><strong>삼겹살집</strong><span>테이블오더</span></span>
+      </button>
+    </div>
+  </div>
+  <dialog class="lineup-sketch-dialog" aria-labelledby="field-photo-title" aria-describedby="field-photo-desc">
+    <form method="dialog"><button type="submit" autofocus>닫기</button></form>
+    <img alt="">
+    <h3 id="field-photo-title"></h3><p id="field-photo-desc"></p>
+  </dialog>
 </section>
 
 </div><!-- /flow-bg -->
-
-<!-- FIELD SKETCH MODAL -->
-<div class="fs-modal" id="fsModal" onclick="if(event.target===this)closeFS()">
-<button class="fs-modal-close" onclick="closeFS()">✕</button>
-<div class="fs-modal-card">
-<img class="fs-modal-img" id="fsImg" src="" alt="">
-<div class="fs-modal-body">
-<h3 id="fsTitle"></h3>
-<div class="fsm-tags" id="fsTags"></div>
-<p id="fsDesc"></p>
-</div>
-</div>
-</div>
 
 <!-- FOOTER -->
 <div style="background:#1d1d1f;padding:10px 0;overflow:hidden;"><div style="overflow:hidden;"><div style="display:flex;gap:32px;animation:tickS 35s linear infinite;width:max-content;white-space:nowrap;">
@@ -445,26 +405,6 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <div style="text-align:center;padding:24px;font-size:.78rem;color:#86868b;background:#f5f5f7;">&copy; 2026 Nurinetworks. All rights reserved.</div>
 
 <script>
-// Field Sketch Data
-const fsData={
-fs1:{img:'field-order-sushi.jpg',title:'스시집',tags:['업오더 테이블오더'],emoji:'🍣',
-desc:'프리미엄 스시 전문점에 업오더 테이블오더를 설치했습니다. 높은 천장과 우드톤 인테리어에 어울리는 깔끔한 배치로, 각 테이블에서 스시·사시미 메뉴를 직접 선택하고 주문합니다. 다국어 지원으로 일본인 관광객도 편리하게 이용합니다.'},
-fs2:{img:'field-order-chicken.jpg',title:'치킨집',tags:['업오더 테이블오더'],emoji:'🍗',
-desc:'시티뷰가 멋진 치킨&맥주 전문점에 테이블오더를 도입했습니다. 블루 패턴 타일 바닥과 인더스트리얼 조명이 어우러진 공간에서, 고객이 태블릿으로 치킨·맥주를 직접 주문하고 추가 주문도 자유롭게 합니다.'},
-fs3:{img:'field-order-bbq.jpg',title:'삼겹살집',tags:['업오더 테이블오더'],emoji:'🥩',
-desc:'삼겹살 전문점에 테이블오더를 설치했습니다. 로스터 테이블마다 태블릿을 배치하여 고기 종류·사이드 메뉴를 터치 한 번에 주문하고, 숯불 교체·직원 호출도 태블릿으로 바로 요청할 수 있습니다.'}
-};
-function openFS(id){const d=fsData[id];if(!d)return;
-document.getElementById('fsImg').src=d.img;
-document.getElementById('fsTitle').textContent=d.title;
-document.getElementById('fsTags').innerHTML=d.tags.map(t=>'<span>'+t+'</span>').join('');
-document.getElementById('fsDesc').textContent=d.desc;
-var eb=document.getElementById('fsEmoji');if(eb)eb.remove();
-var em=document.createElement('div');em.className='fs-emoji-bounce';em.id='fsEmoji';em.textContent=d.emoji;
-document.querySelector('.fs-modal-card').appendChild(em);
-document.getElementById('fsModal').classList.add('open');document.body.style.overflow='hidden';}
-function closeFS(){document.getElementById('fsModal').classList.remove('open');document.body.style.overflow='';var eb=document.getElementById('fsEmoji');if(eb)eb.remove();}
-
 window.addEventListener('scroll',function(){document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>80);});
 const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}});},{threshold:0.12});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));

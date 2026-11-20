@@ -181,6 +181,8 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
     <meta name="naver-site-verification" content="ca73c38fc31f5fe55ea3ae985575d31fabb3a56f" />
     <meta name="google-site-verification" content="eMupPrhE5lKmqjNvV3oviRMPM4mjmGdbVPfJlbh7lww" />
 <link rel="stylesheet" href="assets/site-nav.css"><script defer src="assets/site-nav.js"></script>
+<link rel="stylesheet" href="assets/field-sketch-1120/gallery.css">
+<script defer src="assets/field-sketch-1120/gallery.js"></script>
 </head>
 <body data-nw-layout="overlay">
 
@@ -370,6 +372,35 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <div class="ci"><div class="ci-icon">🔌</div><h4>T226 유선</h4><p>업포스·오케이포스</p></div>
 </div>
 </div>
+</section>
+
+<!-- FIELD SKETCH -->
+<section class="lineup-sketch" id="field-sketch" aria-labelledby="field-title">
+  <div class="lineup-sketch__inner">
+    <header class="lineup-sketch__header"><small lang="en">FIELD SKETCH</small>
+      <h2 id="field-title">현장 스케치</h2>
+      <p>포스 소프트웨어의 매장 활용 예시를 담은 연출 이미지입니다.</p>
+    </header>
+    <div class="lineup-sketch__cards">
+      <button type="button" class="lineup-sketch__card" aria-haspopup="dialog" aria-label="베이커리 · 업포스 · 선불 주문 확대" data-description="계산대에서 빵과 음료를 선택해 주문을 받는 모습입니다.">
+        <img src="assets/field-sketch-1120/software-bakery.webp" width="1200" height="900" loading="lazy" decoding="async" alt="베이커리에서 사용하는 업포스 · 선불 주문">
+        <span class="lineup-sketch__caption"><strong>베이커리</strong><span>업포스 · 선불 주문</span></span>
+      </button>
+      <button type="button" class="lineup-sketch__card" aria-haspopup="dialog" aria-label="다이닝 · 업포스 · 테이블 관리 확대" data-description="홀의 테이블 배치와 주문 상태를 포스에서 확인하는 모습입니다.">
+        <img src="assets/field-sketch-1120/software-dining.webp" width="1200" height="900" loading="lazy" decoding="async" alt="다이닝에서 사용하는 업포스 · 테이블 관리">
+        <span class="lineup-sketch__caption"><strong>다이닝</strong><span>업포스 · 테이블 관리</span></span>
+      </button>
+      <button type="button" class="lineup-sketch__card" aria-haspopup="dialog" aria-label="포장·배달 전문점 · 오케이포스 · 주문 접수 확대" data-description="주문 전표를 포장 봉투와 대조하며 픽업 주문을 준비하는 모습입니다.">
+        <img src="assets/field-sketch-1120/software-pickup.webp" width="1200" height="900" loading="lazy" decoding="async" alt="포장·배달 전문점에서 사용하는 오케이포스 · 주문 접수">
+        <span class="lineup-sketch__caption"><strong>포장·배달 전문점</strong><span>오케이포스 · 주문 접수</span></span>
+      </button>
+    </div>
+  </div>
+  <dialog class="lineup-sketch-dialog" aria-labelledby="field-photo-title" aria-describedby="field-photo-desc">
+    <form method="dialog"><button type="submit" autofocus>닫기</button></form>
+    <img alt="">
+    <h3 id="field-photo-title"></h3><p id="field-photo-desc"></p>
+  </dialog>
 </section>
 
 </div><!-- /flow-bg -->

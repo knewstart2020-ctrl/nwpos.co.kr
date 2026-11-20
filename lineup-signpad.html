@@ -143,37 +143,6 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 .badge-naver{background:rgba(3,199,90,0.1);color:var(--naver);}
 .spec-check{color:#0F6E56;font-weight:700;}.spec-dash{color:#ccc;}
 
-/* FIELD SKETCH */
-.install-sec{background:transparent;padding:100px 0;}
-.install-inner{max-width:1200px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
-.install-header{text-align:center;margin-bottom:48px;}.install-header h2{font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:8px;}.install-header p{font-size:0.95rem;color:var(--gray);line-height:1.7;}
-.install-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-.install-card{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:4/3;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,0.08);transition:all .5s;}
-.install-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,0.12);}
-.install-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
-.install-card-overlay{position:absolute;inset:0;background:rgba(0,0,0,0);z-index:1;transition:background .5s;}
-.install-card:hover .install-card-overlay{background:rgba(0,0,0,0.55);}
-.install-card-info{position:absolute;bottom:0;left:0;right:0;padding:24px;z-index:2;opacity:0;transform:translateY(12px);transition:all .4s;}
-.install-card:hover .install-card-info{opacity:1;transform:translateY(0);}
-.install-card-info h4{font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:10px;}
-.install-card-tags{display:flex;gap:8px;flex-wrap:wrap;}
-.install-card-tags span{font-size:1rem;font-weight:700;padding:6px 16px;border-radius:50px;background:rgba(255,255,255,0.2);backdrop-filter:blur(4px);color:#fff;}
-.install-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:4/3;background:#e8e8ed;border-radius:16px;color:#999;font-size:0.82rem;text-align:center;line-height:1.6;padding:20px;gap:8px;}
-.fs-emoji{display:inline-block;font-size:32px;animation:swim 2s ease-in-out infinite;vertical-align:middle;}
-.fs-emoji-bounce{display:inline-block;font-size:48px;animation:bounce 1s ease-in-out infinite;position:absolute;top:20px;right:20px;z-index:3;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.3));}
-@keyframes swim{0%,100%{transform:translateX(0) scaleX(1)}50%{transform:translateX(8px) scaleX(-1)}}
-@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-.fs-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:200;justify-content:center;align-items:center;padding:20px;backdrop-filter:blur(4px);}
-.fs-modal.open{display:flex;}
-.fs-modal-card{background:#fff;border-radius:20px;max-width:600px;width:100%;overflow:hidden;animation:fadeUp .4s ease;position:relative;}
-.fs-modal-img{width:100%;height:280px;object-fit:cover;}
-.fs-modal-body{padding:28px;}
-.fs-modal-body h3{font-size:1.3rem;font-weight:800;margin-bottom:6px;}
-.fs-modal-body .fsm-tags{display:flex;gap:6px;margin-bottom:16px;}
-.fs-modal-body .fsm-tags span{font-size:0.72rem;font-weight:600;padding:4px 12px;border-radius:50px;background:rgba(27,58,140,0.08);color:var(--primary);}
-.fs-modal-body p{font-size:0.92rem;color:#424245;line-height:1.8;}
-.fs-modal-close{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.9);border:none;cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;z-index:10;}
-
 /* FOOTER */
 .footer-mini{background:#f5f5f7;text-align:center;padding:32px 40px;font-size:0.78rem;color:var(--gray);border-top:1px solid rgba(0,0,0,0.06);}
 .footer-mini a{color:var(--primary);text-decoration:none;font-weight:600;}
@@ -226,6 +195,8 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
     <meta name="naver-site-verification" content="ca73c38fc31f5fe55ea3ae985575d31fabb3a56f" />
     <meta name="google-site-verification" content="eMupPrhE5lKmqjNvV3oviRMPM4mjmGdbVPfJlbh7lww" />
 <link rel="stylesheet" href="assets/site-nav.css"><script defer src="assets/site-nav.js"></script>
+<link rel="stylesheet" href="assets/field-sketch-1120/gallery.css">
+<script defer src="assets/field-sketch-1120/gallery.js"></script>
 </head>
 <body data-nw-layout="overlay">
 
@@ -387,43 +358,35 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 </section>
 
 <!-- FIELD SKETCH -->
-<section class="install-sec">
-<div class="install-inner">
-<div class="install-header reveal"><div class="sec-tag">Field Sketch</div><h2>현장 스케치</h2><p>전국 다양한 매장에서 토스/네이버 단말기를 만나보세요.</p></div>
-<div class="install-grid">
-<div class="install-card reveal" onclick="openFS('fs1')">
-<img src="field-signpad-optical.jpg" alt="안경전문점">
-<div class="install-card-overlay"></div>
-<div class="install-card-info"><h4>안경전문점</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">👓</span> 토스단말기</span></div></div>
-</div>
-<div class="install-card reveal" onclick="openFS('fs2')">
-<img src="field-signpad-icecream.jpg" alt="아이스크림전문점">
-<div class="install-card-overlay"></div>
-<div class="install-card-info"><h4>아이스크림전문점</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">🍦</span> 토스단말기</span></div></div>
-</div>
-<div class="install-card reveal" onclick="openFS('fs3')">
-<img src="field-signpad-salon.jpg" alt="미용실">
-<div class="install-card-overlay"></div>
-<div class="install-card-info"><h4>미용실</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">✂️</span> 토스단말기</span></div></div>
-</div>
-</div>
-</div>
+<section class="lineup-sketch" id="field-sketch" aria-labelledby="field-title">
+  <div class="lineup-sketch__inner">
+    <header class="lineup-sketch__header"><small lang="en">FIELD SKETCH</small>
+      <h2 id="field-title">현장 스케치</h2>
+      <p>토스·네이버 단말기의 매장 활용 예시를 담은 연출 이미지입니다.</p>
+    </header>
+    <div class="lineup-sketch__cards">
+      <button type="button" class="lineup-sketch__card" aria-haspopup="dialog" aria-label="안경 전문점 · 토스프론트 확대" data-description="안경을 건네받는 카운터에서 손님 쪽으로 향한 토스프론트로 결제하는 모습입니다.">
+        <img src="assets/field-sketch-1120/signpad-optician.webp" width="1200" height="900" loading="lazy" decoding="async" alt="안경 전문점에서 사용하는 토스프론트">
+        <span class="lineup-sketch__caption"><strong>안경 전문점</strong><span>토스프론트</span></span>
+      </button>
+      <button type="button" class="lineup-sketch__card" aria-haspopup="dialog" aria-label="아이스크림 전문점 · 네이버페이 커넥트 확대" data-description="진열대 옆에서 손님이 네이버페이 커넥트의 결제 화면을 확인하는 모습입니다.">
+        <img src="assets/field-sketch-1120/signpad-gelato.webp" width="1200" height="900" loading="lazy" decoding="async" alt="아이스크림 전문점에서 사용하는 네이버페이 커넥트">
+        <span class="lineup-sketch__caption"><strong>아이스크림 전문점</strong><span>네이버페이 커넥트</span></span>
+      </button>
+      <button type="button" class="lineup-sketch__card" aria-haspopup="dialog" aria-label="미용실 · 토스프론트 확대" data-description="시술을 마친 손님이 카운터에서 결제 금액을 확인하는 모습입니다.">
+        <img src="assets/field-sketch-1120/signpad-salon.webp" width="1200" height="900" loading="lazy" decoding="async" alt="미용실에서 사용하는 토스프론트">
+        <span class="lineup-sketch__caption"><strong>미용실</strong><span>토스프론트</span></span>
+      </button>
+    </div>
+  </div>
+  <dialog class="lineup-sketch-dialog" aria-labelledby="field-photo-title" aria-describedby="field-photo-desc">
+    <form method="dialog"><button type="submit" autofocus>닫기</button></form>
+    <img alt="">
+    <h3 id="field-photo-title"></h3><p id="field-photo-desc"></p>
+  </dialog>
 </section>
 
 </div><!-- /flow-bg -->
-
-<!-- FIELD SKETCH MODAL -->
-<div class="fs-modal" id="fsModal" onclick="if(event.target===this)closeFS()">
-<button class="fs-modal-close" onclick="closeFS()">✕</button>
-<div class="fs-modal-card">
-<img class="fs-modal-img" id="fsImg" src="" alt="">
-<div class="fs-modal-body">
-<h3 id="fsTitle"></h3>
-<div class="fsm-tags" id="fsTags"></div>
-<p id="fsDesc"></p>
-</div>
-</div>
-</div>
 
 <!-- FOOTER -->
 <div style="background:#1d1d1f;padding:10px 0;overflow:hidden;"><div style="overflow:hidden;"><div style="display:flex;gap:32px;animation:tickS 35s linear infinite;width:max-content;white-space:nowrap;">
@@ -446,25 +409,6 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <div style="text-align:center;padding:24px;font-size:.78rem;color:#86868b;background:#f5f5f7;">&copy; 2026 Nurinetworks. All rights reserved.</div>
 
 <script>
-const fsData={
-fs1:{img:'field-signpad-optical.jpg',title:'안경전문점',tags:['토스단말기'],emoji:'👓',
-desc:'프리미엄 안경전문점에 토스프론트를 설치했습니다. 깔끔한 화이트 카운터 위에 토스단말기를 배치하여 안경·렌즈 결제 시 애플페이·카드·QR 등 모든 결제 수단을 지원합니다. 키오스크 모드로 고객이 직접 결제도 가능합니다.'},
-fs2:{img:'field-signpad-icecream.jpg',title:'아이스크림전문점',tags:['토스단말기'],emoji:'🍦',
-desc:'감성 젤라토 전문점에 토스프론트를 설치했습니다. 우드톤 카운터와 젤라토 쇼케이스 옆에 자연스럽게 배치되어, 아이스크림 선택 후 바로 간편결제로 빠르게 계산합니다. 외국인 관광객도 애플페이로 편리하게 결제합니다.'},
-fs3:{img:'field-signpad-salon.jpg',title:'미용실',tags:['토스단말기'],emoji:'✂️',
-desc:'모던한 헤어살롱에 토스프론트를 설치했습니다. 미니멀한 화이트 리셉션 카운터에 어울리는 세련된 디자인으로, 커트·펌·염색 시술 후 간편결제부터 토스 포인트 적립까지 한 번에 처리합니다.'}
-};
-function openFS(id){const d=fsData[id];if(!d)return;
-document.getElementById('fsImg').src=d.img;
-document.getElementById('fsTitle').textContent=d.title;
-document.getElementById('fsTags').innerHTML=d.tags.map(t=>'<span>'+t+'</span>').join('');
-document.getElementById('fsDesc').textContent=d.desc;
-var eb=document.getElementById('fsEmoji');if(eb)eb.remove();
-var em=document.createElement('div');em.className='fs-emoji-bounce';em.id='fsEmoji';em.textContent=d.emoji;
-document.querySelector('.fs-modal-card').appendChild(em);
-document.getElementById('fsModal').classList.add('open');document.body.style.overflow='hidden';}
-function closeFS(){document.getElementById('fsModal').classList.remove('open');document.body.style.overflow='';var eb=document.getElementById('fsEmoji');if(eb)eb.remove();}
-
 window.addEventListener('scroll',function(){document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>80);});
 const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}});},{threshold:0.12});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
