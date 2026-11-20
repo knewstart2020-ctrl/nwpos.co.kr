@@ -116,10 +116,13 @@ body{font-family:'Noto Sans KR','Inter',sans-serif;color:#1d1d1f;background:#f5f
 <body data-nw-layout="overlay">
 <!-- ═══ CINEMATIC INTRO ═══ -->
 <style>
-#filmIntro {position:fixed;inset:0;z-index:100;display:grid;place-items:center;overflow:hidden;background:#0b0f16;opacity:1;transition:opacity .28s ease}
+#filmIntro {position:fixed;inset:0;z-index:100;display:grid;grid-template: minmax(0,1fr) / minmax(0,1fr);place-items:center;overflow:hidden;background:#0b0f16;opacity:1;transition:opacity .28s ease}
 #filmIntro[hidden] {display:none!important}
 #filmIntro[data-closing] {opacity:0;pointer-events:none}
 #filmIntro video {display:block;width:100%;height:100%;min-height:0;object-fit:contain}
+#filmIntro[data-expanded] video {object-fit:cover}
+#filmIntro .film-edges {position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+#filmIntro[data-edges] video {position:relative;width:var(--film-width);object-fit:contain}
 #filmIntro .film-audio {top:auto;bottom:max(15px,env(safe-area-inset-bottom));right:18px;background:#101923d9;min-width:44px;padding:0 12px}
 #filmIntro button {position:absolute;top:max(16px,env(safe-area-inset-top));right:max(18px,env(safe-area-inset-right));min-height:44px;padding:0 17px;border:1px solid #ffffff65;border-radius:24px;background:#101923dc;color:white;font:600 14px/1 system-ui,sans-serif;cursor:pointer}
 #filmIntro .film-start {inset:50% auto auto 50%;transform:translate(-50%,-50%);background:#0a1426ed;white-space:nowrap}
@@ -130,6 +133,7 @@ body{font-family:'Noto Sans KR','Inter',sans-serif;color:#1d1d1f;background:#f5f
 @media(prefers-reduced-motion:reduce){#filmIntro {transition:none}}
 </style>
 <section id="filmIntro" hidden aria-label="누리네트웍스 제품 라인업 인트로">
+  <canvas class="film-edges" width="64" height="96" aria-hidden="true" hidden></canvas>
   <video playsinline preload="none" aria-label="포스, 주문기, 간편결제 기기와 유·무선 카드 단말기"></video>
   <button type="button">건너뛰기 <span aria-hidden="true">›</span></button>
   <button type="button" class="film-start" hidden><span aria-hidden="true">▶</span> 소리와 함께 재생</button>
@@ -145,14 +149,29 @@ body{font-family:'Noto Sans KR','Inter',sans-serif;color:#1d1d1f;background:#f5f
   const seen = 'nw_lineup_film_20261120_v5';
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   try { if (sessionStorage.getItem(seen)) return; } catch {}
-  const format = window.matchMedia('(orientation: portrait)').matches ? 'portrait' : 'landscape';
-  const asset = 'assets/lineup-direction-v5/' + format;
   let timer;
+  let format, generation = 0, resumeAt = 0;
+  const edges = intro.querySelector('.film-edges');
+  let edgeFrame, edgePoster;
+  function paintEdges() {
+    cancelAnimationFrame(edgeFrame);
+    if (edges.hidden || intro.hidden || intro.hasAttribute('data-closing')) return;
+    const frame = video.readyState >= 2 ? video : edgePoster;
+    if (frame && (frame.videoWidth || frame.naturalWidth)) {
+      const ctx = edges.getContext('2d');
+      const w = frame.videoWidth || frame.naturalWidth, h = frame.videoHeight || frame.naturalHeight;
+      ctx.drawImage(frame, 0, 0, 1, h, 0, 0, 32, 96);
+      ctx.drawImage(frame, w-1, 0, 1, h, 32, 0, 32, 96);
+    }
+    if (!video.paused && !video.ended) edgeFrame = requestAnimationFrame(paintEdges);
+  }
   function remember() { try { sessionStorage.setItem(seen, '1'); } catch {} }
   function close() {
     if (intro.hidden || intro.hasAttribute('data-closing')) return;
     clearTimeout(timer);
     intro.setAttribute('data-closing', '');
+    observer.disconnect();
+    cancelAnimationFrame(edgeFrame);
     document.removeEventListener('keydown', onKey);
     const focusList = intro.contains(document.activeElement);
     video.pause();
@@ -166,13 +185,13 @@ body{font-family:'Noto Sans KR','Inter',sans-serif;color:#1d1d1f;background:#f5f
   }
   function skipIntro() { remember(); close(); }
   function onKey(event) { if (event.key === 'Escape') skipIntro(); }
-  function playWithSound() {
+  function playFilm() {
     if (intro.hidden || intro.hasAttribute('data-closing')) return;
-    video.muted = false;
+    const requestGeneration = generation;
     clearTimeout(timer);
     timer = setTimeout(close, 10000);
     video.play().catch(error => {
-      if (intro.hidden || intro.hasAttribute('data-closing')) return;
+      if (requestGeneration !== generation || intro.hidden || intro.hasAttribute('data-closing')) return;
       if (error.name !== 'NotAllowedError') { close(); return; }
       clearTimeout(timer);
       intro.setAttribute('data-waiting', '');
@@ -180,9 +199,9 @@ body{font-family:'Noto Sans KR','Inter',sans-serif;color:#1d1d1f;background:#f5f
       sound.hidden = true;
     });
   }
-  startButton.addEventListener('click', playWithSound);
+  startButton.addEventListener('click', playFilm);
   video.addEventListener('click', () => {
-    if (intro.hasAttribute('data-waiting')) playWithSound();
+    if (intro.hasAttribute('data-waiting')) playFilm();
   });
   sound.addEventListener('click', () => { video.muted = !video.muted; });
   video.addEventListener('volumechange', () => {
@@ -196,15 +215,51 @@ body{font-family:'Noto Sans KR','Inter',sans-serif;color:#1d1d1f;background:#f5f
     if (transferFocus) sound.focus({preventScroll:true});
     remember();
     clearTimeout(timer);
+    paintEdges();
   });
   video.addEventListener('ended', close, {once:true});
+  video.addEventListener('seeked', paintEdges);
   video.addEventListener('error', close, {once:true});
   skip.addEventListener('click', skipIntro);
   document.addEventListener('keydown', onKey);
-  video.poster = asset + '.webp';
-  video.src = asset + '.mp4';
+  video.addEventListener('loadedmetadata', () => {
+    if (resumeAt > 0) video.currentTime = Math.min(resumeAt, video.duration);
+    resumeAt = 0;
+  });
+  function fitFilm() {
+    if (intro.hidden || intro.hasAttribute('data-closing')) return;
+    const {width, height} = intro.getBoundingClientRect();
+    if (!width || !height) return;
+    const ratio = width / height;
+    const next = ratio > 16/9 ? 'wide' : ratio >= 1 ? 'landscape' : ratio > 9/16 ? 'square' : 'portrait';
+    const expanded = next === 'wide' || next === 'square';
+    const needsEdges = ratio > 4;
+    intro.toggleAttribute('data-expanded', expanded);
+    intro.toggleAttribute('data-edges', needsEdges);
+    edges.hidden = !needsEdges;
+    if (needsEdges) intro.style.setProperty('--film-width', height*4 + 'px');
+    if (next !== format) {
+      const asset = (expanded ? 'assets/lineup-panorama/' : 'assets/lineup-direction-v5/') + next;
+      if (video.readyState >= 1) resumeAt = video.currentTime;
+      generation++;
+      format = next;
+      edgePoster = null;
+      video.poster = asset + '.webp';
+      video.src = asset + '.mp4';
+      if (!intro.hasAttribute('data-waiting')) playFilm();
+    }
+    if (needsEdges && !edgePoster) {
+      edgePoster = new Image();
+      edgePoster.onload = paintEdges;
+      edgePoster.src = video.poster;
+    }
+    paintEdges();
+  }
+  const observer = new ResizeObserver(fitFilm);
+  video.muted = false;
   intro.hidden = false;
-  playWithSound();
+  fitFilm();
+  observer.observe(intro);
 })();
 </script>
 <!-- ═══ END CINEMATIC INTRO ═══ -->
