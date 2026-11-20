@@ -115,33 +115,20 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 .install-inner{max-width:1200px;margin:0 auto;padding:0 40px;position:relative;z-index:1;}
 .install-header{text-align:center;margin-bottom:48px;}.install-header h2{font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:8px;}.install-header p{font-size:0.95rem;color:var(--gray);line-height:1.7;}
 .install-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-.install-card{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:4/3;cursor:pointer;}
-.install-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
-.install-card:hover img{transform:scale(1.05);}
-.install-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 50%);z-index:1;opacity:0;transition:opacity .4s;}
-.install-card:hover .install-card-overlay{opacity:1;}
-.install-card-info{position:absolute;bottom:0;left:0;right:0;padding:24px;z-index:2;opacity:0;transform:translateY(12px);transition:all .4s;}
-.install-card:hover .install-card-info{opacity:1;transform:translateY(0);}
-.install-card-info h4{font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:10px;}
-.install-card-tags{display:flex;gap:8px;flex-wrap:wrap;}
-.install-card-tags span{font-size:1rem;font-weight:700;padding:6px 16px;border-radius:50px;background:rgba(255,255,255,0.2);backdrop-filter:blur(4px);color:#fff;}
-/* EMOJI ANIMATION */
-.fs-emoji{display:inline-block;font-size:32px;animation:swim 2s ease-in-out infinite;vertical-align:middle;}
-.fs-emoji-bounce{display:inline-block;font-size:48px;animation:bounce 1s ease-in-out infinite;position:absolute;top:20px;right:20px;z-index:3;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.3));}
-@keyframes swim{0%,100%{transform:translateX(0) scaleX(1)}50%{transform:translateX(8px) scaleX(-1)}}
-@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-
-/* FIELD SKETCH MODAL */
-.fs-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:200;justify-content:center;align-items:center;padding:20px;backdrop-filter:blur(4px);}
-.fs-modal.open{display:flex;}
-.fs-modal-card{background:#fff;border-radius:20px;max-width:600px;width:100%;overflow:hidden;animation:fadeUp .4s ease;position:relative;}
-.fs-modal-img{width:100%;height:280px;object-fit:cover;}
-.fs-modal-body{padding:28px;}
-.fs-modal-body h3{font-size:1.3rem;font-weight:800;margin-bottom:6px;}
-.fs-modal-body .fsm-tags{display:flex;gap:6px;margin-bottom:16px;}
-.fs-modal-body .fsm-tags span{font-size:0.72rem;font-weight:600;padding:4px 12px;border-radius:50px;background:rgba(27,58,140,0.08);color:var(--primary);}
-.fs-modal-body p{font-size:0.92rem;color:#424245;line-height:1.8;}
-.fs-modal-close{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.9);border:none;cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;z-index:10;}
+.install-card{display:block;min-width:0;width:100%;padding:0;overflow:hidden;background:#fff;border:1px solid #dce4ea;border-radius:14px;color:#11253e;font:inherit;text-align:left;cursor:pointer}
+.install-card img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.install-caption{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:14px 17px}
+.install-caption strong{font-size:1.08rem}
+.install-caption span{font-size:.9rem;font-weight:650;color:#47596e}
+.install-card:hover{border-color:#7e94a9}
+.install-card:focus-visible,.fs-modal button:focus-visible{outline:3px solid #175db3;outline-offset:3px}
+.fs-modal{width:min(720px,calc(100% - 32px));max-height:90vh;max-height:90dvh;overflow:auto;margin:auto;padding:0;border:0;border-radius:16px;background:#fff;color:#132940}
+.fs-modal::backdrop{background:rgba(10,20,35,.65)}
+.fs-modal img{display:block;width:100%;max-height:58vh;object-fit:contain;background:#f5f6f7}
+.fs-modal-body{padding:18px 24px 24px}
+.fs-modal-body h3{font-size:1.3rem;margin:0 0 8px}
+.fs-modal-body p{line-height:1.65}
+.fs-modal-close{display:block;margin:14px 16px 14px auto;padding:7px 16px;min-height:40px;color:#152c43;background:white;border:1px solid #a4b4c4;border-radius:6px;font:inherit;cursor:pointer}
 
 /* REVEAL */
 .reveal{opacity:0;transform:translateY(24px);transition:all .7s cubic-bezier(0.16,1,0.3,1);}
@@ -149,7 +136,7 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 .footer-mini{background:#f5f5f7;text-align:center;padding:32px 40px;font-size:0.78rem;color:var(--gray);border-top:1px solid rgba(0,0,0,0.06);}
 .footer-mini a{color:var(--primary);text-decoration:none;font-weight:600;}
 
-@media(max-width:1024px){.feat-grid{grid-template-columns:1fr 1fr;}.install-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:1024px){.feat-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:768px){.nav-links{display:none;}.hero h1{font-size:2.6rem;}.ap-card{min-height:420px;padding:36px 28px 0;}.ap-img-wrap img{max-height:260px;}.vs-sec{padding:80px 0 60px;}.install-grid{grid-template-columns:1fr;}.spec-table{font-size:0.82rem;}.sec-inner,.vs-inner,.feat-inner,.spec-inner,.install-inner{padding:0 24px;}}
 
 .nav-store:active,.nav-store.on{color:#0066FF!important;}.nav-store:active::after,.nav-store.on::after{width:80%;background:#0066FF;}
@@ -295,25 +282,22 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 </section>
 
 <!-- FIELD SKETCH -->
-<section class="install-sec">
+<section class="install-sec" id="field-sketch" aria-labelledby="field-title">
 <div class="install-inner">
-<div class="install-header reveal"><div class="sec-tag">Field Sketch</div><h2>현장 스케치</h2><p>전국 다양한 매장에서 배리어프리 키오스크를 만나보세요.</p></div>
+<div class="install-header"><div class="sec-tag">Field Sketch</div><h2 id="field-title">현장 스케치</h2><p>매장별 키오스크 배치와 주문 흐름을 담은 연출 이미지입니다.</p></div>
 <div class="install-grid">
-<div class="install-card reveal" onclick="openFS('fs1')">
-<img src="field-kiosk-cafe.jpg" alt="카페">
-<div class="install-card-overlay"></div>
-<div class="install-card-info"><h4>카페</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">☕</span> 키오스크</span></div></div>
-</div>
-<div class="install-card reveal" onclick="openFS('fs2')">
-<img src="field-kiosk-ramen.jpg" alt="라멘집">
-<div class="install-card-overlay"></div>
-<div class="install-card-info"><h4>라멘 전문점</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">🍜</span> 키오스크</span></div></div>
-</div>
-<div class="install-card reveal" onclick="openFS('fs3')">
-<img src="field-kiosk-pizza.jpg" alt="피자 뷔페">
-<div class="install-card-overlay"></div>
-<div class="install-card-info"><h4>피자 뷔페</h4><div class="install-card-tags"><span style="display:flex;align-items:center;gap:6px;"><span class="fs-emoji">🍕</span> 키오스크</span></div></div>
-</div>
+  <button type="button" class="install-card" aria-haspopup="dialog" data-description="입구에서 음료를 고른 뒤 픽업대로 이동하는 구성입니다.">
+    <img src="assets/kiosk/field-1120/cafe.webp" width="1200" height="900" loading="lazy" alt="카페 입구에서 음료 메뉴를 보여 주는 스탠드형 키오스크">
+    <span class="install-caption"><strong>카페</strong><span>입구 · 스탠드형</span></span>
+  </button>
+  <button type="button" class="install-card" aria-haspopup="dialog" data-description="입구 가까운 카운터에서 라멘을 선택하고 좌석으로 이동하는 구성입니다.">
+    <img src="assets/kiosk/field-1120/ramen.webp" width="1200" height="900" loading="lazy" alt="라멘 메뉴가 표시된 카운터 위 데스크형 키오스크">
+    <span class="install-caption"><strong>라멘 전문점</strong><span>카운터 · 데스크형</span></span>
+  </button>
+  <button type="button" class="install-card" aria-haspopup="dialog" data-description="뷔페 입장 전에 이용할 인원수를 선택하고 식사 공간으로 이동하는 구성입니다.">
+    <img src="assets/kiosk/field-1120/pizza.webp" width="1200" height="900" loading="lazy" alt="피자 뷔페 입구에서 인원수를 고르는 스탠드형 키오스크">
+    <span class="install-caption"><strong>피자 뷔페</strong><span>입장 · 스탠드형</span></span>
+  </button>
 </div>
 </div>
 </section>
@@ -321,17 +305,11 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 </div><!-- /flow-bg -->
 
 <!-- FIELD SKETCH MODAL -->
-<div class="fs-modal" id="fsModal" onclick="if(event.target===this)closeFS()">
-<button class="fs-modal-close" onclick="closeFS()">✕</button>
-<div class="fs-modal-card">
-<img class="fs-modal-img" id="fsImg" src="" alt="">
-<div class="fs-modal-body">
-<h3 id="fsTitle"></h3>
-<div class="fsm-tags" id="fsTags"></div>
-<p id="fsDesc"></p>
-</div>
-</div>
-</div>
+<dialog class="fs-modal" id="fsModal" aria-labelledby="fsTitle" aria-describedby="fsDesc">
+  <form method="dialog"><button class="fs-modal-close" autofocus>닫기</button></form>
+  <img id="fsImg" alt="">
+  <div class="fs-modal-body"><h3 id="fsTitle"></h3><p id="fsDesc"></p></div>
+</dialog>
 
 <!-- FOOTER -->
 <div style="background:#1d1d1f;padding:10px 0;overflow:hidden;"><div style="overflow:hidden;"><div style="display:flex;gap:32px;animation:tickS 35s linear infinite;width:max-content;white-space:nowrap;">
@@ -354,25 +332,26 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <div style="text-align:center;padding:24px;font-size:.78rem;color:#86868b;background:#f5f5f7;">&copy; 2026 Nurinetworks. All rights reserved.</div>
 
 <script>
-// Field Sketch Data
-const fsData={
-fs1:{img:'field-kiosk-cafe-install.jpg',title:'카페',tags:['배리어프리 키오스크'],emoji:'☕',
-desc:'프리미엄 디저트 카페에 배리어프리 키오스크를 설치했습니다. 마카롱·과일 진열대 옆에 자연스럽게 배치되어 매장 인테리어와 조화를 이루며, 디지털 메뉴보드와 연동하여 직관적인 주문 환경을 제공합니다.'},
-fs2:{img:'field-kiosk-ramen-install.jpg',title:'라멘 전문점',tags:['배리어프리 키오스크'],emoji:'🍜',
-desc:'라멘 프랜차이즈 매장에 배리어프리 키오스크를 설치했습니다. 나무 카운터 위에 데스크형으로 배치하여 따뜻한 일식 인테리어와 자연스럽게 어울리며, 먹고가기·포장하기 선택으로 빠른 주문이 가능합니다.'},
-fs3:{img:'field-kiosk-pizza-install.jpg',title:'피자 뷔페',tags:['배리어프리 키오스크'],emoji:'🍕',
-desc:'프리미엄 피자 뷔페에 배리어프리 키오스크를 설치했습니다. 피자·파스타·샐러드 뷔페 라인 옆에 스탠드형으로 배치하여 고객이 입장 시 바로 주문할 수 있으며, 장애인·고령자도 편리하게 이용합니다.'}
-};
-function openFS(id){const d=fsData[id];if(!d)return;
-document.getElementById('fsImg').src=d.img;
-document.getElementById('fsTitle').textContent=d.title;
-document.getElementById('fsTags').innerHTML=d.tags.map(t=>'<span>'+t+'</span>').join('');
-document.getElementById('fsDesc').textContent=d.desc;
-var eb=document.getElementById('fsEmoji');if(eb)eb.remove();
-var em=document.createElement('div');em.className='fs-emoji-bounce';em.id='fsEmoji';em.textContent=d.emoji;
-document.querySelector('.fs-modal-card').appendChild(em);
-document.getElementById('fsModal').classList.add('open');document.body.style.overflow='hidden';}
-function closeFS(){document.getElementById('fsModal').classList.remove('open');document.body.style.overflow='';var eb=document.getElementById('fsEmoji');if(eb)eb.remove();}
+// Show the same scene and model that the visitor selected.
+const sketchDialog = document.getElementById('fsModal');
+document.querySelectorAll('#field-sketch .install-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const thumb = card.querySelector('img');
+    const photo = document.getElementById('fsImg');
+    photo.src = thumb.currentSrc || thumb.src;
+    photo.alt = thumb.alt;
+    document.getElementById('fsTitle').textContent =
+      [...card.querySelector('.install-caption').children].map(label => label.textContent).join(' · ');
+    document.getElementById('fsDesc').textContent = card.dataset.description;
+    sketchDialog.showModal();
+  });
+});
+sketchDialog.addEventListener('click', event => {
+  if (event.target !== sketchDialog) return;
+  const bounds = sketchDialog.getBoundingClientRect();
+  if (event.clientX < bounds.left || event.clientX > bounds.right ||
+      event.clientY < bounds.top || event.clientY > bounds.bottom) sketchDialog.close();
+});
 
 window.addEventListener('scroll',function(){document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>80);});
 const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}});},{threshold:0.12});
