@@ -197,6 +197,7 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <link rel="stylesheet" href="assets/site-nav.css"><script defer src="assets/site-nav.js"></script>
 <link rel="stylesheet" href="assets/field-sketch-1120/gallery.css">
 <script defer src="assets/field-sketch-1120/gallery.js"></script>
+<link rel="stylesheet" href="assets/lineup-selection/selection.css">
 </head>
 <body data-nw-layout="overlay">
 
@@ -232,8 +233,8 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <div class="vs-inner">
 <div class="vs-header reveal">
 <div class="sec-tag">Product Lineup</div>
-<h2>사인패드. 결제의 새 기준</h2>
-<p>디자인의 토스냐, 리뷰의 네이버냐. 매장에 맞는 사인패드를 선택하세요.</p>
+<h2>토스프론트 · 네이버페이 커넥트</h2>
+<p>카운터에 놓을 단말기의 결제 방식과 매장에서 이용할 서비스를 비교하세요.</p>
 </div>
 <div class="vs-grid reveal">
 <!-- 토스단말기 -->
@@ -241,7 +242,7 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <div class="img-card-bg" style="background-image:url('signpad-card-toss.jpg');"></div>
 <div class="img-card-content">
 <span class="img-card-tag tag-toss">Toss Place</span>
-<h3><a href="product-tossfront.html" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.38);padding-bottom:2px;">토스단말기</a></h3>
+<h3><a href="product-tossfront.html" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.38);padding-bottom:2px;">토스프론트</a></h3>
 <p class="img-card-desc">카드부터 애플페이·간편결제까지.<br>키오스크 모드로 무인 결제도 가능.</p>
 <div class="img-card-features">
 <span class="img-card-feat">애플페이 지원</span>
@@ -256,8 +257,8 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <div class="img-card-bg" style="background-image:url('signpad-card-naver.jpg');"></div>
 <div class="img-card-content">
 <span class="img-card-tag tag-naver">Npay Connect</span>
-<h3><a href="product-npay.html" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.38);padding-bottom:2px;">네이버단말기</a></h3>
-<p class="img-card-desc">결제 직후 네이버 리뷰·쿠폰·적립.<br>페이스사인 안면인식 결제까지.</p>
+<h3><a href="product-npay.html" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.38);padding-bottom:2px;">네이버페이 커넥트</a></h3>
+<p class="img-card-desc">결제 직후 네이버 리뷰·쿠폰·적립.<br>페이스사인 이용 조건은 도입 시 확인하세요.</p>
 <div class="img-card-features">
 <span class="img-card-feat">네이버 리뷰 즉시</span>
 <span class="img-card-feat">페이스사인</span>
@@ -336,7 +337,7 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 </section>
 
 <!-- SPEC TABLE -->
-<section class="spec-sec">
+<section class="spec-sec" id="payment-compare" style="scroll-margin-top:80px">
 <div class="spec-inner">
 <div class="spec-header reveal"><div class="sec-tag">Specifications</div><h2>제품 사양 비교</h2></div>
 <div class="reveal" style="overflow-x:auto;"><table class="spec-table">
@@ -347,7 +348,7 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <tr><td>키오스크 모드</td><td><span class="spec-check">✓</span> 미니 키오스크</td><td><span class="spec-check">✓</span> 미니 키오스크</td></tr>
 <tr><td>리뷰 연동</td><td><span class="spec-dash">—</span></td><td><span class="spec-check">✓</span> 네이버 키워드 리뷰</td></tr>
 <tr><td>쿠폰/포인트</td><td>토스 포인트</td><td>네이버 쿠폰·포인트 자동 적용</td></tr>
-<tr><td>안면인식 결제</td><td><span class="spec-dash">—</span></td><td><span class="spec-check">✓</span> 페이스사인</td></tr>
+<tr><td>안면인식 결제</td><td>페이스페이<br><small>토스페이 가맹 등록·지원 버전 필요</small></td><td><span class="spec-check">✓</span> 페이스사인</td></tr>
 <tr><td>POS 연동</td><td>토스포스 (무료 앱)</td><td>기존 POS 시스템 연동</td></tr>
 <tr><td>연결 방식</td><td>WiFi / 유선</td><td>WiFi / 유선</td></tr>
 <tr><td>컬러</td><td>화이트 / 블랙</td><td>블랙</td></tr>
@@ -355,6 +356,8 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 </tbody>
 </table></div>
 </div>
+<div class="selection-box"><h3>이 제품으로 상담</h3><div class="selection-actions"><a class="selection-link" href="support.html?product=toss#formCard">토스프론트 상담</a>
+<a class="selection-link" href="support.html?product=npay#formCard">네이버페이 커넥트 상담</a></div></div>
 </section>
 
 <!-- FIELD SKETCH -->

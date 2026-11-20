@@ -112,6 +112,7 @@ body{font-family:'Noto Sans KR','Inter',sans-serif;color:#1d1d1f;background:#f5f
     <meta name="google-site-verification" content="eMupPrhE5lKmqjNvV3oviRMPM4mjmGdbVPfJlbh7lww" />
 <style>/* 메뉴 글 한 줄 유지(PC) · 정함 5046 */@media(min-width:1024px){.nav a,.nav button{white-space:nowrap}}@media(min-width:1024px) and (max-width:1100px){.nav{gap:14px}}</style>
 <link rel="stylesheet" href="assets/site-nav.css"><script defer src="assets/site-nav.js"></script>
+<link rel="stylesheet" href="assets/lineup-selection/selection.css">
 </head>
 <body data-nw-layout="overlay">
 <!-- ═══ CINEMATIC INTRO ═══ -->
@@ -287,14 +288,16 @@ body{font-family:'Noto Sans KR','Inter',sans-serif;color:#1d1d1f;background:#f5f
 <div class="hft hft-5">POS · KIOSK · VAN · PG · POS · KIOSK · VAN · PG · POS · KIOSK · VAN · PG · POS · KIOSK · VAN · PG · </div>
 </div>
 <div class="lineup-section" style="position:relative;z-index:1;">
+<nav class="place-finder" aria-labelledby="place-title"><h2 id="place-title">사용 장소로 제품 찾기</h2><div><a href="lineup-pos.html#compare"><strong>카운터 주문·계산</strong><span>N250 · ZED-III</span></a>
+<a href="lineup-order.html#order-compare"><strong>테이블에서 주문</strong><span>테이블오더 · QR오더</span></a>
+<a href="lineup-terminal.html#mobile-terminal"><strong>매장 밖 이동 결제</strong><span>M6202NQ 무선단말기</span></a>
+<a href="lineup-kiosk.html#kiosk-placement"><strong>입구에서 셀프 주문</strong><span>배리어프리 키오스크</span></a></div></nav>
 <div class="carousel-container">
 <div class="carousel-track" id="track">
 <!-- 1. 포스 -->
 <a href="lineup-pos.html" class="lineup-card">
 <div class="card-visual" style="background:#0a0f1a;padding:0;overflow:hidden;">
-<video style="width:100%;height:100%;object-fit:cover;" autoplay muted loop playsinline>
-<source src="lineup-pos-zoom.mp4" type="video/mp4">
-</video>
+<video muted loop playsinline preload="none" aria-hidden="true" poster="assets/lineup-selection/pos.webp" data-src="lineup-pos-zoom.mp4"></video>
 </div>
 <div class="card-text">
 <h3>포스 POS</h3>
@@ -306,9 +309,7 @@ body{font-family:'Noto Sans KR','Inter',sans-serif;color:#1d1d1f;background:#f5f
 <!-- 2. 배리어프리 키오스크 -->
 <a href="lineup-kiosk.html" class="lineup-card">
 <div class="card-visual" style="background:#2d3436;padding:0;overflow:hidden;">
-<video style="width:100%;height:100%;object-fit:cover;" autoplay muted loop playsinline>
-<source src="lineup-kiosk-pan.mp4" type="video/mp4">
-</video>
+<video muted loop playsinline preload="none" aria-hidden="true" poster="assets/lineup-selection/kiosk.webp" data-src="lineup-kiosk-pan.mp4"></video>
 </div>
 <div class="card-text">
 <h3>배리어프리 키오스크</h3>
@@ -320,9 +321,7 @@ body{font-family:'Noto Sans KR','Inter',sans-serif;color:#1d1d1f;background:#f5f
 <!-- 3. 테이블오더/QR오더 -->
 <a href="lineup-order.html" class="lineup-card">
 <div class="card-visual" style="background:#3a2520;padding:0;overflow:hidden;">
-<video style="width:100%;height:100%;object-fit:cover;" autoplay muted loop playsinline>
-<source src="lineup-order-tilt.mp4" type="video/mp4">
-</video>
+<video muted loop playsinline preload="none" aria-hidden="true" poster="assets/lineup-selection/order.webp" data-src="lineup-order-tilt.mp4"></video>
 </div>
 <div class="card-text">
 <h3>테이블오더 / QR오더</h3>
@@ -334,9 +333,7 @@ body{font-family:'Noto Sans KR','Inter',sans-serif;color:#1d1d1f;background:#f5f
 <!-- 6. 프로그램/소프트웨어 -->
 <a href="lineup-software.html" class="lineup-card">
 <div class="card-visual" style="background:linear-gradient(135deg,#1a2a4a 0%,#2a3a6a 50%,#1B3A8C 100%);padding:0;overflow:hidden;">
-<video style="width:100%;height:100%;object-fit:cover;" autoplay muted loop playsinline>
-<source src="software-showcase.mp4" type="video/mp4">
-</video>
+<video muted loop playsinline preload="none" aria-hidden="true" poster="assets/lineup-selection/software.webp" data-src="software-showcase.mp4"></video>
 </div>
 <div class="card-text">
 <h3>프로그램 / 소프트웨어</h3>
@@ -348,13 +345,11 @@ body{font-family:'Noto Sans KR','Inter',sans-serif;color:#1d1d1f;background:#f5f
 <!-- 5. 토스/네이버 단말기 -->
 <a href="lineup-signpad.html" class="lineup-card">
 <div class="card-visual" style="background:#1a1a2e;padding:0;overflow:hidden;">
-<video style="width:100%;height:100%;object-fit:cover;" autoplay muted loop playsinline>
-<source src="lineup-signpad-360.mp4" type="video/mp4">
-</video>
+<video muted loop playsinline preload="none" aria-hidden="true" poster="assets/lineup-selection/signpad.webp" data-src="lineup-signpad-360.mp4"></video>
 </div>
 <div class="card-text">
-<h3>토스 / 네이버 사인패드</h3>
-<p>결제+리뷰+쿠폰+적립 올인원<br><span style="color:#1B3A8C;font-weight:600;">토스프론트 · 네이버커넥트</span></p>
+<h3>토스프론트 · 네이버페이 커넥트</h3>
+<p>카운터에서 손님이 사용하는 두 단말기의<br>결제와 적립 기능을 비교하세요.</p>
 <span class="card-link">라인업 보기</span>
 </div>
 </a>
@@ -362,9 +357,7 @@ body{font-family:'Noto Sans KR','Inter',sans-serif;color:#1d1d1f;background:#f5f
 <!-- 4. 유무선 카드단말기 -->
 <a href="lineup-terminal.html" class="lineup-card">
 <div class="card-visual" style="background:#e8e8ed;padding:0;overflow:hidden;">
-<video style="width:100%;height:100%;object-fit:cover;" autoplay muted loop playsinline>
-<source src="lineup-terminal-flash.mp4" type="video/mp4">
-</video>
+<video muted loop playsinline preload="none" aria-hidden="true" poster="assets/lineup-selection/terminal.webp" data-src="lineup-terminal-flash.mp4"></video>
 </div>
 <div class="card-text">
 <h3>유무선 카드단말기</h3>
@@ -375,7 +368,7 @@ body{font-family:'Noto Sans KR','Inter',sans-serif;color:#1d1d1f;background:#f5f
 
 <!-- 7. PG -->
 <a href="lineup-pg.html" class="lineup-card">
-<div class="card-visual" style="background-image:url('lineup-pg-hero.png');background-size:cover;background-position:center top;">
+<div class="card-visual" style="background-image:url('assets/lineup-selection/pg.webp');background-size:cover;background-position:center top;">
 </div>
 <div class="card-text">
 <h3>PG 온오프라인결제</h3>
@@ -387,9 +380,7 @@ body{font-family:'Noto Sans KR','Inter',sans-serif;color:#1d1d1f;background:#f5f
 <!-- 8. 부가장비 -->
 <a href="lineup-extra.html" class="lineup-card">
 <div class="card-visual" style="background:#f0ebe3;padding:0;overflow:hidden;">
-<video style="width:100%;height:100%;object-fit:cover;" autoplay muted loop playsinline>
-<source src="lineup-extra-zoom.mp4" type="video/mp4">
-</video>
+<video muted loop playsinline preload="none" aria-hidden="true" poster="assets/lineup-selection/extra.webp" data-src="lineup-extra-zoom.mp4"></video>
 </div>
 <div class="card-text">
 <h3>부가장비</h3>
@@ -400,8 +391,8 @@ body{font-family:'Noto Sans KR','Inter',sans-serif;color:#1d1d1f;background:#f5f
 
 </div>
 <div class="carousel-nav" style="display:flex;justify-content:center;gap:100px;margin-top:32px;">
-<button onclick="scrollTrack(-1)" style="width:64px;height:64px;border-radius:20px;background:linear-gradient(135deg,#1B3A8C,#2E5BDB);border:1px solid rgba(255,255,255,0.15);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(27,58,140,.35),inset 0 1px 0 rgba(255,255,255,.2);transition:all .3s cubic-bezier(.34,1.56,.64,1);" onmouseover="this.style.transform='translateX(-4px) scale(1.08)'" onmouseout="this.style.transform=''"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
-<button onclick="scrollTrack(1)" style="width:64px;height:64px;border-radius:20px;background:linear-gradient(135deg,#1B3A8C,#2E5BDB);border:1px solid rgba(255,255,255,0.15);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(27,58,140,.35),inset 0 1px 0 rgba(255,255,255,.2);transition:all .3s cubic-bezier(.34,1.56,.64,1);" onmouseover="this.style.transform='translateX(4px) scale(1.08)'" onmouseout="this.style.transform=''"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+<button type="button" aria-label="이전 제품군" aria-controls="track" onclick="scrollTrack(-1)" style="width:64px;height:64px;border-radius:20px;background:linear-gradient(135deg,#1B3A8C,#2E5BDB);border:1px solid rgba(255,255,255,0.15);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(27,58,140,.35),inset 0 1px 0 rgba(255,255,255,.2);transition:all .3s cubic-bezier(.34,1.56,.64,1);" onmouseover="this.style.transform='translateX(-4px) scale(1.08)'" onmouseout="this.style.transform=''"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+<button type="button" aria-label="다음 제품군" aria-controls="track" onclick="scrollTrack(1)" style="width:64px;height:64px;border-radius:20px;background:linear-gradient(135deg,#1B3A8C,#2E5BDB);border:1px solid rgba(255,255,255,0.15);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(27,58,140,.35),inset 0 1px 0 rgba(255,255,255,.2);transition:all .3s cubic-bezier(.34,1.56,.64,1);" onmouseover="this.style.transform='translateX(4px) scale(1.08)'" onmouseout="this.style.transform=''"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
 </div>
 </div>
 </div>
@@ -409,7 +400,9 @@ body{font-family:'Noto Sans KR','Inter',sans-serif;color:#1d1d1f;background:#f5f
 <script>
 function scrollTrack(dir){
 var track=document.getElementById('track');
-track.scrollBy({left:dir*400,behavior:'smooth'});
+const cards = track.querySelectorAll('.lineup-card');
+const step = cards[1].offsetLeft - cards[0].offsetLeft;
+track.scrollBy({left: dir * step, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
 }
 </script>
 </div><!-- /flow-bg -->
@@ -499,5 +492,6 @@ tk.innerHTML=h+h;
 </script>
 <!-- NW 방문정보 트래킹 (체류·유입·경로) -->
 <script>(function(){try{var ss=sessionStorage;if(!ss.getItem('nw_t0')){ss.setItem('nw_t0',String(Date.now()));ss.setItem('nw_entry',location.pathname+location.search);ss.setItem('nw_ref',document.referrer||'직접유입');}var key=location.pathname;if(key.charAt(0)==='/')key=key.slice(1);if(key.slice(-5)==='.html')key=key.slice(0,-5);var M={'':'메인','index':'메인','about':'회사소개','lineup':'제품라인업','support':'구매스토어','home-classic':'홈'};var cur=M[key]||key||'메인';var p=ss.getItem('nw_pages')||'';var arr=p?p.split(' > '):[];if(arr[arr.length-1]!==cur){arr.push(cur);ss.setItem('nw_pages',arr.slice(-8).join(' > '));}}catch(e){}})();</script>
+<script src="assets/lineup-selection/card-media.js"></script>
 </body>
 </html>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>테이블오더·QR오더 설치 | 누리네트웍스 서울·경기·인천 직영</title>
-<meta name="description" content="인건비 다이어트, 테이블오더/QR오더가 정답입니다. 주문부터 결제까지 앉아서 끝! 업오더 테이블오더, 업오더 QR, 토스 QR로 스마트 매장을 완성하세요.">
+<meta name="description" content="테이블 태블릿과 휴대폰 QR 주문을 비교하고 매장의 선불·후불 운영 방식에 맞춰 선택하세요.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -205,6 +205,7 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <link rel="stylesheet" href="assets/site-nav.css"><script defer src="assets/site-nav.js"></script>
 <link rel="stylesheet" href="assets/field-sketch-1120/gallery.css">
 <script defer src="assets/field-sketch-1120/gallery.js"></script>
+<link rel="stylesheet" href="assets/lineup-selection/selection.css">
 </head>
 <body data-nw-layout="overlay">
 
@@ -220,8 +221,8 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <div class="hero-video"><video autoplay muted loop playsinline><source src="order-showcase.mp4" type="video/mp4"></video></div>
 <div class="hero-content">
 <div class="hero-tag">Table Order · QR Order</div>
-<h1>지각도, 퇴사도 없는<br><span class="accent-line">우리 매장 에이스.</span></h1>
-<p class="hero-copy">인건비는 반으로, 테이블 회전율은 두 배로.<br>주문이 쉬워지면, 매출의 단위가 바뀝니다.</p>
+<h1>테이블에서 고르고,<br><span class="accent-line">주방에서 확인하세요.</span></h1>
+<p class="hero-copy">손님은 자리에서 메뉴를 고르고<br>직원은 들어온 주문을 확인합니다.</p>
 </div>
 <div class="hero-scroll"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg><span>SCROLL</span><div class="hero-scroll-line"></div></div>
 </section>
@@ -265,9 +266,9 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <div class="img-card-content">
 <span class="img-card-tag tag-toss">Toss Place</span>
 <h3>토스 QR오더</h3>
-<p class="img-card-desc">QR 스캔 한 번으로 토스앱에서 주문·결제.<br>포인트 적립과 쿠폰까지 한 번에.</p>
+<p class="img-card-desc">휴대폰으로 메뉴를 열고 주문합니다.<br>선불 승인 매장은 휴대폰 결제도 제공합니다.</p>
 <div class="img-card-features">
-<span class="img-card-feat">QR → 토스앱 주문</span>
+<span class="img-card-feat">QR 스캔 → 휴대폰 주문</span>
 <span class="img-card-feat">토스페이 간편결제</span>
 <span class="img-card-feat">포인트·쿠폰 연동</span>
 <span class="img-card-feat">별도 설치비 無</span>
@@ -301,9 +302,9 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 <div class="sw-col">
 <div class="sw-col-title col-toss"><span class="sw-col-badge">TOSS PLACE</span><span class="sw-col-name">토스 QR오더</span></div>
 <div class="sw-features">
-<div class="sw-card"><div class="sw-icon" style="background:#E8F3FF;">📱</div><h4>QR 스캔 즉시 주문</h4><p>앱 설치 없이 QR 스캔만으로<br>토스앱에서 바로 주문</p></div>
+<div class="sw-card"><div class="sw-icon" style="background:#E8F3FF;">📱</div><h4>QR로 메뉴 열기</h4><p>테이블 QR을 찍고 휴대폰에서<br>메뉴와 수량을 골라 주문합니다.</p></div>
 <div class="sw-card"><div class="sw-icon" style="background:#F0F0FF;">🎨</div><h4>10가지 QR 색상</h4><p>매장 분위기에 맞는<br>QR 스티커 색상 선택</p></div>
-<div class="sw-card"><div class="sw-icon" style="background:#EAF7F0;">💰</div><h4>선불/후불 선택</h4><p>선불 모바일 결제 또는<br>후불 대면 결제 매장에 맞게</p></div>
+<div class="sw-card"><div class="sw-icon" style="background:#EAF7F0;">💰</div><h4>선불/후불 선택</h4><p>선불은 신청 승인 후 휴대폰에서,<br>후불은 매장 카운터에서 결제합니다.</p></div>
 <div class="sw-card"><div class="sw-icon" style="background:#FFF8E6;">🔔</div><h4>직원 호출·더치페이</h4><p>물·냅킨 모바일 요청<br>각자 결제도 고객이 척척</p></div>
 </div>
 </div>
@@ -330,17 +331,17 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 </section>
 
 <!-- SPEC TABLE -->
-<section class="spec-sec">
+<section class="spec-sec" id="order-compare">
 <div class="spec-inner">
 <div class="spec-header reveal"><div class="sec-tag">Specifications</div><h2>제품 사양 비교</h2></div>
 <div class="reveal" style="overflow-x:auto;"><table class="spec-table">
 <thead><tr><th>항목</th><th>업오더 테이블오더 <span class="spec-badge badge-hot">HOT</span></th><th>토스 QR오더 <span class="spec-badge badge-toss">TOSS</span></th></tr></thead>
 <tbody>
-<tr><td>주문 방식</td><td>태블릿 터치 주문</td><td>QR → 토스앱 주문</td></tr>
+<tr><td>주문 방식</td><td>태블릿 터치 주문</td><td>QR 스캔 → 휴대폰 주문</td></tr>
 <tr><td>디스플레이</td><td>10.1" HD 태블릿</td><td>고객 스마트폰</td></tr>
 <tr><td>프로세서</td><td>Octa-Core (8코어)</td><td>—</td></tr>
 <tr><td>설치 타입</td><td>Pole형 / 데스크형 / 벽걸이형</td><td>QR 스티커 부착</td></tr>
-<tr><td>결제 수단</td><td>카드·현금·분할·더치페이</td><td>토스페이 간편결제 / 대면결제</td></tr>
+<tr><td>결제 수단</td><td>카드·현금·분할·더치페이</td><td>선불 승인 매장에서는 간편결제·앱카드를 선택합니다. 인증은 선택한 결제 앱의 안내를 따릅니다. 후불은 카운터에서 결제합니다.</td></tr>
 <tr><td>다국어</td><td>한/영/중/일 4개국</td><td>한/영/중/일 4개국</td></tr>
 <tr><td>직원 호출</td><td><span class="spec-check">✓</span> 다양한 호출 기능</td><td><span class="spec-check">✓</span> 모바일 호출</td></tr>
 <tr><td>더치페이</td><td><span class="spec-check">✓</span> 상품나눔 / 금액나눔</td><td><span class="spec-check">✓</span> 각자 결제</td></tr>
@@ -351,6 +352,8 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 </tbody>
 </table></div>
 </div>
+<div class="selection-box"><h3>이 제품으로 상담</h3><div class="selection-actions"><a class="selection-link" href="support.html?product=uporder#formCard">업오더 테이블오더 상담</a>
+<a class="selection-link" href="support.html?product=qr#formCard">토스 QR오더 상담</a></div></div>
 </section>
 
 <!-- FIELD SKETCH -->
