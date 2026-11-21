@@ -162,18 +162,23 @@ body{font-family:'Noto Sans KR',sans-serif;color:#1d1d1f;background:#fff;overflo
 
 .header .nav-store{color:#25344d!important}.header .nav-store.on{color:#0066ff!important}@media(max-width:600px){.header .nav.open .nav-store{color:white!important}}/* 모바일: 히어로 영상 전체 비율(16:9)로 · 구워진 글자 잘림 막음 · PC 손 0 */@media(max-width:768px){.page-hero{height:auto;padding-top:70px;background:#000}.page-hero video{position:relative;inset:auto;display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain}.mission-sec{padding:56px 0 48px}}</style><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "주식회사 누리네트웍스", "url": "https://nwpos.co.kr/", "foundingDate": "2012-05-18", "telephone": "1544-7754", "email": "nuri@posone.co.kr", "address": {"@type": "PostalAddress", "streetAddress": "선유로 70 우리벤처타운2차 408호", "addressLocality": "영등포구", "addressRegion": "서울특별시", "postalCode": "07294", "addressCountry": "KR"}}</script><style>/* 메뉴 글 한 줄 유지(PC) · 정함 5046 */@media(min-width:1024px){.nav a,.nav button{white-space:nowrap}}@media(min-width:1024px) and (max-width:1100px){.nav{gap:14px}}</style>
 <link rel="stylesheet" href="assets/site-nav.css"><script defer src="assets/site-nav.js"></script>
-<style>html:has(#work-values:target,#business-areas:target){scroll-behavior:auto}#work-values:target,#business-areas:target{transform:none;opacity:1;transition:none}</style></head>
-<body data-nw-layout="overlay">
+<style>html:has(#work-values:target,#business-areas:target){scroll-behavior:auto}#work-values:target,#business-areas:target{transform:none;opacity:1;transition:none}</style>
+<style>
+.story-film{position:relative;isolation:isolate;display:grid;justify-items:center;overflow:hidden;scroll-margin-top:70px;background:#e9e7df}
+.story-film::before{content:"";position:absolute;inset:-24px;background:var(--still) center/cover;filter:blur(20px);z-index:-1}
+.story-film video{display:block;position:static;width:min(100%,calc((100svh - 70px)*1.77778));height:auto;aspect-ratio:16/9;object-fit:contain}
+.story-skip{position:absolute;right:clamp(12px,3vw,40px);top:12px;color:white!important;background:#12283deb;border-radius:7px;font-weight:700;font-size:14px;padding:9px 14px;text-decoration:none}
+@media(max-width:650px){.story-film video{width:min(100%,calc(100svh - 70px));aspect-ratio:1}}
+</style>
+</head>
+<body data-nw-layout="flow">
 <div class="nw-head" role="banner" id="mainHeader">
   <div class="nw-inner"><a class="nw-brand" href="index.html" aria-label="누리네트웍스 Store"><img src="logo.svg" alt="" width="54" height="26"><span>누리네트웍스</span></a>
     <details class="nw-switch"><summary><i aria-hidden="true"></i>전체 메뉴</summary></details>
     <nav id="nav" class="nw-primary" aria-label="전체 메뉴"><div class="nw-item"><a href="index.html">Store</a></div><div class="nw-item"><a href="zed3.html">ZED-III</a></div><div class="nw-item"><a href="home-classic.html">Home</a></div><div class="nw-item"><a href="about.html" aria-current="page">회사소개</a></div><div class="nw-item"><a href="lineup.html">제품 라인업</a><details class="nw-more"><summary aria-label="제품 라인업 하위 메뉴"><span aria-hidden="true"></span></summary><div class="nw-sub"><a href="lineup-pos.html">포스 POS</a><a href="lineup-kiosk.html">배리어프리 키오스크</a><a href="lineup-order.html">테이블오더 / QR오더</a><a href="lineup-software.html">포스 소프트웨어</a><a href="lineup-signpad.html">토스·네이버 단말기</a><a href="lineup-terminal.html">유·무선 카드단말기</a><a href="lineup-pg.html">PG 결제</a><a href="lineup-extra.html">부가장비</a></div></details></div><div class="nw-item"><a href="support.html#store">구매스토어</a><details class="nw-more"><summary aria-label="구매스토어 하위 메뉴"><span aria-hidden="true"></span></summary><div class="nw-sub"><a href="benefits.html">계약 혜택</a></div></details></div><div class="nw-item"><a href="store-3d.html">매장 구성 보기</a><details class="nw-more"><summary aria-label="매장 구성 보기 하위 메뉴"><span aria-hidden="true"></span></summary><div class="nw-sub"><a href="store-configurator.html">제품 선택 · 예상 견적</a></div></details></div><a class="nw-call-menu" href="tel:1544-7754">전화 상담 1544-7754</a></nav>
     <div class="nw-contact"><a class="nw-phone" href="tel:1544-7754">1544-7754</a><a class="nw-action" href="support.html#formCard">도입 상담</a></div>
   </div></div>
-<section class="page-hero">
-<video id="bfVideo" autoplay muted loop playsinline><source src="brand-film.mp4" type="video/mp4"></video>
-<button class="bf-sound" onclick="var v=document.getElementById('bfVideo');v.muted=!v.muted;this.textContent=v.muted?'🔇':'🔊'">🔇</button>
-</section>
+<section class="story-film" data-story="about" aria-label="회사소개 영상"><video controls muted playsinline preload="metadata" aria-label="회사소개 영상"></video></section>
 <div class="flow-bg">
 <div class="hft-wrap">
 <div class="hft hft-1">NURINETWORKS · PAYMENT SERVICE PARTNER · SINCE 2012 · NURINETWORKS · PAYMENT SERVICE PARTNER · SINCE 2012 · NURINETWORKS · PAYMENT SERVICE PARTNER · SINCE 2012 · </div>
@@ -372,5 +377,20 @@ fetch('https://api.coingecko.com/api/v3/simple/price?ids=tether&vs_currencies=kr
 </script>
 <!-- NW 방문정보 트래킹 (체류·유입·경로) -->
 <script>(function(){try{var ss=sessionStorage;if(!ss.getItem('nw_t0')){ss.setItem('nw_t0',String(Date.now()));ss.setItem('nw_entry',location.pathname+location.search);ss.setItem('nw_ref',document.referrer||'직접유입');}var key=location.pathname;if(key.charAt(0)==='/')key=key.slice(1);if(key.slice(-5)==='.html')key=key.slice(0,-5);var M={'':'메인','index':'메인','about':'회사소개','lineup':'제품라인업','support':'구매스토어','home-classic':'홈'};var cur=M[key]||key||'메인';var p=ss.getItem('nw_pages')||'';var arr=p?p.split(' > '):[];if(arr[arr.length-1]!==cur){arr.push(cur);ss.setItem('nw_pages',arr.slice(-8).join(' > '));}}catch(e){}})();</script>
+
+<script>
+(()=>{const f=document.querySelector('.story-film'),v=f.querySelector('video');
+const m=matchMedia('(max-width:650px)').matches?'mobile':'wide';
+const base='assets/page-story/'+f.dataset.story+'-'+m;
+f.style.setProperty('--still','url("'+base+'.jpg")');
+v.poster=base+'.jpg';v.src=base+'.mp4';
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let started=false;
+const io=new IntersectionObserver(records=>{for(const r of records){
+ if(r.intersectionRatio>=.5 && !started && !reduced){started=true;v.play().catch(()=>{});}
+ if(!r.isIntersecting&&!v.paused)v.pause();
+}},{threshold:[0,.5]});io.observe(f);
+})();
+</script>
 </body>
 </html>
