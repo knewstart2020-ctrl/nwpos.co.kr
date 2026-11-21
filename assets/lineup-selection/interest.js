@@ -26,11 +26,11 @@
   ],
   "uppos": [
     "업포스",
-    "포스(POS)"
+    "포스 소프트웨어"
   ],
   "okpos": [
     "오케이포스",
-    "포스(POS)"
+    "포스 소프트웨어"
   ],
   "toss": [
     "토스프론트",
@@ -50,22 +50,22 @@
   ],
   "offline-pg": [
     "오프라인 매장 PG",
-    "업무제휴/기타"
+    "PG 결제"
   ],
   "online-pg": [
     "온라인몰 PG",
-    "업무제휴/기타"
+    "PG 결제"
   ],
   "paper": [
     "프린터 호환 용지",
-    "업무제휴/기타"
+    "부가장비·소모품"
   ]
 };
   const key = new URLSearchParams(location.search).get('product');
   if (!Object.hasOwn(products, key)) return;
 
   const [model, type] = products[key];
-  const box = Array.from(document.querySelectorAll('.mtype input')).find(input => input.value === type);
+  const box = Array.from(document.querySelectorAll('.mtype input')).find(input => input.value === type) || Array.from(document.querySelectorAll('.mtype input')).find(input => input.value === ({'포스 소프트웨어':'포스(POS)','PG 결제':'업무제휴/기타','부가장비·소모품':'업무제휴/기타'})[type]);
   const memo = document.querySelector('#memo');
   if (!box || !memo) return;
   box.checked = true;
